@@ -3,6 +3,8 @@ package com.qcloud.im.util;
 import java.util.Base64;
 
 /**
+ * Base64 tool
+ *
  * @author bingo
  * @since 2021/7/26 16:43
  */

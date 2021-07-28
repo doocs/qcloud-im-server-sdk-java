@@ -11,7 +11,7 @@ import org.apache.commons.lang3.SerializationException;
 import java.io.IOException;
 
 /**
- * JSON工具类
+ * JSON tool
  *
  * @author bingo
  * @since 2021/7/27 17:41

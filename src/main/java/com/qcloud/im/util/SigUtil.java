@@ -12,6 +12,8 @@ import java.util.Base64;
 import java.util.zip.Deflater;
 
 /**
+ * Signature tool
+ *
  * @author bingo
  * @since 2021/7/26 16:39
  */
