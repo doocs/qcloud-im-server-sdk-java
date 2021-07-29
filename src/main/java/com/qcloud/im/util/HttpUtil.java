@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -110,22 +111,22 @@ public class HttpUtil {
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 
         // parse parameters
-        String body = "";
+        StringBuilder body = new StringBuilder();
         if (params != null) {
             boolean first = true;
             for (String param : params.keySet()) {
                 if (first) {
                     first = false;
                 } else {
-                    body += "&";
+                    body.append("&");
                 }
                 String value = params.get(param);
-                body += URLEncoder.encode(param, "UTF-8") + "=";
-                body += URLEncoder.encode(value, "UTF-8");
+                body.append(URLEncoder.encode(param, "UTF-8")).append("=");
+                body.append(URLEncoder.encode(value, "UTF-8"));
             }
         }
 
-        return post(url, body, headers);
+        return post(url, body.toString(), headers);
     }
 
     /**
@@ -187,23 +188,23 @@ public class HttpUtil {
      */
     public static String appendQueryParams(String url,
                                            Map<String, String> params) throws IOException {
-        String fullUrl = url;
+        StringBuilder fullUrl = new StringBuilder(url);
         if (params != null) {
-            boolean first = (fullUrl.indexOf('?') == -1);
+            boolean first = (fullUrl.toString().indexOf('?') == -1);
             for (String param : params.keySet()) {
                 if (first) {
-                    fullUrl += '?';
+                    fullUrl.append('?');
                     first = false;
                 } else {
-                    fullUrl += '&';
+                    fullUrl.append('&');
                 }
                 String value = params.get(param);
-                fullUrl += URLEncoder.encode(param, "UTF-8") + '=';
-                fullUrl += URLEncoder.encode(value, "UTF-8");
+                fullUrl.append(URLEncoder.encode(param, "UTF-8")).append('=');
+                fullUrl.append(URLEncoder.encode(value, "UTF-8"));
             }
         }
 
-        return fullUrl;
+        return fullUrl.toString();
     }
 
     /**
@@ -323,7 +324,7 @@ public class HttpUtil {
      * @throws IOException
      */
     public static String streamToString(InputStream in) throws IOException {
-        InputStreamReader isr = new InputStreamReader(in, "UTF-8");
+        InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
         BufferedReader br = new BufferedReader(isr);
 
         String data;
