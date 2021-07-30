@@ -39,4 +39,13 @@ public class AccountDeleteResultItem {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "AccountDeleteResultItem{" +
+                "resultCode=" + resultCode +
+                ", resultInfo='" + resultInfo + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }

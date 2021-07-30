@@ -19,4 +19,11 @@ public class AccountCheckResult extends GenericResult {
     public void setResultItems(List<AccountCheckResultItem> resultItems) {
         this.resultItems = resultItems;
     }
+
+    @Override
+    public String toString() {
+        return "AccountCheckResult{" +
+                "resultItems=" + resultItems +
+                '}';
+    }
 }

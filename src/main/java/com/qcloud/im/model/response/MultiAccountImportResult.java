@@ -19,4 +19,11 @@ public class MultiAccountImportResult extends GenericResult {
     public void setFailAccounts(List<String> failAccounts) {
         this.failAccounts = failAccounts;
     }
+
+    @Override
+    public String toString() {
+        return "MultiAccountImportResult{" +
+                "failAccounts=" + failAccounts +
+                '}';
+    }
 }

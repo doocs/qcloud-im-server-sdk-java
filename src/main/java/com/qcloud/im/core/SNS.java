@@ -13,8 +13,8 @@ import java.io.IOException;
  * @since 2021/07/29 15:11
  */
 public class SNS {
-    private final String SERVICE_NAME = "sns";
-    private final String FRIEND_IMPORT_COMMAND = "friend_import";
+    private static final String SERVICE_NAME = "sns";
+    private static final String FRIEND_IMPORT_COMMAND = "friend_import";
 
     private IMClient imClient;
 

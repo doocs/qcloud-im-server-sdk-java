@@ -50,4 +50,14 @@ public class AccountCheckResultItem {
     public void setAccountStatus(String accountStatus) {
         this.accountStatus = accountStatus;
     }
+
+    @Override
+    public String toString() {
+        return "AccountCheckResultItem{" +
+                "resultCode=" + resultCode +
+                ", resultInfo='" + resultInfo + '\'' +
+                ", userId='" + userId + '\'' +
+                ", accountStatus='" + accountStatus + '\'' +
+                '}';
+    }
 }

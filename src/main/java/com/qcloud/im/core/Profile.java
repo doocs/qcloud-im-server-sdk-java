@@ -13,8 +13,8 @@ import java.io.IOException;
  * @since 2021/07/29 15:11
  */
 public class Profile {
-    private final String SERVICE_NAME = "profile";
-    private final String PORTRAIT_SET_COMMAND = "portrait_set";
+    private static final String SERVICE_NAME = "profile";
+    private static final String PORTRAIT_SET_COMMAND = "portrait_set";
 
     private IMClient imClient;
 

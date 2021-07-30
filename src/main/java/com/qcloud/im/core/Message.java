@@ -15,9 +15,9 @@ import java.io.IOException;
  * @since 2021/07/29 10:28
  */
 public class Message {
-    private final String SERVICE_NAME = "openim";
-    private final String SEND_MSG_COMMAND = "sendmsg";
-    private final String IMPORT_MSG_COMMAND = "importmsg";
+    private static final String SERVICE_NAME = "openim";
+    private static final String SEND_MSG_COMMAND = "sendmsg";
+    private static final String IMPORT_MSG_COMMAND = "importmsg";
 
     private IMClient imClient;
 

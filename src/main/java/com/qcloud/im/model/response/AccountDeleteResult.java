@@ -19,4 +19,11 @@ public class AccountDeleteResult extends GenericResult {
     public void setResultItems(List<AccountDeleteResultItem> resultItems) {
         this.resultItems = resultItems;
     }
+
+    @Override
+    public String toString() {
+        return "AccountDeleteResult{" +
+                "resultItems=" + resultItems +
+                '}';
+    }
 }
