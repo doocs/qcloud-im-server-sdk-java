@@ -16,7 +16,7 @@ public class Profile {
     private static final String SERVICE_NAME = "profile";
     private static final String PORTRAIT_SET_COMMAND = "portrait_set";
 
-    private IMClient imClient;
+    private final IMClient imClient;
 
     public PortraitSetResult portraitSet(PortraitSetRequest portraitSetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_SET_COMMAND);

@@ -22,7 +22,7 @@ public class Account {
     private static final String KICK = "kick";
     private static final String QUERY_STATE = "querystate";
 
-    private IMClient imClient;
+    private final IMClient imClient;
 
     public Account(IMClient imClient) {
         this.imClient = imClient;

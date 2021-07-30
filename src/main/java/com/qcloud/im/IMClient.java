@@ -15,8 +15,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * @since 2021/07/29 16:11
  */
 public class IMClient {
-    private static ConcurrentHashMap<String, IMClient> imClient = new ConcurrentHashMap<>();
-    private static String FORMAT_URL = "https://console.tim.qq.com/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
+    private static final ConcurrentHashMap<String, IMClient> IM_CLIENT = new ConcurrentHashMap<>();
+    private static final String FORMAT_URL = "https://console.tim.qq.com/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
     /**
      * core methods
      */
@@ -27,25 +27,25 @@ public class IMClient {
     /**
      * init property
      */
-    private String version = "v4";
-    private Long sdkAppId;
-    private String userId;
-    private String userSig;
+    private final String version = "v4";
+    private final Long sdkAppId;
+    private final String userId;
+    private final String userSig;
 
     public static IMClient getInstance(Long sdkAppId, String userId, String key, Long expire) {
         String identify = sdkAppId + "_" + userId;
-        if (imClient.get(identify) == null) {
-            imClient.putIfAbsent(identify, new IMClient(sdkAppId, userId, key, expire));
+        if (IM_CLIENT.get(identify) == null) {
+            IM_CLIENT.putIfAbsent(identify, new IMClient(sdkAppId, userId, key, expire));
         }
-        return imClient.get(identify);
+        return IM_CLIENT.get(identify);
     }
 
     public static IMClient getInstance(Long sdkAppId, String userId, String key) {
         String identify = sdkAppId + "_" + userId;
-        if (imClient.get(identify) == null) {
-            imClient.putIfAbsent(identify, new IMClient(sdkAppId, userId, key, 24 * 60 * 60L));
+        if (IM_CLIENT.get(identify) == null) {
+            IM_CLIENT.putIfAbsent(identify, new IMClient(sdkAppId, userId, key, 24 * 60 * 60L));
         }
-        return imClient.get(identify);
+        return IM_CLIENT.get(identify);
     }
 
     public IMClient(Long sdkAppId, String userId, String key, Long expire) {

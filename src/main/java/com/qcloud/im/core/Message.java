@@ -19,7 +19,7 @@ public class Message {
     private static final String SEND_MSG_COMMAND = "sendmsg";
     private static final String IMPORT_MSG_COMMAND = "importmsg";
 
-    private IMClient imClient;
+    private final IMClient imClient;
 
     public SendMsgResult sendMsg(SendMsgRequest sendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_MSG_COMMAND);

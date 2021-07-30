@@ -16,7 +16,7 @@ public class SNS {
     private static final String SERVICE_NAME = "sns";
     private static final String FRIEND_IMPORT_COMMAND = "friend_import";
 
-    private IMClient imClient;
+    private final IMClient imClient;
 
     public FriendImportResult friendImport(FriendImportRequest friendImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_IMPORT_COMMAND);

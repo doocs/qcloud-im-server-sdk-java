@@ -15,8 +15,8 @@ import java.util.Properties;
  * @since 2021/7/30 16:17
  */
 public class AccountTest {
-    private static Properties properties = new Properties();
-    private static IMClient client;
+    private static final Properties properties = new Properties();
+    private static final IMClient client;
 
     static {
         InputStream resourceAsStream = AccountTest.class.getClassLoader().getResourceAsStream("app.properties");
