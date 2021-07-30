@@ -1,7 +1,7 @@
 package com.qcloud.im.model.core;
 
 import com.qcloud.im.IMClient;
-import com.qcloud.im.model.request.ImportMsgRequest;
+import com.qcloud.im.model.request.AccountImportRequest;
 import com.qcloud.im.model.response.AccountImportResult;
 import com.qcloud.im.util.HttpUtil;
 import com.qcloud.im.util.JsonUtil;
@@ -18,9 +18,9 @@ public class Account {
 
     private IMClient imClient;
 
-    public AccountImportResult accountImport(ImportMsgRequest importMsgRequest) throws IOException {
+    public AccountImportResult accountImport(AccountImportRequest accountImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_IMPORT_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(importMsgRequest), null);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(accountImportRequest), null);
         return JsonUtil.str2Obj(result, AccountImportResult.class);
     }
 
