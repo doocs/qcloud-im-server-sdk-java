@@ -28,4 +28,12 @@ public class QueryStateResultItem {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "QueryStateResultItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

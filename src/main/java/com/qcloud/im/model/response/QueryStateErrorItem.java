@@ -28,4 +28,12 @@ public class QueryStateErrorItem {
     public void setErrorCode(Integer errorCode) {
         this.errorCode = errorCode;
     }
+
+    @Override
+    public String toString() {
+        return "QueryStateErrorItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", errorCode=" + errorCode +
+                '}';
+    }
 }

@@ -30,4 +30,12 @@ public class QueryStateResult extends GenericResult {
     public void setQueryStateErrorList(List<QueryStateErrorItem> queryStateErrorList) {
         this.queryStateErrorList = queryStateErrorList;
     }
+
+    @Override
+    public String toString() {
+        return "QueryStateResult{" +
+                "queryStateResult=" + queryStateResult +
+                ", queryStateErrorList=" + queryStateErrorList +
+                '}';
+    }
 }
