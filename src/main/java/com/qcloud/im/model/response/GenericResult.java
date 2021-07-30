@@ -48,4 +48,13 @@ public abstract class GenericResult {
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
+
+    @Override
+    public String toString() {
+        return "GenericResult{" +
+                "actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode='" + errorCode + '\'' +
+                '}';
+    }
 }

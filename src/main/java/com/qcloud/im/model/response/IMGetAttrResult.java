@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class IMGetAttrResult extends GenericResult {
     @JsonProperty("UserAttrs")
-    List<UserAttrItem> userAttrs;
+    private List<UserAttrItem> userAttrs;
 
     public List<UserAttrItem> getUserAttrs() {
         return userAttrs;
