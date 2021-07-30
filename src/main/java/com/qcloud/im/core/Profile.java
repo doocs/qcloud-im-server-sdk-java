@@ -1,4 +1,4 @@
-package com.qcloud.im.model.core;
+package com.qcloud.im.core;
 
 import com.qcloud.im.IMClient;
 import com.qcloud.im.model.request.PortraitSetRequest;

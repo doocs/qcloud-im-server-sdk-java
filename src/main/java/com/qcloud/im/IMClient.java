@@ -1,9 +1,9 @@
 package com.qcloud.im;
 
-import com.qcloud.im.model.core.Account;
-import com.qcloud.im.model.core.Message;
-import com.qcloud.im.model.core.Profile;
-import com.qcloud.im.model.core.SNS;
+import com.qcloud.im.core.Account;
+import com.qcloud.im.core.Message;
+import com.qcloud.im.core.Profile;
+import com.qcloud.im.core.SNS;
 import com.qcloud.im.util.SigUtil;
 
 import java.util.concurrent.ConcurrentHashMap;
