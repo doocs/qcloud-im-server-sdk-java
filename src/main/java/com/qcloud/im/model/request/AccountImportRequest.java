@@ -1,11 +1,13 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author hyh
  * @since 2021/07/29 14:56
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountImportRequest extends GenericRequest {
     @JsonProperty("Identifier")
     private String identifier;

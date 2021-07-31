@@ -7,23 +7,12 @@ import java.util.List;
 
 /**
  * @author bingo
- * @since 2021/7/30 17:35
+ * @since 2021/7/31 17:03
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryStateRequest extends GenericRequest {
-    @JsonProperty("IsNeedDetail")
-    private Integer isNeedDetail;
-
+public class IMGetTagRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
-
-    public Integer getIsNeedDetail() {
-        return isNeedDetail;
-    }
-
-    public void setIsNeedDetail(Integer isNeedDetail) {
-        this.isNeedDetail = isNeedDetail;
-    }
 
     public List<String> getToAccount() {
         return toAccount;

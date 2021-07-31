@@ -1,14 +1,17 @@
-package com.qcloud.im.model.response;
+package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.qcloud.im.model.response.UserAttrItem;
 
 import java.util.List;
 
 /**
- * @author hyh
- * @since 2021/07/30 11:27
+ * @author bingo
+ * @since 2021/7/31 17:01
  */
-public class IMGetAttrResult extends GenericResult {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class IMRemoveAttrRequest extends GenericRequest {
     @JsonProperty("UserAttrs")
     private List<UserAttrItem> userAttrs;
 
@@ -18,12 +21,5 @@ public class IMGetAttrResult extends GenericResult {
 
     public void setUserAttrs(List<UserAttrItem> userAttrs) {
         this.userAttrs = userAttrs;
-    }
-
-    @Override
-    public String toString() {
-        return "IMGetAttrResult{" +
-                "userAttrs=" + userAttrs +
-                '}';
     }
 }

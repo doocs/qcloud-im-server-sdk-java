@@ -30,4 +30,12 @@ public class UserAttrItem {
     public void setAttrs(Map<String, Object> attrs) {
         this.attrs = attrs;
     }
+
+    @Override
+    public String toString() {
+        return "UserAttrItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", attrs=" + attrs +
+                '}';
+    }
 }

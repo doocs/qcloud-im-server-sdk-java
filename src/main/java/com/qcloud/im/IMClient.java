@@ -1,9 +1,6 @@
 package com.qcloud.im;
 
-import com.qcloud.im.core.Account;
-import com.qcloud.im.core.Message;
-import com.qcloud.im.core.Profile;
-import com.qcloud.im.core.SNS;
+import com.qcloud.im.core.*;
 import com.qcloud.im.util.SigUtil;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,8 +19,10 @@ public class IMClient {
      */
     public Account account;
     public Message message;
+    public Member member;
     public Profile profile;
     public SNS sns;
+    public Operation operation;
     /**
      * init property
      */
@@ -54,7 +53,9 @@ public class IMClient {
         this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, expire);
         account = new Account(this);
         message = new Message(this);
+        member = new Member(this);
         profile = new Profile(this);
+        operation = new Operation(this);
         sns = new SNS(this);
     }
 

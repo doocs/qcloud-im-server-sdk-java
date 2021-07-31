@@ -30,4 +30,12 @@ public class BatchSendMsgResult extends GenericResult {
     public void setErrorList(List<BatchSendMsgErrorItem> errorList) {
         this.errorList = errorList;
     }
+
+    @Override
+    public String toString() {
+        return "BatchSendMsgResult{" +
+                "msgKey='" + msgKey + '\'' +
+                ", errorList=" + errorList +
+                '}';
+    }
 }

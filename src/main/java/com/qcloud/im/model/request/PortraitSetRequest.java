@@ -1,5 +1,6 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/29 15:01
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PortraitSetRequest extends GenericRequest {
     @JsonProperty("From_Account")
     private String fromAccount;
