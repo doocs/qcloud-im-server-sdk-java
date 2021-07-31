@@ -21,6 +21,7 @@ public class IMClient {
     public Message message;
     public Member member;
     public Profile profile;
+    public Group group;
     public SNS sns;
     public Operation operation;
     /**
@@ -55,6 +56,7 @@ public class IMClient {
         message = new Message(this);
         member = new Member(this);
         profile = new Profile(this);
+        group = new Group(this);
         operation = new Operation(this);
         sns = new SNS(this);
     }
