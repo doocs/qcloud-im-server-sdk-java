@@ -14,6 +14,7 @@ import java.io.IOException;
  */
 public class Member {
     private static final String SERVICE_NAME = "all_member_push";
+
     private static final String IM_PUSH_COMMAND = "im_push";
     private static final String IM_SET_ATTR_NAME_COMMAND = "im_set_attr_name";
     private static final String IM_GET_ATTR_NAME_COMMAND = "im_get_attr_name";

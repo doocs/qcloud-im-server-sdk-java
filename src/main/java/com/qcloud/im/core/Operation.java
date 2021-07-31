@@ -1,10 +1,8 @@
 package com.qcloud.im.core;
 
 import com.qcloud.im.IMClient;
-import com.qcloud.im.model.request.GetNoSpeakingRequest;
-import com.qcloud.im.model.request.SetNoSpeakingRequest;
-import com.qcloud.im.model.response.GetNoSpeakingResult;
-import com.qcloud.im.model.response.SetNoSpeakingResult;
+import com.qcloud.im.model.request.*;
+import com.qcloud.im.model.response.*;
 import com.qcloud.im.util.HttpUtil;
 import com.qcloud.im.util.JsonUtil;
 
@@ -21,9 +19,16 @@ public class Operation {
 
     private static final String SET_NO_SPEAKING_COMMAND = "setnospeaking";
     private static final String GET_NO_SPEAKING_COMMAND = "getnospeaking";
+    private static final String GET_APP_INFO_COMMAND = "getappinfo";
+    private static final String GET_HISTORY_COMMAND = "get_history";
+    private static final String GET_IP_LIST_COMMAND = "GetIPList";
 
 
     private final IMClient imClient;
+
+    public Operation(IMClient imClient) {
+        this.imClient = imClient;
+    }
 
     public SetNoSpeakingResult setNoSpeaking(SetNoSpeakingRequest setNoSpeakingRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_CONFIG, SET_NO_SPEAKING_COMMAND);
@@ -37,7 +42,21 @@ public class Operation {
         return JsonUtil.str2Obj(result, GetNoSpeakingResult.class);
     }
 
-    public Operation(IMClient imClient) {
-        this.imClient = imClient;
+    public GetAppInfoResult getAppInfo(GetAppInfoRequest getAppInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_CONFIG, GET_APP_INFO_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getAppInfoRequest), null);
+        return JsonUtil.str2Obj(result, GetAppInfoResult.class);
+    }
+
+    public GetHistoryResult getHistory(GetHistoryRequest getHistoryRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_MSG, GET_HISTORY_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getHistoryRequest), null);
+        return JsonUtil.str2Obj(result, GetHistoryResult.class);
+    }
+
+    public GetIpListResult getIpList(GetIpListRequest getIpListRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CONFIG, GET_IP_LIST_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getIpListRequest), null);
+        return JsonUtil.str2Obj(result, GetIpListResult.class);
     }
 }
