@@ -17,8 +17,8 @@ import java.io.IOException;
  * @since 2021/7/27 17:41
  */
 public class JsonUtil {
-    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    public static final ObjectMapper INDENT_OUTPUT_OBJECT_MAPPER = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final ObjectMapper INDENT_OUTPUT_OBJECT_MAPPER = new ObjectMapper();
 
     static {
         OBJECT_MAPPER.enable(MapperFeature.USE_GETTERS_AS_SETTERS);

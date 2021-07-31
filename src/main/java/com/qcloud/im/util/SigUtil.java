@@ -143,8 +143,8 @@ public class SigUtil {
                 0, compressedBytesLength)))).replaceAll("\\s*", "");
     }
 
-    public static byte[] genUserBuf(long sdkAppId, String account, long dwAuthID, long dwExpTime,
-                                    long dwPrivilegeMap, long dwAccountType, String roomStr) {
+    private static byte[] genUserBuf(long sdkAppId, String account, long dwAuthID, long dwExpTime,
+                                     long dwPrivilegeMap, long dwAccountType, String roomStr) {
         //视频校验位需要用到的字段,按照网络字节序放入buf中
         /*
          cVer    unsigned char/1 版本号，填0
