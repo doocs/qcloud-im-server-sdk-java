@@ -63,4 +63,15 @@ public class AdminRoamMsgResult extends GenericResult {
     public void setMsgList(List<MsgListItem> msgList) {
         this.msgList = msgList;
     }
+
+    @Override
+    public String toString() {
+        return "AdminRoamMsgResult{" +
+                "complete=" + complete +
+                ", msgCnt=" + msgCnt +
+                ", lastMsgTime=" + lastMsgTime +
+                ", lastMsgKey=" + lastMsgKey +
+                ", msgList=" + msgList +
+                '}';
+    }
 }

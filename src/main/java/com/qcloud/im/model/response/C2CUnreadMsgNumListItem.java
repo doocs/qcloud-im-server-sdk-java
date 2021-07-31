@@ -28,4 +28,12 @@ public class C2CUnreadMsgNumListItem {
     public void setUnreadMsgNum(String unreadMsgNum) {
         this.unreadMsgNum = unreadMsgNum;
     }
+
+    @Override
+    public String toString() {
+        return "C2CUnreadMsgNumListItem{" +
+                "peerAccount='" + peerAccount + '\'' +
+                ", unreadMsgNum='" + unreadMsgNum + '\'' +
+                '}';
+    }
 }
