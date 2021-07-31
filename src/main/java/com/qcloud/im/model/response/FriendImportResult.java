@@ -30,4 +30,12 @@ public class FriendImportResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "FriendImportResult{" +
+                "resultItemList=" + resultItemList +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

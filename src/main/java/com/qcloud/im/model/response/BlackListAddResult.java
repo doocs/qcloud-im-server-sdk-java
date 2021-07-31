@@ -41,4 +41,13 @@ public class BlackListAddResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "BlackListAddResult{" +
+                "resultItemList=" + resultItemList +
+                ", failAccount=" + failAccount +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

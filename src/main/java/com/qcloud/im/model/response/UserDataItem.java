@@ -14,4 +14,28 @@ public class UserDataItem {
 
     @JsonProperty("ValueItem")
     private List<ValueItem> valueItemList;
+
+    public String getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(String toAccount) {
+        this.toAccount = toAccount;
+    }
+
+    public List<ValueItem> getValueItemList() {
+        return valueItemList;
+    }
+
+    public void setValueItemList(List<ValueItem> valueItemList) {
+        this.valueItemList = valueItemList;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDataItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", valueItemList=" + valueItemList +
+                '}';
+    }
 }

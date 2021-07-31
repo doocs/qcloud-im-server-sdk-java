@@ -28,4 +28,12 @@ public class GroupDeleteResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "GroupDeleteResult{" +
+                "currentSequence=" + currentSequence +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

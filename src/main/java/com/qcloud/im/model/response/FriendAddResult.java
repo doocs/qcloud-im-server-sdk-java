@@ -8,7 +8,7 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/30 15:14
  */
-public class FriendAddResult extends GenericResult{
+public class FriendAddResult extends GenericResult {
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;
 
@@ -42,5 +42,14 @@ public class FriendAddResult extends GenericResult{
 
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
+    }
+
+    @Override
+    public String toString() {
+        return "FriendAddResult{" +
+                "resultItemList=" + resultItemList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
     }
 }

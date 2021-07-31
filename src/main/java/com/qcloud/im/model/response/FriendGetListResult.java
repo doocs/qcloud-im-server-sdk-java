@@ -8,15 +8,12 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/30 16:56
  */
-public class FriendGetListResult {
+public class FriendGetListResult extends GroupGetResult {
     @JsonProperty("InfoItem")
     private List<FriendGetListInfoItem> infoItemList;
 
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
-
-    @JsonProperty("ErrorDisplay")
-    private String errorDisplay;
 
     public List<FriendGetListInfoItem> getInfoItemList() {
         return infoItemList;
@@ -34,11 +31,11 @@ public class FriendGetListResult {
         this.failAccount = failAccount;
     }
 
-    public String getErrorDisplay() {
-        return errorDisplay;
-    }
-
-    public void setErrorDisplay(String errorDisplay) {
-        this.errorDisplay = errorDisplay;
+    @Override
+    public String toString() {
+        return "FriendGetListResult{" +
+                "infoItemList=" + infoItemList +
+                ", failAccount=" + failAccount +
+                '}';
     }
 }

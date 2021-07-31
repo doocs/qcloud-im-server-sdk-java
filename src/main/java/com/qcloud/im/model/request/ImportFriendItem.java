@@ -1,5 +1,6 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -8,15 +9,19 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/29 15:37
  */
-public class AddFriendItem {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ImportFriendItem {
     @JsonProperty("To_Account")
     private String toAccount;
 
     @JsonProperty("Remark")
     private String remark;
 
+    @JsonProperty("RemarkTime")
+    private Integer remarkTime;
+
     @JsonProperty("GroupName")
-    private String groupName;
+    private List<String> groupName;
 
     @JsonProperty("AddSource")
     private String addSource;
@@ -24,15 +29,24 @@ public class AddFriendItem {
     @JsonProperty("AddWording")
     private String addWording;
 
-    public AddFriendItem() {
+    @JsonProperty("AddTime")
+    private Integer addTime;
+
+    @JsonProperty("CustomItem")
+    private List<CustomItem> customItemList;
+
+    public ImportFriendItem() {
     }
 
-    public AddFriendItem(String toAccount, String remark, String groupName, String addSource, String addWording) {
+    public ImportFriendItem(String toAccount, String remark, Integer remarkTime, List<String> groupName, String addSource, String addWording, Integer addTime, List<CustomItem> customItemList) {
         this.toAccount = toAccount;
         this.remark = remark;
+        this.remarkTime = remarkTime;
         this.groupName = groupName;
         this.addSource = addSource;
         this.addWording = addWording;
+        this.addTime = addTime;
+        this.customItemList = customItemList;
     }
 
     public String getToAccount() {
@@ -51,11 +65,19 @@ public class AddFriendItem {
         this.remark = remark;
     }
 
-    public String getGroupName() {
+    public Integer getRemarkTime() {
+        return remarkTime;
+    }
+
+    public void setRemarkTime(Integer remarkTime) {
+        this.remarkTime = remarkTime;
+    }
+
+    public List<String> getGroupName() {
         return groupName;
     }
 
-    public void setGroupName(String groupName) {
+    public void setGroupName(List<String> groupName) {
         this.groupName = groupName;
     }
 
@@ -73,5 +95,21 @@ public class AddFriendItem {
 
     public void setAddWording(String addWording) {
         this.addWording = addWording;
+    }
+
+    public Integer getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Integer addTime) {
+        this.addTime = addTime;
+    }
+
+    public List<CustomItem> getCustomItemList() {
+        return customItemList;
+    }
+
+    public void setCustomItemList(List<CustomItem> customItemList) {
+        this.customItemList = customItemList;
     }
 }

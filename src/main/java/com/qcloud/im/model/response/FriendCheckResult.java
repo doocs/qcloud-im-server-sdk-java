@@ -41,4 +41,13 @@ public class FriendCheckResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "FriendCheckResult{" +
+                "friendCheckInfoItemList=" + friendCheckInfoItemList +
+                ", failAccount=" + failAccount +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

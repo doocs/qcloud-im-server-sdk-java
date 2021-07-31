@@ -1,24 +1,22 @@
 package com.qcloud.im.model.request;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author hyh
- * @since 2021/07/29 15:45
+ * @since 2021/07/31 14:24
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class CustomItem {
+public class SnsItem {
     @JsonProperty("Tag")
     private String tag;
 
     @JsonProperty("Value")
     private Object value;
 
-    public CustomItem() {
+    public SnsItem() {
     }
 
-    public CustomItem(String tag, Object value) {
+    public SnsItem(String tag, Object value) {
         this.tag = tag;
         this.value = value;
     }
@@ -37,13 +35,5 @@ public class CustomItem {
 
     public void setValue(Object value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "CustomItem{" +
-                "tag='" + tag + '\'' +
-                ", value=" + value +
-                '}';
     }
 }

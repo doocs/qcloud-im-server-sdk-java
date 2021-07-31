@@ -41,4 +41,13 @@ public class GroupGetResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "GroupGetResult{" +
+                "resultItemList=" + resultItemList +
+                ", currentSequence=" + currentSequence +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

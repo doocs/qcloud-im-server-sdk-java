@@ -17,4 +17,11 @@ public class FriendDeleteAllResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "FriendDeleteAllResult{" +
+                "errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }
