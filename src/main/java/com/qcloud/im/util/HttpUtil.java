@@ -19,9 +19,9 @@ public class HttpUtil {
     /**
      * Send a get request
      *
-     * @param url
+     * @param url Url as string
      * @return response
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String get(String url) throws IOException {
         return get(url, null);
@@ -33,7 +33,7 @@ public class HttpUtil {
      * @param url     Url as string
      * @param headers Optional map with headers
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String get(String url,
                              Map<String, String> headers) throws IOException {
@@ -47,7 +47,7 @@ public class HttpUtil {
      * @param body    Request body as string
      * @param headers Optional map with headers
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String post(String url, String body,
                               Map<String, String> headers) throws IOException {
@@ -60,7 +60,7 @@ public class HttpUtil {
      * @param url  Url as string
      * @param body Request body as string
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String post(String url, String body) throws IOException {
         return post(url, body, null);
@@ -72,7 +72,7 @@ public class HttpUtil {
      * @param url     Url as string
      * @param jsonStr a json string
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String postJson(String url, String jsonStr) throws IOException {
         Map<String, String> headers = new HashMap<>();
@@ -86,7 +86,7 @@ public class HttpUtil {
      * @param url    Url as string
      * @param params map with parameters/values
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String postForm(String url, Map<String, String> params)
             throws IOException {
@@ -100,7 +100,7 @@ public class HttpUtil {
      * @param params  Map with parameters/values
      * @param headers Optional map with headers
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String postForm(String url, Map<String, String> params,
                                   Map<String, String> headers) throws IOException {
@@ -136,7 +136,7 @@ public class HttpUtil {
      * @param body    Request body as string
      * @param headers Optional map with headers
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String put(String url, String body,
                              Map<String, String> headers) throws IOException {
@@ -148,7 +148,7 @@ public class HttpUtil {
      *
      * @param url Url as string
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String put(String url, String body) throws IOException {
         return put(url, body, null);
@@ -160,7 +160,7 @@ public class HttpUtil {
      * @param url     Url as string
      * @param headers Optional map with headers
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String delete(String url,
                                 Map<String, String> headers) throws IOException {
@@ -172,7 +172,7 @@ public class HttpUtil {
      *
      * @param url Url as string
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String delete(String url) throws IOException {
         return delete(url, null);
@@ -184,7 +184,7 @@ public class HttpUtil {
      * @param url    Url as string
      * @param params Map with query parameters
      * @return url        Url with query parameters appended
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String appendQueryParams(String url,
                                            Map<String, String> params) throws IOException {
@@ -212,7 +212,7 @@ public class HttpUtil {
      *
      * @param url Url containing query parameters
      * @return params     Map with query parameters
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static Map<String, String> getQueryParams(String url)
             throws IOException {
@@ -252,7 +252,7 @@ public class HttpUtil {
      *
      * @param url Url containing query parameters
      * @return url        Url without query parameters
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String removeQueryParams(String url)
             throws IOException {
@@ -272,7 +272,7 @@ public class HttpUtil {
      * @param body    Request body as string
      * @param headers Optional map with headers
      * @return response   Response as string
-     * @throws IOException
+     * @throws IOException IOException
      */
     public static String fetch(String method, String url, String body,
                                Map<String, String> headers) throws IOException {
@@ -319,9 +319,9 @@ public class HttpUtil {
     /**
      * Read an input stream from conn into a string
      *
-     * @param in
-     * @return
-     * @throws IOException
+     * @param in InputStream
+     * @return InputStream as string
+     * @throws IOException IOException
      */
     public static String streamToString(InputStream in) throws IOException {
         InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
