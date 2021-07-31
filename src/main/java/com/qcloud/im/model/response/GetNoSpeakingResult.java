@@ -3,16 +3,10 @@ package com.qcloud.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @author bingo
- * @since 2021/7/27 15:43
+ * @author xy
+ * @since 2021/07/31 11:51:01
  */
-public abstract class GenericResult {
-    /**
-     * 请求处理的结果，OK 表示处理成功，FAIL 表示失败，如果为 FAIL，ErrorInfo 带上失败原因
-     */
-    @JsonProperty("ActionStatus")
-    private String actionStatus;
-
+public class GetNoSpeakingResult {
     /**
      * 失败原因
      */
@@ -24,14 +18,6 @@ public abstract class GenericResult {
      */
     @JsonProperty("ErrorCode")
     private Integer errorCode;
-
-    public String getActionStatus() {
-        return actionStatus;
-    }
-
-    public void setActionStatus(String actionStatus) {
-        this.actionStatus = actionStatus;
-    }
 
     public String getErrorInfo() {
         return errorInfo;
@@ -51,10 +37,9 @@ public abstract class GenericResult {
 
     @Override
     public String toString() {
-        return "GenericResult{" +
-                "actionStatus='" + actionStatus + '\'' +
-                ", errorInfo='" + errorInfo + '\'' +
-                ", errorCode='" + errorCode + '\'' +
+        return "GetNoSpeakingResult{" +
+                "errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

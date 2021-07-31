@@ -1,7 +1,6 @@
 package com.qcloud.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.qcloud.im.model.response.GenericResult;
 
 import java.util.List;
 
@@ -9,7 +8,7 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/29 15:19
  */
-public class FriendImportRequest extends GenericResult {
+public class FriendImportRequest extends GenericRequest {
     @JsonProperty("From_Account")
     private String fromAccount;
 
