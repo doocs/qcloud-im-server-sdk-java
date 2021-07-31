@@ -41,4 +41,13 @@ public class PortraitGetResult extends GenericResult {
     public void setFailAccount(List<String> failAccount) {
         this.failAccount = failAccount;
     }
+
+    @Override
+    public String toString() {
+        return "PortraitGetResult{" +
+                "errorDisplay='" + errorDisplay + '\'' +
+                ", userProfileItemList=" + userProfileItemList +
+                ", failAccount=" + failAccount +
+                '}';
+    }
 }
