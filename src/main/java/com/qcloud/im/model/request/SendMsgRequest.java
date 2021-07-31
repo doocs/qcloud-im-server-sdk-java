@@ -1,5 +1,6 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.qcloud.im.model.response.MsgBodyItem;
 
@@ -9,9 +10,13 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/29 11:31
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendMsgRequest extends GenericRequest {
     @JsonProperty("SyncOtherMachine")
     private Integer syncOtherMachine;
+
+    @JsonProperty("From_Account")
+    private String fromAccount;
 
     @JsonProperty("To_Account")
     private String toAccount;
@@ -28,24 +33,37 @@ public class SendMsgRequest extends GenericRequest {
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
 
+    @JsonProperty("ForbidCallbackControl")
+    private List<String> forbidCallbackControl;
+
+    @JsonProperty("SendMsgControl")
+    private List<String> sendMsgControl;
+
     @JsonProperty("MsgBody")
     private List<MsgBodyItem> msgBody;
 
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
+    @JsonProperty("OfflinePushInfo")
+    private OfflinePushInfo offlinePushInfo;
+
     public SendMsgRequest() {
     }
 
-    public SendMsgRequest(Integer syncOtherMachine, String toAccount, Integer msgLifeTime, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<MsgBodyItem> msgBody, String cloudCustomData) {
+    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl, List<String> sendMsgControl, List<MsgBodyItem> msgBody, String cloudCustomData, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
+        this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.msgLifeTime = msgLifeTime;
         this.msgSeq = msgSeq;
         this.msgRandom = msgRandom;
         this.msgTimeStamp = msgTimeStamp;
+        this.forbidCallbackControl = forbidCallbackControl;
+        this.sendMsgControl = sendMsgControl;
         this.msgBody = msgBody;
         this.cloudCustomData = cloudCustomData;
+        this.offlinePushInfo = offlinePushInfo;
     }
 
     public Integer getSyncOtherMachine() {
@@ -54,6 +72,14 @@ public class SendMsgRequest extends GenericRequest {
 
     public void setSyncOtherMachine(Integer syncOtherMachine) {
         this.syncOtherMachine = syncOtherMachine;
+    }
+
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
     }
 
     public String getToAccount() {
@@ -96,6 +122,22 @@ public class SendMsgRequest extends GenericRequest {
         this.msgTimeStamp = msgTimeStamp;
     }
 
+    public List<String> getForbidCallbackControl() {
+        return forbidCallbackControl;
+    }
+
+    public void setForbidCallbackControl(List<String> forbidCallbackControl) {
+        this.forbidCallbackControl = forbidCallbackControl;
+    }
+
+    public List<String> getSendMsgControl() {
+        return sendMsgControl;
+    }
+
+    public void setSendMsgControl(List<String> sendMsgControl) {
+        this.sendMsgControl = sendMsgControl;
+    }
+
     public List<MsgBodyItem> getMsgBody() {
         return msgBody;
     }
@@ -110,5 +152,13 @@ public class SendMsgRequest extends GenericRequest {
 
     public void setCloudCustomData(String cloudCustomData) {
         this.cloudCustomData = cloudCustomData;
+    }
+
+    public OfflinePushInfo getOfflinePushInfo() {
+        return offlinePushInfo;
+    }
+
+    public void setOfflinePushInfo(OfflinePushInfo offlinePushInfo) {
+        this.offlinePushInfo = offlinePushInfo;
     }
 }

@@ -1,10 +1,8 @@
 package com.qcloud.im.core;
 
 import com.qcloud.im.IMClient;
-import com.qcloud.im.model.request.ImportMsgRequest;
-import com.qcloud.im.model.request.SendMsgRequest;
-import com.qcloud.im.model.response.ImportMsgResult;
-import com.qcloud.im.model.response.SendMsgResult;
+import com.qcloud.im.model.request.*;
+import com.qcloud.im.model.response.*;
 import com.qcloud.im.util.HttpUtil;
 import com.qcloud.im.util.JsonUtil;
 
@@ -18,13 +16,29 @@ public class Message {
     private static final String SERVICE_NAME = "openim";
     private static final String SEND_MSG_COMMAND = "sendmsg";
     private static final String IMPORT_MSG_COMMAND = "importmsg";
+    private static final String BATCH_SEND_MSG_COMMAND = "batchsendmsg";
+    private static final String ADMIN_GET_ROAM_MSG_COMMAND = "admin_getroammsg";
+    private static final String ADMIN_MSG_WITHDRAW_COMMAND = "admin_msgwithdraw";
+    private static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
+    private static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
+
 
     private final IMClient imClient;
+
+    public Message(IMClient imClient) {
+        this.imClient = imClient;
+    }
 
     public SendMsgResult sendMsg(SendMsgRequest sendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_MSG_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(sendMsgRequest), null);
         return JsonUtil.str2Obj(result, SendMsgResult.class);
+    }
+
+    public BatchSendMsgResult batchSendMsg(BatchSendMsgRequest batchSendMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(batchSendMsgRequest), null);
+        return JsonUtil.str2Obj(result, BatchSendMsgResult.class);
     }
 
     public ImportMsgResult importMsg(ImportMsgRequest importMsgRequest) throws IOException {
@@ -33,7 +47,27 @@ public class Message {
         return JsonUtil.str2Obj(result, ImportMsgResult.class);
     }
 
-    public Message(IMClient imClient) {
-        this.imClient = imClient;
+    public AdminRoamMsgResult getRoamMsg(AdminRoamMsgRequest adminRoamMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADMIN_GET_ROAM_MSG_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminRoamMsgRequest), null);
+        return JsonUtil.str2Obj(result, AdminRoamMsgResult.class);
+    }
+
+    public AdminMsgWithdrawResult msgWithdraw(AdminMsgWithdrawRequest adminMsgWithdrawRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADMIN_MSG_WITHDRAW_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminMsgWithdrawRequest), null);
+        return JsonUtil.str2Obj(result, AdminMsgWithdrawResult.class);
+    }
+
+    public AdminSetMsgReadResult setMsgRead(AdminSetMsgReadRequest adminSetMsgReadRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADMIN_SET_MSG_READ_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminSetMsgReadRequest), null);
+        return JsonUtil.str2Obj(result, AdminSetMsgReadResult.class);
+    }
+
+    public C2CUnreadMsgNumResult getC2CUnreadMsgNum(GetC2CUnreadMsgRequest getC2CUnreadMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_C2C_UNREAD_MSG_NUM_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getC2CUnreadMsgRequest), null);
+        return JsonUtil.str2Obj(result, C2CUnreadMsgNumResult.class);
     }
 }

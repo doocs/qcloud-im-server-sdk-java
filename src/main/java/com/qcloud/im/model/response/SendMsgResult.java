@@ -28,4 +28,12 @@ public class SendMsgResult extends GenericResult {
     public void setMsgKey(String msgKey) {
         this.msgKey = msgKey;
     }
+
+    @Override
+    public String toString() {
+        return "SendMsgResult{" +
+                "msgTime=" + msgTime +
+                ", msgKey='" + msgKey + '\'' +
+                '}';
+    }
 }

@@ -2,8 +2,6 @@ package com.qcloud.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 /**
  * @author hyh
  * @since 2021/07/28 20:42
@@ -13,7 +11,7 @@ public class MsgBodyItem {
     private String msgType;
 
     @JsonProperty("MsgContent")
-    private List<MsgContentItem> msgContent;
+    private MsgContentItem msgContent;
 
     public String getMsgType() {
         return msgType;
@@ -23,11 +21,19 @@ public class MsgBodyItem {
         this.msgType = msgType;
     }
 
-    public List<MsgContentItem> getMsgContent() {
+    public MsgContentItem getMsgContent() {
         return msgContent;
     }
 
-    public void setMsgContent(List<MsgContentItem> msgContent) {
+    public void setMsgContent(MsgContentItem msgContent) {
         this.msgContent = msgContent;
+    }
+
+    @Override
+    public String toString() {
+        return "MsgBodyItem{" +
+                "msgType='" + msgType + '\'' +
+                ", msgContent=" + msgContent +
+                '}';
     }
 }

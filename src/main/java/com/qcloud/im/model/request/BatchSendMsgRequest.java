@@ -7,19 +7,19 @@ import com.qcloud.im.model.response.MsgBodyItem;
 import java.util.List;
 
 /**
- * @author hyh
- * @since 2021/07/29 14:25
+ * @author bingo
+ * @since 2021/7/31 11:09
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ImportMsgRequest extends GenericRequest {
-    @JsonProperty("SyncFromOldSystem")
-    private Integer syncFromOldSystem;
+public class BatchSendMsgRequest {
+    @JsonProperty("SyncOtherMachine")
+    private Integer syncOtherMachine;
 
     @JsonProperty("From_Account")
     private String fromAccount;
 
     @JsonProperty("To_Account")
-    private String toAccount;
+    private List<String> toAccount;
 
     @JsonProperty("MsgSeq")
     private Integer msgSeq;
@@ -27,35 +27,39 @@ public class ImportMsgRequest extends GenericRequest {
     @JsonProperty("MsgRandom")
     private Integer msgRandom;
 
-    @JsonProperty("MsgTimeStamp")
-    private Integer msgTimeStamp;
-
     @JsonProperty("MsgBody")
     private List<MsgBodyItem> msgBody;
 
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
-    public ImportMsgRequest() {
+    @JsonProperty("SendMsgControl")
+    private List<String> sendMsgControl;
+
+    @JsonProperty("OfflinePushInfo")
+    private OfflinePushInfo offlinePushInfo;
+
+    public BatchSendMsgRequest() {
     }
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<MsgBodyItem> msgBody, String cloudCustomData) {
-        this.syncFromOldSystem = syncFromOldSystem;
+    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Integer msgSeq, Integer msgRandom, List<MsgBodyItem> msgBody, String cloudCustomData, List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
+        this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.msgSeq = msgSeq;
         this.msgRandom = msgRandom;
-        this.msgTimeStamp = msgTimeStamp;
         this.msgBody = msgBody;
         this.cloudCustomData = cloudCustomData;
+        this.sendMsgControl = sendMsgControl;
+        this.offlinePushInfo = offlinePushInfo;
     }
 
-    public Integer getSyncFromOldSystem() {
-        return syncFromOldSystem;
+    public Integer getSyncOtherMachine() {
+        return syncOtherMachine;
     }
 
-    public void setSyncFromOldSystem(Integer syncFromOldSystem) {
-        this.syncFromOldSystem = syncFromOldSystem;
+    public void setSyncOtherMachine(Integer syncOtherMachine) {
+        this.syncOtherMachine = syncOtherMachine;
     }
 
     public String getFromAccount() {
@@ -66,11 +70,11 @@ public class ImportMsgRequest extends GenericRequest {
         this.fromAccount = fromAccount;
     }
 
-    public String getToAccount() {
+    public List<String> getToAccount() {
         return toAccount;
     }
 
-    public void setToAccount(String toAccount) {
+    public void setToAccount(List<String> toAccount) {
         this.toAccount = toAccount;
     }
 
@@ -90,14 +94,6 @@ public class ImportMsgRequest extends GenericRequest {
         this.msgRandom = msgRandom;
     }
 
-    public Integer getMsgTimeStamp() {
-        return msgTimeStamp;
-    }
-
-    public void setMsgTimeStamp(Integer msgTimeStamp) {
-        this.msgTimeStamp = msgTimeStamp;
-    }
-
     public List<MsgBodyItem> getMsgBody() {
         return msgBody;
     }
@@ -112,5 +108,21 @@ public class ImportMsgRequest extends GenericRequest {
 
     public void setCloudCustomData(String cloudCustomData) {
         this.cloudCustomData = cloudCustomData;
+    }
+
+    public List<String> getSendMsgControl() {
+        return sendMsgControl;
+    }
+
+    public void setSendMsgControl(List<String> sendMsgControl) {
+        this.sendMsgControl = sendMsgControl;
+    }
+
+    public OfflinePushInfo getOfflinePushInfo() {
+        return offlinePushInfo;
+    }
+
+    public void setOfflinePushInfo(OfflinePushInfo offlinePushInfo) {
+        this.offlinePushInfo = offlinePushInfo;
     }
 }

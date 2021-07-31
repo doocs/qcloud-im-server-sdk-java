@@ -1,11 +1,13 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author hyh
  * @since 2021/07/29 15:06
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfileItem {
     @JsonProperty("Tag")
     private String tag;
