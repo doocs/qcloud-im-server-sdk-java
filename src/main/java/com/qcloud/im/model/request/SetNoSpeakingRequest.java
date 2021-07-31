@@ -1,11 +1,13 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author xy
  * @since 2021/07/31 11:39
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SetNoSpeakingRequest extends GenericRequest {
     @JsonProperty("Set_Account")
     private String setAccount;

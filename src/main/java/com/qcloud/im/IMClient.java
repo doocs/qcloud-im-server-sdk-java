@@ -19,6 +19,7 @@ public class IMClient {
      */
     public Account account;
     public Message message;
+    public Member member;
     public Profile profile;
     public SNS sns;
     public Operation operation;
@@ -52,6 +53,7 @@ public class IMClient {
         this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, expire);
         account = new Account(this);
         message = new Message(this);
+        member = new Member(this);
         profile = new Profile(this);
         operation = new Operation(this);
         sns = new SNS(this);

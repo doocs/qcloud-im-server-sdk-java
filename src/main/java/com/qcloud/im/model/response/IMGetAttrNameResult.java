@@ -10,14 +10,21 @@ import java.util.Map;
  */
 public class IMGetAttrNameResult extends GenericResult {
     @JsonProperty("AttrNames")
-    private Map<String,String> attrNames;
+    private Map<String, Object> attrNames;
 
-    public Map<String, String> getAttrNames() {
+    public Map<String, Object> getAttrNames() {
         return attrNames;
     }
 
-    public void setAttrNames(Map<String, String> attrNames) {
+    public void setAttrNames(Map<String, Object> attrNames) {
         this.attrNames = attrNames;
+    }
+
+    @Override
+    public String toString() {
+        return "IMGetAttrNameResult{" +
+                "attrNames=" + attrNames +
+                '}';
     }
 }
 
