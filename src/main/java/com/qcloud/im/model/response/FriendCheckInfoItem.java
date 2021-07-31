@@ -50,4 +50,14 @@ public class FriendCheckInfoItem {
     public void setResultInfo(String resultInfo) {
         this.resultInfo = resultInfo;
     }
+
+    @Override
+    public String toString() {
+        return "FriendCheckInfoItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", relation='" + relation + '\'' +
+                ", resultCode=" + resultCode +
+                ", resultInfo='" + resultInfo + '\'' +
+                '}';
+    }
 }

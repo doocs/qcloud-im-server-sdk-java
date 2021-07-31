@@ -39,4 +39,13 @@ public class ResultItem {
     public void setResultInfo(String resultInfo) {
         this.resultInfo = resultInfo;
     }
+
+    @Override
+    public String toString() {
+        return "ResultItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", resultCode=" + resultCode +
+                ", resultInfo='" + resultInfo + '\'' +
+                '}';
+    }
 }

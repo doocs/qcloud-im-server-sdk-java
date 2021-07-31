@@ -52,4 +52,14 @@ public class BlackListGetResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "BlackListGetResult{" +
+                "blackListItemList=" + blackListItemList +
+                ", startIndex=" + startIndex +
+                ", currentSequence=" + currentSequence +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

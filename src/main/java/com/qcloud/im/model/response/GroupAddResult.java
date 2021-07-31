@@ -52,4 +52,14 @@ public class GroupAddResult extends GenericResult {
     public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "GroupAddResult{" +
+                "resultItemList=" + resultItemList +
+                ", failAccount=" + failAccount +
+                ", currentSequence=" + currentSequence +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
+    }
 }

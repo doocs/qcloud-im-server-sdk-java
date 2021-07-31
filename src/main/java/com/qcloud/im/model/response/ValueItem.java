@@ -11,7 +11,7 @@ public class ValueItem {
     private String tag;
 
     @JsonProperty("Value")
-    private String value;
+    private Object value;
 
     public String getTag() {
         return tag;
@@ -21,11 +21,19 @@ public class ValueItem {
         this.tag = tag;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "ValueItem{" +
+                "tag='" + tag + '\'' +
+                ", value=" + value +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.qcloud.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -8,19 +9,20 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/29 15:19
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendImportRequest extends GenericRequest {
     @JsonProperty("From_Account")
     private String fromAccount;
 
     @JsonProperty("AddFriendItem")
-    private List<AddFriendItem> addFriendItemList;
+    private List<ImportFriendItem> importFriendItemList;
 
     public FriendImportRequest() {
     }
 
-    public FriendImportRequest(String fromAccount, List<AddFriendItem> addFriendItemList) {
+    public FriendImportRequest(String fromAccount, List<ImportFriendItem> importFriendItemList) {
         this.fromAccount = fromAccount;
-        this.addFriendItemList = addFriendItemList;
+        this.importFriendItemList = importFriendItemList;
     }
 
     public String getFromAccount() {
@@ -31,11 +33,11 @@ public class FriendImportRequest extends GenericRequest {
         this.fromAccount = fromAccount;
     }
 
-    public List<AddFriendItem> getAddFriendItemList() {
-        return addFriendItemList;
+    public List<ImportFriendItem> getImportFriendItemList() {
+        return importFriendItemList;
     }
 
-    public void setAddFriendItemList(List<AddFriendItem> addFriendItemList) {
-        this.addFriendItemList = addFriendItemList;
+    public void setImportFriendItemList(List<ImportFriendItem> importFriendItemList) {
+        this.importFriendItemList = importFriendItemList;
     }
 }
