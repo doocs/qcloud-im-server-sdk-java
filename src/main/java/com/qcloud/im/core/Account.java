@@ -15,12 +15,13 @@ import java.io.IOException;
 public class Account {
     private static final String SERVICE_NAME = "im_open_login_svc";
     private static final String SERVICE_NAME_OPEN_IM = "openim";
+
     private static final String ACCOUNT_IMPORT_COMMAND = "account_import";
     private static final String MULTI_ACCOUNT_IMPORT_COMMAND = "multiaccount_import";
-    private static final String ACCOUNT_DELETE = "account_delete";
-    private static final String ACCOUNT_CHECK = "account_check";
-    private static final String KICK = "kick";
-    private static final String QUERY_STATE = "querystate";
+    private static final String ACCOUNT_DELETE_COMMAND = "account_delete";
+    private static final String ACCOUNT_CHECK_COMMAND = "account_check";
+    private static final String KICK_COMMAND = "kick";
+    private static final String QUERY_STATE_COMMAND = "querystate";
 
     private final IMClient imClient;
 
@@ -41,25 +42,25 @@ public class Account {
     }
 
     public AccountDeleteResult accountDelete(AccountDeleteRequest accountDeleteRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_DELETE);
+        String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_DELETE_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(accountDeleteRequest), null);
         return JsonUtil.str2Obj(result, AccountDeleteResult.class);
     }
 
     public AccountCheckResult accountCheck(AccountCheckRequest accountCheckRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_CHECK);
+        String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_CHECK_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(accountCheckRequest), null);
         return JsonUtil.str2Obj(result, AccountCheckResult.class);
     }
 
     public KickResult kick(KickRequest kickRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, KICK);
+        String url = imClient.getUrl(SERVICE_NAME, KICK_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(kickRequest), null);
         return JsonUtil.str2Obj(result, KickResult.class);
     }
 
     public QueryStateResult queryState(QueryStateRequest queryStateRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_STATE);
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_STATE_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(queryStateRequest), null);
         return JsonUtil.str2Obj(result, QueryStateResult.class);
     }

@@ -16,10 +16,15 @@ import java.io.IOException;
  */
 public class Profile {
     private static final String SERVICE_NAME = "profile";
+
     private static final String PORTRAIT_SET_COMMAND = "portrait_set";
     private static final String PORTRAIT_GET_COMMAND = "portrait_get";
 
     private final IMClient imClient;
+
+    public Profile(IMClient imClient) {
+        this.imClient = imClient;
+    }
 
     public PortraitSetResult portraitSet(PortraitSetRequest portraitSetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_SET_COMMAND);
@@ -31,9 +36,5 @@ public class Profile {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_GET_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(portraitGetRequest), null);
         return JsonUtil.str2Obj(result, PortraitGetResult.class);
-    }
-
-    public Profile(IMClient imClient) {
-        this.imClient = imClient;
     }
 }

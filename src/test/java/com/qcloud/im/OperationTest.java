@@ -1,14 +1,13 @@
 package com.qcloud.im;
 
-import com.qcloud.im.model.request.GetNoSpeakingRequest;
-import com.qcloud.im.model.request.SetNoSpeakingRequest;
-import com.qcloud.im.model.response.GetNoSpeakingResult;
-import com.qcloud.im.model.response.SetNoSpeakingResult;
+import com.qcloud.im.model.request.*;
+import com.qcloud.im.model.response.*;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Properties;
 
 /**
@@ -49,6 +48,33 @@ public class OperationTest {
         GetNoSpeakingRequest request = new GetNoSpeakingRequest();
         request.setGetAccount("test1");
         GetNoSpeakingResult result = client.operation.getNoSpeaking(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testGetAppInfo() throws IOException {
+        GetAppInfoRequest request = new GetAppInfoRequest();
+        request.setRequestField(Arrays.asList("ChainIncrease", "ChainDecrease"));
+        GetAppInfoResult result = client.operation.getAppInfo(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testGetHistory() throws IOException {
+        GetHistoryRequest request = new GetHistoryRequest();
+        request.setChatType("C2C");
+        request.setMsgTime("2015120121");
+        GetHistoryResult result = client.operation.getHistory(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testGetIpList() throws IOException {
+        GetIpListRequest request = new GetIpListRequest();
+        GetIpListResult result = client.operation.getIpList(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }

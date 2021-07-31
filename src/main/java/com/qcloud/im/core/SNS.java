@@ -14,6 +14,7 @@ import java.io.IOException;
  */
 public class SNS {
     private static final String SERVICE_NAME = "sns";
+
     private static final String FRIEND_ADD_COMMAND = "friend_add";
     private static final String FRIEND_IMPORT_COMMAND = "friend_import";
     private static final String FRIEND_UPDATE_COMMAND = "friend_update";
@@ -31,6 +32,10 @@ public class SNS {
     private static final String GROUP_GET_COMMAND = "group_get";
 
     private final IMClient imClient;
+
+    public SNS(IMClient imClient) {
+        this.imClient = imClient;
+    }
 
     public FriendAddResult friendAdd(FriendAddRequest friendAddRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_ADD_COMMAND);
@@ -120,9 +125,5 @@ public class SNS {
         String url = imClient.getUrl(SERVICE_NAME, GROUP_GET_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(groupGetRequest), null);
         return JsonUtil.str2Obj(result, GroupGetResult.class);
-    }
-
-    public SNS(IMClient imClient) {
-        this.imClient = imClient;
     }
 }

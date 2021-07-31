@@ -14,6 +14,7 @@ import java.io.IOException;
  */
 public class Message {
     private static final String SERVICE_NAME = "openim";
+
     private static final String SEND_MSG_COMMAND = "sendmsg";
     private static final String IMPORT_MSG_COMMAND = "importmsg";
     private static final String BATCH_SEND_MSG_COMMAND = "batchsendmsg";
@@ -21,7 +22,6 @@ public class Message {
     private static final String ADMIN_MSG_WITHDRAW_COMMAND = "admin_msgwithdraw";
     private static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
     private static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
-
 
     private final IMClient imClient;
 
