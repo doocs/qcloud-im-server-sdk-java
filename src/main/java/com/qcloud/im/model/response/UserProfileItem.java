@@ -53,4 +53,14 @@ public class UserProfileItem {
     public void setResultInfo(String resultInfo) {
         this.resultInfo = resultInfo;
     }
+
+    @Override
+    public String toString() {
+        return "UserProfileItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", profileItemList=" + profileItemList +
+                ", resultCode=" + resultCode +
+                ", resultInfo='" + resultInfo + '\'' +
+                '}';
+    }
 }
