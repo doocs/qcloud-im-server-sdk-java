@@ -1,8 +1,12 @@
 package com.qcloud.im.core;
 
 import com.qcloud.im.IMClient;
+import com.qcloud.im.model.request.CreateGroupRequest;
 import com.qcloud.im.model.request.GetAppidGroupListRequest;
+import com.qcloud.im.model.request.GetGroupInfoRequest;
+import com.qcloud.im.model.response.CreateGroupResult;
 import com.qcloud.im.model.response.GetAppidGroupListResult;
+import com.qcloud.im.model.response.GetGroupInfoResult;
 import com.qcloud.im.util.HttpUtil;
 import com.qcloud.im.util.JsonUtil;
 
@@ -50,5 +54,17 @@ public class Group {
         String url = imClient.getUrl(SERVICE_NAME, GET_APPID_GROUP_LIST_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(getAppidGroupListRequest), null);
         return JsonUtil.str2Obj(result, GetAppidGroupListResult.class);
+    }
+
+    public CreateGroupResult createGroup(CreateGroupRequest createGroupRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, CREATE_GROUP_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(createGroupRequest), null);
+        return JsonUtil.str2Obj(result, CreateGroupResult.class);
+    }
+
+    public GetGroupInfoResult getGroupInfo(GetGroupInfoRequest getGroupInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_INFO_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getGroupInfoRequest), null);
+        return JsonUtil.str2Obj(result, GetGroupInfoResult.class);
     }
 }
