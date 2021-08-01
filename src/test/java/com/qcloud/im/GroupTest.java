@@ -1,11 +1,7 @@
 package com.qcloud.im;
 
-import com.qcloud.im.model.request.CreateGroupRequest;
-import com.qcloud.im.model.request.GetAppidGroupListRequest;
-import com.qcloud.im.model.request.GetGroupInfoRequest;
-import com.qcloud.im.model.response.CreateGroupResult;
-import com.qcloud.im.model.response.GetAppidGroupListResult;
-import com.qcloud.im.model.response.GetGroupInfoResult;
+import com.qcloud.im.model.request.*;
+import com.qcloud.im.model.response.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,12 +32,12 @@ public class GroupTest {
     }
 
     @Test
-    public void testGetAppidGroupList() throws IOException {
+    public void testGetAppIdGroupList() throws IOException {
         GetAppidGroupListRequest request = new GetAppidGroupListRequest();
         request.setLimit(10);
         request.setGroupType("Public");
         request.setNext(0);
-        GetAppidGroupListResult result = client.group.getAppidGroupList(request);
+        GetAppidGroupListResult result = client.group.getAppIdGroupList(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
@@ -72,6 +68,59 @@ public class GroupTest {
         GetGroupInfoRequest request = new GetGroupInfoRequest();
         request.setGroupIdList(Collections.singletonList("MyFirstGroup"));
         GetGroupInfoResult result = client.group.getGroupInfo(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testAddGroupMember() throws IOException {
+        MemberRequestItem memberItem = new MemberRequestItem("test1");
+        AddGroupMemberRequest request = new AddGroupMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setSilence(1);
+        request.setMemberList(Collections.singletonList(memberItem));
+        AddGroupMemberResult result = client.group.addGroupMember(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testSetUnreadMsgNum() throws IOException {
+        SetUnreadMsgNumRequest request = new SetUnreadMsgNumRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setMemberAccount("test1");
+        request.setUnreadMsgNum(1);
+        SetUnreadMsgNumResult result = client.group.setUnreadMsgNum(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testDeleteGroupMsgBySender() throws IOException {
+        DeleteGroupMsgBySenderRequest request = new DeleteGroupMsgBySenderRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setSenderAccount("test1");
+        DeleteGroupMsgBySenderResult result = client.group.deleteGroupMsgBySender(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testGroupMsgGetSimple() throws IOException {
+        GroupMsgGetSimpleRequest request = new GroupMsgGetSimpleRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setReqMsgNumber(20);
+        request.setReqMsgSeq(1);
+        GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testGetOnlineMemberNum() throws IOException {
+        GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest();
+        request.setGroupId("MyFirstAVChatRoom");
+        GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
