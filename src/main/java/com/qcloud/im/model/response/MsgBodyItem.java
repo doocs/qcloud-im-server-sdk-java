@@ -11,7 +11,7 @@ public class MsgBodyItem {
     private String msgType;
 
     @JsonProperty("MsgContent")
-    private MsgContentItem msgContent;
+    private Object msgContent;
 
     public String getMsgType() {
         return msgType;
@@ -21,11 +21,11 @@ public class MsgBodyItem {
         this.msgType = msgType;
     }
 
-    public MsgContentItem getMsgContent() {
+    public Object getMsgContent() {
         return msgContent;
     }
 
-    public void setMsgContent(MsgContentItem msgContent) {
+    public void setMsgContent(Object msgContent) {
         this.msgContent = msgContent;
     }
 
