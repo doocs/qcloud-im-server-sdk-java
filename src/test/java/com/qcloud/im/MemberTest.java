@@ -18,7 +18,7 @@ public class MemberTest {
     private static final IMClient client;
 
     static {
-        InputStream resourceAsStream = AccountTest.class.getClassLoader().getResourceAsStream("app.properties");
+        InputStream resourceAsStream = MemberTest.class.getClassLoader().getResourceAsStream("app.properties");
         try {
             properties.load(resourceAsStream);
         } catch (IOException e) {
