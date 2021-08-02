@@ -64,6 +64,19 @@ public class Group {
         return JsonUtil.str2Obj(result, GetGroupInfoResult.class);
     }
 
+    public GetGroupMemberInfoResult getGroupMemberInfo(GetGroupMemberInfoRequest getGroupMemberInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MEMBER_INFO_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getGroupMemberInfoRequest), null);
+        return JsonUtil.str2Obj(result, GetGroupMemberInfoResult.class);
+    }
+
+    public ModifyGroupBaseInfoResult modifyGroupBaseInfo(ModifyGroupBaseInfoRequest modifyGroupBaseInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_BASE_INFO_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(modifyGroupBaseInfoRequest), null);
+        return JsonUtil.str2Obj(result, ModifyGroupBaseInfoResult.class);
+    }
+
+
     public AddGroupMemberResult addGroupMember(AddGroupMemberRequest addGroupMemberRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADD_GROUP_MEMBER_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(addGroupMemberRequest), null);

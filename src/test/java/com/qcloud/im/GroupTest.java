@@ -73,6 +73,33 @@ public class GroupTest {
     }
 
     @Test
+    public void testGetGroupMemberInfo() throws IOException {
+        GetGroupMemberInfoRequest request = new GetGroupMemberInfoRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setLimit(100);
+        request.setOffset(0);
+        GetGroupMemberInfoResult result = client.group.getGroupMemberInfo(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
+    public void testModifyGroupBaseInfo() throws IOException {
+        ModifyGroupBaseInfoRequest request = new ModifyGroupBaseInfoRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setName("groupName");
+        request.setIntroduction("my first group");
+        request.setNotification("hello group member");
+        request.setFaceUrl("http://this.is.face.url");
+        request.setMaxMemberNum(500);
+        request.setApplyJoinOption("NeedPermission");
+        request.setShutUpAllMember("Off");
+        ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
+        System.out.println(result);
+        Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+    @Test
     public void testAddGroupMember() throws IOException {
         MemberRequestItem memberItem = new MemberRequestItem("test1");
         AddGroupMemberRequest request = new AddGroupMemberRequest();
@@ -124,4 +151,5 @@ public class GroupTest {
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
+
 }
