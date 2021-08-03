@@ -6,7 +6,7 @@
 
     <groupId>io.github.doocs</groupId>
     <artifactId>im-server-sdk-java</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>qcloud-im-server-sdk-java</name>
@@ -24,12 +24,12 @@
         <developer>
             <id>yanglbme</id>
             <name>yanglbme</name>
-            <email>contact@yanglibin</email>
+            <email>contact@yanglibin.info</email>
             <url>https://github.com/yanglbme</url>
         </developer>
         <developer>
-            <id>honyiheng</id>
-            <name>honyiheng</name>
+            <id>hongyiheng</id>
+            <name>hongyiheng</name>
             <email>hongyihengg@gmail.com</email>
             <url>https://github.com/hongyiheng</url>
         </developer>
@@ -146,6 +146,25 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/app.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>*</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 </project>
