@@ -1,6 +1,6 @@
 # 腾讯云 IM 服务端 SDK Java 版
 
-[![license](https://img.shields.io/static/v1?label=license&message=MIT&color=42b883)](./LICENSE)
+[![license](https://img.shields.io/github/license/doocs/qcloud-im-server-sdk-java?color=42b883&style=flat-square)](./LICENSE)
 
 ## API 清单
 
@@ -99,4 +99,4 @@
 
 ## License
 
-MIT
+Apache 2.0 license.

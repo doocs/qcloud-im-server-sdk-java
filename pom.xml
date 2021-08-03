@@ -6,19 +6,66 @@
 
     <groupId>io.github.doocs</groupId>
     <artifactId>im-server-sdk-java</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>qcloud-im-server-sdk-java</name>
+    <description>☁ QCloud IM Server SDK for Java | 腾讯云 IM 服务端 SDK Java 版</description>
+    <url>https://github.com/doocs/qcloud-im-server-sdk-java</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>yanglbme</id>
+            <name>yanglbme</name>
+            <email>contact@yanglibin</email>
+            <url>https://github.com/yanglbme</url>
+        </developer>
+        <developer>
+            <id>honyiheng</id>
+            <name>honyiheng</name>
+            <email>hongyihengg@gmail.com</email>
+            <url>https://github.com/hongyiheng</url>
+        </developer>
+        <developer>
+            <id>xy</id>
+            <name>xy</name>
+            <email>502400992@qq.com</email>
+            <url>https://github.com/YXxy1002</url>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>Doocs Community</name>
+        <url>https://github.com/doocs</url>
+    </organization>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:https://git@github.com/doocs/qcloud-im-server-sdk-java.git</connection>
+        <developerConnection>scm:git:https://git@github.com/doocs/qcloud-im-server-sdk-java.git</developerConnection>
+        <url>https://github.com/doocs/qcloud-im-server-sdk-java</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -42,6 +89,63 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.0.1</version>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
