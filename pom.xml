@@ -26,18 +26,21 @@
             <name>yanglbme</name>
             <email>contact@yanglibin.info</email>
             <url>https://github.com/yanglbme</url>
+            <organization>doocs</organization>
         </developer>
         <developer>
             <id>hongyiheng</id>
             <name>hongyiheng</name>
             <email>hongyihengg@gmail.com</email>
             <url>https://github.com/hongyiheng</url>
+            <organization>doocs</organization>
         </developer>
         <developer>
             <id>xy</id>
             <name>xy</name>
             <email>502400992@qq.com</email>
             <url>https://github.com/YXxy1002</url>
+            <organization>doocs</organization>
         </developer>
     </developers>
 
@@ -45,6 +48,10 @@
         <name>Doocs Community</name>
         <url>https://github.com/doocs</url>
     </organization>
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/doocs/qcloud-im-server-sdk-java</url>
+    </issueManagement>
 
     <distributionManagement>
         <snapshotRepository>

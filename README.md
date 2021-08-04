@@ -1,6 +1,8 @@
 # Tencent Cloud IM Server SDK in Java
 
-[![license](https://img.shields.io/github/license/doocs/qcloud-im-server-sdk-java?color=42b883&style=flat-square)](./LICENSE)
+<a href="https://search.maven.org/artifact/io.github.doocs/im-server-sdk-java"><img src="https://img.shields.io/maven-metadata/v?color=42b883&metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fio%2Fgithub%2Fdoocs%2Fim-server-sdk-java%2Fmaven-metadata.xml&style=flat-square" alt="maven"></a>
+<a href="https://github.com/doocs/qcloud-im-server-sdk-java/blob/main/LICENSE"><img src="https://img.shields.io/github/license/doocs/qcloud-im-server-sdk-java?color=42b883&style=flat-square" alt="license"></a>
+<a href="https://doocs.github.io/#/?id=how-to-join"><img src="https://img.shields.io/badge/organization-join%20us-42b883?style=flat-square" alt="open-source-organization"></a>
 
 ## Installation and Getting Started
 
@@ -12,7 +14,7 @@ Add the Maven dependency:
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 </dependency>
 ```
 
@@ -37,9 +39,9 @@ public class Main {
 
         // import account
         AccountImportRequest request = new AccountImportRequest();
-        request.setFaceUrl("https://avatars.githubusercontent.com/u/21008209?v=4");
-        request.setIdentifier("ylb");
-        request.setNick("nickname");
+        request.setFaceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4");
+        request.setIdentifier("doocs");
+        request.setNick("Doocs Community");
         try {
             AccountImportResult result = client.account.accountImport(request);
             System.out.println(result);
@@ -50,6 +52,10 @@ public class Main {
 }
 ```
 
+## Contributing
+
+Contributions are always welcomed! Please refer to [CONTRIBUTING](./CONTRIBUTING.md) for detailed guidelines.
+
 ## License
 
-Apache 2.0 license.
+Apache-2.0 License.
