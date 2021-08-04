@@ -83,6 +83,90 @@ public class Group {
         return JsonUtil.str2Obj(result, AddGroupMemberResult.class);
     }
 
+    public DeleteGroupMemberResult deleteGroupMember(DeleteGroupMemberRequest deleteGroupMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_MEMBER_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(deleteGroupMemberRequest), null);
+        return JsonUtil.str2Obj(result, DeleteGroupMemberResult.class);
+    }
+
+    public ModifyGroupMemberInfoResult modifyGroupMemberInfo(ModifyGroupMemberInfoRequest modifyGroupMemberInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_MEMBER_INFO_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(modifyGroupMemberInfoRequest), null);
+        return JsonUtil.str2Obj(result, ModifyGroupMemberInfoResult.class);
+    }
+
+    public DestroyGroupResult destroyGroup(DestroyGroupRequest destroyGroupRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DESTROY_GROUP_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(destroyGroupRequest), null);
+        return JsonUtil.str2Obj(result, DestroyGroupResult.class);
+    }
+
+    public GetJoinGroupListResult getJoinGroupList(GetJoinedGroupListRequest getJoinedGroupListRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_JOINED_GROUP_LIST_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getJoinedGroupListRequest), null);
+        return JsonUtil.str2Obj(result, GetJoinGroupListResult.class);
+    }
+
+    public GetRoleInGroupResult getRoleInGroup(GetRoleInGroupRequest getRoleInGroupRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_ROLE_IN_GROUP_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getRoleInGroupRequest), null);
+        return JsonUtil.str2Obj(result, GetRoleInGroupResult.class);
+    }
+
+    public ForbidSendMsgResult forbidSendMsg(ForbidSendMsgRequest forbidSendMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FORBID_SEND_MSG_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(forbidSendMsgRequest), null);
+        return JsonUtil.str2Obj(result, ForbidSendMsgResult.class);
+    }
+
+    public GetGroupShuttedUinResult getGroupShuttedUin(GetGroupShuttedUinRequest getGroupShuttedUinRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_SHUTTED_UIN_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(getGroupShuttedUinRequest), null);
+        return JsonUtil.str2Obj(result, GetGroupShuttedUinResult.class);
+    }
+
+    public SendGroupMsgResult sendGroupMsg(SendGroupMsgRequest sendGroupMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_GROUP_MSG_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(sendGroupMsgRequest), null);
+        return JsonUtil.str2Obj(result, SendGroupMsgResult.class);
+    }
+
+    public SendGroupSystemNotificationResult sendGroupSystemNotification(SendGroupSystemNotificationRequest sendGroupSystemNotificationRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(sendGroupSystemNotificationRequest), null);
+        return JsonUtil.str2Obj(result, SendGroupSystemNotificationResult.class);
+    }
+
+    public ChangeGroupOwnerResult changeGroupOwner(ChangeGroupOwnerRequest changeGroupOwnerRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, CHANGE_GROUP_OWNER_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(changeGroupOwnerRequest), null);
+        return JsonUtil.str2Obj(result, ChangeGroupOwnerResult.class);
+    }
+
+    public GroupMsgRecallResult groupMsgRecall(GroupMsgRecallRequest groupMsgRecallRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_MSG_RECALL_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(groupMsgRecallRequest), null);
+        return JsonUtil.str2Obj(result, GroupMsgRecallResult.class);
+    }
+
+    public ImportGroupResult importGroup(ImportGroupRequest importGroupRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(importGroupRequest), null);
+        return JsonUtil.str2Obj(result, ImportGroupResult.class);
+    }
+
+    public ImportGroupMsgResult importGroupMsg(ImportGroupMsgRequest importGroupMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_MSG_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(importGroupMsgRequest), null);
+        return JsonUtil.str2Obj(result, ImportGroupMsgResult.class);
+    }
+
+    public ImportGroupMemberResult importGroupMember(ImportGroupMemberRequest importGroupMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_MEMBER_COMMAND);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(importGroupMemberRequest), null);
+        return JsonUtil.str2Obj(result, ImportGroupMemberResult.class);
+    }
+
     public SetUnreadMsgNumResult setUnreadMsgNum(SetUnreadMsgNumRequest setUnreadMsgNumRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SET_UNREAD_MSG_NUM_COMMAND);
         String result = HttpUtil.post(url, JsonUtil.obj2Str(setUnreadMsgNumRequest), null);

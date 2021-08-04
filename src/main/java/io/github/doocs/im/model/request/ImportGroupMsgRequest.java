@@ -2,7 +2,6 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgListItem;
 
 import java.util.List;
 
@@ -16,5 +15,21 @@ public class ImportGroupMsgRequest extends GenericRequest {
     private String groupId;
 
     @JsonProperty("MsgList")
-    private List<MsgListItem> msgList;
+    private List<ImportGroupMsgListItem> msgList;
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public List<ImportGroupMsgListItem> getMsgList() {
+        return msgList;
+    }
+
+    public void setMsgList(List<ImportGroupMsgListItem> msgList) {
+        this.msgList = msgList;
+    }
 }
