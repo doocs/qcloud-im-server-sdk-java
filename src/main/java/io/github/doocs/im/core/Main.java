@@ -1,37 +1,26 @@
-# Tencent Cloud IM Server SDK in Java
+package io.github.doocs.im.core;
 
-[![license](https://img.shields.io/github/license/doocs/qcloud-im-server-sdk-java?color=42b883&style=flat-square)](./LICENSE)
+import io.github.doocs.im.IMClient;
+import io.github.doocs.im.model.request.AccountImportRequest;
+import io.github.doocs.im.model.response.AccountImportResult;
 
-## Installation and Getting Started
+import java.io.IOException;
 
-### 1. Maven Configuration
-
-Add the Maven dependency:
-
-```xml
-<dependency>
-  <groupId>io.github.doocs</groupId>
-  <artifactId>im-server-sdk-java</artifactId>
-  <version>0.0.2</version>
-</dependency>
-```
-
-### 2. Getting Started
-
-Here is a quick teaser of an application using IM SDK in Java:
-
-```java
+/**
+ * @author bingo
+ * @since 2021/8/4 15:40
+ */
 public class Main {
     public static void main(String[] args) {
         // type your sdkAppId here
         long appId = 1400554812;
-        
+
         // type your adminUserId here
         String identifier = "test";
-        
+
         // type your applicationKey here
         String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
-        
+
         // create ImClient instance
         IMClient client = IMClient.getInstance(appId, identifier, key);
 
@@ -48,8 +37,3 @@ public class Main {
         }
     }
 }
-```
-
-## License
-
-Apache 2.0 license.

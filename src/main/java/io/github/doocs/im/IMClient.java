@@ -67,4 +67,12 @@ public class IMClient {
         return String.format(FORMAT_URL, this.version, serviceName, command,
                 this.sdkAppId, this.userId, this.userSig, random);
     }
+
+    @Override
+    public String toString() {
+        return "IMClient{" +
+                "sdkAppId=" + sdkAppId +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }
