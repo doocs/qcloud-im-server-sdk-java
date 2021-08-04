@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>qcloud-im-server-sdk-java</name>
-    <description>☁ QCloud IM Server SDK for Java | 腾讯云 IM 服务端 SDK Java 版</description>
+    <description>☁ Tencent Cloud IM Server SDK in Java | 腾讯云 IM 服务端 SDK Java 版</description>
     <url>https://github.com/doocs/qcloud-im-server-sdk-java</url>
 
     <licenses>
