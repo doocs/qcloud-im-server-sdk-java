@@ -1,13 +1,13 @@
 package io.github.doocs.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
 
 /**
  * @author hyh
  * @since 2021/07/29 15:37
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddFriendItem {
     @JsonProperty("To_Account")
     private String toAccount;
