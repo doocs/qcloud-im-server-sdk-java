@@ -1,11 +1,13 @@
 package io.github.doocs.im.model.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author hyh
  * @since 2021/07/31 14:24
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SnsItem {
     @JsonProperty("Tag")
     private String tag;
