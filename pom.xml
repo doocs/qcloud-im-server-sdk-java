@@ -6,7 +6,7 @@
 
     <groupId>io.github.doocs</groupId>
     <artifactId>im-server-sdk-java</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <packaging>jar</packaging>
 
     <name>qcloud-im-server-sdk-java</name>
@@ -143,34 +143,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.0.2</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/app.properties</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-                <excludes>
-                    <exclude>*</exclude>
-                </excludes>
             </resource>
         </resources>
     </build>
