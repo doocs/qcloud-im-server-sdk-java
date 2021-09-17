@@ -19,6 +19,19 @@ public class GetNoSpeakingResult {
     @JsonProperty("ErrorCode")
     private Integer errorCode;
 
+    /**
+     * 单聊消息禁言时长，单位为秒
+     */
+    @JsonProperty("C2CmsgNospeakingTime")
+    private Long c2CMsgNoSpeakingTime;
+
+    /**
+     * 群组消息禁言时长，单位为秒
+     */
+    @JsonProperty("GroupmsgNospeakingTime")
+    private Long groupMsgNoSpeakingTime;
+
+
     public String getErrorInfo() {
         return errorInfo;
     }
@@ -35,11 +48,34 @@ public class GetNoSpeakingResult {
         this.errorCode = errorCode;
     }
 
+    public Long getC2CMsgNoSpeakingTime() {
+        return c2CMsgNoSpeakingTime;
+    }
+
+    public void setC2CMsgNoSpeakingTime(Long c2CMsgNoSpeakingTime) {
+        this.c2CMsgNoSpeakingTime = c2CMsgNoSpeakingTime;
+    }
+
+    public Long getGroupMsgNoSpeakingTime() {
+        return groupMsgNoSpeakingTime;
+    }
+
+    public void setGroupMsgNoSpeakingTime(Long groupMsgNoSpeakingTime) {
+        this.groupMsgNoSpeakingTime = groupMsgNoSpeakingTime;
+    }
+
     @Override
     public String toString() {
-        return "GetNoSpeakingResult{" +
-                "errorInfo='" + errorInfo + '\'' +
-                ", errorCode=" + errorCode +
-                '}';
+        return "GetNoSpeakingResult{"
+                + "errorInfo='"
+                + errorInfo
+                + '\''
+                + ", errorCode="
+                + errorCode
+                + ", c2CMsgNoSpeakingTime="
+                + c2CMsgNoSpeakingTime
+                + ", groupMsgNoSpeakingTime="
+                + groupMsgNoSpeakingTime
+                + '}';
     }
 }
