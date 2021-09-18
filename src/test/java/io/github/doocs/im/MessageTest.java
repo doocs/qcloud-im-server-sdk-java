@@ -39,7 +39,7 @@ public class MessageTest {
         request.setToAccount("test2");
         request.setSyncOtherMachine(1);
         request.setMsgRandom(123);
-        request.setMsgTimeStamp(1557387418);
+        request.setMsgTimeStamp(1631934058);
         request.setMsgLifeTime(604800);
         MsgBodyItem item = new MsgBodyItem();
         item.setMsgType("TIMTextElem");
@@ -96,8 +96,8 @@ public class MessageTest {
         request.setFromAccount("test1");
         request.setToAccount("test2");
         request.setMaxCnt(123);
-        request.setMinTime(1584669600);
-        request.setMaxTime(1584673200);
+        request.setMinTime(1631934000);
+        request.setMaxTime(1631934060);
         AdminRoamMsgResult result = client.message.getRoamMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

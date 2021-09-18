@@ -19,7 +19,7 @@ public class AdminRoamMsgResult extends GenericResult {
     private Integer lastMsgTime;
 
     @JsonProperty("LastMsgKey")
-    private Integer lastMsgKey;
+    private String lastMsgKey;
 
     @JsonProperty("MsgList")
     private List<MsgListItem> msgList;
@@ -48,11 +48,11 @@ public class AdminRoamMsgResult extends GenericResult {
         this.lastMsgTime = lastMsgTime;
     }
 
-    public Integer getLastMsgKey() {
+    public String getLastMsgKey() {
         return lastMsgKey;
     }
 
-    public void setLastMsgKey(Integer lastMsgKey) {
+    public void setLastMsgKey(String lastMsgKey) {
         this.lastMsgKey = lastMsgKey;
     }
 
