@@ -24,6 +24,7 @@ public class IMClient {
     public Group group;
     public SNS sns;
     public Operation operation;
+    public RecentContact recentContact;
     /**
      * init property
      */
@@ -59,6 +60,7 @@ public class IMClient {
         group = new Group(this);
         operation = new Operation(this);
         sns = new SNS(this);
+        recentContact = new RecentContact(this);
     }
 
     public String getUrl(String serviceName, String command) {
