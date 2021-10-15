@@ -15,6 +15,9 @@ public class AdminSetMsgReadRequest extends GenericRequest {
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
+    @JsonProperty("MsgReadTime")
+    private Integer msgReadTime;
+
     public String getReportAccount() {
         return reportAccount;
     }
@@ -29,5 +32,13 @@ public class AdminSetMsgReadRequest extends GenericRequest {
 
     public void setPeerAccount(String peerAccount) {
         this.peerAccount = peerAccount;
+    }
+
+    public Integer getMsgReadTime() {
+        return msgReadTime;
+    }
+
+    public void setMsgReadTime(Integer msgReadTime) {
+        this.msgReadTime = msgReadTime;
     }
 }
