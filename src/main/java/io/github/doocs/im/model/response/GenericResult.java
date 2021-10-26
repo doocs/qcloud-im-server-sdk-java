@@ -51,7 +51,7 @@ public abstract class GenericResult {
 
     @Override
     public String toString() {
-        return "GenericResult{" +
+        return "Result{" +
                 "actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
                 ", errorCode='" + errorCode + '\'' +

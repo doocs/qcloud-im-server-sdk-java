@@ -17,42 +17,40 @@ public class IMClient {
     /**
      * core methods
      */
-    public Account account;
-    public Message message;
-    public Member member;
-    public Profile profile;
-    public Group group;
-    public SNS sns;
-    public Operation operation;
-    public RecentContact recentContact;
+    public final Account account;
+    public final Message message;
+    public final Member member;
+    public final Profile profile;
+    public final Group group;
+    public final SNS sns;
+    public final Operation operation;
+    public final RecentContact recentContact;
     /**
      * init property
      */
-    private final String version = "v4";
+    private String userSig;
+    private long userSigExpireTs;
     private final Long sdkAppId;
     private final String userId;
-    private final String userSig;
+    private final String key;
 
-    public static IMClient getInstance(Long sdkAppId, String userId, String key, Long expire) {
-        String identify = sdkAppId + "_" + userId;
-        if (IM_CLIENT.get(identify) == null) {
-            IM_CLIENT.putIfAbsent(identify, new IMClient(sdkAppId, userId, key, expire));
-        }
-        return IM_CLIENT.get(identify);
-    }
+    private static final String VERSION = "v4";
+    private static final long EXPIRE_TIME = 24 * 60 * 60L;
 
     public static IMClient getInstance(Long sdkAppId, String userId, String key) {
         String identify = sdkAppId + "_" + userId;
-        if (IM_CLIENT.get(identify) == null) {
-            IM_CLIENT.putIfAbsent(identify, new IMClient(sdkAppId, userId, key, 24 * 60 * 60L));
+        if (!IM_CLIENT.containsKey(identify)) {
+            IM_CLIENT.putIfAbsent(identify, new IMClient(sdkAppId, userId, key));
         }
         return IM_CLIENT.get(identify);
     }
 
-    public IMClient(Long sdkAppId, String userId, String key, Long expire) {
+    public IMClient(Long sdkAppId, String userId, String key) {
         this.sdkAppId = sdkAppId;
         this.userId = userId;
-        this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, expire);
+        this.key = key;
+        this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, EXPIRE_TIME);
+        this.userSigExpireTs = System.currentTimeMillis() / 1000 + EXPIRE_TIME - 100;
         account = new Account(this);
         message = new Message(this);
         member = new Member(this);
@@ -66,8 +64,22 @@ public class IMClient {
     public String getUrl(String serviceName, String command) {
         // 随机生成32位无符号整数
         long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);
-        return String.format(FORMAT_URL, this.version, serviceName, command,
-                this.sdkAppId, this.userId, this.userSig, random);
+        String sig = getUserSig();
+        return String.format(FORMAT_URL, VERSION, serviceName, command,
+                sdkAppId, userId, sig, random);
+    }
+
+    private String getUserSig() {
+        long currentTs = System.currentTimeMillis() / 1000;
+        if (currentTs >= userSigExpireTs) {
+            synchronized (this) {
+                if (currentTs >= userSigExpireTs) {
+                    userSig = SigUtil.genUserSig(sdkAppId, key, userId, EXPIRE_TIME);
+                    userSigExpireTs = currentTs + EXPIRE_TIME - 100;
+                }
+            }
+        }
+        return userSig;
     }
 
     @Override
