@@ -72,8 +72,12 @@ public class IMClient {
     private String getUserSig() {
         long currentTs = System.currentTimeMillis() / 1000;
         if (currentTs >= userSigExpireTs) {
-            userSig = SigUtil.genUserSig(sdkAppId, key, userId, EXPIRE_TIME);
-            userSigExpireTs = currentTs + EXPIRE_TIME - 100;
+            synchronized (this) {
+                if (currentTs >= userSigExpireTs) {
+                    userSig = SigUtil.genUserSig(sdkAppId, key, userId, EXPIRE_TIME);
+                    userSigExpireTs = currentTs + EXPIRE_TIME - 100;
+                }
+            }
         }
         return userSig;
     }
