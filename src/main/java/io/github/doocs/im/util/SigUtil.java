@@ -1,6 +1,6 @@
 package io.github.doocs.im.util;
 
-import org.json.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -9,6 +9,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.Deflater;
 
 /**
@@ -120,13 +122,12 @@ public class SigUtil {
 
     private static String genUserSig(long sdkAppId, String key, String userid, long expire, byte[] userbuf) {
         long currTime = System.currentTimeMillis() / 1000;
-        JSONObject sigDoc = new JSONObject();
+        Map<String, Object> sigDoc = new HashMap<>(8);
         sigDoc.put("TLS.ver", "2.0");
         sigDoc.put("TLS.identifier", userid);
         sigDoc.put("TLS.sdkappid", sdkAppId);
         sigDoc.put("TLS.expire", expire);
         sigDoc.put("TLS.time", currTime);
-
         String base64UserBuf = null;
         if (null != userbuf) {
             base64UserBuf = Base64.getEncoder().encodeToString(userbuf).replaceAll("\\s*", "");
@@ -138,7 +139,11 @@ public class SigUtil {
         }
         sigDoc.put("TLS.sig", sig);
         Deflater compressor = new Deflater();
-        compressor.setInput(sigDoc.toString().getBytes(StandardCharsets.UTF_8));
+        try {
+            compressor.setInput(JsonUtil.obj2Str(sigDoc).getBytes(StandardCharsets.UTF_8));
+        } catch (JsonProcessingException e) {
+            compressor.setInput(new byte[]{});
+        }
         compressor.finish();
         byte[] compressedBytes = new byte[2048];
         int compressedBytesLength = compressor.deflate(compressedBytes);
