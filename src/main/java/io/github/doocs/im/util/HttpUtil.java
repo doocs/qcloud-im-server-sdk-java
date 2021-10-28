@@ -16,6 +16,9 @@ import java.util.Map;
  * @since 2021/7/28 14:55
  */
 public class HttpUtil {
+    private HttpUtil() {
+    }
+
     /**
      * Send a get request
      *
@@ -106,7 +109,7 @@ public class HttpUtil {
                                   Map<String, String> headers) throws IOException {
         // set content type
         if (headers == null) {
-            headers = new HashMap<String, String>();
+            headers = new HashMap<>(2);
         }
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 
