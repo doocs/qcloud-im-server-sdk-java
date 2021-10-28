@@ -10,6 +10,9 @@ import java.util.Base64;
  */
 
 public class Base64Util {
+    private Base64Util() {
+    }
+
     public static byte[] encodeUrl(byte[] input) {
         byte[] base64 = Base64.getEncoder().encode(input);
         for (int i = 0; i < base64.length; ++i) {

@@ -19,6 +19,10 @@ import java.util.zip.Deflater;
  */
 
 public class SigUtil {
+
+    private SigUtil() {
+    }
+
     /**
      * 【功能说明】用于签发 TRTC 和 IM 服务中必须要使用的 UserSig 鉴权票据
      * <p>
