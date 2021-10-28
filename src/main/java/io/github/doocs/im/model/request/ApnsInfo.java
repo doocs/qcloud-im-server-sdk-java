@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApnsInfo {
+    @JsonProperty("Sound")
+    private String sound;
+
     @JsonProperty("BadgeMode")
     private String badgeMode;
 
@@ -23,6 +26,14 @@ public class ApnsInfo {
 
     @JsonProperty("MutableContent")
     private Integer mutableContent;
+
+    public String getSound() {
+        return sound;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
+    }
 
     public String getBadgeMode() {
         return badgeMode;
@@ -63,4 +74,5 @@ public class ApnsInfo {
     public void setMutableContent(Integer mutableContent) {
         this.mutableContent = mutableContent;
     }
+
 }
