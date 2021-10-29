@@ -1,6 +1,7 @@
 package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
@@ -31,10 +32,25 @@ public class MsgListItem {
     private String msgKey;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
+
+    public MsgListItem() {
+    }
+
+    public MsgListItem(String fromAccount, String toAccount, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, Integer msgFlagBits, String msgKey, List<TIMMsgElement> msgBody, String cloudCustomData) {
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
+        this.msgSeq = msgSeq;
+        this.msgRandom = msgRandom;
+        this.msgTimeStamp = msgTimeStamp;
+        this.msgFlagBits = msgFlagBits;
+        this.msgKey = msgKey;
+        this.msgBody = msgBody;
+        this.cloudCustomData = cloudCustomData;
+    }
 
     public String getFromAccount() {
         return fromAccount;
@@ -92,11 +108,11 @@ public class MsgListItem {
         this.msgKey = msgKey;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 

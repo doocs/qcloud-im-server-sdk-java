@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;
@@ -36,11 +37,8 @@ public class MemberTest {
         request.setFromAccount("admin");
         request.setMsgRandom(9312457);
         request.setMsgLifeTime(120);
-        MsgBodyItem item = new MsgBodyItem();
-        MsgContentItem contentItem = new MsgContentItem();
-        contentItem.setText("hi, beauty");
-        item.setMsgContent(contentItem);
-        request.setMsgBody(Collections.singletonList(item));
+        TIMTextMsgElement msg = new TIMTextMsgElement("hi, beauty");
+        request.setMsgBody(Collections.singletonList(msg));
         IMPushResult result = client.member.imPush(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

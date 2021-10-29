@@ -2,7 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgBodyItem;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ImportMsgRequest extends GenericRequest {
     private Integer msgTimeStamp;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
@@ -39,7 +39,7 @@ public class ImportMsgRequest extends GenericRequest {
     public ImportMsgRequest() {
     }
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<MsgBodyItem> msgBody, String cloudCustomData) {
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody, String cloudCustomData) {
         this.syncFromOldSystem = syncFromOldSystem;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -98,11 +98,11 @@ public class ImportMsgRequest extends GenericRequest {
         this.msgTimeStamp = msgTimeStamp;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 

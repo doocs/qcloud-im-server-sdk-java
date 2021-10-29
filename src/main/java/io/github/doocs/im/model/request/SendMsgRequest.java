@@ -2,7 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgBodyItem;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class SendMsgRequest extends GenericRequest {
     private List<String> sendMsgControl;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
@@ -51,7 +51,7 @@ public class SendMsgRequest extends GenericRequest {
     public SendMsgRequest() {
     }
 
-    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl, List<String> sendMsgControl, List<MsgBodyItem> msgBody, String cloudCustomData, OfflinePushInfo offlinePushInfo) {
+    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl, List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -138,11 +138,11 @@ public class SendMsgRequest extends GenericRequest {
         this.sendMsgControl = sendMsgControl;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 
