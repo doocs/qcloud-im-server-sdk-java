@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;
@@ -185,13 +186,12 @@ public class GroupTest {
         SendGroupMsgRequest request = new SendGroupMsgRequest();
         request.setRandom(1212);
         request.setGroupId("MyFirstGroup");
-        MsgBodyItem item = new MsgBodyItem();
-        item.setMsgType("TIMTextElem");
-        MsgContentItem contentItem = new MsgContentItem();
-        contentItem.setText("red packet");
-        item.setMsgContent(contentItem);
-        request.setMsgBody(Collections.singletonList(item));
+
+        TIMTextMsgElement msg = new TIMTextMsgElement("red packet");
+        request.setMsgBody(Collections.singletonList(msg));
         SendGroupMsgResult result = client.group.sendGroupMsg(request);
+
+
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
@@ -249,12 +249,8 @@ public class GroupTest {
         item.setFromAccount("bingo");
         item.setSendTime(1628062005);
 
-        MsgBodyItem bodyItem = new MsgBodyItem();
-        MsgContentItem contentItem = new MsgContentItem();
-        contentItem.setText("hello world");
-        bodyItem.setMsgContent(contentItem);
-        bodyItem.setMsgType("TIMTextElem");
-        item.setMsgBody(Collections.singletonList(bodyItem));
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+        item.setMsgBody(Collections.singletonList(msg));
         request.setMsgList(Collections.singletonList(item));
 
         ImportGroupMsgResult result = client.group.importGroupMsg(request);

@@ -2,7 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgBodyItem;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class MsgGroupItem {
     private Integer random;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     public MsgGroupItem() {
     }
 
-    public MsgGroupItem(String fromAccount, Integer sendTime, Integer random, List<MsgBodyItem> msgBody) {
+    public MsgGroupItem(String fromAccount, Integer sendTime, Integer random, List<TIMMsgElement> msgBody) {
         this.fromAccount = fromAccount;
         this.sendTime = sendTime;
         this.random = random;
@@ -58,11 +58,11 @@ public class MsgGroupItem {
         this.random = random;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 }

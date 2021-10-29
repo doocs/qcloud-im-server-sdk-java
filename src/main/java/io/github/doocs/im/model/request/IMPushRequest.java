@@ -2,7 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgBodyItem;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class IMPushRequest extends GenericRequest {
     private Integer msgRandom;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     @JsonProperty("MsgLifeTime")
     private Integer msgLifeTime;
@@ -30,6 +30,18 @@ public class IMPushRequest extends GenericRequest {
 
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
+
+    public IMPushRequest() {
+    }
+
+    public IMPushRequest(Map<String, Object> condition, Integer msgRandom, List<TIMMsgElement> msgBody, Integer msgLifeTime, String fromAccount, OfflinePushInfo offlinePushInfo) {
+        this.condition = condition;
+        this.msgRandom = msgRandom;
+        this.msgBody = msgBody;
+        this.msgLifeTime = msgLifeTime;
+        this.fromAccount = fromAccount;
+        this.offlinePushInfo = offlinePushInfo;
+    }
 
     public Map<String, Object> getCondition() {
         return condition;
@@ -47,11 +59,11 @@ public class IMPushRequest extends GenericRequest {
         this.msgRandom = msgRandom;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 

@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;
@@ -41,12 +42,8 @@ public class MessageTest {
         request.setMsgRandom(123);
         request.setMsgTimeStamp(1631934058);
         request.setMsgLifeTime(604800);
-        MsgBodyItem item = new MsgBodyItem();
-        item.setMsgType("TIMTextElem");
-        MsgContentItem contentItem = new MsgContentItem();
-        contentItem.setText("hello world");
-        item.setMsgContent(contentItem);
-        request.setMsgBody(Collections.singletonList(item));
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+        request.setMsgBody(Collections.singletonList(msg));
         SendMsgResult result = client.message.sendMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -59,12 +56,8 @@ public class MessageTest {
         request.setToAccount(Arrays.asList("test1", "test2"));
         request.setMsgSeq(28460);
         request.setMsgRandom(1992121);
-        MsgBodyItem item = new MsgBodyItem();
-        item.setMsgType("TIMTextElem");
-        MsgContentItem contentItem = new MsgContentItem();
-        contentItem.setText("hi bingo");
-        item.setMsgContent(contentItem);
-        request.setMsgBody(Collections.singletonList(item));
+        TIMTextMsgElement msg = new TIMTextMsgElement("hi bingo");
+        request.setMsgBody(Collections.singletonList(msg));
         BatchSendMsgResult result = client.message.batchSendMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -79,12 +72,8 @@ public class MessageTest {
         request.setMsgSeq(123);
         request.setMsgRandom(122);
         request.setMsgTimeStamp(1557387418);
-        MsgBodyItem item = new MsgBodyItem();
-        item.setMsgType("TIMTextElem");
-        MsgContentItem contentItem = new MsgContentItem();
-        contentItem.setText("hello bingo");
-        item.setMsgContent(contentItem);
-        request.setMsgBody(Collections.singletonList(item));
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello bingo");
+        request.setMsgBody(Collections.singletonList(msg));
         ImportMsgResult result = client.message.importMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

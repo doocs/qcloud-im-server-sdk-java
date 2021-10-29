@@ -2,7 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgBodyItem;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class BatchSendMsgRequest {
     private Integer msgRandom;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
@@ -42,7 +42,7 @@ public class BatchSendMsgRequest {
     public BatchSendMsgRequest() {
     }
 
-    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Integer msgSeq, Integer msgRandom, List<MsgBodyItem> msgBody, String cloudCustomData, List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
+    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Integer msgSeq, Integer msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData, List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -94,11 +94,11 @@ public class BatchSendMsgRequest {
         this.msgRandom = msgRandom;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 

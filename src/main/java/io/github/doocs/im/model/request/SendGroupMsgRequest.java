@@ -2,7 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.model.response.MsgBodyItem;
+import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class SendGroupMsgRequest extends GenericRequest {
     private String msgPriority;
 
     @JsonProperty("MsgBody")
-    private List<MsgBodyItem> msgBody;
+    private List<TIMMsgElement> msgBody;
 
     @JsonProperty("From_Account")
     private String fromAccount;
@@ -45,7 +45,7 @@ public class SendGroupMsgRequest extends GenericRequest {
     public SendGroupMsgRequest() {
     }
 
-    public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<MsgBodyItem> msgBody, String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl, Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData) {
+    public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<TIMMsgElement> msgBody, String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl, Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;
@@ -82,11 +82,11 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.msgPriority = msgPriority;
     }
 
-    public List<MsgBodyItem> getMsgBody() {
+    public List<TIMMsgElement> getMsgBody() {
         return msgBody;
     }
 
-    public void setMsgBody(List<MsgBodyItem> msgBody) {
+    public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
     }
 
