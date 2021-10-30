@@ -148,7 +148,7 @@ public class SigUtil {
         byte[] compressedBytes = new byte[2048];
         int compressedBytesLength = compressor.deflate(compressedBytes);
         compressor.end();
-        return (new String(Base64Util.encodeUrl(Arrays.copyOfRange(compressedBytes,
+        return (new String(base64EncodeUrl(Arrays.copyOfRange(compressedBytes,
                 0, compressedBytesLength)))).replaceAll("\\s*", "");
     }
 
@@ -234,5 +234,25 @@ public class SigUtil {
             }
         }
         return userBuf;
+    }
+
+    private static byte[] base64EncodeUrl(byte[] input) {
+        byte[] base64 = Base64.getEncoder().encode(input);
+        for (int i = 0; i < base64.length; ++i) {
+            switch (base64[i]) {
+                case '+':
+                    base64[i] = '*';
+                    break;
+                case '/':
+                    base64[i] = '-';
+                    break;
+                case '=':
+                    base64[i] = '_';
+                    break;
+                default:
+                    break;
+            }
+        }
+        return base64;
     }
 }
