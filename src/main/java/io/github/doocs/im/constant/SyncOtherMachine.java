@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.message;
+package io.github.doocs.im.constant;
 
 /**
  * 是否将消息同步到其他端
@@ -16,4 +16,8 @@ public class SyncOtherMachine {
      * 不同步
      */
     public static final int NO = 2;
+
+    private SyncOtherMachine() {
+
+    }
 }

@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 群组形态
@@ -31,4 +31,8 @@ public class GroupType {
      * 在线成员广播大群
      */
     public static final String BC_CHAT_ROOM = "BChatRoom";
+
+    private GroupType() {
+
+    }
 }

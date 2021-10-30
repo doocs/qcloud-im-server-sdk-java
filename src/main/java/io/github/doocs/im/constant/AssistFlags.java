@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.recentcontact;
+package io.github.doocs.im.constant;
 
 /**
  * 会话辅助标志位
@@ -21,4 +21,8 @@ public class AssistFlags {
      * 是否支持置顶会话分页
      */
     public static final int BIT_2 = 2;
+
+    private AssistFlags() {
+
+    }
 }

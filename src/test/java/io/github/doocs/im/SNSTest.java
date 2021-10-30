@@ -1,7 +1,6 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.profile.TagProfile;
-import io.github.doocs.im.constant.sns.*;
+import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;

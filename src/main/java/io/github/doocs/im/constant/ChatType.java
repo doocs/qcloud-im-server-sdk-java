@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.operation;
+package io.github.doocs.im.constant;
 
 /**
  * 消息类型
@@ -16,4 +16,8 @@ public class ChatType {
      * 群组消息
      */
     public static final String GROUP = "Group";
+
+    private ChatType() {
+
+    }
 }

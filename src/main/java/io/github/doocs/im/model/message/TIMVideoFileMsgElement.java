@@ -2,7 +2,7 @@ package io.github.doocs.im.model.message;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.doocs.im.constant.message.MsgType;
+import io.github.doocs.im.constant.MsgType;
 
 /**
  * 视频消息元素

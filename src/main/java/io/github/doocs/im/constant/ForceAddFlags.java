@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 管理员强制加好友标记
@@ -16,4 +16,8 @@ public class ForceAddFlags {
      * 常规加好友
      */
     public static final Integer NORMAL = 2;
+
+    private ForceAddFlags() {
+
+    }
 }

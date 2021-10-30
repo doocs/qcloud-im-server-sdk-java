@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 禁言时间
@@ -16,4 +16,8 @@ public class NoSpeakingTime {
      * 永久禁言
      */
     public static final long FOREVER = 0xFFFFFFFF;
+
+    private NoSpeakingTime() {
+
+    }
 }

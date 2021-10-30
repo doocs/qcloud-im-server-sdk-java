@@ -16,4 +16,8 @@ public class ActionStatus {
      * 失败
      */
     public static final String FAIL = "FAIL";
+
+    private ActionStatus() {
+
+    }
 }

@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 消息回调禁止开关，只对单条消息有效
@@ -16,4 +16,8 @@ public class ForbidCallbackControl {
      * 禁止发消息后回调
      */
     public static final String AFTER = "ForbidAfterSendMsgCallback";
+
+    private ForbidCallbackControl() {
+
+    }
 }

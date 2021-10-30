@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.account;
+package io.github.doocs.im.constant;
 
 /**
  * 是否需要返回详细的登录平台信息
@@ -16,4 +16,8 @@ public class IsNeedDetail {
      * 需要
      */
     public static final int YES = 1;
+
+    private IsNeedDetail() {
+
+    }
 }

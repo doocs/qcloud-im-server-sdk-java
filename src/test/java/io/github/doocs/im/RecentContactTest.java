@@ -1,8 +1,8 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.recentcontact.AssistFlags;
-import io.github.doocs.im.constant.recentcontact.ClearRamble;
-import io.github.doocs.im.constant.recentcontact.RecentContactType;
+import io.github.doocs.im.constant.AssistFlags;
+import io.github.doocs.im.constant.ClearRamble;
+import io.github.doocs.im.constant.RecentContactType;
 import io.github.doocs.im.model.request.DeleteRecentContactRequest;
 import io.github.doocs.im.model.request.GetRecentContactListRequest;
 import io.github.doocs.im.model.response.DeleteRecentContactResult;

@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 是否获取用户加入的AVChatRoom
@@ -16,4 +16,8 @@ public class WithHugeGroups {
      * 获取
      */
     public static final int YES = 1;
+
+    private WithHugeGroups() {
+
+    }
 }

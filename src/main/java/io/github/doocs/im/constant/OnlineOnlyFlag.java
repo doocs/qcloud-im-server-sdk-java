@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 消息发送对象标识
@@ -16,4 +16,8 @@ public class OnlineOnlyFlag {
      * 发送所有成员
      */
     public static final int NO = 0;
+
+    private OnlineOnlyFlag() {
+
+    }
 }

@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.message;
+package io.github.doocs.im.constant;
 
 /**
  * 推送标识
@@ -16,4 +16,8 @@ public class PushFlag {
      * 不离线推送
      */
     public static final int NO = 0;
+
+    private PushFlag() {
+
+    }
 }

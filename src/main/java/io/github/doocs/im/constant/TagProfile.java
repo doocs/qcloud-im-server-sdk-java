@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.profile;
+package io.github.doocs.im.constant;
 
 /**
  * 标配资料字段
@@ -66,4 +66,8 @@ public class TagProfile {
      * 角色
      */
     public static final String IM_ROLE = "Tag_Profile_IM_Role";
+
+    private TagProfile() {
+
+    }
 }

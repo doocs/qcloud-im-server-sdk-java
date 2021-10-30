@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 群成员角色
@@ -21,4 +21,8 @@ public class MemberRole {
      * 普通群成员
      */
     public static final String MEMBER = "Member";
+
+    private MemberRole() {
+
+    }
 }

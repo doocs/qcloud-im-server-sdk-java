@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 是否需要拉取分组下的user列表
@@ -16,4 +16,8 @@ public class NeedFriendType {
      * 不拉取
      */
     public static final String NO = null;
+
+    private NeedFriendType() {
+
+    }
 }

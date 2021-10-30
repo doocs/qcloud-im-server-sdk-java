@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 校验好友
@@ -16,4 +16,8 @@ public class CheckResultType {
      * 双向校验好友关系
      */
     public static final String BOTH = "CheckResult_Type_Both";
+
+    private CheckResultType() {
+
+    }
 }

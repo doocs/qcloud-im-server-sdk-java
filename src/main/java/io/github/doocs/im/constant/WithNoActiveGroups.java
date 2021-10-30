@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 是否获取用户已加入但未激活的群信息
@@ -16,4 +16,8 @@ public class WithNoActiveGroups {
      * 获取
      */
     public static final int YES = 1;
+
+    private WithNoActiveGroups() {
+
+    }
 }

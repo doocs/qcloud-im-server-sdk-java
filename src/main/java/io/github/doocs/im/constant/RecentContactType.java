@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.recentcontact;
+package io.github.doocs.im.constant;
 
 /**
  * 会话类型
@@ -16,4 +16,8 @@ public class RecentContactType {
      * G2C会话
      */
     public static final int G2C = 2;
+
+    private RecentContactType() {
+
+    }
 }

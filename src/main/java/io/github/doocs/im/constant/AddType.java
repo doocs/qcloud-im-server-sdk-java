@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 加好友方式
@@ -16,4 +16,8 @@ public class AddType {
      * 双向加好友
      */
     public static final String BOTH = "Add_Type_Both";
+
+    private AddType() {
+
+    }
 }

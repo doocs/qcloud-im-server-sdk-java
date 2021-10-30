@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 校验黑名单
@@ -16,4 +16,8 @@ public class BlackCheckResultType {
      * 双向校验黑名单关系
      */
     public static final String BOTH = "BlackCheckResult_Type_Both";
+
+    private BlackCheckResultType() {
+
+    }
 }

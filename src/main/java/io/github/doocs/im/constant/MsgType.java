@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.message;
+package io.github.doocs.im.constant;
 
 /**
  * 消息元素类别
@@ -46,4 +46,8 @@ public class MsgType {
      * 视频消息
      */
     public static final String TIM_VIDEO_FILE_ELEM = "TIMVideoFileElem";
+
+    private MsgType() {
+
+    }
 }

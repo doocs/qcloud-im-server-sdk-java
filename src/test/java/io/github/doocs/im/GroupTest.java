@@ -1,9 +1,9 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.group.ApplyJoinOption;
-import io.github.doocs.im.constant.group.GroupType;
-import io.github.doocs.im.constant.group.MemberRole;
-import io.github.doocs.im.constant.group.OnlineOnlyFlag;
+import io.github.doocs.im.constant.ApplyJoinOption;
+import io.github.doocs.im.constant.GroupType;
+import io.github.doocs.im.constant.MemberRole;
+import io.github.doocs.im.constant.OnlineOnlyFlag;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;

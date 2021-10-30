@@ -1,7 +1,7 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.group.NoSpeakingTime;
-import io.github.doocs.im.constant.operation.ChatType;
+import io.github.doocs.im.constant.NoSpeakingTime;
+import io.github.doocs.im.constant.ChatType;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;

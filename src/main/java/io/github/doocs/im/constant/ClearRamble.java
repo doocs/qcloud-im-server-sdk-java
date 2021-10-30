@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.recentcontact;
+package io.github.doocs.im.constant;
 
 /**
  * 是否清理漫游消息
@@ -16,4 +16,8 @@ public class ClearRamble {
      * 不清理
      */
     public static final int NO = 0;
+
+    private ClearRamble() {
+
+    }
 }

@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 申请加群处理方式
@@ -21,4 +21,8 @@ public class ApplyJoinOption {
      * 禁止加群
      */
     public static final String DISABLE_APPLY = "DisableApply";
+
+    private ApplyJoinOption() {
+
+    }
 }

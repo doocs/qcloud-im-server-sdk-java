@@ -1,6 +1,6 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.message.SyncOtherMachine;
+import io.github.doocs.im.constant.SyncOtherMachine;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;

@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 校验好友关系结果
@@ -34,4 +34,8 @@ public class CheckResultTypeRelation {
      * From_Account 的好友表中有 To_Account，To_Account 的好友表中也有 From_Account
      */
     public static final String BOTH_WAY = "CheckResult_Type_BothWay";
+
+    private CheckResultTypeRelation() {
+
+    }
 }

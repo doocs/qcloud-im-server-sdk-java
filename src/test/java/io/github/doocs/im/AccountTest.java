@@ -1,6 +1,6 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.account.IsNeedDetail;
+import io.github.doocs.im.constant.IsNeedDetail;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;

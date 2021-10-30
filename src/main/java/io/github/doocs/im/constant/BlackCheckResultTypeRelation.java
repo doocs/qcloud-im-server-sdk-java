@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.sns;
+package io.github.doocs.im.constant;
 
 /**
  * 校验黑名单关系结果
@@ -34,4 +34,8 @@ public class BlackCheckResultTypeRelation {
      * From_Account 的黑名单中有 To_Account，To_Account 的黑名单中也有 From_Account
      */
     public static final String BOTH_WAY = "BlackCheckResult_Type_BothWay";
+
+    private BlackCheckResultTypeRelation() {
+
+    }
 }

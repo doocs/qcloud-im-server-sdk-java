@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant.group;
+package io.github.doocs.im.constant;
 
 /**
  * 消息接收选项
@@ -21,4 +21,8 @@ public class MsgFlag {
      * 屏蔽群消息
      */
     public static final String DISCARD = "Discard";
+
+    private MsgFlag() {
+
+    }
 }
