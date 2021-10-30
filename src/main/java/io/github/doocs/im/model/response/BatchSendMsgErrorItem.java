@@ -28,4 +28,12 @@ public class BatchSendMsgErrorItem {
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
+
+    @Override
+    public String toString() {
+        return "BatchSendMsgErrorItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", errorCode='" + errorCode + '\'' +
+                '}';
+    }
 }

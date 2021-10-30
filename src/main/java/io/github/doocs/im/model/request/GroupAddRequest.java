@@ -20,7 +20,8 @@ public class GroupAddRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
-    public GroupAddRequest() {
+    public GroupAddRequest(String fromAccount, List<String> groupName) {
+        this(fromAccount, groupName, null);
     }
 
     public GroupAddRequest(String fromAccount, List<String> groupName, List<String> toAccount) {

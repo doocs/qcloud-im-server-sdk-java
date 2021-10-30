@@ -20,7 +20,8 @@ public class AddGroupMemberRequest extends GenericRequest {
     @JsonProperty("MemberList")
     private List<MemberRequestItem> memberList;
 
-    public AddGroupMemberRequest() {
+    public AddGroupMemberRequest(String groupId, List<MemberRequestItem> memberList) {
+        this(groupId, null, memberList);
     }
 
     public AddGroupMemberRequest(String groupId, Integer silence, List<MemberRequestItem> memberList) {

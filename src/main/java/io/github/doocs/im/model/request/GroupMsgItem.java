@@ -7,11 +7,11 @@ import io.github.doocs.im.model.message.TIMMsgElement;
 import java.util.List;
 
 /**
- * @author hyh
- * @since 2021/08/02 17:51
+ * @author bingo
+ * @since 2021/8/4 15:23
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MsgGroupItem {
+public class GroupMsgItem {
     @JsonProperty("From_Account")
     private String fromAccount;
 
@@ -24,10 +24,11 @@ public class MsgGroupItem {
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
-    public MsgGroupItem() {
+    public GroupMsgItem(String fromAccount, Integer sendTime) {
+        this(fromAccount, sendTime, null, null);
     }
 
-    public MsgGroupItem(String fromAccount, Integer sendTime, Integer random, List<TIMMsgElement> msgBody) {
+    public GroupMsgItem(String fromAccount, Integer sendTime, Integer random, List<TIMMsgElement> msgBody) {
         this.fromAccount = fromAccount;
         this.sendTime = sendTime;
         this.random = random;
@@ -66,4 +67,3 @@ public class MsgGroupItem {
         this.msgBody = msgBody;
     }
 }
-

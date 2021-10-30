@@ -17,9 +17,6 @@ public class ImportGroupMemberRequest extends GenericRequest {
     @JsonProperty("MemberList")
     private List<MemberItem> memberList;
 
-    public ImportGroupMemberRequest() {
-    }
-
     public ImportGroupMemberRequest(String groupId, List<MemberItem> memberList) {
         this.groupId = groupId;
         this.memberList = memberList;

@@ -14,8 +14,21 @@ public class ImportGroupMsgRequest extends GenericRequest {
     @JsonProperty("GroupId")
     private String groupId;
 
+    @JsonProperty("RecentContactFlag")
+    private Integer recentContactFlag;
+
     @JsonProperty("MsgList")
-    private List<ImportGroupMsgListItem> msgList;
+    private List<GroupMsgItem> msgList;
+
+    public ImportGroupMsgRequest(String groupId, List<GroupMsgItem> msgList) {
+        this(groupId, null, msgList);
+    }
+
+    public ImportGroupMsgRequest(String groupId, Integer recentContactFlag, List<GroupMsgItem> msgList) {
+        this.groupId = groupId;
+        this.recentContactFlag = recentContactFlag;
+        this.msgList = msgList;
+    }
 
     public String getGroupId() {
         return groupId;
@@ -25,11 +38,19 @@ public class ImportGroupMsgRequest extends GenericRequest {
         this.groupId = groupId;
     }
 
-    public List<ImportGroupMsgListItem> getMsgList() {
+    public Integer getRecentContactFlag() {
+        return recentContactFlag;
+    }
+
+    public void setRecentContactFlag(Integer recentContactFlag) {
+        this.recentContactFlag = recentContactFlag;
+    }
+
+    public List<GroupMsgItem> getMsgList() {
         return msgList;
     }
 
-    public void setMsgList(List<ImportGroupMsgListItem> msgList) {
+    public void setMsgList(List<GroupMsgItem> msgList) {
         this.msgList = msgList;
     }
 }

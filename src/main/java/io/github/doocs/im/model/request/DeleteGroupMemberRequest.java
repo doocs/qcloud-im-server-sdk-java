@@ -17,15 +17,20 @@ public class DeleteGroupMemberRequest extends GenericRequest {
     @JsonProperty("Silence")
     private Integer silence;
 
+    @JsonProperty("Reason")
+    private String reason;
+
     @JsonProperty("MemberToDel_Account")
     private List<String> memberToDelAccount;
 
-    public DeleteGroupMemberRequest() {
+    public DeleteGroupMemberRequest(String groupId, List<String> memberToDelAccount) {
+        this(groupId, null, null, memberToDelAccount);
     }
 
-    public DeleteGroupMemberRequest(String groupId, Integer silence, List<String> memberToDelAccount) {
+    public DeleteGroupMemberRequest(String groupId, Integer silence, String reason, List<String> memberToDelAccount) {
         this.groupId = groupId;
         this.silence = silence;
+        this.reason = reason;
         this.memberToDelAccount = memberToDelAccount;
     }
 
@@ -43,6 +48,14 @@ public class DeleteGroupMemberRequest extends GenericRequest {
 
     public void setSilence(Integer silence) {
         this.silence = silence;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public List<String> getMemberToDelAccount() {

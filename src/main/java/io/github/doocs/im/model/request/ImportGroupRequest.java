@@ -45,7 +45,9 @@ public class ImportGroupRequest extends GenericRequest {
     @JsonProperty("AppDefinedData")
     private List<Map<String, Object>> appDefinedData;
 
-    public ImportGroupRequest() {
+    public ImportGroupRequest(String type, String name) {
+        this.type = type;
+        this.name = name;
     }
 
     public ImportGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction, String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption, Integer createTime, List<Map<String, Object>> appDefinedData) {

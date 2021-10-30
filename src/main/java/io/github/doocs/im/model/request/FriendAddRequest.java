@@ -23,7 +23,8 @@ public class FriendAddRequest extends GenericRequest {
     @JsonProperty("ForceAddFlags")
     private Integer forceAddFlags;
 
-    public FriendAddRequest() {
+    public FriendAddRequest(String fromAccount, List<AddFriendItem> addFriendItemList) {
+        this(fromAccount, addFriendItemList, null, null);
     }
 
     public FriendAddRequest(String fromAccount, List<AddFriendItem> addFriendItemList, String addType, Integer forceAddFlags) {

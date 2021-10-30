@@ -17,9 +17,6 @@ public class FriendImportRequest extends GenericRequest {
     @JsonProperty("AddFriendItem")
     private List<ImportFriendItem> importFriendItemList;
 
-    public FriendImportRequest() {
-    }
-
     public FriendImportRequest(String fromAccount, List<ImportFriendItem> importFriendItemList) {
         this.fromAccount = fromAccount;
         this.importFriendItemList = importFriendItemList;

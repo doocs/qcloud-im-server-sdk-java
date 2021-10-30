@@ -23,6 +23,17 @@ public class ResponseFilter {
     @JsonProperty("AppDefinedDataFilter_GroupMember")
     private List<String> appDefinedDataFilterGroupMember;
 
+    public ResponseFilter() {
+    }
+
+    public ResponseFilter(List<String> groupBaseInfoFilter, List<String> memberInfoFilter,
+                          List<String> appDefinedDataFilterGroup, List<String> appDefinedDataFilterGroupMember) {
+        this.groupBaseInfoFilter = groupBaseInfoFilter;
+        this.memberInfoFilter = memberInfoFilter;
+        this.appDefinedDataFilterGroup = appDefinedDataFilterGroup;
+        this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
+    }
+
     public List<String> getGroupBaseInfoFilter() {
         return groupBaseInfoFilter;
     }

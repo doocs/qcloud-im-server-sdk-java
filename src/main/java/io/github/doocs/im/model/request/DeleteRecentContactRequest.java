@@ -21,6 +21,17 @@ public class DeleteRecentContactRequest extends GenericRequest {
     @JsonProperty("ClearRamble")
     private Integer clearRamble;
 
+    public DeleteRecentContactRequest(String fromAccount, Integer type, String toAccount) {
+        this(fromAccount, type, toAccount, null);
+    }
+
+    public DeleteRecentContactRequest(String fromAccount, Integer type, String toAccount, Integer clearRamble) {
+        this.fromAccount = fromAccount;
+        this.type = type;
+        this.toAccount = toAccount;
+        this.clearRamble = clearRamble;
+    }
+
     public String getFromAccount() {
         return fromAccount;
     }

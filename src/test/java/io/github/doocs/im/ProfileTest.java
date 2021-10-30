@@ -54,6 +54,4 @@ public class ProfileTest {
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
-
-
 }

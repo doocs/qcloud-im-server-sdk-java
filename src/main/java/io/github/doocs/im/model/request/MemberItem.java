@@ -21,7 +21,8 @@ public class MemberItem {
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 
-    public MemberItem() {
+    public MemberItem(String memberAccount) {
+        this.memberAccount = memberAccount;
     }
 
     public MemberItem(String memberAccount, String role, Integer joinTime, Integer unreadMsgNum) {

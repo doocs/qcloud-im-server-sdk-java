@@ -46,4 +46,8 @@ public class MsgType {
      * 视频消息
      */
     public static final String TIM_VIDEO_FILE_ELEM = "TIMVideoFileElem";
+
+    private MsgType() {
+
+    }
 }

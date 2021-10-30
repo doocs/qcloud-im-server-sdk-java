@@ -48,6 +48,28 @@ public class CreateGroupRequest extends GenericRequest {
     @JsonProperty("AppMemberDefinedData")
     private List<Map<String, Object>> appMemberDefinedData;
 
+    public CreateGroupRequest(String type, String name) {
+        this(null, type, null, name, null, null, null, null, null, null, null, null);
+    }
+
+    public CreateGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction,
+                              String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
+                              List<Map<String, Object>> appDefinedData, List<MemberProfile> memberList,
+                              List<Map<String, Object>> appMemberDefinedData) {
+        this.ownerAccount = ownerAccount;
+        this.type = type;
+        this.groupId = groupId;
+        this.name = name;
+        this.introduction = introduction;
+        this.notification = notification;
+        this.faceUrl = faceUrl;
+        this.maxMemberCount = maxMemberCount;
+        this.applyJoinOption = applyJoinOption;
+        this.appDefinedData = appDefinedData;
+        this.memberList = memberList;
+        this.appMemberDefinedData = appMemberDefinedData;
+    }
+
     public String getOwnerAccount() {
         return ownerAccount;
     }

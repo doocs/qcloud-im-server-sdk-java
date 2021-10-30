@@ -20,9 +20,6 @@ public class ForbidSendMsgRequest extends GenericRequest {
     @JsonProperty("ShutUpTime")
     private Integer shutUpTime;
 
-    public ForbidSendMsgRequest() {
-    }
-
     public ForbidSendMsgRequest(String groupId, List<String> membersAccount, Integer shutUpTime) {
         this.groupId = groupId;
         this.membersAccount = membersAccount;

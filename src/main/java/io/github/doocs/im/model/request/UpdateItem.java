@@ -17,9 +17,6 @@ public class UpdateItem {
     @JsonProperty("SnsItem")
     private List<SnsItem> snsItemList;
 
-    public UpdateItem() {
-    }
-
     public UpdateItem(String toAccount, List<SnsItem> snsItemList) {
         this.toAccount = toAccount;
         this.snsItemList = snsItemList;

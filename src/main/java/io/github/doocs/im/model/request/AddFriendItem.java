@@ -24,7 +24,8 @@ public class AddFriendItem {
     @JsonProperty("AddWording")
     private String addWording;
 
-    public AddFriendItem() {
+    public AddFriendItem(String toAccount, String addSource) {
+        this(toAccount, null, null, addSource, null);
     }
 
     public AddFriendItem(String toAccount, String remark, String groupName, String addSource, String addWording) {

@@ -12,6 +12,10 @@ public class AccountDeleteItem {
     @JsonProperty("UserID")
     private String userId;
 
+    public AccountDeleteItem(String userId) {
+        this.userId = userId;
+    }
+
     public String getUserId() {
         return userId;
     }

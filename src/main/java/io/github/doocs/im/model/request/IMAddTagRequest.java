@@ -15,6 +15,10 @@ public class IMAddTagRequest extends GenericRequest {
     @JsonProperty("UserTags")
     private List<UserTagItem> userTags;
 
+    public IMAddTagRequest(List<UserTagItem> userTags) {
+        this.userTags = userTags;
+    }
+
     public List<UserTagItem> getUserTags() {
         return userTags;
     }

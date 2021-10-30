@@ -18,6 +18,12 @@ public class AdminMsgWithdrawRequest extends GenericRequest {
     @JsonProperty("MsgKey")
     private String msgKey;
 
+    public AdminMsgWithdrawRequest(String fromAccount, String toAccount, String msgKey) {
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
+        this.msgKey = msgKey;
+    }
+
     public String getFromAccount() {
         return fromAccount;
     }

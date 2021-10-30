@@ -15,6 +15,11 @@ public class GetHistoryRequest extends GenericRequest {
     @JsonProperty("MsgTime")
     private String msgTime;
 
+    public GetHistoryRequest(String chatType, String msgTime) {
+        this.chatType = chatType;
+        this.msgTime = msgTime;
+    }
+
     public String getChatType() {
         return chatType;
     }

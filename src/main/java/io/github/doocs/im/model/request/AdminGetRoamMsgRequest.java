@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 14:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AdminRoamMsgRequest extends GenericRequest {
+public class AdminGetRoamMsgRequest extends GenericRequest {
     @JsonProperty("From_Account")
     private String fromAccount;
 
@@ -26,6 +26,19 @@ public class AdminRoamMsgRequest extends GenericRequest {
 
     @JsonProperty("LastMsgKey")
     private String lastMsgKey;
+
+    public AdminGetRoamMsgRequest(String fromAccount, String toAccount, Integer maxCnt, Integer minTime, Integer maxTime) {
+        this(fromAccount, toAccount, maxCnt, minTime, maxTime, null);
+    }
+
+    public AdminGetRoamMsgRequest(String fromAccount, String toAccount, Integer maxCnt, Integer minTime, Integer maxTime, String lastMsgKey) {
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
+        this.maxCnt = maxCnt;
+        this.minTime = minTime;
+        this.maxTime = maxTime;
+        this.lastMsgKey = lastMsgKey;
+    }
 
     public String getFromAccount() {
         return fromAccount;

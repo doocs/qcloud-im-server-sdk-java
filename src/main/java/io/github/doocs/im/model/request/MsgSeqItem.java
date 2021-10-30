@@ -12,9 +12,6 @@ public class MsgSeqItem {
     @JsonProperty("MsgSeq")
     private Integer msgSeq;
 
-    public MsgSeqItem() {
-    }
-
     public MsgSeqItem(Integer msgSeq) {
         this.msgSeq = msgSeq;
     }

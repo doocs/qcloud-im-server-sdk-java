@@ -25,7 +25,13 @@ public class AndroidInfo {
     private String googleChannelId;
 
     @JsonProperty("VIVOClassification")
-    private String vivoChannelId;
+    private Integer vivoClassification;
+
+    @JsonProperty("HuaWeiImportance")
+    private String huaweiImportance;
+
+    @JsonProperty("ExtAsHuaweiIntentParam")
+    private Integer extAsHuaweiIntentParam;
 
     public String getSound() {
         return sound;
@@ -67,11 +73,27 @@ public class AndroidInfo {
         this.googleChannelId = googleChannelId;
     }
 
-    public String getVivoChannelId() {
-        return vivoChannelId;
+    public Integer getVivoClassification() {
+        return vivoClassification;
     }
 
-    public void setVivoChannelId(String vivoChannelId) {
-        this.vivoChannelId = vivoChannelId;
+    public void setVivoClassification(Integer vivoClassification) {
+        this.vivoClassification = vivoClassification;
+    }
+
+    public String getHuaweiImportance() {
+        return huaweiImportance;
+    }
+
+    public void setHuaweiImportance(String huaweiImportance) {
+        this.huaweiImportance = huaweiImportance;
+    }
+
+    public Integer getExtAsHuaweiIntentParam() {
+        return extAsHuaweiIntentParam;
+    }
+
+    public void setExtAsHuaweiIntentParam(Integer extAsHuaweiIntentParam) {
+        this.extAsHuaweiIntentParam = extAsHuaweiIntentParam;
     }
 }

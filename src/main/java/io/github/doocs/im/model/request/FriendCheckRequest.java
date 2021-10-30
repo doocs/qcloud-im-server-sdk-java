@@ -20,9 +20,6 @@ public class FriendCheckRequest extends GenericRequest {
     @JsonProperty("CheckType")
     private String checkType;
 
-    public FriendCheckRequest() {
-    }
-
     public FriendCheckRequest(String fromAccount, List<String> toAccount, String checkType) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

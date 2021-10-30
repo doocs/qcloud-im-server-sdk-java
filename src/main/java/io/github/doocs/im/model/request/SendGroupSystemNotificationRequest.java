@@ -20,7 +20,8 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
     @JsonProperty("Content")
     private String content;
 
-    public SendGroupSystemNotificationRequest() {
+    public SendGroupSystemNotificationRequest(String groupId, String content) {
+        this(groupId, null, content);
     }
 
     public SendGroupSystemNotificationRequest(String groupId, List<String> toMembersAccount, String content) {

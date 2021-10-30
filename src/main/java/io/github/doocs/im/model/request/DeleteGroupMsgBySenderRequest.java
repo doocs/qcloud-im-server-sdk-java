@@ -15,9 +15,6 @@ public class DeleteGroupMsgBySenderRequest extends GenericRequest {
     @JsonProperty("Sender_Account")
     private String senderAccount;
 
-    public DeleteGroupMsgBySenderRequest() {
-    }
-
     public DeleteGroupMsgBySenderRequest(String groupId, String senderAccount) {
         this.groupId = groupId;
         this.senderAccount = senderAccount;

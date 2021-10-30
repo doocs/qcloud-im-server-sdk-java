@@ -1,5 +1,7 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.NoSpeakingTime;
+import io.github.doocs.im.constant.ChatType;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;
@@ -34,10 +36,7 @@ public class OperationTest {
 
     @Test
     public void testSetNoSpeaking() throws IOException {
-        SetNoSpeakingRequest request = new SetNoSpeakingRequest();
-        request.setSetAccount("test1");
-        request.setMsgNoSpeakingTime(11111);
-        request.setGroupMsgNoSpeakingTime(11111);
+        SetNoSpeakingRequest request = new SetNoSpeakingRequest("test1", NoSpeakingTime.NEVER, NoSpeakingTime.FOREVER);
         SetNoSpeakingResult result = client.operation.setNoSpeaking(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -45,8 +44,7 @@ public class OperationTest {
 
     @Test
     public void testGetNoSpeaking() throws IOException {
-        GetNoSpeakingRequest request = new GetNoSpeakingRequest();
-        request.setGetAccount("test1");
+        GetNoSpeakingRequest request = new GetNoSpeakingRequest("test1");
         GetNoSpeakingResult result = client.operation.getNoSpeaking(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -63,9 +61,7 @@ public class OperationTest {
 
     @Test
     public void testGetHistory() throws IOException {
-        GetHistoryRequest request = new GetHistoryRequest();
-        request.setChatType("C2C");
-        request.setMsgTime("2015120121");
+        GetHistoryRequest request = new GetHistoryRequest(ChatType.C2C, "2015120121");
         GetHistoryResult result = client.operation.getHistory(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -78,5 +74,4 @@ public class OperationTest {
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
-
 }

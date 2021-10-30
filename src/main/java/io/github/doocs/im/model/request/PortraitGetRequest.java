@@ -17,9 +17,6 @@ public class PortraitGetRequest extends GenericRequest {
     @JsonProperty("TagList")
     private List<String> tagList;
 
-    public PortraitGetRequest() {
-    }
-
     public PortraitGetRequest(List<String> toAccount, List<String> tagList) {
         this.toAccount = toAccount;
         this.tagList = tagList;

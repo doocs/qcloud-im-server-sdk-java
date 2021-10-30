@@ -17,6 +17,15 @@ public class GetGroupInfoRequest extends GenericRequest {
     @JsonProperty("ResponseFilter")
     private ResponseFilter responseFilter;
 
+    public GetGroupInfoRequest(List<String> groupIdList) {
+        this(groupIdList, null);
+    }
+
+    public GetGroupInfoRequest(List<String> groupIdList, ResponseFilter responseFilter) {
+        this.groupIdList = groupIdList;
+        this.responseFilter = responseFilter;
+    }
+
     public List<String> getGroupIdList() {
         return groupIdList;
     }

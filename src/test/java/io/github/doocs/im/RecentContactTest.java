@@ -1,5 +1,8 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.AssistFlags;
+import io.github.doocs.im.constant.ClearRamble;
+import io.github.doocs.im.constant.RecentContactType;
 import io.github.doocs.im.model.request.DeleteRecentContactRequest;
 import io.github.doocs.im.model.request.GetRecentContactListRequest;
 import io.github.doocs.im.model.response.DeleteRecentContactResult;
@@ -34,13 +37,7 @@ public class RecentContactTest {
 
     @Test
     public void testGetRecentContactList() throws IOException {
-        GetRecentContactListRequest request = new GetRecentContactListRequest();
-        request.setFromAccount("bingo");
-        request.setAssistFlags(1);
-        request.setStartIndex(0);
-        request.setTimestamp(213213123);
-        request.setTopStartIndex(100);
-        request.setTopTimestamp(1121212121);
+        GetRecentContactListRequest request = new GetRecentContactListRequest("bingo", 213213123, 0, 1121212121, 100, AssistFlags.BIT_0);
         GetRecentContactListResult result = client.recentContact.recentContactList(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -48,11 +45,7 @@ public class RecentContactTest {
 
     @Test
     public void testDeleteRecentContact() throws IOException {
-        DeleteRecentContactRequest request = new DeleteRecentContactRequest();
-        request.setFromAccount("bingo");
-        request.setToAccount("test1");
-        request.setType(1);
-        request.setClearRamble(2);
+        DeleteRecentContactRequest request = new DeleteRecentContactRequest("bingo", RecentContactType.C2C, "test1", ClearRamble.YES);
         DeleteRecentContactResult result = client.recentContact.deleteRecentContact(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

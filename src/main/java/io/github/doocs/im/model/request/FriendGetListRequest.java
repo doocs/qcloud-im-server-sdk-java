@@ -20,9 +20,6 @@ public class FriendGetListRequest extends GenericRequest {
     @JsonProperty("TagList")
     private List<String> tagList;
 
-    public FriendGetListRequest() {
-    }
-
     public FriendGetListRequest(String fromAccount, List<String> toAccount, List<String> tagList) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

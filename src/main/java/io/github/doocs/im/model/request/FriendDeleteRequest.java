@@ -20,7 +20,8 @@ public class FriendDeleteRequest extends GenericRequest {
     @JsonProperty("DeleteType")
     private String deleteType;
 
-    public FriendDeleteRequest() {
+    public FriendDeleteRequest(String fromAccount, List<String> toAccount) {
+        this(fromAccount, toAccount, null);
     }
 
     public FriendDeleteRequest(String fromAccount, List<String> toAccount, String deleteType) {

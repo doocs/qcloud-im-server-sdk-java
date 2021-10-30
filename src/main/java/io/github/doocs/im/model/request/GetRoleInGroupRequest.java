@@ -17,9 +17,6 @@ public class GetRoleInGroupRequest extends GenericRequest {
     @JsonProperty("User_Account")
     private List<String> userAccount;
 
-    public GetRoleInGroupRequest() {
-    }
-
     public GetRoleInGroupRequest(String groupId, List<String> userAccount) {
         this.groupId = groupId;
         this.userAccount = userAccount;

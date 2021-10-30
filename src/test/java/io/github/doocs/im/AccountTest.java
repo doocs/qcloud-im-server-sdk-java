@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.IsNeedDetail;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import org.junit.Assert;
@@ -7,8 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * @author bingo
@@ -34,9 +34,8 @@ public class AccountTest {
 
     @Test
     public void testAccountImport() throws IOException {
-        AccountImportRequest request = new AccountImportRequest();
+        AccountImportRequest request = new AccountImportRequest("test1");
         request.setFaceUrl("http://www.qq.com");
-        request.setIdentifier("test1");
         request.setNick("bingo");
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
@@ -45,8 +44,11 @@ public class AccountTest {
 
     @Test
     public void testMultiAccountImport() throws IOException {
-        MultiAccountImportRequest request = new MultiAccountImportRequest();
-        request.setAccounts(Arrays.asList("test1", "test2", "bingo"));
+        List<String> accounts = new ArrayList<>();
+        for (int i = 1; i < 100; ++i) {
+            accounts.add("ak" + i);
+        }
+        MultiAccountImportRequest request = new MultiAccountImportRequest(accounts);
         MultiAccountImportResult result = client.account.multiAccountImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -54,12 +56,9 @@ public class AccountTest {
 
     @Test
     public void testAccountDelete() throws IOException {
-        AccountDeleteRequest request = new AccountDeleteRequest();
-        AccountDeleteItem item1 = new AccountDeleteItem();
-        item1.setUserId("acbin");
-        AccountDeleteItem item2 = new AccountDeleteItem();
-        item2.setUserId("test1");
-        request.setDeleteItemList(Arrays.asList(item1, item2));
+        AccountDeleteItem item1 = new AccountDeleteItem("acbin");
+        AccountDeleteItem item2 = new AccountDeleteItem("test1");
+        AccountDeleteRequest request = new AccountDeleteRequest(Arrays.asList(item1, item2));
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -67,12 +66,9 @@ public class AccountTest {
 
     @Test
     public void testAccountCheck() throws IOException {
-        AccountCheckRequest request = new AccountCheckRequest();
-        AccountCheckItem item1 = new AccountCheckItem();
-        item1.setUserId("user1");
-        AccountCheckItem item2 = new AccountCheckItem();
-        item2.setUserId("test1");
-        request.setCheckItemList(Arrays.asList(item1, item2));
+        AccountCheckItem item1 = new AccountCheckItem("user1");
+        AccountCheckItem item2 = new AccountCheckItem("user2");
+        AccountCheckRequest request = new AccountCheckRequest(Arrays.asList(item1, item2));
         AccountCheckResult result = client.account.accountCheck(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -80,8 +76,7 @@ public class AccountTest {
 
     @Test
     public void testKick() throws IOException {
-        KickRequest request = new KickRequest();
-        request.setIdentifier("test1");
+        KickRequest request = new KickRequest("test1");
         KickResult result = client.account.kick(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -89,9 +84,9 @@ public class AccountTest {
 
     @Test
     public void testQueryState() throws IOException {
-        QueryStateRequest request = new QueryStateRequest();
-        request.setIsNeedDetail(1);
-        request.setToAccount(Arrays.asList("test1", "test2", "user1"));
+        List<String> toAccount = Collections.singletonList("bingo");
+        QueryStateRequest request = new QueryStateRequest(toAccount);
+        request.setIsNeedDetail(IsNeedDetail.YES);
         QueryStateResult result = client.account.queryState(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

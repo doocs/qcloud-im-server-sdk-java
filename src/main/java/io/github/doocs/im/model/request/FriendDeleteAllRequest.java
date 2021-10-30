@@ -15,7 +15,8 @@ public class FriendDeleteAllRequest extends GenericRequest {
     @JsonProperty("DeleteType")
     private String deleteType;
 
-    public FriendDeleteAllRequest() {
+    public FriendDeleteAllRequest(String fromAccount) {
+        this(fromAccount, null);
     }
 
     public FriendDeleteAllRequest(String fromAccount, String deleteType) {

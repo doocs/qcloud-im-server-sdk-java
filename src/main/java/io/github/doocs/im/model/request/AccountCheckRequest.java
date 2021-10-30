@@ -14,6 +14,10 @@ public class AccountCheckRequest extends GenericRequest {
     @JsonProperty("CheckItem")
     private List<AccountCheckItem> checkItemList;
 
+    public AccountCheckRequest(List<AccountCheckItem> checkItemList) {
+        this.checkItemList = checkItemList;
+    }
+
     public List<AccountCheckItem> getCheckItemList() {
         return checkItemList;
     }

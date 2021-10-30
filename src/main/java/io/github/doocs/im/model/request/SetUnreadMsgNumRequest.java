@@ -18,9 +18,6 @@ public class SetUnreadMsgNumRequest extends GenericRequest {
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 
-    public SetUnreadMsgNumRequest() {
-    }
-
     public SetUnreadMsgNumRequest(String groupId, String memberAccount, Integer unreadMsgNum) {
         this.groupId = groupId;
         this.memberAccount = memberAccount;

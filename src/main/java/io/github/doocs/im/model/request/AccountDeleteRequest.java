@@ -14,6 +14,10 @@ public class AccountDeleteRequest extends GenericRequest {
     @JsonProperty("DeleteItem")
     private List<AccountDeleteItem> deleteItemList;
 
+    public AccountDeleteRequest(List<AccountDeleteItem> deleteItemList) {
+        this.deleteItemList = deleteItemList;
+    }
+
     public List<AccountDeleteItem> getDeleteItemList() {
         return deleteItemList;
     }

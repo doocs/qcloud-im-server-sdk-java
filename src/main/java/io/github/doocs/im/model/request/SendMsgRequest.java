@@ -48,10 +48,14 @@ public class SendMsgRequest extends GenericRequest {
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 
-    public SendMsgRequest() {
+    public SendMsgRequest(String toAccount, Integer msgRandom, List<TIMMsgElement> msgBody) {
+        this(null, null, toAccount, null, null, msgRandom, null, null, null, msgBody, null, null);
     }
 
-    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl, List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData, OfflinePushInfo offlinePushInfo) {
+    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime,
+                          Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl,
+                          List<String> sendMsgControl, List<TIMMsgElement> msgBody,
+                          String cloudCustomData, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

@@ -39,10 +39,13 @@ public class BatchSendMsgRequest {
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 
-    public BatchSendMsgRequest() {
+    public BatchSendMsgRequest(List<String> toAccount, Integer msgRandom, List<TIMMsgElement> msgBody) {
+        this(null, null, toAccount, null, msgRandom, msgBody, null, null, null);
     }
 
-    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Integer msgSeq, Integer msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData, List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
+    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount,
+                               Integer msgSeq, Integer msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData,
+                               List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

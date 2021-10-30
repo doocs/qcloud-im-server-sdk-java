@@ -15,6 +15,10 @@ public class IMRemoveAttrRequest extends GenericRequest {
     @JsonProperty("UserAttrs")
     private List<UserAttrItem> userAttrs;
 
+    public IMRemoveAttrRequest(List<UserAttrItem> userAttrs) {
+        this.userAttrs = userAttrs;
+    }
+
     public List<UserAttrItem> getUserAttrs() {
         return userAttrs;
     }

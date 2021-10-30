@@ -33,7 +33,8 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
     @JsonProperty("ShutUpTime")
     private Integer shutUpTime;
 
-    public ModifyGroupMemberInfoRequest() {
+    public ModifyGroupMemberInfoRequest(String groupId, String memberAccount) {
+        this(groupId, memberAccount, null, null, null, null, null);
     }
 
     public ModifyGroupMemberInfoRequest(String groupId, String memberAccount, String role, String msgFlag, String nameCard, List<Map<String, Object>> appMemberDefinedData, Integer shutUpTime) {

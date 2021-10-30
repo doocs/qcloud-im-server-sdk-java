@@ -12,9 +12,6 @@ public class GetOnlineMemberNumRequest extends GenericRequest {
     @JsonProperty("GroupId")
     private String groupId;
 
-    public GetOnlineMemberNumRequest() {
-    }
-
     public GetOnlineMemberNumRequest(String groupId) {
         this.groupId = groupId;
     }

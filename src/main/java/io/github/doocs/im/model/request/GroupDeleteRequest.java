@@ -17,9 +17,6 @@ public class GroupDeleteRequest extends GenericRequest {
     @JsonProperty("GroupName")
     private List<String> groupName;
 
-    public GroupDeleteRequest() {
-    }
-
     public GroupDeleteRequest(String fromAccount, List<String> groupName) {
         this.fromAccount = fromAccount;
         this.groupName = groupName;

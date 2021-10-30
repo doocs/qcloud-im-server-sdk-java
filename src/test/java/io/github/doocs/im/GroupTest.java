@@ -1,5 +1,9 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ApplyJoinOption;
+import io.github.doocs.im.constant.GroupType;
+import io.github.doocs.im.constant.MemberRole;
+import io.github.doocs.im.constant.OnlineOnlyFlag;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -9,6 +13,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -36,7 +41,7 @@ public class GroupTest {
     public void testGetAppIdGroupList() throws IOException {
         GetAppidGroupListRequest request = new GetAppidGroupListRequest();
         request.setLimit(10);
-        request.setGroupType("Public");
+        request.setGroupType(GroupType.PUBLIC);
         request.setNext(0);
         GetAppidGroupListResult result = client.group.getAppIdGroupList(request);
         System.out.println(result);
@@ -45,16 +50,14 @@ public class GroupTest {
 
     @Test
     public void testCreateGroup() throws IOException {
-        CreateGroupRequest request = new CreateGroupRequest();
+        CreateGroupRequest request = new CreateGroupRequest(GroupType.PUBLIC, "TestGroup");
         request.setOwnerAccount("bingo");
-        request.setType("Public");
         request.setGroupId("MyFirstGroup");
-        request.setName("TestGroup");
         request.setIntroduction("This is group Introduction");
         request.setNotification("This is group Notification");
         request.setFaceUrl("http://this.is.face.url");
         request.setMaxMemberCount(5000);
-        request.setApplyJoinOption("FreeAccess");
+        request.setApplyJoinOption(ApplyJoinOption.FREE_ACCESS);
         // Map<String, Object> map = new HashMap<>();
         // map.put("Key", "test1");
         // map.put("Value", "test2");
@@ -66,8 +69,7 @@ public class GroupTest {
 
     @Test
     public void testGetGroupInfo() throws IOException {
-        GetGroupInfoRequest request = new GetGroupInfoRequest();
-        request.setGroupIdList(Collections.singletonList("MyFirstGroup"));
+        GetGroupInfoRequest request = new GetGroupInfoRequest(Collections.singletonList("MyFirstGroup"));
         GetGroupInfoResult result = client.group.getGroupInfo(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -75,8 +77,7 @@ public class GroupTest {
 
     @Test
     public void testGetGroupMemberInfo() throws IOException {
-        GetGroupMemberInfoRequest request = new GetGroupMemberInfoRequest();
-        request.setGroupId("MyFirstGroup");
+        GetGroupMemberInfoRequest request = new GetGroupMemberInfoRequest("MyFirstGroup");
         request.setLimit(100);
         request.setOffset(0);
         GetGroupMemberInfoResult result = client.group.getGroupMemberInfo(request);
@@ -86,8 +87,7 @@ public class GroupTest {
 
     @Test
     public void testModifyGroupBaseInfo() throws IOException {
-        ModifyGroupBaseInfoRequest request = new ModifyGroupBaseInfoRequest();
-        request.setGroupId("MyFirstGroup");
+        ModifyGroupBaseInfoRequest request = new ModifyGroupBaseInfoRequest("MyFirstGroup");
         request.setName("groupName");
         request.setIntroduction("my first group");
         request.setNotification("hello group member");
@@ -102,11 +102,10 @@ public class GroupTest {
 
     @Test
     public void testAddGroupMember() throws IOException {
-        MemberRequestItem memberItem = new MemberRequestItem("test1");
-        AddGroupMemberRequest request = new AddGroupMemberRequest();
-        request.setGroupId("MyFirstGroup");
+        MemberRequestItem memberItem = new MemberRequestItem("test2");
+        List<MemberRequestItem> memberList = Collections.singletonList(memberItem);
+        AddGroupMemberRequest request = new AddGroupMemberRequest("MyFirstGroup", memberList);
         request.setSilence(1);
-        request.setMemberList(Collections.singletonList(memberItem));
         AddGroupMemberResult result = client.group.addGroupMember(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -114,9 +113,8 @@ public class GroupTest {
 
     @Test
     public void testDeleteGroupMember() throws IOException {
-        DeleteGroupMemberRequest request = new DeleteGroupMemberRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setMemberToDelAccount(Collections.singletonList("test1"));
+        List<String> toDelAccount = Collections.singletonList("test2");
+        DeleteGroupMemberRequest request = new DeleteGroupMemberRequest("MyFirstGroup", toDelAccount);
         DeleteGroupMemberResult result = client.group.deleteGroupMember(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -124,10 +122,8 @@ public class GroupTest {
 
     @Test
     public void testModifyGroupMemberInfo() throws IOException {
-        ModifyGroupMemberInfoRequest request = new ModifyGroupMemberInfoRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setNameCard("hello world");
-        request.setMemberAccount("test1");
+        ModifyGroupMemberInfoRequest request = new ModifyGroupMemberInfoRequest("MyFirstGroup", "bingo");
+        request.setNameCard("hello bingo");
         ModifyGroupMemberInfoResult result = client.group.modifyGroupMemberInfo(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -135,8 +131,7 @@ public class GroupTest {
 
     @Test
     public void testDestroyGroup() throws IOException {
-        DestroyGroupRequest request = new DestroyGroupRequest();
-        request.setGroupId("MyFirstGroup");
+        DestroyGroupRequest request = new DestroyGroupRequest("MyFirstGroup");
         DestroyGroupResult result = client.group.destroyGroup(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -144,8 +139,7 @@ public class GroupTest {
 
     @Test
     public void testGetJoinGroupList() throws IOException {
-        GetJoinedGroupListRequest request = new GetJoinedGroupListRequest();
-        request.setMemberAccount("bingo");
+        GetJoinedGroupListRequest request = new GetJoinedGroupListRequest("bingo");
         GetJoinGroupListResult result = client.group.getJoinGroupList(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -153,9 +147,7 @@ public class GroupTest {
 
     @Test
     public void testGetRoleInGroup() throws IOException {
-        GetRoleInGroupRequest request = new GetRoleInGroupRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setUserAccount(Collections.singletonList("bingo"));
+        GetRoleInGroupRequest request = new GetRoleInGroupRequest("MyFirstGroup", Collections.singletonList("bingo"));
         GetRoleInGroupResult result = client.group.getRoleInGroup(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -163,10 +155,8 @@ public class GroupTest {
 
     @Test
     public void testForbidSendMsg() throws IOException {
-        ForbidSendMsgRequest request = new ForbidSendMsgRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setMembersAccount(Collections.singletonList("bingo"));
-        request.setShutUpTime(200);
+        List<String> membersAccount = Collections.singletonList("bingo");
+        ForbidSendMsgRequest request = new ForbidSendMsgRequest("MyFirstGroup", membersAccount, 200);
         ForbidSendMsgResult result = client.group.forbidSendMsg(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -174,8 +164,7 @@ public class GroupTest {
 
     @Test
     public void testGetGroupShuttedUin() throws IOException {
-        GetGroupShuttedUinRequest request = new GetGroupShuttedUinRequest();
-        request.setGroupId("MyFirstGroup");
+        GetGroupShuttedUinRequest request = new GetGroupShuttedUinRequest("MyFirstGroup");
         GetGroupShuttedUinResult result = client.group.getGroupShuttedUin(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -183,24 +172,17 @@ public class GroupTest {
 
     @Test
     public void testSendGroupMsg() throws IOException {
-        SendGroupMsgRequest request = new SendGroupMsgRequest();
-        request.setRandom(1212);
-        request.setGroupId("MyFirstGroup");
-
         TIMTextMsgElement msg = new TIMTextMsgElement("red packet");
-        request.setMsgBody(Collections.singletonList(msg));
+        SendGroupMsgRequest request = new SendGroupMsgRequest("MyFirstGroup", 1212, Collections.singletonList(msg));
+        request.setOnlineOnlyFlag(OnlineOnlyFlag.YES);
         SendGroupMsgResult result = client.group.sendGroupMsg(request);
-
-
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
 
     @Test
     public void testSendGroupSystemNotification() throws IOException {
-        SendGroupSystemNotificationRequest request = new SendGroupSystemNotificationRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setContent("hello world");
+        SendGroupSystemNotificationRequest request = new SendGroupSystemNotificationRequest("MyFirstGroup", "hello world");
         request.setToMembersAccount(Collections.singletonList("bingo"));
         SendGroupSystemNotificationResult result = client.group.sendGroupSystemNotification(request);
         System.out.println(result);
@@ -209,9 +191,7 @@ public class GroupTest {
 
     @Test
     public void testChangeGroupOwner() throws IOException {
-        ChangeGroupOwnerRequest request = new ChangeGroupOwnerRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setNewOwnerAccount("test1");
+        ChangeGroupOwnerRequest request = new ChangeGroupOwnerRequest("MyFirstGroup", "test1");
         ChangeGroupOwnerResult result = client.group.changeGroupOwner(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -219,11 +199,8 @@ public class GroupTest {
 
     @Test
     public void testGroupMsgRecall() throws IOException {
-        GroupMsgRecallRequest request = new GroupMsgRecallRequest();
-        request.setGroupId("MyFirstGroup");
-        MsgSeqItem item = new MsgSeqItem();
-        item.setMsgSeq(123323);
-        request.setMsgSeqList(Collections.singletonList(item));
+        MsgSeqItem item = new MsgSeqItem(123323);
+        GroupMsgRecallRequest request = new GroupMsgRecallRequest("MyFirstGroup", Collections.singletonList(item));
         GroupMsgRecallResult result = client.group.groupMsgRecall(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -231,11 +208,7 @@ public class GroupTest {
 
     @Test
     public void testImportGroup() throws IOException {
-        ImportGroupRequest request = new ImportGroupRequest();
-        request.setOwnerAccount("bingo");
-        request.setType("Public");
-        request.setGroupId("newGroup");
-        request.setName("群名");
+        ImportGroupRequest request = new ImportGroupRequest(GroupType.PUBLIC, "群名");
         ImportGroupResult result = client.group.importGroup(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -243,16 +216,10 @@ public class GroupTest {
 
     @Test
     public void testImportGroupMsg() throws IOException {
-        ImportGroupMsgRequest request = new ImportGroupMsgRequest();
-        request.setGroupId("newGroup");
-        ImportGroupMsgListItem item = new ImportGroupMsgListItem();
-        item.setFromAccount("bingo");
-        item.setSendTime(1628062005);
-
+        GroupMsgItem item = new GroupMsgItem("bingo", 1628062005);
         TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
         item.setMsgBody(Collections.singletonList(msg));
-        request.setMsgList(Collections.singletonList(item));
-
+        ImportGroupMsgRequest request = new ImportGroupMsgRequest("newGroup", Collections.singletonList(item));
         ImportGroupMsgResult result = client.group.importGroupMsg(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -260,14 +227,11 @@ public class GroupTest {
 
     @Test
     public void testImportGroupMember() throws IOException {
-        ImportGroupMemberRequest request = new ImportGroupMemberRequest();
-        request.setGroupId("newGroup");
-        MemberItem item = new MemberItem();
-        item.setMemberAccount("test1");
+        MemberItem item = new MemberItem("test1");
         item.setJoinTime(1628062005);
-        item.setRole("Admin");
+        item.setRole(MemberRole.ADMIN);
         item.setUnreadMsgNum(4);
-        request.setMemberList(Collections.singletonList(item));
+        ImportGroupMemberRequest request = new ImportGroupMemberRequest("newGroup", Collections.singletonList(item));
         ImportGroupMemberResult result = client.group.importGroupMember(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -275,10 +239,7 @@ public class GroupTest {
 
     @Test
     public void testSetUnreadMsgNum() throws IOException {
-        SetUnreadMsgNumRequest request = new SetUnreadMsgNumRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setMemberAccount("test1");
-        request.setUnreadMsgNum(1);
+        SetUnreadMsgNumRequest request = new SetUnreadMsgNumRequest("MyFirstGroup", "test1", 1);
         SetUnreadMsgNumResult result = client.group.setUnreadMsgNum(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -286,9 +247,7 @@ public class GroupTest {
 
     @Test
     public void testDeleteGroupMsgBySender() throws IOException {
-        DeleteGroupMsgBySenderRequest request = new DeleteGroupMsgBySenderRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setSenderAccount("test1");
+        DeleteGroupMsgBySenderRequest request = new DeleteGroupMsgBySenderRequest("MyFirstGroup", "test1");
         DeleteGroupMsgBySenderResult result = client.group.deleteGroupMsgBySender(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -296,10 +255,7 @@ public class GroupTest {
 
     @Test
     public void testGroupMsgGetSimple() throws IOException {
-        GroupMsgGetSimpleRequest request = new GroupMsgGetSimpleRequest();
-        request.setGroupId("MyFirstGroup");
-        request.setReqMsgNumber(20);
-        request.setReqMsgSeq(1);
+        GroupMsgGetSimpleRequest request = new GroupMsgGetSimpleRequest("MyFirstGroup", 1, 20);
         GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -307,11 +263,9 @@ public class GroupTest {
 
     @Test
     public void testGetOnlineMemberNum() throws IOException {
-        GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest();
-        request.setGroupId("MyFirstAVChatRoom");
+        GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest("MyFirstAVChatRoom");
         GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
     }
-
 }

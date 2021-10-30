@@ -17,9 +17,6 @@ public class FriendUpdateRequest extends GenericRequest {
     @JsonProperty("UpdateItem")
     private List<UpdateItem> updateItemList;
 
-    public FriendUpdateRequest() {
-    }
-
     public FriendUpdateRequest(String fromAccount, List<UpdateItem> updateItemList) {
         this.fromAccount = fromAccount;
         this.updateItemList = updateItemList;

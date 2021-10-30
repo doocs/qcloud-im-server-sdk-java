@@ -16,6 +16,8 @@ import java.util.Map;
  * @since 2021/7/28 14:55
  */
 public class HttpUtil {
+    private static final String UTF_8 = StandardCharsets.UTF_8.name();
+
     private HttpUtil() {
     }
 
@@ -124,8 +126,8 @@ public class HttpUtil {
                     body.append("&");
                 }
                 String value = params.get(param);
-                body.append(URLEncoder.encode(param, "UTF-8")).append("=");
-                body.append(URLEncoder.encode(value, "UTF-8"));
+                body.append(URLEncoder.encode(param, UTF_8)).append("=");
+                body.append(URLEncoder.encode(value, UTF_8));
             }
         }
 
@@ -194,19 +196,19 @@ public class HttpUtil {
         StringBuilder fullUrl = new StringBuilder(url);
         if (params != null) {
             boolean first = (fullUrl.toString().indexOf('?') == -1);
-            for (String param : params.keySet()) {
+            for (Map.Entry<String, String> entry : params.entrySet()) {
                 if (first) {
                     fullUrl.append('?');
                     first = false;
                 } else {
                     fullUrl.append('&');
                 }
-                String value = params.get(param);
-                fullUrl.append(URLEncoder.encode(param, "UTF-8")).append('=');
-                fullUrl.append(URLEncoder.encode(value, "UTF-8"));
+                String param = entry.getKey();
+                String value = entry.getValue();
+                fullUrl.append(URLEncoder.encode(param, UTF_8)).append('=');
+                fullUrl.append(URLEncoder.encode(value, UTF_8));
             }
         }
-
         return fullUrl.toString();
     }
 
@@ -219,32 +221,23 @@ public class HttpUtil {
      */
     public static Map<String, String> getQueryParams(String url)
             throws IOException {
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>(16);
 
         int start = url.indexOf('?');
         while (start != -1) {
             // read parameter name
             int equals = url.indexOf('=', start);
-            String param = "";
-            if (equals != -1) {
-                param = url.substring(start + 1, equals);
-            } else {
-                param = url.substring(start + 1);
-            }
+            String param = equals == -1 ? url.substring(start + 1) : url.substring(start + 1, equals);
 
             // read parameter value
             String value = "";
             if (equals != -1) {
                 start = url.indexOf('&', equals);
-                if (start != -1) {
-                    value = url.substring(equals + 1, start);
-                } else {
-                    value = url.substring(equals + 1);
-                }
+                value = start == -1 ? url.substring(equals + 1) : url.substring(equals + 1, start);
             }
 
-            params.put(URLDecoder.decode(param, "UTF-8"),
-                    URLDecoder.decode(value, "UTF-8"));
+            params.put(URLDecoder.decode(param, UTF_8),
+                    URLDecoder.decode(value, UTF_8));
         }
 
         return params;
@@ -255,16 +248,10 @@ public class HttpUtil {
      *
      * @param url Url containing query parameters
      * @return url        Url without query parameters
-     * @throws IOException IOException
      */
-    public static String removeQueryParams(String url)
-            throws IOException {
+    public static String removeQueryParams(String url) {
         int q = url.indexOf('?');
-        if (q != -1) {
-            return url.substring(0, q);
-        } else {
-            return url;
-        }
+        return q == -1 ? url : url.substring(0, q);
     }
 
     /**
@@ -292,9 +279,7 @@ public class HttpUtil {
 
         // headers
         if (headers != null) {
-            for (String key : headers.keySet()) {
-                conn.addRequestProperty(key, headers.get(key));
-            }
+            headers.forEach(conn::addRequestProperty);
         }
 
         // body

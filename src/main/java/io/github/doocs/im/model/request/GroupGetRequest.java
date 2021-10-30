@@ -23,7 +23,8 @@ public class GroupGetRequest extends GenericRequest {
     @JsonProperty("GroupName")
     private List<String> groupName;
 
-    public GroupGetRequest() {
+    public GroupGetRequest(String fromAccount, Integer lastSequence) {
+        this(fromAccount, null, lastSequence, null);
     }
 
     public GroupGetRequest(String fromAccount, String needFriend, Integer lastSequence, List<String> groupName) {

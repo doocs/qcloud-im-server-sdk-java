@@ -14,6 +14,10 @@ public class IMGetTagRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    public IMGetTagRequest(List<String> toAccount) {
+        this.toAccount = toAccount;
+    }
+
     public List<String> getToAccount() {
         return toAccount;
     }
