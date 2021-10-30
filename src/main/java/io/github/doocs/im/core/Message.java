@@ -47,9 +47,9 @@ public class Message {
         return JsonUtil.str2Obj(result, ImportMsgResult.class);
     }
 
-    public AdminRoamMsgResult getRoamMsg(AdminRoamMsgRequest adminRoamMsgRequest) throws IOException {
+    public AdminRoamMsgResult getRoamMsg(AdminGetRoamMsgRequest adminGetRoamMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_GET_ROAM_MSG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminRoamMsgRequest), null);
+        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminGetRoamMsgRequest), null);
         return JsonUtil.str2Obj(result, AdminRoamMsgResult.class);
     }
 

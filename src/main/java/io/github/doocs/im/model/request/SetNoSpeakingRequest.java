@@ -13,16 +13,16 @@ public class SetNoSpeakingRequest extends GenericRequest {
     private String setAccount;
 
     @JsonProperty("C2CmsgNospeakingTime")
-    private Integer msgNoSpeakingTime;
+    private Long msgNoSpeakingTime;
 
     @JsonProperty("GroupmsgNospeakingTime")
-    private Integer groupMsgNoSpeakingTime;
+    private Long groupMsgNoSpeakingTime;
 
-
-    public SetNoSpeakingRequest() {
+    public SetNoSpeakingRequest(String setAccount) {
+        this.setAccount = setAccount;
     }
 
-    public SetNoSpeakingRequest(String setAccount, Integer msgNoSpeakingTime, Integer groupMsgNoSpeakingTime) {
+    public SetNoSpeakingRequest(String setAccount, Long msgNoSpeakingTime, Long groupMsgNoSpeakingTime) {
         this.setAccount = setAccount;
         this.msgNoSpeakingTime = msgNoSpeakingTime;
         this.groupMsgNoSpeakingTime = groupMsgNoSpeakingTime;
@@ -36,19 +36,19 @@ public class SetNoSpeakingRequest extends GenericRequest {
         this.setAccount = setAccount;
     }
 
-    public Integer getMsgNoSpeakingTime() {
+    public Long getMsgNoSpeakingTime() {
         return msgNoSpeakingTime;
     }
 
-    public void setMsgNoSpeakingTime(Integer msgNoSpeakingTime) {
+    public void setMsgNoSpeakingTime(Long msgNoSpeakingTime) {
         this.msgNoSpeakingTime = msgNoSpeakingTime;
     }
 
-    public Integer getGroupMsgNoSpeakingTime() {
+    public Long getGroupMsgNoSpeakingTime() {
         return groupMsgNoSpeakingTime;
     }
 
-    public void setGroupMsgNoSpeakingTime(Integer groupMsgNoSpeakingTime) {
+    public void setGroupMsgNoSpeakingTime(Long groupMsgNoSpeakingTime) {
         this.groupMsgNoSpeakingTime = groupMsgNoSpeakingTime;
     }
 }

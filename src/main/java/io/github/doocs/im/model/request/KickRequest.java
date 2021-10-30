@@ -12,6 +12,10 @@ public class KickRequest extends GenericRequest {
     @JsonProperty("Identifier")
     private String identifier;
 
+    public KickRequest(String identifier) {
+        this.identifier = identifier;
+    }
+
     public String getIdentifier() {
         return identifier;
     }

@@ -12,6 +12,10 @@ public class AccountCheckItem {
     @JsonProperty("UserID")
     private String userId;
 
+    public AccountCheckItem(String userId) {
+        this.userId = userId;
+    }
+
     public String getUserId() {
         return userId;
     }

@@ -18,6 +18,15 @@ public class GetAppidGroupListRequest extends GenericRequest {
     @JsonProperty("GroupType")
     private String groupType;
 
+    public GetAppidGroupListRequest() {
+    }
+
+    public GetAppidGroupListRequest(Integer limit, Integer next, String groupType) {
+        this.limit = limit;
+        this.next = next;
+        this.groupType = groupType;
+    }
+
     public Integer getLimit() {
         return limit;
     }

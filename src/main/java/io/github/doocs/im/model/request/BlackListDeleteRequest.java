@@ -17,9 +17,6 @@ public class BlackListDeleteRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
-    public BlackListDeleteRequest() {
-    }
-
     public BlackListDeleteRequest(String fromAccount, List<String> toAccount) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

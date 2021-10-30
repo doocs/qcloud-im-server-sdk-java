@@ -20,9 +20,6 @@ public class BlackListCheckRequest extends GenericRequest {
     @JsonProperty("CheckType")
     private String checkType;
 
-    public BlackListCheckRequest() {
-    }
-
     public BlackListCheckRequest(String fromAccount, List<String> toAccount, String checkType) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

@@ -42,10 +42,13 @@ public class SendGroupMsgRequest extends GenericRequest {
     @JsonProperty("cloudCustomData")
     private String cloudCustomData;
 
-    public SendGroupMsgRequest() {
+    public SendGroupMsgRequest(String groupId, Integer random, List<TIMMsgElement> msgBody) {
+        this(groupId, random, null, msgBody, null, null, null, null, null, null);
     }
 
-    public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<TIMMsgElement> msgBody, String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl, Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData) {
+    public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<TIMMsgElement> msgBody,
+                               String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
+                               Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;

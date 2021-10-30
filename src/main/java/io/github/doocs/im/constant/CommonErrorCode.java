@@ -1,13 +1,16 @@
 package io.github.doocs.im.constant;
 
 /**
+ * 公共错误码
+ *
  * @author bingo
  * @since 2021/10/30 9:54
  */
-public enum ErrorCode {
+public enum CommonErrorCode {
     /**
      * REST API 公共错误码：https://cloud.tencent.com/document/product/269/1519
      */
+    SUCCESS(0, "成功"),
     MSG_TEXT_SECURITY_STRIKE(80001, "消息文本安全打击"),
     HTTP_PARSE_ERROR(60002, "HTTP 解析错误 ，请检查 HTTP 请求 URL 格式"),
     HTTP_JSON_PARSE_ERROR(60002, "HTTP 请求 JSON 解析错误，请检查 JSON 格式"),
@@ -31,19 +34,19 @@ public enum ErrorCode {
     ILLEGAL_IP_REST_API(60021, "RestAPI 调用来源 IP 非法"),
     ;
 
-    ErrorCode(Integer code, String desc) {
+    CommonErrorCode(Integer code, String info) {
         this.code = code;
-        this.desc = desc;
+        this.info = info;
     }
 
     private Integer code;
-    private String desc;
+    private String info;
 
     public Integer getCode() {
         return code;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getInfo() {
+        return info;
     }
 }

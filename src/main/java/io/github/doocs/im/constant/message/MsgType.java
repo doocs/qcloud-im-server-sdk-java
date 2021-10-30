@@ -1,4 +1,4 @@
-package io.github.doocs.im.constant;
+package io.github.doocs.im.constant.message;
 
 /**
  * 消息元素类别

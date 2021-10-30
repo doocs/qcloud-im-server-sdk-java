@@ -35,10 +35,12 @@ public class ImportFriendItem {
     @JsonProperty("CustomItem")
     private List<CustomItem> customItemList;
 
-    public ImportFriendItem() {
+    public ImportFriendItem(String toAccount) {
+        this(toAccount, null, null, null, null, null, null, null);
     }
 
-    public ImportFriendItem(String toAccount, String remark, Integer remarkTime, List<String> groupName, String addSource, String addWording, Integer addTime, List<CustomItem> customItemList) {
+    public ImportFriendItem(String toAccount, String remark, Integer remarkTime, List<String> groupName,
+                            String addSource, String addWording, Integer addTime, List<CustomItem> customItemList) {
         this.toAccount = toAccount;
         this.remark = remark;
         this.remarkTime = remarkTime;

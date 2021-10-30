@@ -21,9 +21,6 @@ public class BlackListGetRequest extends GenericRequest {
     @JsonProperty("LastSequence")
     private Integer lastSequence;
 
-    public BlackListGetRequest() {
-    }
-
     public BlackListGetRequest(String fromAccount, Integer startIndex, Integer maxLimited, Integer lastSequence) {
         this.fromAccount = fromAccount;
         this.startIndex = startIndex;

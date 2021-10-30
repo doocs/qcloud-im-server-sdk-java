@@ -29,10 +29,12 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
     @JsonProperty("Offset")
     private Integer offset;
 
-    public GetGroupMemberInfoRequest() {
+    public GetGroupMemberInfoRequest(String groupId) {
+        this(groupId, null, null, null, null, null);
     }
 
-    public GetGroupMemberInfoRequest(String groupId, List<String> memberInfoFilter, List<String> memberRoleFilter, List<String> appDefinedDataFilterGroupMember, Integer limit, Integer offset) {
+    public GetGroupMemberInfoRequest(String groupId, List<String> memberInfoFilter, List<String> memberRoleFilter,
+                                     List<String> appDefinedDataFilterGroupMember, Integer limit, Integer offset) {
         this.groupId = groupId;
         this.memberInfoFilter = memberInfoFilter;
         this.memberRoleFilter = memberRoleFilter;

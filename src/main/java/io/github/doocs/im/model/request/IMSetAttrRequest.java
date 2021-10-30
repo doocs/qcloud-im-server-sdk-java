@@ -15,6 +15,10 @@ public class IMSetAttrRequest extends GenericRequest {
     @JsonProperty("UserAttrs")
     List<UserAttrItem> userAttrs;
 
+    public IMSetAttrRequest(List<UserAttrItem> userAttrs) {
+        this.userAttrs = userAttrs;
+    }
+
     public List<UserAttrItem> getUserAttrs() {
         return userAttrs;
     }

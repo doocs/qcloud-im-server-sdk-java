@@ -12,9 +12,6 @@ public class GetGroupShuttedUinRequest extends GenericRequest {
     @JsonProperty("GroupId")
     private String groupId;
 
-    public GetGroupShuttedUinRequest() {
-    }
-
     public GetGroupShuttedUinRequest(String groupId) {
         this.groupId = groupId;
     }

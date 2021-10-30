@@ -17,9 +17,6 @@ public class PortraitSetRequest extends GenericRequest {
     @JsonProperty("ProfileItem")
     private List<ProfileItem> profileItemList;
 
-    public PortraitSetRequest() {
-    }
-
     public PortraitSetRequest(String fromAccount, List<ProfileItem> profileItemList) {
         this.fromAccount = fromAccount;
         this.profileItemList = profileItemList;

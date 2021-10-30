@@ -15,9 +15,6 @@ public class ProfileItem {
     @JsonProperty("Value")
     private String value;
 
-    public ProfileItem() {
-    }
-
     public ProfileItem(String tag, String value) {
         this.tag = tag;
         this.value = value;

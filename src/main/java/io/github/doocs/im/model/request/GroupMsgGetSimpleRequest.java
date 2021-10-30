@@ -18,7 +18,8 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
     @JsonProperty("ReqMsgNumber")
     private Integer reqMsgNumber;
 
-    public GroupMsgGetSimpleRequest() {
+    public GroupMsgGetSimpleRequest(String groupId, Integer reqMsgSeq) {
+        this(groupId, reqMsgSeq, null);
     }
 
     public GroupMsgGetSimpleRequest(String groupId, Integer reqMsgSeq, Integer reqMsgNumber) {
@@ -49,14 +50,5 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
 
     public void setReqMsgNumber(Integer reqMsgNumber) {
         this.reqMsgNumber = reqMsgNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "GroupMsgGetSimpleRequest{" +
-                "groupId='" + groupId + '\'' +
-                ", reqMsgSeq=" + reqMsgSeq +
-                ", reqMsgNumber=" + reqMsgNumber +
-                '}';
     }
 }

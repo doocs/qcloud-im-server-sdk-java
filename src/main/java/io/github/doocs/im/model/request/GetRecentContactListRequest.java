@@ -27,6 +27,15 @@ public class GetRecentContactListRequest extends GenericRequest {
     @JsonProperty("AssistFlags")
     private Integer assistFlags;
 
+    public GetRecentContactListRequest(String fromAccount, Integer timestamp, Integer startIndex, Integer topTimestamp, Integer topStartIndex, Integer assistFlags) {
+        this.fromAccount = fromAccount;
+        this.timestamp = timestamp;
+        this.startIndex = startIndex;
+        this.topTimestamp = topTimestamp;
+        this.topStartIndex = topStartIndex;
+        this.assistFlags = assistFlags;
+    }
+
     public String getFromAccount() {
         return fromAccount;
     }

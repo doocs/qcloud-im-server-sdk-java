@@ -15,9 +15,6 @@ public class SnsItem {
     @JsonProperty("Value")
     private Object value;
 
-    public SnsItem() {
-    }
-
     public SnsItem(String tag, Object value) {
         this.tag = tag;
         this.value = value;

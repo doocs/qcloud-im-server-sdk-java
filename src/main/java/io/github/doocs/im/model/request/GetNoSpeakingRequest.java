@@ -12,9 +12,6 @@ public class GetNoSpeakingRequest extends GenericRequest {
     @JsonProperty("Get_Account")
     private String getAccount;
 
-    public GetNoSpeakingRequest() {
-    }
-
     public GetNoSpeakingRequest(String getAccount) {
         this.getAccount = getAccount;
     }

@@ -15,9 +15,6 @@ public class ChangeGroupOwnerRequest extends GenericRequest {
     @JsonProperty("NewOwner_Account")
     private String newOwnerAccount;
 
-    public ChangeGroupOwnerRequest() {
-    }
-
     public ChangeGroupOwnerRequest(String groupId, String newOwnerAccount) {
         this.groupId = groupId;
         this.newOwnerAccount = newOwnerAccount;

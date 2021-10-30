@@ -18,8 +18,8 @@ public class AccountImportRequest extends GenericRequest {
     @JsonProperty("FaceUrl")
     private String faceUrl;
 
-
-    public AccountImportRequest() {
+    public AccountImportRequest(String identifier) {
+        this(identifier, null, null);
     }
 
     public AccountImportRequest(String identifier, String nick, String faceUrl) {

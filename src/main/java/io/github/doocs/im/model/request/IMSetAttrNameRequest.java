@@ -14,6 +14,10 @@ public class IMSetAttrNameRequest extends GenericRequest {
     @JsonProperty("AttrNames")
     private Map<String, String> attrNames;
 
+    public IMSetAttrNameRequest(Map<String, String> attrNames) {
+        this.attrNames = attrNames;
+    }
+
     public Map<String, String> getAttrNames() {
         return attrNames;
     }

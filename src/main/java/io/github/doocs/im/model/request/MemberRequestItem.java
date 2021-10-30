@@ -12,9 +12,6 @@ public class MemberRequestItem {
     @JsonProperty("Member_Account")
     private String memberAccount;
 
-    public MemberRequestItem() {
-    }
-
     public MemberRequestItem(String memberAccount) {
         this.memberAccount = memberAccount;
     }

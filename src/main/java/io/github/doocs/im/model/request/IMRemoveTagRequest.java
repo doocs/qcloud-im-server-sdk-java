@@ -15,6 +15,10 @@ public class IMRemoveTagRequest extends GenericRequest {
     @JsonProperty("UserTags")
     private List<UserTagItem> userTags;
 
+    public IMRemoveTagRequest(List<UserTagItem> userTags) {
+        this.userTags = userTags;
+    }
+
     public List<UserTagItem> getUserTags() {
         return userTags;
     }

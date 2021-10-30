@@ -17,9 +17,6 @@ public class GroupMsgRecallRequest extends GenericRequest {
     @JsonProperty("MsgSeqList")
     private List<MsgSeqItem> msgSeqList;
 
-    public GroupMsgRecallRequest() {
-    }
-
     public GroupMsgRecallRequest(String groupId, List<MsgSeqItem> msgSeqList) {
         this.groupId = groupId;
         this.msgSeqList = msgSeqList;

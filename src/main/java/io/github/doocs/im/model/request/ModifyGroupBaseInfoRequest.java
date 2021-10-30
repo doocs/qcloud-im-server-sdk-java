@@ -39,7 +39,8 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
     @JsonProperty("AppDefinedData")
     private List<Map<String, Object>> appDefinedData;
 
-    public ModifyGroupBaseInfoRequest() {
+    public ModifyGroupBaseInfoRequest(String groupId) {
+        this.groupId = groupId;
     }
 
     public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification, String faceUrl, Integer maxMemberNum, String applyJoinOption, String shutUpAllMember, List<Map<String, Object>> appDefinedData) {

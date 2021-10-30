@@ -17,6 +17,15 @@ public class QueryStateRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    public QueryStateRequest(List<String> toAccount) {
+        this(null, toAccount);
+    }
+
+    public QueryStateRequest(Integer isNeedDetail, List<String> toAccount) {
+        this.isNeedDetail = isNeedDetail;
+        this.toAccount = toAccount;
+    }
+
     public Integer getIsNeedDetail() {
         return isNeedDetail;
     }

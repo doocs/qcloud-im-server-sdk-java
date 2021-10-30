@@ -14,6 +14,10 @@ public class MultiAccountImportRequest extends GenericRequest {
     @JsonProperty("Accounts")
     private List<String> accounts;
 
+    public MultiAccountImportRequest(List<String> accounts) {
+        this.accounts = accounts;
+    }
+
     public List<String> getAccounts() {
         return accounts;
     }

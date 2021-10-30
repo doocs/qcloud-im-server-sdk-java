@@ -17,6 +17,15 @@ public class GetC2CUnreadMsgRequest extends GenericRequest {
     @JsonProperty("Peer_Account")
     private List<String> peerAccount;
 
+    public GetC2CUnreadMsgRequest(String toAccount) {
+        this(toAccount, null);
+    }
+
+    public GetC2CUnreadMsgRequest(String toAccount, List<String> peerAccount) {
+        this.toAccount = toAccount;
+        this.peerAccount = peerAccount;
+    }
+
     public String getToAccount() {
         return toAccount;
     }

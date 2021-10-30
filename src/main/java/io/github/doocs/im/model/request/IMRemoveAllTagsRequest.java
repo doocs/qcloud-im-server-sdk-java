@@ -14,6 +14,10 @@ public class IMRemoveAllTagsRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    public IMRemoveAllTagsRequest(List<String> toAccount) {
+        this.toAccount = toAccount;
+    }
+
     public List<String> getToAccount() {
         return toAccount;
     }

@@ -14,6 +14,13 @@ public class GetAppInfoRequest extends GenericRequest {
     @JsonProperty("RequestField")
     private List<String> requestField;
 
+    public GetAppInfoRequest() {
+    }
+
+    public GetAppInfoRequest(List<String> requestField) {
+        this.requestField = requestField;
+    }
+
     public List<String> getRequestField() {
         return requestField;
     }

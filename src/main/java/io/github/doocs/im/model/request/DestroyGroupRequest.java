@@ -12,9 +12,6 @@ public class DestroyGroupRequest extends GenericRequest {
     @JsonProperty("GroupId")
     private String groupId;
 
-    public DestroyGroupRequest() {
-    }
-
     public DestroyGroupRequest(String groupId) {
         this.groupId = groupId;
     }

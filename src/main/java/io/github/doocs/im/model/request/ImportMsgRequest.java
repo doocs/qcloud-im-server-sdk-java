@@ -36,10 +36,14 @@ public class ImportMsgRequest extends GenericRequest {
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
-    public ImportMsgRequest() {
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount,
+                            Integer msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody) {
+        this(syncFromOldSystem, fromAccount, toAccount, null, msgRandom, msgTimeStamp, msgBody, null);
     }
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody, String cloudCustomData) {
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount,
+                            Integer msgSeq, Integer msgRandom, Integer msgTimeStamp,
+                            List<TIMMsgElement> msgBody, String cloudCustomData) {
         this.syncFromOldSystem = syncFromOldSystem;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

@@ -21,7 +21,8 @@ public class FriendGetRequest extends GenericRequest {
     @JsonProperty("CustomSequence")
     private Integer customSequence;
 
-    public FriendGetRequest() {
+    public FriendGetRequest(String fromAccount, Integer startIndex) {
+        this(fromAccount, startIndex, null, null);
     }
 
     public FriendGetRequest(String fromAccount, Integer startIndex, Integer standardSequence, Integer customSequence) {

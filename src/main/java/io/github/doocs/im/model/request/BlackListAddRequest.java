@@ -17,9 +17,6 @@ public class BlackListAddRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
-    public BlackListAddRequest() {
-    }
-
     public BlackListAddRequest(String fromAccount, List<String> toAccount) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;

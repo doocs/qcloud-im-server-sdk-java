@@ -31,7 +31,8 @@ public class IMPushRequest extends GenericRequest {
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 
-    public IMPushRequest() {
+    public IMPushRequest(Integer msgRandom, List<TIMMsgElement> msgBody) {
+        this(null, msgRandom, msgBody, null, null, null);
     }
 
     public IMPushRequest(Map<String, Object> condition, Integer msgRandom, List<TIMMsgElement> msgBody, Integer msgLifeTime, String fromAccount, OfflinePushInfo offlinePushInfo) {
