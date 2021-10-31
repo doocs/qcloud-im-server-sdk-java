@@ -3,13 +3,10 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 群基础资料
- * https://cloud.tencent.com/document/product/269/1502#.E7.BE.A4.E7.BB.84.E6.95.B0.E6.8D.AE.E7.BB.93.E6.9E.84.E4.BB.8B.E7.BB.8D
- *
  * @author bingo
- * @since 2021/8/1 11:39
+ * @since 2021/8/4 10:48
  */
-public class GroupInfoResultItem {
+public class GroupIdListResultItem {
     @JsonProperty("GroupId")
     private String groupId;
 
@@ -177,7 +174,7 @@ public class GroupInfoResultItem {
 
     @Override
     public String toString() {
-        return "GroupInfoResultItem{" +
+        return "GroupIdListIResultItem{" +
                 "groupId='" + groupId + '\'' +
                 ", type='" + type + '\'' +
                 ", name='" + name + '\'' +

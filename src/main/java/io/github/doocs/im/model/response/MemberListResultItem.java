@@ -13,6 +13,22 @@ public class MemberListResultItem {
     @JsonProperty("Result")
     private Integer result;
 
+    public String getMemberAccount() {
+        return memberAccount;
+    }
+
+    public void setMemberAccount(String memberAccount) {
+        this.memberAccount = memberAccount;
+    }
+
+    public Integer getResult() {
+        return result;
+    }
+
+    public void setResult(Integer result) {
+        this.result = result;
+    }
+
     @Override
     public String toString() {
         return "MemberListResultItem{" +

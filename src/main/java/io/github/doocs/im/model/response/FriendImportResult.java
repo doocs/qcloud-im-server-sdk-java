@@ -15,6 +15,9 @@ public class FriendImportResult extends GenericResult {
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
+    @JsonProperty("Fail_Account")
+    private List<String> failAccount;
+
     public List<ResultItem> getResultItemList() {
         return resultItemList;
     }
@@ -31,11 +34,20 @@ public class FriendImportResult extends GenericResult {
         this.errorDisplay = errorDisplay;
     }
 
+    public List<String> getFailAccount() {
+        return failAccount;
+    }
+
+    public void setFailAccount(List<String> failAccount) {
+        this.failAccount = failAccount;
+    }
+
     @Override
     public String toString() {
         return "FriendImportResult{" +
                 "resultItemList=" + resultItemList +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", failAccount=" + failAccount +
                 '}';
     }
 }

@@ -2,16 +2,21 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 /**
  * @author bingo
  * @since 2021/7/28 11:10
  */
-public class QueryStateResultItem {
+public class QueryResultItem {
     @JsonProperty("To_Account")
     private String toAccount;
 
     @JsonProperty("Status")
     private String status;
+
+    @JsonProperty("Detail")
+    private List<QueryResultDetailItem> detail;
 
     public String getToAccount() {
         return toAccount;
@@ -29,11 +34,20 @@ public class QueryStateResultItem {
         this.status = status;
     }
 
+    public List<QueryResultDetailItem> getDetail() {
+        return detail;
+    }
+
+    public void setDetail(List<QueryResultDetailItem> detail) {
+        this.detail = detail;
+    }
+
     @Override
     public String toString() {
-        return "QueryStateResultItem{" +
+        return "QueryResultItem{" +
                 "toAccount='" + toAccount + '\'' +
                 ", status='" + status + '\'' +
+                ", detail=" + detail +
                 '}';
     }
 }

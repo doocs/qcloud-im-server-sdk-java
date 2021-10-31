@@ -28,4 +28,12 @@ public class BlackListItem {
     public void setAddBlackTimeStamp(Integer addBlackTimeStamp) {
         this.addBlackTimeStamp = addBlackTimeStamp;
     }
+
+    @Override
+    public String toString() {
+        return "BlackListItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", addBlackTimeStamp=" + addBlackTimeStamp +
+                '}';
+    }
 }

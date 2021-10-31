@@ -1,6 +1,7 @@
 package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.doocs.im.model.group.MemberProfile;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class GetGroupMemberInfoResult extends GenericResult {
     private Integer memberNum;
 
     @JsonProperty("MemberList")
-    private List<MemberInfoItem> memberList;
+    private List<MemberProfile> memberList;
 
     public Integer getMemberNum() {
         return memberNum;
@@ -23,11 +24,11 @@ public class GetGroupMemberInfoResult extends GenericResult {
         this.memberNum = memberNum;
     }
 
-    public List<MemberInfoItem> getMemberList() {
+    public List<MemberProfile> getMemberList() {
         return memberList;
     }
 
-    public void setMemberList(List<MemberInfoItem> memberList) {
+    public void setMemberList(List<MemberProfile> memberList) {
         this.memberList = memberList;
     }
 

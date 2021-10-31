@@ -3,10 +3,10 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @author hyh
- * @since 2021/07/28 17:47
+ * @author bingo
+ * @since 2021/7/28 11:11
  */
-public class BatchSendMsgErrorItem {
+public class QueryResultErrorItem {
     @JsonProperty("To_Account")
     private String toAccount;
 
@@ -31,7 +31,7 @@ public class BatchSendMsgErrorItem {
 
     @Override
     public String toString() {
-        return "BatchSendMsgErrorItem{" +
+        return "QueryResultErrorItem{" +
                 "toAccount='" + toAccount + '\'' +
                 ", errorCode=" + errorCode +
                 '}';

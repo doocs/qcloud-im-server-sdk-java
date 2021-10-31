@@ -1,6 +1,7 @@
 package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.doocs.im.model.group.GroupInfo;
 
 import java.util.List;
 
@@ -10,13 +11,13 @@ import java.util.List;
  */
 public class GetGroupInfoResult extends GenericResult {
     @JsonProperty("GroupInfo")
-    private List<GroupInfoResultItem> groupInfo;
+    private List<GroupInfo> groupInfo;
 
-    public List<GroupInfoResultItem> getGroupInfo() {
+    public List<GroupInfo> getGroupInfo() {
         return groupInfo;
     }
 
-    public void setGroupInfo(List<GroupInfoResultItem> groupInfo) {
+    public void setGroupInfo(List<GroupInfo> groupInfo) {
         this.groupInfo = groupInfo;
     }
 

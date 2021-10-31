@@ -12,9 +12,6 @@ public class FriendAddResult extends GenericResult {
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;
 
-    @JsonProperty("ActionStatus")
-    private String actionStatus;
-
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
@@ -24,16 +21,6 @@ public class FriendAddResult extends GenericResult {
 
     public void setResultItemList(List<ResultItem> resultItemList) {
         this.resultItemList = resultItemList;
-    }
-
-    @Override
-    public String getActionStatus() {
-        return actionStatus;
-    }
-
-    @Override
-    public void setActionStatus(String actionStatus) {
-        this.actionStatus = actionStatus;
     }
 
     public String getErrorDisplay() {
@@ -48,7 +35,6 @@ public class FriendAddResult extends GenericResult {
     public String toString() {
         return "FriendAddResult{" +
                 "resultItemList=" + resultItemList +
-                ", actionStatus='" + actionStatus + '\'' +
                 ", errorDisplay='" + errorDisplay + '\'' +
                 '}';
     }

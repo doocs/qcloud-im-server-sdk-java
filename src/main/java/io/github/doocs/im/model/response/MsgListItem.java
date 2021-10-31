@@ -123,4 +123,19 @@ public class MsgListItem {
     public void setCloudCustomData(String cloudCustomData) {
         this.cloudCustomData = cloudCustomData;
     }
+
+    @Override
+    public String toString() {
+        return "MsgListItem{" +
+                "fromAccount='" + fromAccount + '\'' +
+                ", toAccount='" + toAccount + '\'' +
+                ", msgSeq=" + msgSeq +
+                ", msgRandom=" + msgRandom +
+                ", msgTimeStamp=" + msgTimeStamp +
+                ", msgFlagBits=" + msgFlagBits +
+                ", msgKey='" + msgKey + '\'' +
+                ", msgBody=" + msgBody +
+                ", cloudCustomData='" + cloudCustomData + '\'' +
+                '}';
+    }
 }

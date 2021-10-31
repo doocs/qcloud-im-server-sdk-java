@@ -6,19 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author xy
  * @since 2021/07/31 11:51:01
  */
-public class GetNoSpeakingResult {
-    /**
-     * 失败原因
-     */
-    @JsonProperty("ErrorInfo")
-    private String errorInfo;
-
-    /**
-     * 错误码，0为成功，其他为失败，错误码表：https://cloud.tencent.com/document/product/269/1671
-     */
-    @JsonProperty("ErrorCode")
-    private Integer errorCode;
-
+public class GetNoSpeakingResult extends GenericResult {
     /**
      * 单聊消息禁言时长，单位为秒
      */
@@ -31,22 +19,6 @@ public class GetNoSpeakingResult {
     @JsonProperty("GroupmsgNospeakingTime")
     private Long groupMsgNoSpeakingTime;
 
-
-    public String getErrorInfo() {
-        return errorInfo;
-    }
-
-    public void setErrorInfo(String errorInfo) {
-        this.errorInfo = errorInfo;
-    }
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
 
     public Long getC2CMsgNoSpeakingTime() {
         return c2CMsgNoSpeakingTime;
@@ -66,16 +38,9 @@ public class GetNoSpeakingResult {
 
     @Override
     public String toString() {
-        return "GetNoSpeakingResult{"
-                + "errorInfo='"
-                + errorInfo
-                + '\''
-                + ", errorCode="
-                + errorCode
-                + ", c2CMsgNoSpeakingTime="
-                + c2CMsgNoSpeakingTime
-                + ", groupMsgNoSpeakingTime="
-                + groupMsgNoSpeakingTime
-                + '}';
+        return "GetNoSpeakingResult{" +
+                "c2CMsgNoSpeakingTime=" + c2CMsgNoSpeakingTime +
+                ", groupMsgNoSpeakingTime=" + groupMsgNoSpeakingTime +
+                '}';
     }
 }
