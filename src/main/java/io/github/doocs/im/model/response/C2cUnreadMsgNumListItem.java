@@ -11,7 +11,7 @@ public class C2cUnreadMsgNumListItem {
     private String peerAccount;
 
     @JsonProperty("C2CUnreadMsgNum")
-    private String unreadMsgNum;
+    private Integer unreadMsgNum;
 
     public String getPeerAccount() {
         return peerAccount;
@@ -21,11 +21,11 @@ public class C2cUnreadMsgNumListItem {
         this.peerAccount = peerAccount;
     }
 
-    public String getUnreadMsgNum() {
+    public Integer getUnreadMsgNum() {
         return unreadMsgNum;
     }
 
-    public void setUnreadMsgNum(String unreadMsgNum) {
+    public void setUnreadMsgNum(Integer unreadMsgNum) {
         this.unreadMsgNum = unreadMsgNum;
     }
 
@@ -33,7 +33,7 @@ public class C2cUnreadMsgNumListItem {
     public String toString() {
         return "C2cUnreadMsgNumListItem{" +
                 "peerAccount='" + peerAccount + '\'' +
-                ", unreadMsgNum='" + unreadMsgNum + '\'' +
+                ", unreadMsgNum=" + unreadMsgNum +
                 '}';
     }
 }

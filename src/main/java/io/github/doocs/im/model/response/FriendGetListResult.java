@@ -15,6 +15,9 @@ public class FriendGetListResult extends GroupGetResult {
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 
+    @JsonProperty("ErrorDisplay")
+    private String errorDisplay;
+
     public List<FriendGetListInfoItem> getInfoItemList() {
         return infoItemList;
     }
@@ -32,10 +35,21 @@ public class FriendGetListResult extends GroupGetResult {
     }
 
     @Override
+    public String getErrorDisplay() {
+        return errorDisplay;
+    }
+
+    @Override
+    public void setErrorDisplay(String errorDisplay) {
+        this.errorDisplay = errorDisplay;
+    }
+
+    @Override
     public String toString() {
         return "FriendGetListResult{" +
                 "infoItemList=" + infoItemList +
                 ", failAccount=" + failAccount +
+                ", errorDisplay='" + errorDisplay + '\'' +
                 '}';
     }
 }

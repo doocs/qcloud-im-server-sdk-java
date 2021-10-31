@@ -12,6 +12,14 @@ public class ImportGroupMemberResult extends GenericResult {
     @JsonProperty("MemberList")
     private List<MemberListResultItem> memberList;
 
+    public List<MemberListResultItem> getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(List<MemberListResultItem> memberList) {
+        this.memberList = memberList;
+    }
+
     @Override
     public String toString() {
         return "ImportGroupMemberResult{" +

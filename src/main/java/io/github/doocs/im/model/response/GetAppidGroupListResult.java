@@ -15,6 +15,9 @@ public class GetAppidGroupListResult extends GenericResult {
     @JsonProperty("GroupIdList")
     private List<GroupIdItem> groupIdList;
 
+    @JsonProperty("Next")
+    private Integer next;
+
     public Integer getTotalCount() {
         return totalCount;
     }
@@ -31,11 +34,20 @@ public class GetAppidGroupListResult extends GenericResult {
         this.groupIdList = groupIdList;
     }
 
+    public Integer getNext() {
+        return next;
+    }
+
+    public void setNext(Integer next) {
+        this.next = next;
+    }
+
     @Override
     public String toString() {
         return "GetAppidGroupListResult{" +
                 "totalCount=" + totalCount +
                 ", groupIdList=" + groupIdList +
+                ", next=" + next +
                 '}';
     }
 }

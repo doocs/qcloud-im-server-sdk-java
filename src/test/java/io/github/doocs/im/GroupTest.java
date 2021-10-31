@@ -50,7 +50,9 @@ public class GroupTest {
 
     @Test
     public void testCreateGroup() throws IOException {
-        CreateGroupRequest request = new CreateGroupRequest(GroupType.PUBLIC, "TestGroup");
+        CreateGroupRequest request = new CreateGroupRequest();
+        request.setType(GroupType.PUBLIC);
+        request.setName("TestGroup");
         request.setOwnerAccount("bingo");
         request.setGroupId("MyFirstGroup");
         request.setIntroduction("This is group Introduction");

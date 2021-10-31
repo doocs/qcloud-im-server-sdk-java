@@ -12,6 +12,14 @@ public class ImportGroupMsgResult extends GenericResult {
     @JsonProperty("ImportMsgResult")
     private List<ImportMsgResultItem> importMsgResult;
 
+    public List<ImportMsgResultItem> getImportMsgResult() {
+        return importMsgResult;
+    }
+
+    public void setImportMsgResult(List<ImportMsgResultItem> importMsgResult) {
+        this.importMsgResult = importMsgResult;
+    }
+
     @Override
     public String toString() {
         return "ImportGroupMsgResult{" +

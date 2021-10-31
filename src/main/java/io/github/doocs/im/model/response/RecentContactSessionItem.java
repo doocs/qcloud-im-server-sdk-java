@@ -17,7 +17,7 @@ public class RecentContactSessionItem {
     private String groupId;
 
     @JsonProperty("MsgTime")
-    private String msgTime;
+    private Integer msgTime;
 
     @JsonProperty("TopFlag")
     private Integer topFlag;
@@ -46,11 +46,11 @@ public class RecentContactSessionItem {
         this.groupId = groupId;
     }
 
-    public String getMsgTime() {
+    public Integer getMsgTime() {
         return msgTime;
     }
 
-    public void setMsgTime(String msgTime) {
+    public void setMsgTime(Integer msgTime) {
         this.msgTime = msgTime;
     }
 

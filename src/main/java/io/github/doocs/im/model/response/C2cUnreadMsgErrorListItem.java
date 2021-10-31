@@ -4,21 +4,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author bingo
- * @since 2021/7/28 11:11
+ * @since 2021/10/31 20:21
  */
-public class QueryStateErrorItem {
-    @JsonProperty("To_Account")
-    private String toAccount;
+public class C2cUnreadMsgErrorListItem {
+    @JsonProperty("Peer_Account")
+    private String peerAccount;
 
     @JsonProperty("ErrorCode")
     private Integer errorCode;
 
-    public String getToAccount() {
-        return toAccount;
+    public String getPeerAccount() {
+        return peerAccount;
     }
 
-    public void setToAccount(String toAccount) {
-        this.toAccount = toAccount;
+    public void setPeerAccount(String peerAccount) {
+        this.peerAccount = peerAccount;
     }
 
     public Integer getErrorCode() {
@@ -31,8 +31,8 @@ public class QueryStateErrorItem {
 
     @Override
     public String toString() {
-        return "QueryStateErrorItem{" +
-                "toAccount='" + toAccount + '\'' +
+        return "C2cUnreadMsgErrorListItem{" +
+                "peerAccount='" + peerAccount + '\'' +
                 ", errorCode=" + errorCode +
                 '}';
     }

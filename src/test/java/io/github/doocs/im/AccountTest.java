@@ -85,9 +85,9 @@ public class AccountTest {
     @Test
     public void testQueryState() throws IOException {
         List<String> toAccount = Collections.singletonList("bingo");
-        QueryStateRequest request = new QueryStateRequest(toAccount);
+        QueryOnlineStatus request = new QueryOnlineStatus(toAccount);
         request.setIsNeedDetail(IsNeedDetail.YES);
-        QueryStateResult result = client.account.queryState(request);
+        QueryOnlineStatusResult result = client.account.queryOnlineStatus(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }

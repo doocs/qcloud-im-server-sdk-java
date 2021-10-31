@@ -41,4 +41,13 @@ public class FriendUpdateResult extends GenericResult {
     public void setFailAccount(List<String> failAccount) {
         this.failAccount = failAccount;
     }
+
+    @Override
+    public String toString() {
+        return "FriendUpdateResult{" +
+                "resultItemList=" + resultItemList +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                ", failAccount=" + failAccount +
+                '}';
+    }
 }

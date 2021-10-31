@@ -30,4 +30,12 @@ public class FriendDeleteResult extends GenericResult {
     public void setResultItemList(List<ResultItem> resultItemList) {
         this.resultItemList = resultItemList;
     }
+
+    @Override
+    public String toString() {
+        return "FriendDeleteResult{" +
+                "errorDisplay='" + errorDisplay + '\'' +
+                ", resultItemList=" + resultItemList +
+                '}';
+    }
 }

@@ -14,13 +14,13 @@ public class FileResultItem {
     private String expireTime;
 
     @JsonProperty("FileSize")
-    private String fileSize;
+    private Integer fileSize;
 
     @JsonProperty("FileMD5")
     private String fileMd5;
 
     @JsonProperty("GzipSize")
-    private String gzipSize;
+    private Integer gzipSize;
 
     @JsonProperty("GzipMD5")
     private String gzipMd5;
@@ -41,11 +41,11 @@ public class FileResultItem {
         this.expireTime = expireTime;
     }
 
-    public String getFileSize() {
+    public Integer getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(String fileSize) {
+    public void setFileSize(Integer fileSize) {
         this.fileSize = fileSize;
     }
 
@@ -57,11 +57,11 @@ public class FileResultItem {
         this.fileMd5 = fileMd5;
     }
 
-    public String getGzipSize() {
+    public Integer getGzipSize() {
         return gzipSize;
     }
 
-    public void setGzipSize(String gzipSize) {
+    public void setGzipSize(Integer gzipSize) {
         this.gzipSize = gzipSize;
     }
 

@@ -13,7 +13,7 @@ public class GetJoinGroupListResult extends GenericResult {
     private Integer totalCount;
 
     @JsonProperty("GroupIdList")
-    private List<GroupIdListIResultItem> groupIdList;
+    private List<GroupIdListResultItem> groupIdList;
 
     @Override
     public String toString() {

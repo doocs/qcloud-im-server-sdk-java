@@ -2,9 +2,9 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.doocs.im.model.group.AppDefinedDataItem;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author hyh
@@ -37,13 +37,13 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
     private String shutUpAllMember;
 
     @JsonProperty("AppDefinedData")
-    private List<Map<String, Object>> appDefinedData;
+    private List<AppDefinedDataItem> appDefinedData;
 
     public ModifyGroupBaseInfoRequest(String groupId) {
         this.groupId = groupId;
     }
 
-    public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification, String faceUrl, Integer maxMemberNum, String applyJoinOption, String shutUpAllMember, List<Map<String, Object>> appDefinedData) {
+    public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification, String faceUrl, Integer maxMemberNum, String applyJoinOption, String shutUpAllMember, List<AppDefinedDataItem> appDefinedData) {
         this.groupId = groupId;
         this.name = name;
         this.introduction = introduction;
@@ -119,11 +119,11 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
         this.shutUpAllMember = shutUpAllMember;
     }
 
-    public List<Map<String, Object>> getAppDefinedData() {
+    public List<AppDefinedDataItem> getAppDefinedData() {
         return appDefinedData;
     }
 
-    public void setAppDefinedData(List<Map<String, Object>> appDefinedData) {
+    public void setAppDefinedData(List<AppDefinedDataItem> appDefinedData) {
         this.appDefinedData = appDefinedData;
     }
 }

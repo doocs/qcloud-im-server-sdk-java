@@ -10,18 +10,18 @@ import java.util.List;
  * @since 2021/7/30 17:35
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryStateRequest extends GenericRequest {
+public class QueryOnlineStatus extends GenericRequest {
     @JsonProperty("IsNeedDetail")
     private Integer isNeedDetail;
 
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
-    public QueryStateRequest(List<String> toAccount) {
+    public QueryOnlineStatus(List<String> toAccount) {
         this(null, toAccount);
     }
 
-    public QueryStateRequest(Integer isNeedDetail, List<String> toAccount) {
+    public QueryOnlineStatus(Integer isNeedDetail, List<String> toAccount) {
         this.isNeedDetail = isNeedDetail;
         this.toAccount = toAccount;
     }

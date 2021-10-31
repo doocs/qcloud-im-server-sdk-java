@@ -58,7 +58,7 @@ public class Message {
         return HttpUtil.post(url, adminSetMsgReadRequest, AdminSetMsgReadResult.class);
     }
 
-    public C2cUnreadMsgNumResult getC2cUnreadMsgRequest(GetC2cUnreadMsgRequest getC2cUnreadMsgRequest) throws IOException {
+    public C2cUnreadMsgNumResult getC2cUnreadMsgNum(GetC2cUnreadMsgRequest getC2cUnreadMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_C2C_UNREAD_MSG_NUM_COMMAND);
         return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class);
     }

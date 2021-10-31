@@ -20,7 +20,7 @@ public class Account {
     private static final String ACCOUNT_DELETE_COMMAND = "account_delete";
     private static final String ACCOUNT_CHECK_COMMAND = "account_check";
     private static final String KICK_COMMAND = "kick";
-    private static final String QUERY_STATE_COMMAND = "querystate";
+    private static final String QUERY_ONLINE_STATUS_COMMAND = "query_online_status";
 
     private final IMClient imClient;
 
@@ -53,8 +53,8 @@ public class Account {
         return HttpUtil.post(url, kickRequest, KickResult.class);
     }
 
-    public QueryStateResult queryState(QueryStateRequest queryStateRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_STATE_COMMAND);
-        return HttpUtil.post(url, queryStateRequest, QueryStateResult.class);
+    public QueryOnlineStatusResult queryOnlineStatus(QueryOnlineStatus queryOnlineStatus) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_ONLINE_STATUS_COMMAND);
+        return HttpUtil.post(url, queryOnlineStatus, QueryOnlineStatusResult.class);
     }
 }

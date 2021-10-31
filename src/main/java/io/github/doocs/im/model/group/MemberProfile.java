@@ -1,7 +1,9 @@
-package io.github.doocs.im.model.request;
+package io.github.doocs.im.model.group;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * @author bingo
@@ -27,20 +29,28 @@ public class MemberProfile {
     @JsonProperty("LastSendMsgTime")
     private Integer lastSendMsgTime;
 
+    @JsonProperty("ShutUpUntil")
+    private Integer shutUpUntil;
+
     @JsonProperty("NameCard")
     private String nameCard;
+
+    @JsonProperty("AppMemberDefinedData")
+    private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
     public MemberProfile() {
     }
 
-    public MemberProfile(String memberAccount, String role, Integer joinTime, Integer msgSeq, String msgFlag, Integer lastSendMsgTime, String nameCard) {
+    public MemberProfile(String memberAccount, String role, Integer joinTime, Integer msgSeq, String msgFlag, Integer lastSendMsgTime, Integer shutUpUntil, String nameCard, List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.memberAccount = memberAccount;
         this.role = role;
         this.joinTime = joinTime;
         this.msgSeq = msgSeq;
         this.msgFlag = msgFlag;
         this.lastSendMsgTime = lastSendMsgTime;
+        this.shutUpUntil = shutUpUntil;
         this.nameCard = nameCard;
+        this.appMemberDefinedData = appMemberDefinedData;
     }
 
     public String getMemberAccount() {
@@ -91,11 +101,42 @@ public class MemberProfile {
         this.lastSendMsgTime = lastSendMsgTime;
     }
 
+    public Integer getShutUpUntil() {
+        return shutUpUntil;
+    }
+
+    public void setShutUpUntil(Integer shutUpUntil) {
+        this.shutUpUntil = shutUpUntil;
+    }
+
     public String getNameCard() {
         return nameCard;
     }
 
     public void setNameCard(String nameCard) {
         this.nameCard = nameCard;
+    }
+
+    public List<AppMemberDefinedDataItem> getAppMemberDefinedData() {
+        return appMemberDefinedData;
+    }
+
+    public void setAppMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
+        this.appMemberDefinedData = appMemberDefinedData;
+    }
+
+    @Override
+    public String toString() {
+        return "MemberProfile{" +
+                "memberAccount='" + memberAccount + '\'' +
+                ", role='" + role + '\'' +
+                ", joinTime=" + joinTime +
+                ", msgSeq=" + msgSeq +
+                ", msgFlag='" + msgFlag + '\'' +
+                ", lastSendMsgTime=" + lastSendMsgTime +
+                ", shutUpUntil=" + shutUpUntil +
+                ", nameCard='" + nameCard + '\'' +
+                ", appMemberDefinedData=" + appMemberDefinedData +
+                '}';
     }
 }

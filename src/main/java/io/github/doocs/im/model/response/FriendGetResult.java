@@ -28,7 +28,7 @@ public class FriendGetResult extends GenericResult {
     private Integer nextStartIndex;
 
     @JsonProperty("ErrorDisplay")
-    private Integer errorDisplay;
+    private String errorDisplay;
 
     public List<UserDataItem> getUserDataItemList() {
         return userDataItemList;
@@ -78,11 +78,24 @@ public class FriendGetResult extends GenericResult {
         this.nextStartIndex = nextStartIndex;
     }
 
-    public Integer getErrorDisplay() {
+    public String getErrorDisplay() {
         return errorDisplay;
     }
 
-    public void setErrorDisplay(Integer errorDisplay) {
+    public void setErrorDisplay(String errorDisplay) {
         this.errorDisplay = errorDisplay;
+    }
+
+    @Override
+    public String toString() {
+        return "FriendGetResult{" +
+                "userDataItemList=" + userDataItemList +
+                ", standardSequence=" + standardSequence +
+                ", customSequence=" + customSequence +
+                ", friendNum=" + friendNum +
+                ", completeFlag=" + completeFlag +
+                ", nextStartIndex=" + nextStartIndex +
+                ", errorDisplay='" + errorDisplay + '\'' +
+                '}';
     }
 }
