@@ -16,11 +16,11 @@ public class TIMLocationMsgElement extends TIMMsgElement {
     private LocationMsgContent msgContent;
 
     public TIMLocationMsgElement() {
-        super(MsgType.TIM_LOCATION_ELEM);
+        this(null);
     }
 
     public TIMLocationMsgElement(LocationMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_LOCATION_ELEM);
         this.msgContent = msgContent;
     }
 

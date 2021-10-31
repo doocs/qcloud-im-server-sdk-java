@@ -20,7 +20,7 @@ public class TIMTextMsgElement extends TIMMsgElement {
     }
 
     public TIMTextMsgElement(TextMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_TEXT_ELEM);
         this.msgContent = msgContent;
     }
 

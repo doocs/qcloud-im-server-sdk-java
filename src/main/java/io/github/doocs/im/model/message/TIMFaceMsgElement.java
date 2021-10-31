@@ -16,11 +16,11 @@ public class TIMFaceMsgElement extends TIMMsgElement {
     private FaceMsgContent msgContent;
 
     public TIMFaceMsgElement() {
-        super(MsgType.TIM_FACE_ELEM);
+        this(null);
     }
 
     public TIMFaceMsgElement(FaceMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_FACE_ELEM);
         this.msgContent = msgContent;
     }
 

@@ -16,11 +16,11 @@ public class TIMCustomMsgElement extends TIMMsgElement {
     private CustomMsgContent msgContent;
 
     public TIMCustomMsgElement() {
-        super(MsgType.TIM_CUSTOM_ELEM);
+        this(null);
     }
 
     public TIMCustomMsgElement(CustomMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_CUSTOM_ELEM);
         this.msgContent = msgContent;
     }
 

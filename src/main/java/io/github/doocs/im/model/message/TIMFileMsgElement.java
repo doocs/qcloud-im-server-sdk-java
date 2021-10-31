@@ -16,11 +16,11 @@ public class TIMFileMsgElement extends TIMMsgElement {
     private FileMsgContent msgContent;
 
     public TIMFileMsgElement() {
-        super(MsgType.TIM_FILE_ELEM);
+        this(null);
     }
 
     public TIMFileMsgElement(FileMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_FILE_ELEM);
         this.msgContent = msgContent;
     }
 
