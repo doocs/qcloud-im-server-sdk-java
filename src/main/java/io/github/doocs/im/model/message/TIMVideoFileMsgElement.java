@@ -16,11 +16,11 @@ public class TIMVideoFileMsgElement extends TIMMsgElement {
     private VideoFileMsgContent msgContent;
 
     public TIMVideoFileMsgElement() {
-        super(MsgType.TIM_VIDEO_FILE_ELEM);
+        this(null);
     }
 
     public TIMVideoFileMsgElement(VideoFileMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_VIDEO_FILE_ELEM);
         this.msgContent = msgContent;
     }
 

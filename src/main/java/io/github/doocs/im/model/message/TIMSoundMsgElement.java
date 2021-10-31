@@ -16,11 +16,11 @@ public class TIMSoundMsgElement extends TIMMsgElement {
     private SoundMsgContent msgContent;
 
     public TIMSoundMsgElement() {
-        super(MsgType.TIM_SOUND_ELEM);
+        this(null);
     }
 
     public TIMSoundMsgElement(SoundMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_SOUND_ELEM);
         this.msgContent = msgContent;
     }
 

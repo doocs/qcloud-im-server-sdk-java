@@ -18,11 +18,11 @@ public class TIMImageMsgElement extends TIMMsgElement {
     private ImageMsgContent msgContent;
 
     public TIMImageMsgElement() {
-        super(MsgType.TIM_IMAGE_ELEM);
+        this(null);
     }
 
     public TIMImageMsgElement(ImageMsgContent msgContent) {
-        this();
+        super(MsgType.TIM_IMAGE_ELEM);
         this.msgContent = msgContent;
     }
 
