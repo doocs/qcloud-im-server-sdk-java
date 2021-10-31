@@ -4,7 +4,6 @@ import io.github.doocs.im.IMClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -32,31 +31,26 @@ public class Operation {
 
     public SetNoSpeakingResult setNoSpeaking(SetNoSpeakingRequest setNoSpeakingRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_CONFIG, SET_NO_SPEAKING_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(setNoSpeakingRequest), null);
-        return JsonUtil.str2Obj(result, SetNoSpeakingResult.class);
+        return HttpUtil.post(url, setNoSpeakingRequest, SetNoSpeakingResult.class);
     }
 
     public GetNoSpeakingResult getNoSpeaking(GetNoSpeakingRequest getNoSpeakingRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_CONFIG, GET_NO_SPEAKING_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(getNoSpeakingRequest), null);
-        return JsonUtil.str2Obj(result, GetNoSpeakingResult.class);
+        return HttpUtil.post(url, getNoSpeakingRequest, GetNoSpeakingResult.class);
     }
 
     public GetAppInfoResult getAppInfo(GetAppInfoRequest getAppInfoRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_CONFIG, GET_APP_INFO_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(getAppInfoRequest), null);
-        return JsonUtil.str2Obj(result, GetAppInfoResult.class);
+        return HttpUtil.post(url, getAppInfoRequest, GetAppInfoResult.class);
     }
 
     public GetHistoryResult getHistory(GetHistoryRequest getHistoryRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_MSG, GET_HISTORY_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(getHistoryRequest), null);
-        return JsonUtil.str2Obj(result, GetHistoryResult.class);
+        return HttpUtil.post(url, getHistoryRequest, GetHistoryResult.class);
     }
 
     public GetIpListResult getIpList(GetIpListRequest getIpListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_CONFIG, GET_IP_LIST_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(getIpListRequest), null);
-        return JsonUtil.str2Obj(result, GetIpListResult.class);
+        return HttpUtil.post(url, getIpListRequest, GetIpListResult.class);
     }
 }

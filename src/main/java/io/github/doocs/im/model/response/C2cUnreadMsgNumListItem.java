@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author hyh
  * @since 2021/07/28 20:39
  */
-public class C2CUnreadMsgNumListItem {
+public class C2cUnreadMsgNumListItem {
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
@@ -31,7 +31,7 @@ public class C2CUnreadMsgNumListItem {
 
     @Override
     public String toString() {
-        return "C2CUnreadMsgNumListItem{" +
+        return "C2cUnreadMsgNumListItem{" +
                 "peerAccount='" + peerAccount + '\'' +
                 ", unreadMsgNum='" + unreadMsgNum + '\'' +
                 '}';

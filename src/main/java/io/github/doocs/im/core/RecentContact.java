@@ -6,7 +6,6 @@ import io.github.doocs.im.model.request.GetRecentContactListRequest;
 import io.github.doocs.im.model.response.DeleteRecentContactResult;
 import io.github.doocs.im.model.response.GetRecentContactListResult;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -28,13 +27,11 @@ public class RecentContact {
 
     public GetRecentContactListResult recentContactList(GetRecentContactListRequest recentContactListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_RECENT_CONTACT_LIST);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(recentContactListRequest), null);
-        return JsonUtil.str2Obj(result, GetRecentContactListResult.class);
+        return HttpUtil.post(url, recentContactListRequest, GetRecentContactListResult.class);
     }
 
     public DeleteRecentContactResult deleteRecentContact(DeleteRecentContactRequest deleteRecentContactRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, DELETE_RECENT_CONTACT);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(deleteRecentContactRequest), null);
-        return JsonUtil.str2Obj(result, DeleteRecentContactResult.class);
+        return HttpUtil.post(url, deleteRecentContactRequest, DeleteRecentContactResult.class);
     }
 }

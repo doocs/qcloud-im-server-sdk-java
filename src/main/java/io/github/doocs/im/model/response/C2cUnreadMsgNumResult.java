@@ -8,21 +8,21 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/28 20:34
  */
-public class C2CUnreadMsgNumResult extends GenericResult {
+public class C2cUnreadMsgNumResult extends GenericResult {
     @JsonProperty("C2CUnreadMsgNumList")
-    private List<C2CUnreadMsgNumListItem> unreadMsgNumList;
+    private List<C2cUnreadMsgNumListItem> unreadMsgNumList;
 
-    public List<C2CUnreadMsgNumListItem> getUnreadMsgNumList() {
+    public List<C2cUnreadMsgNumListItem> getUnreadMsgNumList() {
         return unreadMsgNumList;
     }
 
-    public void setUnreadMsgNumList(List<C2CUnreadMsgNumListItem> unreadMsgNumList) {
+    public void setUnreadMsgNumList(List<C2cUnreadMsgNumListItem> unreadMsgNumList) {
         this.unreadMsgNumList = unreadMsgNumList;
     }
 
     @Override
     public String toString() {
-        return "C2CUnreadMsgNumResult{" +
+        return "C2cUnreadMsgNumResult{" +
                 "unreadMsgNumList=" + unreadMsgNumList +
                 '}';
     }

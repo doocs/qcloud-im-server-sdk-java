@@ -4,7 +4,6 @@ import io.github.doocs.im.IMClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -31,43 +30,36 @@ public class Message {
 
     public SendMsgResult sendMsg(SendMsgRequest sendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_MSG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(sendMsgRequest), null);
-        return JsonUtil.str2Obj(result, SendMsgResult.class);
+        return HttpUtil.post(url, sendMsgRequest, SendMsgResult.class);
     }
 
     public BatchSendMsgResult batchSendMsg(BatchSendMsgRequest batchSendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(batchSendMsgRequest), null);
-        return JsonUtil.str2Obj(result, BatchSendMsgResult.class);
+        return HttpUtil.post(url, batchSendMsgRequest, BatchSendMsgResult.class);
     }
 
     public ImportMsgResult importMsg(ImportMsgRequest importMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IMPORT_MSG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(importMsgRequest), null);
-        return JsonUtil.str2Obj(result, ImportMsgResult.class);
+        return HttpUtil.post(url, importMsgRequest, ImportMsgResult.class);
     }
 
     public AdminRoamMsgResult getRoamMsg(AdminGetRoamMsgRequest adminGetRoamMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_GET_ROAM_MSG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminGetRoamMsgRequest), null);
-        return JsonUtil.str2Obj(result, AdminRoamMsgResult.class);
+        return HttpUtil.post(url, adminGetRoamMsgRequest, AdminRoamMsgResult.class);
     }
 
     public AdminMsgWithdrawResult msgWithdraw(AdminMsgWithdrawRequest adminMsgWithdrawRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_MSG_WITHDRAW_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminMsgWithdrawRequest), null);
-        return JsonUtil.str2Obj(result, AdminMsgWithdrawResult.class);
+        return HttpUtil.post(url, adminMsgWithdrawRequest, AdminMsgWithdrawResult.class);
     }
 
     public AdminSetMsgReadResult setMsgRead(AdminSetMsgReadRequest adminSetMsgReadRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_SET_MSG_READ_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(adminSetMsgReadRequest), null);
-        return JsonUtil.str2Obj(result, AdminSetMsgReadResult.class);
+        return HttpUtil.post(url, adminSetMsgReadRequest, AdminSetMsgReadResult.class);
     }
 
-    public C2CUnreadMsgNumResult getC2CUnreadMsgNum(GetC2CUnreadMsgRequest getC2CUnreadMsgRequest) throws IOException {
+    public C2cUnreadMsgNumResult getC2cUnreadMsgRequest(GetC2cUnreadMsgRequest getC2cUnreadMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_C2C_UNREAD_MSG_NUM_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(getC2CUnreadMsgRequest), null);
-        return JsonUtil.str2Obj(result, C2CUnreadMsgNumResult.class);
+        return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class);
     }
 }

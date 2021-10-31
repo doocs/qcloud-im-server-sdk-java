@@ -4,7 +4,6 @@ import io.github.doocs.im.IMClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -34,61 +33,51 @@ public class Member {
 
     public IMPushResult imPush(IMPushRequest imPushRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_PUSH_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imPushRequest), null);
-        return JsonUtil.str2Obj(result, IMPushResult.class);
+        return HttpUtil.post(url, imPushRequest, IMPushResult.class);
     }
 
     public IMSetAttrNameResult imSetAttrName(IMSetAttrNameRequest imSetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_NAME_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imSetAttrNameRequest), null);
-        return JsonUtil.str2Obj(result, IMSetAttrNameResult.class);
+        return HttpUtil.post(url, imSetAttrNameRequest, IMSetAttrNameResult.class);
     }
 
     public IMGetAttrNameResult imGetAttrName(IMGetAttrNameRequest imGetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_NAME_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imGetAttrNameRequest), null);
-        return JsonUtil.str2Obj(result, IMGetAttrNameResult.class);
+        return HttpUtil.post(url, imGetAttrNameRequest, IMGetAttrNameResult.class);
     }
 
     public IMGetAttrResult imGetAttr(IMGetAttrRequest imGetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imGetAttrRequest), null);
-        return JsonUtil.str2Obj(result, IMGetAttrResult.class);
+        return HttpUtil.post(url, imGetAttrRequest, IMGetAttrResult.class);
     }
 
     public IMSetAttrResult imSetAttr(IMSetAttrRequest imSetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imSetAttrRequest), null);
-        return JsonUtil.str2Obj(result, IMSetAttrResult.class);
+        return HttpUtil.post(url, imSetAttrRequest, IMSetAttrResult.class);
     }
 
     public IMRemoveAttrResult imRemoveAttr(IMRemoveAttrRequest imRemoveAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ATTR_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imRemoveAttrRequest), null);
-        return JsonUtil.str2Obj(result, IMRemoveAttrResult.class);
+        return HttpUtil.post(url, imRemoveAttrRequest, IMRemoveAttrResult.class);
     }
 
     public IMGetTagResult imGetTag(IMGetTagRequest imGetTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_TAG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imGetTagRequest), null);
-        return JsonUtil.str2Obj(result, IMGetTagResult.class);
+        return HttpUtil.post(url, imGetTagRequest, IMGetTagResult.class);
     }
 
     public IMAddTagResult imAddTag(IMAddTagRequest imAddTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_ADD_TAG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imAddTagRequest), null);
-        return JsonUtil.str2Obj(result, IMAddTagResult.class);
+        return HttpUtil.post(url, imAddTagRequest, IMAddTagResult.class);
     }
 
     public IMRemoveTagResult imRemoveTag(IMRemoveTagRequest imRemoveTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_TAG_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imRemoveTagRequest), null);
-        return JsonUtil.str2Obj(result, IMRemoveTagResult.class);
+        return HttpUtil.post(url, imRemoveTagRequest, IMRemoveTagResult.class);
     }
 
     public IMRemoveAllTagsResult imRemoveAllTags(IMRemoveAllTagsRequest imRemoveAllTagsRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ALL_TAGS_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(imRemoveAllTagsRequest), null);
-        return JsonUtil.str2Obj(result, IMRemoveAllTagsResult.class);
+        return HttpUtil.post(url, imRemoveAllTagsRequest, IMRemoveAllTagsResult.class);
     }
 }

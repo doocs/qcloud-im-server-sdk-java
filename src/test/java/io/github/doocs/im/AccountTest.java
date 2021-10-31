@@ -34,9 +34,9 @@ public class AccountTest {
 
     @Test
     public void testAccountImport() throws IOException {
-        AccountImportRequest request = new AccountImportRequest("test1");
+        AccountImportRequest request = new AccountImportRequest("user2");
         request.setFaceUrl("http://www.qq.com");
-        request.setNick("bingo");
+        request.setNick("ylb");
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

@@ -10,18 +10,18 @@ import java.util.List;
  * @since 2021/7/31 15:37
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetC2CUnreadMsgRequest extends GenericRequest {
+public class GetC2cUnreadMsgRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private String toAccount;
 
     @JsonProperty("Peer_Account")
     private List<String> peerAccount;
 
-    public GetC2CUnreadMsgRequest(String toAccount) {
+    public GetC2cUnreadMsgRequest(String toAccount) {
         this(toAccount, null);
     }
 
-    public GetC2CUnreadMsgRequest(String toAccount, List<String> peerAccount) {
+    public GetC2cUnreadMsgRequest(String toAccount, List<String> peerAccount) {
         this.toAccount = toAccount;
         this.peerAccount = peerAccount;
     }

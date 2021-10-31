@@ -97,9 +97,9 @@ public class MessageTest {
 
     @Test
     public void testGetC2CUnreadMsgNum() throws IOException {
-        GetC2CUnreadMsgRequest request = new GetC2CUnreadMsgRequest("test2");
+        GetC2cUnreadMsgRequest request = new GetC2cUnreadMsgRequest("test2");
         request.setPeerAccount(Arrays.asList("test1", "bingo"));
-        C2CUnreadMsgNumResult result = client.message.getC2CUnreadMsgNum(request);
+        C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgRequest(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
