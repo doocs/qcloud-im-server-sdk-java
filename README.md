@@ -31,32 +31,27 @@ Add the Maven dependency:
 Here is a quick teaser of an application using IM SDK in Java:
 
 ```java
-public class Main {
-    public static void main(String[] args) {
-        // type your sdkAppId here
-        long appId = 1400554812;
-        
-        // type your adminUserId here
-        String identifier = "test";
-        
-        // type your applicationKey here
-        String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
-        
-        // create ImClient instance
-        IMClient client = IMClient.getInstance(appId, identifier, key);
+// sdk appId
+long appId = 1400554812;
 
-        // import account
-        AccountImportRequest request = new AccountImportRequest();
-        request.setFaceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4");
-        request.setIdentifier("doocs");
-        request.setNick("Doocs Community");
-        try {
-            AccountImportResult result = client.account.accountImport(request);
-            System.out.println(result);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+// admin userId
+String identifier = "test";
+
+// application key
+String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
+
+// create ImClient instance
+IMClient client = IMClient.getInstance(appId, identifier, key);
+
+// import account
+AccountImportRequest request = new AccountImportRequest("doocs");
+request.setFaceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4");
+request.setNick("Doocs Community");
+try {
+    AccountImportResult result = client.account.accountImport(request);
+    // handle result
+} catch (IOException e) {
+    // handle exception
 }
 ```
 
