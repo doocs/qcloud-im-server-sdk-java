@@ -4,7 +4,6 @@ import io.github.doocs.im.IMClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -31,37 +30,31 @@ public class Account {
 
     public AccountImportResult accountImport(AccountImportRequest accountImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_IMPORT_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(accountImportRequest), null);
-        return JsonUtil.str2Obj(result, AccountImportResult.class);
+        return HttpUtil.post(url, accountImportRequest, AccountImportResult.class);
     }
 
     public MultiAccountImportResult multiAccountImport(MultiAccountImportRequest multiAccountImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, MULTI_ACCOUNT_IMPORT_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(multiAccountImportRequest), null);
-        return JsonUtil.str2Obj(result, MultiAccountImportResult.class);
+        return HttpUtil.post(url, multiAccountImportRequest, MultiAccountImportResult.class);
     }
 
     public AccountDeleteResult accountDelete(AccountDeleteRequest accountDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_DELETE_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(accountDeleteRequest), null);
-        return JsonUtil.str2Obj(result, AccountDeleteResult.class);
+        return HttpUtil.post(url, accountDeleteRequest, AccountDeleteResult.class);
     }
 
     public AccountCheckResult accountCheck(AccountCheckRequest accountCheckRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_CHECK_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(accountCheckRequest), null);
-        return JsonUtil.str2Obj(result, AccountCheckResult.class);
+        return HttpUtil.post(url, accountCheckRequest, AccountCheckResult.class);
     }
 
     public KickResult kick(KickRequest kickRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, KICK_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(kickRequest), null);
-        return JsonUtil.str2Obj(result, KickResult.class);
+        return HttpUtil.post(url, kickRequest, KickResult.class);
     }
 
     public QueryStateResult queryState(QueryStateRequest queryStateRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_STATE_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(queryStateRequest), null);
-        return JsonUtil.str2Obj(result, QueryStateResult.class);
+        return HttpUtil.post(url, queryStateRequest, QueryStateResult.class);
     }
 }

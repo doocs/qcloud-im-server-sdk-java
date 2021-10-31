@@ -6,7 +6,6 @@ import io.github.doocs.im.model.request.PortraitSetRequest;
 import io.github.doocs.im.model.response.PortraitGetResult;
 import io.github.doocs.im.model.response.PortraitSetResult;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -28,13 +27,11 @@ public class Profile {
 
     public PortraitSetResult portraitSet(PortraitSetRequest portraitSetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_SET_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(portraitSetRequest), null);
-        return JsonUtil.str2Obj(result, PortraitSetResult.class);
+        return HttpUtil.post(url, portraitSetRequest, PortraitSetResult.class);
     }
 
     public PortraitGetResult portraitGet(PortraitGetRequest portraitGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_GET_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(portraitGetRequest), null);
-        return JsonUtil.str2Obj(result, PortraitGetResult.class);
+        return HttpUtil.post(url, portraitGetRequest, PortraitGetResult.class);
     }
 }

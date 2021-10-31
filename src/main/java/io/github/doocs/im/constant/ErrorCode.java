@@ -6,7 +6,7 @@ package io.github.doocs.im.constant;
  * @author bingo
  * @since 2021/10/30 9:54
  */
-public enum CommonErrorCode {
+public enum ErrorCode {
     /**
      * REST API 公共错误码：https://cloud.tencent.com/document/product/269/1519
      */
@@ -34,7 +34,7 @@ public enum CommonErrorCode {
     ILLEGAL_IP_REST_API(60021, "RestAPI 调用来源 IP 非法"),
     ;
 
-    CommonErrorCode(Integer code, String info) {
+    ErrorCode(Integer code, String info) {
         this.code = code;
         this.info = info;
     }

@@ -4,7 +4,6 @@ import io.github.doocs.im.IMClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
-import io.github.doocs.im.util.JsonUtil;
 
 import java.io.IOException;
 
@@ -39,91 +38,76 @@ public class SNS {
 
     public FriendAddResult friendAdd(FriendAddRequest friendAddRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_ADD_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendAddRequest), null);
-        return JsonUtil.str2Obj(result, FriendAddResult.class);
+        return HttpUtil.post(url, friendAddRequest, FriendAddResult.class);
     }
 
     public FriendImportResult friendImport(FriendImportRequest friendImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_IMPORT_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendImportRequest), null);
-        return JsonUtil.str2Obj(result, FriendImportResult.class);
+        return HttpUtil.post(url, friendImportRequest, FriendImportResult.class);
     }
 
     public FriendUpdateResult friendUpdate(FriendUpdateRequest friendUpdateRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_UPDATE_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendUpdateRequest), null);
-        return JsonUtil.str2Obj(result, FriendUpdateResult.class);
+        return HttpUtil.post(url, friendUpdateRequest, FriendUpdateResult.class);
     }
 
     public FriendDeleteResult friendDelete(FriendDeleteRequest friendDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_DELETE_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendDeleteRequest), null);
-        return JsonUtil.str2Obj(result, FriendDeleteResult.class);
+        return HttpUtil.post(url, friendDeleteRequest, FriendDeleteResult.class);
     }
 
     public FriendDeleteAllResult friendDeleteAll(FriendDeleteAllRequest friendDeleteAllRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_DELETE_ALL_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendDeleteAllRequest), null);
-        return JsonUtil.str2Obj(result, FriendDeleteAllResult.class);
+        return HttpUtil.post(url, friendDeleteAllRequest, FriendDeleteAllResult.class);
     }
 
     public FriendCheckResult friendCheck(FriendCheckRequest friendCheckRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_CHECK_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendCheckRequest), null);
-        return JsonUtil.str2Obj(result, FriendCheckResult.class);
+        return HttpUtil.post(url, friendCheckRequest, FriendCheckResult.class);
     }
 
     public FriendGetResult friendGet(FriendGetRequest friendGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_GET_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendGetRequest), null);
-        return JsonUtil.str2Obj(result, FriendGetResult.class);
+        return HttpUtil.post(url, friendGetRequest, FriendGetResult.class);
     }
 
     public FriendGetListResult friendGetList(FriendGetListRequest friendGetListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_GET_LIST_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(friendGetListRequest), null);
-        return JsonUtil.str2Obj(result, FriendGetListResult.class);
+        return HttpUtil.post(url, friendGetListRequest, FriendGetListResult.class);
     }
 
     public BlackListAddResult blackListAdd(BlackListAddRequest blackListAddRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_ADD_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(blackListAddRequest), null);
-        return JsonUtil.str2Obj(result, BlackListAddResult.class);
+        return HttpUtil.post(url, blackListAddRequest, BlackListAddResult.class);
     }
 
     public BlackListDeleteResult blackListDelete(BlackListDeleteRequest blackListDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_DELETE_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(blackListDeleteRequest), null);
-        return JsonUtil.str2Obj(result, BlackListDeleteResult.class);
+        return HttpUtil.post(url, blackListDeleteRequest, BlackListDeleteResult.class);
     }
 
     public BlackListGetResult blackListGet(BlackListGetRequest blackListGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_GET_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(blackListGetRequest), null);
-        return JsonUtil.str2Obj(result, BlackListGetResult.class);
+        return HttpUtil.post(url, blackListGetRequest, BlackListGetResult.class);
     }
 
     public BlackListCheckResult blackListCheck(BlackListCheckRequest blackListCheckRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_CHECK_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(blackListCheckRequest), null);
-        return JsonUtil.str2Obj(result, BlackListCheckResult.class);
+        return HttpUtil.post(url, blackListCheckRequest, BlackListCheckResult.class);
     }
 
     public GroupAddResult groupAdd(GroupAddRequest groupAddRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GROUP_ADD_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(groupAddRequest), null);
-        return JsonUtil.str2Obj(result, GroupAddResult.class);
+        return HttpUtil.post(url, groupAddRequest, GroupAddResult.class);
     }
 
     public GroupDeleteResult groupDelete(GroupDeleteRequest groupDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GROUP_DELETE_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(groupDeleteRequest), null);
-        return JsonUtil.str2Obj(result, GroupDeleteResult.class);
+        return HttpUtil.post(url, groupDeleteRequest, GroupDeleteResult.class);
     }
 
     public GroupGetResult groupGet(GroupGetRequest groupGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GROUP_GET_COMMAND);
-        String result = HttpUtil.post(url, JsonUtil.obj2Str(groupGetRequest), null);
-        return JsonUtil.str2Obj(result, GroupGetResult.class);
+        return HttpUtil.post(url, groupGetRequest, GroupGetResult.class);
     }
 }
