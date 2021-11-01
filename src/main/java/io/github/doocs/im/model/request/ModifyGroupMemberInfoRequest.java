@@ -33,11 +33,16 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
     @JsonProperty("ShutUpTime")
     private Integer shutUpTime;
 
-    public ModifyGroupMemberInfoRequest(String groupId, String memberAccount) {
-        this(groupId, memberAccount, null, null, null, null, null);
+    public ModifyGroupMemberInfoRequest() {
     }
 
-    public ModifyGroupMemberInfoRequest(String groupId, String memberAccount, String role, String msgFlag, String nameCard, List<Map<String, Object>> appMemberDefinedData, Integer shutUpTime) {
+    public ModifyGroupMemberInfoRequest(String groupId, String memberAccount) {
+        this.groupId = groupId;
+        this.memberAccount = memberAccount;
+    }
+
+    public ModifyGroupMemberInfoRequest(String groupId, String memberAccount, String role, String msgFlag,
+                                        String nameCard, List<Map<String, Object>> appMemberDefinedData, Integer shutUpTime) {
         this.groupId = groupId;
         this.memberAccount = memberAccount;
         this.role = role;
@@ -45,6 +50,20 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
         this.nameCard = nameCard;
         this.appMemberDefinedData = appMemberDefinedData;
         this.shutUpTime = shutUpTime;
+    }
+
+    private ModifyGroupMemberInfoRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.memberAccount = builder.memberAccount;
+        this.role = builder.role;
+        this.msgFlag = builder.msgFlag;
+        this.nameCard = builder.nameCard;
+        this.appMemberDefinedData = builder.appMemberDefinedData;
+        this.shutUpTime = builder.shutUpTime;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -101,5 +120,58 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
 
     public void setShutUpTime(Integer shutUpTime) {
         this.shutUpTime = shutUpTime;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private String memberAccount;
+        private String role;
+        private String msgFlag;
+        private String nameCard;
+        private List<Map<String, Object>> appMemberDefinedData;
+        private Integer shutUpTime;
+
+        private Builder() {
+        }
+
+        public ModifyGroupMemberInfoRequest build() {
+            return new ModifyGroupMemberInfoRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder memberAccount(String memberAccount) {
+            this.memberAccount = memberAccount;
+            return this;
+        }
+
+        public Builder role(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder msgFlag(String msgFlag) {
+            this.msgFlag = msgFlag;
+            return this;
+        }
+
+        public Builder nameCard(String nameCard) {
+            this.nameCard = nameCard;
+            return this;
+        }
+
+        public Builder appMemberDefinedData(List<Map<String, Object>> appMemberDefinedData) {
+            this.appMemberDefinedData = appMemberDefinedData;
+            return this;
+        }
+
+        public Builder shutUpTime(Integer shutUpTime) {
+            this.shutUpTime = shutUpTime;
+            return this;
+        }
     }
 }

@@ -33,6 +33,21 @@ public class AndroidInfo {
     @JsonProperty("ExtAsHuaweiIntentParam")
     private Integer extAsHuaweiIntentParam;
 
+    private AndroidInfo(Builder builder) {
+        this.sound = builder.sound;
+        this.huaweiChannelId = builder.huaweiChannelId;
+        this.xiaomiChannelId = builder.xiaomiChannelId;
+        this.oppoChannelId = builder.oppoChannelId;
+        this.googleChannelId = builder.googleChannelId;
+        this.vivoClassification = builder.vivoClassification;
+        this.huaweiImportance = builder.huaweiImportance;
+        this.extAsHuaweiIntentParam = builder.extAsHuaweiIntentParam;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getSound() {
         return sound;
     }
@@ -95,5 +110,64 @@ public class AndroidInfo {
 
     public void setExtAsHuaweiIntentParam(Integer extAsHuaweiIntentParam) {
         this.extAsHuaweiIntentParam = extAsHuaweiIntentParam;
+    }
+
+
+    public static final class Builder {
+        private String sound;
+        private String huaweiChannelId;
+        private String xiaomiChannelId;
+        private String oppoChannelId;
+        private String googleChannelId;
+        private Integer vivoClassification;
+        private String huaweiImportance;
+        private Integer extAsHuaweiIntentParam;
+
+        private Builder() {
+        }
+
+        public AndroidInfo build() {
+            return new AndroidInfo(this);
+        }
+
+        public Builder sound(String sound) {
+            this.sound = sound;
+            return this;
+        }
+
+        public Builder huaweiChannelId(String huaweiChannelId) {
+            this.huaweiChannelId = huaweiChannelId;
+            return this;
+        }
+
+        public Builder xiaomiChannelId(String xiaomiChannelId) {
+            this.xiaomiChannelId = xiaomiChannelId;
+            return this;
+        }
+
+        public Builder oppoChannelId(String oppoChannelId) {
+            this.oppoChannelId = oppoChannelId;
+            return this;
+        }
+
+        public Builder googleChannelId(String googleChannelId) {
+            this.googleChannelId = googleChannelId;
+            return this;
+        }
+
+        public Builder vivoClassification(Integer vivoClassification) {
+            this.vivoClassification = vivoClassification;
+            return this;
+        }
+
+        public Builder huaweiImportance(String huaweiImportance) {
+            this.huaweiImportance = huaweiImportance;
+            return this;
+        }
+
+        public Builder extAsHuaweiIntentParam(Integer extAsHuaweiIntentParam) {
+            this.extAsHuaweiIntentParam = extAsHuaweiIntentParam;
+            return this;
+        }
     }
 }

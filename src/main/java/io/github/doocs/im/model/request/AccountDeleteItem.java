@@ -12,8 +12,19 @@ public class AccountDeleteItem {
     @JsonProperty("UserID")
     private String userId;
 
+    public AccountDeleteItem() {
+    }
+
     public AccountDeleteItem(String userId) {
         this.userId = userId;
+    }
+
+    private AccountDeleteItem(Builder builder) {
+        this.userId = builder.userId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getUserId() {
@@ -22,5 +33,22 @@ public class AccountDeleteItem {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+
+    public static final class Builder {
+        private String userId;
+
+        private Builder() {
+        }
+
+        public AccountDeleteItem build() {
+            return new AccountDeleteItem(this);
+        }
+
+        public Builder userId(String userId) {
+            this.userId = userId;
+            return this;
+        }
     }
 }

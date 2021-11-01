@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 public class RecentContactTest {
     private static final Properties properties = new Properties();
-    private static final IMClient client;
+    private static final ImClient client;
 
     static {
         InputStream resourceAsStream = RecentContactTest.class.getClassLoader().getResourceAsStream("app.properties");
@@ -32,7 +32,7 @@ public class RecentContactTest {
         String key = properties.getProperty("key");
         String identifier = properties.getProperty("identifier");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = IMClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, identifier, key);
     }
 
     @Test

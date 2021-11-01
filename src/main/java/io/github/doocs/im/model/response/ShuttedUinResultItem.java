@@ -13,6 +13,22 @@ public class ShuttedUinResultItem {
     @JsonProperty("ShuttedUntil")
     private Integer shuttedUntil;
 
+    public String getMemberAccount() {
+        return memberAccount;
+    }
+
+    public void setMemberAccount(String memberAccount) {
+        this.memberAccount = memberAccount;
+    }
+
+    public Integer getShuttedUntil() {
+        return shuttedUntil;
+    }
+
+    public void setShuttedUntil(Integer shuttedUntil) {
+        this.shuttedUntil = shuttedUntil;
+    }
+
     @Override
     public String toString() {
         return "ShuttedUinResultItem{" +

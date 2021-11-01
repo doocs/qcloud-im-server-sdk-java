@@ -17,6 +17,9 @@ public class UserTagItem {
     @JsonProperty("Tags")
     private List<String> tags;
 
+    public UserTagItem() {
+    }
+
     public UserTagItem(String toAccount, List<String> tags) {
         this.toAccount = toAccount;
         this.tags = tags;
@@ -36,5 +39,13 @@ public class UserTagItem {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "UserTagItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", tags=" + tags +
+                '}';
     }
 }

@@ -21,11 +21,25 @@ public class BlackListGetRequest extends GenericRequest {
     @JsonProperty("LastSequence")
     private Integer lastSequence;
 
+    public BlackListGetRequest() {
+    }
+
     public BlackListGetRequest(String fromAccount, Integer startIndex, Integer maxLimited, Integer lastSequence) {
         this.fromAccount = fromAccount;
         this.startIndex = startIndex;
         this.maxLimited = maxLimited;
         this.lastSequence = lastSequence;
+    }
+
+    private BlackListGetRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.startIndex = builder.startIndex;
+        this.maxLimited = builder.maxLimited;
+        this.lastSequence = builder.lastSequence;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -58,5 +72,40 @@ public class BlackListGetRequest extends GenericRequest {
 
     public void setLastSequence(Integer lastSequence) {
         this.lastSequence = lastSequence;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private Integer startIndex;
+        private Integer maxLimited;
+        private Integer lastSequence;
+
+        private Builder() {
+        }
+
+        public BlackListGetRequest build() {
+            return new BlackListGetRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder startIndex(Integer startIndex) {
+            this.startIndex = startIndex;
+            return this;
+        }
+
+        public Builder maxLimited(Integer maxLimited) {
+            this.maxLimited = maxLimited;
+            return this;
+        }
+
+        public Builder lastSequence(Integer lastSequence) {
+            this.lastSequence = lastSequence;
+            return this;
+        }
     }
 }

@@ -41,7 +41,7 @@ String identifier = "test";
 String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
 
 // create ImClient instance
-IMClient client = IMClient.getInstance(appId, identifier, key);
+ImClient client = ImClient.getInstance(appId, identifier, key);
 
 // import account
 AccountImportRequest request = new AccountImportRequest("doocs");

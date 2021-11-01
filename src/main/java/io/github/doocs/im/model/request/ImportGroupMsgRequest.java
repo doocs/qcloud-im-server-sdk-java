@@ -20,14 +20,28 @@ public class ImportGroupMsgRequest extends GenericRequest {
     @JsonProperty("MsgList")
     private List<GroupMsgItem> msgList;
 
+    public ImportGroupMsgRequest() {
+    }
+
     public ImportGroupMsgRequest(String groupId, List<GroupMsgItem> msgList) {
-        this(groupId, null, msgList);
+        this.groupId = groupId;
+        this.msgList = msgList;
     }
 
     public ImportGroupMsgRequest(String groupId, Integer recentContactFlag, List<GroupMsgItem> msgList) {
         this.groupId = groupId;
         this.recentContactFlag = recentContactFlag;
         this.msgList = msgList;
+    }
+
+    private ImportGroupMsgRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.recentContactFlag = builder.recentContactFlag;
+        this.msgList = builder.msgList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -52,5 +66,34 @@ public class ImportGroupMsgRequest extends GenericRequest {
 
     public void setMsgList(List<GroupMsgItem> msgList) {
         this.msgList = msgList;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private Integer recentContactFlag;
+        private List<GroupMsgItem> msgList;
+
+        private Builder() {
+        }
+
+        public ImportGroupMsgRequest build() {
+            return new ImportGroupMsgRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder recentContactFlag(Integer recentContactFlag) {
+            this.recentContactFlag = recentContactFlag;
+            return this;
+        }
+
+        public Builder msgList(List<GroupMsgItem> msgList) {
+            this.msgList = msgList;
+            return this;
+        }
     }
 }

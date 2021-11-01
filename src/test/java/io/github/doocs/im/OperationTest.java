@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public class OperationTest {
     private static final Properties properties = new Properties();
-    private static final IMClient client;
+    private static final ImClient client;
 
     static {
         InputStream resourceAsStream = OperationTest.class.getClassLoader().getResourceAsStream("app.properties");
@@ -30,7 +30,7 @@ public class OperationTest {
         String key = properties.getProperty("key");
         String identifier = properties.getProperty("identifier");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = IMClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, identifier, key);
     }
 
 

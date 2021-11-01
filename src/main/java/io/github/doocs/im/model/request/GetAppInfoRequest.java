@@ -21,11 +21,36 @@ public class GetAppInfoRequest extends GenericRequest {
         this.requestField = requestField;
     }
 
+    private GetAppInfoRequest(Builder builder) {
+        this.requestField = builder.requestField;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public List<String> getRequestField() {
         return requestField;
     }
 
     public void setRequestField(List<String> requestField) {
         this.requestField = requestField;
+    }
+
+
+    public static final class Builder {
+        private List<String> requestField;
+
+        private Builder() {
+        }
+
+        public GetAppInfoRequest build() {
+            return new GetAppInfoRequest(this);
+        }
+
+        public Builder requestField(List<String> requestField) {
+            this.requestField = requestField;
+            return this;
+        }
     }
 }

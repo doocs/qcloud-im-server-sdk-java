@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author hyh
  * @since 2021/07/30 11:20
  */
-public class IMPushResult extends GenericResult {
+public class ImPushResult extends GenericResult {
     @JsonProperty("TaskId")
     private String taskId;
 
@@ -20,7 +20,7 @@ public class IMPushResult extends GenericResult {
 
     @Override
     public String toString() {
-        return "IMPushResult{" +
+        return "ImPushResult{" +
                 "taskId='" + taskId + '\'' +
                 '}';
     }

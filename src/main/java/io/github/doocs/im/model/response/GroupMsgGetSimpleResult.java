@@ -18,15 +18,6 @@ public class GroupMsgGetSimpleResult extends GenericResult {
     @JsonProperty("RspMsgList")
     private List<RspMsgItem> rspMsgList;
 
-    public GroupMsgGetSimpleResult() {
-    }
-
-    public GroupMsgGetSimpleResult(String groupId, Integer isFinished, List<RspMsgItem> rspMsgList) {
-        this.groupId = groupId;
-        this.isFinished = isFinished;
-        this.rspMsgList = rspMsgList;
-    }
-
     public String getGroupId() {
         return groupId;
     }

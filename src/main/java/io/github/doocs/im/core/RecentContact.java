@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.DeleteRecentContactRequest;
 import io.github.doocs.im.model.request.GetRecentContactListRequest;
 import io.github.doocs.im.model.response.DeleteRecentContactResult;
@@ -19,9 +19,9 @@ public class RecentContact {
     private static final String GET_RECENT_CONTACT_LIST = "get_list";
     private static final String DELETE_RECENT_CONTACT = "delete";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public RecentContact(IMClient imClient) {
+    public RecentContact(ImClient imClient) {
         this.imClient = imClient;
     }
 

@@ -21,8 +21,13 @@ public class DeleteRecentContactRequest extends GenericRequest {
     @JsonProperty("ClearRamble")
     private Integer clearRamble;
 
+    public DeleteRecentContactRequest() {
+    }
+
     public DeleteRecentContactRequest(String fromAccount, Integer type, String toAccount) {
-        this(fromAccount, type, toAccount, null);
+        this.fromAccount = fromAccount;
+        this.type = type;
+        this.toAccount = toAccount;
     }
 
     public DeleteRecentContactRequest(String fromAccount, Integer type, String toAccount, Integer clearRamble) {
@@ -30,6 +35,17 @@ public class DeleteRecentContactRequest extends GenericRequest {
         this.type = type;
         this.toAccount = toAccount;
         this.clearRamble = clearRamble;
+    }
+
+    private DeleteRecentContactRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.type = builder.type;
+        this.toAccount = builder.toAccount;
+        this.clearRamble = builder.clearRamble;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -62,5 +78,40 @@ public class DeleteRecentContactRequest extends GenericRequest {
 
     public void setClearRamble(Integer clearRamble) {
         this.clearRamble = clearRamble;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private Integer type;
+        private String toAccount;
+        private Integer clearRamble;
+
+        private Builder() {
+        }
+
+        public DeleteRecentContactRequest build() {
+            return new DeleteRecentContactRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder type(Integer type) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder clearRamble(Integer clearRamble) {
+            this.clearRamble = clearRamble;
+            return this;
+        }
     }
 }

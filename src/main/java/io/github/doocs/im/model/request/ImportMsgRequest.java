@@ -36,14 +36,21 @@ public class ImportMsgRequest extends GenericRequest {
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount,
-                            Integer msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody) {
-        this(syncFromOldSystem, fromAccount, toAccount, null, msgRandom, msgTimeStamp, msgBody, null);
+    public ImportMsgRequest() {
     }
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount,
-                            Integer msgSeq, Integer msgRandom, Integer msgTimeStamp,
-                            List<TIMMsgElement> msgBody, String cloudCustomData) {
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgRandom,
+                            Integer msgTimeStamp, List<TIMMsgElement> msgBody) {
+        this.syncFromOldSystem = syncFromOldSystem;
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
+        this.msgRandom = msgRandom;
+        this.msgTimeStamp = msgTimeStamp;
+        this.msgBody = msgBody;
+    }
+
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgSeq,
+                            Integer msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody, String cloudCustomData) {
         this.syncFromOldSystem = syncFromOldSystem;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -52,6 +59,21 @@ public class ImportMsgRequest extends GenericRequest {
         this.msgTimeStamp = msgTimeStamp;
         this.msgBody = msgBody;
         this.cloudCustomData = cloudCustomData;
+    }
+
+    private ImportMsgRequest(Builder builder) {
+        this.syncFromOldSystem = builder.syncFromOldSystem;
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.msgSeq = builder.msgSeq;
+        this.msgRandom = builder.msgRandom;
+        this.msgTimeStamp = builder.msgTimeStamp;
+        this.msgBody = builder.msgBody;
+        this.cloudCustomData = builder.cloudCustomData;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public Integer getSyncFromOldSystem() {
@@ -116,5 +138,64 @@ public class ImportMsgRequest extends GenericRequest {
 
     public void setCloudCustomData(String cloudCustomData) {
         this.cloudCustomData = cloudCustomData;
+    }
+
+
+    public static final class Builder {
+        private Integer syncFromOldSystem;
+        private String fromAccount;
+        private String toAccount;
+        private Integer msgSeq;
+        private Integer msgRandom;
+        private Integer msgTimeStamp;
+        private List<TIMMsgElement> msgBody;
+        private String cloudCustomData;
+
+        private Builder() {
+        }
+
+        public ImportMsgRequest build() {
+            return new ImportMsgRequest(this);
+        }
+
+        public Builder syncFromOldSystem(Integer syncFromOldSystem) {
+            this.syncFromOldSystem = syncFromOldSystem;
+            return this;
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder msgSeq(Integer msgSeq) {
+            this.msgSeq = msgSeq;
+            return this;
+        }
+
+        public Builder msgRandom(Integer msgRandom) {
+            this.msgRandom = msgRandom;
+            return this;
+        }
+
+        public Builder msgTimeStamp(Integer msgTimeStamp) {
+            this.msgTimeStamp = msgTimeStamp;
+            return this;
+        }
+
+        public Builder msgBody(List<TIMMsgElement> msgBody) {
+            this.msgBody = msgBody;
+            return this;
+        }
+
+        public Builder cloudCustomData(String cloudCustomData) {
+            this.cloudCustomData = cloudCustomData;
+            return this;
+        }
     }
 }

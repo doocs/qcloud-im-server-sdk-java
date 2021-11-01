@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author hyh
  * @since 2021/07/29 15:11
  */
-public class SNS {
+public class Sns {
     private static final String SERVICE_NAME = "sns";
 
     private static final String FRIEND_ADD_COMMAND = "friend_add";
@@ -30,9 +30,9 @@ public class SNS {
     private static final String GROUP_DELETE_COMMAND = "group_delete";
     private static final String GROUP_GET_COMMAND = "group_get";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public SNS(IMClient imClient) {
+    public Sns(ImClient imClient) {
         this.imClient = imClient;
     }
 

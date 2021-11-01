@@ -17,12 +17,12 @@ import java.util.Properties;
  * @author hyh
  * @since 2021/07/31 16:14
  */
-public class SNSTest {
+public class SnsTest {
     private static final Properties properties = new Properties();
-    private static final IMClient client;
+    private static final ImClient client;
 
     static {
-        InputStream resourceAsStream = SNSTest.class.getClassLoader().getResourceAsStream("app.properties");
+        InputStream resourceAsStream = SnsTest.class.getClassLoader().getResourceAsStream("app.properties");
         try {
             properties.load(resourceAsStream);
         } catch (IOException e) {
@@ -31,7 +31,7 @@ public class SNSTest {
         String key = properties.getProperty("key");
         String identifier = properties.getProperty("identifier");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = IMClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, identifier, key);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class SNSTest {
 
     @Test
     public void testFriendImport() throws IOException {
-        ImportFriendItem importFriendItem = new ImportFriendItem("test2");
+        ImportFriendItem importFriendItem = new ImportFriendItem("test2", "AddSource_Type_XXXXXXXX");
         FriendImportRequest request = new FriendImportRequest("test1", Collections.singletonList(importFriendItem));
         FriendImportResult result = client.sns.friendImport(request);
         System.out.println(result);

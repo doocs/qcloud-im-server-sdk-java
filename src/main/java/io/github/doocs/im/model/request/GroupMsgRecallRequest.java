@@ -17,9 +17,21 @@ public class GroupMsgRecallRequest extends GenericRequest {
     @JsonProperty("MsgSeqList")
     private List<MsgSeqItem> msgSeqList;
 
+    public GroupMsgRecallRequest() {
+    }
+
     public GroupMsgRecallRequest(String groupId, List<MsgSeqItem> msgSeqList) {
         this.groupId = groupId;
         this.msgSeqList = msgSeqList;
+    }
+
+    private GroupMsgRecallRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.msgSeqList = builder.msgSeqList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -36,5 +48,28 @@ public class GroupMsgRecallRequest extends GenericRequest {
 
     public void setMsgSeqList(List<MsgSeqItem> msgSeqList) {
         this.msgSeqList = msgSeqList;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private List<MsgSeqItem> msgSeqList;
+
+        private Builder() {
+        }
+
+        public GroupMsgRecallRequest build() {
+            return new GroupMsgRecallRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder msgSeqList(List<MsgSeqItem> msgSeqList) {
+            this.msgSeqList = msgSeqList;
+            return this;
+        }
     }
 }

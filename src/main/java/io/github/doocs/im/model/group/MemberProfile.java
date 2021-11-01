@@ -41,7 +41,9 @@ public class MemberProfile {
     public MemberProfile() {
     }
 
-    public MemberProfile(String memberAccount, String role, Integer joinTime, Integer msgSeq, String msgFlag, Integer lastSendMsgTime, Integer shutUpUntil, String nameCard, List<AppMemberDefinedDataItem> appMemberDefinedData) {
+    public MemberProfile(String memberAccount, String role, Integer joinTime, Integer msgSeq,
+                         String msgFlag, Integer lastSendMsgTime, Integer shutUpUntil, String nameCard,
+                         List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.memberAccount = memberAccount;
         this.role = role;
         this.joinTime = joinTime;
@@ -51,6 +53,22 @@ public class MemberProfile {
         this.shutUpUntil = shutUpUntil;
         this.nameCard = nameCard;
         this.appMemberDefinedData = appMemberDefinedData;
+    }
+
+    private MemberProfile(Builder builder) {
+        this.memberAccount = builder.memberAccount;
+        this.role = builder.role;
+        this.joinTime = builder.joinTime;
+        this.msgSeq = builder.msgSeq;
+        this.msgFlag = builder.msgFlag;
+        this.lastSendMsgTime = builder.lastSendMsgTime;
+        this.shutUpUntil = builder.shutUpUntil;
+        this.nameCard = builder.nameCard;
+        this.appMemberDefinedData = builder.appMemberDefinedData;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getMemberAccount() {
@@ -138,5 +156,69 @@ public class MemberProfile {
                 ", nameCard='" + nameCard + '\'' +
                 ", appMemberDefinedData=" + appMemberDefinedData +
                 '}';
+    }
+
+    public static final class Builder {
+        private String memberAccount;
+        private String role;
+        private Integer joinTime;
+        private Integer msgSeq;
+        private String msgFlag;
+        private Integer lastSendMsgTime;
+        private Integer shutUpUntil;
+        private String nameCard;
+        private List<AppMemberDefinedDataItem> appMemberDefinedData;
+
+        private Builder() {
+        }
+
+        public MemberProfile build() {
+            return new MemberProfile(this);
+        }
+
+        public Builder memberAccount(String memberAccount) {
+            this.memberAccount = memberAccount;
+            return this;
+        }
+
+        public Builder role(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder joinTime(Integer joinTime) {
+            this.joinTime = joinTime;
+            return this;
+        }
+
+        public Builder msgSeq(Integer msgSeq) {
+            this.msgSeq = msgSeq;
+            return this;
+        }
+
+        public Builder msgFlag(String msgFlag) {
+            this.msgFlag = msgFlag;
+            return this;
+        }
+
+        public Builder lastSendMsgTime(Integer lastSendMsgTime) {
+            this.lastSendMsgTime = lastSendMsgTime;
+            return this;
+        }
+
+        public Builder shutUpUntil(Integer shutUpUntil) {
+            this.shutUpUntil = shutUpUntil;
+            return this;
+        }
+
+        public Builder nameCard(String nameCard) {
+            this.nameCard = nameCard;
+            return this;
+        }
+
+        public Builder appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
+            this.appMemberDefinedData = appMemberDefinedData;
+            return this;
+        }
     }
 }

@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class MemberTest {
     private static final Properties properties = new Properties();
-    private static final IMClient client;
+    private static final ImClient client;
 
     static {
         InputStream resourceAsStream = MemberTest.class.getClassLoader().getResourceAsStream("app.properties");
@@ -29,17 +29,17 @@ public class MemberTest {
         String key = properties.getProperty("key");
         String identifier = properties.getProperty("identifier");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = IMClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, identifier, key);
     }
 
     @Test
     public void testImPush() throws IOException {
         TIMTextMsgElement msg = new TIMTextMsgElement("hi, beauty");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
-        IMPushRequest request = new IMPushRequest(9312457, msgBody);
+        ImPushRequest request = new ImPushRequest(9312457, msgBody);
         request.setFromAccount("admin");
         request.setMsgLifeTime(120);
-        IMPushResult result = client.member.imPush(request);
+        ImPushResult result = client.member.imPush(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
@@ -50,25 +50,25 @@ public class MemberTest {
         attrNames.put("0", "sex");
         attrNames.put("1", "city");
         attrNames.put("2", "country");
-        IMSetAttrNameRequest request = new IMSetAttrNameRequest(attrNames);
-        IMSetAttrNameResult result = client.member.imSetAttrName(request);
+        ImSetAttrNameRequest request = new ImSetAttrNameRequest(attrNames);
+        ImSetAttrNameResult result = client.member.imSetAttrName(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
 
     @Test
     public void testImGetAttrName() throws IOException {
-        List<String> toAccount = Arrays.asList("test1", "test2");
-        IMGetAttrNameRequest request = new IMGetAttrNameRequest(toAccount);
-        IMGetAttrNameResult result = client.member.imGetAttrName(request);
+        ImGetAttrNameRequest request = new ImGetAttrNameRequest();
+        ImGetAttrNameResult result = client.member.imGetAttrName(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
 
     @Test
     public void testImGetAttr() throws IOException {
-        IMGetAttrRequest request = new IMGetAttrRequest();
-        IMGetAttrResult result = client.member.imGetAttr(request);
+        List<String> toAccount = Arrays.asList("test1", "test2");
+        ImGetAttrRequest request = new ImGetAttrRequest(toAccount);
+        ImGetAttrResult result = client.member.imGetAttr(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
@@ -79,8 +79,8 @@ public class MemberTest {
         attrs.put("sex", "attr1");
         attrs.put("city", "attr2");
         UserAttrItem item = new UserAttrItem("test1", attrs);
-        IMSetAttrRequest request = new IMSetAttrRequest(Collections.singletonList(item));
-        IMSetAttrResult result = client.member.imSetAttr(request);
+        ImSetAttrRequest request = new ImSetAttrRequest(Collections.singletonList(item));
+        ImSetAttrResult result = client.member.imSetAttr(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
@@ -91,16 +91,16 @@ public class MemberTest {
         attrs.put("sex", "attr1");
         attrs.put("city", "attr2");
         UserAttrItem item = new UserAttrItem("test1", attrs);
-        IMRemoveAttrRequest request = new IMRemoveAttrRequest(Collections.singletonList(item));
-        IMRemoveAttrResult result = client.member.imRemoveAttr(request);
+        ImRemoveAttrRequest request = new ImRemoveAttrRequest(Collections.singletonList(item));
+        ImRemoveAttrResult result = client.member.imRemoveAttr(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
 
     @Test
     public void testImGetTag() throws IOException {
-        IMGetTagRequest request = new IMGetTagRequest(Arrays.asList("test1", "test2"));
-        IMGetTagResult result = client.member.imGetTag(request);
+        ImGetTagRequest request = new ImGetTagRequest(Arrays.asList("test1", "test2"));
+        ImGetTagResult result = client.member.imGetTag(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
@@ -108,8 +108,8 @@ public class MemberTest {
     @Test
     public void testImAddTag() throws IOException {
         UserTagItem item = new UserTagItem("test1", Arrays.asList("a", "b"));
-        IMAddTagRequest request = new IMAddTagRequest(Collections.singletonList(item));
-        IMAddTagResult result = client.member.imAddTag(request);
+        ImAddTagRequest request = new ImAddTagRequest(Collections.singletonList(item));
+        ImAddTagResult result = client.member.imAddTag(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
@@ -117,16 +117,16 @@ public class MemberTest {
     @Test
     public void testImRemoveTag() throws IOException {
         UserTagItem item = new UserTagItem("test1", Arrays.asList("a", "b"));
-        IMRemoveTagRequest request = new IMRemoveTagRequest(Collections.singletonList(item));
-        IMRemoveTagResult result = client.member.imRemoveTag(request);
+        ImRemoveTagRequest request = new ImRemoveTagRequest(Collections.singletonList(item));
+        ImRemoveTagResult result = client.member.imRemoveTag(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
 
     @Test
     public void testImRemoveAllTags() throws IOException {
-        IMRemoveAllTagsRequest request = new IMRemoveAllTagsRequest(Arrays.asList("test1", "test2"));
-        IMRemoveAllTagsResult result = client.member.imRemoveAllTags(request);
+        ImRemoveAllTagsRequest request = new ImRemoveAllTagsRequest(Arrays.asList("test1", "test2"));
+        ImRemoveAllTagsResult result = client.member.imRemoveAllTags(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }

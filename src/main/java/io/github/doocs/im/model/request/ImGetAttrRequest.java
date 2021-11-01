@@ -6,40 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * @author hyh
- * @since 2021/07/31 14:44
+ * @author bingo
+ * @since 2021/7/31 16:50
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BlackListAddRequest extends GenericRequest {
-    @JsonProperty("From_Account")
-    private String fromAccount;
-
+public class ImGetAttrRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
-    public BlackListAddRequest() {
+    public ImGetAttrRequest() {
     }
 
-    public BlackListAddRequest(String fromAccount, List<String> toAccount) {
-        this.fromAccount = fromAccount;
+    public ImGetAttrRequest(List<String> toAccount) {
         this.toAccount = toAccount;
     }
 
-    private BlackListAddRequest(Builder builder) {
-        this.fromAccount = builder.fromAccount;
+    private ImGetAttrRequest(Builder builder) {
         this.toAccount = builder.toAccount;
     }
 
     public static Builder builder() {
         return new Builder();
-    }
-
-    public String getFromAccount() {
-        return fromAccount;
-    }
-
-    public void setFromAccount(String fromAccount) {
-        this.fromAccount = fromAccount;
     }
 
     public List<String> getToAccount() {
@@ -52,19 +39,13 @@ public class BlackListAddRequest extends GenericRequest {
 
 
     public static final class Builder {
-        private String fromAccount;
         private List<String> toAccount;
 
         private Builder() {
         }
 
-        public BlackListAddRequest build() {
-            return new BlackListAddRequest(this);
-        }
-
-        public Builder fromAccount(String fromAccount) {
-            this.fromAccount = fromAccount;
-            return this;
+        public ImGetAttrRequest build() {
+            return new ImGetAttrRequest(this);
         }
 
         public Builder toAccount(List<String> toAccount) {

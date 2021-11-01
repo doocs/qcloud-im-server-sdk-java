@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
@@ -22,9 +22,9 @@ public class Message {
     private static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
     private static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public Message(IMClient imClient) {
+    public Message(ImClient imClient) {
         this.imClient = imClient;
     }
 

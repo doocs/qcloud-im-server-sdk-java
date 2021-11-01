@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.PortraitGetRequest;
 import io.github.doocs.im.model.request.PortraitSetRequest;
 import io.github.doocs.im.model.response.PortraitGetResult;
@@ -19,9 +19,9 @@ public class Profile {
     private static final String PORTRAIT_SET_COMMAND = "portrait_set";
     private static final String PORTRAIT_GET_COMMAND = "portrait_get";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public Profile(IMClient imClient) {
+    public Profile(ImClient imClient) {
         this.imClient = imClient;
     }
 

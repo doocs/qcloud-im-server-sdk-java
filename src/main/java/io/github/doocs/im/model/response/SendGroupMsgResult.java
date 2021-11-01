@@ -13,6 +13,22 @@ public class SendGroupMsgResult extends GenericResult {
     @JsonProperty("msgSeq")
     private Integer msgSeq;
 
+    public Integer getMsgTime() {
+        return msgTime;
+    }
+
+    public void setMsgTime(Integer msgTime) {
+        this.msgTime = msgTime;
+    }
+
+    public Integer getMsgSeq() {
+        return msgSeq;
+    }
+
+    public void setMsgSeq(Integer msgSeq) {
+        this.msgSeq = msgSeq;
+    }
+
     @Override
     public String toString() {
         return "SendGroupMsgResult{" +

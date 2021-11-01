@@ -17,9 +17,21 @@ public class FriendImportRequest extends GenericRequest {
     @JsonProperty("AddFriendItem")
     private List<ImportFriendItem> importFriendItemList;
 
+    public FriendImportRequest() {
+    }
+
     public FriendImportRequest(String fromAccount, List<ImportFriendItem> importFriendItemList) {
         this.fromAccount = fromAccount;
         this.importFriendItemList = importFriendItemList;
+    }
+
+    private FriendImportRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.importFriendItemList = builder.importFriendItemList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -36,5 +48,28 @@ public class FriendImportRequest extends GenericRequest {
 
     public void setImportFriendItemList(List<ImportFriendItem> importFriendItemList) {
         this.importFriendItemList = importFriendItemList;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private List<ImportFriendItem> importFriendItemList;
+
+        private Builder() {
+        }
+
+        public FriendImportRequest build() {
+            return new FriendImportRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder importFriendItemList(List<ImportFriendItem> importFriendItemList) {
+            this.importFriendItemList = importFriendItemList;
+            return this;
+        }
     }
 }

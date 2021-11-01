@@ -11,8 +11,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author hyh
  * @since 2021/07/29 16:11
  */
-public class IMClient {
-    private final Long sdkAppId;
+public class ImClient {
+    private final long sdkAppId;
     private final String userId;
     private final String key;
     private String userSig;
@@ -20,7 +20,7 @@ public class IMClient {
 
     private static final String VERSION = "v4";
     private static final long EXPIRE_TIME = 24 * 60 * 60L;
-    private static final ConcurrentHashMap<String, IMClient> IM_CLIENT = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, ImClient> IM_CLIENT = new ConcurrentHashMap<>();
     private static final String FORMAT_URL = "https://console.tim.qq.com/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
 
     public final Account account;
@@ -28,19 +28,19 @@ public class IMClient {
     public final Member member;
     public final Profile profile;
     public final Group group;
-    public final SNS sns;
+    public final Sns sns;
     public final Operation operation;
     public final RecentContact recentContact;
 
-    public static IMClient getInstance(Long sdkAppId, String userId, String key) {
+    public static ImClient getInstance(long sdkAppId, String userId, String key) {
         String identify = sdkAppId + "_" + userId;
         if (!IM_CLIENT.containsKey(identify)) {
-            IM_CLIENT.putIfAbsent(identify, new IMClient(sdkAppId, userId, key));
+            IM_CLIENT.putIfAbsent(identify, new ImClient(sdkAppId, userId, key));
         }
         return IM_CLIENT.get(identify);
     }
 
-    public IMClient(Long sdkAppId, String userId, String key) {
+    public ImClient(long sdkAppId, String userId, String key) {
         this.sdkAppId = sdkAppId;
         this.userId = userId;
         this.key = key;
@@ -53,7 +53,7 @@ public class IMClient {
         profile = new Profile(this);
         group = new Group(this);
         operation = new Operation(this);
-        sns = new SNS(this);
+        sns = new Sns(this);
         recentContact = new RecentContact(this);
     }
 

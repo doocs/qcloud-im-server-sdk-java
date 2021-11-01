@@ -4,6 +4,7 @@ import io.github.doocs.im.constant.ApplyJoinOption;
 import io.github.doocs.im.constant.GroupType;
 import io.github.doocs.im.constant.MemberRole;
 import io.github.doocs.im.constant.OnlineOnlyFlag;
+import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -22,7 +23,7 @@ import java.util.Properties;
  */
 public class GroupTest {
     private static final Properties properties = new Properties();
-    private static final IMClient client;
+    private static final ImClient client;
 
     static {
         InputStream resourceAsStream = GroupTest.class.getClassLoader().getResourceAsStream("app.properties");
@@ -34,7 +35,7 @@ public class GroupTest {
         String key = properties.getProperty("key");
         String identifier = properties.getProperty("identifier");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = IMClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, identifier, key);
     }
 
     @Test
@@ -218,9 +219,9 @@ public class GroupTest {
 
     @Test
     public void testImportGroupMsg() throws IOException {
-        GroupMsgItem item = new GroupMsgItem("bingo", 1628062005);
         TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
-        item.setMsgBody(Collections.singletonList(msg));
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+        GroupMsgItem item = new GroupMsgItem("bingo", 1628062005, msgBody);
         ImportGroupMsgRequest request = new ImportGroupMsgRequest("newGroup", Collections.singletonList(item));
         ImportGroupMsgResult result = client.group.importGroupMsg(request);
         System.out.println(result);

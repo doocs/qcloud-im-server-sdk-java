@@ -8,7 +8,7 @@ import java.util.Map;
  * @author hyh
  * @since 2021/07/30 11:23
  */
-public class IMGetAttrNameResult extends GenericResult {
+public class ImGetAttrNameResult extends GenericResult {
     @JsonProperty("AttrNames")
     private Map<String, Object> attrNames;
 

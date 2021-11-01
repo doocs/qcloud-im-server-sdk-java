@@ -27,6 +27,32 @@ public class ApnsInfo {
     @JsonProperty("MutableContent")
     private Integer mutableContent;
 
+    public ApnsInfo() {
+    }
+
+    public ApnsInfo(String sound, String badgeMode, String title, String subTitle,
+                    String image, Integer mutableContent) {
+        this.sound = sound;
+        this.badgeMode = badgeMode;
+        this.title = title;
+        this.subTitle = subTitle;
+        this.image = image;
+        this.mutableContent = mutableContent;
+    }
+
+    private ApnsInfo(Builder builder) {
+        this.sound = builder.sound;
+        this.badgeMode = builder.badgeMode;
+        this.title = builder.title;
+        this.subTitle = builder.subTitle;
+        this.image = builder.image;
+        this.mutableContent = builder.mutableContent;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getSound() {
         return sound;
     }
@@ -75,4 +101,50 @@ public class ApnsInfo {
         this.mutableContent = mutableContent;
     }
 
+
+    public static final class Builder {
+        private String sound;
+        private String badgeMode;
+        private String title;
+        private String subTitle;
+        private String image;
+        private Integer mutableContent;
+
+        private Builder() {
+        }
+
+        public ApnsInfo build() {
+            return new ApnsInfo(this);
+        }
+
+        public Builder sound(String sound) {
+            this.sound = sound;
+            return this;
+        }
+
+        public Builder badgeMode(String badgeMode) {
+            this.badgeMode = badgeMode;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder subTitle(String subTitle) {
+            this.subTitle = subTitle;
+            return this;
+        }
+
+        public Builder image(String image) {
+            this.image = image;
+            return this;
+        }
+
+        public Builder mutableContent(Integer mutableContent) {
+            this.mutableContent = mutableContent;
+            return this;
+        }
+    }
 }

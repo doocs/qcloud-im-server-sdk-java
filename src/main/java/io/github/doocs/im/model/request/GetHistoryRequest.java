@@ -15,9 +15,21 @@ public class GetHistoryRequest extends GenericRequest {
     @JsonProperty("MsgTime")
     private String msgTime;
 
+    public GetHistoryRequest() {
+    }
+
     public GetHistoryRequest(String chatType, String msgTime) {
         this.chatType = chatType;
         this.msgTime = msgTime;
+    }
+
+    private GetHistoryRequest(Builder builder) {
+        this.chatType = builder.chatType;
+        this.msgTime = builder.msgTime;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getChatType() {
@@ -34,5 +46,28 @@ public class GetHistoryRequest extends GenericRequest {
 
     public void setMsgTime(String msgTime) {
         this.msgTime = msgTime;
+    }
+
+
+    public static final class Builder {
+        private String chatType;
+        private String msgTime;
+
+        private Builder() {
+        }
+
+        public GetHistoryRequest build() {
+            return new GetHistoryRequest(this);
+        }
+
+        public Builder chatType(String chatType) {
+            this.chatType = chatType;
+            return this;
+        }
+
+        public Builder msgTime(String msgTime) {
+            this.msgTime = msgTime;
+            return this;
+        }
     }
 }

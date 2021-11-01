@@ -20,14 +20,28 @@ public class AddGroupMemberRequest extends GenericRequest {
     @JsonProperty("MemberList")
     private List<MemberRequestItem> memberList;
 
+    public AddGroupMemberRequest() {
+    }
+
     public AddGroupMemberRequest(String groupId, List<MemberRequestItem> memberList) {
-        this(groupId, null, memberList);
+        this.groupId = groupId;
+        this.memberList = memberList;
     }
 
     public AddGroupMemberRequest(String groupId, Integer silence, List<MemberRequestItem> memberList) {
         this.groupId = groupId;
         this.silence = silence;
         this.memberList = memberList;
+    }
+
+    private AddGroupMemberRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.silence = builder.silence;
+        this.memberList = builder.memberList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -52,5 +66,34 @@ public class AddGroupMemberRequest extends GenericRequest {
 
     public void setMemberList(List<MemberRequestItem> memberList) {
         this.memberList = memberList;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private Integer silence;
+        private List<MemberRequestItem> memberList;
+
+        private Builder() {
+        }
+
+        public AddGroupMemberRequest build() {
+            return new AddGroupMemberRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder silence(Integer silence) {
+            this.silence = silence;
+            return this;
+        }
+
+        public Builder memberList(List<MemberRequestItem> memberList) {
+            this.memberList = memberList;
+            return this;
+        }
     }
 }

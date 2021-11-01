@@ -39,12 +39,17 @@ public class BatchSendMsgRequest {
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 
-    public BatchSendMsgRequest(List<String> toAccount, Integer msgRandom, List<TIMMsgElement> msgBody) {
-        this(null, null, toAccount, null, msgRandom, msgBody, null, null, null);
+    public BatchSendMsgRequest() {
     }
 
-    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount,
-                               Integer msgSeq, Integer msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData,
+    public BatchSendMsgRequest(List<String> toAccount, Integer msgRandom, List<TIMMsgElement> msgBody) {
+        this.toAccount = toAccount;
+        this.msgRandom = msgRandom;
+        this.msgBody = msgBody;
+    }
+
+    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Integer msgSeq,
+                               Integer msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData,
                                List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
@@ -55,6 +60,22 @@ public class BatchSendMsgRequest {
         this.cloudCustomData = cloudCustomData;
         this.sendMsgControl = sendMsgControl;
         this.offlinePushInfo = offlinePushInfo;
+    }
+
+    private BatchSendMsgRequest(Builder builder) {
+        this.syncOtherMachine = builder.syncOtherMachine;
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.msgSeq = builder.msgSeq;
+        this.msgRandom = builder.msgRandom;
+        this.msgBody = builder.msgBody;
+        this.cloudCustomData = builder.cloudCustomData;
+        this.sendMsgControl = builder.sendMsgControl;
+        this.offlinePushInfo = builder.offlinePushInfo;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public Integer getSyncOtherMachine() {
@@ -127,5 +148,70 @@ public class BatchSendMsgRequest {
 
     public void setOfflinePushInfo(OfflinePushInfo offlinePushInfo) {
         this.offlinePushInfo = offlinePushInfo;
+    }
+
+
+    public static final class Builder {
+        private Integer syncOtherMachine;
+        private String fromAccount;
+        private List<String> toAccount;
+        private Integer msgSeq;
+        private Integer msgRandom;
+        private List<TIMMsgElement> msgBody;
+        private String cloudCustomData;
+        private List<String> sendMsgControl;
+        private OfflinePushInfo offlinePushInfo;
+
+        private Builder() {
+        }
+
+        public BatchSendMsgRequest build() {
+            return new BatchSendMsgRequest(this);
+        }
+
+        public Builder syncOtherMachine(Integer syncOtherMachine) {
+            this.syncOtherMachine = syncOtherMachine;
+            return this;
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(List<String> toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder msgSeq(Integer msgSeq) {
+            this.msgSeq = msgSeq;
+            return this;
+        }
+
+        public Builder msgRandom(Integer msgRandom) {
+            this.msgRandom = msgRandom;
+            return this;
+        }
+
+        public Builder msgBody(List<TIMMsgElement> msgBody) {
+            this.msgBody = msgBody;
+            return this;
+        }
+
+        public Builder cloudCustomData(String cloudCustomData) {
+            this.cloudCustomData = cloudCustomData;
+            return this;
+        }
+
+        public Builder sendMsgControl(List<String> sendMsgControl) {
+            this.sendMsgControl = sendMsgControl;
+            return this;
+        }
+
+        public Builder offlinePushInfo(OfflinePushInfo offlinePushInfo) {
+            this.offlinePushInfo = offlinePushInfo;
+            return this;
+        }
     }
 }

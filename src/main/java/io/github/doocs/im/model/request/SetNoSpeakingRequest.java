@@ -18,6 +18,9 @@ public class SetNoSpeakingRequest extends GenericRequest {
     @JsonProperty("GroupmsgNospeakingTime")
     private Long groupMsgNoSpeakingTime;
 
+    public SetNoSpeakingRequest() {
+    }
+
     public SetNoSpeakingRequest(String setAccount) {
         this.setAccount = setAccount;
     }
@@ -26,6 +29,16 @@ public class SetNoSpeakingRequest extends GenericRequest {
         this.setAccount = setAccount;
         this.msgNoSpeakingTime = msgNoSpeakingTime;
         this.groupMsgNoSpeakingTime = groupMsgNoSpeakingTime;
+    }
+
+    private SetNoSpeakingRequest(Builder builder) {
+        this.setAccount = builder.setAccount;
+        this.msgNoSpeakingTime = builder.msgNoSpeakingTime;
+        this.groupMsgNoSpeakingTime = builder.groupMsgNoSpeakingTime;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getSetAccount() {
@@ -50,5 +63,34 @@ public class SetNoSpeakingRequest extends GenericRequest {
 
     public void setGroupMsgNoSpeakingTime(Long groupMsgNoSpeakingTime) {
         this.groupMsgNoSpeakingTime = groupMsgNoSpeakingTime;
+    }
+
+
+    public static final class Builder {
+        private String setAccount;
+        private Long msgNoSpeakingTime;
+        private Long groupMsgNoSpeakingTime;
+
+        private Builder() {
+        }
+
+        public SetNoSpeakingRequest build() {
+            return new SetNoSpeakingRequest(this);
+        }
+
+        public Builder setAccount(String setAccount) {
+            this.setAccount = setAccount;
+            return this;
+        }
+
+        public Builder msgNoSpeakingTime(Long msgNoSpeakingTime) {
+            this.msgNoSpeakingTime = msgNoSpeakingTime;
+            return this;
+        }
+
+        public Builder groupMsgNoSpeakingTime(Long groupMsgNoSpeakingTime) {
+            this.groupMsgNoSpeakingTime = groupMsgNoSpeakingTime;
+            return this;
+        }
     }
 }

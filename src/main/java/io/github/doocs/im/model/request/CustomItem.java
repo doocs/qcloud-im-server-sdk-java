@@ -23,6 +23,15 @@ public class CustomItem {
         this.value = value;
     }
 
+    private CustomItem(Builder builder) {
+        this.tag = builder.tag;
+        this.value = builder.value;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getTag() {
         return tag;
     }
@@ -37,5 +46,28 @@ public class CustomItem {
 
     public void setValue(Object value) {
         this.value = value;
+    }
+
+
+    public static final class Builder {
+        private String tag;
+        private Object value;
+
+        private Builder() {
+        }
+
+        public CustomItem build() {
+            return new CustomItem(this);
+        }
+
+        public Builder tag(String tag) {
+            this.tag = tag;
+            return this;
+        }
+
+        public Builder value(Object value) {
+            this.value = value;
+            return this;
+        }
     }
 }

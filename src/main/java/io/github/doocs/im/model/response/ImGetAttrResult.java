@@ -8,7 +8,7 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/30 11:27
  */
-public class IMGetAttrResult extends GenericResult {
+public class ImGetAttrResult extends GenericResult {
     @JsonProperty("UserAttrs")
     private List<UserAttrItem> userAttrs;
 

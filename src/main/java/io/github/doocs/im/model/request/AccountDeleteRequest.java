@@ -14,8 +14,19 @@ public class AccountDeleteRequest extends GenericRequest {
     @JsonProperty("DeleteItem")
     private List<AccountDeleteItem> deleteItemList;
 
+    public AccountDeleteRequest() {
+    }
+
     public AccountDeleteRequest(List<AccountDeleteItem> deleteItemList) {
         this.deleteItemList = deleteItemList;
+    }
+
+    private AccountDeleteRequest(Builder builder) {
+        this.deleteItemList = builder.deleteItemList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public List<AccountDeleteItem> getDeleteItemList() {
@@ -24,5 +35,22 @@ public class AccountDeleteRequest extends GenericRequest {
 
     public void setDeleteItemList(List<AccountDeleteItem> deleteItemList) {
         this.deleteItemList = deleteItemList;
+    }
+
+
+    public static final class Builder {
+        private List<AccountDeleteItem> deleteItemList;
+
+        private Builder() {
+        }
+
+        public AccountDeleteRequest build() {
+            return new AccountDeleteRequest(this);
+        }
+
+        public Builder deleteItemList(List<AccountDeleteItem> deleteItemList) {
+            this.deleteItemList = deleteItemList;
+            return this;
+        }
     }
 }

@@ -17,9 +17,21 @@ public class PortraitGetRequest extends GenericRequest {
     @JsonProperty("TagList")
     private List<String> tagList;
 
+    public PortraitGetRequest() {
+    }
+
     public PortraitGetRequest(List<String> toAccount, List<String> tagList) {
         this.toAccount = toAccount;
         this.tagList = tagList;
+    }
+
+    private PortraitGetRequest(Builder builder) {
+        this.toAccount = builder.toAccount;
+        this.tagList = builder.tagList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public List<String> getToAccount() {
@@ -36,5 +48,28 @@ public class PortraitGetRequest extends GenericRequest {
 
     public void setTagList(List<String> tagList) {
         this.tagList = tagList;
+    }
+
+
+    public static final class Builder {
+        private List<String> toAccount;
+        private List<String> tagList;
+
+        private Builder() {
+        }
+
+        public PortraitGetRequest build() {
+            return new PortraitGetRequest(this);
+        }
+
+        public Builder toAccount(List<String> toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder tagList(List<String> tagList) {
+            this.tagList = tagList;
+            return this;
+        }
     }
 }

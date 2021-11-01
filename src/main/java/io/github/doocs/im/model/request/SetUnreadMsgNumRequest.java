@@ -18,10 +18,23 @@ public class SetUnreadMsgNumRequest extends GenericRequest {
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 
+    public SetUnreadMsgNumRequest() {
+    }
+
     public SetUnreadMsgNumRequest(String groupId, String memberAccount, Integer unreadMsgNum) {
         this.groupId = groupId;
         this.memberAccount = memberAccount;
         this.unreadMsgNum = unreadMsgNum;
+    }
+
+    private SetUnreadMsgNumRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.memberAccount = builder.memberAccount;
+        this.unreadMsgNum = builder.unreadMsgNum;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -46,5 +59,34 @@ public class SetUnreadMsgNumRequest extends GenericRequest {
 
     public void setUnreadMsgNum(Integer unreadMsgNum) {
         this.unreadMsgNum = unreadMsgNum;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private String memberAccount;
+        private Integer unreadMsgNum;
+
+        private Builder() {
+        }
+
+        public SetUnreadMsgNumRequest build() {
+            return new SetUnreadMsgNumRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder memberAccount(String memberAccount) {
+            this.memberAccount = memberAccount;
+            return this;
+        }
+
+        public Builder unreadMsgNum(Integer unreadMsgNum) {
+            this.unreadMsgNum = unreadMsgNum;
+            return this;
+        }
     }
 }

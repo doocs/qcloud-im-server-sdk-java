@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
@@ -23,9 +23,9 @@ public class Operation {
     private static final String GET_IP_LIST_COMMAND = "GetIPList";
 
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public Operation(IMClient imClient) {
+    public Operation(ImClient imClient) {
         this.imClient = imClient;
     }
 
