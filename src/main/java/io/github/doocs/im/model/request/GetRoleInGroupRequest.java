@@ -17,9 +17,21 @@ public class GetRoleInGroupRequest extends GenericRequest {
     @JsonProperty("User_Account")
     private List<String> userAccount;
 
+    public GetRoleInGroupRequest() {
+    }
+
     public GetRoleInGroupRequest(String groupId, List<String> userAccount) {
         this.groupId = groupId;
         this.userAccount = userAccount;
+    }
+
+    private GetRoleInGroupRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.userAccount = builder.userAccount;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -36,5 +48,28 @@ public class GetRoleInGroupRequest extends GenericRequest {
 
     public void setUserAccount(List<String> userAccount) {
         this.userAccount = userAccount;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private List<String> userAccount;
+
+        private Builder() {
+        }
+
+        public GetRoleInGroupRequest build() {
+            return new GetRoleInGroupRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder userAccount(List<String> userAccount) {
+            this.userAccount = userAccount;
+            return this;
+        }
     }
 }

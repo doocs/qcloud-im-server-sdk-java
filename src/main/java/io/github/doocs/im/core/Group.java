@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
@@ -39,9 +39,9 @@ public class Group {
     private static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
     private static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public Group(IMClient imClient) {
+    public Group(ImClient imClient) {
         this.imClient = imClient;
     }
 
@@ -69,7 +69,6 @@ public class Group {
         String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_BASE_INFO_COMMAND);
         return HttpUtil.post(url, modifyGroupBaseInfoRequest, ModifyGroupBaseInfoResult.class);
     }
-
 
     public AddGroupMemberResult addGroupMember(AddGroupMemberRequest addGroupMemberRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADD_GROUP_MEMBER_COMMAND);

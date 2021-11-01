@@ -20,14 +20,28 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
     @JsonProperty("Content")
     private String content;
 
+    public SendGroupSystemNotificationRequest() {
+    }
+
     public SendGroupSystemNotificationRequest(String groupId, String content) {
-        this(groupId, null, content);
+        this.groupId = groupId;
+        this.content = content;
     }
 
     public SendGroupSystemNotificationRequest(String groupId, List<String> toMembersAccount, String content) {
         this.groupId = groupId;
         this.toMembersAccount = toMembersAccount;
         this.content = content;
+    }
+
+    private SendGroupSystemNotificationRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.toMembersAccount = builder.toMembersAccount;
+        this.content = builder.content;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -52,5 +66,34 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private List<String> toMembersAccount;
+        private String content;
+
+        private Builder() {
+        }
+
+        public SendGroupSystemNotificationRequest build() {
+            return new SendGroupSystemNotificationRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder toMembersAccount(List<String> toMembersAccount) {
+            this.toMembersAccount = toMembersAccount;
+            return this;
+        }
+
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
     }
 }

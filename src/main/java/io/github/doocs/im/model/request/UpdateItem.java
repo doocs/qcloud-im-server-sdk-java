@@ -17,9 +17,21 @@ public class UpdateItem {
     @JsonProperty("SnsItem")
     private List<SnsItem> snsItemList;
 
+    public UpdateItem() {
+    }
+
     public UpdateItem(String toAccount, List<SnsItem> snsItemList) {
         this.toAccount = toAccount;
         this.snsItemList = snsItemList;
+    }
+
+    private UpdateItem(Builder builder) {
+        this.toAccount = builder.toAccount;
+        this.snsItemList = builder.snsItemList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getToAccount() {
@@ -36,5 +48,28 @@ public class UpdateItem {
 
     public void setSnsItemList(List<SnsItem> snsItemList) {
         this.snsItemList = snsItemList;
+    }
+
+
+    public static final class Builder {
+        private String toAccount;
+        private List<SnsItem> snsItemList;
+
+        private Builder() {
+        }
+
+        public UpdateItem build() {
+            return new UpdateItem(this);
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder snsItemList(List<SnsItem> snsItemList) {
+            this.snsItemList = snsItemList;
+            return this;
+        }
     }
 }

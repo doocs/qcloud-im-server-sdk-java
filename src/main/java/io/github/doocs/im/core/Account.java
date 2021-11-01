@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
@@ -22,9 +22,9 @@ public class Account {
     private static final String KICK_COMMAND = "kick";
     private static final String QUERY_ONLINE_STATUS_COMMAND = "query_online_status";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public Account(IMClient imClient) {
+    public Account(ImClient imClient) {
         this.imClient = imClient;
     }
 

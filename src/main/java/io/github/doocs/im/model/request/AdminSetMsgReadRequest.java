@@ -18,14 +18,28 @@ public class AdminSetMsgReadRequest extends GenericRequest {
     @JsonProperty("MsgReadTime")
     private Integer msgReadTime;
 
+    public AdminSetMsgReadRequest() {
+    }
+
     public AdminSetMsgReadRequest(String reportAccount, String peerAccount) {
-        this(reportAccount, peerAccount, null);
+        this.reportAccount = reportAccount;
+        this.peerAccount = peerAccount;
     }
 
     public AdminSetMsgReadRequest(String reportAccount, String peerAccount, Integer msgReadTime) {
         this.reportAccount = reportAccount;
         this.peerAccount = peerAccount;
         this.msgReadTime = msgReadTime;
+    }
+
+    private AdminSetMsgReadRequest(Builder builder) {
+        this.reportAccount = builder.reportAccount;
+        this.peerAccount = builder.peerAccount;
+        this.msgReadTime = builder.msgReadTime;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getReportAccount() {
@@ -50,5 +64,34 @@ public class AdminSetMsgReadRequest extends GenericRequest {
 
     public void setMsgReadTime(Integer msgReadTime) {
         this.msgReadTime = msgReadTime;
+    }
+
+
+    public static final class Builder {
+        private String reportAccount;
+        private String peerAccount;
+        private Integer msgReadTime;
+
+        private Builder() {
+        }
+
+        public AdminSetMsgReadRequest build() {
+            return new AdminSetMsgReadRequest(this);
+        }
+
+        public Builder reportAccount(String reportAccount) {
+            this.reportAccount = reportAccount;
+            return this;
+        }
+
+        public Builder peerAccount(String peerAccount) {
+            this.peerAccount = peerAccount;
+            return this;
+        }
+
+        public Builder msgReadTime(Integer msgReadTime) {
+            this.msgReadTime = msgReadTime;
+            return this;
+        }
     }
 }

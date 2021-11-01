@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class AccountTest {
     private static final Properties properties = new Properties();
-    private static final IMClient client;
+    private static final ImClient client;
 
     static {
         InputStream resourceAsStream = AccountTest.class.getClassLoader().getResourceAsStream("app.properties");
@@ -28,15 +28,17 @@ public class AccountTest {
         String key = properties.getProperty("key");
         String identifier = properties.getProperty("identifier");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = IMClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, identifier, key);
     }
 
 
     @Test
     public void testAccountImport() throws IOException {
-        AccountImportRequest request = new AccountImportRequest("user2");
-        request.setFaceUrl("http://www.qq.com");
-        request.setNick("ylb");
+        AccountImportRequest request = AccountImportRequest.builder()
+                .identifier("user2")
+                .faceUrl("http://www.qq.com")
+                .nick("ylb")
+                .build();
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -48,7 +50,7 @@ public class AccountTest {
         for (int i = 1; i < 100; ++i) {
             accounts.add("ak" + i);
         }
-        MultiAccountImportRequest request = new MultiAccountImportRequest(accounts);
+        MultiAccountImportRequest request = MultiAccountImportRequest.builder().accounts(accounts).build();
         MultiAccountImportResult result = client.account.multiAccountImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -56,9 +58,9 @@ public class AccountTest {
 
     @Test
     public void testAccountDelete() throws IOException {
-        AccountDeleteItem item1 = new AccountDeleteItem("acbin");
-        AccountDeleteItem item2 = new AccountDeleteItem("test1");
-        AccountDeleteRequest request = new AccountDeleteRequest(Arrays.asList(item1, item2));
+        AccountDeleteItem item1 = AccountDeleteItem.builder().userId("acbin").build();
+        AccountDeleteItem item2 = AccountDeleteItem.builder().userId("test1").build();
+        AccountDeleteRequest request = AccountDeleteRequest.builder().deleteItemList(Arrays.asList(item1, item2)).build();
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

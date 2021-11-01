@@ -39,11 +39,16 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
     @JsonProperty("AppDefinedData")
     private List<AppDefinedDataItem> appDefinedData;
 
+    public ModifyGroupBaseInfoRequest() {
+    }
+
     public ModifyGroupBaseInfoRequest(String groupId) {
         this.groupId = groupId;
     }
 
-    public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification, String faceUrl, Integer maxMemberNum, String applyJoinOption, String shutUpAllMember, List<AppDefinedDataItem> appDefinedData) {
+    public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification,
+                                      String faceUrl, Integer maxMemberNum, String applyJoinOption,
+                                      String shutUpAllMember, List<AppDefinedDataItem> appDefinedData) {
         this.groupId = groupId;
         this.name = name;
         this.introduction = introduction;
@@ -53,6 +58,22 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
         this.applyJoinOption = applyJoinOption;
         this.shutUpAllMember = shutUpAllMember;
         this.appDefinedData = appDefinedData;
+    }
+
+    private ModifyGroupBaseInfoRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.name = builder.name;
+        this.introduction = builder.introduction;
+        this.notification = builder.notification;
+        this.faceUrl = builder.faceUrl;
+        this.maxMemberNum = builder.maxMemberNum;
+        this.applyJoinOption = builder.applyJoinOption;
+        this.shutUpAllMember = builder.shutUpAllMember;
+        this.appDefinedData = builder.appDefinedData;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -125,5 +146,70 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
 
     public void setAppDefinedData(List<AppDefinedDataItem> appDefinedData) {
         this.appDefinedData = appDefinedData;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private String name;
+        private String introduction;
+        private String notification;
+        private String faceUrl;
+        private Integer maxMemberNum;
+        private String applyJoinOption;
+        private String shutUpAllMember;
+        private List<AppDefinedDataItem> appDefinedData;
+
+        private Builder() {
+        }
+
+        public ModifyGroupBaseInfoRequest build() {
+            return new ModifyGroupBaseInfoRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder introduction(String introduction) {
+            this.introduction = introduction;
+            return this;
+        }
+
+        public Builder notification(String notification) {
+            this.notification = notification;
+            return this;
+        }
+
+        public Builder faceUrl(String faceUrl) {
+            this.faceUrl = faceUrl;
+            return this;
+        }
+
+        public Builder maxMemberNum(Integer maxMemberNum) {
+            this.maxMemberNum = maxMemberNum;
+            return this;
+        }
+
+        public Builder applyJoinOption(String applyJoinOption) {
+            this.applyJoinOption = applyJoinOption;
+            return this;
+        }
+
+        public Builder shutUpAllMember(String shutUpAllMember) {
+            this.shutUpAllMember = shutUpAllMember;
+            return this;
+        }
+
+        public Builder appDefinedData(List<AppDefinedDataItem> appDefinedData) {
+            this.appDefinedData = appDefinedData;
+            return this;
+        }
     }
 }

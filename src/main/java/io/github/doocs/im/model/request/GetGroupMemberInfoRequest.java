@@ -29,8 +29,11 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
     @JsonProperty("Offset")
     private Integer offset;
 
+    public GetGroupMemberInfoRequest() {
+    }
+
     public GetGroupMemberInfoRequest(String groupId) {
-        this(groupId, null, null, null, null, null);
+        this.groupId = groupId;
     }
 
     public GetGroupMemberInfoRequest(String groupId, List<String> memberInfoFilter, List<String> memberRoleFilter,
@@ -41,6 +44,19 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
         this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
         this.limit = limit;
         this.offset = offset;
+    }
+
+    private GetGroupMemberInfoRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.memberInfoFilter = builder.memberInfoFilter;
+        this.memberRoleFilter = builder.memberRoleFilter;
+        this.appDefinedDataFilterGroupMember = builder.appDefinedDataFilterGroupMember;
+        this.limit = builder.limit;
+        this.offset = builder.offset;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -89,5 +105,52 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
 
     public void setOffset(Integer offset) {
         this.offset = offset;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private List<String> memberInfoFilter;
+        private List<String> memberRoleFilter;
+        private List<String> appDefinedDataFilterGroupMember;
+        private Integer limit;
+        private Integer offset;
+
+        private Builder() {
+        }
+
+        public GetGroupMemberInfoRequest build() {
+            return new GetGroupMemberInfoRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder memberInfoFilter(List<String> memberInfoFilter) {
+            this.memberInfoFilter = memberInfoFilter;
+            return this;
+        }
+
+        public Builder memberRoleFilter(List<String> memberRoleFilter) {
+            this.memberRoleFilter = memberRoleFilter;
+            return this;
+        }
+
+        public Builder appDefinedDataFilterGroupMember(List<String> appDefinedDataFilterGroupMember) {
+            this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
+            return this;
+        }
+
+        public Builder limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        public Builder offset(Integer offset) {
+            this.offset = offset;
+            return this;
+        }
     }
 }

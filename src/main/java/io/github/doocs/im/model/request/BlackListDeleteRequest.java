@@ -17,9 +17,21 @@ public class BlackListDeleteRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    public BlackListDeleteRequest() {
+    }
+
     public BlackListDeleteRequest(String fromAccount, List<String> toAccount) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
+    }
+
+    private BlackListDeleteRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -36,5 +48,28 @@ public class BlackListDeleteRequest extends GenericRequest {
 
     public void setToAccount(List<String> toAccount) {
         this.toAccount = toAccount;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private List<String> toAccount;
+
+        private Builder() {
+        }
+
+        public BlackListDeleteRequest build() {
+            return new BlackListDeleteRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(List<String> toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
     }
 }

@@ -1,6 +1,6 @@
 package io.github.doocs.im.core;
 
-import io.github.doocs.im.IMClient;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
@@ -25,59 +25,59 @@ public class Member {
     private static final String IM_REMOVE_TAG_COMMAND = "im_remove_tag";
     private static final String IM_REMOVE_ALL_TAGS_COMMAND = "im_remove_all_tags";
 
-    private final IMClient imClient;
+    private final ImClient imClient;
 
-    public Member(IMClient imClient) {
+    public Member(ImClient imClient) {
         this.imClient = imClient;
     }
 
-    public IMPushResult imPush(IMPushRequest imPushRequest) throws IOException {
+    public ImPushResult imPush(ImPushRequest imPushRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_PUSH_COMMAND);
-        return HttpUtil.post(url, imPushRequest, IMPushResult.class);
+        return HttpUtil.post(url, imPushRequest, ImPushResult.class);
     }
 
-    public IMSetAttrNameResult imSetAttrName(IMSetAttrNameRequest imSetAttrNameRequest) throws IOException {
+    public ImSetAttrNameResult imSetAttrName(ImSetAttrNameRequest imSetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_NAME_COMMAND);
-        return HttpUtil.post(url, imSetAttrNameRequest, IMSetAttrNameResult.class);
+        return HttpUtil.post(url, imSetAttrNameRequest, ImSetAttrNameResult.class);
     }
 
-    public IMGetAttrNameResult imGetAttrName(IMGetAttrNameRequest imGetAttrNameRequest) throws IOException {
+    public ImGetAttrNameResult imGetAttrName(ImGetAttrNameRequest imGetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_NAME_COMMAND);
-        return HttpUtil.post(url, imGetAttrNameRequest, IMGetAttrNameResult.class);
+        return HttpUtil.post(url, imGetAttrNameRequest, ImGetAttrNameResult.class);
     }
 
-    public IMGetAttrResult imGetAttr(IMGetAttrRequest imGetAttrRequest) throws IOException {
+    public ImGetAttrResult imGetAttr(ImGetAttrRequest imGetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_COMMAND);
-        return HttpUtil.post(url, imGetAttrRequest, IMGetAttrResult.class);
+        return HttpUtil.post(url, imGetAttrRequest, ImGetAttrResult.class);
     }
 
-    public IMSetAttrResult imSetAttr(IMSetAttrRequest imSetAttrRequest) throws IOException {
+    public ImSetAttrResult imSetAttr(ImSetAttrRequest imSetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_COMMAND);
-        return HttpUtil.post(url, imSetAttrRequest, IMSetAttrResult.class);
+        return HttpUtil.post(url, imSetAttrRequest, ImSetAttrResult.class);
     }
 
-    public IMRemoveAttrResult imRemoveAttr(IMRemoveAttrRequest imRemoveAttrRequest) throws IOException {
+    public ImRemoveAttrResult imRemoveAttr(ImRemoveAttrRequest imRemoveAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ATTR_COMMAND);
-        return HttpUtil.post(url, imRemoveAttrRequest, IMRemoveAttrResult.class);
+        return HttpUtil.post(url, imRemoveAttrRequest, ImRemoveAttrResult.class);
     }
 
-    public IMGetTagResult imGetTag(IMGetTagRequest imGetTagRequest) throws IOException {
+    public ImGetTagResult imGetTag(ImGetTagRequest imGetTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_TAG_COMMAND);
-        return HttpUtil.post(url, imGetTagRequest, IMGetTagResult.class);
+        return HttpUtil.post(url, imGetTagRequest, ImGetTagResult.class);
     }
 
-    public IMAddTagResult imAddTag(IMAddTagRequest imAddTagRequest) throws IOException {
+    public ImAddTagResult imAddTag(ImAddTagRequest imAddTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_ADD_TAG_COMMAND);
-        return HttpUtil.post(url, imAddTagRequest, IMAddTagResult.class);
+        return HttpUtil.post(url, imAddTagRequest, ImAddTagResult.class);
     }
 
-    public IMRemoveTagResult imRemoveTag(IMRemoveTagRequest imRemoveTagRequest) throws IOException {
+    public ImRemoveTagResult imRemoveTag(ImRemoveTagRequest imRemoveTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_TAG_COMMAND);
-        return HttpUtil.post(url, imRemoveTagRequest, IMRemoveTagResult.class);
+        return HttpUtil.post(url, imRemoveTagRequest, ImRemoveTagResult.class);
     }
 
-    public IMRemoveAllTagsResult imRemoveAllTags(IMRemoveAllTagsRequest imRemoveAllTagsRequest) throws IOException {
+    public ImRemoveAllTagsResult imRemoveAllTags(ImRemoveAllTagsRequest imRemoveAllTagsRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ALL_TAGS_COMMAND);
-        return HttpUtil.post(url, imRemoveAllTagsRequest, IMRemoveAllTagsResult.class);
+        return HttpUtil.post(url, imRemoveAllTagsRequest, ImRemoveAllTagsResult.class);
     }
 }

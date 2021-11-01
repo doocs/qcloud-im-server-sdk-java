@@ -12,8 +12,19 @@ public class DestroyGroupRequest extends GenericRequest {
     @JsonProperty("GroupId")
     private String groupId;
 
+    public DestroyGroupRequest() {
+    }
+
     public DestroyGroupRequest(String groupId) {
         this.groupId = groupId;
+    }
+
+    private DestroyGroupRequest(Builder builder) {
+        this.groupId = builder.groupId;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -22,5 +33,22 @@ public class DestroyGroupRequest extends GenericRequest {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+
+        private Builder() {
+        }
+
+        public DestroyGroupRequest build() {
+            return new DestroyGroupRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
     }
 }

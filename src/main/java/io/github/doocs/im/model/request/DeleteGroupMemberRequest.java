@@ -23,8 +23,12 @@ public class DeleteGroupMemberRequest extends GenericRequest {
     @JsonProperty("MemberToDel_Account")
     private List<String> memberToDelAccount;
 
+    public DeleteGroupMemberRequest() {
+    }
+
     public DeleteGroupMemberRequest(String groupId, List<String> memberToDelAccount) {
-        this(groupId, null, null, memberToDelAccount);
+        this.groupId = groupId;
+        this.memberToDelAccount = memberToDelAccount;
     }
 
     public DeleteGroupMemberRequest(String groupId, Integer silence, String reason, List<String> memberToDelAccount) {
@@ -32,6 +36,17 @@ public class DeleteGroupMemberRequest extends GenericRequest {
         this.silence = silence;
         this.reason = reason;
         this.memberToDelAccount = memberToDelAccount;
+    }
+
+    private DeleteGroupMemberRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.silence = builder.silence;
+        this.reason = builder.reason;
+        this.memberToDelAccount = builder.memberToDelAccount;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -64,5 +79,40 @@ public class DeleteGroupMemberRequest extends GenericRequest {
 
     public void setMemberToDelAccount(List<String> memberToDelAccount) {
         this.memberToDelAccount = memberToDelAccount;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private Integer silence;
+        private String reason;
+        private List<String> memberToDelAccount;
+
+        private Builder() {
+        }
+
+        public DeleteGroupMemberRequest build() {
+            return new DeleteGroupMemberRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder silence(Integer silence) {
+            this.silence = silence;
+            return this;
+        }
+
+        public Builder reason(String reason) {
+            this.reason = reason;
+            return this;
+        }
+
+        public Builder memberToDelAccount(List<String> memberToDelAccount) {
+            this.memberToDelAccount = memberToDelAccount;
+            return this;
+        }
     }
 }

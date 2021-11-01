@@ -17,6 +17,9 @@ public class UserAttrItem {
     @JsonProperty("Attrs")
     private Map<String, Object> attrs;
 
+    public UserAttrItem() {
+    }
+
     public UserAttrItem(String toAccount, Map<String, Object> attrs) {
         this.toAccount = toAccount;
         this.attrs = attrs;

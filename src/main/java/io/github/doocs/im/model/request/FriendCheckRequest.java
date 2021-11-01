@@ -20,10 +20,23 @@ public class FriendCheckRequest extends GenericRequest {
     @JsonProperty("CheckType")
     private String checkType;
 
+    public FriendCheckRequest() {
+    }
+
     public FriendCheckRequest(String fromAccount, List<String> toAccount, String checkType) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.checkType = checkType;
+    }
+
+    private FriendCheckRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.checkType = builder.checkType;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -48,5 +61,34 @@ public class FriendCheckRequest extends GenericRequest {
 
     public void setCheckType(String checkType) {
         this.checkType = checkType;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private List<String> toAccount;
+        private String checkType;
+
+        private Builder() {
+        }
+
+        public FriendCheckRequest build() {
+            return new FriendCheckRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(List<String> toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder checkType(String checkType) {
+            this.checkType = checkType;
+            return this;
+        }
     }
 }

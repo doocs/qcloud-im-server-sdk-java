@@ -27,6 +27,16 @@ public class GetAppidGroupListRequest extends GenericRequest {
         this.groupType = groupType;
     }
 
+    private GetAppidGroupListRequest(Builder builder) {
+        this.limit = builder.limit;
+        this.next = builder.next;
+        this.groupType = builder.groupType;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public Integer getLimit() {
         return limit;
     }
@@ -49,5 +59,34 @@ public class GetAppidGroupListRequest extends GenericRequest {
 
     public void setGroupType(String groupType) {
         this.groupType = groupType;
+    }
+
+
+    public static final class Builder {
+        private Integer limit;
+        private Integer next;
+        private String groupType;
+
+        private Builder() {
+        }
+
+        public GetAppidGroupListRequest build() {
+            return new GetAppidGroupListRequest(this);
+        }
+
+        public Builder limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        public Builder next(Integer next) {
+            this.next = next;
+            return this;
+        }
+
+        public Builder groupType(String groupType) {
+            this.groupType = groupType;
+            return this;
+        }
     }
 }

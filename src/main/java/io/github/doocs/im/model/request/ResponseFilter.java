@@ -34,6 +34,17 @@ public class ResponseFilter {
         this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
     }
 
+    private ResponseFilter(Builder builder) {
+        this.groupBaseInfoFilter = builder.groupBaseInfoFilter;
+        this.memberInfoFilter = builder.memberInfoFilter;
+        this.appDefinedDataFilterGroup = builder.appDefinedDataFilterGroup;
+        this.appDefinedDataFilterGroupMember = builder.appDefinedDataFilterGroupMember;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public List<String> getGroupBaseInfoFilter() {
         return groupBaseInfoFilter;
     }
@@ -64,5 +75,40 @@ public class ResponseFilter {
 
     public void setAppDefinedDataFilterGroupMember(List<String> appDefinedDataFilterGroupMember) {
         this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
+    }
+
+
+    public static final class Builder {
+        private List<String> groupBaseInfoFilter;
+        private List<String> memberInfoFilter;
+        private List<String> appDefinedDataFilterGroup;
+        private List<String> appDefinedDataFilterGroupMember;
+
+        private Builder() {
+        }
+
+        public ResponseFilter build() {
+            return new ResponseFilter(this);
+        }
+
+        public Builder groupBaseInfoFilter(List<String> groupBaseInfoFilter) {
+            this.groupBaseInfoFilter = groupBaseInfoFilter;
+            return this;
+        }
+
+        public Builder memberInfoFilter(List<String> memberInfoFilter) {
+            this.memberInfoFilter = memberInfoFilter;
+            return this;
+        }
+
+        public Builder appDefinedDataFilterGroup(List<String> appDefinedDataFilterGroup) {
+            this.appDefinedDataFilterGroup = appDefinedDataFilterGroup;
+            return this;
+        }
+
+        public Builder appDefinedDataFilterGroupMember(List<String> appDefinedDataFilterGroupMember) {
+            this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
+            return this;
+        }
     }
 }

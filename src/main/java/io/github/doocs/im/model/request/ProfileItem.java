@@ -15,9 +15,21 @@ public class ProfileItem {
     @JsonProperty("Value")
     private String value;
 
+    public ProfileItem() {
+    }
+
     public ProfileItem(String tag, String value) {
         this.tag = tag;
         this.value = value;
+    }
+
+    private ProfileItem(Builder builder) {
+        this.tag = builder.tag;
+        this.value = builder.value;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getTag() {
@@ -34,5 +46,28 @@ public class ProfileItem {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+
+    public static final class Builder {
+        private String tag;
+        private String value;
+
+        private Builder() {
+        }
+
+        public ProfileItem build() {
+            return new ProfileItem(this);
+        }
+
+        public Builder tag(String tag) {
+            this.tag = tag;
+            return this;
+        }
+
+        public Builder value(String value) {
+            this.value = value;
+            return this;
+        }
     }
 }

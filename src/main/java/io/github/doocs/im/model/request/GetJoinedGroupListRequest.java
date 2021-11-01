@@ -30,6 +30,9 @@ public class GetJoinedGroupListRequest extends GenericRequest {
     @JsonProperty("ResponseFilter")
     private ResponseFilter responseFilter;
 
+    public GetJoinedGroupListRequest() {
+    }
+
     public GetJoinedGroupListRequest(String memberAccount) {
         this.memberAccount = memberAccount;
     }
@@ -43,6 +46,20 @@ public class GetJoinedGroupListRequest extends GenericRequest {
         this.offset = offset;
         this.groupType = groupType;
         this.responseFilter = responseFilter;
+    }
+
+    private GetJoinedGroupListRequest(Builder builder) {
+        this.memberAccount = builder.memberAccount;
+        this.withHugeGroups = builder.withHugeGroups;
+        this.withNoActiveGroups = builder.withNoActiveGroups;
+        this.limit = builder.limit;
+        this.offset = builder.offset;
+        this.groupType = builder.groupType;
+        this.responseFilter = builder.responseFilter;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getMemberAccount() {
@@ -99,5 +116,58 @@ public class GetJoinedGroupListRequest extends GenericRequest {
 
     public void setResponseFilter(ResponseFilter responseFilter) {
         this.responseFilter = responseFilter;
+    }
+
+
+    public static final class Builder {
+        private String memberAccount;
+        private Integer withHugeGroups;
+        private Integer withNoActiveGroups;
+        private Integer limit;
+        private Integer offset;
+        private String groupType;
+        private ResponseFilter responseFilter;
+
+        private Builder() {
+        }
+
+        public GetJoinedGroupListRequest build() {
+            return new GetJoinedGroupListRequest(this);
+        }
+
+        public Builder memberAccount(String memberAccount) {
+            this.memberAccount = memberAccount;
+            return this;
+        }
+
+        public Builder withHugeGroups(Integer withHugeGroups) {
+            this.withHugeGroups = withHugeGroups;
+            return this;
+        }
+
+        public Builder withNoActiveGroups(Integer withNoActiveGroups) {
+            this.withNoActiveGroups = withNoActiveGroups;
+            return this;
+        }
+
+        public Builder limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        public Builder offset(Integer offset) {
+            this.offset = offset;
+            return this;
+        }
+
+        public Builder groupType(String groupType) {
+            this.groupType = groupType;
+            return this;
+        }
+
+        public Builder responseFilter(ResponseFilter responseFilter) {
+            this.responseFilter = responseFilter;
+            return this;
+        }
     }
 }

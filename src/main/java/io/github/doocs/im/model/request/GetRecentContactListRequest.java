@@ -27,13 +27,30 @@ public class GetRecentContactListRequest extends GenericRequest {
     @JsonProperty("AssistFlags")
     private Integer assistFlags;
 
-    public GetRecentContactListRequest(String fromAccount, Integer timestamp, Integer startIndex, Integer topTimestamp, Integer topStartIndex, Integer assistFlags) {
+    public GetRecentContactListRequest() {
+    }
+
+    public GetRecentContactListRequest(String fromAccount, Integer timestamp, Integer startIndex,
+                                       Integer topTimestamp, Integer topStartIndex, Integer assistFlags) {
         this.fromAccount = fromAccount;
         this.timestamp = timestamp;
         this.startIndex = startIndex;
         this.topTimestamp = topTimestamp;
         this.topStartIndex = topStartIndex;
         this.assistFlags = assistFlags;
+    }
+
+    private GetRecentContactListRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.timestamp = builder.timestamp;
+        this.startIndex = builder.startIndex;
+        this.topTimestamp = builder.topTimestamp;
+        this.topStartIndex = builder.topStartIndex;
+        this.assistFlags = builder.assistFlags;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -82,5 +99,52 @@ public class GetRecentContactListRequest extends GenericRequest {
 
     public void setAssistFlags(Integer assistFlags) {
         this.assistFlags = assistFlags;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private Integer timestamp;
+        private Integer startIndex;
+        private Integer topTimestamp;
+        private Integer topStartIndex;
+        private Integer assistFlags;
+
+        private Builder() {
+        }
+
+        public GetRecentContactListRequest build() {
+            return new GetRecentContactListRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder timestamp(Integer timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public Builder startIndex(Integer startIndex) {
+            this.startIndex = startIndex;
+            return this;
+        }
+
+        public Builder topTimestamp(Integer topTimestamp) {
+            this.topTimestamp = topTimestamp;
+            return this;
+        }
+
+        public Builder topStartIndex(Integer topStartIndex) {
+            this.topStartIndex = topStartIndex;
+            return this;
+        }
+
+        public Builder assistFlags(Integer assistFlags) {
+            this.assistFlags = assistFlags;
+            return this;
+        }
     }
 }

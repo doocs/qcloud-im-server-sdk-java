@@ -17,9 +17,21 @@ public class ImportGroupMemberRequest extends GenericRequest {
     @JsonProperty("MemberList")
     private List<MemberItem> memberList;
 
+    public ImportGroupMemberRequest() {
+    }
+
     public ImportGroupMemberRequest(String groupId, List<MemberItem> memberList) {
         this.groupId = groupId;
         this.memberList = memberList;
+    }
+
+    private ImportGroupMemberRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.memberList = builder.memberList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -36,5 +48,28 @@ public class ImportGroupMemberRequest extends GenericRequest {
 
     public void setMemberList(List<MemberItem> memberList) {
         this.memberList = memberList;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private List<MemberItem> memberList;
+
+        private Builder() {
+        }
+
+        public ImportGroupMemberRequest build() {
+            return new ImportGroupMemberRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder memberList(List<MemberItem> memberList) {
+            this.memberList = memberList;
+            return this;
+        }
     }
 }

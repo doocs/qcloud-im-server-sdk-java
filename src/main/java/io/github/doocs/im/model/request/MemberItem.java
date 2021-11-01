@@ -21,6 +21,9 @@ public class MemberItem {
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 
+    public MemberItem() {
+    }
+
     public MemberItem(String memberAccount) {
         this.memberAccount = memberAccount;
     }
@@ -30,6 +33,17 @@ public class MemberItem {
         this.role = role;
         this.joinTime = joinTime;
         this.unreadMsgNum = unreadMsgNum;
+    }
+
+    private MemberItem(Builder builder) {
+        this.memberAccount = builder.memberAccount;
+        this.role = builder.role;
+        this.joinTime = builder.joinTime;
+        this.unreadMsgNum = builder.unreadMsgNum;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getMemberAccount() {
@@ -62,5 +76,40 @@ public class MemberItem {
 
     public void setUnreadMsgNum(Integer unreadMsgNum) {
         this.unreadMsgNum = unreadMsgNum;
+    }
+
+
+    public static final class Builder {
+        private String memberAccount;
+        private String role;
+        private Integer joinTime;
+        private Integer unreadMsgNum;
+
+        private Builder() {
+        }
+
+        public MemberItem build() {
+            return new MemberItem(this);
+        }
+
+        public Builder memberAccount(String memberAccount) {
+            this.memberAccount = memberAccount;
+            return this;
+        }
+
+        public Builder role(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder joinTime(Integer joinTime) {
+            this.joinTime = joinTime;
+            return this;
+        }
+
+        public Builder unreadMsgNum(Integer unreadMsgNum) {
+            this.unreadMsgNum = unreadMsgNum;
+            return this;
+        }
     }
 }

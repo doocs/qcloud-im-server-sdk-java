@@ -14,8 +14,19 @@ public class MultiAccountImportRequest extends GenericRequest {
     @JsonProperty("Accounts")
     private List<String> accounts;
 
+    public MultiAccountImportRequest() {
+    }
+
     public MultiAccountImportRequest(List<String> accounts) {
         this.accounts = accounts;
+    }
+
+    private MultiAccountImportRequest(Builder builder) {
+        this.accounts = builder.accounts;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public List<String> getAccounts() {
@@ -24,5 +35,22 @@ public class MultiAccountImportRequest extends GenericRequest {
 
     public void setAccounts(List<String> accounts) {
         this.accounts = accounts;
+    }
+
+
+    public static final class Builder {
+        private List<String> accounts;
+
+        private Builder() {
+        }
+
+        public MultiAccountImportRequest build() {
+            return new MultiAccountImportRequest(this);
+        }
+
+        public Builder accounts(List<String> accounts) {
+            this.accounts = accounts;
+            return this;
+        }
     }
 }

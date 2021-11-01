@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * @author bingo
- * @since 2021/7/31 16:50
+ * @since 2021/7/31 16:47
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class IMGetAttrRequest extends GenericRequest {
+public class ImGetAttrNameRequest extends GenericRequest {
 
 }

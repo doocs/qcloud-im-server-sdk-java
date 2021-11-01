@@ -35,8 +35,12 @@ public class ImportFriendItem {
     @JsonProperty("CustomItem")
     private List<CustomItem> customItemList;
 
-    public ImportFriendItem(String toAccount) {
-        this(toAccount, null, null, null, null, null, null, null);
+    public ImportFriendItem() {
+    }
+
+    public ImportFriendItem(String toAccount, String addSource) {
+        this.toAccount = toAccount;
+        this.addSource = addSource;
     }
 
     public ImportFriendItem(String toAccount, String remark, Integer remarkTime, List<String> groupName,
@@ -49,6 +53,21 @@ public class ImportFriendItem {
         this.addWording = addWording;
         this.addTime = addTime;
         this.customItemList = customItemList;
+    }
+
+    private ImportFriendItem(Builder builder) {
+        this.toAccount = builder.toAccount;
+        this.remark = builder.remark;
+        this.remarkTime = builder.remarkTime;
+        this.groupName = builder.groupName;
+        this.addSource = builder.addSource;
+        this.addWording = builder.addWording;
+        this.addTime = builder.addTime;
+        this.customItemList = builder.customItemList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getToAccount() {
@@ -113,5 +132,64 @@ public class ImportFriendItem {
 
     public void setCustomItemList(List<CustomItem> customItemList) {
         this.customItemList = customItemList;
+    }
+
+
+    public static final class Builder {
+        private String toAccount;
+        private String remark;
+        private Integer remarkTime;
+        private List<String> groupName;
+        private String addSource;
+        private String addWording;
+        private Integer addTime;
+        private List<CustomItem> customItemList;
+
+        private Builder() {
+        }
+
+        public ImportFriendItem build() {
+            return new ImportFriendItem(this);
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder remark(String remark) {
+            this.remark = remark;
+            return this;
+        }
+
+        public Builder remarkTime(Integer remarkTime) {
+            this.remarkTime = remarkTime;
+            return this;
+        }
+
+        public Builder groupName(List<String> groupName) {
+            this.groupName = groupName;
+            return this;
+        }
+
+        public Builder addSource(String addSource) {
+            this.addSource = addSource;
+            return this;
+        }
+
+        public Builder addWording(String addWording) {
+            this.addWording = addWording;
+            return this;
+        }
+
+        public Builder addTime(Integer addTime) {
+            this.addTime = addTime;
+            return this;
+        }
+
+        public Builder customItemList(List<CustomItem> customItemList) {
+            this.customItemList = customItemList;
+            return this;
+        }
     }
 }

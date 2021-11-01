@@ -12,13 +12,6 @@ public class AddGroupMemberResult extends GenericResult {
     @JsonProperty("MemberList")
     private List<MemberResultItem> memberList;
 
-    public AddGroupMemberResult() {
-    }
-
-    public AddGroupMemberResult(List<MemberResultItem> memberList) {
-        this.memberList = memberList;
-    }
-
     public List<MemberResultItem> getMemberList() {
         return memberList;
     }

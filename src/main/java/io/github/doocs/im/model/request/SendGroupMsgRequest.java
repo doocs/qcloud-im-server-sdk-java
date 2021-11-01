@@ -42,8 +42,13 @@ public class SendGroupMsgRequest extends GenericRequest {
     @JsonProperty("cloudCustomData")
     private String cloudCustomData;
 
+    public SendGroupMsgRequest() {
+    }
+
     public SendGroupMsgRequest(String groupId, Integer random, List<TIMMsgElement> msgBody) {
-        this(groupId, random, null, msgBody, null, null, null, null, null, null);
+        this.groupId = groupId;
+        this.random = random;
+        this.msgBody = msgBody;
     }
 
     public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<TIMMsgElement> msgBody,
@@ -59,6 +64,23 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.onlineOnlyFlag = onlineOnlyFlag;
         this.sendMsgControl = sendMsgControl;
         this.cloudCustomData = cloudCustomData;
+    }
+
+    private SendGroupMsgRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.random = builder.random;
+        this.msgPriority = builder.msgPriority;
+        this.msgBody = builder.msgBody;
+        this.fromAccount = builder.fromAccount;
+        this.offlinePushInfo = builder.offlinePushInfo;
+        this.forbidCallbackControl = builder.forbidCallbackControl;
+        this.onlineOnlyFlag = builder.onlineOnlyFlag;
+        this.sendMsgControl = builder.sendMsgControl;
+        this.cloudCustomData = builder.cloudCustomData;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -139,5 +161,76 @@ public class SendGroupMsgRequest extends GenericRequest {
 
     public void setCloudCustomData(String cloudCustomData) {
         this.cloudCustomData = cloudCustomData;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private Integer random;
+        private String msgPriority;
+        private List<TIMMsgElement> msgBody;
+        private String fromAccount;
+        private OfflinePushInfo offlinePushInfo;
+        private List<String> forbidCallbackControl;
+        private Integer onlineOnlyFlag;
+        private List<String> sendMsgControl;
+        private String cloudCustomData;
+
+        private Builder() {
+        }
+
+        public SendGroupMsgRequest build() {
+            return new SendGroupMsgRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder random(Integer random) {
+            this.random = random;
+            return this;
+        }
+
+        public Builder msgPriority(String msgPriority) {
+            this.msgPriority = msgPriority;
+            return this;
+        }
+
+        public Builder msgBody(List<TIMMsgElement> msgBody) {
+            this.msgBody = msgBody;
+            return this;
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder offlinePushInfo(OfflinePushInfo offlinePushInfo) {
+            this.offlinePushInfo = offlinePushInfo;
+            return this;
+        }
+
+        public Builder forbidCallbackControl(List<String> forbidCallbackControl) {
+            this.forbidCallbackControl = forbidCallbackControl;
+            return this;
+        }
+
+        public Builder onlineOnlyFlag(Integer onlineOnlyFlag) {
+            this.onlineOnlyFlag = onlineOnlyFlag;
+            return this;
+        }
+
+        public Builder sendMsgControl(List<String> sendMsgControl) {
+            this.sendMsgControl = sendMsgControl;
+            return this;
+        }
+
+        public Builder cloudCustomData(String cloudCustomData) {
+            this.cloudCustomData = cloudCustomData;
+            return this;
+        }
     }
 }

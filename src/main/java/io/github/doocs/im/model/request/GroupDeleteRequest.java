@@ -17,9 +17,21 @@ public class GroupDeleteRequest extends GenericRequest {
     @JsonProperty("GroupName")
     private List<String> groupName;
 
+    public GroupDeleteRequest() {
+    }
+
     public GroupDeleteRequest(String fromAccount, List<String> groupName) {
         this.fromAccount = fromAccount;
         this.groupName = groupName;
+    }
+
+    private GroupDeleteRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.groupName = builder.groupName;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -36,5 +48,28 @@ public class GroupDeleteRequest extends GenericRequest {
 
     public void setGroupName(List<String> groupName) {
         this.groupName = groupName;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private List<String> groupName;
+
+        private Builder() {
+        }
+
+        public GroupDeleteRequest build() {
+            return new GroupDeleteRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder groupName(List<String> groupName) {
+            this.groupName = groupName;
+            return this;
+        }
     }
 }

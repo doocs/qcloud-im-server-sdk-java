@@ -20,14 +20,28 @@ public class FriendDeleteRequest extends GenericRequest {
     @JsonProperty("DeleteType")
     private String deleteType;
 
+    public FriendDeleteRequest() {
+    }
+
     public FriendDeleteRequest(String fromAccount, List<String> toAccount) {
-        this(fromAccount, toAccount, null);
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
     }
 
     public FriendDeleteRequest(String fromAccount, List<String> toAccount, String deleteType) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.deleteType = deleteType;
+    }
+
+    private FriendDeleteRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.deleteType = builder.deleteType;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -52,5 +66,34 @@ public class FriendDeleteRequest extends GenericRequest {
 
     public void setDeleteType(String deleteType) {
         this.deleteType = deleteType;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private List<String> toAccount;
+        private String deleteType;
+
+        private Builder() {
+        }
+
+        public FriendDeleteRequest build() {
+            return new FriendDeleteRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(List<String> toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder deleteType(String deleteType) {
+            this.deleteType = deleteType;
+            return this;
+        }
     }
 }

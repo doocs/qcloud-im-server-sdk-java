@@ -18,14 +18,28 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
     @JsonProperty("ReqMsgNumber")
     private Integer reqMsgNumber;
 
-    public GroupMsgGetSimpleRequest(String groupId, Integer reqMsgSeq) {
-        this(groupId, reqMsgSeq, null);
+    public GroupMsgGetSimpleRequest() {
+    }
+
+    public GroupMsgGetSimpleRequest(String groupId, Integer reqMsgNumber) {
+        this.groupId = groupId;
+        this.reqMsgNumber = reqMsgNumber;
     }
 
     public GroupMsgGetSimpleRequest(String groupId, Integer reqMsgSeq, Integer reqMsgNumber) {
         this.groupId = groupId;
         this.reqMsgSeq = reqMsgSeq;
         this.reqMsgNumber = reqMsgNumber;
+    }
+
+    private GroupMsgGetSimpleRequest(Builder builder) {
+        this.groupId = builder.groupId;
+        this.reqMsgSeq = builder.reqMsgSeq;
+        this.reqMsgNumber = builder.reqMsgNumber;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getGroupId() {
@@ -50,5 +64,34 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
 
     public void setReqMsgNumber(Integer reqMsgNumber) {
         this.reqMsgNumber = reqMsgNumber;
+    }
+
+
+    public static final class Builder {
+        private String groupId;
+        private Integer reqMsgSeq;
+        private Integer reqMsgNumber;
+
+        private Builder() {
+        }
+
+        public GroupMsgGetSimpleRequest build() {
+            return new GroupMsgGetSimpleRequest(this);
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder reqMsgSeq(Integer reqMsgSeq) {
+            this.reqMsgSeq = reqMsgSeq;
+            return this;
+        }
+
+        public Builder reqMsgNumber(Integer reqMsgNumber) {
+            this.reqMsgNumber = reqMsgNumber;
+            return this;
+        }
     }
 }

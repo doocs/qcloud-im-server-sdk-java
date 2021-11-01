@@ -18,10 +18,23 @@ public class AdminMsgWithdrawRequest extends GenericRequest {
     @JsonProperty("MsgKey")
     private String msgKey;
 
+    public AdminMsgWithdrawRequest() {
+    }
+
     public AdminMsgWithdrawRequest(String fromAccount, String toAccount, String msgKey) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.msgKey = msgKey;
+    }
+
+    private AdminMsgWithdrawRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.msgKey = builder.msgKey;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -46,5 +59,34 @@ public class AdminMsgWithdrawRequest extends GenericRequest {
 
     public void setMsgKey(String msgKey) {
         this.msgKey = msgKey;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private String toAccount;
+        private String msgKey;
+
+        private Builder() {
+        }
+
+        public AdminMsgWithdrawRequest build() {
+            return new AdminMsgWithdrawRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder msgKey(String msgKey) {
+            this.msgKey = msgKey;
+            return this;
+        }
     }
 }

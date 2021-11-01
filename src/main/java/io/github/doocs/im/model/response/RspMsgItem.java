@@ -31,19 +31,6 @@ public class RspMsgItem {
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
 
-    public RspMsgItem() {
-    }
-
-    public RspMsgItem(String fromAccount, Integer isPlaceMsg, List<TIMMsgElement> msgBody, Integer msgPriority, Integer msgRandom, Integer msgSeq, Integer msgTimeStamp) {
-        this.fromAccount = fromAccount;
-        this.isPlaceMsg = isPlaceMsg;
-        this.msgBody = msgBody;
-        this.msgPriority = msgPriority;
-        this.msgRandom = msgRandom;
-        this.msgSeq = msgSeq;
-        this.msgTimeStamp = msgTimeStamp;
-    }
-
     public String getFromAccount() {
         return fromAccount;
     }
@@ -98,5 +85,18 @@ public class RspMsgItem {
 
     public void setMsgTimeStamp(Integer msgTimeStamp) {
         this.msgTimeStamp = msgTimeStamp;
+    }
+
+    @Override
+    public String toString() {
+        return "RspMsgItem{" +
+                "fromAccount='" + fromAccount + '\'' +
+                ", isPlaceMsg=" + isPlaceMsg +
+                ", msgBody=" + msgBody +
+                ", msgPriority=" + msgPriority +
+                ", msgRandom=" + msgRandom +
+                ", msgSeq=" + msgSeq +
+                ", msgTimeStamp=" + msgTimeStamp +
+                '}';
     }
 }

@@ -12,8 +12,19 @@ public class MemberRequestItem {
     @JsonProperty("Member_Account")
     private String memberAccount;
 
+    public MemberRequestItem() {
+    }
+
     public MemberRequestItem(String memberAccount) {
         this.memberAccount = memberAccount;
+    }
+
+    private MemberRequestItem(Builder builder) {
+        this.memberAccount = builder.memberAccount;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getMemberAccount() {
@@ -22,5 +33,22 @@ public class MemberRequestItem {
 
     public void setMemberAccount(String memberAccount) {
         this.memberAccount = memberAccount;
+    }
+
+
+    public static final class Builder {
+        private String memberAccount;
+
+        private Builder() {
+        }
+
+        public MemberRequestItem build() {
+            return new MemberRequestItem(this);
+        }
+
+        public Builder memberAccount(String memberAccount) {
+            this.memberAccount = memberAccount;
+            return this;
+        }
     }
 }

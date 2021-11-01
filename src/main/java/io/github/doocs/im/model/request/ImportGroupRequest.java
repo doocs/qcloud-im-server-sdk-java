@@ -45,12 +45,17 @@ public class ImportGroupRequest extends GenericRequest {
     @JsonProperty("AppDefinedData")
     private List<Map<String, Object>> appDefinedData;
 
+    public ImportGroupRequest() {
+    }
+
     public ImportGroupRequest(String type, String name) {
         this.type = type;
         this.name = name;
     }
 
-    public ImportGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction, String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption, Integer createTime, List<Map<String, Object>> appDefinedData) {
+    public ImportGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction,
+                              String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
+                              Integer createTime, List<Map<String, Object>> appDefinedData) {
         this.ownerAccount = ownerAccount;
         this.type = type;
         this.groupId = groupId;
@@ -62,6 +67,24 @@ public class ImportGroupRequest extends GenericRequest {
         this.applyJoinOption = applyJoinOption;
         this.createTime = createTime;
         this.appDefinedData = appDefinedData;
+    }
+
+    private ImportGroupRequest(Builder builder) {
+        this.ownerAccount = builder.ownerAccount;
+        this.type = builder.type;
+        this.groupId = builder.groupId;
+        this.name = builder.name;
+        this.introduction = builder.introduction;
+        this.notification = builder.notification;
+        this.faceUrl = builder.faceUrl;
+        this.maxMemberCount = builder.maxMemberCount;
+        this.applyJoinOption = builder.applyJoinOption;
+        this.createTime = builder.createTime;
+        this.appDefinedData = builder.appDefinedData;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getOwnerAccount() {
@@ -150,5 +173,82 @@ public class ImportGroupRequest extends GenericRequest {
 
     public void setAppDefinedData(List<Map<String, Object>> appDefinedData) {
         this.appDefinedData = appDefinedData;
+    }
+
+
+    public static final class Builder {
+        private String ownerAccount;
+        private String type;
+        private String groupId;
+        private String name;
+        private String introduction;
+        private String notification;
+        private String faceUrl;
+        private Integer maxMemberCount;
+        private String applyJoinOption;
+        private Integer createTime;
+        private List<Map<String, Object>> appDefinedData;
+
+        private Builder() {
+        }
+
+        public ImportGroupRequest build() {
+            return new ImportGroupRequest(this);
+        }
+
+        public Builder ownerAccount(String ownerAccount) {
+            this.ownerAccount = ownerAccount;
+            return this;
+        }
+
+        public Builder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder groupId(String groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder introduction(String introduction) {
+            this.introduction = introduction;
+            return this;
+        }
+
+        public Builder notification(String notification) {
+            this.notification = notification;
+            return this;
+        }
+
+        public Builder faceUrl(String faceUrl) {
+            this.faceUrl = faceUrl;
+            return this;
+        }
+
+        public Builder maxMemberCount(Integer maxMemberCount) {
+            this.maxMemberCount = maxMemberCount;
+            return this;
+        }
+
+        public Builder applyJoinOption(String applyJoinOption) {
+            this.applyJoinOption = applyJoinOption;
+            return this;
+        }
+
+        public Builder createTime(Integer createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Builder appDefinedData(List<Map<String, Object>> appDefinedData) {
+            this.appDefinedData = appDefinedData;
+            return this;
+        }
     }
 }

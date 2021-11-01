@@ -20,10 +20,23 @@ public class FriendGetListRequest extends GenericRequest {
     @JsonProperty("TagList")
     private List<String> tagList;
 
+    public FriendGetListRequest() {
+    }
+
     public FriendGetListRequest(String fromAccount, List<String> toAccount, List<String> tagList) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.tagList = tagList;
+    }
+
+    private FriendGetListRequest(Builder builder) {
+        this.fromAccount = builder.fromAccount;
+        this.toAccount = builder.toAccount;
+        this.tagList = builder.tagList;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getFromAccount() {
@@ -48,5 +61,34 @@ public class FriendGetListRequest extends GenericRequest {
 
     public void setTagList(List<String> tagList) {
         this.tagList = tagList;
+    }
+
+
+    public static final class Builder {
+        private String fromAccount;
+        private List<String> toAccount;
+        private List<String> tagList;
+
+        private Builder() {
+        }
+
+        public FriendGetListRequest build() {
+            return new FriendGetListRequest(this);
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder toAccount(List<String> toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder tagList(List<String> tagList) {
+            this.tagList = tagList;
+            return this;
+        }
     }
 }
