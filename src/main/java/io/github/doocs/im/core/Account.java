@@ -53,8 +53,8 @@ public class Account {
         return HttpUtil.post(url, kickRequest, KickResult.class);
     }
 
-    public QueryOnlineStatusResult queryOnlineStatus(QueryOnlineStatus queryOnlineStatus) throws IOException {
+    public QueryOnlineStatusResult queryOnlineStatus(QueryOnlineStatusRequest queryOnlineStatusRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_ONLINE_STATUS_COMMAND);
-        return HttpUtil.post(url, queryOnlineStatus, QueryOnlineStatusResult.class);
+        return HttpUtil.post(url, queryOnlineStatusRequest, QueryOnlineStatusResult.class);
     }
 }
