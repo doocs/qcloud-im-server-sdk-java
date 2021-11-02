@@ -30,31 +30,31 @@ public class Account {
 
     public AccountImportResult accountImport(AccountImportRequest accountImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_IMPORT_COMMAND);
-        return HttpUtil.post(url, accountImportRequest, AccountImportResult.class);
+        return HttpUtil.post(url, accountImportRequest, AccountImportResult.class, imClient.getConfig());
     }
 
     public MultiAccountImportResult multiAccountImport(MultiAccountImportRequest multiAccountImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, MULTI_ACCOUNT_IMPORT_COMMAND);
-        return HttpUtil.post(url, multiAccountImportRequest, MultiAccountImportResult.class);
+        return HttpUtil.post(url, multiAccountImportRequest, MultiAccountImportResult.class, imClient.getConfig());
     }
 
     public AccountDeleteResult accountDelete(AccountDeleteRequest accountDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_DELETE_COMMAND);
-        return HttpUtil.post(url, accountDeleteRequest, AccountDeleteResult.class);
+        return HttpUtil.post(url, accountDeleteRequest, AccountDeleteResult.class, imClient.getConfig());
     }
 
     public AccountCheckResult accountCheck(AccountCheckRequest accountCheckRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ACCOUNT_CHECK_COMMAND);
-        return HttpUtil.post(url, accountCheckRequest, AccountCheckResult.class);
+        return HttpUtil.post(url, accountCheckRequest, AccountCheckResult.class, imClient.getConfig());
     }
 
     public KickResult kick(KickRequest kickRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, KICK_COMMAND);
-        return HttpUtil.post(url, kickRequest, KickResult.class);
+        return HttpUtil.post(url, kickRequest, KickResult.class, imClient.getConfig());
     }
 
     public QueryOnlineStatusResult queryOnlineStatus(QueryOnlineStatusRequest queryOnlineStatusRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, QUERY_ONLINE_STATUS_COMMAND);
-        return HttpUtil.post(url, queryOnlineStatusRequest, QueryOnlineStatusResult.class);
+        return HttpUtil.post(url, queryOnlineStatusRequest, QueryOnlineStatusResult.class, imClient.getConfig());
     }
 }

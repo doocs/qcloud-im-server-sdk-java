@@ -3,7 +3,6 @@ package io.github.doocs.im;
 import io.github.doocs.im.core.*;
 import io.github.doocs.im.util.SigUtil;
 
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -14,13 +13,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ImClient {
     private final long sdkAppId;
     private final String userId;
-    private final String key;
-    private String userSig;
-    private long userSigExpireTs;
+    private final String userSig;
+    private final ClientConfiguration config;
 
     private static final String VERSION = "v4";
-    private static final long EXPIRE_TIME = 24 * 60 * 60L;
-    private static final ConcurrentHashMap<String, ImClient> IM_CLIENT = new ConcurrentHashMap<>();
     private static final String FORMAT_URL = "https://console.tim.qq.com/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
 
     public final Account account;
@@ -32,20 +28,25 @@ public class ImClient {
     public final Operation operation;
     public final RecentContact recentContact;
 
+    private static final ClientConfiguration DEFAULT_CONFIG = new ClientConfiguration();
+
     public static ImClient getInstance(long sdkAppId, String userId, String key) {
-        String identify = sdkAppId + "_" + userId;
-        if (!IM_CLIENT.containsKey(identify)) {
-            IM_CLIENT.putIfAbsent(identify, new ImClient(sdkAppId, userId, key));
-        }
-        return IM_CLIENT.get(identify);
+        return new ImClient(sdkAppId, userId, key);
+    }
+
+    public static ImClient getInstance(long sdkAppId, String userId, String key, ClientConfiguration config) {
+        return new ImClient(sdkAppId, userId, key, config);
     }
 
     public ImClient(long sdkAppId, String userId, String key) {
+        this(sdkAppId, userId, key, DEFAULT_CONFIG);
+    }
+
+    public ImClient(long sdkAppId, String userId, String key, ClientConfiguration config) {
         this.sdkAppId = sdkAppId;
         this.userId = userId;
-        this.key = key;
-        this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, EXPIRE_TIME);
-        this.userSigExpireTs = System.currentTimeMillis() / 1000 + EXPIRE_TIME - 100;
+        this.config = config;
+        this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, config.getExpireTime());
 
         account = new Account(this);
         message = new Message(this);
@@ -57,24 +58,13 @@ public class ImClient {
         recentContact = new RecentContact(this);
     }
 
-    public String getUrl(String serviceName, String command) {
-        // 随机生成32位无符号整数
-        long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);
-        String sig = getUserSig();
-        return String.format(FORMAT_URL, VERSION, serviceName, command,
-                sdkAppId, userId, sig, random);
+    public ClientConfiguration getConfig() {
+        return config;
     }
 
-    private String getUserSig() {
-        long currentTs = System.currentTimeMillis() / 1000;
-        if (currentTs >= userSigExpireTs) {
-            synchronized (this) {
-                if (currentTs >= userSigExpireTs) {
-                    userSig = SigUtil.genUserSig(sdkAppId, key, userId, EXPIRE_TIME);
-                    userSigExpireTs = currentTs + EXPIRE_TIME - 100;
-                }
-            }
-        }
-        return userSig;
+    public String getUrl(String serviceName, String command) {
+        long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);
+        return String.format(FORMAT_URL, VERSION, serviceName, command,
+                sdkAppId, userId, userSig, random);
     }
 }

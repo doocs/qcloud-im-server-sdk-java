@@ -33,51 +33,51 @@ public class Member {
 
     public ImPushResult imPush(ImPushRequest imPushRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_PUSH_COMMAND);
-        return HttpUtil.post(url, imPushRequest, ImPushResult.class);
+        return HttpUtil.post(url, imPushRequest, ImPushResult.class, imClient.getConfig());
     }
 
     public ImSetAttrNameResult imSetAttrName(ImSetAttrNameRequest imSetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_NAME_COMMAND);
-        return HttpUtil.post(url, imSetAttrNameRequest, ImSetAttrNameResult.class);
+        return HttpUtil.post(url, imSetAttrNameRequest, ImSetAttrNameResult.class, imClient.getConfig());
     }
 
     public ImGetAttrNameResult imGetAttrName(ImGetAttrNameRequest imGetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_NAME_COMMAND);
-        return HttpUtil.post(url, imGetAttrNameRequest, ImGetAttrNameResult.class);
+        return HttpUtil.post(url, imGetAttrNameRequest, ImGetAttrNameResult.class, imClient.getConfig());
     }
 
     public ImGetAttrResult imGetAttr(ImGetAttrRequest imGetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_COMMAND);
-        return HttpUtil.post(url, imGetAttrRequest, ImGetAttrResult.class);
+        return HttpUtil.post(url, imGetAttrRequest, ImGetAttrResult.class, imClient.getConfig());
     }
 
     public ImSetAttrResult imSetAttr(ImSetAttrRequest imSetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_COMMAND);
-        return HttpUtil.post(url, imSetAttrRequest, ImSetAttrResult.class);
+        return HttpUtil.post(url, imSetAttrRequest, ImSetAttrResult.class, imClient.getConfig());
     }
 
     public ImRemoveAttrResult imRemoveAttr(ImRemoveAttrRequest imRemoveAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ATTR_COMMAND);
-        return HttpUtil.post(url, imRemoveAttrRequest, ImRemoveAttrResult.class);
+        return HttpUtil.post(url, imRemoveAttrRequest, ImRemoveAttrResult.class, imClient.getConfig());
     }
 
     public ImGetTagResult imGetTag(ImGetTagRequest imGetTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_TAG_COMMAND);
-        return HttpUtil.post(url, imGetTagRequest, ImGetTagResult.class);
+        return HttpUtil.post(url, imGetTagRequest, ImGetTagResult.class, imClient.getConfig());
     }
 
     public ImAddTagResult imAddTag(ImAddTagRequest imAddTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_ADD_TAG_COMMAND);
-        return HttpUtil.post(url, imAddTagRequest, ImAddTagResult.class);
+        return HttpUtil.post(url, imAddTagRequest, ImAddTagResult.class, imClient.getConfig());
     }
 
     public ImRemoveTagResult imRemoveTag(ImRemoveTagRequest imRemoveTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_TAG_COMMAND);
-        return HttpUtil.post(url, imRemoveTagRequest, ImRemoveTagResult.class);
+        return HttpUtil.post(url, imRemoveTagRequest, ImRemoveTagResult.class, imClient.getConfig());
     }
 
     public ImRemoveAllTagsResult imRemoveAllTags(ImRemoveAllTagsRequest imRemoveAllTagsRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ALL_TAGS_COMMAND);
-        return HttpUtil.post(url, imRemoveAllTagsRequest, ImRemoveAllTagsResult.class);
+        return HttpUtil.post(url, imRemoveAllTagsRequest, ImRemoveAllTagsResult.class, imClient.getConfig());
     }
 }

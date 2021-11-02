@@ -30,36 +30,36 @@ public class Message {
 
     public SendMsgResult sendMsg(SendMsgRequest sendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_MSG_COMMAND);
-        return HttpUtil.post(url, sendMsgRequest, SendMsgResult.class);
+        return HttpUtil.post(url, sendMsgRequest, SendMsgResult.class, imClient.getConfig());
     }
 
     public BatchSendMsgResult batchSendMsg(BatchSendMsgRequest batchSendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND);
-        return HttpUtil.post(url, batchSendMsgRequest, BatchSendMsgResult.class);
+        return HttpUtil.post(url, batchSendMsgRequest, BatchSendMsgResult.class, imClient.getConfig());
     }
 
     public ImportMsgResult importMsg(ImportMsgRequest importMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IMPORT_MSG_COMMAND);
-        return HttpUtil.post(url, importMsgRequest, ImportMsgResult.class);
+        return HttpUtil.post(url, importMsgRequest, ImportMsgResult.class, imClient.getConfig());
     }
 
     public AdminRoamMsgResult getRoamMsg(AdminGetRoamMsgRequest adminGetRoamMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_GET_ROAM_MSG_COMMAND);
-        return HttpUtil.post(url, adminGetRoamMsgRequest, AdminRoamMsgResult.class);
+        return HttpUtil.post(url, adminGetRoamMsgRequest, AdminRoamMsgResult.class, imClient.getConfig());
     }
 
     public AdminMsgWithdrawResult msgWithdraw(AdminMsgWithdrawRequest adminMsgWithdrawRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_MSG_WITHDRAW_COMMAND);
-        return HttpUtil.post(url, adminMsgWithdrawRequest, AdminMsgWithdrawResult.class);
+        return HttpUtil.post(url, adminMsgWithdrawRequest, AdminMsgWithdrawResult.class, imClient.getConfig());
     }
 
     public AdminSetMsgReadResult setMsgRead(AdminSetMsgReadRequest adminSetMsgReadRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_SET_MSG_READ_COMMAND);
-        return HttpUtil.post(url, adminSetMsgReadRequest, AdminSetMsgReadResult.class);
+        return HttpUtil.post(url, adminSetMsgReadRequest, AdminSetMsgReadResult.class, imClient.getConfig());
     }
 
     public C2cUnreadMsgNumResult getC2cUnreadMsgNum(GetC2cUnreadMsgRequest getC2cUnreadMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_C2C_UNREAD_MSG_NUM_COMMAND);
-        return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class);
+        return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class, imClient.getConfig());
     }
 }

@@ -27,11 +27,11 @@ public class RecentContact {
 
     public GetRecentContactListResult recentContactList(GetRecentContactListRequest recentContactListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_RECENT_CONTACT_LIST);
-        return HttpUtil.post(url, recentContactListRequest, GetRecentContactListResult.class);
+        return HttpUtil.post(url, recentContactListRequest, GetRecentContactListResult.class, imClient.getConfig());
     }
 
     public DeleteRecentContactResult deleteRecentContact(DeleteRecentContactRequest deleteRecentContactRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, DELETE_RECENT_CONTACT);
-        return HttpUtil.post(url, deleteRecentContactRequest, DeleteRecentContactResult.class);
+        return HttpUtil.post(url, deleteRecentContactRequest, DeleteRecentContactResult.class, imClient.getConfig());
     }
 }
