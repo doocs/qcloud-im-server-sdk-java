@@ -1,5 +1,6 @@
 package io.github.doocs.im.model.group;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * @author bingo
  * @since 2021/10/31 21:02
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupInfo {
     @JsonProperty("Owner_Account")
     private String ownerAccount;

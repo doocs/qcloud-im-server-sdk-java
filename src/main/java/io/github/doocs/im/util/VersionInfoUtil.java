@@ -17,6 +17,9 @@ public class VersionInfoUtil {
     private static final String VERSION_INFO_FILE = "version.properties";
     private static final String USER_AGENT_PREFIX = "qcloud-im-server-sdk-java";
 
+    private VersionInfoUtil() {
+    }
+
     public static String getDefaultUserAgent() {
         if (defaultUserAgent == null) {
             String osName = System.getProperty("os.name");
