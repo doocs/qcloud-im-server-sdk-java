@@ -27,11 +27,11 @@ public class Profile {
 
     public PortraitSetResult portraitSet(PortraitSetRequest portraitSetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_SET_COMMAND);
-        return HttpUtil.post(url, portraitSetRequest, PortraitSetResult.class);
+        return HttpUtil.post(url, portraitSetRequest, PortraitSetResult.class, imClient.getConfig());
     }
 
     public PortraitGetResult portraitGet(PortraitGetRequest portraitGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_GET_COMMAND);
-        return HttpUtil.post(url, portraitGetRequest, PortraitGetResult.class);
+        return HttpUtil.post(url, portraitGetRequest, PortraitGetResult.class, imClient.getConfig());
     }
 }
