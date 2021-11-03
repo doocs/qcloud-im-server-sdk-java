@@ -1,0 +1,23 @@
+{
+  "name": "qcloud-im-server-sdk-java",
+  "version": "1.0.0",
+  "description": "腾讯云 IM 服务端 SDK API 文档 Java 版",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doocs/qcloud-im-server-sdk-java.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/doocs/qcloud-im-server-sdk-java/issues"
+  },
+  "homepage": "https://github.com/doocs/qcloud-im-server-sdk-java#readme",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.27"
+  }
+}
