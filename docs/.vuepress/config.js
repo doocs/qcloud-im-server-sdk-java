@@ -7,5 +7,21 @@ module.exports = {
       repo: 'doocs/qcloud-im-server-sdk-java',
       logo: 'https://avatars.githubusercontent.com/u/43716716?s=200&v=4',
       open: true,
+      sidebar: [
+        {
+          text: '指南',
+          link: '/guide/',
+          children: [
+            {
+              text: '账户',
+              link: '/guide/account.md',
+            },
+            {
+              text: '消息',
+              link: '/guide/getting-started.md',
+            },
+          ],
+        },
+      ],
     },
   }
