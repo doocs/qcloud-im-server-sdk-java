@@ -38,7 +38,10 @@ public class ProfileTest {
 
     @Test
     public void testPortraitSet() throws IOException {
-        ProfileItem profileItem = new ProfileItem("Tag_Profile_IM_Nick", "MyNickName");
+        ProfileItem profileItem = ProfileItem.builder()
+                .tag("Tag_Profile_IM_Nick")
+                .value("MyNickName")
+                .build();
         PortraitSetRequest request = new PortraitSetRequest("test1", Collections.singletonList(profileItem));
         PortraitSetResult result = client.profile.portraitSet(request);
         System.out.println(result);
@@ -47,9 +50,9 @@ public class ProfileTest {
 
     @Test
     public void testPortraitGet() throws IOException {
-        List<String> tagList = new ArrayList<>();
-        tagList.add("Tag_Profile_IM_Nick");
+        List<String> tagList = Collections.singletonList("Tag_Profile_IM_Nick");
         PortraitGetRequest request = new PortraitGetRequest(Collections.singletonList("test1"), tagList);
+
         PortraitGetResult result = client.profile.portraitGet(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

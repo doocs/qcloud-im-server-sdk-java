@@ -59,14 +59,22 @@ ImClient client = ImClient.getInstance(appId, identifier, key, config);
 
 ## 使用示例
 
-初始化 `ImClient` 实例后， 以使用[帐号管理-导入单个帐号](./account.md)为例：
+初始化 `ImClient` 实例后， 以使用 [帐号管理-导入单个帐号](./account.md#导入单个帐号) 为例：
 
 ```java
 AccountImportRequest request = AccountImportRequest.builder()
+<<<<<<< Updated upstream
         .identifier("admin")
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .nick("doocs")
         .build();
         
+=======
+    .identifier("admin")
+    .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
+    .nick("doocs")
+    .build();
+
+>>>>>>> Stashed changes
 AccountImportResult result = client.account.accountImport(request);
 ```

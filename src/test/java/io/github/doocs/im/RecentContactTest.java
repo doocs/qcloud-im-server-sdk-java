@@ -37,7 +37,14 @@ public class RecentContactTest {
 
     @Test
     public void testGetRecentContactList() throws IOException {
-        GetRecentContactListRequest request = new GetRecentContactListRequest("bingo", 213213123, 0, 1121212121, 100, AssistFlags.BIT_0);
+        GetRecentContactListRequest request = GetRecentContactListRequest.builder()
+                .fromAccount("doocs")
+                .timestamp(0)
+                .startIndex(0)
+                .topTimestamp(0)
+                .topStartIndex(0)
+                .assistFlags(AssistFlags.BIT_0)
+                .build();
         GetRecentContactListResult result = client.recentContact.recentContactList(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -45,7 +52,12 @@ public class RecentContactTest {
 
     @Test
     public void testDeleteRecentContact() throws IOException {
-        DeleteRecentContactRequest request = new DeleteRecentContactRequest("bingo", RecentContactType.C2C, "test1", ClearRamble.YES);
+        DeleteRecentContactRequest request = DeleteRecentContactRequest.builder()
+                .fromAccount("doocs_1")
+                .type(RecentContactType.C2C)
+                .toAccount("doocs_2")
+                .clearRamble(ClearRamble.YES)
+                .build();
         DeleteRecentContactResult result = client.recentContact.deleteRecentContact(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
