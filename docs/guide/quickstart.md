@@ -48,14 +48,14 @@ ImClient client = ImClient.getInstance(appId, identifier, key, config);
 
 `ClientConfiguration` 支持可配置参数如下：
 
-| 字段           | 类型    | 说明                                       | 默认值 |
-| -------------- | ------- | ------------------------------------------ | ------ |
-| maxRetries     | Integer | HTTP 最大重试次数                          | 3      |
-| connectTimeout | Long    | HTTP 连接超时（unit: milliseconds）        | 3000   |
-| readTimeout    | Long    | HTTP 读超时（unit: milliseconds）          | 3000   |
-| writeTimeout   | Long    | HTTP 写超时（unit: milliseconds）          | 3000   |
-| expireTime     | Long    | UserSig 签名失效时间（unit: milliseconds） | 86400  |
-| userAgent      | String  | userAgent                                  |        |
+| 字段           | 类型    | 说明                         | 默认值 |
+| -------------- | ------- | ---------------------------- | ------ |
+| maxRetries     | Integer | HTTP 最大重试次数            | 3      |
+| connectTimeout | Long    | HTTP 连接超时（毫秒）        | 3000   |
+| readTimeout    | Long    | HTTP 读超时（毫秒）          | 3000   |
+| writeTimeout   | Long    | HTTP 写超时（毫秒）          | 3000   |
+| expireTime     | Long    | UserSig 签名失效时间（毫秒） | 86400  |
+| userAgent      | String  | User-Agent                   |        |
 
 ## 使用示例
 
@@ -64,8 +64,8 @@ ImClient client = ImClient.getInstance(appId, identifier, key, config);
 ```java
 AccountImportRequest request = AccountImportRequest.builder()
         .identifier("admin")
-        .faceUrl("http://www.qq.com")
-        .nick("username")
+        .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
+        .nick("doocs")
         .build();
 AccountImportResult result = client.account.accountImport(request);
 ```

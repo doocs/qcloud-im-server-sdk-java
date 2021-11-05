@@ -13,11 +13,10 @@ module.exports = {
     sidebar: [
       {
         text: "指南",
-        link: "/guide/",
         children: [
           {
             text: "介绍",
-            link: "/guide/intro.md",
+            link: "/guide/",
           },
           {
             text: "快速上手",
