@@ -60,7 +60,7 @@ public class AccountTest {
     public void testAccountDelete() throws IOException {
         AccountDeleteItem item1 = AccountDeleteItem.builder().userId("acbin").build();
         AccountDeleteItem item2 = AccountDeleteItem.builder().userId("test1").build();
-        AccountDeleteRequest request = AccountDeleteRequest.builder().deleteItemList(Collections.singletonList(item1)).build();
+        AccountDeleteRequest request = AccountDeleteRequest.builder().deleteItemList(Arrays.asList(item1, item2)).build();
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
