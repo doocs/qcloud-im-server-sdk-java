@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class Group {
     private static final String SERVICE_NAME = "group_open_http_svc";
+    private static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
 
     private static final String GET_APPID_GROUP_LIST_COMMAND = "get_appid_group_list";
     private static final String CREATE_GROUP_COMMAND = "create_group";
@@ -38,6 +39,9 @@ public class Group {
     private static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
     private static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
     private static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
+    private static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
+    private static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
+    private static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
 
     private final ImClient imClient;
 
@@ -163,5 +167,20 @@ public class Group {
     public GetOnlineMemberNumResult getOnlineMemberNum(GetOnlineMemberNumRequest getOnlineMemberNumRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_ONLINE_MEMBER_NUM_COMMAND);
         return HttpUtil.post(url, getOnlineMemberNumRequest, GetOnlineMemberNumResult.class, imClient.getConfig());
+    }
+
+    public GetGroupAttrResult getGroupAttr(GetGroupAttrRequest getGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_ATTR, GET_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, getGroupAttrRequest, GetGroupAttrResult.class, imClient.getConfig());
+    }
+
+    public SetGroupAttrResult setGroupAttr(SetGroupAttrRequest setGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SET_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, setGroupAttrRequest, SetGroupAttrResult.class, imClient.getConfig());
+    }
+
+    public ModifyGroupAttrResult modifyGroupAttr(ModifyGroupAttrRequest modifyGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, modifyGroupAttrRequest, ModifyGroupAttrResult.class, imClient.getConfig());
     }
 }

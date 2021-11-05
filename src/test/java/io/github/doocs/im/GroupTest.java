@@ -4,6 +4,7 @@ import io.github.doocs.im.constant.ApplyJoinOption;
 import io.github.doocs.im.constant.GroupType;
 import io.github.doocs.im.constant.MemberRole;
 import io.github.doocs.im.constant.OnlineOnlyFlag;
+import io.github.doocs.im.core.Group;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
@@ -13,6 +14,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -270,5 +272,52 @@ public class GroupTest {
         GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
+    }
+
+
+    @Test
+    public void getGroupAttr() throws IOException {
+        Group group = new Group(client);
+        GetGroupAttrRequest getGroupAttrRequest = new GetGroupAttrRequest();
+        getGroupAttrRequest.setGroupId("1027");
+        GetGroupAttrResult groupAttr = group.getGroupAttr(getGroupAttrRequest);
+        System.out.println(groupAttr);
+    }
+
+    @Test
+    public void setGroupAttr() throws IOException {
+        Group group = new Group(client);
+        SetGroupAttrRequest setGroupAttrRequest = new SetGroupAttrRequest();
+        setGroupAttrRequest.setGroupId("1027");
+
+        List<GroupAttrItem> groupAttrItems = new ArrayList<>();
+        GroupAttrItem groupAttrItem = new GroupAttrItem();
+        groupAttrItem.setKey("seat0");
+        groupAttrItem.setValue("test");
+        groupAttrItems.add(groupAttrItem);
+
+        setGroupAttrRequest.setGroupAttr(groupAttrItems);
+
+        SetGroupAttrResult setGroupAttrResult = group.setGroupAttr(setGroupAttrRequest);
+        System.out.println(setGroupAttrResult);
+    }
+
+
+    @Test
+    public void modifyGroupAttr() throws IOException {
+        Group group = new Group(client);
+        ModifyGroupAttrRequest modifyGroupAttrRequest = new ModifyGroupAttrRequest();
+        modifyGroupAttrRequest.setGroupId("1027");
+
+        List<GroupAttrItem> groupAttrItems = new ArrayList<>();
+        GroupAttrItem groupAttrItem = new GroupAttrItem();
+        groupAttrItem.setKey("seat0");
+        groupAttrItem.setValue("test1234");
+        groupAttrItems.add(groupAttrItem);
+
+        modifyGroupAttrRequest.setGroupAttr(groupAttrItems);
+
+        ModifyGroupAttrResult modifyGroupAttrResult = group.modifyGroupAttr(modifyGroupAttrRequest);
+        System.out.println(modifyGroupAttrResult);
     }
 }
