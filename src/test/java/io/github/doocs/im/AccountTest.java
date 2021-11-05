@@ -60,7 +60,7 @@ public class AccountTest {
     public void testAccountDelete() throws IOException {
         AccountDeleteItem item1 = AccountDeleteItem.builder().userId("acbin").build();
         AccountDeleteItem item2 = AccountDeleteItem.builder().userId("test1").build();
-        AccountDeleteRequest request = AccountDeleteRequest.builder().deleteItemList(Arrays.asList(item1, item2)).build();
+        AccountDeleteRequest request = AccountDeleteRequest.builder().deleteItemList(Collections.singletonList(item1)).build();
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -86,9 +86,11 @@ public class AccountTest {
 
     @Test
     public void testQueryState() throws IOException {
-        List<String> toAccount = Collections.singletonList("bingo");
-        QueryOnlineStatusRequest request = new QueryOnlineStatusRequest(toAccount);
-        request.setIsNeedDetail(IsNeedDetail.YES);
+        List<String> toAccount = Arrays.asList("doocs_1", "doocs_2");
+        QueryOnlineStatusRequest request = QueryOnlineStatusRequest.builder()
+                .toAccount(toAccount)
+                .isNeedDetail(IsNeedDetail.YES)
+                .build();
         QueryOnlineStatusResult result = client.account.queryOnlineStatus(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

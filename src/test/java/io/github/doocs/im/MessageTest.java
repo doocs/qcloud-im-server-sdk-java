@@ -37,12 +37,18 @@ public class MessageTest {
 
     @Test
     public void testSendMsg() throws IOException {
-        TIMMsgElement msg = new TIMTextMsgElement("hello world");
-        SendMsgRequest request = new SendMsgRequest("test2", 123, Collections.singletonList(msg));
-        request.setFromAccount("test1");
-        request.setSyncOtherMachine(SyncOtherMachine.YES);
-        request.setMsgTimeStamp(1631934058);
-        request.setMsgLifeTime(604800);
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+        SendMsgRequest request = SendMsgRequest.builder()
+                .fromAccount("test1")
+                .toAccount("test2")
+                .msgRandom(123)
+                .msgBody(msgBody)
+                .syncOtherMachine(SyncOtherMachine.YES)
+                .msgTimeStamp(1631934058)
+                .msgLifeTime(604800)
+                .build();
+      
         SendMsgResult result = client.message.sendMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -52,9 +58,15 @@ public class MessageTest {
     public void testBatchSendMsg() throws IOException {
         List<String> toAccount = Arrays.asList("test1", "test2");
         TIMTextMsgElement msg = new TIMTextMsgElement("hi bingo");
-        BatchSendMsgRequest request = new BatchSendMsgRequest(toAccount, 123, Collections.singletonList(msg));
-        request.setSyncOtherMachine(SyncOtherMachine.NO);
-        request.setMsgSeq(28460);
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+        BatchSendMsgRequest request = BatchSendMsgRequest
+                .builder()
+                .toAccount(toAccount)
+                .msgRandom(123)
+                .msgBody(msgBody)
+                .syncOtherMachine(SyncOtherMachine.NO)
+                .msgSeq(28460)
+                .build();
         BatchSendMsgResult result = client.message.batchSendMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -64,7 +76,13 @@ public class MessageTest {
     public void testImportMsg() throws IOException {
         TIMTextMsgElement msg = new TIMTextMsgElement("hello bingo");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
-        ImportMsgRequest request = new ImportMsgRequest(1, "bingo", "test1", 122, 1557387418, msgBody);
+        ImportMsgRequest request = ImportMsgRequest.builder()
+                .fromAccount("bingo")
+                .toAccount("test1")
+                .msgRandom(122)
+                .msgTimeStamp(1557387418)
+                .msgBody(msgBody)
+                .build();
         ImportMsgResult result = client.message.importMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -72,7 +90,13 @@ public class MessageTest {
 
     @Test
     public void testAdminGetRoamMsg() throws IOException {
-        AdminGetRoamMsgRequest request = new AdminGetRoamMsgRequest("200942", "151", 200, 1603954915, 1643954915);
+        AdminGetRoamMsgRequest request = AdminGetRoamMsgRequest.builder()
+                .fromAccount("test1")
+                .toAccount("test2")
+                .maxCnt(123)
+                .minTime(1631934000)
+                .maxTime(1631934060)
+                .build();
         AdminRoamMsgResult result = client.message.getRoamMsg(request);
         List<TIMMsgElement> msgBody = result.getMsgList().get(0).getMsgBody();
         System.out.println(msgBody.get(0).getMsgType());
@@ -88,7 +112,11 @@ public class MessageTest {
 
     @Test
     public void testAdminMsgWithdraw() throws IOException {
-        AdminMsgWithdrawRequest request = new AdminMsgWithdrawRequest("test1", "bingo", "31906_833502_1572869830");
+        AdminMsgWithdrawRequest request = AdminMsgWithdrawRequest.builder()
+                .fromAccount("test1")
+                .toAccount("bingo")
+                .msgKey("31906_833502_1572869830")
+                .build();
         AdminMsgWithdrawResult result = client.message.msgWithdraw(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -96,7 +124,10 @@ public class MessageTest {
 
     @Test
     public void testAdminSetMsgRead() throws IOException {
-        AdminSetMsgReadRequest request = new AdminSetMsgReadRequest("test1", "test2");
+        AdminSetMsgReadRequest request = AdminSetMsgReadRequest.builder()
+                .reportAccount("test1")
+                .peerAccount("test2")
+                .build();
         AdminSetMsgReadResult result = client.message.setMsgRead(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

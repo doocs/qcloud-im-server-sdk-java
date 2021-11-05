@@ -9,5 +9,18 @@ import io.github.doocs.im.model.group.GroupInfo;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateGroupRequest extends GroupInfo {
+    public static Builder builder() {
+        return new Builder();
+    }
 
+    public CreateGroupRequest(Builder builder) {
+        super(builder);
+    }
+
+    public static class Builder extends GroupInfo.Builder {
+        @Override
+        public CreateGroupRequest build() {
+            return new CreateGroupRequest(this);
+        }
+    }
 }

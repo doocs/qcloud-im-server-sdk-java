@@ -2,6 +2,9 @@ package io.github.doocs.im.model.group;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.doocs.im.constant.ApplyJoinOption;
+import io.github.doocs.im.constant.GroupType;
+import io.github.doocs.im.model.request.CreateGroupRequest;
 
 import java.util.List;
 
@@ -68,7 +71,7 @@ public class GroupInfo {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
-    private GroupInfo(Builder builder) {
+    protected GroupInfo(Builder builder) {
         this.ownerAccount = builder.ownerAccount;
         this.type = builder.type;
         this.groupId = builder.groupId;
@@ -202,7 +205,22 @@ public class GroupInfo {
                 '}';
     }
 
-    public static final class Builder {
+    public static void main(String[] args) {
+        CreateGroupRequest request = (CreateGroupRequest) CreateGroupRequest.builder()
+                .type(GroupType.PUBLIC)
+                .name("TestGroup")
+                .ownerAccount("doocs")
+                .groupId("MyFirstGroup")
+                .introduction("This is group Introduction")
+                .notification("This is group Notification")
+                .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
+                .maxMemberCount(500)
+                .applyJoinOption(ApplyJoinOption.FREE_ACCESS)
+                .build();
+        System.out.println(request.getClass());
+    }
+
+    public static class Builder {
         private String ownerAccount;
         private String type;
         private String groupId;
@@ -216,7 +234,7 @@ public class GroupInfo {
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
-        private Builder() {
+        protected Builder() {
         }
 
         public GroupInfo build() {

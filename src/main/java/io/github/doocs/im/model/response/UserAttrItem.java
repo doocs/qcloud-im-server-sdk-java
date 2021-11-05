@@ -25,6 +25,15 @@ public class UserAttrItem {
         this.attrs = attrs;
     }
 
+    private UserAttrItem(Builder builder) {
+        this.toAccount = builder.toAccount;
+        this.attrs = builder.attrs;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getToAccount() {
         return toAccount;
     }
@@ -39,6 +48,29 @@ public class UserAttrItem {
 
     public void setAttrs(Map<String, Object> attrs) {
         this.attrs = attrs;
+    }
+
+
+    public static final class Builder {
+        private String toAccount;
+        private Map<String, Object> attrs;
+
+        private Builder() {
+        }
+
+        public UserAttrItem build() {
+            return new UserAttrItem(this);
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder attrs(Map<String, Object> attrs) {
+            this.attrs = attrs;
+            return this;
+        }
     }
 
     @Override
