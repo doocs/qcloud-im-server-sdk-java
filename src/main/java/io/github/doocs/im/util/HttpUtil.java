@@ -23,10 +23,10 @@ public class HttpUtil {
     private static final String DEFAULT_USER_AGENT = DEFAULT_CONFIG.getUserAgent();
 
     private static final OkHttpClient DEFAULT_CLIENT = new OkHttpClient.Builder()
-            .retryOnConnectionFailure(DEFAULT_CONFIG.getMaxRetries() > 0)
             .connectTimeout(DEFAULT_CONFIG.getConnectTimeout(), TimeUnit.MILLISECONDS)
             .readTimeout(DEFAULT_CONFIG.getReadTimeout(), TimeUnit.MILLISECONDS)
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
+            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries()))
             .build();
 
     private HttpUtil() {
@@ -41,6 +41,7 @@ public class HttpUtil {
                     .readTimeout(config.getReadTimeout(), TimeUnit.MILLISECONDS)
                     .writeTimeout(config.getWriteTimeout(), TimeUnit.MILLISECONDS)
                     .retryOnConnectionFailure(config.getMaxRetries() > 0)
+                    .addInterceptor(new RetryInterceptor(config.getMaxRetries()))
                     .build();
         }
         Map<String, String> headers = new HashMap<>(2);
@@ -80,5 +81,31 @@ public class HttpUtil {
         try (Response response = DEFAULT_CLIENT.newCall(request).execute()) {
             return Objects.requireNonNull(response.body()).string();
         }
+    }
+}
+
+class RetryInterceptor implements Interceptor {
+    private int maxRetry;
+
+    RetryInterceptor(int maxRetry) {
+        this.maxRetry = maxRetry;
+    }
+
+    public int getMaxRetry() {
+        return maxRetry;
+    }
+
+    public void setMaxRetry(int maxRetry) {
+        this.maxRetry = maxRetry;
+    }
+
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+        Request request = chain.request();
+        Response response = chain.proceed(request);
+        for (int i = 0; i < maxRetry && !response.isSuccessful(); ++i) {
+            response = chain.proceed(request);
+        }
+        return response;
     }
 }
