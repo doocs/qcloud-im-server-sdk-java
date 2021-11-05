@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author hyh
  * @since 2021/08/01 13:33
  */
-public class GetGroupAttrItem extends GenericResult {
+public class GetGroupAttrItem {
 
     @JsonProperty("key")
     private String key;
