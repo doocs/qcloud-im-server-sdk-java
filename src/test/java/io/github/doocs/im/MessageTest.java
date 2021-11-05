@@ -1,6 +1,8 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.MsgType;
 import io.github.doocs.im.constant.SyncOtherMachine;
+import io.github.doocs.im.model.message.TIMCustomMsgElement;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
@@ -10,10 +12,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * @author bingo
@@ -49,6 +48,7 @@ public class MessageTest {
                 .msgTimeStamp(1631934058)
                 .msgLifeTime(604800)
                 .build();
+      
         SendMsgResult result = client.message.sendMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -98,7 +98,15 @@ public class MessageTest {
                 .maxTime(1631934060)
                 .build();
         AdminRoamMsgResult result = client.message.getRoamMsg(request);
-        System.out.println(result);
+        List<TIMMsgElement> msgBody = result.getMsgList().get(0).getMsgBody();
+        System.out.println(msgBody.get(0).getMsgType());
+
+        for (TIMMsgElement ee : msgBody) {
+            if (Objects.equals(ee.getMsgType(), MsgType.TIM_CUSTOM_ELEM)) {
+                TIMCustomMsgElement t = (TIMCustomMsgElement) ee;
+                System.out.println(t.getMsgContent().getData());
+            }
+        }
         Assert.assertEquals("OK", result.getActionStatus());
     }
 
