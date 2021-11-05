@@ -14,50 +14,17 @@ module.exports = {
       {
         text: "指南",
         children: [
-          {
-            text: "介绍",
-            link: "/guide/",
-          },
-          {
-            text: "快速上手",
-            link: "/guide/quickstart.md",
-          },
-          {
-            text: "帐号管理",
-            link: "/guide/account.md",
-          },
-          {
-            text: "单聊消息",
-            link: "/guide/message.md",
-          },
-          {
-            text: "全员推送",
-            link: "/guide/member.md",
-          },
-          {
-            text: "资料管理",
-            link: "/guide/profile.md",
-          },
-          {
-            text: "关系链管理",
-            link: "/guide/sns.md",
-          },
-          {
-            text: "最近联系人",
-            link: "/guide/recent_contact.md",
-          },
-          {
-            text: "群组管理",
-            link: "/guide/group.md",
-          },
-          {
-            text: "全局禁言管理",
-            link: "/guide/operation_1.md",
-          },
-          {
-            text: "运营管理",
-            link: "/guide/operation_2.md",
-          },
+          '/guide/README.md', 
+          '/guide/quickstart.md',
+          '/guide/account.md',
+          '/guide/message.md',
+          '/guide/member.md',
+          '/guide/profile.md',
+          '/guide/sns.md',
+          '/guide/recent_contact.md',
+          '/guide/group.md',
+          '/guide/operation_1.md',
+          '/guide/operation_2.md'
         ],
       },
     ],
