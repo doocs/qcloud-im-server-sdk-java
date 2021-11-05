@@ -67,5 +67,6 @@ AccountImportRequest request = AccountImportRequest.builder()
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .nick("doocs")
         .build();
+        
 AccountImportResult result = client.account.accountImport(request);
 ```
