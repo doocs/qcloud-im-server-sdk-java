@@ -27,7 +27,7 @@ App 管理员可以通过该接口创建群组。
 使用示例：
 
 ```java
-CreateGroupRequest request = (CreateGroupRequest) CreateGroupRequest.builder()
+CreateGroupRequest request = CreateGroupRequest.builder()
         .type(GroupType.PUBLIC)
         .name("TestGroup")
         .ownerAccount("doocs")

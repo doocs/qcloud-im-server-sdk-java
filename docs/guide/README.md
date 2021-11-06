@@ -1,6 +1,6 @@
 # 介绍
 
-本文档基于 QCloud IM Server SDK v0.2.3 版本编写。
+本文档基于 QCloud IM Server SDK v0.2.5 版本编写。
 
 ## SDK 源码
 
