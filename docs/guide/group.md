@@ -4,7 +4,7 @@
 
 App 管理员可以通过该接口获取 App 中所有群组的 ID。
 
-::: tip
+::: tip 说明
 即时通信 IM 内置多种群组类型，详情请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
 
@@ -46,7 +46,7 @@ CreateGroupResult result = client.group.createGroup(request);
 
 App 管理员可以根据群组 ID 获取群组的详细信息。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -71,7 +71,7 @@ GetGroupInfoResult result = client.group.getGroupInfo(request);
 
 App 管理员可以根据群组 ID 获取群组成员的资料。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -100,7 +100,7 @@ GetGroupMemberInfoResult result = client.group.getGroupMemberInfo(request);
 
 App 管理员可以通过该接口修改指定群组的基础信息。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -134,7 +134,7 @@ ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
 
 App 管理员可以通过该接口向指定的群中添加新成员。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -165,7 +165,7 @@ AddGroupMemberResult result = client.group.addGroupMember(request);
 
 App 管理员可以通过该接口删除群成员。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -196,7 +196,7 @@ DeleteGroupMemberResult result = client.group.deleteGroupMember(request);
 
 App 管理员可以通过该接口修改群成员资料。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -227,7 +227,7 @@ ModifyGroupMemberInfoResult result = client.group.modifyGroupMemberInfo(request)
 
 App 管理员通过该接口解散群。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -252,7 +252,7 @@ DestroyGroupResult result = client.group.destroyGroup(request);
 
 App 管理员可以通过本接口获取某一用户加入的群信息。默认不获取用户已加入但未激活好友工作群（Work）以及直播群（AVChatRoom）群信息。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                                                                                                               |
@@ -277,7 +277,7 @@ GetJoinGroupListResult result = client.group.getJoinGroupList(request);
 
 App 管理员可以通过该接口获取一批用户在群内的身份，即“成员角色”。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -309,7 +309,7 @@ GetRoleInGroupResult result = client.group.getRoleInGroup(request);
 - App 管理员取消对某些用户的禁言。
 - 被禁言用户退出群组之后再进入同一群组，禁言仍然有效。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -340,7 +340,7 @@ ForbidSendMsgResult result = client.group.forbidSendMsg(request);
 
 App 管理员可以根据群组 ID 获取群组中被禁言的用户列表。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -365,7 +365,7 @@ GetGroupShuttedUinResult result = client.group.getGroupShuttedUin(request);
 
 App 管理员可以通过该接口在群组中发送普通消息。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -395,7 +395,7 @@ SendGroupMsgResult result = client.group.sendGroupMsg(request);
 
 App 管理员可以通过该接口在群组中发送系统通知。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -429,7 +429,7 @@ SendGroupSystemNotificationResult result = client.group.sendGroupSystemNotificat
 - 没有群主的群，App 管理员可以通过此接口指定他人作为群主。
 - 新群主必须为群内成员。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -459,7 +459,7 @@ ChangeGroupOwnerResult result = client.group.changeGroupOwner(request);
 
 App 管理员通过该接口撤回指定群组的消息，消息需要在漫游有效期以内。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -488,7 +488,7 @@ GroupMsgRecallResult result = client.group.groupMsgRecall(request);
 App 管理员可以通过该接口导入群组，不会触发回调、不会下发通知；
 当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议导入存量群组数据。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -519,7 +519,7 @@ ImportGroupResult result = client.group.importGroup(request);
 - 该 API 接口的作用是导入群组的消息，不会触发回调、不会下发通知。
 - 当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议导入存量群消息数据。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -555,7 +555,7 @@ ImportGroupMsgResult result = client.group.importGroupMsg(request);
 - 该 API 接口的作用是导入群组成员，不会触发回调、不会下发通知。
 - 当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议导入存量群成员数据。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -591,7 +591,7 @@ ImportGroupMemberResult result = client.group.importGroupMember(request);
 - App 管理员使用该接口设置群组成员未读消息数，不会触发回调、不会下发通知。
 - 当 App 需要从其他即时通信系统迁移到即时通信 IM 时，使用该协议设置群成员的未读消息计数。
 
-::: tip
+::: tip 说明
 该文档仅限迁移用户使用，线上用户不能使用。
 
 适用的群组类型
@@ -624,7 +624,7 @@ SetUnreadMsgNumResult result = client.group.setUnreadMsgNum(request);
 
 该 API 接口的作用是撤回最近 1000 条消息中指定用户发送的消息。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -661,7 +661,7 @@ App 管理员可以通过该接口拉取群组的历史消息。
 - 如果用户想拉取一个群的全量消息，首次拉取时不用填拉取 Seq，Server 会自动返回最新的消息，以后拉取时拉取 Seq 填上次返回的最小 Seq 减 1。
 - 如果返回消息的 IsPlaceMsg 为 1，表示这个 Seq 的消息或者过期、或者存储失败、或者被删除了。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                      |
@@ -692,7 +692,7 @@ GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);
 
 App 管理员可以根据群组 ID 获取直播群在线人数。
 
-::: tip
+::: tip 说明
 适用的群组类型
 
 | 群组类型 ID | 是否支持此 REST API                          |
@@ -703,6 +703,9 @@ App 管理员可以根据群组 ID 获取直播群在线人数。
 | AVChatRoom  | 支持                                         |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+::: warning 注意
 
 - 在线人数总体更新粒度为 10s。
 - 当群人数大于等于 300 或群内有 Web 端用户的时候，出现群成员上下线或者进退群的时候，由于当前 10s 周期内已经统计了用户在线状态的原因，会在下一个 10s 周期才会统计到剔除状态用户变更的在线人数，所以会出现调用接口 10s - 20s 才会更新的现象。

@@ -1,6 +1,6 @@
 # 介绍
 
-本文档基于 QCloud IM Server SDK v0.2.5 版本编写。
+本文档基于 QCloud IM Server SDK <Badge type="tip" text="v0.2.5" vertical="top" /> 编写。
 
 ## SDK 源码
 
