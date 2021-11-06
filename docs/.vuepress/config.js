@@ -2,6 +2,7 @@ module.exports = {
   lang: "zh-CN",
   title: "腾讯云 IM 服务端 Java SDK 使用文档",
   description: "腾讯云 IM 服务端 SDK API 文档 Java 版",
+  head: [['link', { rel: 'icon', href: 'https://avatars.githubusercontent.com/u/43716716?s=200&v=4' }]],
   base: "/qcloud-im-server-sdk-java/",
   themeConfig: {
     repo: "doocs/qcloud-im-server-sdk-java",

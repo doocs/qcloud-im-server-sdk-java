@@ -1,0 +1,20 @@
+name: contributors
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  contributors:
+    runs-on: ubuntu-latest
+    if: github.repository == 'doocs/qcloud-im-server-sdk-java'
+    steps:
+      - uses: wow-actions/contributors-list@v1
+        name: Update contributors
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          svgPath: docs/assets/contributors.svg
+          svgWidth: 890
+          includeBots: false
+          commitMessage: "chore: update contributors"
