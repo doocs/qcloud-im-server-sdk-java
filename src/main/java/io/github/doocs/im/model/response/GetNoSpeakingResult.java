@@ -41,6 +41,9 @@ public class GetNoSpeakingResult extends GenericResult {
         return "GetNoSpeakingResult{" +
                 "c2CMsgNoSpeakingTime=" + c2CMsgNoSpeakingTime +
                 ", groupMsgNoSpeakingTime=" + groupMsgNoSpeakingTime +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

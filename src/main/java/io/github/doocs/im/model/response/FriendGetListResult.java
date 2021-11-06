@@ -50,6 +50,9 @@ public class FriendGetListResult extends GroupGetResult {
                 "infoItemList=" + infoItemList +
                 ", failAccount=" + failAccount +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

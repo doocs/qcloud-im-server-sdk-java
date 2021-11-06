@@ -4,8 +4,6 @@ import io.github.doocs.im.constant.ApplyJoinOption;
 import io.github.doocs.im.constant.GroupType;
 import io.github.doocs.im.constant.MemberRole;
 import io.github.doocs.im.constant.OnlineOnlyFlag;
-import io.github.doocs.im.model.group.GroupInfo;
-import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -54,10 +52,10 @@ public class GroupTest {
 
     @Test
     public void testCreateGroup() throws IOException {
-        CreateGroupRequest request = (CreateGroupRequest) CreateGroupRequest.builder()
+        CreateGroupRequest request = CreateGroupRequest.builder()
                 .type(GroupType.PUBLIC)
                 .name("TestGroup")
-                .ownerAccount("doocs")
+                .ownerAccount("user2")
                 .groupId("MyFirstGroup")
                 .introduction("This is group Introduction")
                 .notification("This is group Notification")

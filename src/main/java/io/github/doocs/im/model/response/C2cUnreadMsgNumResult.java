@@ -48,6 +48,9 @@ public class C2cUnreadMsgNumResult extends GenericResult {
                 "allC2cUnreadMsgNum=" + allC2cUnreadMsgNum +
                 ", unreadMsgNumList=" + unreadMsgNumList +
                 ", errorList=" + errorList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

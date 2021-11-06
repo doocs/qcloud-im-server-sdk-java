@@ -24,6 +24,9 @@ public class GetRoleInGroupResult extends GenericResult {
     public String toString() {
         return "GetRoleInGroupResult{" +
                 "userIdList=" + userIdList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

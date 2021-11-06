@@ -96,6 +96,9 @@ public class GetRecentContactListResult extends GenericResult {
                 ", topTimestamp=" + topTimestamp +
                 ", topStartIndex=" + topStartIndex +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

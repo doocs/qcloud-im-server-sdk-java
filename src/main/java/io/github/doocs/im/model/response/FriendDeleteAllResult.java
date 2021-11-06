@@ -22,6 +22,9 @@ public class FriendDeleteAllResult extends GenericResult {
     public String toString() {
         return "FriendDeleteAllResult{" +
                 "errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

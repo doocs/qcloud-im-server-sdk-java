@@ -24,6 +24,9 @@ public class GetHistoryResult extends GenericResult {
     public String toString() {
         return "GetHistoryResult{" +
                 "file=" + file +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

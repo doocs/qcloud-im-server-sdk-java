@@ -48,6 +48,9 @@ public class FriendImportResult extends GenericResult {
                 "resultItemList=" + resultItemList +
                 ", errorDisplay='" + errorDisplay + '\'' +
                 ", failAccount=" + failAccount +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

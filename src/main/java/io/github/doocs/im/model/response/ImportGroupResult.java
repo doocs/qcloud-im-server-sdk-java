@@ -22,6 +22,9 @@ public class ImportGroupResult extends GenericResult {
     public String toString() {
         return "ImportGroupResult{" +
                 "groupId='" + groupId + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

@@ -24,6 +24,9 @@ public class AccountDeleteResult extends GenericResult {
     public String toString() {
         return "AccountDeleteResult{" +
                 "resultItems=" + resultItems +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

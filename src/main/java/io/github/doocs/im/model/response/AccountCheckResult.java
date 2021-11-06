@@ -24,6 +24,9 @@ public class AccountCheckResult extends GenericResult {
     public String toString() {
         return "AccountCheckResult{" +
                 "resultItems=" + resultItems +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

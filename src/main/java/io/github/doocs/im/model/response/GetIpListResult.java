@@ -24,6 +24,9 @@ public class GetIpListResult extends GenericResult {
     public String toString() {
         return "GetIpListResult{" +
                 "ipList=" + ipList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

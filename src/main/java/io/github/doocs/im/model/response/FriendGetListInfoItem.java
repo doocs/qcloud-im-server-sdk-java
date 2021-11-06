@@ -52,4 +52,14 @@ public class FriendGetListInfoItem {
     public void setResultInfo(String resultInfo) {
         this.resultInfo = resultInfo;
     }
+
+    @Override
+    public String toString() {
+        return "FriendGetListInfoItem{" +
+                "toAccount='" + toAccount + '\'' +
+                ", snsProfileItemList=" + snsProfileItemList +
+                ", resultCode=" + resultCode +
+                ", resultInfo='" + resultInfo + '\'' +
+                '}';
+    }
 }

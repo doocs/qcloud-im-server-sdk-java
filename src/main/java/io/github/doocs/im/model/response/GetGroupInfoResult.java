@@ -25,6 +25,9 @@ public class GetGroupInfoResult extends GenericResult {
     public String toString() {
         return "GetGroupInfoResult{" +
                 "groupInfo=" + groupInfo +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

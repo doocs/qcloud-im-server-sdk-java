@@ -24,4 +24,14 @@ public class GetOnlineMemberNumResult extends GenericResult {
     public void setOnlineMemberNum(Integer onlineMemberNum) {
         this.onlineMemberNum = onlineMemberNum;
     }
+
+    @Override
+    public String toString() {
+        return "GetOnlineMemberNumResult{" +
+                "onlineMemberNum=" + onlineMemberNum +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
+                '}';
+    }
 }

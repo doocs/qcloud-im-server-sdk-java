@@ -48,6 +48,9 @@ public class GetAppidGroupListResult extends GenericResult {
                 "totalCount=" + totalCount +
                 ", groupIdList=" + groupIdList +
                 ", next=" + next +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

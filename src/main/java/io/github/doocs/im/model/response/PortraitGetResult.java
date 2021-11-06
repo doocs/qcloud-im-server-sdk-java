@@ -48,6 +48,9 @@ public class PortraitGetResult extends GenericResult {
                 "errorDisplay='" + errorDisplay + '\'' +
                 ", userProfileItemList=" + userProfileItemList +
                 ", failAccount=" + failAccount +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }
