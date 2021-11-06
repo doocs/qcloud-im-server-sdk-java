@@ -174,7 +174,7 @@ public class GroupIdListResultItem {
 
     @Override
     public String toString() {
-        return "GroupIdListIResultItem{" +
+        return "GroupIdListResultItem{" +
                 "groupId='" + groupId + '\'' +
                 ", type='" + type + '\'' +
                 ", name='" + name + '\'' +

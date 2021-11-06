@@ -24,6 +24,9 @@ public class GetAppInfoResult extends GenericResult {
     public String toString() {
         return "GetAppInfoResult{" +
                 "result=" + result +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

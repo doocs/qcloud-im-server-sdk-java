@@ -15,11 +15,30 @@ public class GetJoinGroupListResult extends GenericResult {
     @JsonProperty("GroupIdList")
     private List<GroupIdListResultItem> groupIdList;
 
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public List<GroupIdListResultItem> getGroupIdList() {
+        return groupIdList;
+    }
+
+    public void setGroupIdList(List<GroupIdListResultItem> groupIdList) {
+        this.groupIdList = groupIdList;
+    }
+
     @Override
     public String toString() {
         return "GetJoinGroupListResult{" +
                 "totalCount=" + totalCount +
                 ", groupIdList=" + groupIdList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

@@ -36,6 +36,9 @@ public class BatchSendMsgResult extends GenericResult {
         return "BatchSendMsgResult{" +
                 "msgKey='" + msgKey + '\'' +
                 ", errorList=" + errorList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

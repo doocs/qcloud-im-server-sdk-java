@@ -34,6 +34,9 @@ public class SendMsgResult extends GenericResult {
         return "SendMsgResult{" +
                 "msgTime=" + msgTime +
                 ", msgKey='" + msgKey + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

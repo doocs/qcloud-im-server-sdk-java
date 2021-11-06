@@ -22,8 +22,11 @@ public class ImGetAttrResult extends GenericResult {
 
     @Override
     public String toString() {
-        return "IMGetAttrResult{" +
+        return "ImGetAttrResult{" +
                 "userAttrs=" + userAttrs +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

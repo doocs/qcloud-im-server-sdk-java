@@ -96,6 +96,9 @@ public class FriendGetResult extends GenericResult {
                 ", completeFlag=" + completeFlag +
                 ", nextStartIndex=" + nextStartIndex +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

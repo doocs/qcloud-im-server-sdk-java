@@ -36,6 +36,9 @@ public class FriendDeleteResult extends GenericResult {
         return "FriendDeleteResult{" +
                 "errorDisplay='" + errorDisplay + '\'' +
                 ", resultItemList=" + resultItemList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

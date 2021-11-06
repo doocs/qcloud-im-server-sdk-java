@@ -48,6 +48,9 @@ public class BlackListDeleteResult extends GenericResult {
                 "resultItemList=" + resultItemList +
                 ", failAccount=" + failAccount +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

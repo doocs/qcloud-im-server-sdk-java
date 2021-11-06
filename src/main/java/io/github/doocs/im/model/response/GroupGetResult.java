@@ -48,6 +48,9 @@ public class GroupGetResult extends GenericResult {
                 "resultItemList=" + resultItemList +
                 ", currentSequence=" + currentSequence +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

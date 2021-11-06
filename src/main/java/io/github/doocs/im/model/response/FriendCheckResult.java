@@ -48,6 +48,9 @@ public class FriendCheckResult extends GenericResult {
                 "friendCheckInfoItemList=" + friendCheckInfoItemList +
                 ", failAccount=" + failAccount +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

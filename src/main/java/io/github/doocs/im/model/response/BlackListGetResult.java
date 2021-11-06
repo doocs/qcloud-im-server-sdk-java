@@ -60,6 +60,9 @@ public class BlackListGetResult extends GenericResult {
                 ", startIndex=" + startIndex +
                 ", currentSequence=" + currentSequence +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

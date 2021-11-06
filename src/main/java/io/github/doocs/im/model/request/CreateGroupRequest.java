@@ -17,7 +17,7 @@ public class CreateGroupRequest extends GroupInfo {
         super(builder);
     }
 
-    public static class Builder extends GroupInfo.Builder {
+    public static class Builder extends GroupInfo.Builder<CreateGroupRequest.Builder> {
         @Override
         public CreateGroupRequest build() {
             return new CreateGroupRequest(this);

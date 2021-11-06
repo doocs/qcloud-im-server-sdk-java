@@ -34,6 +34,9 @@ public class GroupDeleteResult extends GenericResult {
         return "GroupDeleteResult{" +
                 "currentSequence=" + currentSequence +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }
