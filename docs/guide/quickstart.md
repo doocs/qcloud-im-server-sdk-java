@@ -4,20 +4,20 @@
 
 ### Maven
 
-在项目的 `pom.xml` 的 dependencies 中加入以下内容:
+在项目的 `pom.xml` 的 dependencies 中引入以下依赖:
 
 ```xml
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.2.3</version>
+  <version>0.2.5</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.3'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.5'
 ```
 
 ### 下载 jar
@@ -26,7 +26,7 @@ implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0
 
 ## 初始化
 
-在使用腾讯云即时 IM 服务端 API 之前， 需要初始化 `ImClient` 实例:
+在使用腾讯云即时 IM 服务端 API 之前， 需要先通过 `appId`, `identifier`, `key` 获取到一个 `ImClient` 实例:
 
 ```java
 // sdk appId
@@ -59,7 +59,9 @@ ImClient client = ImClient.getInstance(appId, identifier, key, config);
 
 ## 使用示例
 
-初始化 `ImClient` 实例后， 以使用 [帐号管理-导入单个帐号](./account.md#导入单个帐号) 为例：
+获取到 `ImClient` 实例后，就可以方便地进行 API 调用了。
+
+我们以 [帐号管理-导入单个帐号](./account.md#导入单个帐号) 为例：
 
 ```java
 AccountImportRequest request = AccountImportRequest.builder()
@@ -67,6 +69,6 @@ AccountImportRequest request = AccountImportRequest.builder()
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .nick("doocs")
         .build();
-        
+
 AccountImportResult result = client.account.accountImport(request);
 ```
