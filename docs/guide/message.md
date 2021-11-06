@@ -115,9 +115,9 @@ AdminRoamMsgResult result = client.message.getRoamMsg(request);
 - 调用该接口撤回消息后，该条消息的离线、漫游存储，以及消息发送方和接收方的客户端的本地缓存都会被撤回。
 - 该接口可撤回的单聊消息没有时间限制，即可以撤回任何时间的单聊消息。
 
-::: tip
+::: warning 注意
 
-- 使用该接口撤回单聊消息后，被撤回的消息不能恢复，请谨慎调用该接口。
+使用该接口撤回单聊消息后，被撤回的消息不能恢复，请谨慎调用该接口。
   :::
 
 使用示例：
@@ -143,7 +143,7 @@ AdminSetMsgReadRequest request = AdminSetMsgReadRequest.builder()
         .reportAccount("test1")
         .peerAccount("test2")
         .build();
-        
+
 AdminSetMsgReadResult result = client.message.setMsgRead(request);
 ```
 

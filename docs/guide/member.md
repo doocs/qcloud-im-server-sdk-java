@@ -66,7 +66,7 @@ ImGetAttrRequest request = new ImGetAttrRequest(toAccount);
 ImGetAttrResult result = client.member.imGetAttr(request);
 ```
 
-### 设置用户属性
+## 设置用户属性
 
 管理员给用户设置属性。每次最多只能给 100 个用户设置属性。使用前请先 [设置应用属性名称](#设置应用属性名称) 。
 
@@ -82,7 +82,7 @@ ImSetAttrRequest request = new ImSetAttrRequest(Collections.singletonList(item))
 ImSetAttrResult result = client.member.imSetAttr(request);
 ```
 
-### 删除用户属性
+## 删除用户属性
 
 管理员给用户删除属性。注意每次最多只能给 100 个用户删除属性。使用前请先 [设置应用属性名称](#设置应用属性名称) 。
 
@@ -101,7 +101,7 @@ ImRemoveAttrRequest request = new ImRemoveAttrRequest(Collections.singletonList(
 ImRemoveAttrResult result = client.member.imRemoveAttr(request);
 ```
 
-### 获取用户标签
+## 获取用户标签
 
 获取用户标签（必须以管理员帐号调用）。每次最多只能获取 100 个用户的标签。
 
@@ -113,11 +113,11 @@ ImGetTagRequest request = new ImGetTagRequest(Arrays.asList("test1", "test2"));
 ImGetTagResult result = client.member.imGetTag(request);
 ```
 
-### 添加用户标签
+## 添加用户标签
 
 管理员给用户添加标签。
 
-::: tip
+::: warning 注意
 
 - 每次请求最多只能给 100 个用户添加标签，请求体中单个用户添加标签数最多为 10 个。
 - 单个用户可设置最大标签数为 100 个，若用户当前标签超过 100，则添加新标签之前请先删除旧标签。
@@ -137,7 +137,7 @@ ImAddTagRequest request = new ImAddTagRequest(Collections.singletonList(item));
 ImAddTagResult result = client.member.imAddTag(request);
 ```
 
-### 删除用户标签
+## 删除用户标签
 
 管理员给用户删除标签。注意每次最多只能给 100 个用户删除标签。
 
@@ -154,7 +154,7 @@ ImRemoveTagRequest request = new ImRemoveTagRequest(Collections.singletonList(it
 ImRemoveTagResult result = client.member.imRemoveTag(request);
 ```
 
-### 删除所有用户标签
+## 删除所有用户标签
 
 管理员给用户删除所有标签。注意每次最多只能给 100 个用户删除所有标签。
 
