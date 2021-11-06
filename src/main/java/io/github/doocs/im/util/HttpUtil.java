@@ -83,9 +83,6 @@ public class HttpUtil {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        post("http//www.baidu.com","",Object.class);
-    }
 }
 
 class RetryInterceptor implements Interceptor {
