@@ -34,6 +34,9 @@ public class SendGroupMsgResult extends GenericResult {
         return "SendGroupMsgResult{" +
                 "msgTime=" + msgTime +
                 ", msgSeq=" + msgSeq +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

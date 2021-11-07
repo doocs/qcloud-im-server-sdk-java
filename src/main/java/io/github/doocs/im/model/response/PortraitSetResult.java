@@ -22,6 +22,9 @@ public class PortraitSetResult extends GenericResult{
     public String toString() {
         return "PortraitSetResult{" +
                 "errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

@@ -22,6 +22,9 @@ public class CreateGroupResult extends GenericResult {
     public String toString() {
         return "CreateGroupResult{" +
                 "groupId='" + groupId + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

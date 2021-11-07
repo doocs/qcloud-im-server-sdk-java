@@ -22,6 +22,9 @@ public class ImPushResult extends GenericResult {
     public String toString() {
         return "ImPushResult{" +
                 "taskId='" + taskId + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

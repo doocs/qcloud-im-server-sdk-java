@@ -48,6 +48,9 @@ public class BlackListCheckResult extends GenericResult {
                 "blackListCheckItemList=" + blackListCheckItemList +
                 ", failAccount=" + failAccount +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

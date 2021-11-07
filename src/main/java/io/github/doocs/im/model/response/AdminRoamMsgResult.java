@@ -70,8 +70,11 @@ public class AdminRoamMsgResult extends GenericResult {
                 "complete=" + complete +
                 ", msgCnt=" + msgCnt +
                 ", lastMsgTime=" + lastMsgTime +
-                ", lastMsgKey=" + lastMsgKey +
+                ", lastMsgKey='" + lastMsgKey + '\'' +
                 ", msgList=" + msgList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

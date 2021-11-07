@@ -36,6 +36,9 @@ public class FriendAddResult extends GenericResult {
         return "FriendAddResult{" +
                 "resultItemList=" + resultItemList +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

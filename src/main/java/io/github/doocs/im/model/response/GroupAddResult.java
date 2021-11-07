@@ -60,6 +60,9 @@ public class GroupAddResult extends GenericResult {
                 ", failAccount=" + failAccount +
                 ", currentSequence=" + currentSequence +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

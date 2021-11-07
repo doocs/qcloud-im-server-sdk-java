@@ -36,9 +36,12 @@ public class MemberTest {
     public void testImPush() throws IOException {
         TIMTextMsgElement msg = new TIMTextMsgElement("hi, beauty");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
-        ImPushRequest request = new ImPushRequest(9312457, msgBody);
-        request.setFromAccount("admin");
-        request.setMsgLifeTime(120);
+        ImPushRequest request = ImPushRequest.builder()
+                .msgRandom(9312457)
+                .msgBody(msgBody)
+                .fromAccount("admin")
+                .msgLifeTime(120)
+                .build();
         ImPushResult result = client.member.imPush(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -90,7 +93,10 @@ public class MemberTest {
         Map<String, Object> attrs = new HashMap<>();
         attrs.put("sex", "attr1");
         attrs.put("city", "attr2");
-        UserAttrItem item = new UserAttrItem("test1", attrs);
+        UserAttrItem item = UserAttrItem.builder()
+                .toAccount("test1")
+                .attrs(attrs)
+                .build();
         ImRemoveAttrRequest request = new ImRemoveAttrRequest(Collections.singletonList(item));
         ImRemoveAttrResult result = client.member.imRemoveAttr(request);
         System.out.println(result);
@@ -107,7 +113,11 @@ public class MemberTest {
 
     @Test
     public void testImAddTag() throws IOException {
-        UserTagItem item = new UserTagItem("test1", Arrays.asList("a", "b"));
+        List<String> tags = Arrays.asList("a", "b");
+        UserTagItem item = UserTagItem.builder()
+                .toAccount("test1")
+                .tags(tags)
+                .build();
         ImAddTagRequest request = new ImAddTagRequest(Collections.singletonList(item));
         ImAddTagResult result = client.member.imAddTag(request);
         System.out.println(result);
@@ -116,7 +126,11 @@ public class MemberTest {
 
     @Test
     public void testImRemoveTag() throws IOException {
-        UserTagItem item = new UserTagItem("test1", Arrays.asList("a", "b"));
+        List<String> tags = Arrays.asList("a", "b");
+        UserTagItem item = UserTagItem.builder()
+                .toAccount("test1")
+                .tags(tags)
+                .build();
         ImRemoveTagRequest request = new ImRemoveTagRequest(Collections.singletonList(item));
         ImRemoveTagResult result = client.member.imRemoveTag(request);
         System.out.println(result);
@@ -125,7 +139,8 @@ public class MemberTest {
 
     @Test
     public void testImRemoveAllTags() throws IOException {
-        ImRemoveAllTagsRequest request = new ImRemoveAllTagsRequest(Arrays.asList("test1", "test2"));
+        List<String> toAccount = Arrays.asList("test1", "test2");
+        ImRemoveAllTagsRequest request = new ImRemoveAllTagsRequest(toAccount);
         ImRemoveAllTagsResult result = client.member.imRemoveAllTags(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

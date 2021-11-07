@@ -24,6 +24,9 @@ public class ImGetTagResult extends GenericResult {
     public String toString() {
         return "ImGetTagResult{" +
                 "userTags=" + userTags +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

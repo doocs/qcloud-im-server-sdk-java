@@ -37,6 +37,9 @@ public class GetGroupMemberInfoResult extends GenericResult {
         return "GetGroupMemberInfoResult{" +
                 "memberNum=" + memberNum +
                 ", memberList=" + memberList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

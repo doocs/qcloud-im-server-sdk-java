@@ -25,6 +25,15 @@ public class UserTagItem {
         this.tags = tags;
     }
 
+    private UserTagItem(Builder builder) {
+        this.toAccount = builder.toAccount;
+        this.tags = builder.tags;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getToAccount() {
         return toAccount;
     }
@@ -39,6 +48,28 @@ public class UserTagItem {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public static final class Builder {
+        private String toAccount;
+        private List<String> tags;
+
+        private Builder() {
+        }
+
+        public UserTagItem build() {
+            return new UserTagItem(this);
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder tags(List<String> tags) {
+            this.tags = tags;
+            return this;
+        }
     }
 
     @Override

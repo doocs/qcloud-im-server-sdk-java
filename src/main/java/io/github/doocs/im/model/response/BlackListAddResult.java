@@ -3,6 +3,7 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * @author hyh
@@ -48,6 +49,9 @@ public class BlackListAddResult extends GenericResult {
                 "resultItemList=" + resultItemList +
                 ", failAccount=" + failAccount +
                 ", errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

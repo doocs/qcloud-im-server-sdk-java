@@ -48,6 +48,9 @@ public class GroupMsgGetSimpleResult extends GenericResult {
                 "groupId='" + groupId + '\'' +
                 ", isFinished=" + isFinished +
                 ", rspMsgList=" + rspMsgList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

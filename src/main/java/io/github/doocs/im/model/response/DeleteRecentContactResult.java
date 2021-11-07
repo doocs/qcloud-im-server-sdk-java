@@ -22,6 +22,9 @@ public class DeleteRecentContactResult extends GenericResult {
     public String toString() {
         return "DeleteRecentContactResult{" +
                 "errorDisplay='" + errorDisplay + '\'' +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

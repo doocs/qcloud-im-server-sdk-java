@@ -24,6 +24,9 @@ public class GroupMsgRecallResult extends GenericResult {
     public String toString() {
         return "GroupMsgRecallResult{" +
                 "recallRetList=" + recallRetList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

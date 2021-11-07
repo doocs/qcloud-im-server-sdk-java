@@ -24,6 +24,9 @@ public class MultiAccountImportResult extends GenericResult {
     public String toString() {
         return "MultiAccountImportResult{" +
                 "failAccounts=" + failAccounts +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

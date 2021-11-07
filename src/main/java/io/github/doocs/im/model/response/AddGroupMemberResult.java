@@ -24,6 +24,9 @@ public class AddGroupMemberResult extends GenericResult {
     public String toString() {
         return "AddGroupMemberResult{" +
                 "memberList=" + memberList +
+                ", actionStatus='" + actionStatus + '\'' +
+                ", errorInfo='" + errorInfo + '\'' +
+                ", errorCode=" + errorCode +
                 '}';
     }
 }

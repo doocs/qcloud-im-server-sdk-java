@@ -50,10 +50,10 @@ public class GroupInfo {
     public GroupInfo() {
     }
 
-    public GroupInfo(String ownerAccount, String type, String groupId, String name, String introduction,
-                     String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
-                     List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
-                     List<AppMemberDefinedDataItem> appMemberDefinedData) {
+    public <T extends Builder> GroupInfo(String ownerAccount, String type, String groupId, String name, String introduction,
+                                         String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
+                                         List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
+                                         List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.ownerAccount = ownerAccount;
         this.type = type;
         this.groupId = groupId;
@@ -68,7 +68,7 @@ public class GroupInfo {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
-    private GroupInfo(Builder builder) {
+    protected <T extends Builder> GroupInfo(Builder builder) {
         this.ownerAccount = builder.ownerAccount;
         this.type = builder.type;
         this.groupId = builder.groupId;
@@ -202,7 +202,7 @@ public class GroupInfo {
                 '}';
     }
 
-    public static final class Builder {
+    public static class Builder<T extends Builder> {
         private String ownerAccount;
         private String type;
         private String groupId;
@@ -216,71 +216,71 @@ public class GroupInfo {
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
-        private Builder() {
+        protected Builder() {
         }
 
         public GroupInfo build() {
             return new GroupInfo(this);
         }
 
-        public Builder ownerAccount(String ownerAccount) {
+        public T ownerAccount(String ownerAccount) {
             this.ownerAccount = ownerAccount;
-            return this;
+            return (T) this;
         }
 
-        public Builder type(String type) {
+        public T type(String type) {
             this.type = type;
-            return this;
+            return (T) this;
         }
 
-        public Builder groupId(String groupId) {
+        public T groupId(String groupId) {
             this.groupId = groupId;
-            return this;
+            return (T) this;
         }
 
-        public Builder name(String name) {
+        public T name(String name) {
             this.name = name;
-            return this;
+            return (T) this;
         }
 
-        public Builder introduction(String introduction) {
+        public T introduction(String introduction) {
             this.introduction = introduction;
-            return this;
+            return (T) this;
         }
 
-        public Builder notification(String notification) {
+        public T notification(String notification) {
             this.notification = notification;
-            return this;
+            return (T) this;
         }
 
-        public Builder faceUrl(String faceUrl) {
+        public T faceUrl(String faceUrl) {
             this.faceUrl = faceUrl;
-            return this;
+            return (T) this;
         }
 
-        public Builder maxMemberCount(Integer maxMemberCount) {
+        public T maxMemberCount(Integer maxMemberCount) {
             this.maxMemberCount = maxMemberCount;
-            return this;
+            return (T) this;
         }
 
-        public Builder applyJoinOption(String applyJoinOption) {
+        public T applyJoinOption(String applyJoinOption) {
             this.applyJoinOption = applyJoinOption;
-            return this;
+            return (T) this;
         }
 
-        public Builder appDefinedData(List<AppDefinedDataItem> appDefinedData) {
+        public T appDefinedData(List<AppDefinedDataItem> appDefinedData) {
             this.appDefinedData = appDefinedData;
-            return this;
+            return (T) this;
         }
 
-        public Builder memberList(List<MemberProfile> memberList) {
+        public T memberList(List<MemberProfile> memberList) {
             this.memberList = memberList;
-            return this;
+            return (T) this;
         }
 
-        public Builder appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
+        public T appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
             this.appMemberDefinedData = appMemberDefinedData;
-            return this;
+            return (T) this;
         }
     }
 }
