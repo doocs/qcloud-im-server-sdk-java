@@ -21,4 +21,8 @@ public class QueryResultStatus {
      * 未登录状态
      */
     public static final String OFFLINE = "Offline";
+
+    private QueryResultStatus() {
+
+    }
 }

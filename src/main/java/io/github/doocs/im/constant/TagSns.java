@@ -6,7 +6,7 @@ package io.github.doocs.im.constant;
  * @author bingo
  * @since 2021/10/31 10:14
  */
-public class TagSNS {
+public class TagSns {
     /**
      * 好友分组
      */
@@ -26,4 +26,8 @@ public class TagSNS {
      * 加好友附言
      */
     public static final String IM_ADD_WORDING = "Tag_SNS_IM_AddWording";
+
+    private TagSns() {
+
+    }
 }
