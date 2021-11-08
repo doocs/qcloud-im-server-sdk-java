@@ -182,9 +182,10 @@ public class GroupTest {
 
     @Test
     public void testForbidSendMsg() throws IOException {
+        List<String> membersAccount = Collections.singletonList("doocs");
         ForbidSendMsgRequest request = ForbidSendMsgRequest.builder()
                 .groupId("MyFirstGroup")
-                .membersAccount(Collections.singletonList("doocs"))
+                .membersAccount(membersAccount)
                 .shutUpTime(200)
                 .build();
 
