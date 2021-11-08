@@ -102,6 +102,7 @@ AdminGetRoamMsgRequest request = AdminGetRoamMsgRequest.builder()
         .minTime(1631934000)
         .maxTime(1631934060)
         .build();
+        
 AdminRoamMsgResult result = client.message.getRoamMsg(request);
 
 List<MsgListItem> msgList = result.getMsgList();
@@ -173,6 +174,8 @@ App 后台可以通过该接口查询特定账号的单聊总未读数（包含�
 
 ```java
 GetC2cUnreadMsgRequest request = new GetC2cUnreadMsgRequest("test2");
-request.setPeerAccount(Arrays.asList("test1", "bingo"));
+List<String> peerAccount = Arrays.asList("test1", "bingo");
+request.setPeerAccount(peerAccount);
+
 C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgNum(request);
 ```

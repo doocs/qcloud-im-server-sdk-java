@@ -124,8 +124,8 @@ ModifyGroupBaseInfoRequest request = ModifyGroupBaseInfoRequest.builder()
         .notification("hello world!")
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .maxMemberNum(500)
-        .applyJoinOption("NeedPermission")
-        .shutUpAllMember("Off")
+        .applyJoinOption(ApplyJoinOption.NEED_PERMISSION)
+        .shutUpAllMember(ShutUpAllMember.OFF)
         .build();
 
 ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
@@ -331,9 +331,10 @@ Private（即新版本中的 Work，好友工作群）类型不支持禁言。
 使用示例：
 
 ```java
+List<String> membersAccount = Collections.singletonList("doocs");
 ForbidSendMsgRequest request = ForbidSendMsgRequest.builder()
         .groupId("MyFirstGroup")
-        .membersAccount(Collections.singletonList("doocs"))
+        .membersAccount(membersAccount)
         .shutUpTime(200)
         .build();
 

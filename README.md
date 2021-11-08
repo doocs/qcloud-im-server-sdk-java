@@ -22,7 +22,7 @@ Add the Maven dependency:
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.2.5</version>
+  <version>0.2.6</version>
 </dependency>
 ```
 
@@ -63,7 +63,7 @@ try {
 
 ## Contributing
 
-Contributions are always welcomed! 
+Contributions are always welcomed!
 
 We use the `dev` branch as the development branch, which indicates that this is a unstable branch.
 
