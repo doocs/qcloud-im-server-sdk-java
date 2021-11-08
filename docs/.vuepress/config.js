@@ -12,6 +12,13 @@ module.exports = {
     docsDir: "docs",
     editLinkText: "编辑",
     lastUpdatedText: "最近更新时间",
+    locales: {
+      '/': {
+        tip: '说明',
+        warning: '注意',
+        danger: '警告',
+      },
+    },
     sidebar: [
       {
         text: "指南",

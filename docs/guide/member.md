@@ -117,7 +117,7 @@ ImGetTagResult result = client.member.imGetTag(request);
 
 管理员给用户添加标签。
 
-::: warning 注意
+::: warning
 
 - 每次请求最多只能给 100 个用户添加标签，请求体中单个用户添加标签数最多为 10 个。
 - 单个用户可设置最大标签数为 100 个，若用户当前标签超过 100，则添加新标签之前请先删除旧标签。

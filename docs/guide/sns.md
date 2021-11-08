@@ -163,7 +163,7 @@ FriendGetListResult result = client.sns.friendGetList(request);
 
 添加黑名单，支持批量添加黑名单。
 
-::: warning 注意
+::: warning
 
 - 如果用户 A 与用户 B 之间存在好友关系，拉黑时会解除双向好友关系。
 - 如果用户 A 与用户 B 之间存在黑名单关系，二者之间无法发起加好友请求。
