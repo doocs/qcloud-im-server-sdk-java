@@ -63,7 +63,21 @@ try {
 
 ## Contributing
 
-Contributions are always welcomed! Please refer to [CONTRIBUTING](./CONTRIBUTING.md) for detailed guidelines.
+Contributions are always welcomed! 
+
+We use the `dev` branch as the development branch, which indicates that this is a unstable branch.
+
+Here are the workflow for contributors:
+
+1. Fork to your own
+2. Clone fork to local repository
+3. Create a new branch and work on it
+4. Keep your branch in sync
+5. Commit your changes (make sure your commit message concise)
+6. Push your commits to your forked repository
+7. Create a pull request
+
+Please refer to [CONTRIBUTING](./CONTRIBUTING.md) for detailed guidelines.
 
 ## License
 
