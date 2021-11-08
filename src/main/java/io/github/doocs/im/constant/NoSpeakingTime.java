@@ -15,7 +15,7 @@ public class NoSpeakingTime {
     /**
      * 永久禁言
      */
-    public static final long FOREVER = 0xFFFFFFFF;
+    public static final long FOREVER = 0xFFFFFFFFL;
 
     private NoSpeakingTime() {
 
