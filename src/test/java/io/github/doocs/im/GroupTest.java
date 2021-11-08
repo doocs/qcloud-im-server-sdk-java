@@ -1,9 +1,7 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.constant.ApplyJoinOption;
-import io.github.doocs.im.constant.GroupType;
-import io.github.doocs.im.constant.MemberRole;
-import io.github.doocs.im.constant.OnlineOnlyFlag;
+import io.github.doocs.im.constant.*;
+import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -71,7 +69,9 @@ public class GroupTest {
 
     @Test
     public void testGetGroupInfo() throws IOException {
-        GetGroupInfoRequest request = new GetGroupInfoRequest(Collections.singletonList("MyFirstGroup"));
+        List<String> groupIdList = Collections.singletonList("MyFirstGroup");
+        GetGroupInfoRequest request = new GetGroupInfoRequest(groupIdList);
+
         GetGroupInfoResult result = client.group.getGroupInfo(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -99,9 +99,10 @@ public class GroupTest {
                 .notification("hello world!")
                 .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
                 .maxMemberNum(500)
-                .applyJoinOption("NeedPermission")
-                .shutUpAllMember("Off")
+                .applyJoinOption(ApplyJoinOption.NEED_PERMISSION)
+                .shutUpAllMember(ShutUpAllMember.OFF)
                 .build();
+
         ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -109,12 +110,14 @@ public class GroupTest {
 
     @Test
     public void testAddGroupMember() throws IOException {
-        List<MemberRequestItem> memberList = Collections.singletonList(new MemberRequestItem("doocs_3"));
+        MemberRequestItem item = new MemberRequestItem("user2");
+        List<MemberRequestItem> memberList = Collections.singletonList(item);
         AddGroupMemberRequest request = AddGroupMemberRequest.builder()
                 .groupId("MyFirstGroup")
                 .memberList(memberList)
                 .silence(1)
                 .build();
+
         AddGroupMemberResult result = client.group.addGroupMember(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -122,11 +125,12 @@ public class GroupTest {
 
     @Test
     public void testDeleteGroupMember() throws IOException {
-        List<String> toDelAccount = Collections.singletonList("doocs_3");
+        List<String> toDelAccount = Collections.singletonList("user2");
         DeleteGroupMemberRequest request = DeleteGroupMemberRequest.builder()
                 .groupId("MyFirstGroup")
                 .memberToDelAccount(toDelAccount)
                 .build();
+
         DeleteGroupMemberResult result = client.group.deleteGroupMember(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -148,6 +152,7 @@ public class GroupTest {
     @Test
     public void testDestroyGroup() throws IOException {
         DestroyGroupRequest request = new DestroyGroupRequest("MyFirstGroup");
+
         DestroyGroupResult result = client.group.destroyGroup(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -156,6 +161,7 @@ public class GroupTest {
     @Test
     public void testGetJoinGroupList() throws IOException {
         GetJoinedGroupListRequest request = new GetJoinedGroupListRequest("bingo");
+
         GetJoinGroupListResult result = client.group.getJoinGroupList(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -163,9 +169,10 @@ public class GroupTest {
 
     @Test
     public void testGetRoleInGroup() throws IOException {
+        List<String> userAccount = Collections.singletonList("doocs");
         GetRoleInGroupRequest request = GetRoleInGroupRequest.builder()
                 .groupId("MyFirstGroup")
-                .userAccount(Collections.singletonList("doocs"))
+                .userAccount(userAccount)
                 .build();
 
         GetRoleInGroupResult result = client.group.getRoleInGroup(request);
@@ -189,6 +196,7 @@ public class GroupTest {
     @Test
     public void testGetGroupShuttedUin() throws IOException {
         GetGroupShuttedUinRequest request = new GetGroupShuttedUinRequest("MyFirstGroup");
+
         GetGroupShuttedUinResult result = client.group.getGroupShuttedUin(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -196,10 +204,12 @@ public class GroupTest {
 
     @Test
     public void testSendGroupMsg() throws IOException {
+        TIMTextMsgElement msg = new TIMTextMsgElement("red packet");
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         SendGroupMsgRequest request = SendGroupMsgRequest.builder()
                 .groupId("MyFirstGroup")
                 .random(1314)
-                .msgBody(Collections.singletonList(new TIMTextMsgElement("red packet")))
+                .msgBody(msgBody)
                 .onlineOnlyFlag(OnlineOnlyFlag.YES)
                 .build();
 
@@ -210,10 +220,11 @@ public class GroupTest {
 
     @Test
     public void testSendGroupSystemNotification() throws IOException {
+        List<String> toMembersAccount = Collections.singletonList("doocs");
         SendGroupSystemNotificationRequest request = SendGroupSystemNotificationRequest.builder()
                 .groupId("MyFirstGroup")
                 .content("hello world")
-                .toMembersAccount(Collections.singletonList("doocs"))
+                .toMembersAccount(toMembersAccount)
                 .build();
 
         SendGroupSystemNotificationResult result = client.group.sendGroupSystemNotification(request);
@@ -235,9 +246,10 @@ public class GroupTest {
 
     @Test
     public void testGroupMsgRecall() throws IOException {
+        List<MsgSeqItem> msgSeqList = Collections.singletonList(new MsgSeqItem(0));
         GroupMsgRecallRequest request = GroupMsgRecallRequest.builder()
                 .groupId("MyFirstGroup")
-                .msgSeqList(Collections.singletonList(new MsgSeqItem(0)))
+                .msgSeqList(msgSeqList)
                 .build();
 
         GroupMsgRecallResult result = client.group.groupMsgRecall(request);
@@ -259,14 +271,17 @@ public class GroupTest {
 
     @Test
     public void testImportGroupMsg() throws IOException {
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         GroupMsgItem item = GroupMsgItem.builder()
                 .fromAccount("doocs")
                 .sendTime(1628062005)
-                .msgBody(Collections.singletonList(new TIMTextMsgElement("hello world")))
+                .msgBody(msgBody)
                 .build();
+        List<GroupMsgItem> msgList = Collections.singletonList(item);
         ImportGroupMsgRequest request = ImportGroupMsgRequest.builder()
                 .groupId("newGroup")
-                .msgList(Collections.singletonList(item))
+                .msgList(msgList)
                 .build();
 
         ImportGroupMsgResult result = client.group.importGroupMsg(request);
@@ -276,14 +291,16 @@ public class GroupTest {
 
     @Test
     public void testImportGroupMember() throws IOException {
-        MemberItem item = MemberItem.builder().memberAccount("doocs")
+        MemberItem item = MemberItem.builder()
+                .memberAccount("doocs")
                 .joinTime(1628062005)
                 .role(MemberRole.ADMIN)
                 .unreadMsgNum(1)
                 .build();
+        List<MemberItem> members = Collections.singletonList(item);
         ImportGroupMemberRequest request = ImportGroupMemberRequest.builder()
                 .groupId("groupName")
-                .memberList(Collections.singletonList(item))
+                .memberList(members)
                 .build();
 
         ImportGroupMemberResult result = client.group.importGroupMember(request);

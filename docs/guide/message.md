@@ -102,8 +102,26 @@ AdminGetRoamMsgRequest request = AdminGetRoamMsgRequest.builder()
         .minTime(1631934000)
         .maxTime(1631934060)
         .build();
-
 AdminRoamMsgResult result = client.message.getRoamMsg(request);
+
+List<MsgListItem> msgList = result.getMsgList();
+if (msgList != null && msgList.size() > 0) {
+    for (MsgListItem item : msgList) {
+        List<TIMMsgElement> msgBody = item.getMsgBody();
+        if (msgBody != null && msgList.size() > 0) {
+            for (TIMMsgElement msgElement : msgBody) {
+                // 根据 msgType 强转为对应的子类
+                if (Objects.equals(msgElement.getMsgType(), MsgType.TIM_CUSTOM_ELEM)) {
+                    TIMCustomMsgElement t = (TIMCustomMsgElement) msgElement;
+                    System.out.println(t.getMsgContent().getDesc());
+                } else if (Objects.equals(msgElement.getMsgType(), MsgType.TIM_TEXT_ELEM)) {
+                    TIMTextMsgElement t = (TIMTextMsgElement) msgElement;
+                    System.out.println(t.getMsgContent().getText());
+                }
+            }
+        }
+    }
+}
 ```
 
 ## 撤回单聊消息
@@ -156,6 +174,5 @@ App 后台可以通过该接口查询特定账号的单聊总未读数（包含�
 ```java
 GetC2cUnreadMsgRequest request = new GetC2cUnreadMsgRequest("test2");
 request.setPeerAccount(Arrays.asList("test1", "bingo"));
-
 C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgNum(request);
 ```

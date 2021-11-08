@@ -30,7 +30,7 @@ App 管理员可以通过该接口创建群组。
 CreateGroupRequest request = CreateGroupRequest.builder()
         .type(GroupType.PUBLIC)
         .name("TestGroup")
-        .ownerAccount("doocs")
+        .ownerAccount("user1")
         .groupId("MyFirstGroup")
         .introduction("This is group Introduction")
         .notification("This is group Notification")
@@ -62,7 +62,8 @@ App 管理员可以根据群组 ID 获取群组的详细信息。
 使用示例：
 
 ```java
-GetGroupInfoRequest request = new GetGroupInfoRequest(Collections.singletonList("MyFirstGroup"));
+List<String> groupIdList = Collections.singletonList("MyFirstGroup");
+GetGroupInfoRequest request = new GetGroupInfoRequest(groupIdList);
 
 GetGroupInfoResult result = client.group.getGroupInfo(request);
 ```
@@ -152,6 +153,8 @@ AVChatRoom(直播群)不支持增加群成员，对此类型群组进行操作�
 使用示例：
 
 ```java
+MemberRequestItem item = new MemberRequestItem("user2");
+List<MemberRequestItem> memberList = Collections.singletonList(item);
 AddGroupMemberRequest request = AddGroupMemberRequest.builder()
         .groupId("MyFirstGroup")
         .memberList(memberList)
@@ -183,7 +186,7 @@ AVChatRoom（直播群）不支持删除群成员，对这种类型的群组进�
 使用示例：
 
 ```java
-List<String> toDelAccount = Collections.singletonList("doocs");
+List<String> toDelAccount = Collections.singletonList("user2");
 DeleteGroupMemberRequest request = DeleteGroupMemberRequest.builder()
         .groupId("MyFirstGroup")
         .memberToDelAccount(toDelAccount)
@@ -295,9 +298,10 @@ AVChatRoom（直播群）不支持该接口，对此类型群组进行操作将�
 使用示例：
 
 ```java
+List<String> userAccount = Collections.singletonList("doocs");
 GetRoleInGroupRequest request = GetRoleInGroupRequest.builder()
         .groupId("MyFirstGroup")
-        .userAccount(Collections.singletonList("doocs"))
+        .userAccount(userAccount)
         .build();
 
 GetRoleInGroupResult result = client.group.getRoleInGroup(request);
@@ -381,10 +385,12 @@ App 管理员可以通过该接口在群组中发送普通消息。
 使用示例：
 
 ```java
+TIMTextMsgElement msg = new TIMTextMsgElement("red packet");
+List<TIMMsgElement> msgBody = Collections.singletonList(msg);
 SendGroupMsgRequest request = SendGroupMsgRequest.builder()
         .groupId("MyFirstGroup")
         .random(1314)
-        .msgBody(Collections.singletonList(new TIMTextMsgElement("red packet")))
+        .msgBody(msgBody)
         .onlineOnlyFlag(OnlineOnlyFlag.YES)
         .build();
 
@@ -414,10 +420,11 @@ App 管理员可以通过该接口在群组中发送系统通知。
 使用示例：
 
 ```java
+List<String> toMembersAccount = Collections.singletonList("doocs");
 SendGroupSystemNotificationRequest request = SendGroupSystemNotificationRequest.builder()
         .groupId("MyFirstGroup")
         .content("hello world")
-        .toMembersAccount(Collections.singletonList("doocs"))
+        .toMembersAccount(toMembersAccount)
         .build();
 
 SendGroupSystemNotificationResult result = client.group.sendGroupSystemNotification(request);
@@ -475,9 +482,10 @@ App 管理员通过该接口撤回指定群组的消息，消息需要在漫游�
 使用示例：
 
 ```java
+List<MsgSeqItem> msgSeqList = Collections.singletonList(new MsgSeqItem(0));
 GroupMsgRecallRequest request = GroupMsgRecallRequest.builder()
         .groupId("MyFirstGroup")
-        .msgSeqList(Collections.singletonList(new MsgSeqItem(0)))
+        .msgSeqList(msgSeqList)
         .build();
 
 GroupMsgRecallResult result = client.group.groupMsgRecall(request);
@@ -537,14 +545,17 @@ AVChatRoom（直播群）不支持导入群消息，对此类型的群组进行�
 使用示例：
 
 ```java
+TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+List<TIMMsgElement> msgBody = Collections.singletonList(msg);
 GroupMsgItem item = GroupMsgItem.builder()
         .fromAccount("doocs")
         .sendTime(1628062005)
-        .msgBody(Collections.singletonList(new TIMTextMsgElement("hello world")))
+        .msgBody(msgBody)
         .build();
+List<GroupMsgItem> msgList = Collections.singletonList(item);
 ImportGroupMsgRequest request = ImportGroupMsgRequest.builder()
         .groupId("newGroup")
-        .msgList(Collections.singletonList(item))
+        .msgList(msgList)
         .build();
 
 ImportGroupMsgResult result = client.group.importGroupMsg(request);
@@ -573,14 +584,16 @@ AVChatRoom（直播群）所适用的场景一般不需要导入成员，因此�
 使用示例：
 
 ```java
-MemberItem item = MemberItem.builder().memberAccount("doocs")
+MemberItem item = MemberItem.builder()
+        .memberAccount("doocs")
         .joinTime(1628062005)
         .role(MemberRole.ADMIN)
         .unreadMsgNum(1)
         .build();
+List<MemberItem> members = Collections.singletonList(item);
 ImportGroupMemberRequest request = ImportGroupMemberRequest.builder()
         .groupId("groupName")
-        .memberList(Collections.singletonList(item))
+        .memberList(members)
         .build();
 
 ImportGroupMemberResult result = client.group.importGroupMember(request);

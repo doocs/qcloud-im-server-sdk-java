@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * @author bingo
@@ -35,10 +38,11 @@ public class AccountTest {
     @Test
     public void testAccountImport() throws IOException {
         AccountImportRequest request = AccountImportRequest.builder()
-                .identifier("user2")
-                .faceUrl("http://www.qq.com")
-                .nick("ylb")
+                .identifier("admin")
+                .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
+                .nick("doocs")
                 .build();
+
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -47,10 +51,10 @@ public class AccountTest {
     @Test
     public void testMultiAccountImport() throws IOException {
         List<String> accounts = new ArrayList<>();
-        for (int i = 1; i < 100; ++i) {
-            accounts.add("ak" + i);
-        }
-        MultiAccountImportRequest request = MultiAccountImportRequest.builder().accounts(accounts).build();
+        accounts.add("user1");
+        accounts.add("user2");
+        MultiAccountImportRequest request = new MultiAccountImportRequest(accounts);
+
         MultiAccountImportResult result = client.account.multiAccountImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -58,9 +62,11 @@ public class AccountTest {
 
     @Test
     public void testAccountDelete() throws IOException {
-        AccountDeleteItem item1 = AccountDeleteItem.builder().userId("acbin").build();
-        AccountDeleteItem item2 = AccountDeleteItem.builder().userId("test1").build();
-        AccountDeleteRequest request = AccountDeleteRequest.builder().deleteItemList(Arrays.asList(item1, item2)).build();
+        AccountDeleteItem item1 = AccountDeleteItem.builder().userId("user1").build();
+        AccountDeleteItem item2 = AccountDeleteItem.builder().userId("user2").build();
+        List<AccountDeleteItem> deleteItems = Arrays.asList(item1, item2);
+        AccountDeleteRequest request = new AccountDeleteRequest(deleteItems);
+
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -70,7 +76,9 @@ public class AccountTest {
     public void testAccountCheck() throws IOException {
         AccountCheckItem item1 = new AccountCheckItem("user1");
         AccountCheckItem item2 = new AccountCheckItem("user2");
-        AccountCheckRequest request = new AccountCheckRequest(Arrays.asList(item1, item2));
+        List<AccountCheckItem> checkItems = Arrays.asList(item1, item2);
+        AccountCheckRequest request = new AccountCheckRequest(checkItems);
+
         AccountCheckResult result = client.account.accountCheck(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -79,18 +87,20 @@ public class AccountTest {
     @Test
     public void testKick() throws IOException {
         KickRequest request = new KickRequest("test1");
+
         KickResult result = client.account.kick(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
     }
 
     @Test
-    public void testQueryState() throws IOException {
-        List<String> toAccount = Arrays.asList("doocs_1", "doocs_2");
+    public void testQueryOnlineStatus() throws IOException {
+        List<String> toAccount = Arrays.asList("user1", "user2");
         QueryOnlineStatusRequest request = QueryOnlineStatusRequest.builder()
                 .toAccount(toAccount)
                 .isNeedDetail(IsNeedDetail.YES)
                 .build();
+
         QueryOnlineStatusResult result = client.account.queryOnlineStatus(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

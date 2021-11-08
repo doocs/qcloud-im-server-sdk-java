@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -41,6 +42,7 @@ public class OperationTest {
                 .msgNoSpeakingTime(NoSpeakingTime.NEVER)
                 .groupMsgNoSpeakingTime(NoSpeakingTime.FOREVER)
                 .build();
+
         SetNoSpeakingResult result = client.operation.setNoSpeaking(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -49,6 +51,7 @@ public class OperationTest {
     @Test
     public void testGetNoSpeaking() throws IOException {
         GetNoSpeakingRequest request = new GetNoSpeakingRequest("test1");
+
         GetNoSpeakingResult result = client.operation.getNoSpeaking(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -57,7 +60,9 @@ public class OperationTest {
     @Test
     public void testGetAppInfo() throws IOException {
         GetAppInfoRequest request = new GetAppInfoRequest();
-        request.setRequestField(Arrays.asList("ChainIncrease", "ChainDecrease"));
+        List<String> requestFields = Arrays.asList("ChainIncrease", "ChainDecrease");
+        request.setRequestField(requestFields);
+
         GetAppInfoResult result = client.operation.getAppInfo(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -69,6 +74,7 @@ public class OperationTest {
                 .chatType(ChatType.C2C)
                 .msgTime("2015120121")
                 .build();
+
         GetHistoryResult result = client.operation.getHistory(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());
@@ -77,6 +83,7 @@ public class OperationTest {
     @Test
     public void testGetIpList() throws IOException {
         GetIpListRequest request = new GetIpListRequest();
+
         GetIpListResult result = client.operation.getIpList(request);
         System.out.println(result);
         Assert.assertEquals(0, (int) result.getErrorCode());

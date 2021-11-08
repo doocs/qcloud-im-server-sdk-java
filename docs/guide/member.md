@@ -77,7 +77,8 @@ Map<String, Object> attrs = new HashMap<>();
 attrs.put("sex", "attr1");
 attrs.put("city", "attr2");
 UserAttrItem item = new UserAttrItem("test1", attrs);
-ImSetAttrRequest request = new ImSetAttrRequest(Collections.singletonList(item));
+List<UserAttrItem> userAttrs = Collections.singletonList(item);
+ImSetAttrRequest request = new ImSetAttrRequest(userAttrs);
 
 ImSetAttrResult result = client.member.imSetAttr(request);
 ```
@@ -96,7 +97,8 @@ UserAttrItem item = UserAttrItem.builder()
         .toAccount("test1")
         .attrs(attrs)
         .build();
-ImRemoveAttrRequest request = new ImRemoveAttrRequest(Collections.singletonList(item));
+List<UserAttrItem> userAttrs = Collections.singletonList(item);
+ImRemoveAttrRequest request = new ImRemoveAttrRequest(userAttrs);
 
 ImRemoveAttrResult result = client.member.imRemoveAttr(request);
 ```
@@ -108,7 +110,8 @@ ImRemoveAttrResult result = client.member.imRemoveAttr(request);
 使用示例：
 
 ```java
-ImGetTagRequest request = new ImGetTagRequest(Arrays.asList("test1", "test2"));
+List<String> toAccount = Arrays.asList("test1", "test2");
+ImGetTagRequest request = new ImGetTagRequest(toAccount);
 
 ImGetTagResult result = client.member.imGetTag(request);
 ```
@@ -132,7 +135,8 @@ UserTagItem item = UserTagItem.builder()
         .toAccount("test1")
         .tags(tags)
         .build();
-ImAddTagRequest request = new ImAddTagRequest(Collections.singletonList(item));
+List<UserTagItem> userTags = Collections.singletonList(item);
+ImAddTagRequest request = new ImAddTagRequest(userTags);
 
 ImAddTagResult result = client.member.imAddTag(request);
 ```
@@ -149,7 +153,8 @@ UserTagItem item = UserTagItem.builder()
         .toAccount("test1")
         .tags(tags)
         .build();
-ImRemoveTagRequest request = new ImRemoveTagRequest(Collections.singletonList(item));
+List<UserTagItem> userTags = Collections.singletonList(item);
+ImRemoveTagRequest request = new ImRemoveTagRequest(userTags);
 
 ImRemoveTagResult result = client.member.imRemoveTag(request);
 ```

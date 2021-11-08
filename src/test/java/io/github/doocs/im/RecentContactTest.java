@@ -45,6 +45,7 @@ public class RecentContactTest {
                 .topStartIndex(0)
                 .assistFlags(AssistFlags.BIT_0)
                 .build();
+
         GetRecentContactListResult result = client.recentContact.recentContactList(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -58,6 +59,7 @@ public class RecentContactTest {
                 .toAccount("doocs_2")
                 .clearRamble(ClearRamble.YES)
                 .build();
+
         DeleteRecentContactResult result = client.recentContact.deleteRecentContact(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

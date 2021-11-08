@@ -8,7 +8,8 @@ App 管理员可以通过该接口拉取最近 30 天的运营数据，可拉取
 
 ```java
 GetAppInfoRequest request = new GetAppInfoRequest();
-request.setRequestField(Arrays.asList("ChainIncrease", "ChainDecrease"));
+List<String> requestFields = Arrays.asList("ChainIncrease", "ChainDecrease");
+request.setRequestField(requestFields);
 
 GetAppInfoResult result = client.operation.getAppInfo(request);
 ```

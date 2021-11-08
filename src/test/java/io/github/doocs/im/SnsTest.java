@@ -50,6 +50,7 @@ public class SnsTest {
                 .addType(AddType.BOTH)
                 .forceAddFlags(ForceAddFlags.FORCE)
                 .build();
+
         FriendAddResult result = client.sns.friendAdd(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -66,6 +67,7 @@ public class SnsTest {
                 .fromAccount("test1")
                 .importFriendItemList(importFriendItems)
                 .build();
+
         FriendImportResult result = client.sns.friendImport(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -75,7 +77,7 @@ public class SnsTest {
     public void testFriendUpdate() throws IOException {
         SnsItem snsItem = SnsItem.builder()
                 .tag("Tag_SNS_Custom_testTag")
-                .value("Tag_SNS_IM_AddWording")
+                .value(TagSns.IM_ADD_WORDING)
                 .build();
         List<SnsItem> snsItems = Collections.singletonList(snsItem);
         UpdateItem updateItem = UpdateItem.builder()
@@ -87,6 +89,7 @@ public class SnsTest {
                 .fromAccount("test1")
                 .updateItemList(updateItems)
                 .build();
+
         FriendUpdateResult result = client.sns.friendUpdate(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -100,6 +103,7 @@ public class SnsTest {
                 .fromAccount("test1")
                 .toAccount(toAccount)
                 .build();
+
         FriendDeleteResult result = client.sns.friendDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -111,6 +115,7 @@ public class SnsTest {
                 .deleteType(DeleteType.BOTH)
                 .fromAccount("test1")
                 .build();
+
         FriendDeleteAllResult result = client.sns.friendDeleteAll(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -124,6 +129,7 @@ public class SnsTest {
                 .toAccount(toAccount)
                 .checkType(CheckResultType.BOTH)
                 .build();
+
         FriendCheckResult result = client.sns.friendCheck(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -137,6 +143,7 @@ public class SnsTest {
                 .standardSequence(0)
                 .customSequence(0)
                 .build();
+
         FriendGetResult result = client.sns.friendGet(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -151,6 +158,7 @@ public class SnsTest {
                 .toAccount(toAccount)
                 .tagList(tagList)
                 .build();
+
         FriendGetListResult result = client.sns.friendGetList(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -163,6 +171,7 @@ public class SnsTest {
                 .fromAccount("test1")
                 .toAccount(toAccount)
                 .build();
+
         BlackListAddResult result = client.sns.blackListAdd(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -175,6 +184,7 @@ public class SnsTest {
                 .fromAccount("test1")
                 .toAccount(toAccount)
                 .build();
+
         BlackListDeleteResult result = client.sns.blackListDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -188,6 +198,7 @@ public class SnsTest {
                 .maxLimited(10)
                 .lastSequence(0)
                 .build();
+
         BlackListGetResult result = client.sns.blackListGet(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -201,6 +212,7 @@ public class SnsTest {
                 .toAccount(toAccount)
                 .checkType(BlackCheckResultType.BOTH)
                 .build();
+
         BlackListCheckResult result = client.sns.blackListCheck(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -215,6 +227,7 @@ public class SnsTest {
                 .groupName(groupName)
                 .toAccount(toAccount)
                 .build();
+
         GroupAddResult result = client.sns.groupAdd(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -227,6 +240,7 @@ public class SnsTest {
                 .fromAccount("test1")
                 .groupName(groupName)
                 .build();
+
         GroupDeleteResult result = client.sns.groupDelete(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -241,6 +255,7 @@ public class SnsTest {
                 .groupName(groupName)
                 .needFriend(NeedFriendType.YES)
                 .build();
+
         GroupGetResult result = client.sns.groupGet(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());

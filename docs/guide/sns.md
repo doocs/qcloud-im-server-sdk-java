@@ -56,7 +56,7 @@ FriendImportResult result = client.sns.friendImport(request);
 ```java
 SnsItem snsItem = SnsItem.builder()
         .tag("Tag_SNS_Custom_testTag")
-        .value("Tag_SNS_IM_AddWording")
+        .value(TagSns.IM_ADD_WORDING)
         .build();
 List<SnsItem> snsItems = Collections.singletonList(snsItem);
 UpdateItem updateItem = UpdateItem.builder()

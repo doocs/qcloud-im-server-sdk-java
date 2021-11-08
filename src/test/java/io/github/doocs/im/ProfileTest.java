@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.TagProfile;
 import io.github.doocs.im.model.request.PortraitGetRequest;
 import io.github.doocs.im.model.request.PortraitSetRequest;
 import io.github.doocs.im.model.request.ProfileItem;
@@ -10,7 +11,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -39,10 +39,15 @@ public class ProfileTest {
     @Test
     public void testPortraitSet() throws IOException {
         ProfileItem profileItem = ProfileItem.builder()
-                .tag("Tag_Profile_IM_Nick")
+                .tag(TagProfile.IM_NICK)
                 .value("MyNickName")
                 .build();
-        PortraitSetRequest request = new PortraitSetRequest("test1", Collections.singletonList(profileItem));
+        List<ProfileItem> profiles = Collections.singletonList(profileItem);
+        PortraitSetRequest request = PortraitSetRequest.builder()
+                .fromAccount("test1")
+                .profileItemList(profiles)
+                .build();
+
         PortraitSetResult result = client.profile.portraitSet(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -50,8 +55,12 @@ public class ProfileTest {
 
     @Test
     public void testPortraitGet() throws IOException {
-        List<String> tagList = Collections.singletonList("Tag_Profile_IM_Nick");
-        PortraitGetRequest request = new PortraitGetRequest(Collections.singletonList("test1"), tagList);
+        List<String> tagList = Collections.singletonList(TagProfile.IM_NICK);
+        List<String> toAccount = Collections.singletonList("test1");
+        PortraitGetRequest request = PortraitGetRequest.builder()
+                .tagList(tagList)
+                .toAccount(toAccount)
+                .build();
 
         PortraitGetResult result = client.profile.portraitGet(request);
         System.out.println(result);
