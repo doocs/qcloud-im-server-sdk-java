@@ -30,11 +30,9 @@ AccountImportResult result = client.account.accountImport(request);
 
 ```java
 List<String> accounts = new ArrayList<>();
-accounts.add("doocs_1");
-accounts.add("doocs_2");
-MultiAccountImportRequest request = MultiAccountImportRequest.builder()
-        .accounts(accounts)
-        .build();
+accounts.add("user1");
+accounts.add("user2");
+MultiAccountImportRequest request = new MultiAccountImportRequest(accounts);
 
 MultiAccountImportResult result = client.account.multiAccountImport(request);
 ```
@@ -48,12 +46,10 @@ MultiAccountImportResult result = client.account.multiAccountImport(request);
 使用示例：
 
 ```java
-AccountDeleteItem deleteAccount = AccountDeleteItem.builder()
-        .userId("doocs")
-        .build();
-AccountDeleteRequest request = AccountDeleteRequest.builder()
-        .deleteItemList(Collections.singletonList(deleteAccount))
-        .build();
+AccountDeleteItem item1 = AccountDeleteItem.builder().userId("user1").build();
+AccountDeleteItem item2 = AccountDeleteItem.builder().userId("user2").build();
+List<AccountDeleteItem> deleteItems = Arrays.asList(item1, item2);
+AccountDeleteRequest request = new AccountDeleteRequest(deleteItems);
 
 AccountDeleteResult result = client.account.accountDelete(request);
 ```
@@ -65,9 +61,10 @@ AccountDeleteResult result = client.account.accountDelete(request);
 使用示例：
 
 ```java
-AccountCheckItem account1 = new AccountCheckItem("doocs_1");
-AccountCheckItem account2 = new AccountCheckItem("doocs_2");
-AccountCheckRequest request = new AccountCheckRequest(Arrays.asList(account1, account2));
+AccountCheckItem item1 = new AccountCheckItem("user1");
+AccountCheckItem item2 = new AccountCheckItem("user2");
+List<AccountCheckItem> checkItems = Arrays.asList(item1, item2);
+AccountCheckRequest request = new AccountCheckRequest(checkItems);
 
 AccountCheckResult result = client.account.accountCheck(request);
 ```
@@ -85,7 +82,7 @@ AccountCheckResult result = client.account.accountCheck(request);
 使用示例：
 
 ```java
-KickRequest request = new KickRequest("doocs_1");
+KickRequest request = new KickRequest("user2");
 
 KickResult result = client.account.kick(request);
 ```
@@ -97,7 +94,7 @@ KickResult result = client.account.kick(request);
 使用示例：
 
 ```java
-List<String> toAccount = Arrays.asList("doocs_1", "doocs_2");
+List<String> toAccount = Arrays.asList("user1", "user2");
 QueryOnlineStatusRequest request = QueryOnlineStatusRequest.builder()
         .toAccount(toAccount)
         .isNeedDetail(IsNeedDetail.YES)

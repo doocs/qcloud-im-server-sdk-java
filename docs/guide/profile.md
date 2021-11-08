@@ -8,10 +8,14 @@
 
 ```java
 ProfileItem profileItem = ProfileItem.builder()
-        .tag("Tag_Profile_IM_Nick")
+        .tag(TagProfile.IM_NICK)
         .value("MyNickName")
         .build();
-PortraitSetRequest request = new PortraitSetRequest("doocs", Collections.singletonList(profileItem));
+List<ProfileItem> profiles = Collections.singletonList(profileItem);
+PortraitSetRequest request = PortraitSetRequest.builder()
+        .fromAccount("test1")
+        .profileItemList(profiles)
+        .build();
 
 PortraitSetResult result = client.profile.portraitSet(request);
 ```
@@ -26,8 +30,12 @@ PortraitSetResult result = client.profile.portraitSet(request);
 使用示例：
 
 ```java
-List<String> tagList = Collections.singletonList("Tag_Profile_IM_Nick");
-PortraitGetRequest request = new PortraitGetRequest(Collections.singletonList("doocs"), tagList);
+List<String> tagList = Collections.singletonList(TagProfile.IM_NICK);
+List<String> toAccount = Collections.singletonList("test1");
+PortraitGetRequest request = PortraitGetRequest.builder()
+        .tagList(tagList)
+        .toAccount(toAccount)
+        .build();
 
 PortraitGetResult result = client.profile.portraitGet(request);
 ```

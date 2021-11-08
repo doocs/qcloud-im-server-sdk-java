@@ -48,7 +48,7 @@ public class MessageTest {
                 .msgTimeStamp(1631934058)
                 .msgLifeTime(604800)
                 .build();
-      
+
         SendMsgResult result = client.message.sendMsg(request);
         System.out.println(result);
         Assert.assertEquals("OK", result.getActionStatus());
@@ -98,16 +98,26 @@ public class MessageTest {
                 .maxTime(1631934060)
                 .build();
         AdminRoamMsgResult result = client.message.getRoamMsg(request);
-        List<TIMMsgElement> msgBody = result.getMsgList().get(0).getMsgBody();
-        System.out.println(msgBody.get(0).getMsgType());
+        Assert.assertEquals("OK", result.getActionStatus());
 
-        for (TIMMsgElement ee : msgBody) {
-            if (Objects.equals(ee.getMsgType(), MsgType.TIM_CUSTOM_ELEM)) {
-                TIMCustomMsgElement t = (TIMCustomMsgElement) ee;
-                System.out.println(t.getMsgContent().getData());
+        List<MsgListItem> msgList = result.getMsgList();
+        if (msgList != null && msgList.size() > 0) {
+            for (MsgListItem item : msgList) {
+                List<TIMMsgElement> msgBody = item.getMsgBody();
+                if (msgBody != null && msgList.size() > 0) {
+                    for (TIMMsgElement msgElement : msgBody) {
+                        // 根据 msgType 强转为对应的子类
+                        if (Objects.equals(msgElement.getMsgType(), MsgType.TIM_CUSTOM_ELEM)) {
+                            TIMCustomMsgElement t = (TIMCustomMsgElement) msgElement;
+                            System.out.println(t.getMsgContent().getDesc());
+                        } else if (Objects.equals(msgElement.getMsgType(), MsgType.TIM_TEXT_ELEM)) {
+                            TIMTextMsgElement t = (TIMTextMsgElement) msgElement;
+                            System.out.println(t.getMsgContent().getText());
+                        }
+                    }
+                }
             }
         }
-        Assert.assertEquals("OK", result.getActionStatus());
     }
 
     @Test
