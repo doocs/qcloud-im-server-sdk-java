@@ -19,4 +19,8 @@ public class Platform {
     public static final String IPAD = "iPad";
 
     public static final String MAC = "Mac";
+
+    private Platform() {
+
+    }
 }
