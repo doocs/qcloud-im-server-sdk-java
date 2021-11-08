@@ -4,7 +4,7 @@
 
 本接口用于将 App 自有帐号导入即时通信 IM 帐号系统，为该帐号创建一个对应的内部 ID，使该帐号能够使用即时通信 IM 服务。
 
-::: tip 说明
+::: tip
 同一个帐号重复导入仅会创建 1 个内部 ID。
 :::
 
@@ -78,7 +78,7 @@ AccountCheckResult result = client.account.accountCheck(request);
 
 例如，开发者判断一个用户为恶意帐号后，可以调用本接口将该用户当前的登录状态失效，这样用户使用历史 UserSig 登录即时通信 IM 会失败。
 
-::: warning 注意
+::: warning
 支持一次失效一个帐号，用户可以使用重新生成的 UserSig 登录即时通信 IM
 :::
 
