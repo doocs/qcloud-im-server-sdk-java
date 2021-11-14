@@ -7,8 +7,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/8/4 11:46
  */
 public class ImportMsgResultItem {
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgTime")
     private Integer msgTime;
@@ -16,11 +19,11 @@ public class ImportMsgResultItem {
     @JsonProperty("Result")
     private Integer result;
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 

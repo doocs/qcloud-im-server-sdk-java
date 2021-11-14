@@ -17,7 +17,7 @@ public class ImPushRequest extends GenericRequest {
     private Map<String, Object> condition;
 
     @JsonProperty("MsgRandom")
-    private Integer msgRandom;
+    private Long msgRandom;
 
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
@@ -34,12 +34,12 @@ public class ImPushRequest extends GenericRequest {
     public ImPushRequest() {
     }
 
-    public ImPushRequest(Integer msgRandom, List<TIMMsgElement> msgBody) {
+    public ImPushRequest(Long msgRandom, List<TIMMsgElement> msgBody) {
         this.msgRandom = msgRandom;
         this.msgBody = msgBody;
     }
 
-    public ImPushRequest(Map<String, Object> condition, Integer msgRandom, List<TIMMsgElement> msgBody,
+    public ImPushRequest(Map<String, Object> condition, Long msgRandom, List<TIMMsgElement> msgBody,
                          Integer msgLifeTime, String fromAccount, OfflinePushInfo offlinePushInfo) {
         this.condition = condition;
         this.msgRandom = msgRandom;
@@ -70,11 +70,11 @@ public class ImPushRequest extends GenericRequest {
         this.condition = condition;
     }
 
-    public Integer getMsgRandom() {
+    public Long getMsgRandom() {
         return msgRandom;
     }
 
-    public void setMsgRandom(Integer msgRandom) {
+    public void setMsgRandom(Long msgRandom) {
         this.msgRandom = msgRandom;
     }
 
@@ -113,7 +113,10 @@ public class ImPushRequest extends GenericRequest {
 
     public static final class Builder {
         private Map<String, Object> condition;
-        private Integer msgRandom;
+        /**
+         * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+         */
+        private Long msgRandom;
         private List<TIMMsgElement> msgBody;
         private Integer msgLifeTime;
         private String fromAccount;
@@ -131,7 +134,7 @@ public class ImPushRequest extends GenericRequest {
             return this;
         }
 
-        public Builder msgRandom(Integer msgRandom) {
+        public Builder msgRandom(Long msgRandom) {
             this.msgRandom = msgRandom;
             return this;
         }

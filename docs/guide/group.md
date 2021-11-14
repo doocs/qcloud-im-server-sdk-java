@@ -483,7 +483,7 @@ App 管理员通过该接口撤回指定群组的消息，消息需要在漫游�
 使用示例：
 
 ```java
-List<MsgSeqItem> msgSeqList = Collections.singletonList(new MsgSeqItem(0));
+List<MsgSeqItem> msgSeqList = Collections.singletonList(new MsgSeqItem(0L));
 GroupMsgRecallRequest request = GroupMsgRecallRequest.builder()
         .groupId("MyFirstGroup")
         .msgSeqList(msgSeqList)

@@ -37,7 +37,7 @@ public class MemberTest {
         TIMTextMsgElement msg = new TIMTextMsgElement("hi, beauty");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         ImPushRequest request = ImPushRequest.builder()
-                .msgRandom(9312457)
+                .msgRandom(9312457L)
                 .msgBody(msgBody)
                 .fromAccount("admin")
                 .msgLifeTime(120)

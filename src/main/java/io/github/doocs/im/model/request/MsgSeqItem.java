@@ -9,13 +9,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MsgSeqItem {
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     public MsgSeqItem() {
     }
 
-    public MsgSeqItem(Integer msgSeq) {
+    public MsgSeqItem(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
@@ -27,17 +30,20 @@ public class MsgSeqItem {
         return new Builder();
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
 
     public static final class Builder {
-        private Integer msgSeq;
+        /**
+         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+         */
+        private Long msgSeq;
 
         private Builder() {
         }
@@ -46,7 +52,7 @@ public class MsgSeqItem {
             return new MsgSeqItem(this);
         }
 
-        public Builder msgSeq(Integer msgSeq) {
+        public Builder msgSeq(Long msgSeq) {
             this.msgSeq = msgSeq;
             return this;
         }

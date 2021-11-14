@@ -10,8 +10,11 @@ public class SendGroupMsgResult extends GenericResult {
     @JsonProperty("MsgTime")
     private Integer msgTime;
 
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("msgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     public Integer getMsgTime() {
         return msgTime;
@@ -21,11 +24,11 @@ public class SendGroupMsgResult extends GenericResult {
         this.msgTime = msgTime;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 

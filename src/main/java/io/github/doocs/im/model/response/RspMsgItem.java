@@ -22,11 +22,17 @@ public class RspMsgItem {
     @JsonProperty("MsgPriority")
     private Integer msgPriority;
 
+    /**
+     * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgRandom")
-    private Integer msgRandom;
+    private Long msgRandom;
 
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
@@ -63,19 +69,19 @@ public class RspMsgItem {
         this.msgPriority = msgPriority;
     }
 
-    public Integer getMsgRandom() {
+    public Long getMsgRandom() {
         return msgRandom;
     }
 
-    public void setMsgRandom(Integer msgRandom) {
+    public void setMsgRandom(Long msgRandom) {
         this.msgRandom = msgRandom;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
