@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/8/4 11:41
  */
 public class RecallRetItem {
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 

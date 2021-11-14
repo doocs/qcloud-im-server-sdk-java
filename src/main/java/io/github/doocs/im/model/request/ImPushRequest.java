@@ -113,6 +113,9 @@ public class ImPushRequest extends GenericRequest {
 
     public static final class Builder {
         private Map<String, Object> condition;
+        /**
+         * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgRandom;
         private List<TIMMsgElement> msgBody;
         private Integer msgLifeTime;

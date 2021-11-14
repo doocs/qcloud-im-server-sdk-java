@@ -16,9 +16,15 @@ public class MsgListItem {
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
+    /**
+     * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgRandom")
     private Long msgRandom;
 

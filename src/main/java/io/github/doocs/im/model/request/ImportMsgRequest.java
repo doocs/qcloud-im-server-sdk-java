@@ -21,9 +21,15 @@ public class ImportMsgRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
+    /**
+     * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgRandom")
     private Long msgRandom;
 
@@ -144,7 +150,13 @@ public class ImportMsgRequest extends GenericRequest {
         private Integer syncFromOldSystem;
         private String fromAccount;
         private String toAccount;
+        /**
+         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgSeq;
+        /**
+         * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgRandom;
         private Integer msgTimeStamp;
         private List<TIMMsgElement> msgBody;

@@ -24,6 +24,9 @@ public class SendMsgRequest extends GenericRequest {
     @JsonProperty("MsgLifeTime")
     private Integer msgLifeTime;
 
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
@@ -196,7 +199,13 @@ public class SendMsgRequest extends GenericRequest {
         private String fromAccount;
         private String toAccount;
         private Integer msgLifeTime;
+        /**
+         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgSeq;
+        /**
+         * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgRandom;
         private Integer msgTimeStamp;
         private List<String> forbidCallbackControl;

@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MsgSeqItem {
+    /**
+     * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+     */
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
@@ -37,6 +40,9 @@ public class MsgSeqItem {
 
 
     public static final class Builder {
+        /**
+         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgSeq;
 
         private Builder() {
