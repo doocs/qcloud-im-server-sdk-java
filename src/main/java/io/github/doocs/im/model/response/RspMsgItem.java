@@ -23,10 +23,10 @@ public class RspMsgItem {
     private Integer msgPriority;
 
     @JsonProperty("MsgRandom")
-    private Integer msgRandom;
+    private Long msgRandom;
 
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
@@ -63,19 +63,19 @@ public class RspMsgItem {
         this.msgPriority = msgPriority;
     }
 
-    public Integer getMsgRandom() {
+    public Long getMsgRandom() {
         return msgRandom;
     }
 
-    public void setMsgRandom(Integer msgRandom) {
+    public void setMsgRandom(Long msgRandom) {
         this.msgRandom = msgRandom;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 

@@ -25,10 +25,10 @@ public class SendMsgRequest extends GenericRequest {
     private Integer msgLifeTime;
 
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgRandom")
-    private Integer msgRandom;
+    private Long msgRandom;
 
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
@@ -51,14 +51,14 @@ public class SendMsgRequest extends GenericRequest {
     public SendMsgRequest() {
     }
 
-    public SendMsgRequest(String toAccount, Integer msgRandom, List<TIMMsgElement> msgBody) {
+    public SendMsgRequest(String toAccount, Long msgRandom, List<TIMMsgElement> msgBody) {
         this.toAccount = toAccount;
         this.msgRandom = msgRandom;
         this.msgBody = msgBody;
     }
 
     public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime,
-                          Integer msgSeq, Integer msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl,
+                          Long msgSeq, Long msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl,
                           List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData,
                           OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
@@ -126,19 +126,19 @@ public class SendMsgRequest extends GenericRequest {
         this.msgLifeTime = msgLifeTime;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
-    public Integer getMsgRandom() {
+    public Long getMsgRandom() {
         return msgRandom;
     }
 
-    public void setMsgRandom(Integer msgRandom) {
+    public void setMsgRandom(Long msgRandom) {
         this.msgRandom = msgRandom;
     }
 
@@ -196,8 +196,8 @@ public class SendMsgRequest extends GenericRequest {
         private String fromAccount;
         private String toAccount;
         private Integer msgLifeTime;
-        private Integer msgSeq;
-        private Integer msgRandom;
+        private Long msgSeq;
+        private Long msgRandom;
         private Integer msgTimeStamp;
         private List<String> forbidCallbackControl;
         private List<String> sendMsgControl;
@@ -232,12 +232,12 @@ public class SendMsgRequest extends GenericRequest {
             return this;
         }
 
-        public Builder msgSeq(Integer msgSeq) {
+        public Builder msgSeq(Long msgSeq) {
             this.msgSeq = msgSeq;
             return this;
         }
 
-        public Builder msgRandom(Integer msgRandom) {
+        public Builder msgRandom(Long msgRandom) {
             this.msgRandom = msgRandom;
             return this;
         }

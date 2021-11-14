@@ -42,7 +42,7 @@ public class MessageTest {
         SendMsgRequest request = SendMsgRequest.builder()
                 .fromAccount("test1")
                 .toAccount("test2")
-                .msgRandom(123)
+                .msgRandom(123L)
                 .msgBody(msgBody)
                 .syncOtherMachine(SyncOtherMachine.YES)
                 .msgTimeStamp(1631934058)
@@ -62,10 +62,10 @@ public class MessageTest {
         BatchSendMsgRequest request = BatchSendMsgRequest
                 .builder()
                 .toAccount(toAccount)
-                .msgRandom(123)
+                .msgRandom(123L)
                 .msgBody(msgBody)
                 .syncOtherMachine(SyncOtherMachine.NO)
-                .msgSeq(28460)
+                .msgSeq(28460L)
                 .build();
         BatchSendMsgResult result = client.message.batchSendMsg(request);
         System.out.println(result);
@@ -79,7 +79,7 @@ public class MessageTest {
         ImportMsgRequest request = ImportMsgRequest.builder()
                 .fromAccount("bingo")
                 .toAccount("test1")
-                .msgRandom(122)
+                .msgRandom(122L)
                 .msgTimeStamp(1557387418)
                 .msgBody(msgBody)
                 .build();

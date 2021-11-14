@@ -22,10 +22,10 @@ public class ImportMsgRequest extends GenericRequest {
     private String toAccount;
 
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgRandom")
-    private Integer msgRandom;
+    private Long msgRandom;
 
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
@@ -39,7 +39,7 @@ public class ImportMsgRequest extends GenericRequest {
     public ImportMsgRequest() {
     }
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgRandom,
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Long msgRandom,
                             Integer msgTimeStamp, List<TIMMsgElement> msgBody) {
         this.syncFromOldSystem = syncFromOldSystem;
         this.fromAccount = fromAccount;
@@ -49,8 +49,8 @@ public class ImportMsgRequest extends GenericRequest {
         this.msgBody = msgBody;
     }
 
-    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Integer msgSeq,
-                            Integer msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody, String cloudCustomData) {
+    public ImportMsgRequest(Integer syncFromOldSystem, String fromAccount, String toAccount, Long msgSeq,
+                            Long msgRandom, Integer msgTimeStamp, List<TIMMsgElement> msgBody, String cloudCustomData) {
         this.syncFromOldSystem = syncFromOldSystem;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -100,19 +100,19 @@ public class ImportMsgRequest extends GenericRequest {
         this.toAccount = toAccount;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
-    public Integer getMsgRandom() {
+    public Long getMsgRandom() {
         return msgRandom;
     }
 
-    public void setMsgRandom(Integer msgRandom) {
+    public void setMsgRandom(Long msgRandom) {
         this.msgRandom = msgRandom;
     }
 
@@ -140,13 +140,12 @@ public class ImportMsgRequest extends GenericRequest {
         this.cloudCustomData = cloudCustomData;
     }
 
-
     public static final class Builder {
         private Integer syncFromOldSystem;
         private String fromAccount;
         private String toAccount;
-        private Integer msgSeq;
-        private Integer msgRandom;
+        private Long msgSeq;
+        private Long msgRandom;
         private Integer msgTimeStamp;
         private List<TIMMsgElement> msgBody;
         private String cloudCustomData;
@@ -173,12 +172,12 @@ public class ImportMsgRequest extends GenericRequest {
             return this;
         }
 
-        public Builder msgSeq(Integer msgSeq) {
+        public Builder msgSeq(Long msgSeq) {
             this.msgSeq = msgSeq;
             return this;
         }
 
-        public Builder msgRandom(Integer msgRandom) {
+        public Builder msgRandom(Long msgRandom) {
             this.msgRandom = msgRandom;
             return this;
         }

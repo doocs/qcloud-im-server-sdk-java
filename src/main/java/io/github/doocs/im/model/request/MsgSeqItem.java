@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MsgSeqItem {
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     public MsgSeqItem() {
     }
 
-    public MsgSeqItem(Integer msgSeq) {
+    public MsgSeqItem(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
@@ -27,17 +27,17 @@ public class MsgSeqItem {
         return new Builder();
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
 
     public static final class Builder {
-        private Integer msgSeq;
+        private Long msgSeq;
 
         private Builder() {
         }
@@ -46,7 +46,7 @@ public class MsgSeqItem {
             return new MsgSeqItem(this);
         }
 
-        public Builder msgSeq(Integer msgSeq) {
+        public Builder msgSeq(Long msgSeq) {
             this.msgSeq = msgSeq;
             return this;
         }

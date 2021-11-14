@@ -8,10 +8,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class RecallRetItem {
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("RetCode")
     private Integer retCode;
+
+    public Long getMsgSeq() {
+        return msgSeq;
+    }
+
+    public void setMsgSeq(Long msgSeq) {
+        this.msgSeq = msgSeq;
+    }
+
+    public Integer getRetCode() {
+        return retCode;
+    }
+
+    public void setRetCode(Integer retCode) {
+        this.retCode = retCode;
+    }
 
     @Override
     public String toString() {

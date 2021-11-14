@@ -21,7 +21,7 @@ public class MemberProfile {
     private Integer joinTime;
 
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgFlag")
     private String msgFlag;
@@ -41,7 +41,7 @@ public class MemberProfile {
     public MemberProfile() {
     }
 
-    public MemberProfile(String memberAccount, String role, Integer joinTime, Integer msgSeq,
+    public MemberProfile(String memberAccount, String role, Integer joinTime, Long msgSeq,
                          String msgFlag, Integer lastSendMsgTime, Integer shutUpUntil, String nameCard,
                          List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.memberAccount = memberAccount;
@@ -95,11 +95,11 @@ public class MemberProfile {
         this.joinTime = joinTime;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
@@ -162,7 +162,7 @@ public class MemberProfile {
         private String memberAccount;
         private String role;
         private Integer joinTime;
-        private Integer msgSeq;
+        private Long msgSeq;
         private String msgFlag;
         private Integer lastSendMsgTime;
         private Integer shutUpUntil;
@@ -191,7 +191,7 @@ public class MemberProfile {
             return this;
         }
 
-        public Builder msgSeq(Integer msgSeq) {
+        public Builder msgSeq(Long msgSeq) {
             this.msgSeq = msgSeq;
             return this;
         }

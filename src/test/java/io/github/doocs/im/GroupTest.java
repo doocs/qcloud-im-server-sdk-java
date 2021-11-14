@@ -247,7 +247,7 @@ public class GroupTest {
 
     @Test
     public void testGroupMsgRecall() throws IOException {
-        List<MsgSeqItem> msgSeqList = Collections.singletonList(new MsgSeqItem(0));
+        List<MsgSeqItem> msgSeqList = Collections.singletonList(new MsgSeqItem(0L));
         GroupMsgRecallRequest request = GroupMsgRecallRequest.builder()
                 .groupId("MyFirstGroup")
                 .msgSeqList(msgSeqList)

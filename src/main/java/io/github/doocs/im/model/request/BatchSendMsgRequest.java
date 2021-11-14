@@ -22,10 +22,10 @@ public class BatchSendMsgRequest {
     private List<String> toAccount;
 
     @JsonProperty("MsgSeq")
-    private Integer msgSeq;
+    private Long msgSeq;
 
     @JsonProperty("MsgRandom")
-    private Integer msgRandom;
+    private Long msgRandom;
 
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
@@ -42,14 +42,14 @@ public class BatchSendMsgRequest {
     public BatchSendMsgRequest() {
     }
 
-    public BatchSendMsgRequest(List<String> toAccount, Integer msgRandom, List<TIMMsgElement> msgBody) {
+    public BatchSendMsgRequest(List<String> toAccount, Long msgRandom, List<TIMMsgElement> msgBody) {
         this.toAccount = toAccount;
         this.msgRandom = msgRandom;
         this.msgBody = msgBody;
     }
 
-    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Integer msgSeq,
-                               Integer msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData,
+    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Long msgSeq,
+                               Long msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData,
                                List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
@@ -102,19 +102,19 @@ public class BatchSendMsgRequest {
         this.toAccount = toAccount;
     }
 
-    public Integer getMsgSeq() {
+    public Long getMsgSeq() {
         return msgSeq;
     }
 
-    public void setMsgSeq(Integer msgSeq) {
+    public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
     }
 
-    public Integer getMsgRandom() {
+    public Long getMsgRandom() {
         return msgRandom;
     }
 
-    public void setMsgRandom(Integer msgRandom) {
+    public void setMsgRandom(Long msgRandom) {
         this.msgRandom = msgRandom;
     }
 
@@ -150,13 +150,12 @@ public class BatchSendMsgRequest {
         this.offlinePushInfo = offlinePushInfo;
     }
 
-
     public static final class Builder {
         private Integer syncOtherMachine;
         private String fromAccount;
         private List<String> toAccount;
-        private Integer msgSeq;
-        private Integer msgRandom;
+        private Long msgSeq;
+        private Long msgRandom;
         private List<TIMMsgElement> msgBody;
         private String cloudCustomData;
         private List<String> sendMsgControl;
@@ -184,12 +183,12 @@ public class BatchSendMsgRequest {
             return this;
         }
 
-        public Builder msgSeq(Integer msgSeq) {
+        public Builder msgSeq(Long msgSeq) {
             this.msgSeq = msgSeq;
             return this;
         }
 
-        public Builder msgRandom(Integer msgRandom) {
+        public Builder msgRandom(Long msgRandom) {
             this.msgRandom = msgRandom;
             return this;
         }
