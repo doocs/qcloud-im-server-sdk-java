@@ -22,7 +22,7 @@ Add the Maven dependency:
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.2.8</version>
+  <version>0.2.9</version>
 </dependency>
 ```
 

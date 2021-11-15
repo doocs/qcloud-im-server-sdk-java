@@ -10,14 +10,14 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.2.8</version>
+  <version>0.2.9</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.8'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.9'
 ```
 
 ### 下载 jar
@@ -43,19 +43,22 @@ ImClient client = ImClient.getInstance(appId, identifier, key);
 
 // create a custom ImClient instance
 ClientConfiguration config = new ClientConfiguration();
+config.setExpireTime(7 * 24 * 60 * 60L);
+config.setAutoRenewSig(false);
 ImClient client = ImClient.getInstance(appId, identifier, key, config);
 ```
 
 `ClientConfiguration` 支持可配置参数如下：
 
-| 字段           | 类型    | 说明                         | 默认值 |
-| -------------- | ------- | ---------------------------- | ------ |
-| maxRetries     | Integer | HTTP 最大重试次数            | 3      |
-| connectTimeout | Long    | HTTP 连接超时（毫秒）        | 3000   |
-| readTimeout    | Long    | HTTP 读超时（毫秒）          | 3000   |
-| writeTimeout   | Long    | HTTP 写超时（毫秒）          | 3000   |
-| expireTime     | Long    | UserSig 签名失效时间（毫秒） | 86400  |
-| userAgent      | String  | User-Agent                   |        |
+| 字段             | 类型    | 说明                          | 默认值 |
+| ---------------- | ------- | ----------------------------- | ------ |
+| `maxRetries`     | int     | HTTP 最大重试次数             | 3      |
+| `connectTimeout` | long    | HTTP 连接超时（毫秒）         | 3000   |
+| `readTimeout`    | long    | HTTP 读超时（毫秒）           | 3000   |
+| `writeTimeout`   | long    | HTTP 写超时（毫秒）           | 3000   |
+| `expireTime`     | long    | UserSig 签名失效时间（秒）    | 86400  |
+| `autoRenewSig`   | boolean | 是否自动进行 UserSig 签名续期 | true   |
+| `userAgent`      | String  | User-Agent                    |        |
 
 ## 使用示例
 

@@ -12,9 +12,12 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class ImClient {
     private final long sdkAppId;
+    private final String key;
     private final String userId;
-    private final String userSig;
     private final ClientConfiguration config;
+
+    private String userSig;
+    private long userSigExpireTs;
 
     private static final String VERSION = "v4";
     private static final String FORMAT_URL = "https://console.tim.qq.com/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
@@ -45,8 +48,10 @@ public class ImClient {
     public ImClient(long sdkAppId, String userId, String key, ClientConfiguration config) {
         this.sdkAppId = sdkAppId;
         this.userId = userId;
+        this.key = key;
         this.config = config;
         this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, config.getExpireTime());
+        this.userSigExpireTs = System.currentTimeMillis() / 1000 + config.getExpireTime() - 100;
 
         account = new Account(this);
         message = new Message(this);
@@ -58,13 +63,29 @@ public class ImClient {
         recentContact = new RecentContact(this);
     }
 
+    private String getUserSig() {
+        if (config.isAutoRenewSig()) {
+            long currentTs = System.currentTimeMillis() / 1000;
+            if (currentTs >= userSigExpireTs) {
+                synchronized (this) {
+                    if (currentTs >= userSigExpireTs) {
+                        userSig = SigUtil.genUserSig(sdkAppId, key, userId, config.getExpireTime());
+                        userSigExpireTs = currentTs + config.getExpireTime() - 100;
+                    }
+                }
+            }
+        }
+        return userSig;
+    }
+
     public ClientConfiguration getConfig() {
         return config;
     }
 
     public String getUrl(String serviceName, String command) {
+        String sig = getUserSig();
         long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);
         return String.format(FORMAT_URL, VERSION, serviceName, command,
-                sdkAppId, userId, userSig, random);
+                sdkAppId, userId, sig, random);
     }
 }

@@ -9,13 +9,17 @@ import io.github.doocs.im.util.VersionInfoUtil;
 public class ClientConfiguration {
     private static final String DEFAULT_USER_AGENT = VersionInfoUtil.getDefaultUserAgent();
     private static final int DEFAULT_MAX_RETRIES = 3;
+    private static final boolean DEFAULT_RENEW_SIG = true;
     /**
-     * default value, unit: milliseconds
+     * 默认超时时间（毫秒）
      */
     private static final long DEFAULT_CONNECT_TIMEOUT = 3000L;
     private static final long DEFAULT_READ_TIMEOUT = 3000L;
     private static final long DEFAULT_WRITE_TIMEOUT = 3000L;
 
+    /**
+     * UserSig 签名默认失效时间（秒）
+     */
     private static final long DEFAULT_EXPIRE_TIME = 24 * 60 * 60L;
 
     private int maxRetries = DEFAULT_MAX_RETRIES;
@@ -23,18 +27,20 @@ public class ClientConfiguration {
     private long readTimeout = DEFAULT_READ_TIMEOUT;
     private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
     private long expireTime = DEFAULT_EXPIRE_TIME;
+    private boolean autoRenewSig = DEFAULT_RENEW_SIG;
     private String userAgent = DEFAULT_USER_AGENT;
 
     public ClientConfiguration() {
     }
 
-    public ClientConfiguration(int maxRetries, long connectTimeout, long readTimeout,
-                               long writeTimeout, long expireTime, String userAgent) {
+    public ClientConfiguration(int maxRetries, long connectTimeout, long readTimeout, long writeTimeout,
+                               long expireTime, boolean autoRenewSig, String userAgent) {
         this.maxRetries = maxRetries;
         this.connectTimeout = connectTimeout;
         this.readTimeout = readTimeout;
         this.writeTimeout = writeTimeout;
         this.expireTime = expireTime;
+        this.autoRenewSig = autoRenewSig;
         this.userAgent = userAgent;
     }
 
@@ -76,6 +82,14 @@ public class ClientConfiguration {
 
     public void setExpireTime(long expireTime) {
         this.expireTime = expireTime;
+    }
+
+    public boolean isAutoRenewSig() {
+        return autoRenewSig;
+    }
+
+    public void setAutoRenewSig(boolean autoRenewSig) {
+        this.autoRenewSig = autoRenewSig;
     }
 
     public String getUserAgent() {
