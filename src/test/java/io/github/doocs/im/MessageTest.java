@@ -144,7 +144,7 @@ public class MessageTest {
     }
 
     @Test
-    public void testGetC2CUnreadMsgNum() throws IOException {
+    public void testGetC2cUnreadMsgNum() throws IOException {
         GetC2cUnreadMsgRequest request = new GetC2cUnreadMsgRequest("test2");
         List<String> peerAccount = Arrays.asList("test1", "bingo");
         request.setPeerAccount(peerAccount);

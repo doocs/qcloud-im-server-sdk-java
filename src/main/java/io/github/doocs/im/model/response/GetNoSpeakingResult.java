@@ -11,7 +11,7 @@ public class GetNoSpeakingResult extends GenericResult {
      * 单聊消息禁言时长，单位为秒
      */
     @JsonProperty("C2CmsgNospeakingTime")
-    private Long c2CMsgNoSpeakingTime;
+    private Long c2cMsgNoSpeakingTime;
 
     /**
      * 群组消息禁言时长，单位为秒
@@ -20,12 +20,12 @@ public class GetNoSpeakingResult extends GenericResult {
     private Long groupMsgNoSpeakingTime;
 
 
-    public Long getC2CMsgNoSpeakingTime() {
-        return c2CMsgNoSpeakingTime;
+    public Long getC2cMsgNoSpeakingTime() {
+        return c2cMsgNoSpeakingTime;
     }
 
-    public void setC2CMsgNoSpeakingTime(Long c2CMsgNoSpeakingTime) {
-        this.c2CMsgNoSpeakingTime = c2CMsgNoSpeakingTime;
+    public void setC2cMsgNoSpeakingTime(Long c2cMsgNoSpeakingTime) {
+        this.c2cMsgNoSpeakingTime = c2cMsgNoSpeakingTime;
     }
 
     public Long getGroupMsgNoSpeakingTime() {
@@ -39,7 +39,7 @@ public class GetNoSpeakingResult extends GenericResult {
     @Override
     public String toString() {
         return "GetNoSpeakingResult{" +
-                "c2CMsgNoSpeakingTime=" + c2CMsgNoSpeakingTime +
+                "c2cMsgNoSpeakingTime=" + c2cMsgNoSpeakingTime +
                 ", groupMsgNoSpeakingTime=" + groupMsgNoSpeakingTime +
                 ", actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
