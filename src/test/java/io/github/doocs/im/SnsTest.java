@@ -29,9 +29,9 @@ public class SnsTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class SnsTest {
 
         FriendAddResult result = client.sns.friendAdd(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class SnsTest {
 
         FriendImportResult result = client.sns.friendImport(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class SnsTest {
 
         FriendUpdateResult result = client.sns.friendUpdate(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -106,7 +106,7 @@ public class SnsTest {
 
         FriendDeleteResult result = client.sns.friendDelete(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class SnsTest {
 
         FriendDeleteAllResult result = client.sns.friendDeleteAll(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -132,7 +132,7 @@ public class SnsTest {
 
         FriendCheckResult result = client.sns.friendCheck(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -146,7 +146,7 @@ public class SnsTest {
 
         FriendGetResult result = client.sns.friendGet(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -161,7 +161,7 @@ public class SnsTest {
 
         FriendGetListResult result = client.sns.friendGetList(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -174,7 +174,7 @@ public class SnsTest {
 
         BlackListAddResult result = client.sns.blackListAdd(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -187,7 +187,7 @@ public class SnsTest {
 
         BlackListDeleteResult result = client.sns.blackListDelete(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -201,7 +201,7 @@ public class SnsTest {
 
         BlackListGetResult result = client.sns.blackListGet(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -215,7 +215,7 @@ public class SnsTest {
 
         BlackListCheckResult result = client.sns.blackListCheck(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -230,7 +230,7 @@ public class SnsTest {
 
         GroupAddResult result = client.sns.groupAdd(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -243,7 +243,7 @@ public class SnsTest {
 
         GroupDeleteResult result = client.sns.groupDelete(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -258,6 +258,6 @@ public class SnsTest {
 
         GroupGetResult result = client.sns.groupGet(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

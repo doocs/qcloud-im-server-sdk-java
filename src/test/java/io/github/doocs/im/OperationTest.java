@@ -1,6 +1,7 @@
 package io.github.doocs.im;
 
 import io.github.doocs.im.constant.ChatType;
+import io.github.doocs.im.constant.ErrorCode;
 import io.github.doocs.im.constant.NoSpeakingTime;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -29,9 +30,9 @@ public class OperationTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
 
@@ -45,7 +46,7 @@ public class OperationTest {
 
         SetNoSpeakingResult result = client.operation.setNoSpeaking(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -54,7 +55,7 @@ public class OperationTest {
 
         GetNoSpeakingResult result = client.operation.getNoSpeaking(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -65,7 +66,7 @@ public class OperationTest {
 
         GetAppInfoResult result = client.operation.getAppInfo(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -77,7 +78,7 @@ public class OperationTest {
 
         GetHistoryResult result = client.operation.getHistory(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -86,6 +87,6 @@ public class OperationTest {
 
         GetIpListResult result = client.operation.getIpList(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 }

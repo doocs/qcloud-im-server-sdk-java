@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
@@ -27,9 +28,9 @@ public class MemberTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
     @Test
@@ -45,7 +46,7 @@ public class MemberTest {
 
         ImPushResult result = client.member.imPush(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -58,7 +59,7 @@ public class MemberTest {
 
         ImSetAttrNameResult result = client.member.imSetAttrName(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -67,7 +68,7 @@ public class MemberTest {
 
         ImGetAttrNameResult result = client.member.imGetAttrName(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -77,7 +78,7 @@ public class MemberTest {
 
         ImGetAttrResult result = client.member.imGetAttr(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -91,7 +92,7 @@ public class MemberTest {
 
         ImSetAttrResult result = client.member.imSetAttr(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -108,7 +109,7 @@ public class MemberTest {
 
         ImRemoveAttrResult result = client.member.imRemoveAttr(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -118,7 +119,7 @@ public class MemberTest {
 
         ImGetTagResult result = client.member.imGetTag(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -133,7 +134,7 @@ public class MemberTest {
 
         ImAddTagResult result = client.member.imAddTag(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -148,7 +149,7 @@ public class MemberTest {
 
         ImRemoveTagResult result = client.member.imRemoveTag(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -158,6 +159,6 @@ public class MemberTest {
 
         ImRemoveAllTagsResult result = client.member.imRemoveAllTags(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

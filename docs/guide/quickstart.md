@@ -10,14 +10,14 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.2.9</version>
+  <version>0.2.10</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.9'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.10'
 ```
 
 ### 下载 jar
@@ -26,29 +26,29 @@ implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0
 
 ## 初始化
 
-在使用腾讯云即时 IM 服务端 API 之前， 需要先通过 `appId`, `identifier`, `key` 获取到一个 `ImClient` 实例:
+在使用腾讯云即时 IM 服务端 REST API 之前， 需要先通过 `appId`, `userId`, `key` 获取到一个 `ImClient` 实例:
 
 ```java
 // sdk appId
 long appId = 1400554812;
 
 // admin userId
-String identifier = "test";
+String userId = "test";
 
 // application key
 String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
 
 // create a default ImClient instance
-ImClient client = ImClient.getInstance(appId, identifier, key);
+ImClient client = ImClient.getInstance(appId, userId, key);
 
 // create a custom ImClient instance
 ClientConfiguration config = new ClientConfiguration();
 config.setExpireTime(7 * 24 * 60 * 60L);
 config.setAutoRenewSig(false);
-ImClient client = ImClient.getInstance(appId, identifier, key, config);
+ImClient client = ImClient.getInstance(appId, userId, key, config);
 ```
 
-`ClientConfiguration` 支持可配置参数如下：
+`ClientConfiguration` 支持对以下参数进行自定义配置：
 
 | 字段             | 类型    | 说明                          | 默认值 |
 | ---------------- | ------- | ----------------------------- | ------ |
@@ -56,13 +56,13 @@ ImClient client = ImClient.getInstance(appId, identifier, key, config);
 | `connectTimeout` | long    | HTTP 连接超时（毫秒）         | 3000   |
 | `readTimeout`    | long    | HTTP 读超时（毫秒）           | 3000   |
 | `writeTimeout`   | long    | HTTP 写超时（毫秒）           | 3000   |
-| `expireTime`     | long    | UserSig 签名失效时间（秒）    | 86400  |
+| `expireTime`     | long    | UserSig 签名有效时长（秒）    | 86400  |
 | `autoRenewSig`   | boolean | 是否自动进行 UserSig 签名续期 | true   |
 | `userAgent`      | String  | User-Agent                    |        |
 
 ## 使用示例
 
-获取到 `ImClient` 实例后，就可以方便地进行 API 调用了。
+获取到 `ImClient` 实例后，就可以方便地进行 REST API 调用了。
 
 我们以 [帐号管理-导入单个帐号](./account.md#导入单个帐号) 为例：
 
