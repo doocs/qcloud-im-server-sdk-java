@@ -30,9 +30,9 @@ public class GroupTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class GroupTest {
 
         GetAppidGroupListResult result = client.group.getAppIdGroupList(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -64,7 +64,7 @@ public class GroupTest {
 
         CreateGroupResult result = client.group.createGroup(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class GroupTest {
 
         GetGroupInfoResult result = client.group.getGroupInfo(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -87,7 +87,7 @@ public class GroupTest {
 
         GetGroupMemberInfoResult result = client.group.getGroupMemberInfo(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -105,7 +105,7 @@ public class GroupTest {
 
         ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -120,7 +120,7 @@ public class GroupTest {
 
         AddGroupMemberResult result = client.group.addGroupMember(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -133,7 +133,7 @@ public class GroupTest {
 
         DeleteGroupMemberResult result = client.group.deleteGroupMember(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -146,7 +146,7 @@ public class GroupTest {
 
         ModifyGroupMemberInfoResult result = client.group.modifyGroupMemberInfo(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -155,7 +155,7 @@ public class GroupTest {
 
         DestroyGroupResult result = client.group.destroyGroup(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -164,7 +164,7 @@ public class GroupTest {
 
         GetJoinGroupListResult result = client.group.getJoinGroupList(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -177,7 +177,7 @@ public class GroupTest {
 
         GetRoleInGroupResult result = client.group.getRoleInGroup(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -191,7 +191,7 @@ public class GroupTest {
 
         ForbidSendMsgResult result = client.group.forbidSendMsg(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -200,7 +200,7 @@ public class GroupTest {
 
         GetGroupShuttedUinResult result = client.group.getGroupShuttedUin(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -216,7 +216,7 @@ public class GroupTest {
 
         SendGroupMsgResult result = client.group.sendGroupMsg(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -230,7 +230,7 @@ public class GroupTest {
 
         SendGroupSystemNotificationResult result = client.group.sendGroupSystemNotification(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -242,7 +242,7 @@ public class GroupTest {
 
         ChangeGroupOwnerResult result = client.group.changeGroupOwner(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -255,7 +255,7 @@ public class GroupTest {
 
         GroupMsgRecallResult result = client.group.groupMsgRecall(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -267,7 +267,7 @@ public class GroupTest {
 
         ImportGroupResult result = client.group.importGroup(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -287,7 +287,7 @@ public class GroupTest {
 
         ImportGroupMsgResult result = client.group.importGroupMsg(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -306,7 +306,7 @@ public class GroupTest {
 
         ImportGroupMemberResult result = client.group.importGroupMember(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -319,7 +319,7 @@ public class GroupTest {
 
         SetUnreadMsgNumResult result = client.group.setUnreadMsgNum(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -331,7 +331,7 @@ public class GroupTest {
 
         DeleteGroupMsgBySenderResult result = client.group.deleteGroupMsgBySender(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -344,7 +344,7 @@ public class GroupTest {
 
         GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test
@@ -352,6 +352,6 @@ public class GroupTest {
         GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest("MyFirstAVChatRoom");
         GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
         System.out.println(result);
-        Assert.assertEquals(0, (int) result.getErrorCode());
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 }

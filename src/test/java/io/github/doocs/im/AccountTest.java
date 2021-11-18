@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.IsNeedDetail;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -29,9 +30,9 @@ public class AccountTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
 
@@ -45,7 +46,7 @@ public class AccountTest {
 
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -57,7 +58,7 @@ public class AccountTest {
 
         MultiAccountImportResult result = client.account.multiAccountImport(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -69,7 +70,7 @@ public class AccountTest {
 
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -81,7 +82,7 @@ public class AccountTest {
 
         AccountCheckResult result = client.account.accountCheck(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -90,7 +91,7 @@ public class AccountTest {
 
         KickResult result = client.account.kick(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -103,6 +104,6 @@ public class AccountTest {
 
         QueryOnlineStatusResult result = client.account.queryOnlineStatus(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

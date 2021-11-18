@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.MsgType;
 import io.github.doocs.im.constant.SyncOtherMachine;
 import io.github.doocs.im.model.message.TIMCustomMsgElement;
@@ -30,9 +31,9 @@ public class MessageTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
     @Test
@@ -51,7 +52,7 @@ public class MessageTest {
 
         SendMsgResult result = client.message.sendMsg(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -69,7 +70,7 @@ public class MessageTest {
                 .build();
         BatchSendMsgResult result = client.message.batchSendMsg(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -85,7 +86,7 @@ public class MessageTest {
                 .build();
         ImportMsgResult result = client.message.importMsg(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -98,7 +99,7 @@ public class MessageTest {
                 .maxTime(1631934060)
                 .build();
         AdminRoamMsgResult result = client.message.getRoamMsg(request);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
 
         List<MsgListItem> msgList = result.getMsgList();
         if (msgList != null && msgList.size() > 0) {
@@ -129,7 +130,7 @@ public class MessageTest {
                 .build();
         AdminMsgWithdrawResult result = client.message.msgWithdraw(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -140,7 +141,7 @@ public class MessageTest {
                 .build();
         AdminSetMsgReadResult result = client.message.setMsgRead(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -151,6 +152,6 @@ public class MessageTest {
 
         C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgNum(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

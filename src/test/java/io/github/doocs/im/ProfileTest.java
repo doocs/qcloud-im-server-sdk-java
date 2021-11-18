@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.TagProfile;
 import io.github.doocs.im.model.request.PortraitGetRequest;
 import io.github.doocs.im.model.request.PortraitSetRequest;
@@ -31,9 +32,9 @@ public class ProfileTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
     @Test
@@ -50,7 +51,7 @@ public class ProfileTest {
 
         PortraitSetResult result = client.profile.portraitSet(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -64,6 +65,6 @@ public class ProfileTest {
 
         PortraitGetResult result = client.profile.portraitGet(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

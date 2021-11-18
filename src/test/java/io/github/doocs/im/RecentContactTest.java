@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.AssistFlags;
 import io.github.doocs.im.constant.ClearRamble;
 import io.github.doocs.im.constant.RecentContactType;
@@ -30,9 +31,9 @@ public class RecentContactTest {
             e.printStackTrace();
         }
         String key = properties.getProperty("key");
-        String identifier = properties.getProperty("identifier");
+        String userId = properties.getProperty("userId");
         Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, identifier, key);
+        client = ImClient.getInstance(appId, userId, key);
     }
 
     @Test
@@ -48,7 +49,7 @@ public class RecentContactTest {
 
         GetRecentContactListResult result = client.recentContact.recentContactList(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
@@ -62,6 +63,6 @@ public class RecentContactTest {
 
         DeleteRecentContactResult result = client.recentContact.deleteRecentContact(request);
         System.out.println(result);
-        Assert.assertEquals("OK", result.getActionStatus());
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

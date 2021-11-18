@@ -35,13 +35,13 @@ Here is a quick teaser of an application using IM SDK in Java:
 long appId = 1400554812;
 
 // admin userId
-String identifier = "test";
+String userId = "test";
 
 // application key
 String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
 
 // create ImClient instance
-ImClient client = ImClient.getInstance(appId, identifier, key);
+ImClient client = ImClient.getInstance(appId, userId, key);
 
 // import account
 AccountImportRequest request = new AccountImportRequest("doocs");
