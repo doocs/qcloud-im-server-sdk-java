@@ -10,14 +10,14 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.2.9</version>
+  <version>0.2.10</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.9'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.10'
 ```
 
 ### 下载 jar
@@ -48,7 +48,7 @@ config.setAutoRenewSig(false);
 ImClient client = ImClient.getInstance(appId, userId, key, config);
 ```
 
-`ClientConfiguration` 支持可配置参数如下：
+`ClientConfiguration` 支持对以下参数进行自定义配置：
 
 | 字段             | 类型    | 说明                          | 默认值 |
 | ---------------- | ------- | ----------------------------- | ------ |
