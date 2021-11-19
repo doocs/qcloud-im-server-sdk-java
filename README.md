@@ -7,16 +7,20 @@
 
 The Tencent Cloud IM Server SDK for Java enables Java developers to easily work with Tencent Cloud IM.
 
-## Requirements
+[中文文档](./README_CN.md)
 
-- Java 8 or later
-- Maven
+## Documentation
 
-## Installation and Getting Started
+- [Documentation Home](https://doocs.github.io/qcloud-im-server-sdk-java)
+- [Contributing Code](#Contributing)
 
-### 1. Maven Configuration
+## Quick Start
 
-Add the Maven dependency:
+### 1. Add Dependency
+
+**Note**: Tencent Cloud IM Server SDK requires JDK 1.8 or later.
+
+If you're using Maven, just add the following dependency in `pom.xml`.
 
 ```xml
 <dependency>
@@ -26,9 +30,11 @@ Add the Maven dependency:
 </dependency>
 ```
 
+If not, you can download JAR in [Maven Center Repository](https://repo1.maven.org/maven2/io/github/doocs/im-server-sdk-java/).
+
 ### 2. Getting Started
 
-Here is a quick teaser of an application using IM SDK in Java:
+Here is a quick teaser of an application using Tencent Cloud IM Server SDK in Java:
 
 ```java
 // sdk appId
@@ -54,12 +60,6 @@ try {
     // handle exception
 }
 ```
-
-## Authors
-
-- [Yang Libin](https://github.com/yanglbme)
-- [Hong Yiheng](https://github.com/hongyiheng)
-- [Xie Yu](https://github.com/YXxy1002)
 
 ## Contributing
 

@@ -20,7 +20,7 @@
 implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.2.10'
 ```
 
-### 下载 jar
+### 下载 JAR
 
 [Maven 中央仓库](https://repo1.maven.org/maven2/io/github/doocs/im-server-sdk-java/)
 
