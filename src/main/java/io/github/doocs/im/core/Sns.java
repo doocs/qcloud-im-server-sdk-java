@@ -214,7 +214,7 @@ public class Sns {
      * 拉取分组 结果
      *
      * @param groupGetRequest 请求参数
-     * @return
+     * @return 结果
      * @throws IOException 异常
      */
     public GroupGetResult groupGet(GroupGetRequest groupGetRequest) throws IOException {
