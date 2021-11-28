@@ -168,7 +168,7 @@ AdminSetMsgReadResult result = client.message.setMsgRead(request);
 
 ## 查询单聊未读消息计数
 
-App 后台可以通过该接口查询特定账号的单聊总未读数（包含所有的单聊会话）或者单个单聊会话的未读数。
+App 后台可以通过该接口查询特定帐号的单聊总未读数（包含所有的单聊会话）或者单个单聊会话的未读数。
 
 使用示例：
 

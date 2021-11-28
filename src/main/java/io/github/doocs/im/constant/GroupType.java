@@ -32,6 +32,11 @@ public class GroupType {
      */
     public static final String BC_CHAT_ROOM = "BChatRoom";
 
+    /**
+     * 社群
+     */
+    public static final String COMMUNITY = "Community";
+
     private GroupType() {
 
     }
