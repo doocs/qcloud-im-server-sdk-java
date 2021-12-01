@@ -24,6 +24,9 @@ public class AfterSendMsgCallback {
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
+    @JsonProperty("MsgRandom")
+    private Long msgRandom;
+
     @JsonProperty("MsgTime")
     private Integer msgTime;
 
@@ -78,6 +81,14 @@ public class AfterSendMsgCallback {
 
     public void setMsgSeq(Long msgSeq) {
         this.msgSeq = msgSeq;
+    }
+
+    public Long getMsgRandom() {
+        return msgRandom;
+    }
+
+    public void setMsgRandom(Long msgRandom) {
+        this.msgRandom = msgRandom;
     }
 
     public Integer getMsgTime() {
