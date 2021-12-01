@@ -21,6 +21,9 @@ public class BatchSendMsgRequest {
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    @JsonProperty("MsgLifeTime")
+    private Integer msgLifeTime;
+
     /**
      * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
      */
@@ -54,12 +57,13 @@ public class BatchSendMsgRequest {
         this.msgBody = msgBody;
     }
 
-    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount, Long msgSeq,
-                               Long msgRandom, List<TIMMsgElement> msgBody, String cloudCustomData,
-                               List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
+    public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount,
+                               Integer msgLifeTime, Long msgSeq, Long msgRandom, List<TIMMsgElement> msgBody,
+                               String cloudCustomData, List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
+        this.msgLifeTime = msgLifeTime;
         this.msgSeq = msgSeq;
         this.msgRandom = msgRandom;
         this.msgBody = msgBody;
@@ -106,6 +110,14 @@ public class BatchSendMsgRequest {
 
     public void setToAccount(List<String> toAccount) {
         this.toAccount = toAccount;
+    }
+
+    public Integer getMsgLifeTime() {
+        return msgLifeTime;
+    }
+
+    public void setMsgLifeTime(Integer msgLifeTime) {
+        this.msgLifeTime = msgLifeTime;
     }
 
     public Long getMsgSeq() {
@@ -160,6 +172,7 @@ public class BatchSendMsgRequest {
         private Integer syncOtherMachine;
         private String fromAccount;
         private List<String> toAccount;
+        private Integer msgLifeTime;
         /**
          * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
          */
@@ -192,6 +205,11 @@ public class BatchSendMsgRequest {
 
         public Builder toAccount(List<String> toAccount) {
             this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder msgLifeTime(Integer msgLifeTime) {
+            this.msgLifeTime = msgLifeTime;
             return this;
         }
 
