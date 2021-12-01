@@ -76,6 +76,7 @@ public class BatchSendMsgRequest {
         this.syncOtherMachine = builder.syncOtherMachine;
         this.fromAccount = builder.fromAccount;
         this.toAccount = builder.toAccount;
+        this.msgLifeTime = builder.msgLifeTime;
         this.msgSeq = builder.msgSeq;
         this.msgRandom = builder.msgRandom;
         this.msgBody = builder.msgBody;
