@@ -71,4 +71,68 @@ public class AfterCreateGroupCallback {
             this.value = value;
         }
     }
+
+    public String getCallbackCommand() {
+        return callbackCommand;
+    }
+
+    public void setCallbackCommand(String callbackCommand) {
+        this.callbackCommand = callbackCommand;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getOperatorAccount() {
+        return operatorAccount;
+    }
+
+    public void setOperatorAccount(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
+    }
+
+    public String getOwnerAccount() {
+        return ownerAccount;
+    }
+
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<MemberItem> getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(List<MemberItem> memberList) {
+        this.memberList = memberList;
+    }
+
+    public List<UserDefinedDataItem> getUserDefinedDataList() {
+        return userDefinedDataList;
+    }
+
+    public void setUserDefinedDataList(List<UserDefinedDataItem> userDefinedDataList) {
+        this.userDefinedDataList = userDefinedDataList;
+    }
 }
