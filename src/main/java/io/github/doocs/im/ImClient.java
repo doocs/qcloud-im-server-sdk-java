@@ -15,6 +15,7 @@ public class ImClient {
     private final String key;
     private final String userId;
     private final ClientConfiguration config;
+    private final long expireTime;
 
     private String userSig;
     private long userSigExpireTs;
@@ -31,8 +32,6 @@ public class ImClient {
     public final Operation operation;
     public final RecentContact recentContact;
 
-    private static final ClientConfiguration DEFAULT_CONFIG = new ClientConfiguration();
-
     public static ImClient getInstance(long sdkAppId, String userId, String key) {
         return new ImClient(sdkAppId, userId, key);
     }
@@ -42,7 +41,7 @@ public class ImClient {
     }
 
     public ImClient(long sdkAppId, String userId, String key) {
-        this(sdkAppId, userId, key, DEFAULT_CONFIG);
+        this(sdkAppId, userId, key, null);
     }
 
     public ImClient(long sdkAppId, String userId, String key, ClientConfiguration config) {
@@ -50,8 +49,9 @@ public class ImClient {
         this.userId = userId;
         this.key = key;
         this.config = config;
-        this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, config.getExpireTime());
-        this.userSigExpireTs = System.currentTimeMillis() / 1000 + config.getExpireTime() - 100;
+        this.expireTime = config == null ? ClientConfiguration.DEFAULT_EXPIRE_TIME : config.getExpireTime();
+        this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, expireTime);
+        this.userSigExpireTs = System.currentTimeMillis() / 1000 + expireTime - 100;
 
         account = new Account(this);
         message = new Message(this);
@@ -64,13 +64,14 @@ public class ImClient {
     }
 
     private String getUserSig() {
-        if (config.isAutoRenewSig()) {
+        boolean renewSig = config == null || config.isAutoRenewSig();
+        if (renewSig) {
             long currentTs = System.currentTimeMillis() / 1000;
             if (currentTs >= userSigExpireTs) {
                 synchronized (this) {
                     if (currentTs >= userSigExpireTs) {
-                        userSig = SigUtil.genUserSig(sdkAppId, key, userId, config.getExpireTime());
-                        userSigExpireTs = currentTs + config.getExpireTime() - 100;
+                        userSig = SigUtil.genUserSig(sdkAppId, key, userId, expireTime);
+                        userSigExpireTs = currentTs + expireTime - 100;
                     }
                 }
             }

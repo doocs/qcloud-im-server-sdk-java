@@ -26,6 +26,7 @@ public class HttpUtil {
             .connectTimeout(DEFAULT_CONFIG.getConnectTimeout(), TimeUnit.MILLISECONDS)
             .readTimeout(DEFAULT_CONFIG.getReadTimeout(), TimeUnit.MILLISECONDS)
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
+            .retryOnConnectionFailure(false)
             .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries()))
             .build();
 
@@ -36,11 +37,11 @@ public class HttpUtil {
     public static String post(String url, String json, ClientConfiguration config) throws IOException {
         OkHttpClient httpClient = DEFAULT_CLIENT;
         if (config != null) {
-            httpClient = DEFAULT_CLIENT.newBuilder()
+            httpClient = new OkHttpClient.Builder()
                     .connectTimeout(config.getConnectTimeout(), TimeUnit.MILLISECONDS)
                     .readTimeout(config.getReadTimeout(), TimeUnit.MILLISECONDS)
                     .writeTimeout(config.getWriteTimeout(), TimeUnit.MILLISECONDS)
-                    .retryOnConnectionFailure(config.getMaxRetries() > 0)
+                    .retryOnConnectionFailure(false)
                     .addInterceptor(new RetryInterceptor(config.getMaxRetries()))
                     .build();
         }
@@ -104,6 +105,7 @@ class RetryInterceptor implements Interceptor {
         Request request = chain.request();
         Response response = chain.proceed(request);
         for (int i = 0; i < maxRetry && !response.isSuccessful(); ++i) {
+            response.close();
             response = chain.proceed(request);
         }
         return response;
