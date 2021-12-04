@@ -7,20 +7,20 @@ import io.github.doocs.im.util.VersionInfoUtil;
  * @since 2021/11/2 14:17
  */
 public class ClientConfiguration {
-    private static final String DEFAULT_USER_AGENT = VersionInfoUtil.getDefaultUserAgent();
-    private static final int DEFAULT_MAX_RETRIES = 3;
-    private static final boolean DEFAULT_RENEW_SIG = true;
+    public static final String DEFAULT_USER_AGENT = VersionInfoUtil.getDefaultUserAgent();
+    public static final int DEFAULT_MAX_RETRIES = 3;
+    public static final boolean DEFAULT_RENEW_SIG = true;
     /**
      * 默认超时时间（毫秒）
      */
-    private static final long DEFAULT_CONNECT_TIMEOUT = 3000L;
-    private static final long DEFAULT_READ_TIMEOUT = 3000L;
-    private static final long DEFAULT_WRITE_TIMEOUT = 3000L;
+    public static final long DEFAULT_CONNECT_TIMEOUT = 3000L;
+    public static final long DEFAULT_READ_TIMEOUT = 3000L;
+    public static final long DEFAULT_WRITE_TIMEOUT = 3000L;
 
     /**
      * UserSig 签名默认有效时长（秒）
      */
-    private static final long DEFAULT_EXPIRE_TIME = 24 * 60 * 60L;
+    public static final long DEFAULT_EXPIRE_TIME = 24 * 60 * 60L;
 
     private int maxRetries = DEFAULT_MAX_RETRIES;
     private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
