@@ -1,5 +1,6 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.Domain;
 import io.github.doocs.im.core.*;
 import io.github.doocs.im.util.SigUtil;
 
@@ -22,7 +23,7 @@ public class ImClient {
     private long userSigExpireTs;
 
     private static final String VERSION = "v4";
-    private static final String DEFAULT_DOMAIN = "console.tim.qq.com";
+    private static final String DEFAULT_DOMAIN = Domain.CHINA;
     private static final String FORMAT_URL = "https://%s/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
 
     public final Account account;
