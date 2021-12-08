@@ -46,6 +46,10 @@ public class ImClient {
         return new ImClient(sdkAppId, userId, key, config);
     }
 
+    public static ImClient getInstance(long sdkAppId, String userId, String key, String domain, ClientConfiguration config) {
+        return new ImClient(sdkAppId, userId, key, domain, config);
+    }
+
     public ImClient(long sdkAppId, String userId, String key) {
         this(sdkAppId, userId, key, DEFAULT_DOMAIN);
     }
