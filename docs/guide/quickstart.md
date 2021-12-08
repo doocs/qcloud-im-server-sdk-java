@@ -10,14 +10,14 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.3.0'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.3.1'
 ```
 
 ### 下载 JAR
@@ -40,6 +40,9 @@ String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
 
 // create a default ImClient instance
 ImClient client = ImClient.getInstance(appId, userId, key);
+
+// create a default ImClient instance with custom domain
+ImClient client = ImClient.getInstance(appId, userId, key, Domain.SINGAPORE);
 
 // create a custom ImClient instance
 ClientConfiguration config = new ClientConfiguration();
