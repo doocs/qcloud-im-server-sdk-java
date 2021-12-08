@@ -41,7 +41,7 @@ String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
 // create a default ImClient instance
 ImClient client = ImClient.getInstance(appId, userId, key);
 
-// create a ImClient instance with custom domain
+// create a default ImClient instance with custom domain
 ImClient client = ImClient.getInstance(appId, userId, key, Domain.SINGAPORE);
 
 // create a custom ImClient instance
