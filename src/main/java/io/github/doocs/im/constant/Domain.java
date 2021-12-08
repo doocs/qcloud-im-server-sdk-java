@@ -4,7 +4,7 @@ package io.github.doocs.im.constant;
  * 请求域名
  *
  * @author zonghan.zhou
- * @since 2021-12-08 17:13
+ * @since 2021/12/08 17:13
  */
 public class Domain {
 
