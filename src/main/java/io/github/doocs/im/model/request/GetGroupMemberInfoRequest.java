@@ -29,6 +29,9 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
     @JsonProperty("Offset")
     private Integer offset;
 
+    @JsonProperty("Next")
+    private String next;
+
     public GetGroupMemberInfoRequest() {
     }
 
@@ -36,14 +39,16 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
         this.groupId = groupId;
     }
 
-    public GetGroupMemberInfoRequest(String groupId, List<String> memberInfoFilter, List<String> memberRoleFilter,
-                                     List<String> appDefinedDataFilterGroupMember, Integer limit, Integer offset) {
+    public GetGroupMemberInfoRequest(String groupId, List<String> memberInfoFilter,
+                                     List<String> memberRoleFilter, List<String> appDefinedDataFilterGroupMember,
+                                     Integer limit, Integer offset, String next) {
         this.groupId = groupId;
         this.memberInfoFilter = memberInfoFilter;
         this.memberRoleFilter = memberRoleFilter;
         this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
         this.limit = limit;
         this.offset = offset;
+        this.next = next;
     }
 
     private GetGroupMemberInfoRequest(Builder builder) {
@@ -53,6 +58,7 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
         this.appDefinedDataFilterGroupMember = builder.appDefinedDataFilterGroupMember;
         this.limit = builder.limit;
         this.offset = builder.offset;
+        this.next = builder.next;
     }
 
     public static Builder builder() {
@@ -107,6 +113,14 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
         this.offset = offset;
     }
 
+    public String getNext() {
+        return next;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
+    }
+
 
     public static final class Builder {
         private String groupId;
@@ -115,6 +129,7 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
         private List<String> appDefinedDataFilterGroupMember;
         private Integer limit;
         private Integer offset;
+        private String next;
 
         private Builder() {
         }
@@ -150,6 +165,11 @@ public class GetGroupMemberInfoRequest extends GenericRequest {
 
         public Builder offset(Integer offset) {
             this.offset = offset;
+            return this;
+        }
+
+        public Builder next(String next) {
+            this.next = next;
             return this;
         }
     }

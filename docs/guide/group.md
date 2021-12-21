@@ -24,6 +24,20 @@ GetAppidGroupListResult result = client.group.getAppIdGroupList(request);
 
 App 管理员可以通过该接口创建群组。
 
+::: tip
+适用的群组类型
+
+| 群组类型 ID | 是否支持此 REST API                      |
+| ----------- | ---------------------------------------- |
+| Private     | 支持，同新版本中的 Work（好友工作群）    |
+| Public      | 支持                                     |
+| ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
+| AVChatRoom  | 支持                                     |
+| Community   | 支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
 使用示例：
 
 ```java
@@ -55,6 +69,7 @@ App 管理员可以根据群组 ID 获取群组的详细信息。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 支持                                     |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
@@ -80,9 +95,12 @@ App 管理员可以根据群组 ID 获取群组成员的资料。
 | Private     | 支持，同新版本中的 Work（好友工作群）    |
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
-| AVChatRoom  | 仅支持 300 人内                          |
+| AVChatRoom  | 不支持                                   |
+| Community   | 支持，使用 Next 字段分批获取             |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+
+因 Community（社群）人数较多，分页获取方式改用 Next 分批方法。
 :::
 
 使用示例：
@@ -110,6 +128,7 @@ App 管理员可以通过该接口修改指定群组的基础信息。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 支持                                     |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
@@ -144,6 +163,7 @@ App 管理员可以通过该接口向指定的群中添加新成员。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -177,6 +197,7 @@ App 管理员可以通过该接口删除群成员。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -207,7 +228,8 @@ App 管理员可以通过该接口修改群成员资料。
 | Private     | 支持，同新版本中的 Work（好友工作群）    |
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
-| AVChatRoom  | 支持修改群组资料                         |
+| AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -238,7 +260,8 @@ App 管理员通过该接口解散群。
 | Private     | 支持，同新版本中的 Work（好友工作群）    |
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
-| AVChatRoom  | 支持修改群组资料                         |
+| AVChatRoom  | 支持                                     |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
@@ -264,6 +287,7 @@ App 管理员可以通过本接口获取某一用户加入的群信息。默认�
 | Public      | 支持                                                                                                                              |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群）                                                                                          |
 | AVChatRoom  | 支持，但默认不返回此类型群信息。如果指定拉取 AVChatRoom 类型群信息，获得的群信息可能不完整，AVChatRoom 并不存储所有的群成员资料。 |
+| Community   | 支持                                                                                                                              |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
@@ -289,6 +313,7 @@ App 管理员可以通过该接口获取一批用户在群内的身份，即“�
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -322,6 +347,7 @@ GetRoleInGroupResult result = client.group.getRoleInGroup(request);
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 支持                                     |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -354,6 +380,7 @@ App 管理员可以根据群组 ID 获取群组中被禁言的用户列表。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 支持                                     |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
@@ -411,6 +438,7 @@ App 管理员可以通过该接口在群组中发送系统通知。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 支持，仅支持面向全员                     |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -445,7 +473,8 @@ SendGroupSystemNotificationResult result = client.group.sendGroupSystemNotificat
 | Private     | 支持，同新版本中的 Work（好友工作群）    |
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
-| AVChatRoom  | 不支持                                   |
+| AVChatRoom  | 不支持（见说明）                         |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -476,6 +505,7 @@ App 管理员通过该接口撤回指定群组的消息，消息需要在漫游�
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
@@ -506,6 +536,7 @@ App 管理员可以通过该接口导入群组，不会触发回调、不会下�
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -537,6 +568,7 @@ ImportGroupResult result = client.group.importGroup(request);
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -576,6 +608,7 @@ ImportGroupMsgResult result = client.group.importGroupMsg(request);
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -616,6 +649,7 @@ ImportGroupMemberResult result = client.group.importGroupMember(request);
 | Public      | 支持                                       |
 | ChatRoom    | 不支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                     |
+| Community   | 支持                                       |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -647,6 +681,7 @@ SetUnreadMsgNumResult result = client.group.setUnreadMsgNum(request);
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -684,6 +719,7 @@ App 管理员可以通过该接口拉取群组的历史消息。
 | Public      | 支持                                     |
 | ChatRoom    | 支持，同新版本中的 Meeting（临时会议群） |
 | AVChatRoom  | 不支持                                   |
+| Community   | 支持                                     |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 
@@ -715,6 +751,7 @@ App 管理员可以根据群组 ID 获取直播群在线人数。
 | Public      | 不支持                                       |
 | ChatRoom    | 不支持，同新版本中的 Meeting（临时会议群）） |
 | AVChatRoom  | 支持                                         |
+| Community   | 不支持                                       |
 
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
