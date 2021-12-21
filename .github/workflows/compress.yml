@@ -1,13 +1,8 @@
-name: Compress
+name: compress-images
 
 on:
-  push:
-    branches: [main, dev]
-    paths:
-      - "**.jpg"
-      - "**.jpeg"
-      - "**.png"
-      - "**.webp"
+  schedule:
+    - cron: "0 0 * * 3"
   workflow_dispatch:
 
 jobs:
