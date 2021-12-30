@@ -21,7 +21,7 @@ public class AndroidInfo {
     @JsonProperty("OPPOChannelID")
     private String oppoChannelId;
 
-    @JsonProperty("OPPOChannelID")
+    @JsonProperty("GoogleChannelID")
     private String googleChannelId;
 
     @JsonProperty("VIVOClassification")
