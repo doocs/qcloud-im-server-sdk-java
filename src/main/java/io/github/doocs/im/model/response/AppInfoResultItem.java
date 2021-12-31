@@ -43,6 +43,9 @@ public class AppInfoResultItem {
     @JsonProperty("C2CUpMsgNum")
     private String c2cUpMsgNum;
 
+    @JsonProperty("C2CDownMsgNum")
+    private String c2cDownMsgNum;
+
     @JsonProperty("C2CSendMsgUserNum")
     private String c2cSendMsgUserNum;
 
@@ -52,6 +55,9 @@ public class AppInfoResultItem {
     @JsonProperty("MaxOnlineNum")
     private String maxOnlineNum;
 
+    @JsonProperty("DownMsgNum")
+    private String downMsgNum;
+
     @JsonProperty("ChainIncrease")
     private String chainIncrease;
 
@@ -60,6 +66,9 @@ public class AppInfoResultItem {
 
     @JsonProperty("GroupUpMsgNum")
     private String groupUpMsgNum;
+
+    @JsonProperty("GroupDownMsgNum")
+    private String groupDownMsgNum;
 
     @JsonProperty("GroupSendMsgUserNum")
     private String groupSendMsgUserNum;
@@ -190,6 +199,14 @@ public class AppInfoResultItem {
         this.c2cUpMsgNum = c2cUpMsgNum;
     }
 
+    public String getC2cDownMsgNum() {
+        return c2cDownMsgNum;
+    }
+
+    public void setC2cDownMsgNum(String c2cDownMsgNum) {
+        this.c2cDownMsgNum = c2cDownMsgNum;
+    }
+
     public String getC2cSendMsgUserNum() {
         return c2cSendMsgUserNum;
     }
@@ -214,6 +231,14 @@ public class AppInfoResultItem {
         this.maxOnlineNum = maxOnlineNum;
     }
 
+    public String getDownMsgNum() {
+        return downMsgNum;
+    }
+
+    public void setDownMsgNum(String downMsgNum) {
+        this.downMsgNum = downMsgNum;
+    }
+
     public String getChainIncrease() {
         return chainIncrease;
     }
@@ -236,6 +261,14 @@ public class AppInfoResultItem {
 
     public void setGroupUpMsgNum(String groupUpMsgNum) {
         this.groupUpMsgNum = groupUpMsgNum;
+    }
+
+    public String getGroupDownMsgNum() {
+        return groupDownMsgNum;
+    }
+
+    public void setGroupDownMsgNum(String groupDownMsgNum) {
+        this.groupDownMsgNum = groupDownMsgNum;
     }
 
     public String getGroupSendMsgUserNum() {
@@ -341,12 +374,15 @@ public class AppInfoResultItem {
                 ", sendMsgUserNum='" + sendMsgUserNum + '\'' +
                 ", apnsMsgNum='" + apnsMsgNum + '\'' +
                 ", c2cUpMsgNum='" + c2cUpMsgNum + '\'' +
+                ", c2cDownMsgNum='" + c2cDownMsgNum + '\'' +
                 ", c2cSendMsgUserNum='" + c2cSendMsgUserNum + '\'' +
                 ", c2cApnsMsgNum='" + c2cApnsMsgNum + '\'' +
                 ", maxOnlineNum='" + maxOnlineNum + '\'' +
+                ", downMsgNum='" + downMsgNum + '\'' +
                 ", chainIncrease='" + chainIncrease + '\'' +
                 ", chainDecrease='" + chainDecrease + '\'' +
                 ", groupUpMsgNum='" + groupUpMsgNum + '\'' +
+                ", groupDownMsgNum='" + groupDownMsgNum + '\'' +
                 ", groupSendMsgUserNum='" + groupSendMsgUserNum + '\'' +
                 ", groupAPNSMsgNum='" + groupAPNSMsgNum + '\'' +
                 ", groupSendMsgGroupNum='" + groupSendMsgGroupNum + '\'' +

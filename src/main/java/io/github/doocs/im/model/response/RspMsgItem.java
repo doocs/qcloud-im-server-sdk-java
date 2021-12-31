@@ -19,6 +19,9 @@ public class RspMsgItem {
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
+    @JsonProperty("IsSystemMsg")
+    private Integer isSystemMsg;
+
     @JsonProperty("MsgPriority")
     private Integer msgPriority;
 
@@ -61,6 +64,14 @@ public class RspMsgItem {
         this.msgBody = msgBody;
     }
 
+    public Integer getIsSystemMsg() {
+        return isSystemMsg;
+    }
+
+    public void setIsSystemMsg(Integer isSystemMsg) {
+        this.isSystemMsg = isSystemMsg;
+    }
+
     public Integer getMsgPriority() {
         return msgPriority;
     }
@@ -99,6 +110,7 @@ public class RspMsgItem {
                 "fromAccount='" + fromAccount + '\'' +
                 ", isPlaceMsg=" + isPlaceMsg +
                 ", msgBody=" + msgBody +
+                ", isSystemMsg=" + isSystemMsg +
                 ", msgPriority=" + msgPriority +
                 ", msgRandom=" + msgRandom +
                 ", msgSeq=" + msgSeq +
