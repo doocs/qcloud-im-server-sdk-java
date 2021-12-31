@@ -770,3 +770,120 @@ GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest("MyFirstAVChat
 
 GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
 ```
+
+## 获取群自定义属性
+
+App 管理员可以通过该接口获取群自定义属性。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID | 是否支持此 REST API                          |
+| ----------- | -------------------------------------------- |
+| Private     | 不支持，同新版本中的 Work（好友工作群）      |
+| Public      | 不支持                                       |
+| ChatRoom    | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom  | 支持                                         |
+| Community   | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+GetGroupAttrRequest request = new GetGroupAttrRequest("MyFirstGroup");
+
+GetGroupAttrResult result = client.group.getGroupAttr(request);
+```
+
+## 修改群自定义属性
+
+App 管理员可以通过该接口修改群自定义属性。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID | 是否支持此 REST API                          |
+| ----------- | -------------------------------------------- |
+| Private     | 不支持，同新版本中的 Work（好友工作群）      |
+| Public      | 不支持                                       |
+| ChatRoom    | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom  | 支持                                         |
+| Community   | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+GroupAttr groupAttr = new GroupAttr();
+groupAttr.setKey("isOpen");
+groupAttr.setValue("yes");
+List<GroupAttr> groupAttrs = Collections.singletonList(groupAttr);
+ModifyGroupAttrRequest request = ModifyGroupAttrRequest.builder()
+        .groupId("MyFirstGroup")
+        .groupAttrs(groupAttrs)
+        .build();
+
+ModifyGroupAttrResult result = client.group.modifyGroupAttr(request);
+```
+
+## 清空群自定义属性
+
+App 管理员可以通过该接口清空群自定义属性。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID | 是否支持此 REST API                          |
+| ----------- | -------------------------------------------- |
+| Private     | 不支持，同新版本中的 Work（好友工作群）      |
+| Public      | 不支持                                       |
+| ChatRoom    | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom  | 支持                                         |
+| Community   | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+ClearGroupAttrRequest request = new ClearGroupAttrRequest("MyFirstGroup");
+
+ClearGroupAttrResult result = client.group.clearGroupAttr(request);
+```
+
+## 重置群自定义属性
+
+App 管理员可以通过该接口重置群自定义属性。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID | 是否支持此 REST API                          |
+| ----------- | -------------------------------------------- |
+| Private     | 不支持，同新版本中的 Work（好友工作群）      |
+| Public      | 不支持                                       |
+| ChatRoom    | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom  | 支持                                         |
+| Community   | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+SetGroupAttrRequest request = new SetGroupAttrRequest();
+request.setGroupId("MyFirstGroup");
+GroupAttr groupAttr = new GroupAttr();
+groupAttr.setKey("isOpen");
+groupAttr.setValue("yes");
+List<GroupAttr> groupAttrs = Collections.singletonList(groupAttr);
+request.setGroupAttrs(groupAttrs);
+
+SetGroupAttrResult result = client.group.setGroupAttr(request);
+```

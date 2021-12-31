@@ -1,6 +1,7 @@
 package io.github.doocs.im;
 
 import io.github.doocs.im.constant.*;
+import io.github.doocs.im.model.group.GroupAttr;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
@@ -51,9 +52,9 @@ public class GroupTest {
     @Test
     public void testCreateGroup() throws IOException {
         CreateGroupRequest request = CreateGroupRequest.builder()
-                .type(GroupType.PUBLIC)
+                .type(GroupType.AV_CHAT_ROOM)
                 .name("TestGroup")
-                .ownerAccount("user2")
+                .ownerAccount("bingo")
                 .groupId("MyFirstGroup")
                 .introduction("This is group Introduction")
                 .notification("This is group Notification")
@@ -350,7 +351,57 @@ public class GroupTest {
     @Test
     public void testGetOnlineMemberNum() throws IOException {
         GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest("MyFirstAVChatRoom");
+
         GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testGetGroupAttr() throws IOException {
+        GetGroupAttrRequest request = new GetGroupAttrRequest("MyFirstGroup");
+
+        GetGroupAttrResult result = client.group.getGroupAttr(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testModifyGroupAttr() throws IOException {
+        GroupAttr groupAttr = new GroupAttr();
+        groupAttr.setKey("isOpen");
+        groupAttr.setValue("yes");
+        List<GroupAttr> groupAttrs = Collections.singletonList(groupAttr);
+        ModifyGroupAttrRequest request = ModifyGroupAttrRequest.builder()
+                .groupId("MyFirstGroup")
+                .groupAttrs(groupAttrs)
+                .build();
+
+        ModifyGroupAttrResult result = client.group.modifyGroupAttr(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testClearGroupAttr() throws IOException {
+        ClearGroupAttrRequest request = new ClearGroupAttrRequest("MyFirstGroup");
+
+        ClearGroupAttrResult result = client.group.clearGroupAttr(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testSetGroupAttr() throws IOException {
+        SetGroupAttrRequest request = new SetGroupAttrRequest();
+        request.setGroupId("MyFirstGroup");
+        GroupAttr groupAttr = new GroupAttr();
+        groupAttr.setKey("isOpen");
+        groupAttr.setValue("yes");
+        List<GroupAttr> groupAttrs = Collections.singletonList(groupAttr);
+        request.setGroupAttrs(groupAttrs);
+
+        SetGroupAttrResult result = client.group.setGroupAttr(request);
         System.out.println(result);
         Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

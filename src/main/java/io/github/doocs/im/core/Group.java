@@ -18,6 +18,7 @@ public class Group {
      * 群组管理服务名
      */
     private static final String SERVICE_NAME = "group_open_http_svc";
+    private static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
 
     /**
      * 群组管理相关命令字
@@ -46,6 +47,10 @@ public class Group {
     private static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
     private static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
     private static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
+    private static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
+    private static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
+    private static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
+    private static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
 
     private final ImClient imClient;
 
@@ -318,7 +323,7 @@ public class Group {
     }
 
     /**
-     * 拉取群成员
+     * 拉取群历史消息
      *
      * @param groupMsgGetSimpleRequest 请求参数
      * @return 结果
@@ -339,5 +344,53 @@ public class Group {
     public GetOnlineMemberNumResult getOnlineMemberNum(GetOnlineMemberNumRequest getOnlineMemberNumRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_ONLINE_MEMBER_NUM_COMMAND);
         return HttpUtil.post(url, getOnlineMemberNumRequest, GetOnlineMemberNumResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取群自定义属性
+     *
+     * @param getGroupAttrRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupAttrResult getGroupAttr(GetGroupAttrRequest getGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_ATTR, GET_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, getGroupAttrRequest, GetGroupAttrResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 修改群自定义属性
+     *
+     * @param modifyGroupAttrRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyGroupAttrResult modifyGroupAttr(ModifyGroupAttrRequest modifyGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, modifyGroupAttrRequest, ModifyGroupAttrResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 清空群自定义属性
+     *
+     * @param clearGroupAttrRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ClearGroupAttrResult clearGroupAttr(ClearGroupAttrRequest clearGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, CLEAR_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, clearGroupAttrRequest, ClearGroupAttrResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 重置群自定义属性
+     *
+     * @param setGroupAttrRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public SetGroupAttrResult setGroupAttr(SetGroupAttrRequest setGroupAttrRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SET_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, setGroupAttrRequest, SetGroupAttrResult.class, imClient.getConfig());
     }
 }
