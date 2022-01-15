@@ -12,7 +12,7 @@
 
 ```java
 AccountImportRequest request = AccountImportRequest.builder()
-        .identifier("admin")
+        .userId("admin")
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .nick("doocs")
         .build();

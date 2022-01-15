@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountImportRequest extends GenericRequest {
-    @JsonProperty("Identifier")
-    private String identifier;
+    @JsonProperty("UserID")
+    private String userId;
 
     @JsonProperty("Nick")
     private String nick;
@@ -21,18 +21,18 @@ public class AccountImportRequest extends GenericRequest {
     public AccountImportRequest() {
     }
 
-    public AccountImportRequest(String identifier) {
-        this.identifier = identifier;
+    public AccountImportRequest(String userId) {
+        this.userId = userId;
     }
 
-    public AccountImportRequest(String identifier, String nick, String faceUrl) {
-        this.identifier = identifier;
+    public AccountImportRequest(String userId, String nick, String faceUrl) {
+        this.userId = userId;
         this.nick = nick;
         this.faceUrl = faceUrl;
     }
 
     private AccountImportRequest(Builder builder) {
-        this.identifier = builder.identifier;
+        this.userId = builder.userId;
         this.nick = builder.nick;
         this.faceUrl = builder.faceUrl;
     }
@@ -41,12 +41,12 @@ public class AccountImportRequest extends GenericRequest {
         return new Builder();
     }
 
-    public String getIdentifier() {
-        return identifier;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getNick() {
@@ -67,7 +67,7 @@ public class AccountImportRequest extends GenericRequest {
 
 
     public static final class Builder {
-        private String identifier;
+        private String userId;
         private String nick;
         private String faceUrl;
 
@@ -78,8 +78,8 @@ public class AccountImportRequest extends GenericRequest {
             return new AccountImportRequest(this);
         }
 
-        public Builder identifier(String identifier) {
-            this.identifier = identifier;
+        public Builder userId(String userId) {
+            this.userId = userId;
             return this;
         }
 

@@ -39,11 +39,11 @@ public class AccountTest {
     @Test
     public void testAccountImport() throws IOException {
         AccountImportRequest request = AccountImportRequest.builder()
-                .identifier("admin")
+                .userId("admin")
                 .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
                 .nick("doocs")
                 .build();
-        
+
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
         Assert.assertEquals(ActionStatus.OK, result.getActionStatus());

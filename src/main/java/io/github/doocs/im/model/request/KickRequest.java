@@ -9,35 +9,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class KickRequest extends GenericRequest {
-    @JsonProperty("Identifier")
-    private String identifier;
+    @JsonProperty("UserID")
+    private String userId;
 
     public KickRequest() {
     }
 
-    public KickRequest(String identifier) {
-        this.identifier = identifier;
+    public KickRequest(String userId) {
+        this.userId = userId;
     }
 
     private KickRequest(Builder builder) {
-        this.identifier = builder.identifier;
+        this.userId = builder.userId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public String getIdentifier() {
-        return identifier;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 
     public static final class Builder {
-        private String identifier;
+        private String userId;
 
         private Builder() {
         }
@@ -46,8 +46,8 @@ public class KickRequest extends GenericRequest {
             return new KickRequest(this);
         }
 
-        public Builder identifier(String identifier) {
-            this.identifier = identifier;
+        public Builder userId(String userId) {
+            this.userId = userId;
             return this;
         }
     }
