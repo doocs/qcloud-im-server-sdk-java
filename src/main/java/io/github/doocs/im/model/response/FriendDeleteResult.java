@@ -5,13 +5,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 删除好友-结果
+ *
  * @author hyh
  * @since 2021/07/30 16:28
  */
 public class FriendDeleteResult extends GenericResult {
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
+    /**
+     * 批量删除好友的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;
 

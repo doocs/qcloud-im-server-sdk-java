@@ -7,13 +7,18 @@ import io.github.doocs.im.model.response.UserAttrItem;
 import java.util.List;
 
 /**
+ * 设置用户属性-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 16:58
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImSetAttrRequest extends GenericRequest {
+    /**
+     * 用户标签内容列表
+     */
     @JsonProperty("UserAttrs")
-    List<UserAttrItem> userAttrs;
+    private List<UserAttrItem> userAttrs;
 
     public ImSetAttrRequest() {
     }

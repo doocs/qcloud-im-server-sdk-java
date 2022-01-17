@@ -4,20 +4,34 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 拉取好友-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 14:34
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendGetRequest extends GenericRequest {
+    /**
+     * 指定要拉取好友数据的用户的 UserID
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 分页的起始位置
+     */
     @JsonProperty("StartIndex")
     private Integer startIndex;
 
+    /**
+     * 上次拉好友数据时返回的 StandardSequence，如果 StandardSequence 字段的值与后台一致，后台不会返回标配好友数据
+     */
     @JsonProperty("StandardSequence")
     private Integer standardSequence;
 
+    /**
+     * 上次拉好友数据时返回的 CustomSequence，如果 CustomSequence 字段的值与后台一致，后台不会返回自定义好友数据
+     */
     @JsonProperty("CustomSequence")
     private Integer customSequence;
 

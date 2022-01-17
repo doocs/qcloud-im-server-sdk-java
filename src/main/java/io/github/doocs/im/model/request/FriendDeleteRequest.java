@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 删除好友-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 14:28
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendDeleteRequest extends GenericRequest {
+    /**
+     * 需要删除该 UserID 的好友
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 待删除的好友的 UserID 列表，单次请求的 To_Account 数不得超过1000
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    /**
+     * 删除模式，详情可参见 删除好友
+     */
     @JsonProperty("DeleteType")
     private String deleteType;
 

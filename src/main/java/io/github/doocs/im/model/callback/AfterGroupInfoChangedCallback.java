@@ -9,27 +9,51 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/11/16 20:27
  */
 public class AfterGroupInfoChangedCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 群资料被修改的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 群资料被修改的群的群组类型，例如 Public
+     */
     @JsonProperty("Type")
     private String type;
 
+    /**
+     * 操作者 UserID
+     */
     @JsonProperty("Operator_Account")
     private String operatorAccount;
 
+    /**
+     * 修改后的群名称
+     */
     @JsonProperty("Name")
     private String name;
 
+    /**
+     * 修改后的群简介
+     */
     @JsonProperty("Introduction")
     private String introduction;
 
+    /**
+     * 修改后的群公告
+     */
     @JsonProperty("Notification")
     private String notification;
 
+    /**
+     * 修改后的群头像 URL
+     */
     @JsonProperty("FaceUrl")
     private String faceUrl;
 

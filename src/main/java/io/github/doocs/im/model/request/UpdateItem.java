@@ -11,9 +11,15 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateItem {
+    /**
+     * 好友的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 需要更新的关系链数据对象数组
+     */
     @JsonProperty("SnsItem")
     private List<SnsItem> snsItemList;
 

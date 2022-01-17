@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 失效帐号登录状态-请求参数
+ *
  * @author bingo
  * @since 2021/7/30 17:31
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class KickRequest extends GenericRequest {
+    /**
+     * 用户名
+     */
     @JsonProperty("UserID")
     private String userId;
 

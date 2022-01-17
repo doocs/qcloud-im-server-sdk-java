@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 校验好友-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 14:32
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendCheckRequest extends GenericRequest {
+    /**
+     * 需要校验该 UserID 的好友
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 请求校验的好友的 UserID 列表，单次请求的 To_Account 数不得超过1000
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    /**
+     * 校验模式，详情可参见 校验好友
+     */
     @JsonProperty("CheckType")
     private String checkType;
 

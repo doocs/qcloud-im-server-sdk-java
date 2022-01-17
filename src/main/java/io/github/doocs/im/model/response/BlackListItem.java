@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/30 17:24
  */
 public class BlackListItem {
+    /**
+     * 黑名单的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 添加黑名单的时间
+     */
     @JsonProperty("AddBlackTimeStamp")
     private Integer addBlackTimeStamp;
 

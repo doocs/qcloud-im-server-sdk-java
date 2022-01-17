@@ -5,16 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取资料-结果
+ *
  * @author hyh
  * @since 2021/07/30 14:57
  */
 public class PortraitGetResult extends GenericResult {
+    /**
+     * 	详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
+    /**
+     * 返回的用户资料结构化信息
+     */
     @JsonProperty("UserProfileItem")
     private List<UserProfileItem> userProfileItemList;
 
+    /**
+     * 返回处理失败的用户列表，仅当存在失败用户时才返回该字段
+     */
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 

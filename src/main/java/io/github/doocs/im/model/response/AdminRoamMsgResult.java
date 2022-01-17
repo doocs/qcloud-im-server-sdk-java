@@ -5,22 +5,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询单聊消息-请求参数
+ *
  * @author hyh
  * @since 2021/07/28 17:56
  */
 public class AdminRoamMsgResult extends GenericResult {
+    /**
+     * 是否全部拉取，0表示未全部拉取，需要续拉，1表示已全部拉取
+     */
     @JsonProperty("Complete")
     private Integer complete;
 
+    /**
+     * 本次拉取到的消息条数
+     */
     @JsonProperty("MsgCnt")
     private Integer msgCnt;
 
+    /**
+     * 本次拉取到的消息里的最后一条消息的时间
+     */
     @JsonProperty("LastMsgTime")
     private Integer lastMsgTime;
 
+    /**
+     * 本次拉取到的消息里的最后一条消息的标识
+     */
     @JsonProperty("LastMsgKey")
     private String lastMsgKey;
 
+    /**
+     * 返回的消息列表
+     */
     @JsonProperty("MsgList")
     private List<MsgListItem> msgList;
 

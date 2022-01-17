@@ -5,16 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询单聊未读消息计数-结果
+ *
  * @author hyh
  * @since 2021/07/28 20:34
  */
 public class C2cUnreadMsgNumResult extends GenericResult {
+    /**
+     * 单聊消息总未读数
+     */
     @JsonProperty("AllC2CUnreadMsgNum")
     private Integer allC2cUnreadMsgNum;
 
+    /**
+     * 单聊会话未读列表
+     */
     @JsonProperty("C2CUnreadMsgNumList")
     private List<C2cUnreadMsgNumListItem> unreadMsgNumList;
 
+    /**
+     * 错误列表
+     */
     @JsonProperty("ErrorList")
     private List<C2cUnreadMsgErrorListItem> errorList;
 

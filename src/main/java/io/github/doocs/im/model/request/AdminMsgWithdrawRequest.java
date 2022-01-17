@@ -4,14 +4,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 撤回单聊消息-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 14:43
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdminMsgWithdrawRequest extends GenericRequest {
+    /**
+     * 消息发送方 UserID
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 消息接收方 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 

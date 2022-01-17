@@ -7,11 +7,16 @@ import io.github.doocs.im.model.response.UserTagItem;
 import java.util.List;
 
 /**
+ * 添加用户标签-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 17:05
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImAddTagRequest extends GenericRequest {
+    /**
+     * 用户标签内容列表
+     */
     @JsonProperty("UserTags")
     private List<UserTagItem> userTags;
 

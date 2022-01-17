@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/28 20:39
  */
 public class C2cUnreadMsgNumListItem {
+    /**
+     * 单聊会话对端 UserId
+     */
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
+    /**
+     * 该单聊会话的未读数
+     */
     @JsonProperty("C2CUnreadMsgNum")
     private Integer unreadMsgNum;
 

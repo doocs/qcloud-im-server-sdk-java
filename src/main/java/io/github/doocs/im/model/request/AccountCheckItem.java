@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountCheckItem {
+    /**
+     * 请求检查的帐号的 UserID
+     */
     @JsonProperty("UserID")
     private String userId;
 

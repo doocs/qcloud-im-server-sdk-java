@@ -10,9 +10,15 @@ import java.util.List;
  * @since 2021/07/28 20:07
  */
 public class MsgListItem {
+    /**
+     * 消息发送方 UserID
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 会话其中一方的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
@@ -28,18 +34,33 @@ public class MsgListItem {
     @JsonProperty("MsgRandom")
     private Long msgRandom;
 
+    /**
+     * 消息时间戳
+     */
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
 
+    /**
+     * 该条消息的属性，0表示正常消息，8表示被撤回的消息
+     */
     @JsonProperty("MsgFlagBits")
     private Integer msgFlagBits;
 
+    /**
+     * 标识该条消息，可用于 REST API 撤回单聊消息
+     */
     @JsonProperty("MsgKey")
     private String msgKey;
 
+    /**
+     * 消息内容
+     */
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
+    /**
+     * 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
+     */
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 

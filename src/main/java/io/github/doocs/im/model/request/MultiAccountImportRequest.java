@@ -6,11 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 导入多个帐号-请求参数
+ *
  * @author bingo
  * @since 2021/7/30 17:07
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MultiAccountImportRequest extends GenericRequest {
+    /**
+     * 用户名，单个用户名长度不超过32字节，单次最多导入100个用户名
+     */
     @JsonProperty("Accounts")
     private List<String> accounts;
 

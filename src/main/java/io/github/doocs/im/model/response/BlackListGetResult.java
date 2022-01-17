@@ -5,19 +5,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取黑名单-结果
+ *
  * @author hyh
  * @since 2021/07/30 17:21
  */
 public class BlackListGetResult extends GenericResult {
+    /**
+     * 黑名单对象数组，每一个黑名单对象都包括了 To_Account 和 AddBlackTimeStamp
+     */
     @JsonProperty("BlackListItem")
     private List<BlackListItem> blackListItemList;
 
+    /**
+     * 下页拉取的起始位置，0表示已拉完
+     */
     @JsonProperty("StartIndex")
     private Integer startIndex;
 
+    /**
+     * 黑名单最新的 Seq
+     */
     @JsonProperty("CurruentSequence")
     private Integer currentSequence;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 

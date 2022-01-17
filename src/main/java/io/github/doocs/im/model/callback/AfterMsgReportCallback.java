@@ -9,18 +9,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/11/16 17:03
  */
 public class AfterMsgReportCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 已读上报方 UserID
+     */
     @JsonProperty("Report_Account")
     private String reportAccount;
 
+    /**
+     * 会话对端 UserID
+     */
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
+    /**
+     * 已读时间
+     */
     @JsonProperty("LastReadTime")
     private Integer lastReadTime;
 
+    /**
+     * Report_Account 未读的单聊消息总数量（包含所有的单聊会话）
+     */
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 

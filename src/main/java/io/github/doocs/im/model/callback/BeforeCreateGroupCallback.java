@@ -11,24 +11,45 @@ import java.util.List;
  * @since 2021/11/16 17:11
  */
 public class BeforeCreateGroupCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 发起创建群组请求的操作者 UserID
+     */
     @JsonProperty("Operator_Account")
     private String operatorAccount;
 
+    /**
+     * 请求创建的群的群主 UserID
+     */
     @JsonProperty("Owner_Account")
     private String ownerAccount;
 
+    /**
+     * 产生群消息的群组类型，例如 Public
+     */
     @JsonProperty("Type")
     private String type;
 
+    /**
+     * 请求创建的群组的名称
+     */
     @JsonProperty("Name")
     private String name;
 
+    /**
+     * 该用户已创建的同类的群组个数
+     */
     @JsonProperty("CreatedGroupNum")
     private Integer createdGroupNum;
 
+    /**
+     * 请求创建的群组的初始化成员列表
+     */
     @JsonProperty("MemberList")
     private List<MemberItem> memberList;
 

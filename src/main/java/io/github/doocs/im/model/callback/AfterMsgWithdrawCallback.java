@@ -9,18 +9,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/11/16 17:06
  */
 public class AfterMsgWithdrawCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 消息发送者 UserID
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 消息接收者 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 该条消息的唯一标识
+     */
     @JsonProperty("MsgKey")
     private String msgKey;
 
+    /**
+     * To_Account 未读的单聊消息总数量（包含所有的单聊会话）
+     */
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 

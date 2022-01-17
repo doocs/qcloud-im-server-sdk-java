@@ -9,12 +9,21 @@ import java.util.List;
  * @since 2021/7/28 11:10
  */
 public class QueryResultItem {
+    /**
+     * 返回的用户的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 返回的用户状态
+     */
     @JsonProperty("Status")
     private String status;
 
+    /**
+     * 详细的登录平台信息
+     */
     @JsonProperty("Detail")
     private List<QueryResultDetailItem> detail;
 
