@@ -4,17 +4,28 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 拉取群历史消息-请求参数
+ *
  * @author hyh
  * @since 2021/08/01 13:46
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupMsgGetSimpleRequest extends GenericRequest {
+    /**
+     * 要拉取历史消息的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 拉取消息的最大 seq
+     */
     @JsonProperty("ReqMsgSeq")
     private Integer reqMsgSeq;
 
+    /**
+     * 拉取的历史消息的条数，目前一次请求最多返回20条历史消息，所以这里最好小于等于20
+     */
     @JsonProperty("ReqMsgNumber")
     private Integer reqMsgNumber;
 

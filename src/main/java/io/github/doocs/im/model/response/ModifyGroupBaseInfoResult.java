@@ -1,6 +1,8 @@
 package io.github.doocs.im.model.response;
 
 /**
+ * 修改群基础资料-结果
+ *
  * @author hyh
  * @since 2021/08/02 19:27
  */

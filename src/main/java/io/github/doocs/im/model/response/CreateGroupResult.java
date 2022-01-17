@@ -3,10 +3,15 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 创建群组-结果
+ *
  * @author bingo
  * @since 2021/8/1 11:24
  */
 public class CreateGroupResult extends GenericResult {
+    /**
+     * 创建成功之后的群 ID，由即时通信 IM 后台分配
+     */
     @JsonProperty("GroupId")
     private String groupId;
 

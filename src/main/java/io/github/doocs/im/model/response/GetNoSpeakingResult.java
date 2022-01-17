@@ -3,18 +3,20 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 查询全局禁言-结果
+ *
  * @author xy
  * @since 2021/07/31 11:51:01
  */
 public class GetNoSpeakingResult extends GenericResult {
     /**
-     * 单聊消息禁言时长，单位为秒
+     * 单聊消息禁言时长，单位为秒，非负整数。
      */
     @JsonProperty("C2CmsgNospeakingTime")
     private Long c2cMsgNoSpeakingTime;
 
     /**
-     * 群组消息禁言时长，单位为秒
+     * 群组消息禁言时长，单位为秒，非负整数。
      */
     @JsonProperty("GroupmsgNospeakingTime")
     private Long groupMsgNoSpeakingTime;

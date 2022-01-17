@@ -4,17 +4,28 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 设置成员未读消息计数-请求参数
+ *
  * @author hyh
  * @since 2021/08/01 13:59
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SetUnreadMsgNumRequest extends GenericRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 要操作的群成员
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 
+    /**
+     * 成员未读消息数
+     */
     @JsonProperty("UnreadMsgNum")
     private Integer unreadMsgNum;
 

@@ -3,10 +3,15 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 在群组中发送普通消息-结果
+ *
  * @author bingo
  * @since 2021/8/4 11:25
  */
 public class SendGroupMsgResult extends GenericResult {
+    /**
+     * 消息发送的时间戳，对应后台 server 时间
+     */
     @JsonProperty("MsgTime")
     private Integer msgTime;
 

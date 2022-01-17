@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MemberRequestItem {
+    /**
+     * 待添加的群成员 UserID
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 

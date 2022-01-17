@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountDeleteItem {
+    /**
+     * 请求删除的帐号的 UserID
+     */
     @JsonProperty("UserID")
     private String userId;
 

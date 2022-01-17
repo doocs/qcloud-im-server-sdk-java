@@ -13,6 +13,9 @@ public class RecallRetItem {
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
+    /**
+     * 单个消息的被撤回结果：0表示成功；其它表示失败
+     */
     @JsonProperty("RetCode")
     private Integer retCode;
 

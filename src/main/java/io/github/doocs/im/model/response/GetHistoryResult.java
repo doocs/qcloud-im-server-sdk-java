@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 下载最近消息记录-结果
+ *
  * @author bingo
  * @since 2021/7/31 20:24
  */

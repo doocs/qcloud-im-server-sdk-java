@@ -6,20 +6,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 删除群成员-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 16:19
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeleteGroupMemberRequest extends GenericRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 是否静默删人。0表示非静默删人，1表示静默删人。静默即删除成员时不通知群里所有成员，只通知被删除群成员。不填写该字段时默认为0
+     */
     @JsonProperty("Silence")
     private Integer silence;
 
+    /**
+     * 踢出用户原因
+     */
     @JsonProperty("Reason")
     private String reason;
 
+    /**
+     * 待删除的群成员
+     */
     @JsonProperty("MemberToDel_Account")
     private List<String> memberToDelAccount;
 

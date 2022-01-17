@@ -4,14 +4,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 转让群主-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 17:12
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChangeGroupOwnerRequest extends GenericRequest {
+    /**
+     * 要被转移的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 新群主 ID
+     */
     @JsonProperty("NewOwner_Account")
     private String newOwnerAccount;
 

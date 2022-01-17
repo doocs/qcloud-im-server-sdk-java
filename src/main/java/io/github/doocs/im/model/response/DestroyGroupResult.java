@@ -1,6 +1,8 @@
 package io.github.doocs.im.model.response;
 
 /**
+ * 解散群组-结果
+ *
  * @author bingo
  * @since 2021/8/4 10:43
  */

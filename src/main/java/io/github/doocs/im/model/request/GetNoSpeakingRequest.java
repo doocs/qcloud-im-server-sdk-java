@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 查询全局禁言-请求参数
+ *
  * @author xy
  * @since 2021/07/31 11:48
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetNoSpeakingRequest extends GenericRequest {
+    /**
+     * 查询禁言信息的帐号
+     */
     @JsonProperty("Get_Account")
     private String getAccount;
 

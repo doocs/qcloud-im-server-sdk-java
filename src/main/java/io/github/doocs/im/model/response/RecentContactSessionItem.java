@@ -7,18 +7,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/10/11 10:37
  */
 public class RecentContactSessionItem {
+    /**
+     * 会话类型：1 表示 C2C 会话；2 表示 G2C 会话
+     */
     @JsonProperty("Type")
     private Integer type;
 
+    /**
+     * C2C 会话才会返回，返回会话方的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * G2C 会话才会返回，返回群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 会话时间
+     */
     @JsonProperty("MsgTime")
     private Integer msgTime;
 
+    /**
+     * 置顶标记：0 标识普通会话；1 标识置顶会话
+     */
     @JsonProperty("TopFlag")
     private Integer topFlag;
 

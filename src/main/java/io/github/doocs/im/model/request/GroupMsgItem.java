@@ -12,15 +12,27 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupMsgItem {
+    /**
+     * 指定消息发送者
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 消息发送时间
+     */
     @JsonProperty("SendTime")
     private Integer sendTime;
 
+    /**
+     * 32位随机数；如果5分钟内两条消息的随机值相同，后一条消息将被当做重复消息而丢弃
+     */
     @JsonProperty("Random")
     private Integer random;
 
+    /**
+     * TIM 消息，详情请参阅 TIMMsgElement对象的定义
+     */
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 

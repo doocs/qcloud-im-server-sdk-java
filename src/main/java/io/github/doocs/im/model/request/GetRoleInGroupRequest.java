@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询用户在群组中的身份-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 16:40
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetRoleInGroupRequest extends GenericRequest {
+    /**
+     * 需要查询的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 表示需要查询的用户帐号，最多支持500个帐号
+     */
     @JsonProperty("User_Account")
     private List<String> userAccount;
 

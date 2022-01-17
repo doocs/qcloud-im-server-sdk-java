@@ -14,6 +14,9 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TIMImageMsgElement extends TIMMsgElement {
+    /**
+     * MsgContent 为 TIM 消息对象
+     */
     @JsonProperty("MsgContent")
     private ImageMsgContent msgContent;
 

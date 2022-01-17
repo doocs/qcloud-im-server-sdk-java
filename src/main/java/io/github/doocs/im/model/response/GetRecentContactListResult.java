@@ -5,28 +5,51 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取会话列表-结果
+ *
  * @author bingo
  * @since 2021/10/11 10:31
  */
 public class GetRecentContactListResult extends GenericResult {
+    /**
+     * 会话对象数组
+     */
     @JsonProperty("SessionItem")
     private List<RecentContactSessionItem> sessionItem;
 
+    /**
+     * 结束标识：1 表示已返回全量会话，0 表示还有会话没拉完
+     */
     @JsonProperty("CompleteFlag")
     private Integer completeFlag;
 
+    /**
+     * 普通会话下一页拉取的起始时间，分页拉取时通过请求包的 TimeStamp 字段带给移动通信后台
+     */
     @JsonProperty("TimeStamp")
     private Integer timestamp;
 
+    /**
+     * 普通会话下一页拉取的起始位置，分页拉取时通过请求包的 StartIndex 字段带给移动通信后台
+     */
     @JsonProperty("StartIndex")
     private Integer startIndex;
 
+    /**
+     * 置顶会话下一页拉取的起始时间，分页拉取时通过请求包的 TopTimeStamp 字段带给移动通信后台
+     */
     @JsonProperty("TopTimeStamp")
     private Integer topTimestamp;
 
+    /**
+     * 置顶会话下一页拉取的起始位置，分页拉取时通过请求包的 TopStartIndex 字段带给移动通信后台
+     */
     @JsonProperty("TopStartIndex")
     private Integer topStartIndex;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 

@@ -4,26 +4,49 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 拉取会话列表-请求参数
+ *
  * @author bingo
  * @since 2021/10/11 10:28
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetRecentContactListRequest extends GenericRequest {
+    /**
+     * 填 UserID，请求拉取该用户的会话列表
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 普通会话的起始时间，第一页填 0
+     */
     @JsonProperty("TimeStamp")
     private Integer timestamp;
 
+    /**
+     * 普通会话的起始位置，第一页填 0
+     */
     @JsonProperty("StartIndex")
     private Integer startIndex;
 
+    /**
+     * 置顶会话的起始时间，第一页填 0
+     */
     @JsonProperty("TopTimeStamp")
     private Integer topTimestamp;
 
+    /**
+     * 置顶会话的起始位置，第一页填 0
+     */
     @JsonProperty("TopStartIndex")
     private Integer topStartIndex;
 
+    /**
+     * 会话辅助标志位:
+     * bit 0 - 是否支持置顶会话
+     * bit 1 - 是否返回空会话
+     * bit 2 - 是否支持置顶会话分页
+     */
     @JsonProperty("AssistFlags")
     private Integer assistFlags;
 

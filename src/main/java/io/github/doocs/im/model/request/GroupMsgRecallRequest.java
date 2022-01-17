@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 撤回群消息-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 17:13
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupMsgRecallRequest extends GenericRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 被撤回的消息 seq 列表，一次请求最多可以撤回10条消息 seq
+     */
     @JsonProperty("MsgSeqList")
     private List<MsgSeqItem> msgSeqList;
 

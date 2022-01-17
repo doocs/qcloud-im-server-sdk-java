@@ -12,6 +12,9 @@ import io.github.doocs.im.constant.MsgType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TIMFaceMsgElement extends TIMMsgElement {
+    /**
+     * MsgContent 为 TIM 消息对象
+     */
     @JsonProperty("MsgContent")
     private FaceMsgContent msgContent;
 

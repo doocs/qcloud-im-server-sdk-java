@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.doocs.im.model.group.GroupInfo;
 
 /**
+ * 创建群组-请求参数
+ *
  * @author bingo
  * @since 2021/8/1 11:12
  */

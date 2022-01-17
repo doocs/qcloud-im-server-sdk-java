@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 导入群成员-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 19:13
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImportGroupMemberRequest extends GenericRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 待添加的群成员数组
+     */
     @JsonProperty("MemberList")
     private List<MemberItem> memberList;
 
