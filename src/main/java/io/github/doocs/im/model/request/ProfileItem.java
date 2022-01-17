@@ -9,9 +9,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfileItem {
+    /**
+     * 返回的资料对象的名称：
+     * 1. 标配资料字段，详情可参见 标配资料字段
+     * 2. 自定义资料字段，详情可参见 自定义资料字段
+     */
     @JsonProperty("Tag")
     private String tag;
 
+    /**
+     * 拉取的资料对象的值
+     */
     @JsonProperty("Value")
     private String value;
 

@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询帐号-结果
+ *
  * @author bingo
  * @since 2021/7/27 15:59
  */
 public class AccountCheckResult extends GenericResult {
+    /**
+     * 单个帐号的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<AccountCheckResultItem> resultItems;
 

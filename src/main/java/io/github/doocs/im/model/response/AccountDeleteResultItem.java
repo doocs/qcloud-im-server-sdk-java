@@ -7,12 +7,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/28 11:04
  */
 public class AccountDeleteResultItem {
+    /**
+     * 单个帐号的错误码，0表示成功，非0表示失败
+     */
     @JsonProperty("ResultCode")
     private Integer resultCode;
 
+    /**
+     * 单个帐号删除失败时的错误描述信息
+     */
     @JsonProperty("ResultInfo")
     private String resultInfo;
 
+    /**
+     * 请求删除的帐号的 UserID
+     */
     @JsonProperty("UserID")
     private String userId;
 

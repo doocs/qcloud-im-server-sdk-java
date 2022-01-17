@@ -6,17 +6,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取指定好友-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 14:41
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendGetListRequest extends GenericRequest {
+    /**
+     * 指定要拉取好友数据的用户的 UserID
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 好友的 UserID 列表
+     * 建议每次请求的好友数不超过100，避免因数据量太大导致回包失败
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    /**
+     * 指定要拉取的资料字段及好友字段：
+     * 标配资料字段
+     * 自定义资料字段
+     * 标配好友字段
+     * 自定义好友字段
+     */
     @JsonProperty("TagList")
     private List<String> tagList;
 

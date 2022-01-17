@@ -6,14 +6,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询单聊未读消息计数-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 15:37
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetC2cUnreadMsgRequest extends GenericRequest {
+    /**
+     * 待查询的用户 UserId
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 待查询的单聊会话对端的用户 UserId。
+     * 若要查询单个会话的未读数，该字段必填
+     * 该数组最大大小为10
+     */
     @JsonProperty("Peer_Account")
     private List<String> peerAccount;
 

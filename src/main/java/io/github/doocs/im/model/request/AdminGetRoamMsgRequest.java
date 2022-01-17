@@ -4,26 +4,46 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 查询单聊消息-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 14:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdminGetRoamMsgRequest extends GenericRequest {
+    /**
+     * 会话其中一方的 UserID，若已指定发送消息方帐号，则为消息发送方
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 会话其中一方的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 请求的消息条数
+     */
     @JsonProperty("MaxCnt")
     private Integer maxCnt;
 
+    /**
+     * 请求的消息时间范围的最小值
+     */
     @JsonProperty("MinTime")
     private Integer minTime;
 
+    /**
+     * 请求的消息时间范围的最大值
+     */
     @JsonProperty("MaxTime")
     private Integer maxTime;
 
+    /**
+     * 上一次拉取到的最后一条消息的 MsgKey，续拉时需要填该字段
+     */
     @JsonProperty("LastMsgKey")
     private String lastMsgKey;
 

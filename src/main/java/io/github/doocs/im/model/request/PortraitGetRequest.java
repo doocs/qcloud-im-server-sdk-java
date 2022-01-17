@@ -6,14 +6,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取资料-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 10:39
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PortraitGetRequest extends GenericRequest {
+    /**
+     * 需要拉取这些 UserID 的资料；
+     * 注意：每次拉取的用户数不得超过100，避免因回包数据量太大以致回包失败
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 
+    /**
+     * 指定要拉取的资料字段的 Tag，支持的字段有：
+     * 1. 标配资料字段，详情可参见 标配资料字段
+     * 2. 自定义资料字段，详情可参见 自定义资料字段
+     */
     @JsonProperty("TagList")
     private List<String> tagList;
 

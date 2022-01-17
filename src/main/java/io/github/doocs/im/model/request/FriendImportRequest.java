@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 导入好友-请求参数
+ *
  * @author hyh
  * @since 2021/07/29 15:19
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendImportRequest extends GenericRequest {
+    /**
+     * 需要为该 UserID 添加好友
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 好友结构体对象
+     */
     @JsonProperty("AddFriendItem")
     private List<ImportFriendItem> importFriendItemList;
 

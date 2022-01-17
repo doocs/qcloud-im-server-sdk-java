@@ -3,19 +3,29 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
+ * 添加黑名单-结果
+ *
  * @author hyh
  * @since 2021/07/30 17:16
  */
 public class BlackListAddResult extends GenericResult {
+    /**
+     * 批量添加黑名单的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;
 
+    /**
+     * 返回处理失败的用户列表，仅当存在失败用户时才返回该字段
+     */
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 

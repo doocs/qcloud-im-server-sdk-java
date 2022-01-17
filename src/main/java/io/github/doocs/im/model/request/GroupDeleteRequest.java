@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 删除分组-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 15:41
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupDeleteRequest extends GenericRequest {
+    /**
+     * 需要删除该 UserID 的分组
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 要删除的分组列表
+     */
     @JsonProperty("GroupName")
     private List<String> groupName;
 

@@ -5,16 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取分组-结果
+ *
  * @author hyh
  * @since 2021/07/30 17:38
  */
 public class GroupGetResult extends GenericResult {
+    /**
+     * 拉取分组的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<GroupGetResultItem> resultItemList;
 
+    /**
+     * 返回最新的分组 Sequence
+     */
     @JsonProperty("CurrentSequence")
     private Integer currentSequence;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 

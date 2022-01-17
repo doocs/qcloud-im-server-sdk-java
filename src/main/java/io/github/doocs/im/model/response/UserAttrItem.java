@@ -11,9 +11,15 @@ import java.util.Map;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserAttrItem {
+    /**
+     * 用户帐号
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 属性内容
+     */
     @JsonProperty("Attrs")
     private Map<String, Object> attrs;
 

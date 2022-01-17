@@ -3,13 +3,21 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 删除分组-结果
+ *
  * @author hyh
  * @since 2021/07/30 17:37
  */
 public class GroupDeleteResult extends GenericResult {
+    /**
+     * 返回最新的分组 Sequence
+     */
     @JsonProperty("CurrentSequence")
     private Integer currentSequence;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 

@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询帐号在线状态-请求参数
+ *
  * @author bingo
  * @since 2021/7/30 17:35
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryOnlineStatusRequest extends GenericRequest {
+    /**
+     * 是否需要返回详细的登录平台信息。0表示不需要，1表示需要
+     */
     @JsonProperty("IsNeedDetail")
     private Integer isNeedDetail;
 
+    /**
+     * 需要查询这些 UserID 的登录状态，一次最多查询500个 UserID 的状态
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 

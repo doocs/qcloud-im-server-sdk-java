@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 更新好友-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 14:20
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FriendUpdateRequest extends GenericRequest {
+    /**
+     * 需要更新该 UserID 的关系链数据
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 需要更新的好友对象数组
+     */
     @JsonProperty("UpdateItem")
     private List<UpdateItem> updateItemList;
 

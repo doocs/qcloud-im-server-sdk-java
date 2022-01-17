@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 设置资料-请求参数
+ *
  * @author hyh
  * @since 2021/07/29 15:01
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PortraitSetRequest extends GenericRequest {
+    /**
+     * 需要设置该 UserID 的资料
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 待设置的用户的资料对象数组，数组中每一个对象都包含了 Tag 和 Value
+     */
     @JsonProperty("ProfileItem")
     private List<ProfileItem> profileItemList;
 

@@ -5,16 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 导入好友-结果
+ *
  * @author hyh
  * @since 2021/07/29 15:52
  */
 public class FriendImportResult extends GenericResult {
+    /**
+     * 批量加好友的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;
 
+    /**
+     * 请求添加的好友的 UserID
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
+    /**
+     * 返回处理失败的用户列表，仅当存在失败用户时才返回该字段
+     */
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 
