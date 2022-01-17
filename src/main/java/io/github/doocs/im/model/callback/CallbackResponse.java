@@ -9,12 +9,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CallbackResponse {
+    /**
+     * 请求处理的结果，OK 表示处理成功，FAIL 表示失败
+     */
     @JsonProperty("ActionStatus")
     protected String actionStatus;
 
+    /**
+     * 错误码，0表示 App 后台处理成功，1表示 App 后台处理失败
+     */
     @JsonProperty("ErrorCode")
     protected Integer errorCode;
 
+    /**
+     * 错误信息
+     */
     @JsonProperty("ErrorInfo")
     protected String errorInfo;
 

@@ -11,18 +11,39 @@ import java.util.List;
  * @since 2021/11/16 19:26
  */
 public class AfterNewMemberJoinCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 要将其他用户拉入的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 请求创建的群组类型，例如 Public
+     */
     @JsonProperty("Type")
     private String type;
 
+    /**
+     * 入群方式：Apply（申请入群）；Invited（邀请入群）
+     */
+    @JsonProperty("JoinType")
+    private String joinType;
+
+    /**
+     * 请求的操作者 UserID
+     */
     @JsonProperty("Operator_Account")
     private String operatorAccount;
 
+    /**
+     * 新入群成员 UserID 集合
+     */
     @JsonProperty("NewMemberList")
     private List<NewMemberItem> newMemberList;
 
@@ -48,6 +69,14 @@ public class AfterNewMemberJoinCallback {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getJoinType() {
+        return joinType;
+    }
+
+    public void setJoinType(String joinType) {
+        this.joinType = joinType;
     }
 
     public String getOperatorAccount() {

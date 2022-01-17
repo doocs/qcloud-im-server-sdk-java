@@ -9,15 +9,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/11/16 17:26
  */
 public class BeforeApplyJoinGroupCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 产生群消息的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 产生群消息的群组类型，例如 Public
+     */
     @JsonProperty("Type")
     private String type;
 
+    /**
+     * 申请加群者 UserID
+     */
     @JsonProperty("Requestor_Account")
     private String requestorAccount;
 

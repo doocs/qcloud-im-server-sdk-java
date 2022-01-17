@@ -6,11 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉人入群之前回调响应
+ *
  * @author bingo
  * @since 2021/11/16 20:54
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BeforeInviteJoinGroupResponse extends CallbackResponse {
+    /**
+     * 拒绝加入的用户 ID 集合
+     */
     @JsonProperty("RefusedMembers_Account")
     private List<String> refusedMembersAccount;
 
