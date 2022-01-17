@@ -11,21 +11,39 @@ import java.util.List;
  * @since 2021/11/16 20:18
  */
 public class AfterGroupDestroyedCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 被解散的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 被解散群的群组类型，例如 Public
+     */
     @JsonProperty("Type")
     private String type;
 
+    /**
+     * 群主 UserID
+     */
     @JsonProperty("Owner_Account")
     private String ownerAccount;
 
+    /**
+     * 群组名称
+     */
     @JsonProperty("Name")
     private String name;
 
+    /**
+     * 被解散群的成员列表
+     */
     @JsonProperty("MemberList")
     private List<MemberItem> memberList;
 

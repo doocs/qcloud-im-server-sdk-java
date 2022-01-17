@@ -11,24 +11,49 @@ import java.util.List;
  * @since 2021/11/16 15:56
  */
 public class PrevFriendAddCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 请求发起方的 UserID
+     */
     @JsonProperty("Requester_Account")
     private String requesterAccount;
 
+    /**
+     * 请求添加好友的用户的 UserID
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 加好友请求的参数
+     */
     @JsonProperty("FriendItem")
     private List<FriendItem> friendItem;
 
+    /**
+     * 加好友方式（默认双向加好友方式）：
+     * Add_Type_Single 表示单向加好友
+     * Add_Type_Both 表示双向加好友
+     */
     @JsonProperty("AddType")
     private String addType;
 
+    /**
+     * 管理员强制加好友标记：
+     * 1 表示强制加好友
+     * 0 表示常规加好友方式
+     */
     @JsonProperty("ForceAddFlags")
     private Integer forceAddFlags;
 
+    /**
+     * 毫秒时间戳
+     */
     @JsonProperty("EventTime")
     private Long eventTime;
 
@@ -89,18 +114,33 @@ public class PrevFriendAddCallback {
     }
 
     public static class FriendItem {
+        /**
+         * 请求添加的用户的 UserID
+         */
         @JsonProperty("To_Account")
         private String toAccount;
 
+        /**
+         * From_Account 对 To_Account 设置的好友备注，详情可参见 标配好友字段
+         */
         @JsonProperty("Remark")
         private String remark;
 
+        /**
+         * From_Account 对 To_Account 设置的好友分组，详情可参见 标配好友字段
+         */
         @JsonProperty("GroupName")
         private String groupName;
 
+        /**
+         * 加好友来源，详情可参见 标配好友字段
+         */
         @JsonProperty("AddSource")
         private String addSource;
 
+        /**
+         * 加好友附言，详情可参见 标配好友字段
+         */
         @JsonProperty("AddWording")
         private String addWording;
 

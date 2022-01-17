@@ -11,9 +11,15 @@ import java.util.List;
  * @since 2021/11/16 16:48
  */
 public class BlacklistAddCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 成功添加的黑名单关系链对
+     */
     @JsonProperty("PairList")
     private List<PairItem> pairList;
 
@@ -34,9 +40,15 @@ public class BlacklistAddCallback {
     }
 
     public static class PairItem {
+        /**
+         * From_Account 的黑名单列表中添加了 To_Account
+         */
         @JsonProperty("From_Account")
         private String fromAccount;
 
+        /**
+         * To_Account 被加入到 From_Account 的黑名单列表中
+         */
         @JsonProperty("To_Account")
         private String toAccount;
 

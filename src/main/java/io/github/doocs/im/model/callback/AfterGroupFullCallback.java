@@ -9,9 +9,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/11/16 20:14
  */
 public class AfterGroupFullCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 满员的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 

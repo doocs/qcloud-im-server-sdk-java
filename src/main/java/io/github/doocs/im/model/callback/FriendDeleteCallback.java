@@ -11,9 +11,15 @@ import java.util.List;
  * @since 2021/11/16 16:44
  */
 public class FriendDeleteCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 成功删除的好友
+     */
     @JsonProperty("PairList")
     private List<PairItem> pairList;
 
@@ -34,9 +40,15 @@ public class FriendDeleteCallback {
     }
 
     public static class PairItem {
+        /**
+         * From_Account 的好友表中删除了 To_Account
+         */
         @JsonProperty("From_Account")
         private String fromAccount;
 
+        /**
+         * To_Account 从 From_Account 的好友表中删除
+         */
         @JsonProperty("To_Account")
         private String toAccount;
 

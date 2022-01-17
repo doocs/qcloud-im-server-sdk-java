@@ -11,18 +11,33 @@ import java.util.List;
  * @since 2021/11/16 17:39
  */
 public class BeforeInviteJoinGroupCallback {
+    /**
+     * 回调命令
+     */
     @JsonProperty("CallbackCommand")
     private String callbackCommand;
 
+    /**
+     * 要将其他用户拉入的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 请求创建的群组类型，例如 Public
+     */
     @JsonProperty("Type")
     private String type;
 
+    /**
+     * 请求的操作者 UserID
+     */
     @JsonProperty("Operator_Account")
     private String operatorAccount;
 
+    /**
+     * 要拉入群组的 UserID 集合
+     */
     @JsonProperty("DestinationMembers")
     private List<DestinationMember> destinationMembers;
 
