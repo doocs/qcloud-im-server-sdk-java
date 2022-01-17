@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * 添加黑名单-结果
+ * 删除黑名单-结果
  *
  * @author hyh
  * @since 2021/07/30 17:19
  */
 public class BlackListDeleteResult extends GenericResult {
     /**
-     * 批量添加黑名单的结果对象数组
+     * 批量删除黑名单的结果对象数组
      */
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;

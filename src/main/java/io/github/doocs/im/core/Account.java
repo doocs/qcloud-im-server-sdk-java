@@ -86,7 +86,7 @@ public class Account {
 
     /**
      * 失效帐号登录状态
-     *PortraitGetRequest
+     *
      * @param kickRequest 请求参数
      * @return 结果
      * @throws IOException 异常

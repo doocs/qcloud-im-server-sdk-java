@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * 需查询帐号在线状态-请求参数
+ * 查询帐号在线状态-请求参数
  *
  * @author bingo
  * @since 2021/7/30 17:35

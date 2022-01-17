@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ResultItem {
     /**
-     * 请求添加的好友的 UserID
+     * 请求添加/删除的好友的 UserID
      */
     @JsonProperty("To_Account")
     private String toAccount;
