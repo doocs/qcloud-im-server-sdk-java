@@ -14,7 +14,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetAppInfoRequest extends GenericRequest {
     /**
-     * 该字段用来指定需要拉取的运营数据，不填默认拉取所有字段。详细可参阅下文 可拉取的运营字段
+     * 该字段用来指定需要拉取的运营数据，不填默认拉取所有字段。
      */
     @JsonProperty("RequestField")
     private List<String> requestField;
