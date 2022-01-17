@@ -21,7 +21,7 @@ public class PortraitGetRequest extends GenericRequest {
     private List<String> toAccount;
 
     /**
-     * 填	指定要拉取的资料字段的 Tag，支持的字段有：
+     * 指定要拉取的资料字段的 Tag，支持的字段有：
      * 1. 标配资料字段，详情可参见 标配资料字段
      * 2. 自定义资料字段，详情可参见 自定义资料字段
      */
