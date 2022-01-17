@@ -4,20 +4,34 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 拉取黑名单-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 15:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BlackListGetRequest extends GenericRequest {
+    /**
+     * 需要拉取该 UserID 的黑名单
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 拉取的起始位置
+     */
     @JsonProperty("StartIndex")
     private Integer startIndex;
 
+    /**
+     * 每页最多拉取的黑名单数
+     */
     @JsonProperty("MaxLimited")
     private Integer maxLimited;
 
+    /**
+     * 上一次拉黑名单时后台返回给客户端的 Seq，初次拉取时为0
+     */
     @JsonProperty("LastSequence")
     private Integer lastSequence;
 

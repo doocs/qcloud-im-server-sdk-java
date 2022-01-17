@@ -5,16 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取指定好友-结果
+ *
  * @author hyh
  * @since 2021/07/30 16:56
  */
 public class FriendGetListResult extends GroupGetResult {
+    /**
+     * 好友对象数组，每一个好友对象都包含一个 To_Account 字段和一个 SnsProfileItem 数组
+     */
     @JsonProperty("InfoItem")
     private List<FriendGetListInfoItem> infoItemList;
 
+    /**
+     * 返回处理失败的 UserID 列表，仅当存在失败用户时才返回该字段
+     */
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 

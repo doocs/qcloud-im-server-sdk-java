@@ -1,6 +1,8 @@
 package io.github.doocs.im.model.response;
 
 /**
+ * 导入单个帐号-结果
+ *
  * @author bingo
  * @since 2021/7/28 11:02
  */

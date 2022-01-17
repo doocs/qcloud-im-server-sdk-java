@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 获取用户标签-结果
+ *
  * @author hyh
  * @since 2021/07/30 14:10
  */
 public class ImGetTagResult extends GenericResult {
+    /**
+     * 用户标签内容列表
+     */
     @JsonProperty("UserTags")
     private List<UserTagItem> userTags;
 

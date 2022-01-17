@@ -6,14 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 删除黑名单-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 14:46
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BlackListDeleteRequest extends GenericRequest {
+    /**
+     * 请求为该 UserID 添加黑名单
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 待添加为黑名单的用户 UserID 列表，单次请求的 To_Account 数不得超过1000
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 

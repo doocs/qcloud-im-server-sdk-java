@@ -7,20 +7,40 @@ import io.github.doocs.im.model.message.TIMMsgElement;
 import java.util.List;
 
 /**
+ * 单发单聊消息-请求参数
+ *
  * @author hyh
  * @since 2021/07/29 11:31
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendMsgRequest extends GenericRequest {
+    /**
+     * 1. 把消息同步到 From_Account 在线终端和漫游上
+     * 2. 消息不同步至 From_Account
+     * <p>
+     * 若不填写默认情况下会将消息存 From_Account 漫游
+     */
     @JsonProperty("SyncOtherMachine")
     private Integer syncOtherMachine;
 
+    /**
+     * 消息发送方 UserID（用于指定发送消息方帐号）
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 消息接收方 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 消息离线保存时长（单位：秒），最长为7天（604800秒）
+     * 若设置该字段为0，则消息只发在线用户，不保存离线
+     * 若设置该字段超过7天（604800秒），仍只保存7天
+     * 若不设置该字段，则默认保存7天
+     */
     @JsonProperty("MsgLifeTime")
     private Integer msgLifeTime;
 
@@ -30,24 +50,54 @@ public class SendMsgRequest extends GenericRequest {
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
+    /**
+     * 消息随机数，后台用于同一秒内的消息去重。请确保该字段填的是随机数
+     */
     @JsonProperty("MsgRandom")
     private Long msgRandom;
 
+    /**
+     * 消息时间戳，UNIX 时间戳（单位：秒）
+     */
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
 
+    /**
+     * 消息回调禁止开关，只对本条消息有效，
+     * <p>
+     * ForbidBeforeSendMsgCallback 表示禁止发消息前回调，
+     * ForbidAfterSendMsgCallback 表示禁止发消息后回调
+     */
     @JsonProperty("ForbidCallbackControl")
     private List<String> forbidCallbackControl;
 
+    /**
+     * 消息发送控制选项，是一个 String 数组，只对本条消息有效。
+     * <p>
+     * "NoUnread"表示该条消息不计入未读数。
+     * "NoLastMsg"表示该条消息不更新会话列表。
+     * "WithMuteNotifications"表示该条消息的接收方对发送方设置的免打扰选项生效（默认不生效）。
+     * <p>
+     * 示例："SendMsgControl": ["NoUnread","NoLastMsg","WithMuteNotifications"]
+     */
     @JsonProperty("SendMsgControl")
     private List<String> sendMsgControl;
 
+    /**
+     * 消息内容
+     */
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
+    /**
+     * 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
+     */
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
+    /**
+     * 离线推送信息配置
+     */
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 

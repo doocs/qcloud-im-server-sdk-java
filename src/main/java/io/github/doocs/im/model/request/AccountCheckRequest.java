@@ -6,11 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询帐号-请求参数
+ *
  * @author bingo
  * @since 2021/7/30 17:26
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountCheckRequest extends GenericRequest {
+    /**
+     * 请求检查的帐号对象数组，单次请求最多支持100个帐号
+     */
     @JsonProperty("CheckItem")
     private List<AccountCheckItem> checkItemList;
 

@@ -4,17 +4,28 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 设置单聊消息已读-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 15:29
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdminSetMsgReadRequest extends GenericRequest {
+    /**
+     * 进行消息已读的用户 UserId
+     */
     @JsonProperty("Report_Account")
     private String reportAccount;
 
+    /**
+     * 进行消息已读的单聊会话的另一方用户 UserId
+     */
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
+    /**
+     * 时间戳（秒），该时间戳之前的消息全部已读。若不填，则取当前时间戳
+     */
     @JsonProperty("MsgReadTime")
     private Integer msgReadTime;
 

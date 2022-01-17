@@ -7,17 +7,30 @@ import io.github.doocs.im.model.message.TIMMsgElement;
 import java.util.List;
 
 /**
+ * 导入单聊消息-请求参数
+ *
  * @author hyh
  * @since 2021/07/29 14:25
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImportMsgRequest extends GenericRequest {
+    /**
+     * 该字段只能填1或2，其他值是非法值
+     * 1表示实时消息导入，消息计入未读计数
+     * 2表示历史消息导入，消息不计入未读
+     */
     @JsonProperty("SyncFromOldSystem")
     private Integer syncFromOldSystem;
 
+    /**
+     * 消息发送方 UserID，用于指定发送消息方
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 消息接收方 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
@@ -33,12 +46,21 @@ public class ImportMsgRequest extends GenericRequest {
     @JsonProperty("MsgRandom")
     private Long msgRandom;
 
+    /**
+     * 消息时间戳，UNIX 时间戳，单位为秒。后台会根据该字段去重，详细规则请看本接口的功能说明。
+     */
     @JsonProperty("MsgTimeStamp")
     private Integer msgTimeStamp;
 
+    /**
+     * 消息内容
+     */
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
+    /**
+     * 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
+     */
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 

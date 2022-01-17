@@ -8,26 +8,53 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 全员推送-请求参数
+ *
  * @author bingo
  * @since 2021/7/31 16:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImPushRequest extends GenericRequest {
+    /**
+     * Condition 共有4种条件类型，分别是：
+     * 属性的或条件 AttrsOr
+     * 属性的与条件 AttrsAnd
+     * 标签的或条件 TagsOr
+     * 标签的与条件 TagsAnd
+     * <p>
+     * AttrsOr 和 AttrsAnd 可以并存，TagsOr 和 TagsAnd 也可以并存。但是标签和属性条件不能并存。如果没有 Condition，则推送给全部用户
+     */
     @JsonProperty("Condition")
     private Map<String, Object> condition;
 
+    /**
+     * 消息随机数，由随机函数产生。用于推送任务去重。对于不同的推送请求，MsgRandom7 天之内不能重复，
+     * 否则视为相同的推送任务（调用推送 API 返回失败的时候可以用相同的 MsgRandom 进行重试）
+     */
     @JsonProperty("MsgRandom")
     private Long msgRandom;
 
+    /**
+     * 消息内容
+     */
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
+    /**
+     * 消息离线存储时间，单位秒，最多保存7天（604800秒）。默认为0，表示不离线存储
+     */
     @JsonProperty("MsgLifeTime")
     private Integer msgLifeTime;
 
+    /**
+     * 消息推送方帐号
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 	离线推送信息配置
+     */
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 

@@ -4,17 +4,28 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 导入单个帐号-请求参数
+ *
  * @author hyh
  * @since 2021/07/29 14:56
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountImportRequest extends GenericRequest {
+    /**
+     * 用户名，长度不超过32字节
+     */
     @JsonProperty("UserID")
     private String userId;
 
+    /**
+     * 用户昵称
+     */
     @JsonProperty("Nick")
     private String nick;
 
+    /**
+     * 用户头像 URL
+     */
     @JsonProperty("FaceUrl")
     private String faceUrl;
 

@@ -10,15 +10,27 @@ import java.util.List;
  * @since 2021/07/30 15:04
  */
 public class UserProfileItem {
+    /**
+     * 返回的用户的 UserID
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 返回的用户的资料对象数组，数组中每一个对象都包含了 Tag 和 Value
+     */
     @JsonProperty("ProfileItem")
     private List<ProfileItem> profileItemList;
 
+    /**
+     * To_Account 的处理结果，0表示成功，非0表示失败
+     */
     @JsonProperty("ResultCode")
     private Integer resultCode;
 
+    /**
+     * To_Account 的错误描述信息，成功时该字段为空
+     */
     @JsonProperty("ResultInfo")
     private String resultInfo;
 

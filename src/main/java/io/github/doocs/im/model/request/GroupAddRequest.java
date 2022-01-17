@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 添加分组-请求参数
+ *
  * @author hyh
  * @since 2021/07/31 15:33
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupAddRequest extends GenericRequest {
+    /**
+     * 需要为该 UserID 添加新分组
+     */
     @JsonProperty("From_Account")
     private String fromAccount;
 
+    /**
+     * 新增分组列表
+     */
     @JsonProperty("GroupName")
     private List<String> groupName;
 
+    /**
+     * 需要加入新增分组的好友的 UserID 列表
+     */
     @JsonProperty("To_Account")
     private List<String> toAccount;
 

@@ -8,6 +8,8 @@ import io.github.doocs.im.util.HttpUtil;
 import java.io.IOException;
 
 /**
+ * 关系链管理
+ *
  * @author hyh
  * @since 2021/07/29 15:11
  */

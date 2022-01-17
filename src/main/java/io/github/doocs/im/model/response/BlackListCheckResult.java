@@ -5,16 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 校验黑名单-结果
+ *
  * @author hyh
  * @since 2021/07/30 17:27
  */
 public class BlackListCheckResult extends GenericResult {
+    /**
+     * 校验结果对象数组
+     */
     @JsonProperty("BlackListCheckItem")
     private List<BlackListCheckItem> blackListCheckItemList;
 
+    /**
+     * 返回处理失败的用户列表，仅当存在失败用户时才返回该字段
+     */
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
