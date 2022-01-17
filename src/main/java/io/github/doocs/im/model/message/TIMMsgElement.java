@@ -25,6 +25,9 @@ import io.github.doocs.im.constant.MsgType;
         @JsonSubTypes.Type(value = TIMFaceMsgElement.class, name = MsgType.TIM_FACE_ELEM)
 })
 public abstract class TIMMsgElement {
+    /**
+     * TIM 消息对象类型
+     */
     @JsonProperty("MsgType")
     private String msgType;
 

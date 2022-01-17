@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 拉取运营数据-结果
+ *
  * @author bingo
  * @since 2021/7/31 19:06
  */
 public class GetAppInfoResult extends GenericResult {
+    /**
+     * 请求最近30天的运营数据
+     */
     @JsonProperty("Result")
     private List<AppInfoResultItem> result;
 

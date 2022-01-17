@@ -11,13 +11,13 @@ App 管理员可以通过该接口获取 App 中所有群组的 ID。
 使用示例：
 
 ```java
-GetAppidGroupListRequest request = GetAppidGroupListRequest.builder()
+GetAppIdGroupListRequest request = GetAppIdGroupListRequest.builder()
         .limit(10)
         .groupType(GroupType.PUBLIC)
         .next(0)
         .build();
 
-GetAppidGroupListResult result = client.group.getAppIdGroupList(request);
+GetAppIdGroupListResult result = client.group.getAppIdGroupList(request);
 ```
 
 ## 创建群组

@@ -38,6 +38,9 @@ public class MemberProfile {
     @JsonProperty("NameCard")
     private String nameCard;
 
+    /**
+     * 返回的群成员自定义字段信息
+     */
     @JsonProperty("AppMemberDefinedData")
     private List<AppMemberDefinedDataItem> appMemberDefinedData;
 

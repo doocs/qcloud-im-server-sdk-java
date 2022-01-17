@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 查询用户在群组中的身份-结果
+ *
  * @author bingo
  * @since 2021/8/4 11:05
  */
 public class GetRoleInGroupResult extends GenericResult {
+    /**
+     * 拉取到的成员角色，包括：Owner(群主)，Admin(群管理员)，Member(普通群成员），NotMember(非群成员)
+     */
     @JsonProperty("UserIdList")
     private List<UserIdListItem> userIdList;
 

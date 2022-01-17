@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 清空群自定义属性-请求参数
+ *
  * @author bingo
  * @since 2021/12/31 10:59
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClearGroupAttrRequest extends GenericRequest {
+    /**
+     * 重置自定义属性的群 id
+     */
     @JsonProperty("GroupId")
     private String groupId;
 

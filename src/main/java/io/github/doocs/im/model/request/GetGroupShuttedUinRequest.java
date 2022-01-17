@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 获取被禁言群成员列表-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 16:43
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetGroupShuttedUinRequest extends GenericRequest {
+    /**
+     * 需要获取被禁言成员列表的群组 ID。
+     */
     @JsonProperty("GroupId")
     private String groupId;
 

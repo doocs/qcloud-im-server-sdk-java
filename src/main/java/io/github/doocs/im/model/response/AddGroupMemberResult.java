@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 增加群成员-结果
+ *
  * @author hyh
  * @since 2021/08/01 14:17
  */

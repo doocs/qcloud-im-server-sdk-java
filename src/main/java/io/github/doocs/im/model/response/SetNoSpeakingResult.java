@@ -1,6 +1,8 @@
 package io.github.doocs.im.model.response;
 
 /**
+ * 设置全局禁言-结果
+ *
  * @author xy
  * @since 2021/07/31 11:51:01
  */

@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 导入群成员-结果
+ *
  * @author bingo
  * @since 2021/8/4 11:50
  */
 public class ImportGroupMemberResult extends GenericResult {
+    /**
+     * 返回添加的群成员结果
+     */
     @JsonProperty("MemberList")
     private List<MemberListResultItem> memberList;
 

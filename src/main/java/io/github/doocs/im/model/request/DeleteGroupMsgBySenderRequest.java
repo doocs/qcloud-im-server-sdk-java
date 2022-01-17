@@ -4,14 +4,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 撤回指定用户发送的消息-请求参数
+ *
  * @author hyh
  * @since 2021/08/01 13:53
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeleteGroupMsgBySenderRequest extends GenericRequest {
+    /**
+     * 要撤回消息的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 被撤回消息的发送者 ID
+     */
     @JsonProperty("Sender_Account")
     private String senderAccount;
 

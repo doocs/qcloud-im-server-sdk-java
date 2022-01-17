@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 增加群成员-请求参数
+ *
  * @author hyh
  * @since 2021/08/01 14:12
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddGroupMemberRequest extends GenericRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 是否静默加人。0：非静默加人；1：静默加人。不填该字段默认为0
+     */
     @JsonProperty("Silence")
     private Integer silence;
 
+    /**
+     * 待添加的群成员数组
+     */
     @JsonProperty("MemberList")
     private List<MemberRequestItem> memberList;
 

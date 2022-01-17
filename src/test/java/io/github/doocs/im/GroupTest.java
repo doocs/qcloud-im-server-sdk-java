@@ -38,13 +38,13 @@ public class GroupTest {
 
     @Test
     public void testGetAppIdGroupList() throws IOException {
-        GetAppidGroupListRequest request = GetAppidGroupListRequest.builder()
+        GetAppIdGroupListRequest request = GetAppIdGroupListRequest.builder()
                 .limit(10)
                 .groupType(GroupType.PUBLIC)
                 .next(0)
                 .build();
 
-        GetAppidGroupListResult result = client.group.getAppIdGroupList(request);
+        GetAppIdGroupListResult result = client.group.getAppIdGroupList(request);
         System.out.println(result);
         Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

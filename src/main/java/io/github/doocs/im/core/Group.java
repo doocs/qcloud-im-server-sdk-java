@@ -65,9 +65,9 @@ public class Group {
      * @return 结果
      * @throws IOException 异常
      */
-    public GetAppidGroupListResult getAppIdGroupList(GetAppidGroupListRequest getAppidGroupListRequest) throws IOException {
+    public GetAppIdGroupListResult getAppIdGroupList(GetAppIdGroupListRequest getAppidGroupListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_APPID_GROUP_LIST_COMMAND);
-        return HttpUtil.post(url, getAppidGroupListRequest, GetAppidGroupListResult.class, imClient.getConfig());
+        return HttpUtil.post(url, getAppidGroupListRequest, GetAppIdGroupListResult.class, imClient.getConfig());
     }
 
     /**

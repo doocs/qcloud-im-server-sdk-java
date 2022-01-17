@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 导入群消息-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 17:45
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImportGroupMsgRequest extends GenericRequest {
+    /**
+     * 要导入消息的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 会话更新识别，为1的时候标识触发会话更新，默认不触发（avchatroom 群不支持）。
+     */
     @JsonProperty("RecentContactFlag")
     private Integer recentContactFlag;
 
+    /**
+     * 导入的消息列表
+     */
     @JsonProperty("MsgList")
     private List<GroupMsgItem> msgList;
 

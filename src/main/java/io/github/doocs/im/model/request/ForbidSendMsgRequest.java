@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 批量禁言和取消禁言-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 16:41
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ForbidSendMsgRequest extends GenericRequest {
+    /**
+     * 需要查询的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 需要禁言的用户帐号，最多支持500个帐号
+     */
     @JsonProperty("Members_Account")
     private List<String> membersAccount;
 
+    /**
+     * 需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+     */
     @JsonProperty("ShutUpTime")
     private Integer shutUpTime;
 

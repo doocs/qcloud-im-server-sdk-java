@@ -6,17 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 在群组中发送系统通知-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 17:09
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendGroupSystemNotificationRequest extends GenericRequest {
+    /**
+     * 向哪个群组发送系统通知
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 接收者群成员列表，请填写接收者 UserID，不填或为空表示全员下发
+     */
     @JsonProperty("ToMembers_Account")
     private List<String> toMembersAccount;
 
+    /**
+     * 系统通知的内容
+     */
     @JsonProperty("Content")
     private String content;
 

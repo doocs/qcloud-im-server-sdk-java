@@ -5,13 +5,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * 获取用户所加入的群组-结果
+ *
  * @author bingo
  * @since 2021/8/4 10:45
  */
 public class GetJoinGroupListResult extends GenericResult {
+    /**
+     * 用户所加入的群组个数
+     */
     @JsonProperty("TotalCount")
     private Integer totalCount;
 
+    /**
+     * 拉取到的群组信息，返回的结果是根据过滤器中设置的过滤字段进行过滤后的信息，字段详情请参阅 群组数据结构介绍
+     */
     @JsonProperty("GroupIdList")
     private List<GroupIdListResultItem> groupIdList;
 

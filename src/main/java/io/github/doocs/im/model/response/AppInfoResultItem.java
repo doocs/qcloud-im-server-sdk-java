@@ -7,99 +7,195 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 19:07
  */
 public class AppInfoResultItem {
+    /**
+     * 应用名称
+     */
     @JsonProperty("AppName")
     private String appName;
 
+    /**
+     * 应用 SDKAppID
+     */
     @JsonProperty("AppId")
     private String appId;
 
+    /**
+     * 所属客户名称
+     */
     @JsonProperty("Company")
     private String company;
 
+    /**
+     * 活跃用户数
+     */
     @JsonProperty("ActiveUserNum")
     private String activeUserNum;
 
+    /**
+     * 新增注册人数
+     */
     @JsonProperty("RegistUserNumOneDay")
     private String registerUserNumOneDay;
 
+    /**
+     * 累计注册人数
+     */
     @JsonProperty("RegistUserNumTotal")
     private String registerUserNumTotal;
 
+    /**
+     * 登录次数
+     */
     @JsonProperty("LoginTimes")
     private String loginTimes;
 
+    /**
+     * 登录人数
+     */
     @JsonProperty("LoginUserNum")
     private String loginUserNum;
 
+    /**
+     * 上行消息数
+     */
     @JsonProperty("UpMsgNum")
     private String upMsgNum;
 
+    /**
+     * 发消息人数
+     */
     @JsonProperty("SendMsgUserNum")
     private String sendMsgUserNum;
 
+    /**
+     * APNs 推送数
+     */
     @JsonProperty("APNSMsgNum")
     private String apnsMsgNum;
 
+    /**
+     * 上行消息数（C2C）
+     */
     @JsonProperty("C2CUpMsgNum")
     private String c2cUpMsgNum;
 
+    /**
+     * 下行消息数（C2C）
+     */
     @JsonProperty("C2CDownMsgNum")
     private String c2cDownMsgNum;
 
+    /**
+     * 发消息人数（C2C）
+     */
     @JsonProperty("C2CSendMsgUserNum")
     private String c2cSendMsgUserNum;
 
+    /**
+     * APNs 推送数（C2C）
+     */
     @JsonProperty("C2CAPNSMsgNum")
     private String c2cApnsMsgNum;
 
+    /**
+     * 最高在线人数
+     */
     @JsonProperty("MaxOnlineNum")
     private String maxOnlineNum;
 
+    /**
+     * 下行消息总数（C2C和群）
+     */
     @JsonProperty("DownMsgNum")
     private String downMsgNum;
 
+    /**
+     * 关系链对数增加量
+     */
     @JsonProperty("ChainIncrease")
     private String chainIncrease;
 
+    /**
+     * 关系链对数删除量
+     */
     @JsonProperty("ChainDecrease")
     private String chainDecrease;
 
+    /**
+     * 上行消息数（群）
+     */
     @JsonProperty("GroupUpMsgNum")
     private String groupUpMsgNum;
 
+    /**
+     * 下行消息数（群）
+     */
     @JsonProperty("GroupDownMsgNum")
     private String groupDownMsgNum;
 
+    /**
+     * 发消息人数（群）
+     */
     @JsonProperty("GroupSendMsgUserNum")
     private String groupSendMsgUserNum;
 
+    /**
+     * APNs 推送数（群）
+     */
     @JsonProperty("GroupAPNSMsgNum")
     private String groupAPNSMsgNum;
 
+    /**
+     * 发消息群组数
+     */
     @JsonProperty("GroupSendMsgGroupNum")
     private String groupSendMsgGroupNum;
 
+    /**
+     * 入群总数
+     */
     @JsonProperty("GroupJoinGroupTimes")
     private String groupJoinGroupTimes;
 
+    /**
+     * 退群总数
+     */
     @JsonProperty("GroupQuitGroupTimes")
     private String groupQuitGroupTimes;
 
+    /**
+     * 新增群组数
+     */
     @JsonProperty("GroupNewGroupNum")
     private String groupNewGroupNum;
 
+    /**
+     * 累计群组数
+     */
     @JsonProperty("GroupAllGroupNum")
     private String groupAllGroupNum;
 
+    /**
+     * 解散群个数
+     */
     @JsonProperty("GroupDestroyGroupNum")
     private String groupDestroyGroupNum;
 
+    /**
+     * 回调请求数
+     */
     @JsonProperty("CallBackReq")
     private String callBackReq;
 
+    /**
+     * 回调应答数
+     */
     @JsonProperty("CallBackRsp")
     private String callBackRsp;
 
+    /**
+     * 日期
+     */
     @JsonProperty("Date")
     private String date;
 

@@ -7,29 +7,52 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 修改群成员资料-请求参数
+ *
  * @author hyh
  * @since 2021/08/02 16:32
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ModifyGroupMemberInfoRequest extends GenericRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 要操作的群成员
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 
+    /**
+     * 成员身份，Admin/Member 分别为设置/取消管理员
+     */
     @JsonProperty("Role")
     private String role;
 
+    /**
+     * 消息屏蔽类型
+     */
     @JsonProperty("MsgFlag")
     private String msgFlag;
 
+    /**
+     * 群名片（最大不超过50个字节）
+     */
     @JsonProperty("NameCard")
     private String nameCard;
 
+    /**
+     * 群成员维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 群组系统
+     */
     @JsonProperty("AppMemberDefinedData")
     private List<Map<String, Object>> appMemberDefinedData;
 
+    /**
+     * 需禁言时间，单位为秒，0表示取消禁言
+     */
     @JsonProperty("ShutUpTime")
     private Integer shutUpTime;
 
