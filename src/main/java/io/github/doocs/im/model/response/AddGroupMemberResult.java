@@ -11,6 +11,9 @@ import java.util.List;
  * @since 2021/08/01 14:17
  */
 public class AddGroupMemberResult extends GenericResult {
+    /**
+     * 返回添加的群成员结果
+     */
     @JsonProperty("MemberList")
     private List<MemberResultItem> memberList;
 

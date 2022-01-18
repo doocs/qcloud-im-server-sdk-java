@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 21:04
  */
 public class GroupIdItem {
+    /**
+     * 群ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 

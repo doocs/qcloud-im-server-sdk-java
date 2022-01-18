@@ -11,6 +11,9 @@ import java.util.List;
  * @since 2021/8/4 11:45
  */
 public class ImportGroupMsgResult extends GenericResult {
+    /**
+     * 具体的消息导入结果
+     */
     @JsonProperty("ImportMsgResult")
     private List<ImportMsgResultItem> importMsgResult;
 

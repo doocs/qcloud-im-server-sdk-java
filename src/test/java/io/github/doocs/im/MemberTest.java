@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.util.*;
 
 /**
+ * 全员推送测试类
+ *
  * @author bingo
  * @since 2021/7/31 17:22
  */

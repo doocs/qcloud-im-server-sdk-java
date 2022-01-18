@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/8/4 11:23
  */
 public class ShuttedUinResultItem {
+    /**
+     * 被禁言的成员 ID
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 
+    /**
+     * 被禁言到的时间
+     */
     @JsonProperty("ShuttedUntil")
     private Integer shuttedUntil;
 

@@ -13,9 +13,19 @@ public class ImportMsgResultItem {
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 
+    /**
+     * 消息的时间戳
+     */
     @JsonProperty("MsgTime")
     private Integer msgTime;
 
+    /**
+     * 单条消息导入结果
+     * 0表示单条消息成功
+     * 10004表示单条消息发送时间无效
+     * 80001表示单条消息包含脏字，拒绝存储此消息
+     * 80002表示为消息内容过长，目前支持8000字节的消息，请调整消息长度
+     */
     @JsonProperty("Result")
     private Integer result;
 

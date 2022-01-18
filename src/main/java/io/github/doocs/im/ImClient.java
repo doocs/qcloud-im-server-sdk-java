@@ -83,6 +83,11 @@ public class ImClient {
         recentContact = new RecentContact(this);
     }
 
+    /**
+     * 获取签名
+     *
+     * @return 签名
+     */
     private String getUserSig() {
         boolean renewSig = config == null || config.isAutoRenewSig();
         if (renewSig) {
@@ -103,6 +108,13 @@ public class ImClient {
         return config;
     }
 
+    /**
+     * 获取请求 URL
+     *
+     * @param serviceName 内部服务名
+     * @param command     命令字
+     * @return url
+     */
     public String getUrl(String serviceName, String command) {
         String sig = getUserSig();
         long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);

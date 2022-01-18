@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/8/4 11:07
  */
 public class UserIdListItem {
+    /**
+     * 成员id
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 
+    /**
+     * 成员角色
+     */
     @JsonProperty("Role")
     private String role;
 

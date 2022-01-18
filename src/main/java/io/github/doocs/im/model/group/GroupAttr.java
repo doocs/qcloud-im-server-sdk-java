@@ -4,14 +4,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * 群自定义属性
+ *
  * @author bingo
  * @since 2021/12/31 10:47
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupAttr {
+    /**
+     * key 为自定义属性的键
+     */
     @JsonProperty("key")
     private String key;
 
+    /**
+     * value 为自定义属性的值
+     */
     @JsonProperty("value")
     private String value;
 

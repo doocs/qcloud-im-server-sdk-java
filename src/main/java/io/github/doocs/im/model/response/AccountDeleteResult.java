@@ -9,6 +9,9 @@ import java.util.List;
  * @since 2021/7/28 11:04
  */
 public class AccountDeleteResult extends GenericResult {
+    /**
+     * 单个帐号的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<AccountDeleteResultItem> resultItems;
 

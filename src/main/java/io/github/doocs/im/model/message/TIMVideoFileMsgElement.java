@@ -27,8 +27,12 @@ public class TIMVideoFileMsgElement extends TIMMsgElement {
         this.msgContent = msgContent;
     }
 
-    public TIMVideoFileMsgElement(String videoUrl, String videoUuid, Integer videoSize, Integer videoSecond, String videoFormat, Integer videoDownloadFlag, String thumbUrl, String thumbUuid, Integer thumbSize, Integer thumbWidth, Integer thumbHeight, String thumbFormat, Integer thumbDownloadFlag) {
-        this(new VideoFileMsgContent(videoUrl, videoUuid, videoSize, videoSecond, videoFormat, videoDownloadFlag, thumbUrl, thumbUuid, thumbSize, thumbWidth, thumbHeight, thumbFormat, thumbDownloadFlag));
+    public TIMVideoFileMsgElement(String videoUrl, String videoUuid, Integer videoSize, Integer videoSecond,
+                                  String videoFormat, Integer videoDownloadFlag, String thumbUrl, String thumbUuid,
+                                  Integer thumbSize, Integer thumbWidth, Integer thumbHeight,
+                                  String thumbFormat, Integer thumbDownloadFlag) {
+        this(new VideoFileMsgContent(videoUrl, videoUuid, videoSize, videoSecond, videoFormat, videoDownloadFlag,
+                thumbUrl, thumbUuid, thumbSize, thumbWidth, thumbHeight, thumbFormat, thumbDownloadFlag));
     }
 
     public VideoFileMsgContent getMsgContent() {

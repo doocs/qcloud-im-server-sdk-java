@@ -11,6 +11,9 @@ import java.util.List;
  * @since 2021/7/31 20:24
  */
 public class GetHistoryResult extends GenericResult {
+    /**
+     * 消息记录文件下载信息
+     */
     @JsonProperty("File")
     private List<FileResultItem> file;
 
