@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/30 17:11
  */
 public class SnsProfileItem {
+    /**
+     * 字段的名称
+     */
     @JsonProperty("Tag")
     private String tag;
 
+    /**
+     * 字段的值
+     */
     @JsonProperty("Value")
     private String value;
 

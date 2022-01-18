@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Properties;
 
 /**
+ * 关系链管理测试类
+ *
  * @author hyh
  * @since 2021/07/31 16:14
  */

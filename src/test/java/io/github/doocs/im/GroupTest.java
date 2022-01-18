@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Properties;
 
 /**
+ * 群组管理测试类
+ *
  * @author bingo
  * @since 2021/7/31 21:05
  */

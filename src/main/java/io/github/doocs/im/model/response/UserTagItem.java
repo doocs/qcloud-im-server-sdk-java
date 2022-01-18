@@ -11,9 +11,15 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserTagItem {
+    /**
+     * 目标用户帐号
+     */
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 标签集合
+     */
     @JsonProperty("Tags")
     private List<String> tags;
 

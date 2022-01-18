@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/10/31 19:57
  */
 public class QueryResultDetailItem {
+    /**
+     * 登录的平台类型。可能的返回值有："iPhone", "Android", "Web", "PC", "iPad", "Mac"。
+     */
     @JsonProperty("Platform")
     private String platform;
 
+    /**
+     * 该登录平台的状态
+     */
     @JsonProperty("Status")
     private String status;
 

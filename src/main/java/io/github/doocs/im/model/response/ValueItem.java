@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/30 16:54
  */
 public class ValueItem {
+    /**
+     * 好友字段的名称
+     */
     @JsonProperty("Tag")
     private String tag;
 
+    /**
+     * 好友字段的值
+     */
     @JsonProperty("Value")
     private Object value;
 

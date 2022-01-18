@@ -7,21 +7,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 20:25
  */
 public class FileResultItem {
+    /**
+     * 消息记录文件下载地址
+     */
     @JsonProperty("URL")
     private String url;
 
+    /**
+     * 下载地址过期时间，请在过期前进行下载，若地址失效，请通过该接口重新获取
+     */
     @JsonProperty("ExpireTime")
     private String expireTime;
 
+    /**
+     * GZip 压缩前的文件大小（单位 Byte）
+     */
     @JsonProperty("FileSize")
     private Integer fileSize;
 
+    /**
+     * GZip 压缩前的文件 MD5
+     */
     @JsonProperty("FileMD5")
     private String fileMd5;
 
+    /**
+     * GZip 压缩后的文件大小（单位 Byte）
+     */
     @JsonProperty("GzipSize")
     private Integer gzipSize;
 
+    /**
+     * GZip 压缩后的文件 MD5
+     */
     @JsonProperty("GzipMD5")
     private String gzipMd5;
 

@@ -7,8 +7,19 @@ import io.github.doocs.im.util.VersionInfoUtil;
  * @since 2021/11/2 14:17
  */
 public class ClientConfiguration {
+    /**
+     * 默认 UA
+     */
     public static final String DEFAULT_USER_AGENT = VersionInfoUtil.getDefaultUserAgent();
+
+    /**
+     * 默认最大重试次数
+     */
     public static final int DEFAULT_MAX_RETRIES = 3;
+
+    /**
+     * 默认自动更新签名
+     */
     public static final boolean DEFAULT_RENEW_SIG = true;
     /**
      * 默认超时时间（毫秒）

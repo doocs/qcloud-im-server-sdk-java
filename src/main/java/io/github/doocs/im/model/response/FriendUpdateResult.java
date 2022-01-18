@@ -9,12 +9,21 @@ import java.util.List;
  * @since 2021/07/30 16:20
  */
 public class FriendUpdateResult extends GenericResult {
+    /**
+     * 批量更新好友的结果对象数组
+     */
     @JsonProperty("ResultItem")
     private List<ResultItem> resultItemList;
 
+    /**
+     * 详细的客户端展示信息
+     */
     @JsonProperty("ErrorDisplay")
     private String errorDisplay;
 
+    /**
+     * 返回处理失败的用户列表，仅当存在失败用户时才返回该字段
+     */
     @JsonProperty("Fail_Account")
     private List<String> failAccount;
 

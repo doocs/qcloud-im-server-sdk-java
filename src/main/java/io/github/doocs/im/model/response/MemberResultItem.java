@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/08/01 14:19
  */
 public class MemberResultItem {
+    /**
+     * 返回的群成员 UserID
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 
+    /**
+     * 加人结果：0-失败；1-成功；2-已经是群成员；3-等待被邀请者确认
+     */
     @JsonProperty("Result")
     private Integer result;
 

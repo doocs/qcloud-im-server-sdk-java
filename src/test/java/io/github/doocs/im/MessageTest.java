@@ -16,6 +16,8 @@ import java.io.InputStream;
 import java.util.*;
 
 /**
+ * 单聊消息测试类
+ *
  * @author bingo
  * @since 2021/7/31 10:37
  */
