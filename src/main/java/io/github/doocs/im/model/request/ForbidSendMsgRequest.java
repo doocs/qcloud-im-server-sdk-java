@@ -26,15 +26,15 @@ public class ForbidSendMsgRequest extends GenericRequest {
     private List<String> membersAccount;
 
     /**
-     * 需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+     * 无符号类型。需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
      */
     @JsonProperty("ShutUpTime")
-    private Integer shutUpTime;
+    private Long shutUpTime;
 
     public ForbidSendMsgRequest() {
     }
 
-    public ForbidSendMsgRequest(String groupId, List<String> membersAccount, Integer shutUpTime) {
+    public ForbidSendMsgRequest(String groupId, List<String> membersAccount, Long shutUpTime) {
         this.groupId = groupId;
         this.membersAccount = membersAccount;
         this.shutUpTime = shutUpTime;
@@ -66,11 +66,11 @@ public class ForbidSendMsgRequest extends GenericRequest {
         this.membersAccount = membersAccount;
     }
 
-    public Integer getShutUpTime() {
+    public Long getShutUpTime() {
         return shutUpTime;
     }
 
-    public void setShutUpTime(Integer shutUpTime) {
+    public void setShutUpTime(Long shutUpTime) {
         this.shutUpTime = shutUpTime;
     }
 
@@ -78,7 +78,7 @@ public class ForbidSendMsgRequest extends GenericRequest {
     public static final class Builder {
         private String groupId;
         private List<String> membersAccount;
-        private Integer shutUpTime;
+        private Long shutUpTime;
 
         private Builder() {
         }
@@ -97,7 +97,7 @@ public class ForbidSendMsgRequest extends GenericRequest {
             return this;
         }
 
-        public Builder shutUpTime(Integer shutUpTime) {
+        public Builder shutUpTime(Long shutUpTime) {
             this.shutUpTime = shutUpTime;
             return this;
         }

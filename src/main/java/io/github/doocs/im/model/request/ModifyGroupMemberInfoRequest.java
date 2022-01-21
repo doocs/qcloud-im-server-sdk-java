@@ -54,7 +54,7 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
      * 需禁言时间，单位为秒，0表示取消禁言
      */
     @JsonProperty("ShutUpTime")
-    private Integer shutUpTime;
+    private Long shutUpTime;
 
     public ModifyGroupMemberInfoRequest() {
     }
@@ -65,7 +65,7 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
     }
 
     public ModifyGroupMemberInfoRequest(String groupId, String memberAccount, String role, String msgFlag,
-                                        String nameCard, List<Map<String, Object>> appMemberDefinedData, Integer shutUpTime) {
+                                        String nameCard, List<Map<String, Object>> appMemberDefinedData, Long shutUpTime) {
         this.groupId = groupId;
         this.memberAccount = memberAccount;
         this.role = role;
@@ -137,11 +137,11 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
-    public Integer getShutUpTime() {
+    public Long getShutUpTime() {
         return shutUpTime;
     }
 
-    public void setShutUpTime(Integer shutUpTime) {
+    public void setShutUpTime(Long shutUpTime) {
         this.shutUpTime = shutUpTime;
     }
 
@@ -153,7 +153,7 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
         private String msgFlag;
         private String nameCard;
         private List<Map<String, Object>> appMemberDefinedData;
-        private Integer shutUpTime;
+        private Long shutUpTime;
 
         private Builder() {
         }
@@ -192,7 +192,7 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
             return this;
         }
 
-        public Builder shutUpTime(Integer shutUpTime) {
+        public Builder shutUpTime(Long shutUpTime) {
             this.shutUpTime = shutUpTime;
             return this;
         }
