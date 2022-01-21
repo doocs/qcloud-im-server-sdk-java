@@ -189,7 +189,7 @@ public class GroupTest {
         ForbidSendMsgRequest request = ForbidSendMsgRequest.builder()
                 .groupId("MyFirstGroup")
                 .membersAccount(membersAccount)
-                .shutUpTime(200)
+                .shutUpTime(200L)
                 .build();
 
         ForbidSendMsgResult result = client.group.forbidSendMsg(request);
