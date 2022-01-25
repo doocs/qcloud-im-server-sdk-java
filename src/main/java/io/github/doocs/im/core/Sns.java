@@ -213,7 +213,7 @@ public class Sns {
     }
 
     /**
-     * 拉取分组 结果
+     * 拉取分组
      *
      * @param groupGetRequest 请求参数
      * @return 结果

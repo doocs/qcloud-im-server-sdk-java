@@ -26,12 +26,6 @@ public class GroupGetRequest extends GenericRequest {
     private String needFriend;
 
     /**
-     * 上一次拉取分组时后台返回给客户端的 Seq，初次拉取时为0，只有 GroupName 为空时有效
-     */
-    @JsonProperty("LastSequence")
-    private Integer lastSequence;
-
-    /**
      * 要拉取的分组名称
      */
     @JsonProperty("GroupName")
@@ -40,22 +34,19 @@ public class GroupGetRequest extends GenericRequest {
     public GroupGetRequest() {
     }
 
-    public GroupGetRequest(String fromAccount, Integer lastSequence) {
+    public GroupGetRequest(String fromAccount) {
         this.fromAccount = fromAccount;
-        this.lastSequence = lastSequence;
     }
 
-    public GroupGetRequest(String fromAccount, String needFriend, Integer lastSequence, List<String> groupName) {
+    public GroupGetRequest(String fromAccount, String needFriend, List<String> groupName) {
         this.fromAccount = fromAccount;
         this.needFriend = needFriend;
-        this.lastSequence = lastSequence;
         this.groupName = groupName;
     }
 
     private GroupGetRequest(Builder builder) {
         this.fromAccount = builder.fromAccount;
         this.needFriend = builder.needFriend;
-        this.lastSequence = builder.lastSequence;
         this.groupName = builder.groupName;
     }
 
@@ -79,14 +70,6 @@ public class GroupGetRequest extends GenericRequest {
         this.needFriend = needFriend;
     }
 
-    public Integer getLastSequence() {
-        return lastSequence;
-    }
-
-    public void setLastSequence(Integer lastSequence) {
-        this.lastSequence = lastSequence;
-    }
-
     public List<String> getGroupName() {
         return groupName;
     }
@@ -99,7 +82,6 @@ public class GroupGetRequest extends GenericRequest {
     public static final class Builder {
         private String fromAccount;
         private String needFriend;
-        private Integer lastSequence;
         private List<String> groupName;
 
         private Builder() {
@@ -116,11 +98,6 @@ public class GroupGetRequest extends GenericRequest {
 
         public Builder needFriend(String needFriend) {
             this.needFriend = needFriend;
-            return this;
-        }
-
-        public Builder lastSequence(Integer lastSequence) {
-            this.lastSequence = lastSequence;
             return this;
         }
 
