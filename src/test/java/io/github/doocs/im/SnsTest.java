@@ -250,10 +250,9 @@ public class SnsTest {
 
     @Test
     public void testGroupGet() throws IOException {
-        List<String> groupName = Collections.singletonList("schoolmate");
+        List<String> groupName = Collections.singletonList("classmate");
         GroupGetRequest request = GroupGetRequest.builder()
                 .fromAccount("test1")
-                .lastSequence(0)
                 .groupName(groupName)
                 .needFriend(NeedFriendType.YES)
                 .build();
