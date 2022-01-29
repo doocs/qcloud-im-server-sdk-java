@@ -60,6 +60,12 @@ public class BeforeSendGroupMsgCallback {
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
 
+    /**
+     * 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
+     */
+    @JsonProperty("CloudCustomData")
+    private String cloudCustomData;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -122,5 +128,13 @@ public class BeforeSendGroupMsgCallback {
 
     public void setMsgBody(List<TIMMsgElement> msgBody) {
         this.msgBody = msgBody;
+    }
+
+    public String getCloudCustomData() {
+        return cloudCustomData;
+    }
+
+    public void setCloudCustomData(String cloudCustomData) {
+        this.cloudCustomData = cloudCustomData;
     }
 }
