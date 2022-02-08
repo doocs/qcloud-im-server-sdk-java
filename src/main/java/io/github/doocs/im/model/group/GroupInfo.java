@@ -12,10 +12,10 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupInfo {
     /**
-     * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主
+     * 群组 ID，App 内保证唯一，其格式前缀为 @TGS#。另外，App 亦可自定义群组 ID
      */
-    @JsonProperty("Owner_Account")
-    private String ownerAccount;
+    @JsonProperty("GroupId")
+    private String groupId;
 
     /**
      * 群组形态，包括 Public（陌生人社交群），Private（即 Work，好友工作群），
@@ -23,12 +23,6 @@ public class GroupInfo {
      */
     @JsonProperty("Type")
     private String type;
-
-    /**
-     * 为了使得群组 ID 更加简单，便于记忆传播，腾讯云支持 App 在通过 REST API 创建群组时 自定义群组 ID
-     */
-    @JsonProperty("GroupId")
-    private String groupId;
 
     /**
      * 群名称，最长30字节，使用 UTF-8 编码，1个汉字占3个字节
@@ -55,10 +49,52 @@ public class GroupInfo {
     private String faceUrl;
 
     /**
+     * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主
+     */
+    @JsonProperty("Owner_Account")
+    private String ownerAccount;
+
+    /**
+     * 群组的创建时间
+     */
+    @JsonProperty("CreateTime")
+    private Integer createTime;
+
+    /**
+     * 群资料的每次变都会增加该值
+     */
+    @JsonProperty("InfoSeq")
+    private Integer infoSeq;
+
+    /**
+     * 群组最后一次信息变更时间
+     */
+    @JsonProperty("LastInfoTime")
+    private Integer lastInfoTime;
+
+    /**
+     * 群组内最后发消息的时间
+     */
+    @JsonProperty("LastMsgTime")
+    private Integer lastMsgTime;
+
+    /**
+     * 群内下一条消息的 Seq
+     */
+    @JsonProperty("NextMsgSeq")
+    private Integer nextMsgSeq;
+
+    /**
+     * 当前成员数量
+     */
+    @JsonProperty("MemberNum")
+    private Integer memberNum;
+
+    /**
      * 最大群成员数量，缺省时的默认值：付费套餐包上限，例如体验版是20，如果升级套餐包，需按照修改群基础资料修改这个字段
      */
-    @JsonProperty("MaxMemberCount")
-    private Integer maxMemberCount;
+    @JsonProperty("MaxMemberNum")
+    private Integer maxMemberNum;
 
     /**
      * 申请加群处理方式。包含 FreeAccess（自由加入），NeedPermission（需要验证），
@@ -86,36 +122,21 @@ public class GroupInfo {
     @JsonProperty("AppMemberDefinedData")
     private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
-    public GroupInfo() {
-    }
-
-    public <T extends Builder> GroupInfo(String ownerAccount, String type, String groupId, String name, String introduction,
-                                         String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
-                                         List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
-                                         List<AppMemberDefinedDataItem> appMemberDefinedData) {
-        this.ownerAccount = ownerAccount;
-        this.type = type;
-        this.groupId = groupId;
-        this.name = name;
-        this.introduction = introduction;
-        this.notification = notification;
-        this.faceUrl = faceUrl;
-        this.maxMemberCount = maxMemberCount;
-        this.applyJoinOption = applyJoinOption;
-        this.appDefinedData = appDefinedData;
-        this.memberList = memberList;
-        this.appMemberDefinedData = appMemberDefinedData;
-    }
-
-    protected <T extends Builder> GroupInfo(Builder builder) {
-        this.ownerAccount = builder.ownerAccount;
-        this.type = builder.type;
+    private GroupInfo(Builder builder) {
         this.groupId = builder.groupId;
+        this.type = builder.type;
         this.name = builder.name;
         this.introduction = builder.introduction;
         this.notification = builder.notification;
         this.faceUrl = builder.faceUrl;
-        this.maxMemberCount = builder.maxMemberCount;
+        this.ownerAccount = builder.ownerAccount;
+        this.createTime = builder.createTime;
+        this.infoSeq = builder.infoSeq;
+        this.lastInfoTime = builder.lastInfoTime;
+        this.lastMsgTime = builder.lastMsgTime;
+        this.nextMsgSeq = builder.nextMsgSeq;
+        this.memberNum = builder.memberNum;
+        this.maxMemberNum = builder.maxMemberNum;
         this.applyJoinOption = builder.applyJoinOption;
         this.appDefinedData = builder.appDefinedData;
         this.memberList = builder.memberList;
@@ -126,12 +147,12 @@ public class GroupInfo {
         return new Builder();
     }
 
-    public String getOwnerAccount() {
-        return ownerAccount;
+    public String getGroupId() {
+        return groupId;
     }
 
-    public void setOwnerAccount(String ownerAccount) {
-        this.ownerAccount = ownerAccount;
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public String getType() {
@@ -140,14 +161,6 @@ public class GroupInfo {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
     }
 
     public String getName() {
@@ -182,12 +195,68 @@ public class GroupInfo {
         this.faceUrl = faceUrl;
     }
 
-    public Integer getMaxMemberCount() {
-        return maxMemberCount;
+    public String getOwnerAccount() {
+        return ownerAccount;
     }
 
-    public void setMaxMemberCount(Integer maxMemberCount) {
-        this.maxMemberCount = maxMemberCount;
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+
+    public Integer getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Integer createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getInfoSeq() {
+        return infoSeq;
+    }
+
+    public void setInfoSeq(Integer infoSeq) {
+        this.infoSeq = infoSeq;
+    }
+
+    public Integer getLastInfoTime() {
+        return lastInfoTime;
+    }
+
+    public void setLastInfoTime(Integer lastInfoTime) {
+        this.lastInfoTime = lastInfoTime;
+    }
+
+    public Integer getLastMsgTime() {
+        return lastMsgTime;
+    }
+
+    public void setLastMsgTime(Integer lastMsgTime) {
+        this.lastMsgTime = lastMsgTime;
+    }
+
+    public Integer getNextMsgSeq() {
+        return nextMsgSeq;
+    }
+
+    public void setNextMsgSeq(Integer nextMsgSeq) {
+        this.nextMsgSeq = nextMsgSeq;
+    }
+
+    public Integer getMemberNum() {
+        return memberNum;
+    }
+
+    public void setMemberNum(Integer memberNum) {
+        this.memberNum = memberNum;
+    }
+
+    public Integer getMaxMemberNum() {
+        return maxMemberNum;
+    }
+
+    public void setMaxMemberNum(Integer maxMemberNum) {
+        this.maxMemberNum = maxMemberNum;
     }
 
     public String getApplyJoinOption() {
@@ -223,103 +292,121 @@ public class GroupInfo {
     }
 
 
-    @Override
-    public String toString() {
-        return "GroupInfo{" +
-                "ownerAccount='" + ownerAccount + '\'' +
-                ", type='" + type + '\'' +
-                ", groupId='" + groupId + '\'' +
-                ", name='" + name + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", notification='" + notification + '\'' +
-                ", faceUrl='" + faceUrl + '\'' +
-                ", maxMemberCount=" + maxMemberCount +
-                ", applyJoinOption='" + applyJoinOption + '\'' +
-                ", appDefinedData=" + appDefinedData +
-                ", memberList=" + memberList +
-                ", appMemberDefinedData=" + appMemberDefinedData +
-                '}';
-    }
-
-    public static class Builder<T extends Builder> {
-        private String ownerAccount;
-        private String type;
+    public static final class Builder {
         private String groupId;
+        private String type;
         private String name;
         private String introduction;
         private String notification;
         private String faceUrl;
-        private Integer maxMemberCount;
+        private String ownerAccount;
+        private Integer createTime;
+        private Integer infoSeq;
+        private Integer lastInfoTime;
+        private Integer lastMsgTime;
+        private Integer nextMsgSeq;
+        private Integer memberNum;
+        private Integer maxMemberNum;
         private String applyJoinOption;
         private List<AppDefinedDataItem> appDefinedData;
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
-        protected Builder() {
+        private Builder() {
         }
 
         public GroupInfo build() {
             return new GroupInfo(this);
         }
 
-        public T ownerAccount(String ownerAccount) {
-            this.ownerAccount = ownerAccount;
-            return (T) this;
-        }
-
-        public T type(String type) {
-            this.type = type;
-            return (T) this;
-        }
-
-        public T groupId(String groupId) {
+        public Builder groupId(String groupId) {
             this.groupId = groupId;
-            return (T) this;
+            return this;
         }
 
-        public T name(String name) {
+        public Builder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder name(String name) {
             this.name = name;
-            return (T) this;
+            return this;
         }
 
-        public T introduction(String introduction) {
+        public Builder introduction(String introduction) {
             this.introduction = introduction;
-            return (T) this;
+            return this;
         }
 
-        public T notification(String notification) {
+        public Builder notification(String notification) {
             this.notification = notification;
-            return (T) this;
+            return this;
         }
 
-        public T faceUrl(String faceUrl) {
+        public Builder faceUrl(String faceUrl) {
             this.faceUrl = faceUrl;
-            return (T) this;
+            return this;
         }
 
-        public T maxMemberCount(Integer maxMemberCount) {
-            this.maxMemberCount = maxMemberCount;
-            return (T) this;
+        public Builder ownerAccount(String ownerAccount) {
+            this.ownerAccount = ownerAccount;
+            return this;
         }
 
-        public T applyJoinOption(String applyJoinOption) {
+        public Builder createTime(Integer createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Builder infoSeq(Integer infoSeq) {
+            this.infoSeq = infoSeq;
+            return this;
+        }
+
+        public Builder lastInfoTime(Integer lastInfoTime) {
+            this.lastInfoTime = lastInfoTime;
+            return this;
+        }
+
+        public Builder lastMsgTime(Integer lastMsgTime) {
+            this.lastMsgTime = lastMsgTime;
+            return this;
+        }
+
+        public Builder nextMsgSeq(Integer nextMsgSeq) {
+            this.nextMsgSeq = nextMsgSeq;
+            return this;
+        }
+
+        public Builder memberNum(Integer memberNum) {
+            this.memberNum = memberNum;
+            return this;
+        }
+
+        public Builder maxMemberNum(Integer maxMemberNum) {
+            this.maxMemberNum = maxMemberNum;
+            return this;
+        }
+
+        public Builder applyJoinOption(String applyJoinOption) {
             this.applyJoinOption = applyJoinOption;
-            return (T) this;
+            return this;
         }
 
-        public T appDefinedData(List<AppDefinedDataItem> appDefinedData) {
+        public Builder appDefinedData(List<AppDefinedDataItem> appDefinedData) {
             this.appDefinedData = appDefinedData;
-            return (T) this;
+            return this;
         }
 
-        public T memberList(List<MemberProfile> memberList) {
+        public Builder memberList(List<MemberProfile> memberList) {
             this.memberList = memberList;
-            return (T) this;
+            return this;
         }
 
-        public T appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
+        public Builder appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
             this.appMemberDefinedData = appMemberDefinedData;
-            return (T) this;
+            return this;
         }
     }
 }
