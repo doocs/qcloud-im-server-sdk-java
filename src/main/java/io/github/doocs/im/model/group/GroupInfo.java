@@ -122,6 +122,34 @@ public class GroupInfo {
     @JsonProperty("AppMemberDefinedData")
     private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
+    public GroupInfo() {
+    }
+
+    public GroupInfo(String groupId, String type, String name, String introduction, String notification,
+                     String faceUrl, String ownerAccount, Integer createTime, Integer infoSeq, Integer lastInfoTime,
+                     Integer lastMsgTime, Integer nextMsgSeq, Integer memberNum, Integer maxMemberNum,
+                     String applyJoinOption, List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
+                     List<AppMemberDefinedDataItem> appMemberDefinedData) {
+        this.groupId = groupId;
+        this.type = type;
+        this.name = name;
+        this.introduction = introduction;
+        this.notification = notification;
+        this.faceUrl = faceUrl;
+        this.ownerAccount = ownerAccount;
+        this.createTime = createTime;
+        this.infoSeq = infoSeq;
+        this.lastInfoTime = lastInfoTime;
+        this.lastMsgTime = lastMsgTime;
+        this.nextMsgSeq = nextMsgSeq;
+        this.memberNum = memberNum;
+        this.maxMemberNum = maxMemberNum;
+        this.applyJoinOption = applyJoinOption;
+        this.appDefinedData = appDefinedData;
+        this.memberList = memberList;
+        this.appMemberDefinedData = appMemberDefinedData;
+    }
+
     private GroupInfo(Builder builder) {
         this.groupId = builder.groupId;
         this.type = builder.type;
