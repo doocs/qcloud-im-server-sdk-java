@@ -18,7 +18,7 @@ public class ApnsInfo {
      * 这个字段缺省或者为0表示需要计数，为1表示本条消息不需要计数，即右上角图标数字不增加。
      */
     @JsonProperty("BadgeMode")
-    private String badgeMode;
+    private Integer badgeMode;
 
     /**
      * 该字段用于标识 APNs 推送的标题，若填写则会覆盖最上层 Title。
