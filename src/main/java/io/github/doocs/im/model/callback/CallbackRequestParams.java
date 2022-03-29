@@ -34,7 +34,7 @@ public class CallbackRequestParams {
     /**
      * 客户端平台，对应不同的平台类型，可能的取值有：
      * RESTAPI（使用 REST API 发送请求）、Web（使用 Web SDK 发送请求）、
-     * Android、iOS、Windows、Mac、IPad、Unknown（使用未知类型的设备发送请求）
+     * Android、iOS、Windows、Mac、iPad、Unknown（使用未知类型的设备发送请求）
      */
     @JsonProperty("OptPlatform")
     private String optPlatform;
