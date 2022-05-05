@@ -25,4 +25,4 @@ SDK 源码请参见 [GitHub](https://github.com/doocs/qcloud-im-server-sdk-java)
 
 ## 项目贡献者
 
-<a href="https://github.com/doocs/qcloud-im-server-sdk-java/graphs/contributors" target="_blank"><img src="https://cdn.jsdelivr.net/gh/doocs/qcloud-im-server-sdk-java@main/docs/assets/contributors.svg" /></a>
+<a href="https://github.com/doocs/qcloud-im-server-sdk-java/graphs/contributors" target="_blank"><img src="https://contrib.rocks/image?repo=doocs/qcloud-im-server-sdk-java" /></a>
