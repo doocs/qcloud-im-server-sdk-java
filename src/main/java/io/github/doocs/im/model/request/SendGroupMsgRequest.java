@@ -21,7 +21,7 @@ public class SendGroupMsgRequest extends GenericRequest {
     private String groupId;
 
     /**
-     * 无符号32位整数。如果5分钟内两条消息的随机值相同，后一条消息将被当做重复消息而丢弃
+     * 无符号32位整数。如果5分钟内两条消息的内容和 Random 随机值都相同的情况下，后一条消息将被当做重复消息而丢弃
      */
     @JsonProperty("Random")
     private Integer random;
@@ -78,6 +78,13 @@ public class SendGroupMsgRequest extends GenericRequest {
     @JsonProperty("cloudCustomData")
     private String cloudCustomData;
 
+    /**
+     * 指定消息接收者(接收者成员上限50个)，如果此字段被使用，消息则不计未读，仅旗舰版支持此功能，
+     * 支持群类型 Private、Public、ChatRoom
+     */
+    @JsonProperty("To_Account")
+    private String toAccount;
+
     public SendGroupMsgRequest() {
     }
 
@@ -89,7 +96,8 @@ public class SendGroupMsgRequest extends GenericRequest {
 
     public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<TIMMsgElement> msgBody,
                                String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
-                               Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData) {
+                               Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData,
+                               String toAccount) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;
@@ -100,6 +108,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.onlineOnlyFlag = onlineOnlyFlag;
         this.sendMsgControl = sendMsgControl;
         this.cloudCustomData = cloudCustomData;
+        this.toAccount = toAccount;
     }
 
     private SendGroupMsgRequest(Builder builder) {
@@ -113,6 +122,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.onlineOnlyFlag = builder.onlineOnlyFlag;
         this.sendMsgControl = builder.sendMsgControl;
         this.cloudCustomData = builder.cloudCustomData;
+        this.toAccount = builder.toAccount;
     }
 
     public static Builder builder() {
@@ -199,6 +209,14 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.cloudCustomData = cloudCustomData;
     }
 
+    public String getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(String toAccount) {
+        this.toAccount = toAccount;
+    }
+
 
     public static final class Builder {
         private String groupId;
@@ -211,6 +229,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         private Integer onlineOnlyFlag;
         private List<String> sendMsgControl;
         private String cloudCustomData;
+        private String toAccount;
 
         private Builder() {
         }
@@ -266,6 +285,11 @@ public class SendGroupMsgRequest extends GenericRequest {
 
         public Builder cloudCustomData(String cloudCustomData) {
             this.cloudCustomData = cloudCustomData;
+            return this;
+        }
+
+        public Builder toAccount(String toAccount) {
+            this.toAccount = toAccount;
             return this;
         }
     }

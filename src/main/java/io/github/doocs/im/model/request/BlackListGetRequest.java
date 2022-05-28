@@ -30,7 +30,7 @@ public class BlackListGetRequest extends GenericRequest {
     private Integer maxLimited;
 
     /**
-     * 上一次拉黑名单时后台返回给客户端的 Seq，初次拉取时为0
+     * 上一次拉黑名单时后台返回给客户端的 Seq，初次拉取时为0；（Rest API 接口拉取填 0 即可）
      */
     @JsonProperty("LastSequence")
     private Integer lastSequence;
