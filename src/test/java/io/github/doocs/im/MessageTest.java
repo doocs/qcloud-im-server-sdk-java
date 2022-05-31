@@ -151,8 +151,22 @@ public class MessageTest {
         GetC2cUnreadMsgRequest request = new GetC2cUnreadMsgRequest("test2");
         List<String> peerAccount = Arrays.asList("test1", "bingo");
         request.setPeerAccount(peerAccount);
-
         C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgNum(request);
+        System.out.println(result);
+        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    public void testModifyC2cMsg() throws IOException {
+        TIMTextMsgElement msg = new TIMTextMsgElement("test modify c2c msg");
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+        ModifyC2cMsgRequest request = ModifyC2cMsgRequest.builder()
+                .fromAccount("test1")
+                .toAccount("test2")
+                .msgKey("1353691732_123_1653995506")
+                .msgBody(msgBody)
+                .build();
+        ModifyC2cMsgResult result = client.message.modifyC2cMsg(request);
         System.out.println(result);
         Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
