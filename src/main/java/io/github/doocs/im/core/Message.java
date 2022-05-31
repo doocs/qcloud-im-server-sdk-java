@@ -29,6 +29,7 @@ public class Message {
     private static final String ADMIN_MSG_WITHDRAW_COMMAND = "admin_msgwithdraw";
     private static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
     private static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
+    private static final String MODIFY_C2C_MSG_COMMAND = "modify_c2c_msg";
 
     private final ImClient imClient;
 
@@ -118,5 +119,17 @@ public class Message {
     public C2cUnreadMsgNumResult getC2cUnreadMsgNum(GetC2cUnreadMsgRequest getC2cUnreadMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_C2C_UNREAD_MSG_NUM_COMMAND);
         return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 修改单聊历史消息
+     *
+     * @param modifyC2cMsgRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyC2cMsgResult modifyC2cMsg(ModifyC2cMsgRequest modifyC2cMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_C2C_MSG_COMMAND);
+        return HttpUtil.post(url, modifyC2cMsgRequest, ModifyC2cMsgResult.class, imClient.getConfig());
     }
 }

@@ -102,7 +102,7 @@ AdminGetRoamMsgRequest request = AdminGetRoamMsgRequest.builder()
         .minTime(1631934000)
         .maxTime(1631934060)
         .build();
-        
+
 AdminRoamMsgResult result = client.message.getRoamMsg(request);
 
 List<MsgListItem> msgList = result.getMsgList();
@@ -178,4 +178,33 @@ List<String> peerAccount = Arrays.asList("test1", "bingo");
 request.setPeerAccount(peerAccount);
 
 C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgNum(request);
+```
+
+## 修改单聊历史消息
+
+- 管理员修改单聊历史消息。
+- 可以单独修改消息中的 MsgBody 或 CloudCustomData 字段，也可以同时修改这两个字段。以请求中指定的字段值覆盖历史消息对应的字段。
+- 待修改的单聊消息的 MsgKey 可通过以下方式获取：
+  - 开启 [发单聊消息之前回调](https://cloud.tencent.com/document/product/269/1632) 或 [发单聊消息之后回调](https://cloud.tencent.com/document/product/269/2716)，通过该回调接口记录每条单聊消息的 MsgKey。
+  - 通过 [查询单聊消息](#查询单聊消息) 查询出待修改的单聊消息的 MsgKey。
+  - 通过 REST API [单发单聊消息](#单发单聊消息) 和 [批量发单聊消息](#批量发单聊消息) 接口发出的单聊消息，回包里会返回消息的 MsgKey。
+
+::: warning
+
+使用该接口修改消息后，被修改的消息不能恢复，请谨慎调用该接口。
+:::
+
+使用示例：
+
+```java
+TIMTextMsgElement msg = new TIMTextMsgElement("test modify c2c msg");
+List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+ModifyC2cMsgRequest request = ModifyC2cMsgRequest.builder()
+        .fromAccount("test1")
+        .toAccount("test2")
+        .msgKey("1353691732_123_1653995506")
+        .msgBody(msgBody)
+        .build();
+
+ModifyC2cMsgResult result = client.message.modifyC2cMsg(request);
 ```
