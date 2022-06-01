@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Version tool
+ * 版本工具类
  *
  * @author bingo
  * @since 2021/11/2 14:21

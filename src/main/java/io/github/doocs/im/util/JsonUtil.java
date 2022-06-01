@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
 /**
- * JSON tool
+ * JSON 工具类
  *
  * @author bingo
  * @since 2021/7/27 17:41

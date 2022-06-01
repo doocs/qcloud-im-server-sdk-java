@@ -1,13 +1,23 @@
 package io.github.doocs.im;
 
+import io.github.doocs.im.constant.ContentType;
 import io.github.doocs.im.constant.Domain;
-import io.github.doocs.im.core.*;
+import io.github.doocs.im.core.Account;
+import io.github.doocs.im.core.Group;
+import io.github.doocs.im.core.Member;
+import io.github.doocs.im.core.Message;
+import io.github.doocs.im.core.Operation;
+import io.github.doocs.im.core.Profile;
+import io.github.doocs.im.core.RecentContact;
+import io.github.doocs.im.core.Sns;
 import io.github.doocs.im.util.SigUtil;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
+ * IM 客户端
+ *
  * @author hyh
  * @since 2021/07/29 16:11
  */
@@ -24,7 +34,7 @@ public class ImClient {
 
     private static final String VERSION = "v4";
     private static final String DEFAULT_DOMAIN = Domain.CHINA;
-    private static final String FORMAT_URL = "https://%s/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json";
+    private static final String FORMAT_URL = "https://%s/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=%s";
 
     public final Account account;
     public final Message message;
@@ -119,6 +129,6 @@ public class ImClient {
         String sig = getUserSig();
         long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);
         return String.format(FORMAT_URL, domain, VERSION, serviceName, command,
-                sdkAppId, userId, sig, random);
+                sdkAppId, userId, sig, random, ContentType.JSON);
     }
 }
