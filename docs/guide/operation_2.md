@@ -51,3 +51,57 @@ GetIpListRequest request = new GetIpListRequest();
 
 GetIpListResult result = client.op~eration.getIpList(request);
 ```
+
+## 聊天文件封禁
+
+本接口用于封禁聊天消息中的富媒体文件。
+
+::: tip
+仅针对富媒体消息中使用 IM SDK 上传的文件有效，为了确保功能正常使用，请将终端 SDK 更新至 4.9.x 版本及以上，Web SDK 更新至 v2.0.0 版本及以上。
+:::
+
+使用示例：
+
+```java
+ForbidIllegalObjectRequest request = ForbidIllegalObjectRequest.builder()
+        .rawUrl("https://cos.ap-shanghai.myqcloud.com/005f-shanghai-360-shared-01-1256635546/76aa-1400152839/2f3b-2273451635034382/699eb4ee5ffa9aeb70627958766f2927-142072.jpg")
+        .build();
+
+ForbidIllegalObjectResult result = client.operation.forbidIllegalObject(request);
+```
+
+## 聊天文件解封
+
+本接口用于解封聊天消息中的富媒体文件。
+
+::: tip
+仅针对富媒体消息中使用 IM SDK 上传的文件有效，为了确保功能正常使用，请将终端 SDK 更新至 4.9.x 版本及以上，Web SDK 更新至 v2.0.0 版本及以上。
+:::
+
+```java
+AllowBannedObjectRequest request = AllowBannedObjectRequest.builder()
+        .rawUrl("https://cos.ap-shanghai.myqcloud.com/005f-shanghai-360-shared-01-1256635546/76aa-1400152839/2f3b-2273451635034382/699eb4ee5ffa9aeb70627958766f2927-142072.jpg")
+        .build();
+
+AllowBannedObjectResult result = client.operation.allowBannedObject(request);
+```
+
+## 聊天文件签名
+
+本接口用于获取聊天消息中的富媒体文件 FULL_CONTROL 权限的 URL 签名以及文件状态信息，默认有效期 15 分钟。一般 SDK 下发的文件 URL 为普通账号签名，违规封禁后，可以使用 FULL_CONTROL 权限的 URL 签名来查看封禁的资源。
+
+::: tip
+仅针对富媒体消息中使用 IM SDK 上传的文件有效，为了确保功能正常使用，请将终端 SDK 更新至 4.9.x 版本及以上，Web SDK 更新至 v2.0.0 版本及以上。
+:::
+
+```java
+RawUrlItem item = new RawUrlItem();
+item.setRawUrl("https://cos.ap-shanghai.myqcloud.com/98ec-shanghai-007-privatev2-01-1256635546/0345-1400187352/0612-yyy/9a0f4c42d208ccfb5aa47c29284aefc6.png");
+item.setResourceId(1);
+List<RawUrlItem> rawUrls = Collections.singletonList(item);
+GetCosSigRequest request = GetCosSigRequest.builder()
+        .rawUrls(rawUrls)
+        .build();
+
+GetCosSigResult result = client.operation.getCosSig(request);
+```

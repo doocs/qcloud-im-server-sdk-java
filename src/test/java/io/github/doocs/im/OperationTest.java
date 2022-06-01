@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
@@ -88,6 +89,43 @@ public class OperationTest {
         GetIpListRequest request = new GetIpListRequest();
 
         GetIpListResult result = client.operation.getIpList(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testForbidIllegalObject() throws IOException {
+        ForbidIllegalObjectRequest request = ForbidIllegalObjectRequest.builder()
+                .rawUrl("https://cos.ap-shanghai.myqcloud.com/005f-shanghai-360-shared-01-1256635546/76aa-1400152839/2f3b-2273451635034382/699eb4ee5ffa9aeb70627958766f2927-142072.jpg")
+                .build();
+
+        ForbidIllegalObjectResult result = client.operation.forbidIllegalObject(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testAllowBannedObject() throws IOException {
+        AllowBannedObjectRequest request = AllowBannedObjectRequest.builder()
+                .rawUrl("https://cos.ap-shanghai.myqcloud.com/005f-shanghai-360-shared-01-1256635546/76aa-1400152839/2f3b-2273451635034382/699eb4ee5ffa9aeb70627958766f2927-142072.jpg")
+                .build();
+
+        AllowBannedObjectResult result = client.operation.allowBannedObject(request);
+        System.out.println(result);
+        Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    public void testGetCosSig() throws IOException {
+        RawUrlItem item = new RawUrlItem();
+        item.setRawUrl("https://cos.ap-shanghai.myqcloud.com/98ec-shanghai-007-privatev2-01-1256635546/0345-1400187352/0612-yyy/9a0f4c42d208ccfb5aa47c29284aefc6.png");
+        item.setResourceId(1);
+        List<RawUrlItem> rawUrls = Collections.singletonList(item);
+        GetCosSigRequest request = GetCosSigRequest.builder()
+                .rawUrls(rawUrls)
+                .build();
+
+        GetCosSigResult result = client.operation.getCosSig(request);
         System.out.println(result);
         Assert.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

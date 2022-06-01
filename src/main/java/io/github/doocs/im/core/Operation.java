@@ -20,6 +20,7 @@ public class Operation {
     private static final String SERVICE_NAME_OPEN_CONFIG = "openconfigsvr";
     private static final String SERVICE_NAME_OPEN_MSG = "open_msg_svc";
     private static final String SERVICE_NAME_CONFIG = "ConfigSvc";
+    private static final String SERVICE_NAME_COS_MSG = "im_cos_msg";
 
     /**
      * 运营管理、全局禁言管理相关命令字
@@ -29,7 +30,9 @@ public class Operation {
     private static final String GET_APP_INFO_COMMAND = "getappinfo";
     private static final String GET_HISTORY_COMMAND = "get_history";
     private static final String GET_IP_LIST_COMMAND = "GetIPList";
-
+    private static final String FORBID_ILLEGAL_OBJECT = "forbid_illegal_object";
+    private static final String ALLOW_BANNED_OBJECT = "allow_banned_object";
+    private static final String GET_COS_SIG = "get_cos_sig";
 
     private final ImClient imClient;
 
@@ -95,5 +98,41 @@ public class Operation {
     public GetIpListResult getIpList(GetIpListRequest getIpListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_CONFIG, GET_IP_LIST_COMMAND);
         return HttpUtil.post(url, getIpListRequest, GetIpListResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 聊天文件封禁
+     *
+     * @param forbidIllegalObjectRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ForbidIllegalObjectResult forbidIllegalObject(ForbidIllegalObjectRequest forbidIllegalObjectRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_COS_MSG, FORBID_ILLEGAL_OBJECT);
+        return HttpUtil.post(url, forbidIllegalObjectRequest, ForbidIllegalObjectResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 聊天文件解封
+     *
+     * @param allowBannedObjectRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public AllowBannedObjectResult allowBannedObject(AllowBannedObjectRequest allowBannedObjectRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_COS_MSG, ALLOW_BANNED_OBJECT);
+        return HttpUtil.post(url, allowBannedObjectRequest, AllowBannedObjectResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 聊天文件签名
+     *
+     * @param getCosSigRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetCosSigResult getCosSig(GetCosSigRequest getCosSigRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_COS_MSG, GET_COS_SIG);
+        return HttpUtil.post(url, getCosSigRequest, GetCosSigResult.class, imClient.getConfig());
     }
 }
