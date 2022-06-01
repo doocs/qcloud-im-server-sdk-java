@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.zip.Deflater;
 
 /**
- * Signature tool
+ * 签名工具类
  *
  * @author bingo
  * @since 2021/7/26 16:39

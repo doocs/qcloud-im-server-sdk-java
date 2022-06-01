@@ -3,6 +3,8 @@ package io.github.doocs.im;
 import io.github.doocs.im.util.VersionInfoUtil;
 
 /**
+ * 客户端配置类
+ *
  * @author bingo
  * @since 2021/11/2 14:17
  */
