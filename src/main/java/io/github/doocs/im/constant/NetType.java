@@ -13,7 +13,7 @@ public class NetType {
     public static final int ALL = 0;
 
     /**
-     * native SDK 访问的中国地区(包括香港)服务器 IP 地址列表
+     * native SDK 访问的中国地区(包括中国香港)服务器 IP 地址列表
      */
     public static final int NATIVE_SDK_CHINA = 1;
 
@@ -23,7 +23,7 @@ public class NetType {
     public static final int NATIVE_SDK_OVERSEAS = 2;
 
     /**
-     * web SDK 访问的中国地区(包括香港)服务器 IP 地址列表
+     * web SDK 访问的中国地区(包括中国香港)服务器 IP 地址列表
      */
     public static final int WEB_SDK_CHINA = 3;
 
@@ -33,7 +33,7 @@ public class NetType {
     public static final int WEB_SDK_OVERSEAS = 4;
 
     /**
-     * IM 回调中国地区(包括香港)的出口地址列表
+     * IM 回调中国地区(包括中国香港)的出口地址列表
      */
     public static final int IM_CALLBACK_CHINA = 5;
 
