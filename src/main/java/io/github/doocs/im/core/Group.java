@@ -61,13 +61,13 @@ public class Group {
     /**
      * 获取 App 中的所有群组
      *
-     * @param getAppidGroupListRequest 请求参数
+     * @param getAppIdGroupListRequest 请求参数
      * @return 结果
      * @throws IOException 异常
      */
-    public GetAppIdGroupListResult getAppIdGroupList(GetAppIdGroupListRequest getAppidGroupListRequest) throws IOException {
+    public GetAppIdGroupListResult getAppIdGroupList(GetAppIdGroupListRequest getAppIdGroupListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_APPID_GROUP_LIST_COMMAND);
-        return HttpUtil.post(url, getAppidGroupListRequest, GetAppIdGroupListResult.class, imClient.getConfig());
+        return HttpUtil.post(url, getAppIdGroupListRequest, GetAppIdGroupListResult.class, imClient.getConfig());
     }
 
     /**
