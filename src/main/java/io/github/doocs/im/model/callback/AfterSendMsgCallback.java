@@ -62,7 +62,7 @@ public class AfterSendMsgCallback {
     private Integer onlineOnlyFlag;
 
     /**
-     * 该条消息的下发结果，0表示下发成功，非0表示下发失败，具体可参见 错误码
+     * 该条消息的发送结果，0表示下发成功，非0表示下发失败，具体可参见 错误码
      */
     @JsonProperty("SendMsgResult")
     private Integer sendMsgResult;
