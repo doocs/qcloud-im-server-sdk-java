@@ -17,7 +17,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateGroupRequest {
     /**
-     * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主
+     * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主；成员使用 AVChatroom（直播群）时，必须每次调用进群操作
      */
     @JsonProperty("Owner_Account")
     private String ownerAccount;
