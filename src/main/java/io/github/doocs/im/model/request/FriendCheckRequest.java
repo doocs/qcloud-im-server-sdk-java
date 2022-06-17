@@ -27,6 +27,7 @@ public class FriendCheckRequest extends GenericRequest {
 
     /**
      * 校验模式，详情可参见 校验好友
+     * {@link io.github.doocs.im.constant.CheckResultType}
      */
     @JsonProperty("CheckType")
     private String checkType;

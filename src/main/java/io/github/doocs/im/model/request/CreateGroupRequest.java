@@ -23,7 +23,8 @@ public class CreateGroupRequest {
     private String ownerAccount;
 
     /**
-     * 	群组形态，包括 Public（陌生人社交群），Private（即 Work，好友工作群），ChatRoom（即 Meeting，会议群），AVChatRoom（直播群），Community（社群）
+     * 群组形态，包括 Public（陌生人社交群），Private（即 Work，好友工作群），ChatRoom（即 Meeting，会议群），AVChatRoom（直播群），Community（社群）
+     * {@link io.github.doocs.im.constant.GroupType}
      */
     @JsonProperty("Type")
     private String type;
@@ -67,6 +68,7 @@ public class CreateGroupRequest {
     /**
      * 	申请加群处理方式。包含 FreeAccess（自由加入），NeedPermission（需要验证），DisableApply（禁止加群），不填默认为 NeedPermission（需要验证）
      * 仅当创建支持申请加群的 群组 时，该字段有效
+     * {@link io.github.doocs.im.constant.ApplyJoinOption}
      */
     @JsonProperty("ApplyJoinOption")
     private String applyJoinOption;

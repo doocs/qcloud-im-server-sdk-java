@@ -23,6 +23,7 @@ public class ImportGroupRequest extends GenericRequest {
     /**
      * 群组类型，包括 Public（陌生人社交群），Private（同新版本中的Work，好友工作群），
      * ChatRoom（同新版本中的Meeting，会议群）、Community（社群）
+     * {@link io.github.doocs.im.constant.GroupType}
      */
     @JsonProperty("Type")
     private String type;

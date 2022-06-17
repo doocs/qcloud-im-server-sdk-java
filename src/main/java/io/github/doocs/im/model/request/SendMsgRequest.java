@@ -19,6 +19,7 @@ public class SendMsgRequest extends GenericRequest {
      * 2. 消息不同步至 From_Account
      * <p>
      * 若不填写默认情况下会将消息存 From_Account 漫游
+     * {@link io.github.doocs.im.constant.SyncOtherMachine}
      */
     @JsonProperty("SyncOtherMachine")
     private Integer syncOtherMachine;

@@ -27,6 +27,7 @@ import io.github.doocs.im.constant.MsgType;
 public abstract class TIMMsgElement {
     /**
      * TIM 消息对象类型
+     * {@link MsgType}
      */
     @JsonProperty("MsgType")
     private String msgType;

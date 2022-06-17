@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * 最近联系人测试类
+ * 最近联系人测试类 {@link io.github.doocs.im.core.RecentContact}
  *
  * @author bingo
  * @since 2021/10/11 10:56

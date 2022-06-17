@@ -46,6 +46,7 @@ public class GetRecentContactListRequest extends GenericRequest {
      * bit 0 - 是否支持置顶会话
      * bit 1 - 是否返回空会话
      * bit 2 - 是否支持置顶会话分页
+     * {@link io.github.doocs.im.constant.AssistFlags}
      */
     @JsonProperty("AssistFlags")
     private Integer assistFlags;

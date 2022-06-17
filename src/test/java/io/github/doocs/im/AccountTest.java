@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 帐号管理测试类
+ * 帐号管理测试类 {@link io.github.doocs.im.core.Account}
  *
  * @author bingo
  * @since 2021/7/30 16:17

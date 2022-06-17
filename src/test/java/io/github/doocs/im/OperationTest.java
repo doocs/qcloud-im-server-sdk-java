@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 全局禁言管理、运营管理测试类
+ * 全局禁言管理、运营管理测试类 {@link io.github.doocs.im.core.Operation}
  *
  * @author xy
  * @since 2021/07/31 15:36:40

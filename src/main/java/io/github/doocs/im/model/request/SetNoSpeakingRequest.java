@@ -22,6 +22,7 @@ public class SetNoSpeakingRequest extends GenericRequest {
      * 0表示取消该帐号的单聊消息禁言
      * 4294967295表示该帐号被设置永久禁言
      * 其它值表示该帐号具体的禁言时间
+     * {@link io.github.doocs.im.constant.NoSpeakingTime}
      */
     @JsonProperty("C2CmsgNospeakingTime")
     private Long msgNoSpeakingTime;
@@ -31,6 +32,7 @@ public class SetNoSpeakingRequest extends GenericRequest {
      * 0表示取消该帐号的群组消息禁言
      * 4294967295表示该帐号被设置永久禁言
      * 其它值表示该帐号的具体禁言时间
+     * {@link io.github.doocs.im.constant.NoSpeakingTime}
      */
     @JsonProperty("GroupmsgNospeakingTime")
     private Long groupMsgNoSpeakingTime;

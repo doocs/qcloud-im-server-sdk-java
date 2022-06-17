@@ -27,6 +27,7 @@ public class FriendDeleteRequest extends GenericRequest {
 
     /**
      * 删除模式，详情可参见 删除好友
+     * {@link io.github.doocs.im.constant.DeleteType}
      */
     @JsonProperty("DeleteType")
     private String deleteType;

@@ -19,6 +19,7 @@ public class DeleteRecentContactRequest extends GenericRequest {
 
     /**
      * 会话类型：1 表示 C2C 会话；2 表示 G2C 会话
+     * {@link io.github.doocs.im.constant.RecentContactType}
      */
     @JsonProperty("Type")
     private Integer type;
@@ -37,6 +38,7 @@ public class DeleteRecentContactRequest extends GenericRequest {
 
     /**
      * 是否清理漫游消息：1 表示清理漫游消息；0 表示不清理漫游消息
+     * {@link io.github.doocs.im.constant.ClearRamble}
      */
     @JsonProperty("ClearRamble")
     private Integer clearRamble;

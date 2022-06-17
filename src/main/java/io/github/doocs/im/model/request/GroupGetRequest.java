@@ -21,6 +21,7 @@ public class GroupGetRequest extends GenericRequest {
 
     /**
      * 是否需要拉取分组下的 User 列表, Need_Friend_Type_Yes: 需要拉取, 不填时默认不拉取, 只有 GroupName 为空时有效
+     * {@link io.github.doocs.im.constant.NeedFriendType}
      */
     @JsonProperty("NeedFriend")
     private String needFriend;

@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.util.*;
 
 /**
- * 单聊消息测试类
+ * 单聊消息测试类 {@link io.github.doocs.im.core.Message}
  *
  * @author bingo
  * @since 2021/7/31 10:37

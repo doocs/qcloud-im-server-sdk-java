@@ -27,6 +27,7 @@ public class BlackListCheckRequest extends GenericRequest {
 
     /**
      * 校验模式，详情可参见 校验黑名单
+     * {@link io.github.doocs.im.constant.BlackCheckResultType}
      */
     @JsonProperty("CheckType")
     private String checkType;

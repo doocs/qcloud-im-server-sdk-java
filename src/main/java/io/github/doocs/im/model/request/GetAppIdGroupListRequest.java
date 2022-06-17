@@ -28,6 +28,7 @@ public class GetAppIdGroupListRequest extends GenericRequest {
      * 但此时返回的 TotalCount 的含义就变成了 App 中属于该群组形态的群组总数。不填为获取所有类型的群组。
      * 群组形态包括 Public（公开群），Private（即 Work，好友工作群），ChatRoom（即 Meeting，会议群），
      * AVChatRoom（音视频聊天室），BChatRoom（在线成员广播大群）和社群（Community）
+     * {@link io.github.doocs.im.constant.GroupType}
      */
     @JsonProperty("GroupType")
     private String groupType;

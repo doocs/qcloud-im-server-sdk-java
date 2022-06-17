@@ -61,6 +61,7 @@ public class SendGroupMsgRequest extends GenericRequest {
 
     /**
      * 1表示消息仅发送在线成员，默认0表示发送所有成员，AVChatRoom(直播群)不支持该参数
+     * {@link io.github.doocs.im.constant.OnlineOnlyFlag}
      */
     @JsonProperty("OnlineOnlyFlag")
     private Integer onlineOnlyFlag;

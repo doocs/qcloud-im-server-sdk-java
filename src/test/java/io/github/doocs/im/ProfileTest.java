@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 资料管理测试类
+ * 资料管理测试类 {@link io.github.doocs.im.core.Profile}
  *
  * @author hyh
  * @since 2021/07/31 10:54

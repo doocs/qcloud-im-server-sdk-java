@@ -15,6 +15,7 @@ import java.util.List;
 public class QueryOnlineStatusRequest extends GenericRequest {
     /**
      * 是否需要返回详细的登录平台信息。0表示不需要，1表示需要
+     * {@link io.github.doocs.im.constant.IsNeedDetail}
      */
     @JsonProperty("IsNeedDetail")
     private Integer isNeedDetail;

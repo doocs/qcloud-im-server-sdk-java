@@ -54,12 +54,14 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
 
     /**
      * 申请加群处理方式。包含 FreeAccess（自由加入），NeedPermission（需要验证），DisableApply（禁止加群）
+     * {@link io.github.doocs.im.constant.ApplyJoinOption}
      */
     @JsonProperty("ApplyJoinOption")
     private String applyJoinOption;
 
     /**
      * 默认情况是没有的。开通群组维度的自定义字段详情请参见 自定义字段
+     * {@link io.github.doocs.im.constant.ShutUpAllMember}
      */
     @JsonProperty("ShutUpAllMember")
     private String shutUpAllMember;

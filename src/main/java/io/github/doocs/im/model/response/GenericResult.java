@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class GenericResult {
     /**
      * 请求处理的结果，OK 表示处理成功，FAIL 表示失败，如果为 FAIL，ErrorInfo 带上失败原因
+     * {@link io.github.doocs.im.constant.ActionStatus}
      */
     @JsonProperty("ActionStatus")
     protected String actionStatus;

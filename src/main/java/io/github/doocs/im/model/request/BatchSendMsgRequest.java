@@ -17,6 +17,7 @@ public class BatchSendMsgRequest {
     /**
      * 1：把消息同步到 From_Account 在线终端和漫游上
      * 2：消息不同步至 From_Account；若不填写默认情况下会将消息存 From_Account 漫游
+     * {@link io.github.doocs.im.constant.SyncOtherMachine}
      */
     @JsonProperty("SyncOtherMachine")
     private Integer syncOtherMachine;

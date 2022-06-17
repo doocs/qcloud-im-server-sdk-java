@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetHistoryRequest extends GenericRequest {
     /**
      * 消息类型，C2C 表示单发消息 Group 表示群组消息
+     * {@link io.github.doocs.im.constant.ChatType}
      */
     @JsonProperty("ChatType")
     private String chatType;

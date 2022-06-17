@@ -17,6 +17,7 @@ public class MemberItem {
 
     /**
      * 待导入群成员角色；目前只支持填 Admin，不填则为普通成员 Member
+     * {@link io.github.doocs.im.constant.MemberRole}
      */
     @JsonProperty("Role")
     private String role;

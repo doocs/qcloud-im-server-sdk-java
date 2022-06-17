@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 群组管理测试类
+ * 群组管理测试类 {@link io.github.doocs.im.core.Group}
  *
  * @author bingo
  * @since 2021/7/31 21:05

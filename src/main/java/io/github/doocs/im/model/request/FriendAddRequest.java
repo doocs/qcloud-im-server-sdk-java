@@ -29,12 +29,14 @@ public class FriendAddRequest extends GenericRequest {
      * 加好友方式（默认双向加好友方式）：
      * Add_Type_Single 表示单向加好友
      * Add_Type_Both 表示双向加好友
+     * {@link io.github.doocs.im.constant.AddType}
      */
     @JsonProperty("AddType")
     private String addType;
 
     /**
      * 管理员强制加好友标记：1表示强制加好友，0表示常规加好友方式
+     * {@link io.github.doocs.im.constant.ForceAddFlags}
      */
     @JsonProperty("ForceAddFlags")
     private Integer forceAddFlags;

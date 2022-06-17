@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 关系链管理测试类
+ * 关系链管理测试类 {@link io.github.doocs.im.core.Sns}
  *
  * @author hyh
  * @since 2021/07/31 16:14

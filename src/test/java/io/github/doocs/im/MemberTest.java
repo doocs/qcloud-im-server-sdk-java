@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.*;
 
 /**
- * 全员推送测试类
+ * 全员推送测试类 {@link io.github.doocs.im.core.Member}
  *
  * @author bingo
  * @since 2021/7/31 17:22
