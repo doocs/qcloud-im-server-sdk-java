@@ -21,6 +21,12 @@ public class SendGroupMsgResult extends GenericResult {
     @JsonProperty("msgSeq")
     private Long msgSeq;
 
+    /**
+     * 消息丢弃原因；默认为空，否则表明消息被丢弃原因，当前只支持消息频控丢弃
+     */
+    @JsonProperty("MsgDropReason")
+    private String msgDropReason;
+
     public Integer getMsgTime() {
         return msgTime;
     }
@@ -37,11 +43,20 @@ public class SendGroupMsgResult extends GenericResult {
         this.msgSeq = msgSeq;
     }
 
+    public String getMsgDropReason() {
+        return msgDropReason;
+    }
+
+    public void setMsgDropReason(String msgDropReason) {
+        this.msgDropReason = msgDropReason;
+    }
+
     @Override
     public String toString() {
         return "SendGroupMsgResult{" +
                 "msgTime=" + msgTime +
                 ", msgSeq=" + msgSeq +
+                ", msgDropReason='" + msgDropReason + '\'' +
                 ", actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
                 ", errorCode=" + errorCode +
