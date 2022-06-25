@@ -21,19 +21,19 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
     private String groupId;
 
     /**
-     * 群名称，最长30字节
+     * 群名称，最长30字节，使用 UTF-8 编码，1个汉字占3个字节
      */
     @JsonProperty("Name")
     private String name;
 
     /**
-     * 群简介，最长240字节
+     * 群简介，最长240字节，使用 UTF-8 编码，1个汉字占3个字节
      */
     @JsonProperty("Introduction")
     private String introduction;
 
     /**
-     * 群公告，最长300字节
+     * 群公告，最长300字节，使用 UTF-8 编码，1个汉字占3个字节
      */
     @JsonProperty("Notification")
     private String notification;
@@ -46,8 +46,8 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
 
     /**
      * 最大群成员数量
-     * 私有群、公开群和聊天室：该字段阈值请参考 群组系统 和 计费概述 中的群成员人数上限相关说明
-     * 音视频聊天室和在线成员广播大群：该字段为无效字段，无需填写
+     * 好友工作群（Work），陌生人社交群（Public），临时会议群（Meeting）及社群（Community）：该字段阈值请参见 群组系统 中的群成员人数上限相关说明
+     * 直播群（AVChatRoom）：该字段为无效字段，无需填写
      */
     @JsonProperty("MaxMemberNum")
     private Integer maxMemberNum;
