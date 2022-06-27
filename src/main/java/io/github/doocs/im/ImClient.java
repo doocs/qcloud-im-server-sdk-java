@@ -23,7 +23,7 @@ public class ImClient {
     private final long expireTime;
 
     private String userSig;
-    private long userSigExpireTs;
+    private volatile long userSigExpireTs;
 
     private static final String VERSION = "v4";
     private static final String DEFAULT_DOMAIN = Domain.CHINA;

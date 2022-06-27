@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
- * HTTP tool
+ * HTTP 工具类
  *
  * @author bingo
  * @since 2021/10/31 15:57
@@ -46,7 +46,8 @@ public class HttpUtil {
                     .build();
         }
         Map<String, String> headers = new HashMap<>(2);
-        headers.put(USER_AGENT_KEY, config == null || config.getUserAgent() == null ? DEFAULT_USER_AGENT : config.getUserAgent());
+        boolean emptyAgent = Objects.isNull(config) || Objects.isNull(config.getUserAgent());
+        headers.put(USER_AGENT_KEY, emptyAgent ? DEFAULT_USER_AGENT : config.getUserAgent());
         return post(url, json, httpClient, headers);
     }
 

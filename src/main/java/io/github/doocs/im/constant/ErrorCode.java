@@ -8,7 +8,7 @@ package io.github.doocs.im.constant;
  */
 public enum ErrorCode {
     /**
-     * REST API 公共错误码：https://cloud.tencent.com/document/product/269/1519
+     * REST API 公共错误码：<a href="https://cloud.tencent.com/document/product/269/1519">...</a>
      */
     SUCCESS(0, "成功"),
     MSG_TEXT_SECURITY_STRIKE(80001, "消息文本安全打击"),
