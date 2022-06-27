@@ -1,5 +1,5 @@
-const { defaultTheme } = require('vuepress')
-const { searchPlugin } = require('@vuepress/plugin-search')
+const { defaultTheme } = require("vuepress");
+const { searchPlugin } = require("@vuepress/plugin-search");
 
 module.exports = {
   lang: "zh-CN",
@@ -51,7 +51,7 @@ module.exports = {
   }),
   plugins: [
     searchPlugin({
-      isSearchable: (page) => page.path !== '/',
+      isSearchable: (page) => page.path !== "/",
     }),
   ],
 };
