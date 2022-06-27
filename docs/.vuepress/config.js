@@ -1,3 +1,6 @@
+const { defaultTheme } = require('vuepress')
+const { searchPlugin } = require('@vuepress/plugin-search')
+
 module.exports = {
   lang: "zh-CN",
   title: "腾讯云 IM 服务端 Java SDK 使用文档",
@@ -12,7 +15,7 @@ module.exports = {
     ],
   ],
   base: "/qcloud-im-server-sdk-java/",
-  themeConfig: {
+  theme: defaultTheme({
     repo: "doocs/qcloud-im-server-sdk-java",
     logo: "https://avatars.githubusercontent.com/u/43716716?s=200&v=4",
     open: true,
@@ -45,13 +48,10 @@ module.exports = {
         ],
       },
     ],
-  },
+  }),
   plugins: [
-    [
-      "@vuepress/plugin-search",
-      {
-        isSearchable: (page) => page.path !== "/",
-      },
-    ],
+    searchPlugin({
+      isSearchable: (page) => page.path !== '/',
+    }),
   ],
 };
