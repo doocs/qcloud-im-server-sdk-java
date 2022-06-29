@@ -1,5 +1,7 @@
-package io.github.doocs.im;
+package io.github.doocs.im.core;
 
+import io.github.doocs.im.ClientFactory;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
@@ -7,11 +9,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * 关系链管理测试类 {@link io.github.doocs.im.core.Sns}
@@ -20,21 +20,7 @@ import java.util.Properties;
  * @since 2021/07/31 16:14
  */
 public class SnsTest {
-    private static final Properties properties = new Properties();
-    private static final ImClient client;
-
-    static {
-        InputStream resourceAsStream = SnsTest.class.getClassLoader().getResourceAsStream("app.properties");
-        try {
-            properties.load(resourceAsStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String key = properties.getProperty("key");
-        String userId = properties.getProperty("userId");
-        Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, userId, key);
-    }
+    private static final ImClient client = ClientFactory.getInstance();
 
     @Test
     public void testFriendAdd() throws IOException {
