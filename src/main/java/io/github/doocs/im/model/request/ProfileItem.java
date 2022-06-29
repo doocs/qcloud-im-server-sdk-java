@@ -56,6 +56,13 @@ public class ProfileItem {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "ProfileItem{" +
+                "tag='" + tag + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 
     public static final class Builder {
         private String tag;

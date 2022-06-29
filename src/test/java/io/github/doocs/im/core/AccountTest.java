@@ -6,8 +6,9 @@ import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.IsNeedDetail;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,11 +21,18 @@ import java.util.List;
  * @author bingo
  * @since 2021/7/30 16:17
  */
-public class AccountTest {
-    private static final ImClient client = ClientFactory.getInstance();
+class AccountTest {
+    private static ImClient client;
+
+    @BeforeAll
+    static void setup() {
+        client = ClientFactory.getInstance();
+        Assertions.assertNotNull(client, "client is null");
+    }
+
 
     @Test
-    public void testAccountImport() throws IOException {
+    void testAccountImport() throws IOException {
         AccountImportRequest request = AccountImportRequest.builder()
                 .userId("admin")
                 .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
@@ -33,11 +41,11 @@ public class AccountTest {
 
         AccountImportResult result = client.account.accountImport(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testMultiAccountImport() throws IOException {
+    void testMultiAccountImport() throws IOException {
         List<String> accounts = new ArrayList<>();
         accounts.add("user1");
         accounts.add("user2");
@@ -45,11 +53,11 @@ public class AccountTest {
 
         MultiAccountImportResult result = client.account.multiAccountImport(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testAccountDelete() throws IOException {
+    void testAccountDelete() throws IOException {
         AccountDeleteItem item1 = AccountDeleteItem.builder().userId("user1").build();
         AccountDeleteItem item2 = AccountDeleteItem.builder().userId("user2").build();
         List<AccountDeleteItem> deleteItems = Arrays.asList(item1, item2);
@@ -57,11 +65,11 @@ public class AccountTest {
 
         AccountDeleteResult result = client.account.accountDelete(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testAccountCheck() throws IOException {
+    void testAccountCheck() throws IOException {
         AccountCheckItem item1 = new AccountCheckItem("user1");
         AccountCheckItem item2 = new AccountCheckItem("user2");
         List<AccountCheckItem> checkItems = Arrays.asList(item1, item2);
@@ -69,20 +77,20 @@ public class AccountTest {
 
         AccountCheckResult result = client.account.accountCheck(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testKick() throws IOException {
+    void testKick() throws IOException {
         KickRequest request = new KickRequest("test1");
 
         KickResult result = client.account.kick(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testQueryOnlineStatus() throws IOException {
+    void testQueryOnlineStatus() throws IOException {
         List<String> toAccount = Arrays.asList("user1", "user2");
         QueryOnlineStatusRequest request = QueryOnlineStatusRequest.builder()
                 .toAccount(toAccount)
@@ -91,6 +99,6 @@ public class AccountTest {
 
         QueryOnlineStatusResult result = client.account.queryOnlineStatus(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

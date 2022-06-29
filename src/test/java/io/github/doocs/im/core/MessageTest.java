@@ -10,8 +10,9 @@ import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,11 +26,17 @@ import java.util.Objects;
  * @author bingo
  * @since 2021/7/31 10:37
  */
-public class MessageTest {
-    private static final ImClient client = ClientFactory.getInstance();
+class MessageTest {
+    private static ImClient client;
+
+    @BeforeAll
+    static void setup() {
+        client = ClientFactory.getInstance();
+        Assertions.assertNotNull(client, "client is null");
+    }
 
     @Test
-    public void testSendMsg() throws IOException {
+    void testSendMsg() throws IOException {
         TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         SendMsgRequest request = SendMsgRequest.builder()
@@ -44,11 +51,11 @@ public class MessageTest {
 
         SendMsgResult result = client.message.sendMsg(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testBatchSendMsg() throws IOException {
+    void testBatchSendMsg() throws IOException {
         List<String> toAccount = Arrays.asList("test1", "test2");
         TIMTextMsgElement msg = new TIMTextMsgElement("hi bingo");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
@@ -62,11 +69,11 @@ public class MessageTest {
                 .build();
         BatchSendMsgResult result = client.message.batchSendMsg(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testImportMsg() throws IOException {
+    void testImportMsg() throws IOException {
         TIMTextMsgElement msg = new TIMTextMsgElement("hello bingo");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         ImportMsgRequest request = ImportMsgRequest.builder()
@@ -78,11 +85,11 @@ public class MessageTest {
                 .build();
         ImportMsgResult result = client.message.importMsg(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testAdminGetRoamMsg() throws IOException {
+    void testAdminGetRoamMsg() throws IOException {
         AdminGetRoamMsgRequest request = AdminGetRoamMsgRequest.builder()
                 .fromAccount("test1")
                 .toAccount("test2")
@@ -91,7 +98,7 @@ public class MessageTest {
                 .maxTime(1631934060)
                 .build();
         AdminRoamMsgResult result = client.message.getRoamMsg(request);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
 
         List<MsgListItem> msgList = result.getMsgList();
         if (msgList != null && msgList.size() > 0) {
@@ -114,7 +121,7 @@ public class MessageTest {
     }
 
     @Test
-    public void testAdminMsgWithdraw() throws IOException {
+    void testAdminMsgWithdraw() throws IOException {
         AdminMsgWithdrawRequest request = AdminMsgWithdrawRequest.builder()
                 .fromAccount("test1")
                 .toAccount("bingo")
@@ -122,32 +129,32 @@ public class MessageTest {
                 .build();
         AdminMsgWithdrawResult result = client.message.msgWithdraw(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testAdminSetMsgRead() throws IOException {
+    void testAdminSetMsgRead() throws IOException {
         AdminSetMsgReadRequest request = AdminSetMsgReadRequest.builder()
                 .reportAccount("test1")
                 .peerAccount("test2")
                 .build();
         AdminSetMsgReadResult result = client.message.setMsgRead(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testGetC2cUnreadMsgNum() throws IOException {
+    void testGetC2cUnreadMsgNum() throws IOException {
         GetC2cUnreadMsgRequest request = new GetC2cUnreadMsgRequest("test2");
         List<String> peerAccount = Arrays.asList("test1", "bingo");
         request.setPeerAccount(peerAccount);
         C2cUnreadMsgNumResult result = client.message.getC2cUnreadMsgNum(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testModifyC2cMsg() throws IOException {
+    void testModifyC2cMsg() throws IOException {
         TIMTextMsgElement msg = new TIMTextMsgElement("test modify c2c msg");
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         ModifyC2cMsgRequest request = ModifyC2cMsgRequest.builder()
@@ -158,6 +165,6 @@ public class MessageTest {
                 .build();
         ModifyC2cMsgResult result = client.message.modifyC2cMsg(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }

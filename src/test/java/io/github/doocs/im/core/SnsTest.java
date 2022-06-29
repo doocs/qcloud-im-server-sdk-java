@@ -5,8 +5,9 @@ import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,11 +20,17 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/31 16:14
  */
-public class SnsTest {
-    private static final ImClient client = ClientFactory.getInstance();
+class SnsTest {
+    private static ImClient client;
+
+    @BeforeAll
+    static void setup() {
+        client = ClientFactory.getInstance();
+        Assertions.assertNotNull(client, "client is null");
+    }
 
     @Test
-    public void testFriendAdd() throws IOException {
+    void testFriendAdd() throws IOException {
         AddFriendItem addFriendItem = AddFriendItem.builder()
                 .toAccount("test2")
                 .addSource("AddSource_Type_XXXXXXXX")
@@ -41,11 +48,11 @@ public class SnsTest {
 
         FriendAddResult result = client.sns.friendAdd(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendImport() throws IOException {
+    void testFriendImport() throws IOException {
         ImportFriendItem importFriendItem = ImportFriendItem.builder()
                 .toAccount("test2")
                 .addSource("AddSource_Type_XXXXXXXX")
@@ -58,11 +65,11 @@ public class SnsTest {
 
         FriendImportResult result = client.sns.friendImport(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendUpdate() throws IOException {
+    void testFriendUpdate() throws IOException {
         SnsItem snsItem = SnsItem.builder()
                 .tag("Tag_SNS_Custom_testTag")
                 .value(TagSns.IM_ADD_WORDING)
@@ -80,11 +87,11 @@ public class SnsTest {
 
         FriendUpdateResult result = client.sns.friendUpdate(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendDelete() throws IOException {
+    void testFriendDelete() throws IOException {
         List<String> toAccount = Collections.singletonList("test2");
         FriendDeleteRequest request = FriendDeleteRequest.builder()
                 .deleteType(DeleteType.BOTH)
@@ -94,11 +101,11 @@ public class SnsTest {
 
         FriendDeleteResult result = client.sns.friendDelete(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendDeleteAll() throws IOException {
+    void testFriendDeleteAll() throws IOException {
         FriendDeleteAllRequest request = FriendDeleteAllRequest.builder()
                 .deleteType(DeleteType.BOTH)
                 .fromAccount("test1")
@@ -106,11 +113,11 @@ public class SnsTest {
 
         FriendDeleteAllResult result = client.sns.friendDeleteAll(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendCheck() throws IOException {
+    void testFriendCheck() throws IOException {
         List<String> toAccount = Collections.singletonList("test2");
         FriendCheckRequest request = FriendCheckRequest.builder()
                 .fromAccount("test1")
@@ -120,11 +127,11 @@ public class SnsTest {
 
         FriendCheckResult result = client.sns.friendCheck(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendGet() throws IOException {
+    void testFriendGet() throws IOException {
         FriendGetRequest request = FriendGetRequest.builder()
                 .fromAccount("test1")
                 .startIndex(0)
@@ -134,11 +141,11 @@ public class SnsTest {
 
         FriendGetResult result = client.sns.friendGet(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testFriendGetList() throws IOException {
+    void testFriendGetList() throws IOException {
         List<String> toAccount = Collections.singletonList("test2");
         List<String> tagList = Arrays.asList(TagProfile.IM_ADMIN_FORBID_TYPE, TagProfile.IM_ALLOW_TYPE);
         FriendGetListRequest request = FriendGetListRequest.builder()
@@ -149,11 +156,11 @@ public class SnsTest {
 
         FriendGetListResult result = client.sns.friendGetList(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testBlackListAdd() throws IOException {
+    void testBlackListAdd() throws IOException {
         List<String> toAccount = Collections.singletonList("test2");
         BlackListAddRequest request = BlackListAddRequest.builder()
                 .fromAccount("test1")
@@ -162,11 +169,11 @@ public class SnsTest {
 
         BlackListAddResult result = client.sns.blackListAdd(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testBlackListDelete() throws IOException {
+    void testBlackListDelete() throws IOException {
         List<String> toAccount = Collections.singletonList("test2");
         BlackListDeleteRequest request = BlackListDeleteRequest.builder()
                 .fromAccount("test1")
@@ -175,11 +182,11 @@ public class SnsTest {
 
         BlackListDeleteResult result = client.sns.blackListDelete(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testBlackListGet() throws IOException {
+    void testBlackListGet() throws IOException {
         BlackListGetRequest request = BlackListGetRequest.builder()
                 .fromAccount("test1")
                 .startIndex(0)
@@ -189,11 +196,11 @@ public class SnsTest {
 
         BlackListGetResult result = client.sns.blackListGet(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testBlackListCheck() throws IOException {
+    void testBlackListCheck() throws IOException {
         List<String> toAccount = Collections.singletonList("test2");
         BlackListCheckRequest request = BlackListCheckRequest.builder()
                 .fromAccount("test1")
@@ -203,11 +210,11 @@ public class SnsTest {
 
         BlackListCheckResult result = client.sns.blackListCheck(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testGroupAdd() throws IOException {
+    void testGroupAdd() throws IOException {
         List<String> groupName = Collections.singletonList("classmate");
         List<String> toAccount = Collections.singletonList("test2");
         GroupAddRequest request = GroupAddRequest.builder()
@@ -218,11 +225,11 @@ public class SnsTest {
 
         GroupAddResult result = client.sns.groupAdd(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testGroupDelete() throws IOException {
+    void testGroupDelete() throws IOException {
         List<String> groupName = Collections.singletonList("classmate");
         GroupDeleteRequest request = GroupDeleteRequest.builder()
                 .fromAccount("test1")
@@ -231,11 +238,11 @@ public class SnsTest {
 
         GroupDeleteResult result = client.sns.groupDelete(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testGroupGet() throws IOException {
+    void testGroupGet() throws IOException {
         List<String> groupName = Collections.singletonList("classmate");
         GroupGetRequest request = GroupGetRequest.builder()
                 .fromAccount("test1")
@@ -245,6 +252,6 @@ public class SnsTest {
 
         GroupGetResult result = client.sns.groupGet(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }
