@@ -1,7 +1,5 @@
 package io.github.doocs.im;
 
-import io.github.doocs.im.core.AccountTest;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,20 +11,20 @@ import java.util.Properties;
  * @since 2022/6/29 11:17
  */
 public class ClientFactory {
-    private static final ImClient client;
+    private static ImClient client;
     private static final Properties properties = new Properties();
 
     static {
-        InputStream resourceAsStream = AccountTest.class.getClassLoader().getResourceAsStream("app.properties");
+        InputStream resourceAsStream = ClientFactory.class.getClassLoader().getResourceAsStream("app.properties");
         try {
             properties.load(resourceAsStream);
+            String key = properties.getProperty("key");
+            String userId = properties.getProperty("userId");
+            Long appId = Long.parseLong(properties.getProperty("appId"));
+            client = ImClient.getInstance(appId, userId, key);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String key = properties.getProperty("key");
-        String userId = properties.getProperty("userId");
-        Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, userId, key);
     }
 
     public static ImClient getInstance() {

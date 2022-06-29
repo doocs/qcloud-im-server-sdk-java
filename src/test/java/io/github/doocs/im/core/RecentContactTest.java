@@ -10,8 +10,9 @@ import io.github.doocs.im.model.request.DeleteRecentContactRequest;
 import io.github.doocs.im.model.request.GetRecentContactListRequest;
 import io.github.doocs.im.model.response.DeleteRecentContactResult;
 import io.github.doocs.im.model.response.GetRecentContactListResult;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
@@ -21,11 +22,17 @@ import java.io.IOException;
  * @author bingo
  * @since 2021/10/11 10:56
  */
-public class RecentContactTest {
-    private static final ImClient client = ClientFactory.getInstance();
+class RecentContactTest {
+    private static ImClient client;
+
+    @BeforeAll
+    static void setup() {
+        client = ClientFactory.getInstance();
+        Assertions.assertNotNull(client, "client is null");
+    }
 
     @Test
-    public void testGetRecentContactList() throws IOException {
+    void testGetRecentContactList() throws IOException {
         GetRecentContactListRequest request = GetRecentContactListRequest.builder()
                 .fromAccount("doocs")
                 .timestamp(0)
@@ -37,11 +44,11 @@ public class RecentContactTest {
 
         GetRecentContactListResult result = client.recentContact.recentContactList(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
     @Test
-    public void testDeleteRecentContact() throws IOException {
+    void testDeleteRecentContact() throws IOException {
         DeleteRecentContactRequest request = DeleteRecentContactRequest.builder()
                 .fromAccount("doocs_1")
                 .type(RecentContactType.C2C)
@@ -51,6 +58,6 @@ public class RecentContactTest {
 
         DeleteRecentContactResult result = client.recentContact.deleteRecentContact(request);
         System.out.println(result);
-        Assert.assertEquals(ActionStatus.OK, result.getActionStatus());
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 }
