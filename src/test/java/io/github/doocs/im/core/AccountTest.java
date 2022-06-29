@@ -1,5 +1,7 @@
-package io.github.doocs.im;
+package io.github.doocs.im.core;
 
+import io.github.doocs.im.ClientFactory;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.IsNeedDetail;
 import io.github.doocs.im.model.request.*;
@@ -8,11 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * 帐号管理测试类 {@link io.github.doocs.im.core.Account}
@@ -21,22 +21,7 @@ import java.util.Properties;
  * @since 2021/7/30 16:17
  */
 public class AccountTest {
-    private static final Properties properties = new Properties();
-    private static final ImClient client;
-
-    static {
-        InputStream resourceAsStream = AccountTest.class.getClassLoader().getResourceAsStream("app.properties");
-        try {
-            properties.load(resourceAsStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String key = properties.getProperty("key");
-        String userId = properties.getProperty("userId");
-        Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, userId, key);
-    }
-
+    private static final ImClient client = ClientFactory.getInstance();
 
     @Test
     public void testAccountImport() throws IOException {

@@ -1,5 +1,7 @@
-package io.github.doocs.im;
+package io.github.doocs.im.core;
 
+import io.github.doocs.im.ClientFactory;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.MsgType;
 import io.github.doocs.im.constant.SyncOtherMachine;
@@ -12,8 +14,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * 单聊消息测试类 {@link io.github.doocs.im.core.Message}
@@ -22,21 +26,7 @@ import java.util.*;
  * @since 2021/7/31 10:37
  */
 public class MessageTest {
-    private static final Properties properties = new Properties();
-    private static final ImClient client;
-
-    static {
-        InputStream resourceAsStream = MessageTest.class.getClassLoader().getResourceAsStream("app.properties");
-        try {
-            properties.load(resourceAsStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String key = properties.getProperty("key");
-        String userId = properties.getProperty("userId");
-        Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, userId, key);
-    }
+    private static final ImClient client = ClientFactory.getInstance();
 
     @Test
     public void testSendMsg() throws IOException {

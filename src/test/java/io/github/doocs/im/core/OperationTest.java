@@ -1,5 +1,7 @@
-package io.github.doocs.im;
+package io.github.doocs.im.core;
 
+import io.github.doocs.im.ClientFactory;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.ChatType;
 import io.github.doocs.im.constant.ErrorCode;
 import io.github.doocs.im.constant.NoSpeakingTime;
@@ -9,11 +11,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * 全局禁言管理、运营管理测试类 {@link io.github.doocs.im.core.Operation}
@@ -22,22 +22,7 @@ import java.util.Properties;
  * @since 2021/07/31 15:36:40
  */
 public class OperationTest {
-    private static final Properties properties = new Properties();
-    private static final ImClient client;
-
-    static {
-        InputStream resourceAsStream = OperationTest.class.getClassLoader().getResourceAsStream("app.properties");
-        try {
-            properties.load(resourceAsStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String key = properties.getProperty("key");
-        String userId = properties.getProperty("userId");
-        Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, userId, key);
-    }
-
+    private static final ImClient client = ClientFactory.getInstance();
 
     @Test
     public void testSetNoSpeaking() throws IOException {

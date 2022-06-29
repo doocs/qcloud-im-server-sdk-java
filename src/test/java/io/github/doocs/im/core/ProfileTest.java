@@ -1,5 +1,7 @@
-package io.github.doocs.im;
+package io.github.doocs.im.core;
 
+import io.github.doocs.im.ClientFactory;
+import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.TagProfile;
 import io.github.doocs.im.model.request.PortraitGetRequest;
@@ -11,10 +13,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * 资料管理测试类 {@link io.github.doocs.im.core.Profile}
@@ -23,21 +23,7 @@ import java.util.Properties;
  * @since 2021/07/31 10:54
  */
 public class ProfileTest {
-    private static final Properties properties = new Properties();
-    private static final ImClient client;
-
-    static {
-        InputStream resourceAsStream = ProfileTest.class.getClassLoader().getResourceAsStream("app.properties");
-        try {
-            properties.load(resourceAsStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String key = properties.getProperty("key");
-        String userId = properties.getProperty("userId");
-        Long appId = Long.parseLong(properties.getProperty("appId"));
-        client = ImClient.getInstance(appId, userId, key);
-    }
+    private static final ImClient client = ClientFactory.getInstance();
 
     @Test
     public void testPortraitSet() throws IOException {
