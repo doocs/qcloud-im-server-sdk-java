@@ -45,7 +45,7 @@ public class AfterNewMemberJoinCallback {
      * 新入群成员 UserID 集合
      */
     @JsonProperty("NewMemberList")
-    private List<NewMemberItem> newMemberList;
+    private List<MemberAccount> newMemberList;
 
     public String getCallbackCommand() {
         return callbackCommand;
@@ -87,24 +87,11 @@ public class AfterNewMemberJoinCallback {
         this.operatorAccount = operatorAccount;
     }
 
-    public List<NewMemberItem> getNewMemberList() {
+    public List<MemberAccount> getNewMemberList() {
         return newMemberList;
     }
 
-    public void setNewMemberList(List<NewMemberItem> newMemberList) {
+    public void setNewMemberList(List<MemberAccount> newMemberList) {
         this.newMemberList = newMemberList;
-    }
-
-    public static class NewMemberItem {
-        @JsonProperty("Member_Account")
-        private String memberAccount;
-
-        public String getMemberAccount() {
-            return memberAccount;
-        }
-
-        public void setMemberAccount(String memberAccount) {
-            this.memberAccount = memberAccount;
-        }
     }
 }

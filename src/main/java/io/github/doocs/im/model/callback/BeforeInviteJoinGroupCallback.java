@@ -39,7 +39,7 @@ public class BeforeInviteJoinGroupCallback {
      * 要拉入群组的 UserID 集合
      */
     @JsonProperty("DestinationMembers")
-    private List<DestinationMember> destinationMembers;
+    private List<MemberAccount> destinationMembers;
 
     public String getCallbackCommand() {
         return callbackCommand;
@@ -73,24 +73,11 @@ public class BeforeInviteJoinGroupCallback {
         this.operatorAccount = operatorAccount;
     }
 
-    public List<DestinationMember> getDestinationMembers() {
+    public List<MemberAccount> getDestinationMembers() {
         return destinationMembers;
     }
 
-    public void setDestinationMembers(List<DestinationMember> destinationMembers) {
+    public void setDestinationMembers(List<MemberAccount> destinationMembers) {
         this.destinationMembers = destinationMembers;
-    }
-
-    public static class DestinationMember {
-        @JsonProperty("Member_Account")
-        private String memberAccount;
-
-        public String getMemberAccount() {
-            return memberAccount;
-        }
-
-        public void setMemberAccount(String memberAccount) {
-            this.memberAccount = memberAccount;
-        }
     }
 }

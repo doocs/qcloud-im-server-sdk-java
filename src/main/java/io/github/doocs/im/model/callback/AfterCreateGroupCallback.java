@@ -51,26 +51,13 @@ public class AfterCreateGroupCallback {
      * 请求创建的群组的初始化成员列表
      */
     @JsonProperty("MemberList")
-    private List<MemberItem> memberList;
+    private List<MemberAccount> memberList;
 
     /**
      * 用户建群时的自定义字段，这个字段默认是没有的，需要开通
      */
     @JsonProperty("UserDefinedDataList")
     private List<UserDefinedDataItem> userDefinedDataList;
-
-    public static class MemberItem {
-        @JsonProperty("Member_Account")
-        private String memberAccount;
-
-        public String getMemberAccount() {
-            return memberAccount;
-        }
-
-        public void setMemberAccount(String memberAccount) {
-            this.memberAccount = memberAccount;
-        }
-    }
 
     public static class UserDefinedDataItem {
         @JsonProperty("Key")
@@ -144,11 +131,11 @@ public class AfterCreateGroupCallback {
         this.name = name;
     }
 
-    public List<MemberItem> getMemberList() {
+    public List<MemberAccount> getMemberList() {
         return memberList;
     }
 
-    public void setMemberList(List<MemberItem> memberList) {
+    public void setMemberList(List<MemberAccount> memberList) {
         this.memberList = memberList;
     }
 
