@@ -45,7 +45,7 @@ public class AfterMemberExitCallback {
      * 退出群的成员列表
      */
     @JsonProperty("ExitMemberList")
-    private List<ExitMemberItem> exitMemberList;
+    private List<MemberAccount> exitMemberList;
 
     public String getCallbackCommand() {
         return callbackCommand;
@@ -87,24 +87,11 @@ public class AfterMemberExitCallback {
         this.operatorAccount = operatorAccount;
     }
 
-    public List<ExitMemberItem> getExitMemberList() {
+    public List<MemberAccount> getExitMemberList() {
         return exitMemberList;
     }
 
-    public void setExitMemberList(List<ExitMemberItem> exitMemberList) {
+    public void setExitMemberList(List<MemberAccount> exitMemberList) {
         this.exitMemberList = exitMemberList;
-    }
-
-    public static class ExitMemberItem {
-        @JsonProperty("Member_Account")
-        private String memberAccount;
-
-        public String getMemberAccount() {
-            return memberAccount;
-        }
-
-        public void setMemberAccount(String memberAccount) {
-            this.memberAccount = memberAccount;
-        }
     }
 }

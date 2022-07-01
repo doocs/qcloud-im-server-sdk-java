@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * 群组解散之后回调
+ * 直播群成员在线状态回调
  *
  * @author bingo
- * @since 2021/11/16 20:18
+ * @since 2022/7/1 10:13
  */
-public class AfterGroupDestroyedCallback {
+public class OnMemberStateChangeCallback {
     /**
      * 回调命令
      */
@@ -18,31 +18,25 @@ public class AfterGroupDestroyedCallback {
     private String callbackCommand;
 
     /**
-     * 被解散的群组 ID
+     * 产生群消息的群组 ID
      */
     @JsonProperty("GroupId")
     private String groupId;
 
     /**
-     * 被解散群的群组类型，例如 Public
+     * 产生群消息的 群组类型介绍，固定为 AVChatRoom
      */
     @JsonProperty("Type")
     private String type;
 
     /**
-     * 群主 UserID
+     * 事件类型：Offline - 掉线、Online - 重新上线
      */
-    @JsonProperty("Owner_Account")
-    private String ownerAccount;
+    @JsonProperty("EventType")
+    private String eventType;
 
     /**
-     * 群组名称
-     */
-    @JsonProperty("Name")
-    private String name;
-
-    /**
-     * 被解散群的成员列表
+     * 产生事件的成员列表
      */
     @JsonProperty("MemberList")
     private List<MemberAccount> memberList;
@@ -71,20 +65,12 @@ public class AfterGroupDestroyedCallback {
         this.type = type;
     }
 
-    public String getOwnerAccount() {
-        return ownerAccount;
+    public String getEventType() {
+        return eventType;
     }
 
-    public void setOwnerAccount(String ownerAccount) {
-        this.ownerAccount = ownerAccount;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
     public List<MemberAccount> getMemberList() {

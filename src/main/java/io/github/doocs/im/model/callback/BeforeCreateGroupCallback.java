@@ -51,7 +51,7 @@ public class BeforeCreateGroupCallback {
      * 请求创建的群组的初始化成员列表
      */
     @JsonProperty("MemberList")
-    private List<MemberItem> memberList;
+    private List<MemberAccount> memberList;
 
     public String getCallbackCommand() {
         return callbackCommand;
@@ -101,24 +101,11 @@ public class BeforeCreateGroupCallback {
         this.createdGroupNum = createdGroupNum;
     }
 
-    public List<MemberItem> getMemberList() {
+    public List<MemberAccount> getMemberList() {
         return memberList;
     }
 
-    public void setMemberList(List<MemberItem> memberList) {
+    public void setMemberList(List<MemberAccount> memberList) {
         this.memberList = memberList;
-    }
-
-    public static class MemberItem {
-        @JsonProperty("Member_Account")
-        private String memberAccount;
-
-        public String getMemberAccount() {
-            return memberAccount;
-        }
-
-        public void setMemberAccount(String memberAccount) {
-            this.memberAccount = memberAccount;
-        }
     }
 }
