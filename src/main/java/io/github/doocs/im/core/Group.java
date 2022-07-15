@@ -19,6 +19,7 @@ public class Group {
      */
     private static final String SERVICE_NAME = "group_open_http_svc";
     private static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
+    private static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
 
     /**
      * 群组管理相关命令字
@@ -47,6 +48,7 @@ public class Group {
     private static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
     private static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
     private static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
+    private static final String GET_MEMBERS_COMMAND = "get_members";
     private static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
     private static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
     private static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
@@ -344,6 +346,18 @@ public class Group {
     public GetOnlineMemberNumResult getOnlineMemberNum(GetOnlineMemberNumRequest getOnlineMemberNumRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_ONLINE_MEMBER_NUM_COMMAND);
         return HttpUtil.post(url, getOnlineMemberNumRequest, GetOnlineMemberNumResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取直播群在线列表
+     *
+     * @param getMembersRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetMembersResult getMembers(GetMembersRequest getMembersRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, GET_MEMBERS_COMMAND);
+        return HttpUtil.post(url, getMembersRequest, GetMembersResult.class, imClient.getConfig());
     }
 
     /**
