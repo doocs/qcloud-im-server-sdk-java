@@ -4,6 +4,7 @@ import io.github.doocs.im.constant.ContentType;
 import io.github.doocs.im.constant.Domain;
 import io.github.doocs.im.core.*;
 import io.github.doocs.im.util.SigUtil;
+import okhttp3.ConnectionPool;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,6 +22,7 @@ public class ImClient {
     private final String domain;
     private final ClientConfiguration config;
     private final long expireTime;
+    private final ConnectionPool connectionPool;
 
     private String userSig;
     private volatile long userSigExpireTs;
@@ -54,6 +56,10 @@ public class ImClient {
         return new ImClient(sdkAppId, userId, key, domain, config);
     }
 
+    public static ImClient getInstance(long sdkAppId, String userId, String key, String domain, ClientConfiguration config, ConnectionPool connectionPool) {
+        return new ImClient(sdkAppId, userId, key, domain, config, connectionPool);
+    }
+
     public ImClient(long sdkAppId, String userId, String key) {
         this(sdkAppId, userId, key, DEFAULT_DOMAIN);
     }
@@ -67,6 +73,10 @@ public class ImClient {
     }
 
     public ImClient(long sdkAppId, String userId, String key, String domain, ClientConfiguration config) {
+        this(sdkAppId, userId, key, domain, config, new ConnectionPool());
+    }
+
+    public ImClient(long sdkAppId, String userId, String key, String domain, ClientConfiguration config, ConnectionPool connectionPool) {
         this.sdkAppId = sdkAppId;
         this.userId = userId;
         this.key = key;
@@ -75,6 +85,7 @@ public class ImClient {
         this.expireTime = config == null ? ClientConfiguration.DEFAULT_EXPIRE_TIME : config.getExpireTime();
         this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, expireTime);
         this.userSigExpireTs = System.currentTimeMillis() / 1000 + expireTime - 100;
+        this.connectionPool = connectionPool;
 
         account = new Account(this);
         message = new Message(this);

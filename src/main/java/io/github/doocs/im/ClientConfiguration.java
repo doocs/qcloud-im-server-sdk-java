@@ -1,6 +1,7 @@
 package io.github.doocs.im;
 
 import io.github.doocs.im.util.VersionInfoUtil;
+import okhttp3.ConnectionPool;
 
 /**
  * 客户端配置类
@@ -35,6 +36,11 @@ public class ClientConfiguration {
      */
     public static final long DEFAULT_EXPIRE_TIME = 24 * 60 * 60L;
 
+    /**
+     * 默认okhttp3连接池
+     */
+    public static final ConnectionPool DEFAULT_CONNECTION_POOL = new ConnectionPool();
+
     private int maxRetries = DEFAULT_MAX_RETRIES;
     private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
     private long readTimeout = DEFAULT_READ_TIMEOUT;
@@ -42,12 +48,13 @@ public class ClientConfiguration {
     private long expireTime = DEFAULT_EXPIRE_TIME;
     private boolean autoRenewSig = DEFAULT_RENEW_SIG;
     private String userAgent = DEFAULT_USER_AGENT;
+    private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
 
     public ClientConfiguration() {
     }
 
     public ClientConfiguration(int maxRetries, long connectTimeout, long readTimeout, long writeTimeout,
-                               long expireTime, boolean autoRenewSig, String userAgent) {
+                               long expireTime, boolean autoRenewSig, String userAgent, ConnectionPool connectionPool) {
         this.maxRetries = maxRetries;
         this.connectTimeout = connectTimeout;
         this.readTimeout = readTimeout;
@@ -55,6 +62,7 @@ public class ClientConfiguration {
         this.expireTime = expireTime;
         this.autoRenewSig = autoRenewSig;
         this.userAgent = userAgent;
+        this.connectionPool = connectionPool;
     }
 
     private ClientConfiguration(Builder builder) {
@@ -65,6 +73,7 @@ public class ClientConfiguration {
         this.expireTime = builder.expireTime;
         this.autoRenewSig = builder.autoRenewSig;
         this.userAgent = builder.userAgent;
+        this.connectionPool = builder.connectionPool;
     }
 
     public static Builder builder() {
@@ -127,6 +136,14 @@ public class ClientConfiguration {
         this.userAgent = userAgent;
     }
 
+    public ConnectionPool getConnectionPool() {
+        return connectionPool;
+    }
+
+    public void setConnectionPool(ConnectionPool connectionPool) {
+        this.connectionPool = connectionPool;
+    }
+
     public static final class Builder {
         private int maxRetries = DEFAULT_MAX_RETRIES;
         private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
@@ -135,6 +152,7 @@ public class ClientConfiguration {
         private long expireTime = DEFAULT_EXPIRE_TIME;
         private boolean autoRenewSig = DEFAULT_RENEW_SIG;
         private String userAgent = DEFAULT_USER_AGENT;
+        private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
 
         private Builder() {
         }
@@ -175,6 +193,11 @@ public class ClientConfiguration {
 
         public Builder userAgent(String userAgent) {
             this.userAgent = userAgent;
+            return this;
+        }
+
+        public Builder connectionPool(ConnectionPool connectionPool) {
+            this.connectionPool = connectionPool;
             return this;
         }
     }
