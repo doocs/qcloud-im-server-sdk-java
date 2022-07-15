@@ -23,6 +23,7 @@ public class HttpUtil {
     private static final String DEFAULT_USER_AGENT = DEFAULT_CONFIG.getUserAgent();
 
     private static final OkHttpClient DEFAULT_CLIENT = new OkHttpClient.Builder()
+            .connectionPool(DEFAULT_CONFIG.getConnectionPool())
             .connectTimeout(DEFAULT_CONFIG.getConnectTimeout(), TimeUnit.MILLISECONDS)
             .readTimeout(DEFAULT_CONFIG.getReadTimeout(), TimeUnit.MILLISECONDS)
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
@@ -38,6 +39,7 @@ public class HttpUtil {
         OkHttpClient httpClient = DEFAULT_CLIENT;
         if (config != null) {
             httpClient = new OkHttpClient.Builder()
+                    .connectionPool(config.getConnectionPool())
                     .connectTimeout(config.getConnectTimeout(), TimeUnit.MILLISECONDS)
                     .readTimeout(config.getReadTimeout(), TimeUnit.MILLISECONDS)
                     .writeTimeout(config.getWriteTimeout(), TimeUnit.MILLISECONDS)
