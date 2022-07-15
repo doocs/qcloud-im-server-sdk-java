@@ -772,6 +772,43 @@ GetOnlineMemberNumRequest request = new GetOnlineMemberNumRequest("MyFirstAVChat
 GetOnlineMemberNumResult result = client.group.getOnlineMemberNum(request);
 ```
 
+## 获取直播群在线列表
+
+App 管理员可以根据群组 ID 获取直播群在线列表。
+
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                          |
+| ----------------- | -------------------------------------------- |
+| Private           | 不支持，同新版本中的 Work（好友工作群）      |
+| Public            | 不支持                                       |
+| ChatRoom          | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom        | 支持                                         |
+| Community（社群） | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+::: warning
+
+- 此功能需 [旗舰版套餐](https://buy.cloud.tencent.com/avc?from=17473)，并且已开通“直播群在线成员列表”功能(控制台“群功能配置”)。
+- 在线列表总体更新粒度为 10s。
+- 当直播群中超过 1000 人时，接口仅返回最新进群并且在线的 1000 人。
+- 当群人数大于等于 300 或群内有 Web 端用户的时候，出现群成员上下线或者进退群的时候，由于当前 10s 周期内已经统计了用户在线状态的原因，会在下一个 10s 周期才会统计到剔除状态用户变更的在线人数，所以会出现调用接口 10s - 20s 才会更新的现象。
+- 当群人数小于 300 人且群内没有 Web 端用户的时候，用户进退群会触发即时更新在线人数。
+  :::
+
+使用示例：
+
+```java
+GetMembersRequest request = GetMembersRequest.builder()
+        .groupId("MyFirstGroup")
+        .timestamp(0)
+        .build();
+
+GetMembersResult result = client.group.getMembers(request);
+```
+
 ## 获取群自定义属性
 
 App 管理员可以通过该接口获取群自定义属性。

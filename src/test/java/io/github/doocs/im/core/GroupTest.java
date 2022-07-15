@@ -353,6 +353,18 @@ class GroupTest {
     }
 
     @Test
+    void testGetMembers() throws IOException {
+        GetMembersRequest request = GetMembersRequest.builder()
+                .groupId("MyFirstGroup")
+                .timestamp(0)
+                .build();
+
+        GetMembersResult result = client.group.getMembers(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
     void testGetGroupAttr() throws IOException {
         GetGroupAttrRequest request = new GetGroupAttrRequest("MyFirstGroup");
 
