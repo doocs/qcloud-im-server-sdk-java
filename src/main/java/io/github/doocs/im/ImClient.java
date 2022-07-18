@@ -27,6 +27,7 @@ public class ImClient {
 
     private static final String VERSION = "v4";
     private static final String DEFAULT_DOMAIN = Domain.CHINA;
+    private static final ClientConfiguration DEFAULT_CLIENT_CONFIGURATION = new ClientConfiguration();
     private static final String FORMAT_URL = "https://%s/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=%s";
 
     public final Account account;
@@ -68,7 +69,7 @@ public class ImClient {
 
     public ImClient(long sdkAppId, String userId, String key, String domain, ClientConfiguration config) {
         if (config == null) {
-            config = new ClientConfiguration();
+            config = DEFAULT_CLIENT_CONFIGURATION;
         }
         if (domain == null) {
             domain = DEFAULT_DOMAIN;
