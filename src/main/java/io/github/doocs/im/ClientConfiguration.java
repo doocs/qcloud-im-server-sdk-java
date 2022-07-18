@@ -55,7 +55,10 @@ public class ClientConfiguration {
 
     public ClientConfiguration(int maxRetries, long connectTimeout, long readTimeout, long writeTimeout,
                                long expireTime, boolean autoRenewSig, String userAgent, ConnectionPool connectionPool) {
-        this.maxRetries = maxRetries;
+        if (connectionPool == null) {
+            connectionPool = DEFAULT_CONNECTION_POOL;
+        }
+        this.maxRetries = Math.max(0, maxRetries);
         this.connectTimeout = connectTimeout;
         this.readTimeout = readTimeout;
         this.writeTimeout = writeTimeout;
@@ -85,7 +88,7 @@ public class ClientConfiguration {
     }
 
     public void setMaxRetries(int maxRetries) {
-        this.maxRetries = maxRetries;
+        this.maxRetries = Math.max(0, maxRetries);
     }
 
     public long getConnectTimeout() {
@@ -141,6 +144,9 @@ public class ClientConfiguration {
     }
 
     public void setConnectionPool(ConnectionPool connectionPool) {
+        if (connectionPool == null) {
+            connectionPool = DEFAULT_CONNECTION_POOL;
+        }
         this.connectionPool = connectionPool;
     }
 
@@ -197,6 +203,9 @@ public class ClientConfiguration {
         }
 
         public Builder connectionPool(ConnectionPool connectionPool) {
+            if (connectionPool == null) {
+                connectionPool = DEFAULT_CONNECTION_POOL;
+            }
             this.connectionPool = connectionPool;
             return this;
         }
