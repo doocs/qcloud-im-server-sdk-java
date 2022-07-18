@@ -10,14 +10,14 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.3.22</version>
+  <version>0.3.23</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.3.22'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.3.23'
 ```
 
 ### 下载 JAR
@@ -61,7 +61,8 @@ ImClient client = ImClient.getInstance(appId, userId, key, config);
 | `writeTimeout`   | long    | HTTP 写超时（毫秒）           | 3000   |
 | `expireTime`     | long    | UserSig 签名有效时长（秒）    | 86400  |
 | `autoRenewSig`   | boolean | 是否自动进行 UserSig 签名续期 | true   |
-| `userAgent`      | String  | User-Agent                    |        |
+| `userAgent`      | string  | User-Agent                    |        |
+| `connectionPool` | object  | HTTP 连接池                   |        |
 
 ## 使用示例
 
