@@ -4,7 +4,6 @@ import io.github.doocs.im.constant.ContentType;
 import io.github.doocs.im.constant.Domain;
 import io.github.doocs.im.core.*;
 import io.github.doocs.im.util.SigUtil;
-import okhttp3.ConnectionPool;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,13 +21,13 @@ public class ImClient {
     private final String domain;
     private final ClientConfiguration config;
     private final long expireTime;
-    private final ConnectionPool connectionPool;
 
     private String userSig;
     private volatile long userSigExpireTs;
 
     private static final String VERSION = "v4";
     private static final String DEFAULT_DOMAIN = Domain.CHINA;
+    private static final ClientConfiguration DEFAULT_CLIENT_CONFIGURATION = new ClientConfiguration();
     private static final String FORMAT_URL = "https://%s/%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=%s";
 
     public final Account account;
@@ -56,12 +55,8 @@ public class ImClient {
         return new ImClient(sdkAppId, userId, key, domain, config);
     }
 
-    public static ImClient getInstance(long sdkAppId, String userId, String key, String domain, ClientConfiguration config, ConnectionPool connectionPool) {
-        return new ImClient(sdkAppId, userId, key, domain, config, connectionPool);
-    }
-
     public ImClient(long sdkAppId, String userId, String key) {
-        this(sdkAppId, userId, key, DEFAULT_DOMAIN);
+        this(sdkAppId, userId, key, null, null);
     }
 
     public ImClient(long sdkAppId, String userId, String key, String domain) {
@@ -69,23 +64,25 @@ public class ImClient {
     }
 
     public ImClient(long sdkAppId, String userId, String key, ClientConfiguration config) {
-        this(sdkAppId, userId, key, DEFAULT_DOMAIN, config);
+        this(sdkAppId, userId, key, null, config);
     }
 
     public ImClient(long sdkAppId, String userId, String key, String domain, ClientConfiguration config) {
-        this(sdkAppId, userId, key, domain, config, new ConnectionPool());
-    }
+        if (config == null) {
+            config = DEFAULT_CLIENT_CONFIGURATION;
+        }
+        if (domain == null) {
+            domain = DEFAULT_DOMAIN;
+        }
 
-    public ImClient(long sdkAppId, String userId, String key, String domain, ClientConfiguration config, ConnectionPool connectionPool) {
         this.sdkAppId = sdkAppId;
         this.userId = userId;
         this.key = key;
         this.domain = domain;
         this.config = config;
-        this.expireTime = config == null ? ClientConfiguration.DEFAULT_EXPIRE_TIME : config.getExpireTime();
+        this.expireTime = config.getExpireTime();
         this.userSig = SigUtil.genUserSig(sdkAppId, key, userId, expireTime);
         this.userSigExpireTs = System.currentTimeMillis() / 1000 + expireTime - 100;
-        this.connectionPool = connectionPool;
 
         account = new Account(this);
         message = new Message(this);
@@ -103,7 +100,7 @@ public class ImClient {
      * @return 签名
      */
     private String getUserSig() {
-        boolean renewSig = config == null || config.isAutoRenewSig();
+        boolean renewSig = config.isAutoRenewSig();
         if (renewSig) {
             long currentTs = System.currentTimeMillis() / 1000;
             if (currentTs >= userSigExpireTs) {
