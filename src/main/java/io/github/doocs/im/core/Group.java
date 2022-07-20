@@ -20,6 +20,7 @@ public class Group {
     private static final String SERVICE_NAME = "group_open_http_svc";
     private static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
     private static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
+    private static final String SERVICE_NAME_OPEN_IM = "openim";
 
     /**
      * 群组管理相关命令字
@@ -53,6 +54,8 @@ public class Group {
     private static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
     private static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
     private static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
+    private static final String MODIFY_GROUP_MSG_COMMAND = "modify_group_msg";
+    private static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
 
     private final ImClient imClient;
 
@@ -406,5 +409,29 @@ public class Group {
     public SetGroupAttrResult setGroupAttr(SetGroupAttrRequest setGroupAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SET_GROUP_ATTR_COMMAND);
         return HttpUtil.post(url, setGroupAttrRequest, SetGroupAttrResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 修改群聊历史消息
+     *
+     * @param modifyGroupMsgRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyGroupMsgResult modifyGroupMsg(ModifyGroupMsgRequest modifyGroupMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, MODIFY_GROUP_MSG_COMMAND);
+        return HttpUtil.post(url, modifyGroupMsgRequest, ModifyGroupMsgResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 直播群广播消息
+     *
+     * @param sendBroadcastMsgRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public SendBroadcastMsgResult sendBroadcastMsg(SendBroadcastMsgRequest sendBroadcastMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_BROADCAST_MSG_COMMAND);
+        return HttpUtil.post(url, sendBroadcastMsgRequest, SendBroadcastMsgResult.class, imClient.getConfig());
     }
 }

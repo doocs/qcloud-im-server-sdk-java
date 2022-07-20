@@ -412,4 +412,33 @@ class GroupTest {
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
+
+    @Test
+    void testModifyGroupMsg() throws IOException {
+        ModifyGroupMsgRequest request = new ModifyGroupMsgRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setMsgSeq(123L);
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+        request.setMsgBody(msgBody);
+        request.setMsgBody(msgBody);
+
+        ModifyGroupMsgResult result = client.group.modifyGroupMsg(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testSendBroadcastMsg() throws IOException {
+        SendBroadcastMsgRequest request = new SendBroadcastMsgRequest();
+        request.setFromAccount("test1");
+        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+        request.setMsgBody(msgBody);
+        request.setRandom(1223L);
+
+        SendBroadcastMsgResult result = client.group.sendBroadcastMsg(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
 }

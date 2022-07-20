@@ -925,3 +925,58 @@ request.setGroupAttrs(groupAttrs);
 
 SetGroupAttrResult result = client.group.setGroupAttr(request);
 ```
+
+## 修改群聊历史消息
+
+- 管理员修改群聊历史消息
+- 可以单独修改消息中的 MsgBody 或 CloudCustomData 字段，也可以同时修改这两个字段。以请求中指定的字段值覆盖历史消息对应的字段。
+- 不支持修改直播群的历史消息
+
+::: warning
+使用该接口修改消息后，被修改的消息不能恢复，请谨慎调用该接口。
+:::
+
+```java
+ModifyGroupMsgRequest request = new ModifyGroupMsgRequest();
+request.setGroupId("MyFirstGroup");
+request.setMsgSeq(123L);
+TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+request.setMsgBody(msgBody);
+request.setMsgBody(msgBody);
+
+ModifyGroupMsgResult result = client.group.modifyGroupMsg(request);
+```
+
+## 直播群广播消息
+
+App 管理员可以通过该接口向所有直播群下发广播消息。
+
+::: warning
+直播群广播消息功能支持需要终端 SDK 6.5.2803 增强版及以上版本、Web SDK v2.21.0 及以上版本，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182) 并在 [控制台](https://console.cloud.tencent.com/im/qun-setting)>群功能配置>群功能配置>直播群广播消息 打开开关后方可使用。
+:::
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                          |
+| ----------------- | -------------------------------------------- |
+| Private           | 不支持，同新版本中的 Work（好友工作群）      |
+| Public            | 不支持                                       |
+| ChatRoom          | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom        | 支持，发给所有直播群                         |
+| Community（社群） | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+```java
+SendBroadcastMsgRequest request = new SendBroadcastMsgRequest();
+request.setFromAccount("test1");
+TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
+List<TIMMsgElement> msgBody = Collections.singletonList(msg);
+request.setMsgBody(msgBody);
+request.setRandom(1223L);
+
+SendBroadcastMsgResult result = client.group.sendBroadcastMsg(request);
+```
