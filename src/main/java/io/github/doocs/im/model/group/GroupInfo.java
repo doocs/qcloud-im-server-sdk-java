@@ -105,6 +105,12 @@ public class GroupInfo {
     private String applyJoinOption;
 
     /**
+     * 群全员禁言状态
+     */
+    @JsonProperty("MuteAllMember")
+    private String muteAllMember;
+
+    /**
      * 群组维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
      */
     @JsonProperty("AppDefinedData")
@@ -126,9 +132,10 @@ public class GroupInfo {
     }
 
     public GroupInfo(String groupId, String type, String name, String introduction, String notification,
-                     String faceUrl, String ownerAccount, Integer createTime, Integer infoSeq, Integer lastInfoTime,
-                     Integer lastMsgTime, Integer nextMsgSeq, Integer memberNum, Integer maxMemberNum,
-                     String applyJoinOption, List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
+                     String faceUrl, String ownerAccount, Integer createTime, Integer infoSeq,
+                     Integer lastInfoTime, Integer lastMsgTime, Integer nextMsgSeq, Integer memberNum,
+                     Integer maxMemberNum, String applyJoinOption, String muteAllMember,
+                     List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
                      List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.groupId = groupId;
         this.type = type;
@@ -145,6 +152,7 @@ public class GroupInfo {
         this.memberNum = memberNum;
         this.maxMemberNum = maxMemberNum;
         this.applyJoinOption = applyJoinOption;
+        this.muteAllMember = muteAllMember;
         this.appDefinedData = appDefinedData;
         this.memberList = memberList;
         this.appMemberDefinedData = appMemberDefinedData;
@@ -166,6 +174,7 @@ public class GroupInfo {
         this.memberNum = builder.memberNum;
         this.maxMemberNum = builder.maxMemberNum;
         this.applyJoinOption = builder.applyJoinOption;
+        this.muteAllMember = builder.muteAllMember;
         this.appDefinedData = builder.appDefinedData;
         this.memberList = builder.memberList;
         this.appMemberDefinedData = builder.appMemberDefinedData;
@@ -295,6 +304,14 @@ public class GroupInfo {
         this.applyJoinOption = applyJoinOption;
     }
 
+    public String getMuteAllMember() {
+        return muteAllMember;
+    }
+
+    public void setMuteAllMember(String muteAllMember) {
+        this.muteAllMember = muteAllMember;
+    }
+
     public List<AppDefinedDataItem> getAppDefinedData() {
         return appDefinedData;
     }
@@ -336,6 +353,7 @@ public class GroupInfo {
         private Integer memberNum;
         private Integer maxMemberNum;
         private String applyJoinOption;
+        private String muteAllMember;
         private List<AppDefinedDataItem> appDefinedData;
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
@@ -419,6 +437,11 @@ public class GroupInfo {
 
         public Builder applyJoinOption(String applyJoinOption) {
             this.applyJoinOption = applyJoinOption;
+            return this;
+        }
+
+        public Builder muteAllMember(String muteAllMember) {
+            this.muteAllMember = muteAllMember;
             return this;
         }
 

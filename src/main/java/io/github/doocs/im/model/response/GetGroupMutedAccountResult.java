@@ -10,25 +10,25 @@ import java.util.List;
  * @author bingo
  * @since 2021/8/4 11:22
  */
-public class GetGroupShuttedUinResult extends GenericResult {
+public class GetGroupMutedAccountResult extends GenericResult {
     /**
      * 返回结果为禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
      */
-    @JsonProperty("ShuttedUinList")
-    private List<ShuttedUinResultItem> shuttedUinList;
+    @JsonProperty("MutedAccountList")
+    private List<MutedAccountItem> mutedAccountList;
 
-    public List<ShuttedUinResultItem> getShuttedUinList() {
-        return shuttedUinList;
+    public List<MutedAccountItem> getMutedAccountList() {
+        return mutedAccountList;
     }
 
-    public void setShuttedUinList(List<ShuttedUinResultItem> shuttedUinList) {
-        this.shuttedUinList = shuttedUinList;
+    public void setMutedAccountList(List<MutedAccountItem> mutedAccountList) {
+        this.mutedAccountList = mutedAccountList;
     }
 
     @Override
     public String toString() {
-        return "GetGroupShuttedUinResult{" +
-                "shuttedUinList=" + shuttedUinList +
+        return "GetGroupMutedAccountResult{" +
+                "mutedAccountList=" + mutedAccountList +
                 ", actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
                 ", errorCode=" + errorCode +

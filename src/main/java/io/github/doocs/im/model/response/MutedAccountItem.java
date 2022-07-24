@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author bingo
  * @since 2021/8/4 11:23
  */
-public class ShuttedUinResultItem {
+public class MutedAccountItem {
     /**
      * 被禁言的成员 ID
      */
@@ -16,8 +16,8 @@ public class ShuttedUinResultItem {
     /**
      * 被禁言到的时间
      */
-    @JsonProperty("ShuttedUntil")
-    private Integer shuttedUntil;
+    @JsonProperty("MutedUntil")
+    private Integer mutedUntil;
 
     public String getMemberAccount() {
         return memberAccount;
@@ -27,19 +27,19 @@ public class ShuttedUinResultItem {
         this.memberAccount = memberAccount;
     }
 
-    public Integer getShuttedUntil() {
-        return shuttedUntil;
+    public Integer getMutedUntil() {
+        return mutedUntil;
     }
 
-    public void setShuttedUntil(Integer shuttedUntil) {
-        this.shuttedUntil = shuttedUntil;
+    public void setMutedUntil(Integer mutedUntil) {
+        this.mutedUntil = mutedUntil;
     }
 
     @Override
     public String toString() {
-        return "ShuttedUinResultItem{" +
+        return "MutedAccountItem{" +
                 "memberAccount='" + memberAccount + '\'' +
-                ", shuttedUntil=" + shuttedUntil +
+                ", mutedUntil=" + mutedUntil +
                 '}';
     }
 }

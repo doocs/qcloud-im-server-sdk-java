@@ -51,8 +51,8 @@ public class MemberProfile {
     /**
      * 0表示未被禁言，否则为禁言的截止时间
      */
-    @JsonProperty("ShutUpUntil")
-    private Integer shutUpUntil;
+    @JsonProperty("MuteUntil")
+    private Integer muteUntil;
 
     /**
      * 群名片
@@ -70,7 +70,7 @@ public class MemberProfile {
     }
 
     public MemberProfile(String memberAccount, String role, Integer joinTime, Long msgSeq,
-                         String msgFlag, Integer lastSendMsgTime, Integer shutUpUntil, String nameCard,
+                         String msgFlag, Integer lastSendMsgTime, Integer muteUntil, String nameCard,
                          List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.memberAccount = memberAccount;
         this.role = role;
@@ -78,7 +78,7 @@ public class MemberProfile {
         this.msgSeq = msgSeq;
         this.msgFlag = msgFlag;
         this.lastSendMsgTime = lastSendMsgTime;
-        this.shutUpUntil = shutUpUntil;
+        this.muteUntil = muteUntil;
         this.nameCard = nameCard;
         this.appMemberDefinedData = appMemberDefinedData;
     }
@@ -90,7 +90,7 @@ public class MemberProfile {
         this.msgSeq = builder.msgSeq;
         this.msgFlag = builder.msgFlag;
         this.lastSendMsgTime = builder.lastSendMsgTime;
-        this.shutUpUntil = builder.shutUpUntil;
+        this.muteUntil = builder.muteUntil;
         this.nameCard = builder.nameCard;
         this.appMemberDefinedData = builder.appMemberDefinedData;
     }
@@ -147,12 +147,12 @@ public class MemberProfile {
         this.lastSendMsgTime = lastSendMsgTime;
     }
 
-    public Integer getShutUpUntil() {
-        return shutUpUntil;
+    public Integer getMuteUntil() {
+        return muteUntil;
     }
 
-    public void setShutUpUntil(Integer shutUpUntil) {
-        this.shutUpUntil = shutUpUntil;
+    public void setMuteUntil(Integer muteUntil) {
+        this.muteUntil = muteUntil;
     }
 
     public String getNameCard() {
@@ -171,20 +171,6 @@ public class MemberProfile {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
-    @Override
-    public String toString() {
-        return "MemberProfile{" +
-                "memberAccount='" + memberAccount + '\'' +
-                ", role='" + role + '\'' +
-                ", joinTime=" + joinTime +
-                ", msgSeq=" + msgSeq +
-                ", msgFlag='" + msgFlag + '\'' +
-                ", lastSendMsgTime=" + lastSendMsgTime +
-                ", shutUpUntil=" + shutUpUntil +
-                ", nameCard='" + nameCard + '\'' +
-                ", appMemberDefinedData=" + appMemberDefinedData +
-                '}';
-    }
 
     public static final class Builder {
         private String memberAccount;
@@ -196,7 +182,7 @@ public class MemberProfile {
         private Long msgSeq;
         private String msgFlag;
         private Integer lastSendMsgTime;
-        private Integer shutUpUntil;
+        private Integer muteUntil;
         private String nameCard;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
@@ -237,8 +223,8 @@ public class MemberProfile {
             return this;
         }
 
-        public Builder shutUpUntil(Integer shutUpUntil) {
-            this.shutUpUntil = shutUpUntil;
+        public Builder muteUntil(Integer muteUntil) {
+            this.muteUntil = muteUntil;
             return this;
         }
 
@@ -251,5 +237,20 @@ public class MemberProfile {
             this.appMemberDefinedData = appMemberDefinedData;
             return this;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MemberProfile{" +
+                "memberAccount='" + memberAccount + '\'' +
+                ", role='" + role + '\'' +
+                ", joinTime=" + joinTime +
+                ", msgSeq=" + msgSeq +
+                ", msgFlag='" + msgFlag + '\'' +
+                ", lastSendMsgTime=" + lastSendMsgTime +
+                ", muteUntil=" + muteUntil +
+                ", nameCard='" + nameCard + '\'' +
+                ", appMemberDefinedData=" + appMemberDefinedData +
+                '}';
     }
 }

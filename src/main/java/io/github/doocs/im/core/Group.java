@@ -37,7 +37,7 @@ public class Group {
     private static final String GET_JOINED_GROUP_LIST_COMMAND = "get_joined_group_list";
     private static final String GET_ROLE_IN_GROUP_COMMAND = "get_role_in_group";
     private static final String FORBID_SEND_MSG_COMMAND = "forbid_send_msg";
-    private static final String GET_GROUP_SHUTTED_UIN_COMMAND = "get_group_shutted_uin";
+    private static final String GET_GROUP_MUTED_ACCOUNT_COMMAND = "get_group_muted_account";
     private static final String SEND_GROUP_MSG_COMMAND = "send_group_msg";
     private static final String SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND = "send_group_system_notification";
     private static final String CHANGE_GROUP_OWNER_COMMAND = "change_group_owner";
@@ -56,6 +56,8 @@ public class Group {
     private static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
     private static final String MODIFY_GROUP_MSG_COMMAND = "modify_group_msg";
     private static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
+    private static final String GET_GROUP_MSG_RECEIPT_COMMAND = "get_group_msg_receipt";
+    private static final String GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND = "get_group_msg_receipt_detail";
 
     private final ImClient imClient;
 
@@ -210,13 +212,13 @@ public class Group {
     /**
      * 获取被禁言群成员列表
      *
-     * @param getGroupShuttedUinRequest 请求参数
+     * @param getGroupMutedAccountRequest 请求参数
      * @return 结果
      * @throws IOException 异常
      */
-    public GetGroupShuttedUinResult getGroupShuttedUin(GetGroupShuttedUinRequest getGroupShuttedUinRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_SHUTTED_UIN_COMMAND);
-        return HttpUtil.post(url, getGroupShuttedUinRequest, GetGroupShuttedUinResult.class, imClient.getConfig());
+    public GetGroupMutedAccountResult getGroupMutedAccount(GetGroupMutedAccountRequest getGroupMutedAccountRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MUTED_ACCOUNT_COMMAND);
+        return HttpUtil.post(url, getGroupMutedAccountRequest, GetGroupMutedAccountResult.class, imClient.getConfig());
     }
 
     /**
@@ -433,5 +435,29 @@ public class Group {
     public SendBroadcastMsgResult sendBroadcastMsg(SendBroadcastMsgRequest sendBroadcastMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_BROADCAST_MSG_COMMAND);
         return HttpUtil.post(url, sendBroadcastMsgRequest, SendBroadcastMsgResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 拉取群消息已读回执信息
+     *
+     * @param getGroupMsgReceiptRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupMsgReceiptResult getGroupMsgReceipt(GetGroupMsgReceiptRequest getGroupMsgReceiptRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MSG_RECEIPT_COMMAND);
+        return HttpUtil.post(url, getGroupMsgReceiptRequest, GetGroupMsgReceiptResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 拉取群消息已读回执详情
+     *
+     * @param getGroupMsgReceiptDetailRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupMsgReceiptDetailResult getGroupMsgReceiptDetail(GetGroupMsgReceiptDetailRequest getGroupMsgReceiptDetailRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND);
+        return HttpUtil.post(url, getGroupMsgReceiptDetailRequest, GetGroupMsgReceiptDetailResult.class, imClient.getConfig());
     }
 }

@@ -53,8 +53,8 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
     /**
      * 需禁言时间，单位为秒，0表示取消禁言
      */
-    @JsonProperty("ShutUpTime")
-    private Long shutUpTime;
+    @JsonProperty("MuteTime")
+    private Long muteTime;
 
     public ModifyGroupMemberInfoRequest() {
     }
@@ -65,14 +65,14 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
     }
 
     public ModifyGroupMemberInfoRequest(String groupId, String memberAccount, String role, String msgFlag,
-                                        String nameCard, List<Map<String, Object>> appMemberDefinedData, Long shutUpTime) {
+                                        String nameCard, List<Map<String, Object>> appMemberDefinedData, Long muteTime) {
         this.groupId = groupId;
         this.memberAccount = memberAccount;
         this.role = role;
         this.msgFlag = msgFlag;
         this.nameCard = nameCard;
         this.appMemberDefinedData = appMemberDefinedData;
-        this.shutUpTime = shutUpTime;
+        this.muteTime = muteTime;
     }
 
     private ModifyGroupMemberInfoRequest(Builder builder) {
@@ -82,7 +82,7 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
         this.msgFlag = builder.msgFlag;
         this.nameCard = builder.nameCard;
         this.appMemberDefinedData = builder.appMemberDefinedData;
-        this.shutUpTime = builder.shutUpTime;
+        this.muteTime = builder.muteTime;
     }
 
     public static Builder builder() {
@@ -137,12 +137,12 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
-    public Long getShutUpTime() {
-        return shutUpTime;
+    public Long getMuteTime() {
+        return muteTime;
     }
 
-    public void setShutUpTime(Long shutUpTime) {
-        this.shutUpTime = shutUpTime;
+    public void setMuteTime(Long muteTime) {
+        this.muteTime = muteTime;
     }
 
 
@@ -153,7 +153,7 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
         private String msgFlag;
         private String nameCard;
         private List<Map<String, Object>> appMemberDefinedData;
-        private Long shutUpTime;
+        private Long muteTime;
 
         private Builder() {
         }
@@ -192,8 +192,8 @@ public class ModifyGroupMemberInfoRequest extends GenericRequest {
             return this;
         }
 
-        public Builder shutUpTime(Long shutUpTime) {
-            this.shutUpTime = shutUpTime;
+        public Builder muteTime(Long muteTime) {
+            this.muteTime = muteTime;
             return this;
         }
     }

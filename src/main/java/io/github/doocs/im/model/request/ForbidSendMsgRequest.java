@@ -28,22 +28,22 @@ public class ForbidSendMsgRequest extends GenericRequest {
     /**
      * 无符号类型。需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
      */
-    @JsonProperty("ShutUpTime")
-    private Long shutUpTime;
+    @JsonProperty("MuteTime")
+    private Long muteTime;
 
     public ForbidSendMsgRequest() {
     }
 
-    public ForbidSendMsgRequest(String groupId, List<String> membersAccount, Long shutUpTime) {
+    public ForbidSendMsgRequest(String groupId, List<String> membersAccount, Long muteTime) {
         this.groupId = groupId;
         this.membersAccount = membersAccount;
-        this.shutUpTime = shutUpTime;
+        this.muteTime = muteTime;
     }
 
     private ForbidSendMsgRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.membersAccount = builder.membersAccount;
-        this.shutUpTime = builder.shutUpTime;
+        this.muteTime = builder.muteTime;
     }
 
     public static Builder builder() {
@@ -66,19 +66,19 @@ public class ForbidSendMsgRequest extends GenericRequest {
         this.membersAccount = membersAccount;
     }
 
-    public Long getShutUpTime() {
-        return shutUpTime;
+    public Long getMuteTime() {
+        return muteTime;
     }
 
-    public void setShutUpTime(Long shutUpTime) {
-        this.shutUpTime = shutUpTime;
+    public void setMuteTime(Long muteTime) {
+        this.muteTime = muteTime;
     }
 
 
     public static final class Builder {
         private String groupId;
         private List<String> membersAccount;
-        private Long shutUpTime;
+        private Long muteTime;
 
         private Builder() {
         }
@@ -97,8 +97,8 @@ public class ForbidSendMsgRequest extends GenericRequest {
             return this;
         }
 
-        public Builder shutUpTime(Long shutUpTime) {
-            this.shutUpTime = shutUpTime;
+        public Builder muteTime(Long muteTime) {
+            this.muteTime = muteTime;
             return this;
         }
     }
