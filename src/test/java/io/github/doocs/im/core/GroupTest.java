@@ -96,7 +96,7 @@ class GroupTest {
                 .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
                 .maxMemberNum(500)
                 .applyJoinOption(ApplyJoinOption.NEED_PERMISSION)
-                .shutUpAllMember(ShutUpAllMember.OFF)
+                .muteAllMember(MuteAllMember.OFF)
                 .build();
 
         ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
@@ -182,7 +182,7 @@ class GroupTest {
         ForbidSendMsgRequest request = ForbidSendMsgRequest.builder()
                 .groupId("MyFirstGroup")
                 .membersAccount(membersAccount)
-                .shutUpTime(200L)
+                .muteTime(200L)
                 .build();
 
         ForbidSendMsgResult result = client.group.forbidSendMsg(request);
@@ -191,10 +191,10 @@ class GroupTest {
     }
 
     @Test
-    void testGetGroupShuttedUin() throws IOException {
-        GetGroupShuttedUinRequest request = new GetGroupShuttedUinRequest("MyFirstGroup");
+    void testGetGroupMutedAccount() throws IOException {
+        GetGroupMutedAccountRequest request = new GetGroupMutedAccountRequest("MyFirstGroup");
 
-        GetGroupShuttedUinResult result = client.group.getGroupShuttedUin(request);
+        GetGroupMutedAccountResult result = client.group.getGroupMutedAccount(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
@@ -438,6 +438,33 @@ class GroupTest {
         request.setRandom(1223L);
 
         SendBroadcastMsgResult result = client.group.sendBroadcastMsg(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetGroupMsgReceipt() throws IOException {
+        GetGroupMsgReceiptRequest request = new GetGroupMsgReceiptRequest();
+        request.setGroupId("MyFirstGroup");
+        MsgSeqItem seqItem = new MsgSeqItem();
+        seqItem.setMsgSeq(123L);
+        request.setMsgSeqList(Collections.singletonList(seqItem));
+
+        GetGroupMsgReceiptResult result = client.group.getGroupMsgReceipt(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetGroupMsgReceiptDetail() throws IOException {
+        GetGroupMsgReceiptDetailRequest request = new GetGroupMsgReceiptDetailRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setMsgSeq(123L);
+        request.setNum(12);
+        request.setCursor("");
+        request.setFlag(12);
+
+        GetGroupMsgReceiptDetailResult result = client.group.getGroupMsgReceiptDetail(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

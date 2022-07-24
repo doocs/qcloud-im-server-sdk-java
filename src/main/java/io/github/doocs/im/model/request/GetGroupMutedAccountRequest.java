@@ -10,21 +10,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/08/02 16:43
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetGroupShuttedUinRequest extends GenericRequest {
+public class GetGroupMutedAccountRequest extends GenericRequest {
     /**
      * 需要获取被禁言成员列表的群组 ID。
      */
     @JsonProperty("GroupId")
     private String groupId;
 
-    public GetGroupShuttedUinRequest() {
+    public GetGroupMutedAccountRequest() {
     }
 
-    public GetGroupShuttedUinRequest(String groupId) {
+    public GetGroupMutedAccountRequest(String groupId) {
         this.groupId = groupId;
     }
 
-    private GetGroupShuttedUinRequest(Builder builder) {
+    private GetGroupMutedAccountRequest(Builder builder) {
         this.groupId = builder.groupId;
     }
 
@@ -47,8 +47,8 @@ public class GetGroupShuttedUinRequest extends GenericRequest {
         private Builder() {
         }
 
-        public GetGroupShuttedUinRequest build() {
-            return new GetGroupShuttedUinRequest(this);
+        public GetGroupMutedAccountRequest build() {
+            return new GetGroupMutedAccountRequest(this);
         }
 
         public Builder groupId(String groupId) {

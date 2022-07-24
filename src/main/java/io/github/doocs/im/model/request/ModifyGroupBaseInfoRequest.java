@@ -2,6 +2,7 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.doocs.im.constant.MuteAllMember;
 import io.github.doocs.im.model.group.AppDefinedDataItem;
 
 import java.util.List;
@@ -61,10 +62,10 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
 
     /**
      * 默认情况是没有的。开通群组维度的自定义字段详情请参见 自定义字段
-     * {@link io.github.doocs.im.constant.ShutUpAllMember}
+     * {@link MuteAllMember}
      */
-    @JsonProperty("ShutUpAllMember")
-    private String shutUpAllMember;
+    @JsonProperty("MuteAllMember")
+    private String muteAllMember;
 
     /**
      * 群内群成员禁言，只有群管理员和群主以及系统管理员可以发言
@@ -81,7 +82,7 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
 
     public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification,
                                       String faceUrl, Integer maxMemberNum, String applyJoinOption,
-                                      String shutUpAllMember, List<AppDefinedDataItem> appDefinedData) {
+                                      String muteAllMember, List<AppDefinedDataItem> appDefinedData) {
         this.groupId = groupId;
         this.name = name;
         this.introduction = introduction;
@@ -89,7 +90,7 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
         this.faceUrl = faceUrl;
         this.maxMemberNum = maxMemberNum;
         this.applyJoinOption = applyJoinOption;
-        this.shutUpAllMember = shutUpAllMember;
+        this.muteAllMember = muteAllMember;
         this.appDefinedData = appDefinedData;
     }
 
@@ -101,7 +102,7 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
         this.faceUrl = builder.faceUrl;
         this.maxMemberNum = builder.maxMemberNum;
         this.applyJoinOption = builder.applyJoinOption;
-        this.shutUpAllMember = builder.shutUpAllMember;
+        this.muteAllMember = builder.muteAllMember;
         this.appDefinedData = builder.appDefinedData;
     }
 
@@ -165,12 +166,12 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
         this.applyJoinOption = applyJoinOption;
     }
 
-    public String getShutUpAllMember() {
-        return shutUpAllMember;
+    public String getMuteAllMember() {
+        return muteAllMember;
     }
 
-    public void setShutUpAllMember(String shutUpAllMember) {
-        this.shutUpAllMember = shutUpAllMember;
+    public void setMuteAllMember(String muteAllMember) {
+        this.muteAllMember = muteAllMember;
     }
 
     public List<AppDefinedDataItem> getAppDefinedData() {
@@ -190,7 +191,7 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
         private String faceUrl;
         private Integer maxMemberNum;
         private String applyJoinOption;
-        private String shutUpAllMember;
+        private String muteAllMember;
         private List<AppDefinedDataItem> appDefinedData;
 
         private Builder() {
@@ -235,8 +236,8 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest {
             return this;
         }
 
-        public Builder shutUpAllMember(String shutUpAllMember) {
-            this.shutUpAllMember = shutUpAllMember;
+        public Builder muteAllMember(String muteAllMember) {
+            this.muteAllMember = muteAllMember;
             return this;
         }
 

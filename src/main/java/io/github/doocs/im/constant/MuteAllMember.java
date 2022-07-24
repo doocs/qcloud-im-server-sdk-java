@@ -6,7 +6,7 @@ package io.github.doocs.im.constant;
  * @author bingo
  * @since 2021/11/8 15:11
  */
-public class ShutUpAllMember {
+public class MuteAllMember {
     /**
      * 开启全局禁言
      */
@@ -17,7 +17,7 @@ public class ShutUpAllMember {
      */
     public static final String OFF = "Off";
 
-    private ShutUpAllMember() {
+    private MuteAllMember() {
 
     }
 }

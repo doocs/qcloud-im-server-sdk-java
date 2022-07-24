@@ -144,7 +144,7 @@ ModifyGroupBaseInfoRequest request = ModifyGroupBaseInfoRequest.builder()
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .maxMemberNum(500)
         .applyJoinOption(ApplyJoinOption.NEED_PERMISSION)
-        .shutUpAllMember(ShutUpAllMember.OFF)
+        .muteAllMember(MuteAllMember.OFF)
         .build();
 
 ModifyGroupBaseInfoResult result = client.group.modifyGroupBaseInfo(request);
@@ -361,7 +361,7 @@ List<String> membersAccount = Collections.singletonList("doocs");
 ForbidSendMsgRequest request = ForbidSendMsgRequest.builder()
         .groupId("MyFirstGroup")
         .membersAccount(membersAccount)
-        .shutUpTime(200L)
+        .muteTime(200L)
         .build();
 
 ForbidSendMsgResult result = client.group.forbidSendMsg(request);
@@ -388,9 +388,9 @@ App 管理员可以根据群组 ID 获取群组中被禁言的用户列表。
 使用示例：
 
 ```java
-GetGroupShuttedUinRequest request = new GetGroupShuttedUinRequest("MyFirstGroup");
+GetGroupMutedAccountRequest request = new GetGroupMutedAccountRequest("MyFirstGroup");
 
-GetGroupShuttedUinResult result = client.group.getGroupShuttedUin(request);
+GetGroupMutedAccountResult result = client.group.getGroupMutedAccount(request);
 ```
 
 ## 在群组中发送普通消息
@@ -979,4 +979,69 @@ request.setMsgBody(msgBody);
 request.setRandom(1223L);
 
 SendBroadcastMsgResult result = client.group.sendBroadcastMsg(request);
+```
+
+## 拉取群消息已读回执信息
+
+App 管理员可以通过该接口拉取群消息已读回执信息。
+
+::: warning
+该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182) 并在 [控制台](https://console.cloud.tencent.com/im/qun-setting)>登录与消息>群消息已读回执 打开开关后方可使用。
+:::
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                        |
+| ----------------- | ------------------------------------------ |
+| Private           | 支持，同新版本中的 Work(好友工作群)        |
+| Public            | 支持                                       |
+| ChatRoom          | 支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom        | 不支持                                     |
+| Community（社群） | 不支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+```java
+GetGroupMsgReceiptRequest request = new GetGroupMsgReceiptRequest();
+request.setGroupId("MyFirstGroup");
+MsgSeqItem seqItem = new MsgSeqItem();
+seqItem.setMsgSeq(123L);
+request.setMsgSeqList(Collections.singletonList(seqItem));
+
+GetGroupMsgReceiptResult result = client.group.getGroupMsgReceipt(request);
+```
+
+## 拉取群消息已读回执详情
+
+App 管理员可以通过该接口拉取群消息已读或未读成员列表。
+
+::: warning
+该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182) 并在 [控制台](https://console.cloud.tencent.com/im/qun-setting)>登录与消息>群消息已读回执 打开开关后方可使用。
+:::
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                        |
+| ----------------- | ------------------------------------------ |
+| Private           | 支持，同新版本中的 Work(好友工作群)        |
+| Public            | 支持                                       |
+| ChatRoom          | 支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom        | 不支持                                     |
+| Community（社群） | 不支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+```java
+GetGroupMsgReceiptDetailRequest request = new GetGroupMsgReceiptDetailRequest();
+request.setGroupId("MyFirstGroup");
+request.setMsgSeq(123L);
+request.setNum(12);
+request.setCursor("");
+request.setFlag(12);
+
+GetGroupMsgReceiptDetailResult result = client.group.getGroupMsgReceiptDetail(request);
 ```
