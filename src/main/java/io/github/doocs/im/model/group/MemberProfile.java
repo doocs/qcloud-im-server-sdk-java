@@ -176,6 +176,9 @@ public class MemberProfile {
         private String memberAccount;
         private String role;
         private Integer joinTime;
+        /**
+         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
+         */
         private Long msgSeq;
         private String msgFlag;
         private Integer lastSendMsgTime;
