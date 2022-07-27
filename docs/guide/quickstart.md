@@ -53,16 +53,17 @@ ImClient client = ImClient.getInstance(appId, userId, key, config);
 
 `ClientConfiguration` 支持对以下参数进行自定义配置：
 
-| 字段             | 类型    | 说明                          | 默认值 |
-| ---------------- | ------- | ----------------------------- | ------ |
-| `maxRetries`     | int     | HTTP 最大重试次数             | 3      |
-| `connectTimeout` | long    | HTTP 连接超时（毫秒）         | 3000   |
-| `readTimeout`    | long    | HTTP 读超时（毫秒）           | 3000   |
-| `writeTimeout`   | long    | HTTP 写超时（毫秒）           | 3000   |
-| `expireTime`     | long    | UserSig 签名有效时长（秒）    | 86400  |
-| `autoRenewSig`   | boolean | 是否自动进行 UserSig 签名续期 | true   |
-| `userAgent`      | string  | User-Agent                    |        |
-| `connectionPool` | object  | HTTP 连接池                   |        |
+| 字段             | 类型    | 说明                                                                                                     | 默认值 |
+| ---------------- | ------- | -------------------------------------------------------------------------------------------------------- | ------ |
+| `maxRetries`     | int     | HTTP 最大重试次数                                                                                        | 3      |
+| `connectTimeout` | long    | HTTP 连接超时（毫秒）                                                                                    | 10_000 |
+| `readTimeout`    | long    | HTTP 读超时（毫秒）                                                                                      | 10_000 |
+| `writeTimeout`   | long    | HTTP 写超时（毫秒）                                                                                      | 10_000 |
+| `callTimeout`    | long    | 一个完整的 HTTP 调用的时间限制。这包括解析 DNS、连接、写入请求正文、服务器处理以及读取响应正文。（毫秒） | 30_000 |
+| `expireTime`     | long    | UserSig 签名有效时长（秒）                                                                               | 86400  |
+| `autoRenewSig`   | boolean | 是否自动进行 UserSig 签名续期                                                                            | true   |
+| `userAgent`      | string  | User-Agent                                                                                               |        |
+| `connectionPool` | object  | HTTP 连接池                                                                                              |        |
 
 ## 使用示例
 

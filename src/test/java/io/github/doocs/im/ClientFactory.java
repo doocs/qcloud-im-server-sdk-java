@@ -21,7 +21,11 @@ public class ClientFactory {
             String key = properties.getProperty("key");
             String userId = properties.getProperty("userId");
             Long appId = Long.parseLong(properties.getProperty("appId"));
-            client = ImClient.getInstance(appId, userId, key);
+            ClientConfiguration config = new ClientConfiguration();
+            config.setCallTimeout(20_000);
+            config.setReadTimeout(10_000);
+            config.setWriteTimeout(10_000);
+            client = ImClient.getInstance(appId, userId, key, config);
         } catch (IOException e) {
             e.printStackTrace();
         }

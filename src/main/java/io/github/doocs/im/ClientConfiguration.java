@@ -27,9 +27,10 @@ public class ClientConfiguration {
     /**
      * 默认超时时间（毫秒）
      */
-    public static final long DEFAULT_CONNECT_TIMEOUT = 3000L;
-    public static final long DEFAULT_READ_TIMEOUT = 3000L;
-    public static final long DEFAULT_WRITE_TIMEOUT = 3000L;
+    public static final long DEFAULT_CONNECT_TIMEOUT = 10_000;
+    public static final long DEFAULT_READ_TIMEOUT = 10_000;
+    public static final long DEFAULT_WRITE_TIMEOUT = 10_000;
+    public static final long DEFAULT_CALL_TIMEOUT = 30_000;
 
     /**
      * UserSig 签名默认有效时长（秒）
@@ -45,6 +46,7 @@ public class ClientConfiguration {
     private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
     private long readTimeout = DEFAULT_READ_TIMEOUT;
     private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
+    private long callTimeout = DEFAULT_CALL_TIMEOUT;
     private long expireTime = DEFAULT_EXPIRE_TIME;
     private boolean autoRenewSig = DEFAULT_RENEW_SIG;
     private String userAgent = DEFAULT_USER_AGENT;
@@ -54,7 +56,8 @@ public class ClientConfiguration {
     }
 
     public ClientConfiguration(int maxRetries, long connectTimeout, long readTimeout, long writeTimeout,
-                               long expireTime, boolean autoRenewSig, String userAgent, ConnectionPool connectionPool) {
+                               long callTimeout, long expireTime, boolean autoRenewSig,
+                               String userAgent, ConnectionPool connectionPool) {
         if (connectionPool == null) {
             connectionPool = DEFAULT_CONNECTION_POOL;
         }
@@ -62,6 +65,7 @@ public class ClientConfiguration {
         this.connectTimeout = connectTimeout;
         this.readTimeout = readTimeout;
         this.writeTimeout = writeTimeout;
+        this.callTimeout = callTimeout;
         this.expireTime = expireTime;
         this.autoRenewSig = autoRenewSig;
         this.userAgent = userAgent;
@@ -73,6 +77,7 @@ public class ClientConfiguration {
         this.connectTimeout = builder.connectTimeout;
         this.readTimeout = builder.readTimeout;
         this.writeTimeout = builder.writeTimeout;
+        this.callTimeout = builder.callTimeout;
         this.expireTime = builder.expireTime;
         this.autoRenewSig = builder.autoRenewSig;
         this.userAgent = builder.userAgent;
@@ -115,6 +120,14 @@ public class ClientConfiguration {
         this.writeTimeout = writeTimeout;
     }
 
+    public long getCallTimeout() {
+        return callTimeout;
+    }
+
+    public void setCallTimeout(long callTimeout) {
+        this.callTimeout = callTimeout;
+    }
+
     public long getExpireTime() {
         return expireTime;
     }
@@ -150,11 +163,13 @@ public class ClientConfiguration {
         this.connectionPool = connectionPool;
     }
 
+
     public static final class Builder {
         private int maxRetries = DEFAULT_MAX_RETRIES;
         private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
         private long readTimeout = DEFAULT_READ_TIMEOUT;
         private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
+        private long callTimeout = DEFAULT_CALL_TIMEOUT;
         private long expireTime = DEFAULT_EXPIRE_TIME;
         private boolean autoRenewSig = DEFAULT_RENEW_SIG;
         private String userAgent = DEFAULT_USER_AGENT;
@@ -184,6 +199,11 @@ public class ClientConfiguration {
 
         public Builder writeTimeout(long writeTimeout) {
             this.writeTimeout = writeTimeout;
+            return this;
+        }
+
+        public Builder callTimeout(long callTimeout) {
+            this.callTimeout = callTimeout;
             return this;
         }
 
