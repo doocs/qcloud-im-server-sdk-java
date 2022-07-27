@@ -27,6 +27,7 @@ public class HttpUtil {
             .connectTimeout(DEFAULT_CONFIG.getConnectTimeout(), TimeUnit.MILLISECONDS)
             .readTimeout(DEFAULT_CONFIG.getReadTimeout(), TimeUnit.MILLISECONDS)
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
+            .callTimeout(DEFAULT_CONFIG.getCallTimeout(), TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(false)
             .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries()))
             .build();
@@ -43,6 +44,7 @@ public class HttpUtil {
                     .connectTimeout(config.getConnectTimeout(), TimeUnit.MILLISECONDS)
                     .readTimeout(config.getReadTimeout(), TimeUnit.MILLISECONDS)
                     .writeTimeout(config.getWriteTimeout(), TimeUnit.MILLISECONDS)
+                    .callTimeout(config.getCallTimeout(), TimeUnit.MILLISECONDS)
                     .retryOnConnectionFailure(false)
                     .addInterceptor(new RetryInterceptor(config.getMaxRetries()))
                     .build();
