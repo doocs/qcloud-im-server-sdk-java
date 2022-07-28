@@ -3,9 +3,8 @@ package io.github.doocs.im;
 import io.github.doocs.im.constant.ContentType;
 import io.github.doocs.im.constant.Domain;
 import io.github.doocs.im.core.*;
+import io.github.doocs.im.util.RandomUtil;
 import io.github.doocs.im.util.SigUtil;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
@@ -127,8 +126,13 @@ public class ImClient {
      * @return url
      */
     public String getUrl(String serviceName, String command) {
+        // 标识当前请求的随机数参数
+        long random = RandomUtil.next();
+        return getUrl(serviceName, command, random);
+    }
+
+    public String getUrl(String serviceName, String command, long random) {
         String sig = getUserSig();
-        long random = ThreadLocalRandom.current().nextLong(0, 0x100000000L);
         return String.format(FORMAT_URL, domain, VERSION, serviceName, command,
                 sdkAppId, userId, sig, random, ContentType.JSON);
     }

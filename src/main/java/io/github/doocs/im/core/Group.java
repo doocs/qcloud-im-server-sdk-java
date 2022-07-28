@@ -17,47 +17,47 @@ public class Group {
     /**
      * 群组管理服务名
      */
-    private static final String SERVICE_NAME = "group_open_http_svc";
-    private static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
-    private static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
-    private static final String SERVICE_NAME_OPEN_IM = "openim";
+    public static final String SERVICE_NAME = "group_open_http_svc";
+    public static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
+    public static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
+    public static final String SERVICE_NAME_OPEN_IM = "openim";
 
     /**
      * 群组管理相关命令字
      */
-    private static final String GET_APPID_GROUP_LIST_COMMAND = "get_appid_group_list";
-    private static final String CREATE_GROUP_COMMAND = "create_group";
-    private static final String GET_GROUP_INFO_COMMAND = "get_group_info";
-    private static final String GET_GROUP_MEMBER_INFO_COMMAND = "get_group_member_info";
-    private static final String MODIFY_GROUP_BASE_INFO_COMMAND = "modify_group_base_info";
-    private static final String ADD_GROUP_MEMBER_COMMAND = "add_group_member";
-    private static final String DELETE_GROUP_MEMBER_COMMAND = "delete_group_member";
-    private static final String MODIFY_GROUP_MEMBER_INFO_COMMAND = "modify_group_member_info";
-    private static final String DESTROY_GROUP_COMMAND = "destroy_group";
-    private static final String GET_JOINED_GROUP_LIST_COMMAND = "get_joined_group_list";
-    private static final String GET_ROLE_IN_GROUP_COMMAND = "get_role_in_group";
-    private static final String FORBID_SEND_MSG_COMMAND = "forbid_send_msg";
-    private static final String GET_GROUP_MUTED_ACCOUNT_COMMAND = "get_group_muted_account";
-    private static final String SEND_GROUP_MSG_COMMAND = "send_group_msg";
-    private static final String SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND = "send_group_system_notification";
-    private static final String CHANGE_GROUP_OWNER_COMMAND = "change_group_owner";
-    private static final String GROUP_MSG_RECALL_COMMAND = "group_msg_recall";
-    private static final String IMPORT_GROUP_COMMAND = "import_group";
-    private static final String IMPORT_GROUP_MSG_COMMAND = "import_group_msg";
-    private static final String IMPORT_GROUP_MEMBER_COMMAND = "import_group_member";
-    private static final String SET_UNREAD_MSG_NUM_COMMAND = "set_unread_msg_num";
-    private static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
-    private static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
-    private static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
-    private static final String GET_MEMBERS_COMMAND = "get_members";
-    private static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
-    private static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
-    private static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
-    private static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
-    private static final String MODIFY_GROUP_MSG_COMMAND = "modify_group_msg";
-    private static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
-    private static final String GET_GROUP_MSG_RECEIPT_COMMAND = "get_group_msg_receipt";
-    private static final String GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND = "get_group_msg_receipt_detail";
+    public static final String GET_APPID_GROUP_LIST_COMMAND = "get_appid_group_list";
+    public static final String CREATE_GROUP_COMMAND = "create_group";
+    public static final String GET_GROUP_INFO_COMMAND = "get_group_info";
+    public static final String GET_GROUP_MEMBER_INFO_COMMAND = "get_group_member_info";
+    public static final String MODIFY_GROUP_BASE_INFO_COMMAND = "modify_group_base_info";
+    public static final String ADD_GROUP_MEMBER_COMMAND = "add_group_member";
+    public static final String DELETE_GROUP_MEMBER_COMMAND = "delete_group_member";
+    public static final String MODIFY_GROUP_MEMBER_INFO_COMMAND = "modify_group_member_info";
+    public static final String DESTROY_GROUP_COMMAND = "destroy_group";
+    public static final String GET_JOINED_GROUP_LIST_COMMAND = "get_joined_group_list";
+    public static final String GET_ROLE_IN_GROUP_COMMAND = "get_role_in_group";
+    public static final String FORBID_SEND_MSG_COMMAND = "forbid_send_msg";
+    public static final String GET_GROUP_MUTED_ACCOUNT_COMMAND = "get_group_muted_account";
+    public static final String SEND_GROUP_MSG_COMMAND = "send_group_msg";
+    public static final String SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND = "send_group_system_notification";
+    public static final String CHANGE_GROUP_OWNER_COMMAND = "change_group_owner";
+    public static final String GROUP_MSG_RECALL_COMMAND = "group_msg_recall";
+    public static final String IMPORT_GROUP_COMMAND = "import_group";
+    public static final String IMPORT_GROUP_MSG_COMMAND = "import_group_msg";
+    public static final String IMPORT_GROUP_MEMBER_COMMAND = "import_group_member";
+    public static final String SET_UNREAD_MSG_NUM_COMMAND = "set_unread_msg_num";
+    public static final String DELETE_GROUP_MSG_BY_SENDER_COMMAND = "delete_group_msg_by_sender";
+    public static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
+    public static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
+    public static final String GET_MEMBERS_COMMAND = "get_members";
+    public static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
+    public static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
+    public static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
+    public static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
+    public static final String MODIFY_GROUP_MSG_COMMAND = "modify_group_msg";
+    public static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
+    public static final String GET_GROUP_MSG_RECEIPT_COMMAND = "get_group_msg_receipt";
+    public static final String GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND = "get_group_msg_receipt_detail";
 
     private final ImClient imClient;
 
@@ -77,6 +77,11 @@ public class Group {
         return HttpUtil.post(url, getAppIdGroupListRequest, GetAppIdGroupListResult.class, imClient.getConfig());
     }
 
+    public GetAppIdGroupListResult getAppIdGroupList(GetAppIdGroupListRequest getAppIdGroupListRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_APPID_GROUP_LIST_COMMAND, random);
+        return HttpUtil.post(url, getAppIdGroupListRequest, GetAppIdGroupListResult.class, imClient.getConfig());
+    }
+
     /**
      * 创建群组
      *
@@ -86,6 +91,11 @@ public class Group {
      */
     public CreateGroupResult createGroup(CreateGroupRequest createGroupRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, CREATE_GROUP_COMMAND);
+        return HttpUtil.post(url, createGroupRequest, CreateGroupResult.class, imClient.getConfig());
+    }
+
+    public CreateGroupResult createGroup(CreateGroupRequest createGroupRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, CREATE_GROUP_COMMAND, random);
         return HttpUtil.post(url, createGroupRequest, CreateGroupResult.class, imClient.getConfig());
     }
 
@@ -101,6 +111,12 @@ public class Group {
         return HttpUtil.post(url, getGroupInfoRequest, GetGroupInfoResult.class, imClient.getConfig());
     }
 
+    public GetGroupInfoResult getGroupInfo(GetGroupInfoRequest getGroupInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_INFO_COMMAND, random);
+        return HttpUtil.post(url, getGroupInfoRequest, GetGroupInfoResult.class, imClient.getConfig());
+    }
+
+
     /**
      * 获取群成员详细资料
      *
@@ -110,6 +126,11 @@ public class Group {
      */
     public GetGroupMemberInfoResult getGroupMemberInfo(GetGroupMemberInfoRequest getGroupMemberInfoRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MEMBER_INFO_COMMAND);
+        return HttpUtil.post(url, getGroupMemberInfoRequest, GetGroupMemberInfoResult.class, imClient.getConfig());
+    }
+
+    public GetGroupMemberInfoResult getGroupMemberInfo(GetGroupMemberInfoRequest getGroupMemberInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MEMBER_INFO_COMMAND, random);
         return HttpUtil.post(url, getGroupMemberInfoRequest, GetGroupMemberInfoResult.class, imClient.getConfig());
     }
 
@@ -125,6 +146,11 @@ public class Group {
         return HttpUtil.post(url, modifyGroupBaseInfoRequest, ModifyGroupBaseInfoResult.class, imClient.getConfig());
     }
 
+    public ModifyGroupBaseInfoResult modifyGroupBaseInfo(ModifyGroupBaseInfoRequest modifyGroupBaseInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_BASE_INFO_COMMAND, random);
+        return HttpUtil.post(url, modifyGroupBaseInfoRequest, ModifyGroupBaseInfoResult.class, imClient.getConfig());
+    }
+
     /**
      * 增加群成员
      *
@@ -134,6 +160,11 @@ public class Group {
      */
     public AddGroupMemberResult addGroupMember(AddGroupMemberRequest addGroupMemberRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADD_GROUP_MEMBER_COMMAND);
+        return HttpUtil.post(url, addGroupMemberRequest, AddGroupMemberResult.class, imClient.getConfig());
+    }
+
+    public AddGroupMemberResult addGroupMember(AddGroupMemberRequest addGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADD_GROUP_MEMBER_COMMAND, random);
         return HttpUtil.post(url, addGroupMemberRequest, AddGroupMemberResult.class, imClient.getConfig());
     }
 
@@ -149,6 +180,11 @@ public class Group {
         return HttpUtil.post(url, deleteGroupMemberRequest, DeleteGroupMemberResult.class, imClient.getConfig());
     }
 
+    public DeleteGroupMemberResult deleteGroupMember(DeleteGroupMemberRequest deleteGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, deleteGroupMemberRequest, DeleteGroupMemberResult.class, imClient.getConfig());
+    }
+
     /**
      * 修改群成员资料
      *
@@ -158,6 +194,11 @@ public class Group {
      */
     public ModifyGroupMemberInfoResult modifyGroupMemberInfo(ModifyGroupMemberInfoRequest modifyGroupMemberInfoRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_MEMBER_INFO_COMMAND);
+        return HttpUtil.post(url, modifyGroupMemberInfoRequest, ModifyGroupMemberInfoResult.class, imClient.getConfig());
+    }
+
+    public ModifyGroupMemberInfoResult modifyGroupMemberInfo(ModifyGroupMemberInfoRequest modifyGroupMemberInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_MEMBER_INFO_COMMAND, random);
         return HttpUtil.post(url, modifyGroupMemberInfoRequest, ModifyGroupMemberInfoResult.class, imClient.getConfig());
     }
 
@@ -173,6 +214,11 @@ public class Group {
         return HttpUtil.post(url, destroyGroupRequest, DestroyGroupResult.class, imClient.getConfig());
     }
 
+    public DestroyGroupResult destroyGroup(DestroyGroupRequest destroyGroupRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DESTROY_GROUP_COMMAND, random);
+        return HttpUtil.post(url, destroyGroupRequest, DestroyGroupResult.class, imClient.getConfig());
+    }
+
     /**
      * 获取用户所加入的群组
      *
@@ -182,6 +228,11 @@ public class Group {
      */
     public GetJoinGroupListResult getJoinGroupList(GetJoinedGroupListRequest getJoinedGroupListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_JOINED_GROUP_LIST_COMMAND);
+        return HttpUtil.post(url, getJoinedGroupListRequest, GetJoinGroupListResult.class, imClient.getConfig());
+    }
+
+    public GetJoinGroupListResult getJoinGroupList(GetJoinedGroupListRequest getJoinedGroupListRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_JOINED_GROUP_LIST_COMMAND, random);
         return HttpUtil.post(url, getJoinedGroupListRequest, GetJoinGroupListResult.class, imClient.getConfig());
     }
 
@@ -197,6 +248,11 @@ public class Group {
         return HttpUtil.post(url, getRoleInGroupRequest, GetRoleInGroupResult.class, imClient.getConfig());
     }
 
+    public GetRoleInGroupResult getRoleInGroup(GetRoleInGroupRequest getRoleInGroupRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_ROLE_IN_GROUP_COMMAND, random);
+        return HttpUtil.post(url, getRoleInGroupRequest, GetRoleInGroupResult.class, imClient.getConfig());
+    }
+
     /**
      * 批量禁言和取消禁言
      *
@@ -206,6 +262,11 @@ public class Group {
      */
     public ForbidSendMsgResult forbidSendMsg(ForbidSendMsgRequest forbidSendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FORBID_SEND_MSG_COMMAND);
+        return HttpUtil.post(url, forbidSendMsgRequest, ForbidSendMsgResult.class, imClient.getConfig());
+    }
+
+    public ForbidSendMsgResult forbidSendMsg(ForbidSendMsgRequest forbidSendMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FORBID_SEND_MSG_COMMAND, random);
         return HttpUtil.post(url, forbidSendMsgRequest, ForbidSendMsgResult.class, imClient.getConfig());
     }
 
@@ -221,6 +282,11 @@ public class Group {
         return HttpUtil.post(url, getGroupMutedAccountRequest, GetGroupMutedAccountResult.class, imClient.getConfig());
     }
 
+    public GetGroupMutedAccountResult getGroupMutedAccount(GetGroupMutedAccountRequest getGroupMutedAccountRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MUTED_ACCOUNT_COMMAND, random);
+        return HttpUtil.post(url, getGroupMutedAccountRequest, GetGroupMutedAccountResult.class, imClient.getConfig());
+    }
+
     /**
      * 在群组中发送普通消息
      *
@@ -230,6 +296,11 @@ public class Group {
      */
     public SendGroupMsgResult sendGroupMsg(SendGroupMsgRequest sendGroupMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_GROUP_MSG_COMMAND);
+        return HttpUtil.post(url, sendGroupMsgRequest, SendGroupMsgResult.class, imClient.getConfig());
+    }
+
+    public SendGroupMsgResult sendGroupMsg(SendGroupMsgRequest sendGroupMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_GROUP_MSG_COMMAND, random);
         return HttpUtil.post(url, sendGroupMsgRequest, SendGroupMsgResult.class, imClient.getConfig());
     }
 
@@ -245,6 +316,11 @@ public class Group {
         return HttpUtil.post(url, sendGroupSystemNotificationRequest, SendGroupSystemNotificationResult.class, imClient.getConfig());
     }
 
+    public SendGroupSystemNotificationResult sendGroupSystemNotification(SendGroupSystemNotificationRequest sendGroupSystemNotificationRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_GROUP_SYSTEM_NOTIFICATION_COMMAND, random);
+        return HttpUtil.post(url, sendGroupSystemNotificationRequest, SendGroupSystemNotificationResult.class, imClient.getConfig());
+    }
+
     /**
      * 转让群主
      *
@@ -254,6 +330,11 @@ public class Group {
      */
     public ChangeGroupOwnerResult changeGroupOwner(ChangeGroupOwnerRequest changeGroupOwnerRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, CHANGE_GROUP_OWNER_COMMAND);
+        return HttpUtil.post(url, changeGroupOwnerRequest, ChangeGroupOwnerResult.class, imClient.getConfig());
+    }
+
+    public ChangeGroupOwnerResult changeGroupOwner(ChangeGroupOwnerRequest changeGroupOwnerRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, CHANGE_GROUP_OWNER_COMMAND, random);
         return HttpUtil.post(url, changeGroupOwnerRequest, ChangeGroupOwnerResult.class, imClient.getConfig());
     }
 
@@ -269,6 +350,11 @@ public class Group {
         return HttpUtil.post(url, groupMsgRecallRequest, GroupMsgRecallResult.class, imClient.getConfig());
     }
 
+    public GroupMsgRecallResult groupMsgRecall(GroupMsgRecallRequest groupMsgRecallRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_MSG_RECALL_COMMAND, random);
+        return HttpUtil.post(url, groupMsgRecallRequest, GroupMsgRecallResult.class, imClient.getConfig());
+    }
+
     /**
      * 导入群基础资料
      *
@@ -278,6 +364,11 @@ public class Group {
      */
     public ImportGroupResult importGroup(ImportGroupRequest importGroupRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_COMMAND);
+        return HttpUtil.post(url, importGroupRequest, ImportGroupResult.class, imClient.getConfig());
+    }
+
+    public ImportGroupResult importGroup(ImportGroupRequest importGroupRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_COMMAND, random);
         return HttpUtil.post(url, importGroupRequest, ImportGroupResult.class, imClient.getConfig());
     }
 
@@ -293,6 +384,11 @@ public class Group {
         return HttpUtil.post(url, importGroupMsgRequest, ImportGroupMsgResult.class, imClient.getConfig());
     }
 
+    public ImportGroupMsgResult importGroupMsg(ImportGroupMsgRequest importGroupMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_MSG_COMMAND, random);
+        return HttpUtil.post(url, importGroupMsgRequest, ImportGroupMsgResult.class, imClient.getConfig());
+    }
+
     /**
      * 导入群成员
      *
@@ -302,6 +398,11 @@ public class Group {
      */
     public ImportGroupMemberResult importGroupMember(ImportGroupMemberRequest importGroupMemberRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_MEMBER_COMMAND);
+        return HttpUtil.post(url, importGroupMemberRequest, ImportGroupMemberResult.class, imClient.getConfig());
+    }
+
+    public ImportGroupMemberResult importGroupMember(ImportGroupMemberRequest importGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_MEMBER_COMMAND, random);
         return HttpUtil.post(url, importGroupMemberRequest, ImportGroupMemberResult.class, imClient.getConfig());
     }
 
@@ -317,6 +418,11 @@ public class Group {
         return HttpUtil.post(url, setUnreadMsgNumRequest, SetUnreadMsgNumResult.class, imClient.getConfig());
     }
 
+    public SetUnreadMsgNumResult setUnreadMsgNum(SetUnreadMsgNumRequest setUnreadMsgNumRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SET_UNREAD_MSG_NUM_COMMAND, random);
+        return HttpUtil.post(url, setUnreadMsgNumRequest, SetUnreadMsgNumResult.class, imClient.getConfig());
+    }
+
     /**
      * 撤回指定用户发送的消息
      *
@@ -326,6 +432,11 @@ public class Group {
      */
     public DeleteGroupMsgBySenderResult deleteGroupMsgBySender(DeleteGroupMsgBySenderRequest deleteGroupMsgBySenderRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_MSG_BY_SENDER_COMMAND);
+        return HttpUtil.post(url, deleteGroupMsgBySenderRequest, DeleteGroupMsgBySenderResult.class, imClient.getConfig());
+    }
+
+    public DeleteGroupMsgBySenderResult deleteGroupMsgBySender(DeleteGroupMsgBySenderRequest deleteGroupMsgBySenderRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_MSG_BY_SENDER_COMMAND, random);
         return HttpUtil.post(url, deleteGroupMsgBySenderRequest, DeleteGroupMsgBySenderResult.class, imClient.getConfig());
     }
 
@@ -341,6 +452,11 @@ public class Group {
         return HttpUtil.post(url, groupMsgGetSimpleRequest, GroupMsgGetSimpleResult.class, imClient.getConfig());
     }
 
+    public GroupMsgGetSimpleResult groupMsgGetSimple(GroupMsgGetSimpleRequest groupMsgGetSimpleRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_MSG_GET_SIMPLE_COMMAND, random);
+        return HttpUtil.post(url, groupMsgGetSimpleRequest, GroupMsgGetSimpleResult.class, imClient.getConfig());
+    }
+
     /**
      * 获取直播群在线人数
      *
@@ -350,6 +466,11 @@ public class Group {
      */
     public GetOnlineMemberNumResult getOnlineMemberNum(GetOnlineMemberNumRequest getOnlineMemberNumRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_ONLINE_MEMBER_NUM_COMMAND);
+        return HttpUtil.post(url, getOnlineMemberNumRequest, GetOnlineMemberNumResult.class, imClient.getConfig());
+    }
+
+    public GetOnlineMemberNumResult getOnlineMemberNum(GetOnlineMemberNumRequest getOnlineMemberNumRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_ONLINE_MEMBER_NUM_COMMAND, random);
         return HttpUtil.post(url, getOnlineMemberNumRequest, GetOnlineMemberNumResult.class, imClient.getConfig());
     }
 
@@ -365,6 +486,11 @@ public class Group {
         return HttpUtil.post(url, getMembersRequest, GetMembersResult.class, imClient.getConfig());
     }
 
+    public GetMembersResult getMembers(GetMembersRequest getMembersRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, GET_MEMBERS_COMMAND, random);
+        return HttpUtil.post(url, getMembersRequest, GetMembersResult.class, imClient.getConfig());
+    }
+
     /**
      * 获取群自定义属性
      *
@@ -374,6 +500,11 @@ public class Group {
      */
     public GetGroupAttrResult getGroupAttr(GetGroupAttrRequest getGroupAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_ATTR, GET_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, getGroupAttrRequest, GetGroupAttrResult.class, imClient.getConfig());
+    }
+
+    public GetGroupAttrResult getGroupAttr(GetGroupAttrRequest getGroupAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_ATTR, GET_GROUP_ATTR_COMMAND, random);
         return HttpUtil.post(url, getGroupAttrRequest, GetGroupAttrResult.class, imClient.getConfig());
     }
 
@@ -389,6 +520,11 @@ public class Group {
         return HttpUtil.post(url, modifyGroupAttrRequest, ModifyGroupAttrResult.class, imClient.getConfig());
     }
 
+    public ModifyGroupAttrResult modifyGroupAttr(ModifyGroupAttrRequest modifyGroupAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_GROUP_ATTR_COMMAND, random);
+        return HttpUtil.post(url, modifyGroupAttrRequest, ModifyGroupAttrResult.class, imClient.getConfig());
+    }
+
     /**
      * 清空群自定义属性
      *
@@ -398,6 +534,11 @@ public class Group {
      */
     public ClearGroupAttrResult clearGroupAttr(ClearGroupAttrRequest clearGroupAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, CLEAR_GROUP_ATTR_COMMAND);
+        return HttpUtil.post(url, clearGroupAttrRequest, ClearGroupAttrResult.class, imClient.getConfig());
+    }
+
+    public ClearGroupAttrResult clearGroupAttr(ClearGroupAttrRequest clearGroupAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, CLEAR_GROUP_ATTR_COMMAND, random);
         return HttpUtil.post(url, clearGroupAttrRequest, ClearGroupAttrResult.class, imClient.getConfig());
     }
 
@@ -413,6 +554,11 @@ public class Group {
         return HttpUtil.post(url, setGroupAttrRequest, SetGroupAttrResult.class, imClient.getConfig());
     }
 
+    public SetGroupAttrResult setGroupAttr(SetGroupAttrRequest setGroupAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SET_GROUP_ATTR_COMMAND, random);
+        return HttpUtil.post(url, setGroupAttrRequest, SetGroupAttrResult.class, imClient.getConfig());
+    }
+
     /**
      * 修改群聊历史消息
      *
@@ -422,6 +568,11 @@ public class Group {
      */
     public ModifyGroupMsgResult modifyGroupMsg(ModifyGroupMsgRequest modifyGroupMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, MODIFY_GROUP_MSG_COMMAND);
+        return HttpUtil.post(url, modifyGroupMsgRequest, ModifyGroupMsgResult.class, imClient.getConfig());
+    }
+
+    public ModifyGroupMsgResult modifyGroupMsg(ModifyGroupMsgRequest modifyGroupMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, MODIFY_GROUP_MSG_COMMAND, random);
         return HttpUtil.post(url, modifyGroupMsgRequest, ModifyGroupMsgResult.class, imClient.getConfig());
     }
 
@@ -437,6 +588,11 @@ public class Group {
         return HttpUtil.post(url, sendBroadcastMsgRequest, SendBroadcastMsgResult.class, imClient.getConfig());
     }
 
+    public SendBroadcastMsgResult sendBroadcastMsg(SendBroadcastMsgRequest sendBroadcastMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_BROADCAST_MSG_COMMAND, random);
+        return HttpUtil.post(url, sendBroadcastMsgRequest, SendBroadcastMsgResult.class, imClient.getConfig());
+    }
+
     /**
      * 拉取群消息已读回执信息
      *
@@ -449,6 +605,11 @@ public class Group {
         return HttpUtil.post(url, getGroupMsgReceiptRequest, GetGroupMsgReceiptResult.class, imClient.getConfig());
     }
 
+    public GetGroupMsgReceiptResult getGroupMsgReceipt(GetGroupMsgReceiptRequest getGroupMsgReceiptRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MSG_RECEIPT_COMMAND, random);
+        return HttpUtil.post(url, getGroupMsgReceiptRequest, GetGroupMsgReceiptResult.class, imClient.getConfig());
+    }
+
     /**
      * 拉取群消息已读回执详情
      *
@@ -458,6 +619,11 @@ public class Group {
      */
     public GetGroupMsgReceiptDetailResult getGroupMsgReceiptDetail(GetGroupMsgReceiptDetailRequest getGroupMsgReceiptDetailRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND);
+        return HttpUtil.post(url, getGroupMsgReceiptDetailRequest, GetGroupMsgReceiptDetailResult.class, imClient.getConfig());
+    }
+
+    public GetGroupMsgReceiptDetailResult getGroupMsgReceiptDetail(GetGroupMsgReceiptDetailRequest getGroupMsgReceiptDetailRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND, random);
         return HttpUtil.post(url, getGroupMsgReceiptDetailRequest, GetGroupMsgReceiptDetailResult.class, imClient.getConfig());
     }
 }

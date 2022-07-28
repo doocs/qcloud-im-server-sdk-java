@@ -17,21 +17,21 @@ public class Member {
     /**
      * 全员推送服务名
      */
-    private static final String SERVICE_NAME = "all_member_push";
+    public static final String SERVICE_NAME = "all_member_push";
 
     /**
      * 全员推送相关命令字
      */
-    private static final String IM_PUSH_COMMAND = "im_push";
-    private static final String IM_SET_ATTR_NAME_COMMAND = "im_set_attr_name";
-    private static final String IM_GET_ATTR_NAME_COMMAND = "im_get_attr_name";
-    private static final String IM_GET_ATTR_COMMAND = "im_get_attr";
-    private static final String IM_SET_ATTR_COMMAND = "im_set_attr";
-    private static final String IM_REMOVE_ATTR_COMMAND = "im_remove_attr";
-    private static final String IM_GET_TAG_COMMAND = "im_get_tag";
-    private static final String IM_ADD_TAG_COMMAND = "im_add_tag";
-    private static final String IM_REMOVE_TAG_COMMAND = "im_remove_tag";
-    private static final String IM_REMOVE_ALL_TAGS_COMMAND = "im_remove_all_tags";
+    public static final String IM_PUSH_COMMAND = "im_push";
+    public static final String IM_SET_ATTR_NAME_COMMAND = "im_set_attr_name";
+    public static final String IM_GET_ATTR_NAME_COMMAND = "im_get_attr_name";
+    public static final String IM_GET_ATTR_COMMAND = "im_get_attr";
+    public static final String IM_SET_ATTR_COMMAND = "im_set_attr";
+    public static final String IM_REMOVE_ATTR_COMMAND = "im_remove_attr";
+    public static final String IM_GET_TAG_COMMAND = "im_get_tag";
+    public static final String IM_ADD_TAG_COMMAND = "im_add_tag";
+    public static final String IM_REMOVE_TAG_COMMAND = "im_remove_tag";
+    public static final String IM_REMOVE_ALL_TAGS_COMMAND = "im_remove_all_tags";
 
     private final ImClient imClient;
 
@@ -51,6 +51,11 @@ public class Member {
         return HttpUtil.post(url, imPushRequest, ImPushResult.class, imClient.getConfig());
     }
 
+    public ImPushResult imPush(ImPushRequest imPushRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_PUSH_COMMAND, random);
+        return HttpUtil.post(url, imPushRequest, ImPushResult.class, imClient.getConfig());
+    }
+
     /**
      * 设置应用属性名称
      *
@@ -60,6 +65,11 @@ public class Member {
      */
     public ImSetAttrNameResult imSetAttrName(ImSetAttrNameRequest imSetAttrNameRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_NAME_COMMAND);
+        return HttpUtil.post(url, imSetAttrNameRequest, ImSetAttrNameResult.class, imClient.getConfig());
+    }
+
+    public ImSetAttrNameResult imSetAttrName(ImSetAttrNameRequest imSetAttrNameRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_NAME_COMMAND, random);
         return HttpUtil.post(url, imSetAttrNameRequest, ImSetAttrNameResult.class, imClient.getConfig());
     }
 
@@ -75,6 +85,11 @@ public class Member {
         return HttpUtil.post(url, imGetAttrNameRequest, ImGetAttrNameResult.class, imClient.getConfig());
     }
 
+    public ImGetAttrNameResult imGetAttrName(ImGetAttrNameRequest imGetAttrNameRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_NAME_COMMAND, random);
+        return HttpUtil.post(url, imGetAttrNameRequest, ImGetAttrNameResult.class, imClient.getConfig());
+    }
+
     /**
      * 获取用户属性
      *
@@ -84,6 +99,11 @@ public class Member {
      */
     public ImGetAttrResult imGetAttr(ImGetAttrRequest imGetAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_COMMAND);
+        return HttpUtil.post(url, imGetAttrRequest, ImGetAttrResult.class, imClient.getConfig());
+    }
+
+    public ImGetAttrResult imGetAttr(ImGetAttrRequest imGetAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_GET_ATTR_COMMAND, random);
         return HttpUtil.post(url, imGetAttrRequest, ImGetAttrResult.class, imClient.getConfig());
     }
 
@@ -99,6 +119,11 @@ public class Member {
         return HttpUtil.post(url, imSetAttrRequest, ImSetAttrResult.class, imClient.getConfig());
     }
 
+    public ImSetAttrResult imSetAttr(ImSetAttrRequest imSetAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_SET_ATTR_COMMAND, random);
+        return HttpUtil.post(url, imSetAttrRequest, ImSetAttrResult.class, imClient.getConfig());
+    }
+
     /**
      * 删除用户属性
      *
@@ -108,6 +133,11 @@ public class Member {
      */
     public ImRemoveAttrResult imRemoveAttr(ImRemoveAttrRequest imRemoveAttrRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ATTR_COMMAND);
+        return HttpUtil.post(url, imRemoveAttrRequest, ImRemoveAttrResult.class, imClient.getConfig());
+    }
+
+    public ImRemoveAttrResult imRemoveAttr(ImRemoveAttrRequest imRemoveAttrRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ATTR_COMMAND, random);
         return HttpUtil.post(url, imRemoveAttrRequest, ImRemoveAttrResult.class, imClient.getConfig());
     }
 
@@ -123,6 +153,11 @@ public class Member {
         return HttpUtil.post(url, imGetTagRequest, ImGetTagResult.class, imClient.getConfig());
     }
 
+    public ImGetTagResult imGetTag(ImGetTagRequest imGetTagRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_GET_TAG_COMMAND, random);
+        return HttpUtil.post(url, imGetTagRequest, ImGetTagResult.class, imClient.getConfig());
+    }
+
     /**
      * 添加用户标签
      *
@@ -132,6 +167,11 @@ public class Member {
      */
     public ImAddTagResult imAddTag(ImAddTagRequest imAddTagRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_ADD_TAG_COMMAND);
+        return HttpUtil.post(url, imAddTagRequest, ImAddTagResult.class, imClient.getConfig());
+    }
+
+    public ImAddTagResult imAddTag(ImAddTagRequest imAddTagRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_ADD_TAG_COMMAND, random);
         return HttpUtil.post(url, imAddTagRequest, ImAddTagResult.class, imClient.getConfig());
     }
 
@@ -147,6 +187,11 @@ public class Member {
         return HttpUtil.post(url, imRemoveTagRequest, ImRemoveTagResult.class, imClient.getConfig());
     }
 
+    public ImRemoveTagResult imRemoveTag(ImRemoveTagRequest imRemoveTagRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_TAG_COMMAND, random);
+        return HttpUtil.post(url, imRemoveTagRequest, ImRemoveTagResult.class, imClient.getConfig());
+    }
+
     /**
      * 删除用户所有标签
      *
@@ -156,6 +201,11 @@ public class Member {
      */
     public ImRemoveAllTagsResult imRemoveAllTags(ImRemoveAllTagsRequest imRemoveAllTagsRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ALL_TAGS_COMMAND);
+        return HttpUtil.post(url, imRemoveAllTagsRequest, ImRemoveAllTagsResult.class, imClient.getConfig());
+    }
+
+    public ImRemoveAllTagsResult imRemoveAllTags(ImRemoveAllTagsRequest imRemoveAllTagsRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IM_REMOVE_ALL_TAGS_COMMAND, random);
         return HttpUtil.post(url, imRemoveAllTagsRequest, ImRemoveAllTagsResult.class, imClient.getConfig());
     }
 }

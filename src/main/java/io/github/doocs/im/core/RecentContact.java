@@ -19,13 +19,13 @@ public class RecentContact {
     /**
      * 最近联系人服务名
      */
-    private static final String SERVICE_NAME = "recentcontact";
+    public static final String SERVICE_NAME = "recentcontact";
 
     /**
      * 最近联系人相关命令字
      */
-    private static final String GET_RECENT_CONTACT_LIST = "get_list";
-    private static final String DELETE_RECENT_CONTACT = "delete";
+    public static final String GET_RECENT_CONTACT_LIST = "get_list";
+    public static final String DELETE_RECENT_CONTACT = "delete";
 
     private final ImClient imClient;
 
@@ -45,6 +45,11 @@ public class RecentContact {
         return HttpUtil.post(url, recentContactListRequest, GetRecentContactListResult.class, imClient.getConfig());
     }
 
+    public GetRecentContactListResult recentContactList(GetRecentContactListRequest recentContactListRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_RECENT_CONTACT_LIST, random);
+        return HttpUtil.post(url, recentContactListRequest, GetRecentContactListResult.class, imClient.getConfig());
+    }
+
     /**
      * 删除单个会话
      *
@@ -54,6 +59,11 @@ public class RecentContact {
      */
     public DeleteRecentContactResult deleteRecentContact(DeleteRecentContactRequest deleteRecentContactRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, DELETE_RECENT_CONTACT);
+        return HttpUtil.post(url, deleteRecentContactRequest, DeleteRecentContactResult.class, imClient.getConfig());
+    }
+
+    public DeleteRecentContactResult deleteRecentContact(DeleteRecentContactRequest deleteRecentContactRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_RECENT_CONTACT, random);
         return HttpUtil.post(url, deleteRecentContactRequest, DeleteRecentContactResult.class, imClient.getConfig());
     }
 }

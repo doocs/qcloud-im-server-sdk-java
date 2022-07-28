@@ -6,6 +6,7 @@ import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.IsNeedDetail;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
+import io.github.doocs.im.util.RandomUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -39,7 +40,8 @@ class AccountTest {
                 .nick("doocs")
                 .build();
 
-        AccountImportResult result = client.account.accountImport(request);
+        long random = RandomUtil.next();
+        AccountImportResult result = client.account.accountImport(request, random);
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }

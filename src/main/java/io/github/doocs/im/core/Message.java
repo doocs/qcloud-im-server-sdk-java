@@ -17,19 +17,19 @@ public class Message {
     /**
      * 单聊消息服务名
      */
-    private static final String SERVICE_NAME = "openim";
+    public static final String SERVICE_NAME = "openim";
 
     /**
      * 单聊消息相关命令字
      */
-    private static final String SEND_MSG_COMMAND = "sendmsg";
-    private static final String IMPORT_MSG_COMMAND = "importmsg";
-    private static final String BATCH_SEND_MSG_COMMAND = "batchsendmsg";
-    private static final String ADMIN_GET_ROAM_MSG_COMMAND = "admin_getroammsg";
-    private static final String ADMIN_MSG_WITHDRAW_COMMAND = "admin_msgwithdraw";
-    private static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
-    private static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
-    private static final String MODIFY_C2C_MSG_COMMAND = "modify_c2c_msg";
+    public static final String SEND_MSG_COMMAND = "sendmsg";
+    public static final String IMPORT_MSG_COMMAND = "importmsg";
+    public static final String BATCH_SEND_MSG_COMMAND = "batchsendmsg";
+    public static final String ADMIN_GET_ROAM_MSG_COMMAND = "admin_getroammsg";
+    public static final String ADMIN_MSG_WITHDRAW_COMMAND = "admin_msgwithdraw";
+    public static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
+    public static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
+    public static final String MODIFY_C2C_MSG_COMMAND = "modify_c2c_msg";
 
     private final ImClient imClient;
 
@@ -49,6 +49,11 @@ public class Message {
         return HttpUtil.post(url, sendMsgRequest, SendMsgResult.class, imClient.getConfig());
     }
 
+    public SendMsgResult sendMsg(SendMsgRequest sendMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, SEND_MSG_COMMAND, random);
+        return HttpUtil.post(url, sendMsgRequest, SendMsgResult.class, imClient.getConfig());
+    }
+
     /**
      * 批量发单聊消息
      *
@@ -58,6 +63,11 @@ public class Message {
      */
     public BatchSendMsgResult batchSendMsg(BatchSendMsgRequest batchSendMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND);
+        return HttpUtil.post(url, batchSendMsgRequest, BatchSendMsgResult.class, imClient.getConfig());
+    }
+
+    public BatchSendMsgResult batchSendMsg(BatchSendMsgRequest batchSendMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BATCH_SEND_MSG_COMMAND, random);
         return HttpUtil.post(url, batchSendMsgRequest, BatchSendMsgResult.class, imClient.getConfig());
     }
 
@@ -73,6 +83,11 @@ public class Message {
         return HttpUtil.post(url, importMsgRequest, ImportMsgResult.class, imClient.getConfig());
     }
 
+    public ImportMsgResult importMsg(ImportMsgRequest importMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_MSG_COMMAND, random);
+        return HttpUtil.post(url, importMsgRequest, ImportMsgResult.class, imClient.getConfig());
+    }
+
     /**
      * 查询单聊消息
      *
@@ -82,6 +97,11 @@ public class Message {
      */
     public AdminRoamMsgResult getRoamMsg(AdminGetRoamMsgRequest adminGetRoamMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_GET_ROAM_MSG_COMMAND);
+        return HttpUtil.post(url, adminGetRoamMsgRequest, AdminRoamMsgResult.class, imClient.getConfig());
+    }
+
+    public AdminRoamMsgResult getRoamMsg(AdminGetRoamMsgRequest adminGetRoamMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADMIN_GET_ROAM_MSG_COMMAND, random);
         return HttpUtil.post(url, adminGetRoamMsgRequest, AdminRoamMsgResult.class, imClient.getConfig());
     }
 
@@ -97,6 +117,11 @@ public class Message {
         return HttpUtil.post(url, adminMsgWithdrawRequest, AdminMsgWithdrawResult.class, imClient.getConfig());
     }
 
+    public AdminMsgWithdrawResult msgWithdraw(AdminMsgWithdrawRequest adminMsgWithdrawRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADMIN_MSG_WITHDRAW_COMMAND, random);
+        return HttpUtil.post(url, adminMsgWithdrawRequest, AdminMsgWithdrawResult.class, imClient.getConfig());
+    }
+
     /**
      * 设置单聊消息已读
      *
@@ -106,6 +131,11 @@ public class Message {
      */
     public AdminSetMsgReadResult setMsgRead(AdminSetMsgReadRequest adminSetMsgReadRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, ADMIN_SET_MSG_READ_COMMAND);
+        return HttpUtil.post(url, adminSetMsgReadRequest, AdminSetMsgReadResult.class, imClient.getConfig());
+    }
+
+    public AdminSetMsgReadResult setMsgRead(AdminSetMsgReadRequest adminSetMsgReadRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, ADMIN_SET_MSG_READ_COMMAND, random);
         return HttpUtil.post(url, adminSetMsgReadRequest, AdminSetMsgReadResult.class, imClient.getConfig());
     }
 
@@ -121,6 +151,11 @@ public class Message {
         return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class, imClient.getConfig());
     }
 
+    public C2cUnreadMsgNumResult getC2cUnreadMsgNum(GetC2cUnreadMsgRequest getC2cUnreadMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_C2C_UNREAD_MSG_NUM_COMMAND, random);
+        return HttpUtil.post(url, getC2cUnreadMsgRequest, C2cUnreadMsgNumResult.class, imClient.getConfig());
+    }
+
     /**
      * 修改单聊历史消息
      *
@@ -130,6 +165,11 @@ public class Message {
      */
     public ModifyC2cMsgResult modifyC2cMsg(ModifyC2cMsgRequest modifyC2cMsgRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, MODIFY_C2C_MSG_COMMAND);
+        return HttpUtil.post(url, modifyC2cMsgRequest, ModifyC2cMsgResult.class, imClient.getConfig());
+    }
+
+    public ModifyC2cMsgResult modifyC2cMsg(ModifyC2cMsgRequest modifyC2cMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_C2C_MSG_COMMAND, random);
         return HttpUtil.post(url, modifyC2cMsgRequest, ModifyC2cMsgResult.class, imClient.getConfig());
     }
 }
