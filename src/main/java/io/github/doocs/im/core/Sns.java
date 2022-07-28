@@ -17,26 +17,26 @@ public class Sns {
     /**
      * 关系链管理服务名
      */
-    private static final String SERVICE_NAME = "sns";
+    public static final String SERVICE_NAME = "sns";
 
     /**
      * 关系链管理相关命令字
      */
-    private static final String FRIEND_ADD_COMMAND = "friend_add";
-    private static final String FRIEND_IMPORT_COMMAND = "friend_import";
-    private static final String FRIEND_UPDATE_COMMAND = "friend_update";
-    private static final String FRIEND_DELETE_COMMAND = "friend_delete";
-    private static final String FRIEND_DELETE_ALL_COMMAND = "friend_delete_all";
-    private static final String FRIEND_CHECK_COMMAND = "friend_check";
-    private static final String FRIEND_GET_COMMAND = "friend_get";
-    private static final String FRIEND_GET_LIST_COMMAND = "friend_get_list";
-    private static final String BLACK_LIST_ADD_COMMAND = "black_list_add";
-    private static final String BLACK_LIST_DELETE_COMMAND = "black_list_delete";
-    private static final String BLACK_LIST_GET_COMMAND = "black_list_get";
-    private static final String BLACK_LIST_CHECK_COMMAND = "black_list_check";
-    private static final String GROUP_ADD_COMMAND = "group_add";
-    private static final String GROUP_DELETE_COMMAND = "group_delete";
-    private static final String GROUP_GET_COMMAND = "group_get";
+    public static final String FRIEND_ADD_COMMAND = "friend_add";
+    public static final String FRIEND_IMPORT_COMMAND = "friend_import";
+    public static final String FRIEND_UPDATE_COMMAND = "friend_update";
+    public static final String FRIEND_DELETE_COMMAND = "friend_delete";
+    public static final String FRIEND_DELETE_ALL_COMMAND = "friend_delete_all";
+    public static final String FRIEND_CHECK_COMMAND = "friend_check";
+    public static final String FRIEND_GET_COMMAND = "friend_get";
+    public static final String FRIEND_GET_LIST_COMMAND = "friend_get_list";
+    public static final String BLACK_LIST_ADD_COMMAND = "black_list_add";
+    public static final String BLACK_LIST_DELETE_COMMAND = "black_list_delete";
+    public static final String BLACK_LIST_GET_COMMAND = "black_list_get";
+    public static final String BLACK_LIST_CHECK_COMMAND = "black_list_check";
+    public static final String GROUP_ADD_COMMAND = "group_add";
+    public static final String GROUP_DELETE_COMMAND = "group_delete";
+    public static final String GROUP_GET_COMMAND = "group_get";
 
     private final ImClient imClient;
 
@@ -56,6 +56,11 @@ public class Sns {
         return HttpUtil.post(url, friendAddRequest, FriendAddResult.class, imClient.getConfig());
     }
 
+    public FriendAddResult friendAdd(FriendAddRequest friendAddRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_ADD_COMMAND, random);
+        return HttpUtil.post(url, friendAddRequest, FriendAddResult.class, imClient.getConfig());
+    }
+
     /**
      * 导入好友
      *
@@ -65,6 +70,11 @@ public class Sns {
      */
     public FriendImportResult friendImport(FriendImportRequest friendImportRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_IMPORT_COMMAND);
+        return HttpUtil.post(url, friendImportRequest, FriendImportResult.class, imClient.getConfig());
+    }
+
+    public FriendImportResult friendImport(FriendImportRequest friendImportRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_IMPORT_COMMAND, random);
         return HttpUtil.post(url, friendImportRequest, FriendImportResult.class, imClient.getConfig());
     }
 
@@ -80,6 +90,11 @@ public class Sns {
         return HttpUtil.post(url, friendUpdateRequest, FriendUpdateResult.class, imClient.getConfig());
     }
 
+    public FriendUpdateResult friendUpdate(FriendUpdateRequest friendUpdateRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_UPDATE_COMMAND, random);
+        return HttpUtil.post(url, friendUpdateRequest, FriendUpdateResult.class, imClient.getConfig());
+    }
+
     /**
      * 删除好友
      *
@@ -89,6 +104,11 @@ public class Sns {
      */
     public FriendDeleteResult friendDelete(FriendDeleteRequest friendDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_DELETE_COMMAND);
+        return HttpUtil.post(url, friendDeleteRequest, FriendDeleteResult.class, imClient.getConfig());
+    }
+
+    public FriendDeleteResult friendDelete(FriendDeleteRequest friendDeleteRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_DELETE_COMMAND, random);
         return HttpUtil.post(url, friendDeleteRequest, FriendDeleteResult.class, imClient.getConfig());
     }
 
@@ -104,6 +124,11 @@ public class Sns {
         return HttpUtil.post(url, friendDeleteAllRequest, FriendDeleteAllResult.class, imClient.getConfig());
     }
 
+    public FriendDeleteAllResult friendDeleteAll(FriendDeleteAllRequest friendDeleteAllRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_DELETE_ALL_COMMAND, random);
+        return HttpUtil.post(url, friendDeleteAllRequest, FriendDeleteAllResult.class, imClient.getConfig());
+    }
+
     /**
      * 校验好友
      *
@@ -113,6 +138,11 @@ public class Sns {
      */
     public FriendCheckResult friendCheck(FriendCheckRequest friendCheckRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_CHECK_COMMAND);
+        return HttpUtil.post(url, friendCheckRequest, FriendCheckResult.class, imClient.getConfig());
+    }
+
+    public FriendCheckResult friendCheck(FriendCheckRequest friendCheckRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_CHECK_COMMAND, random);
         return HttpUtil.post(url, friendCheckRequest, FriendCheckResult.class, imClient.getConfig());
     }
 
@@ -128,6 +158,11 @@ public class Sns {
         return HttpUtil.post(url, friendGetRequest, FriendGetResult.class, imClient.getConfig());
     }
 
+    public FriendGetResult friendGet(FriendGetRequest friendGetRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_GET_COMMAND, random);
+        return HttpUtil.post(url, friendGetRequest, FriendGetResult.class, imClient.getConfig());
+    }
+
     /**
      * 拉取指定好友
      *
@@ -137,6 +172,11 @@ public class Sns {
      */
     public FriendGetListResult friendGetList(FriendGetListRequest friendGetListRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, FRIEND_GET_LIST_COMMAND);
+        return HttpUtil.post(url, friendGetListRequest, FriendGetListResult.class, imClient.getConfig());
+    }
+
+    public FriendGetListResult friendGetList(FriendGetListRequest friendGetListRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, FRIEND_GET_LIST_COMMAND, random);
         return HttpUtil.post(url, friendGetListRequest, FriendGetListResult.class, imClient.getConfig());
     }
 
@@ -152,6 +192,11 @@ public class Sns {
         return HttpUtil.post(url, blackListAddRequest, BlackListAddResult.class, imClient.getConfig());
     }
 
+    public BlackListAddResult blackListAdd(BlackListAddRequest blackListAddRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_ADD_COMMAND, random);
+        return HttpUtil.post(url, blackListAddRequest, BlackListAddResult.class, imClient.getConfig());
+    }
+
     /**
      * 删除黑名单
      *
@@ -161,6 +206,11 @@ public class Sns {
      */
     public BlackListDeleteResult blackListDelete(BlackListDeleteRequest blackListDeleteRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_DELETE_COMMAND);
+        return HttpUtil.post(url, blackListDeleteRequest, BlackListDeleteResult.class, imClient.getConfig());
+    }
+
+    public BlackListDeleteResult blackListDelete(BlackListDeleteRequest blackListDeleteRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_DELETE_COMMAND, random);
         return HttpUtil.post(url, blackListDeleteRequest, BlackListDeleteResult.class, imClient.getConfig());
     }
 
@@ -176,6 +226,11 @@ public class Sns {
         return HttpUtil.post(url, blackListGetRequest, BlackListGetResult.class, imClient.getConfig());
     }
 
+    public BlackListGetResult blackListGet(BlackListGetRequest blackListGetRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_GET_COMMAND, random);
+        return HttpUtil.post(url, blackListGetRequest, BlackListGetResult.class, imClient.getConfig());
+    }
+
     /**
      * 校验黑名单
      *
@@ -185,6 +240,11 @@ public class Sns {
      */
     public BlackListCheckResult blackListCheck(BlackListCheckRequest blackListCheckRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_CHECK_COMMAND);
+        return HttpUtil.post(url, blackListCheckRequest, BlackListCheckResult.class, imClient.getConfig());
+    }
+
+    public BlackListCheckResult blackListCheck(BlackListCheckRequest blackListCheckRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BLACK_LIST_CHECK_COMMAND, random);
         return HttpUtil.post(url, blackListCheckRequest, BlackListCheckResult.class, imClient.getConfig());
     }
 
@@ -200,6 +260,11 @@ public class Sns {
         return HttpUtil.post(url, groupAddRequest, GroupAddResult.class, imClient.getConfig());
     }
 
+    public GroupAddResult groupAdd(GroupAddRequest groupAddRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_ADD_COMMAND, random);
+        return HttpUtil.post(url, groupAddRequest, GroupAddResult.class, imClient.getConfig());
+    }
+
     /**
      * 删除分组
      *
@@ -212,6 +277,11 @@ public class Sns {
         return HttpUtil.post(url, groupDeleteRequest, GroupDeleteResult.class, imClient.getConfig());
     }
 
+    public GroupDeleteResult groupDelete(GroupDeleteRequest groupDeleteRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_DELETE_COMMAND, random);
+        return HttpUtil.post(url, groupDeleteRequest, GroupDeleteResult.class, imClient.getConfig());
+    }
+
     /**
      * 拉取分组
      *
@@ -221,6 +291,11 @@ public class Sns {
      */
     public GroupGetResult groupGet(GroupGetRequest groupGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GROUP_GET_COMMAND);
+        return HttpUtil.post(url, groupGetRequest, GroupGetResult.class, imClient.getConfig());
+    }
+
+    public GroupGetResult groupGet(GroupGetRequest groupGetRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_GET_COMMAND, random);
         return HttpUtil.post(url, groupGetRequest, GroupGetResult.class, imClient.getConfig());
     }
 }

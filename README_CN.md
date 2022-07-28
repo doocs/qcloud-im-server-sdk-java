@@ -5,7 +5,7 @@
 <a href="https://github.com/doocs/qcloud-im-server-sdk-java/pulls"><img src="https://img.shields.io/badge/prs-welcome-42b883?style=flat-square" alt="prs welcome"></a>
 <a href="https://doocs.github.io/#/?id=how-to-join"><img src="https://img.shields.io/badge/organization-join%20us-42b883?style=flat-square" alt="open-source-organization"></a>
 
-腾讯云 IM 服务端 Java SDK 封装了[腾讯云即时通信 IM](https://cloud.tencent.com/document/product/269) 服务端的所有 API 接口，方便服务端开发者进行 REST API 接口的调用以第三方回调的处理。
+腾讯云 IM 服务端 Java SDK 封装了[腾讯云即时通信 IM](https://cloud.tencent.com/document/product/269) 服务端的所有 API 接口，方便服务端开发者进行 REST API 接口的调用以及第三方回调的处理。
 
 [English Version](./README.md)
 

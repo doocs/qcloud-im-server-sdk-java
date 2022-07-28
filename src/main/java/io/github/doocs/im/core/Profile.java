@@ -19,13 +19,13 @@ public class Profile {
     /**
      * 资料管理服务名
      */
-    private static final String SERVICE_NAME = "profile";
+    public static final String SERVICE_NAME = "profile";
 
     /**
      * 资料管理相关命令字
      */
-    private static final String PORTRAIT_SET_COMMAND = "portrait_set";
-    private static final String PORTRAIT_GET_COMMAND = "portrait_get";
+    public static final String PORTRAIT_SET_COMMAND = "portrait_set";
+    public static final String PORTRAIT_GET_COMMAND = "portrait_get";
 
     private final ImClient imClient;
 
@@ -45,6 +45,11 @@ public class Profile {
         return HttpUtil.post(url, portraitSetRequest, PortraitSetResult.class, imClient.getConfig());
     }
 
+    public PortraitSetResult portraitSet(PortraitSetRequest portraitSetRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_SET_COMMAND, random);
+        return HttpUtil.post(url, portraitSetRequest, PortraitSetResult.class, imClient.getConfig());
+    }
+
     /**
      * 拉取资料
      *
@@ -54,6 +59,11 @@ public class Profile {
      */
     public PortraitGetResult portraitGet(PortraitGetRequest portraitGetRequest) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_GET_COMMAND);
+        return HttpUtil.post(url, portraitGetRequest, PortraitGetResult.class, imClient.getConfig());
+    }
+
+    public PortraitGetResult portraitGet(PortraitGetRequest portraitGetRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, PORTRAIT_GET_COMMAND, random);
         return HttpUtil.post(url, portraitGetRequest, PortraitGetResult.class, imClient.getConfig());
     }
 }
