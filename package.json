@@ -1,6 +1,6 @@
 {
   "name": "qcloud-im-server-sdk-java",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "腾讯云 IM 服务端 SDK API 文档 Java 版",
   "main": "index.js",
   "scripts": {
