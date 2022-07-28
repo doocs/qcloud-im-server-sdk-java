@@ -21,7 +21,7 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
      * 拉取消息的最大 seq
      */
     @JsonProperty("ReqMsgSeq")
-    private Integer reqMsgSeq;
+    private Long reqMsgSeq;
 
     /**
      * 拉取的历史消息的条数，目前一次请求最多返回20条历史消息，所以这里最好小于等于20
@@ -37,7 +37,7 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
         this.reqMsgNumber = reqMsgNumber;
     }
 
-    public GroupMsgGetSimpleRequest(String groupId, Integer reqMsgSeq, Integer reqMsgNumber) {
+    public GroupMsgGetSimpleRequest(String groupId, Long reqMsgSeq, Integer reqMsgNumber) {
         this.groupId = groupId;
         this.reqMsgSeq = reqMsgSeq;
         this.reqMsgNumber = reqMsgNumber;
@@ -61,11 +61,11 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
         this.groupId = groupId;
     }
 
-    public Integer getReqMsgSeq() {
+    public Long getReqMsgSeq() {
         return reqMsgSeq;
     }
 
-    public void setReqMsgSeq(Integer reqMsgSeq) {
+    public void setReqMsgSeq(Long reqMsgSeq) {
         this.reqMsgSeq = reqMsgSeq;
     }
 
@@ -80,7 +80,7 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
 
     public static final class Builder {
         private String groupId;
-        private Integer reqMsgSeq;
+        private Long reqMsgSeq;
         private Integer reqMsgNumber;
 
         private Builder() {
@@ -95,7 +95,7 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
             return this;
         }
 
-        public Builder reqMsgSeq(Integer reqMsgSeq) {
+        public Builder reqMsgSeq(Long reqMsgSeq) {
             this.reqMsgSeq = reqMsgSeq;
             return this;
         }

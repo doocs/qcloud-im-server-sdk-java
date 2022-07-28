@@ -36,7 +36,7 @@ class GroupTest {
         GetAppIdGroupListRequest request = GetAppIdGroupListRequest.builder()
                 .limit(10)
                 .groupType(GroupType.PUBLIC)
-                .next(0)
+                .next(0L)
                 .build();
 
         GetAppIdGroupListResult result = client.group.getAppIdGroupList(request);
@@ -335,7 +335,7 @@ class GroupTest {
         GroupMsgGetSimpleRequest request = GroupMsgGetSimpleRequest.builder()
                 .groupId("MyFirstGroup")
                 .reqMsgNumber(1)
-                .reqMsgNumber(20)
+                .reqMsgSeq(20L)
                 .build();
 
         GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);

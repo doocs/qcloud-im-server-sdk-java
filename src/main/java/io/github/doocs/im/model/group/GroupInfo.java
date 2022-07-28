@@ -64,7 +64,7 @@ public class GroupInfo {
      * 群资料的每次变都会增加该值
      */
     @JsonProperty("InfoSeq")
-    private Integer infoSeq;
+    private Long infoSeq;
 
     /**
      * 群组最后一次信息变更时间
@@ -82,7 +82,7 @@ public class GroupInfo {
      * 群内下一条消息的 Seq
      */
     @JsonProperty("NextMsgSeq")
-    private Integer nextMsgSeq;
+    private Long nextMsgSeq;
 
     /**
      * 当前成员数量
@@ -132,8 +132,8 @@ public class GroupInfo {
     }
 
     public GroupInfo(String groupId, String type, String name, String introduction, String notification,
-                     String faceUrl, String ownerAccount, Integer createTime, Integer infoSeq,
-                     Integer lastInfoTime, Integer lastMsgTime, Integer nextMsgSeq, Integer memberNum,
+                     String faceUrl, String ownerAccount, Integer createTime, Long infoSeq,
+                     Integer lastInfoTime, Integer lastMsgTime, Long nextMsgSeq, Integer memberNum,
                      Integer maxMemberNum, String applyJoinOption, String muteAllMember,
                      List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
                      List<AppMemberDefinedDataItem> appMemberDefinedData) {
@@ -248,11 +248,11 @@ public class GroupInfo {
         this.createTime = createTime;
     }
 
-    public Integer getInfoSeq() {
+    public Long getInfoSeq() {
         return infoSeq;
     }
 
-    public void setInfoSeq(Integer infoSeq) {
+    public void setInfoSeq(Long infoSeq) {
         this.infoSeq = infoSeq;
     }
 
@@ -272,11 +272,11 @@ public class GroupInfo {
         this.lastMsgTime = lastMsgTime;
     }
 
-    public Integer getNextMsgSeq() {
+    public Long getNextMsgSeq() {
         return nextMsgSeq;
     }
 
-    public void setNextMsgSeq(Integer nextMsgSeq) {
+    public void setNextMsgSeq(Long nextMsgSeq) {
         this.nextMsgSeq = nextMsgSeq;
     }
 
@@ -346,10 +346,10 @@ public class GroupInfo {
         private String faceUrl;
         private String ownerAccount;
         private Integer createTime;
-        private Integer infoSeq;
+        private Long infoSeq;
         private Integer lastInfoTime;
         private Integer lastMsgTime;
-        private Integer nextMsgSeq;
+        private Long nextMsgSeq;
         private Integer memberNum;
         private Integer maxMemberNum;
         private String applyJoinOption;
@@ -405,7 +405,7 @@ public class GroupInfo {
             return this;
         }
 
-        public Builder infoSeq(Integer infoSeq) {
+        public Builder infoSeq(Long infoSeq) {
             this.infoSeq = infoSeq;
             return this;
         }
@@ -420,7 +420,7 @@ public class GroupInfo {
             return this;
         }
 
-        public Builder nextMsgSeq(Integer nextMsgSeq) {
+        public Builder nextMsgSeq(Long nextMsgSeq) {
             this.nextMsgSeq = nextMsgSeq;
             return this;
         }
