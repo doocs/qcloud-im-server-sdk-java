@@ -31,7 +31,7 @@ public class GetAppIdGroupListResult extends GenericResult {
      * 分页拉取的标志
      */
     @JsonProperty("Next")
-    private Integer next;
+    private Long next;
 
     public Integer getTotalCount() {
         return totalCount;
@@ -49,17 +49,17 @@ public class GetAppIdGroupListResult extends GenericResult {
         this.groupIdList = groupIdList;
     }
 
-    public Integer getNext() {
+    public Long getNext() {
         return next;
     }
 
-    public void setNext(Integer next) {
+    public void setNext(Long next) {
         this.next = next;
     }
 
     @Override
     public String toString() {
-        return "GetAppidGroupListResult{" +
+        return "GetAppIdGroupListResult{" +
                 "totalCount=" + totalCount +
                 ", groupIdList=" + groupIdList +
                 ", next=" + next +

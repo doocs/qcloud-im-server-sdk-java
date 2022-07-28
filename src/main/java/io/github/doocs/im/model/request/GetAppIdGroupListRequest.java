@@ -21,7 +21,7 @@ public class GetAppIdGroupListRequest extends GenericRequest {
      * 群太多时分页拉取标志，第一次填0，以后填上一次返回的值，返回的 Next 为0代表拉完了
      */
     @JsonProperty("Next")
-    private Integer next;
+    private Long next;
 
     /**
      * 如果仅需要返回特定群组形态的群组，可以通过 GroupType 进行过滤，
@@ -36,7 +36,7 @@ public class GetAppIdGroupListRequest extends GenericRequest {
     public GetAppIdGroupListRequest() {
     }
 
-    public GetAppIdGroupListRequest(Integer limit, Integer next, String groupType) {
+    public GetAppIdGroupListRequest(Integer limit, Long next, String groupType) {
         this.limit = limit;
         this.next = next;
         this.groupType = groupType;
@@ -60,11 +60,11 @@ public class GetAppIdGroupListRequest extends GenericRequest {
         this.limit = limit;
     }
 
-    public Integer getNext() {
+    public Long getNext() {
         return next;
     }
 
-    public void setNext(Integer next) {
+    public void setNext(Long next) {
         this.next = next;
     }
 
@@ -79,7 +79,7 @@ public class GetAppIdGroupListRequest extends GenericRequest {
 
     public static final class Builder {
         private Integer limit;
-        private Integer next;
+        private Long next;
         private String groupType;
 
         private Builder() {
@@ -94,7 +94,7 @@ public class GetAppIdGroupListRequest extends GenericRequest {
             return this;
         }
 
-        public Builder next(Integer next) {
+        public Builder next(Long next) {
             this.next = next;
             return this;
         }
