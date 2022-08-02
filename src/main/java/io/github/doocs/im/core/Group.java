@@ -21,6 +21,7 @@ public class Group {
     public static final String SERVICE_NAME_ATTR = "group_open_attr_http_svc";
     public static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
     public static final String SERVICE_NAME_OPEN_IM = "openim";
+    public static final String SERVICE_NAME_MILLION_GROUP = "million_group_open_http_svc";
 
     /**
      * 群组管理相关命令字
@@ -58,6 +59,10 @@ public class Group {
     public static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
     public static final String GET_GROUP_MSG_RECEIPT_COMMAND = "get_group_msg_receipt";
     public static final String GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND = "get_group_msg_receipt_detail";
+    public static final String CREATE_GROUP_TOPIC_COMMAND = "create_topic";
+    public static final String GET_GROUP_TOPIC_COMMAND = "get_topic";
+    public static final String MODIFY_GROUP_TOPIC_COMMAND = "modify_topic";
+    public static final String DESTROY_GROUP_TOPIC_COMMAND = "destroy_topic";
 
     private final ImClient imClient;
 
@@ -625,5 +630,73 @@ public class Group {
     public GetGroupMsgReceiptDetailResult getGroupMsgReceiptDetail(GetGroupMsgReceiptDetailRequest getGroupMsgReceiptDetailRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND, random);
         return HttpUtil.post(url, getGroupMsgReceiptDetailRequest, GetGroupMsgReceiptDetailResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 创建话题
+     *
+     * @param createGroupTopicRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public CreateGroupTopicResult createGroupTopic(CreateGroupTopicRequest createGroupTopicRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, CREATE_GROUP_TOPIC_COMMAND);
+        return HttpUtil.post(url, createGroupTopicRequest, CreateGroupTopicResult.class, imClient.getConfig());
+    }
+
+    public CreateGroupTopicResult createGroupTopic(CreateGroupTopicRequest createGroupTopicRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, CREATE_GROUP_TOPIC_COMMAND, random);
+        return HttpUtil.post(url, createGroupTopicRequest, CreateGroupTopicResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取话题资料
+     *
+     * @param getGroupTopicRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupTopicResult getGroupTopic(GetGroupTopicRequest getGroupTopicRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, GET_GROUP_TOPIC_COMMAND);
+        return HttpUtil.post(url, getGroupTopicRequest, GetGroupTopicResult.class, imClient.getConfig());
+    }
+
+    public GetGroupTopicResult getGroupTopic(GetGroupTopicRequest getGroupTopicRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, GET_GROUP_TOPIC_COMMAND, random);
+        return HttpUtil.post(url, getGroupTopicRequest, GetGroupTopicResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 修改话题资料
+     *
+     * @param modifyGroupTopicRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyGroupTopicResult modifyGroupTopic(ModifyGroupTopicRequest modifyGroupTopicRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, MODIFY_GROUP_TOPIC_COMMAND);
+        return HttpUtil.post(url, modifyGroupTopicRequest, ModifyGroupTopicResult.class, imClient.getConfig());
+    }
+
+    public ModifyGroupTopicResult modifyGroupTopic(ModifyGroupTopicRequest modifyGroupTopicRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, MODIFY_GROUP_TOPIC_COMMAND, random);
+        return HttpUtil.post(url, modifyGroupTopicRequest, ModifyGroupTopicResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 解散话题
+     *
+     * @param destroyGroupTopicRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public DestroyGroupTopicResult destroyGroupTopic(DestroyGroupTopicRequest destroyGroupTopicRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, DESTROY_GROUP_TOPIC_COMMAND);
+        return HttpUtil.post(url, destroyGroupTopicRequest, DestroyGroupTopicResult.class, imClient.getConfig());
+    }
+
+    public DestroyGroupTopicResult destroyGroupTopic(DestroyGroupTopicRequest destroyGroupTopicRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, DESTROY_GROUP_TOPIC_COMMAND, random);
+        return HttpUtil.post(url, destroyGroupTopicRequest, DestroyGroupTopicResult.class, imClient.getConfig());
     }
 }

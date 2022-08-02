@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * 创建群组之后回调
+ * 创建话题之后回调
  *
  * @author bingo
- * @since 2021/11/16 17:18
+ * @since 2022/8/2 11:41
  */
-public class AfterCreateGroupCallback {
+public class AfterCreateGroupTopicCallback {
     /**
      * 回调命令
      */
@@ -18,43 +18,43 @@ public class AfterCreateGroupCallback {
     private String callbackCommand;
 
     /**
-     * 操作的群 ID
+     * 操作的话题所属的群组ID
      */
     @JsonProperty("GroupId")
     private String groupId;
 
     /**
-     * 发起创建群组请求的操作者 UserID
+     * 操作的话题ID
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
+    /**
+     * 发起创建话题请求的操作者 UserID
      */
     @JsonProperty("Operator_Account")
     private String operatorAccount;
 
     /**
-     * 请求创建的群的群主 UserID
+     * 请求创建话题所属群的群主 UserID
      */
     @JsonProperty("Owner_Account")
     private String ownerAccount;
 
     /**
-     * 请求创建的群组类型，例如 Public
+     * 代表创建话题所属的群组类型，这里为Community
      */
     @JsonProperty("Type")
     private String type;
 
     /**
-     * 请求创建的群组的名称
+     * 请求创建的话题的名称
      */
     @JsonProperty("Name")
     private String name;
 
     /**
-     * 请求创建的群组的初始化成员列表
-     */
-    @JsonProperty("MemberList")
-    private List<MemberAccount> memberList;
-
-    /**
-     * 用户建群/话题时的自定义字段，这个字段默认是没有的，需要开通
+     * 用户创建话题时的自定义字段，这个字段默认是没有的，需要开通
      */
     @JsonProperty("UserDefinedDataList")
     private List<UserDefinedDataItem> userDefinedDataList;
@@ -73,6 +73,14 @@ public class AfterCreateGroupCallback {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 
     public String getOperatorAccount() {
@@ -105,14 +113,6 @@ public class AfterCreateGroupCallback {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<MemberAccount> getMemberList() {
-        return memberList;
-    }
-
-    public void setMemberList(List<MemberAccount> memberList) {
-        this.memberList = memberList;
     }
 
     public List<UserDefinedDataItem> getUserDefinedDataList() {
