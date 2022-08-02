@@ -936,6 +936,8 @@ SetGroupAttrResult result = client.group.setGroupAttr(request);
 使用该接口修改消息后，被修改的消息不能恢复，请谨慎调用该接口。
 :::
 
+使用示例：
+
 ```java
 ModifyGroupMsgRequest request = new ModifyGroupMsgRequest();
 request.setGroupId("MyFirstGroup");
@@ -970,6 +972,8 @@ App 管理员可以通过该接口向所有直播群下发广播消息。
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
 
+使用示例：
+
 ```java
 SendBroadcastMsgRequest request = new SendBroadcastMsgRequest();
 request.setFromAccount("test1");
@@ -1003,6 +1007,8 @@ App 管理员可以通过该接口拉取群消息已读回执信息。
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
 
+使用示例：
+
 ```java
 GetGroupMsgReceiptRequest request = new GetGroupMsgReceiptRequest();
 request.setGroupId("MyFirstGroup");
@@ -1035,6 +1041,8 @@ App 管理员可以通过该接口拉取群消息已读或未读成员列表。
 即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
 :::
 
+使用示例：
+
 ```java
 GetGroupMsgReceiptDetailRequest request = new GetGroupMsgReceiptDetailRequest();
 request.setGroupId("MyFirstGroup");
@@ -1044,4 +1052,117 @@ request.setCursor("");
 request.setFlag(12);
 
 GetGroupMsgReceiptDetailResult result = client.group.getGroupMsgReceiptDetail(request);
+```
+
+## 创建话题
+
+App 管理员可以通过该接口创建话题。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API            |
+| ----------------- | ------------------------------ |
+| Private           | 不支持                         |
+| Public            | 不支持                         |
+| ChatRoom          | 不支持                         |
+| AVChatRoom        | 不支持                         |
+| Community（社群） | 只有支持话题的社群才适用此 API |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+CreateGroupTopicRequest request = new CreateGroupTopicRequest();
+request.setGroupId("MyFirstGroup");
+request.setTopicName("test");
+request.setFaceUrl("");
+
+CreateGroupTopicResult result = client.group.createGroupTopic(request);
+```
+
+## 获取话题资料
+
+App 管理员可以通过该接口获取话题资料。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API            |
+| ----------------- | ------------------------------ |
+| Private           | 不支持                         |
+| Public            | 不支持                         |
+| ChatRoom          | 不支持                         |
+| AVChatRoom        | 不支持                         |
+| Community（社群） | 只有支持话题的社群才适用此 API |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+GetGroupTopicRequest request = new GetGroupTopicRequest();
+request.setGroupId("MyFirstGroup");
+request.setFromAccount("1400187352");
+
+GetGroupTopicResult result = client.group.getGroupTopic(request);
+```
+
+## 修改话题资料
+
+App 管理员可以通过该接口修改话题资料。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API            |
+| ----------------- | ------------------------------ |
+| Private           | 不支持                         |
+| Public            | 不支持                         |
+| ChatRoom          | 不支持                         |
+| AVChatRoom        | 不支持                         |
+| Community（社群） | 只有支持话题的社群才适用此 API |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+ModifyGroupTopicRequest request = new ModifyGroupTopicRequest();
+request.setGroupId("MyFirstGroup");
+request.setTopicName("test");
+request.setFaceUrl("");
+
+ModifyGroupTopicResult result = client.group.modifyGroupTopic(request);
+```
+
+## 解散话题
+
+App 管理员可以通过该接口解散话题。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API            |
+| ----------------- | ------------------------------ |
+| Private           | 不支持                         |
+| Public            | 不支持                         |
+| ChatRoom          | 不支持                         |
+| AVChatRoom        | 不支持                         |
+| Community（社群） | 只有支持话题的社群才适用此 API |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+DestroyGroupTopicRequest request = new DestroyGroupTopicRequest();
+request.setGroupId("MyFirstGroup");
+
+DestroyGroupTopicResult result = client.group.destroyGroupTopic(request);
 ```

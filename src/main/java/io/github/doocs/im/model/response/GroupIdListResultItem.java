@@ -94,7 +94,7 @@ public class GroupIdListResultItem {
      * 群组内每一条消息都有一条唯一的消息 Seq，且该 Seq 是按照发消息顺序而连续的。从1开始，群内每增加一条消息，NextMsgSeq 就会增加1
      */
     @JsonProperty("NextMsgSeq")
-    private Integer nextMsgSeq;
+    private Long nextMsgSeq;
 
     /**
      * 当前成员数量
@@ -208,11 +208,11 @@ public class GroupIdListResultItem {
         this.lastMsgTime = lastMsgTime;
     }
 
-    public Integer getNextMsgSeq() {
+    public Long getNextMsgSeq() {
         return nextMsgSeq;
     }
 
-    public void setNextMsgSeq(Integer nextMsgSeq) {
+    public void setNextMsgSeq(Long nextMsgSeq) {
         this.nextMsgSeq = nextMsgSeq;
     }
 

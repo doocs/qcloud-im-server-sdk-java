@@ -468,4 +468,49 @@ class GroupTest {
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
+
+    @Test
+    void testCreateGroupTopic() throws IOException {
+        CreateGroupTopicRequest request = new CreateGroupTopicRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setTopicName("test");
+        request.setFaceUrl("");
+
+        CreateGroupTopicResult result = client.group.createGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetGroupTopic() throws IOException {
+        GetGroupTopicRequest request = new GetGroupTopicRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setFromAccount("1400187352");
+
+        GetGroupTopicResult result = client.group.getGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testModifyGroupTopic() throws IOException {
+        ModifyGroupTopicRequest request = new ModifyGroupTopicRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setTopicName("test");
+        request.setFaceUrl("");
+
+        ModifyGroupTopicResult result = client.group.modifyGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testDestroyGroupTopic() throws IOException {
+        DestroyGroupTopicRequest request = new DestroyGroupTopicRequest();
+        request.setGroupId("MyFirstGroup");
+
+        DestroyGroupTopicResult result = client.group.destroyGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
 }
