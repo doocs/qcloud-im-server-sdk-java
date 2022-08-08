@@ -95,10 +95,9 @@ public class SendGroupMsgRequest extends GenericRequest {
     public SendGroupMsgRequest() {
     }
 
-    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody) {
+    public SendGroupMsgRequest(String groupId, Long random, List<TIMMsgElement> msgBody) {
         this.groupId = groupId;
         this.random = random;
-        this.msgPriority = msgPriority;
         this.msgBody = msgBody;
     }
 
