@@ -29,6 +29,19 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
     @JsonProperty("ReqMsgNumber")
     private Integer reqMsgNumber;
 
+    /**
+     * 是否带撤回的消息，填1表明需要拉取撤回后的消息；默认不拉取撤回后的消息
+     * {@link io.github.doocs.im.constant.WithRecalledMsgType}
+     */
+    @JsonProperty("WithRecalledMsg")
+    private Integer withRecalledMsg;
+
+    /**
+     * 	话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public GroupMsgGetSimpleRequest() {
     }
 
@@ -37,16 +50,21 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
         this.reqMsgNumber = reqMsgNumber;
     }
 
-    public GroupMsgGetSimpleRequest(String groupId, Long reqMsgSeq, Integer reqMsgNumber) {
+    public GroupMsgGetSimpleRequest(String groupId, Long reqMsgSeq, Integer reqMsgNumber,
+                                    Integer withRecalledMsg, String topicId) {
         this.groupId = groupId;
         this.reqMsgSeq = reqMsgSeq;
         this.reqMsgNumber = reqMsgNumber;
+        this.withRecalledMsg = withRecalledMsg;
+        this.topicId = topicId;
     }
 
     private GroupMsgGetSimpleRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.reqMsgSeq = builder.reqMsgSeq;
         this.reqMsgNumber = builder.reqMsgNumber;
+        this.withRecalledMsg = builder.withRecalledMsg;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -77,11 +95,29 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
         this.reqMsgNumber = reqMsgNumber;
     }
 
+    public Integer getWithRecalledMsg() {
+        return withRecalledMsg;
+    }
+
+    public void setWithRecalledMsg(Integer withRecalledMsg) {
+        this.withRecalledMsg = withRecalledMsg;
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
         private Long reqMsgSeq;
         private Integer reqMsgNumber;
+        private Integer withRecalledMsg;
+        private String topicId;
 
         private Builder() {
         }
@@ -102,6 +138,16 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
 
         public Builder reqMsgNumber(Integer reqMsgNumber) {
             this.reqMsgNumber = reqMsgNumber;
+            return this;
+        }
+
+        public Builder withRecalledMsg(Integer withRecalledMsg) {
+            this.withRecalledMsg = withRecalledMsg;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

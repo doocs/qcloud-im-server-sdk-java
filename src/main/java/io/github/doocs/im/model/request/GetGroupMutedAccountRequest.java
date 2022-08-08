@@ -17,6 +17,12 @@ public class GetGroupMutedAccountRequest extends GenericRequest {
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public GetGroupMutedAccountRequest() {
     }
 
@@ -24,8 +30,14 @@ public class GetGroupMutedAccountRequest extends GenericRequest {
         this.groupId = groupId;
     }
 
+    public GetGroupMutedAccountRequest(String groupId, String topicId) {
+        this.groupId = groupId;
+        this.topicId = topicId;
+    }
+
     private GetGroupMutedAccountRequest(Builder builder) {
         this.groupId = builder.groupId;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -40,9 +52,17 @@ public class GetGroupMutedAccountRequest extends GenericRequest {
         this.groupId = groupId;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
 
     public static final class Builder {
         private String groupId;
+        private String topicId;
 
         private Builder() {
         }
@@ -53,6 +73,11 @@ public class GetGroupMutedAccountRequest extends GenericRequest {
 
         public Builder groupId(String groupId) {
             this.groupId = groupId;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

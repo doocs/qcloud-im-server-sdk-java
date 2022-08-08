@@ -31,6 +31,12 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
     @JsonProperty("Content")
     private String content;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public SendGroupSystemNotificationRequest() {
     }
 
@@ -39,16 +45,19 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
         this.content = content;
     }
 
-    public SendGroupSystemNotificationRequest(String groupId, List<String> toMembersAccount, String content) {
+    public SendGroupSystemNotificationRequest(String groupId, List<String> toMembersAccount,
+                                              String content, String topicId) {
         this.groupId = groupId;
         this.toMembersAccount = toMembersAccount;
         this.content = content;
+        this.topicId = topicId;
     }
 
     private SendGroupSystemNotificationRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.toMembersAccount = builder.toMembersAccount;
         this.content = builder.content;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -79,11 +88,20 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
         this.content = content;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
         private List<String> toMembersAccount;
         private String content;
+        private String topicId;
 
         private Builder() {
         }
@@ -104,6 +122,11 @@ public class SendGroupSystemNotificationRequest extends GenericRequest {
 
         public Builder content(String content) {
             this.content = content;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

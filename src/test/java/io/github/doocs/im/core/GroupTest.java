@@ -205,9 +205,9 @@ class GroupTest {
         List<TIMMsgElement> msgBody = Collections.singletonList(msg);
         SendGroupMsgRequest request = SendGroupMsgRequest.builder()
                 .groupId("MyFirstGroup")
-                .random(1314)
+                .random(1314L)
                 .msgBody(msgBody)
-                .onlineOnlyFlag(OnlineOnlyFlag.YES)
+                .onlineOnlyFlag(OnlineOnlyFlag.NO)
                 .build();
 
         SendGroupMsgResult result = client.group.sendGroupMsg(request);
