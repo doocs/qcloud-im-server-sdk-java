@@ -31,6 +31,12 @@ public class ForbidSendMsgRequest extends GenericRequest {
     @JsonProperty("MuteTime")
     private Long muteTime;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public ForbidSendMsgRequest() {
     }
 
@@ -40,10 +46,18 @@ public class ForbidSendMsgRequest extends GenericRequest {
         this.muteTime = muteTime;
     }
 
+    public ForbidSendMsgRequest(String groupId, List<String> membersAccount, Long muteTime, String topicId) {
+        this.groupId = groupId;
+        this.membersAccount = membersAccount;
+        this.muteTime = muteTime;
+        this.topicId = topicId;
+    }
+
     private ForbidSendMsgRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.membersAccount = builder.membersAccount;
         this.muteTime = builder.muteTime;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -74,11 +88,20 @@ public class ForbidSendMsgRequest extends GenericRequest {
         this.muteTime = muteTime;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
         private List<String> membersAccount;
         private Long muteTime;
+        private String topicId;
 
         private Builder() {
         }
@@ -99,6 +122,11 @@ public class ForbidSendMsgRequest extends GenericRequest {
 
         public Builder muteTime(Long muteTime) {
             this.muteTime = muteTime;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

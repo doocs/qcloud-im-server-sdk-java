@@ -38,6 +38,12 @@ public class ModifyGroupMsgRequest extends GenericRequest {
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public ModifyGroupMsgRequest() {
     }
 
@@ -46,11 +52,13 @@ public class ModifyGroupMsgRequest extends GenericRequest {
         this.msgSeq = msgSeq;
     }
 
-    public ModifyGroupMsgRequest(String groupId, Long msgSeq, List<TIMMsgElement> msgBody, String cloudCustomData) {
+    public ModifyGroupMsgRequest(String groupId, Long msgSeq, List<TIMMsgElement> msgBody,
+                                 String cloudCustomData, String topicId) {
         this.groupId = groupId;
         this.msgSeq = msgSeq;
         this.msgBody = msgBody;
         this.cloudCustomData = cloudCustomData;
+        this.topicId = topicId;
     }
 
     private ModifyGroupMsgRequest(Builder builder) {
@@ -58,6 +66,7 @@ public class ModifyGroupMsgRequest extends GenericRequest {
         this.msgSeq = builder.msgSeq;
         this.msgBody = builder.msgBody;
         this.cloudCustomData = builder.cloudCustomData;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -96,11 +105,21 @@ public class ModifyGroupMsgRequest extends GenericRequest {
         this.cloudCustomData = cloudCustomData;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
+
     public static final class Builder {
         private String groupId;
         private Long msgSeq;
         private List<TIMMsgElement> msgBody;
         private String cloudCustomData;
+        private String topicId;
 
         private Builder() {
         }
@@ -126,6 +145,11 @@ public class ModifyGroupMsgRequest extends GenericRequest {
 
         public Builder cloudCustomData(String cloudCustomData) {
             this.cloudCustomData = cloudCustomData;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

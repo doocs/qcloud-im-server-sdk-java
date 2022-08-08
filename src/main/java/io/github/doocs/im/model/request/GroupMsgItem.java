@@ -25,10 +25,10 @@ public class GroupMsgItem {
     private Integer sendTime;
 
     /**
-     * 32位随机数；如果5分钟内两条消息的随机值相同，后一条消息将被当做重复消息而丢弃
+     * 32位无符号整数；如果5分钟内两条消息的随机值相同，后一条消息将被当做重复消息而丢弃
      */
     @JsonProperty("Random")
-    private Integer random;
+    private Long random;
 
     /**
      * TIM 消息，详情请参阅 TIMMsgElement对象的定义
@@ -45,7 +45,7 @@ public class GroupMsgItem {
         this.msgBody = msgBody;
     }
 
-    public GroupMsgItem(String fromAccount, Integer sendTime, Integer random, List<TIMMsgElement> msgBody) {
+    public GroupMsgItem(String fromAccount, Integer sendTime, Long random, List<TIMMsgElement> msgBody) {
         this.fromAccount = fromAccount;
         this.sendTime = sendTime;
         this.random = random;
@@ -79,11 +79,11 @@ public class GroupMsgItem {
         this.sendTime = sendTime;
     }
 
-    public Integer getRandom() {
+    public Long getRandom() {
         return random;
     }
 
-    public void setRandom(Integer random) {
+    public void setRandom(Long random) {
         this.random = random;
     }
 
@@ -99,7 +99,7 @@ public class GroupMsgItem {
     public static final class Builder {
         private String fromAccount;
         private Integer sendTime;
-        private Integer random;
+        private Long random;
         private List<TIMMsgElement> msgBody;
 
         private Builder() {
@@ -119,7 +119,7 @@ public class GroupMsgItem {
             return this;
         }
 
-        public Builder random(Integer random) {
+        public Builder random(Long random) {
             this.random = random;
             return this;
         }

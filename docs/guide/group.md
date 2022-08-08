@@ -669,7 +669,7 @@ SetUnreadMsgNumRequest result = SetUnreadMsgNumRequest.builder()
 SetUnreadMsgNumResult result = client.group.setUnreadMsgNum(request);
 ```
 
-## 撤回指定用户发送的消息
+## 删除指定用户发送的消息
 
 该 API 接口的作用是撤回最近 1000 条消息中指定用户发送的消息。
 

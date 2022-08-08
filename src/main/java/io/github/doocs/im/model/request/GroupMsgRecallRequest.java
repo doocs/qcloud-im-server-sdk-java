@@ -25,6 +25,12 @@ public class GroupMsgRecallRequest extends GenericRequest {
     @JsonProperty("MsgSeqList")
     private List<MsgSeqItem> msgSeqList;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public GroupMsgRecallRequest() {
     }
 
@@ -33,9 +39,16 @@ public class GroupMsgRecallRequest extends GenericRequest {
         this.msgSeqList = msgSeqList;
     }
 
+    public GroupMsgRecallRequest(String groupId, List<MsgSeqItem> msgSeqList, String topicId) {
+        this.groupId = groupId;
+        this.msgSeqList = msgSeqList;
+        this.topicId = topicId;
+    }
+
     private GroupMsgRecallRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.msgSeqList = builder.msgSeqList;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -58,10 +71,19 @@ public class GroupMsgRecallRequest extends GenericRequest {
         this.msgSeqList = msgSeqList;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
         private List<MsgSeqItem> msgSeqList;
+        private String topicId;
 
         private Builder() {
         }
@@ -77,6 +99,11 @@ public class GroupMsgRecallRequest extends GenericRequest {
 
         public Builder msgSeqList(List<MsgSeqItem> msgSeqList) {
             this.msgSeqList = msgSeqList;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 撤回指定用户发送的消息-请求参数
+ * 删除指定用户发送的消息-请求参数
  *
  * @author hyh
  * @since 2021/08/01 13:53
@@ -23,6 +23,12 @@ public class DeleteGroupMsgBySenderRequest extends GenericRequest {
     @JsonProperty("Sender_Account")
     private String senderAccount;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public DeleteGroupMsgBySenderRequest() {
     }
 
@@ -31,9 +37,16 @@ public class DeleteGroupMsgBySenderRequest extends GenericRequest {
         this.senderAccount = senderAccount;
     }
 
+    public DeleteGroupMsgBySenderRequest(String groupId, String senderAccount, String topicId) {
+        this.groupId = groupId;
+        this.senderAccount = senderAccount;
+        this.topicId = topicId;
+    }
+
     private DeleteGroupMsgBySenderRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.senderAccount = builder.senderAccount;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -56,10 +69,19 @@ public class DeleteGroupMsgBySenderRequest extends GenericRequest {
         this.senderAccount = senderAccount;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
         private String senderAccount;
+        private String topicId;
 
         private Builder() {
         }
@@ -75,6 +97,11 @@ public class DeleteGroupMsgBySenderRequest extends GenericRequest {
 
         public Builder senderAccount(String senderAccount) {
             this.senderAccount = senderAccount;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

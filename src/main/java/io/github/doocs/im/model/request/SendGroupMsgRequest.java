@@ -24,7 +24,7 @@ public class SendGroupMsgRequest extends GenericRequest {
      * 无符号32位整数。如果5分钟内两条消息的内容和 Random 随机值都相同的情况下，后一条消息将被当做重复消息而丢弃
      */
     @JsonProperty("Random")
-    private Integer random;
+    private Long random;
 
     /**
      * 消息的优先级
@@ -86,19 +86,25 @@ public class SendGroupMsgRequest extends GenericRequest {
     @JsonProperty("To_Account")
     private String toAccount;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public SendGroupMsgRequest() {
     }
 
-    public SendGroupMsgRequest(String groupId, Integer random, List<TIMMsgElement> msgBody) {
+    public SendGroupMsgRequest(String groupId, Long random, List<TIMMsgElement> msgBody) {
         this.groupId = groupId;
         this.random = random;
         this.msgBody = msgBody;
     }
 
-    public SendGroupMsgRequest(String groupId, Integer random, String msgPriority, List<TIMMsgElement> msgBody,
+    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody,
                                String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
                                Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData,
-                               String toAccount) {
+                               String toAccount, String topicId) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;
@@ -110,6 +116,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.sendMsgControl = sendMsgControl;
         this.cloudCustomData = cloudCustomData;
         this.toAccount = toAccount;
+        this.topicId = topicId;
     }
 
     private SendGroupMsgRequest(Builder builder) {
@@ -124,6 +131,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.sendMsgControl = builder.sendMsgControl;
         this.cloudCustomData = builder.cloudCustomData;
         this.toAccount = builder.toAccount;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -138,11 +146,11 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.groupId = groupId;
     }
 
-    public Integer getRandom() {
+    public Long getRandom() {
         return random;
     }
 
-    public void setRandom(Integer random) {
+    public void setRandom(Long random) {
         this.random = random;
     }
 
@@ -218,10 +226,18 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.toAccount = toAccount;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
-        private Integer random;
+        private Long random;
         private String msgPriority;
         private List<TIMMsgElement> msgBody;
         private String fromAccount;
@@ -231,6 +247,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         private List<String> sendMsgControl;
         private String cloudCustomData;
         private String toAccount;
+        private String topicId;
 
         private Builder() {
         }
@@ -244,7 +261,7 @@ public class SendGroupMsgRequest extends GenericRequest {
             return this;
         }
 
-        public Builder random(Integer random) {
+        public Builder random(Long random) {
             this.random = random;
             return this;
         }
@@ -291,6 +308,11 @@ public class SendGroupMsgRequest extends GenericRequest {
 
         public Builder toAccount(String toAccount) {
             this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

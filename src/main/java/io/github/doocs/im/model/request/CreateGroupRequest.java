@@ -91,6 +91,12 @@ public class CreateGroupRequest {
     @JsonProperty("AppMemberDefinedData")
     private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
+    /**
+     * 是否支持话题选项，此字段只针对社群有效
+     */
+    @JsonProperty("SupportTopic")
+    private Integer supportTopic;
+
     public CreateGroupRequest() {
     }
 
@@ -102,7 +108,7 @@ public class CreateGroupRequest {
     public CreateGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction,
                               String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
                               List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
-                              List<AppMemberDefinedDataItem> appMemberDefinedData) {
+                              List<AppMemberDefinedDataItem> appMemberDefinedData, Integer supportTopic) {
         this.ownerAccount = ownerAccount;
         this.type = type;
         this.groupId = groupId;
@@ -115,6 +121,7 @@ public class CreateGroupRequest {
         this.appDefinedData = appDefinedData;
         this.memberList = memberList;
         this.appMemberDefinedData = appMemberDefinedData;
+        this.supportTopic = supportTopic;
     }
 
     private CreateGroupRequest(Builder builder) {
@@ -130,6 +137,7 @@ public class CreateGroupRequest {
         this.appDefinedData = builder.appDefinedData;
         this.memberList = builder.memberList;
         this.appMemberDefinedData = builder.appMemberDefinedData;
+        this.supportTopic = builder.supportTopic;
     }
 
     public static Builder builder() {
@@ -232,6 +240,14 @@ public class CreateGroupRequest {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
+    public Integer getSupportTopic() {
+        return supportTopic;
+    }
+
+    public void setSupportTopic(Integer supportTopic) {
+        this.supportTopic = supportTopic;
+    }
+
 
     public static final class Builder {
         private String ownerAccount;
@@ -246,6 +262,7 @@ public class CreateGroupRequest {
         private List<AppDefinedDataItem> appDefinedData;
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
+        private Integer supportTopic;
 
         private Builder() {
         }
@@ -311,6 +328,11 @@ public class CreateGroupRequest {
 
         public Builder appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
             this.appMemberDefinedData = appMemberDefinedData;
+            return this;
+        }
+
+        public Builder supportTopic(Integer supportTopic) {
+            this.supportTopic = supportTopic;
             return this;
         }
     }

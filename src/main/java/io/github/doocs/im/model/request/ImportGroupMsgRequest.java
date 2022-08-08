@@ -31,6 +31,12 @@ public class ImportGroupMsgRequest extends GenericRequest {
     @JsonProperty("MsgList")
     private List<GroupMsgItem> msgList;
 
+    /**
+     * 话题的 ID，仅社群支持此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public ImportGroupMsgRequest() {
     }
 
@@ -39,16 +45,19 @@ public class ImportGroupMsgRequest extends GenericRequest {
         this.msgList = msgList;
     }
 
-    public ImportGroupMsgRequest(String groupId, Integer recentContactFlag, List<GroupMsgItem> msgList) {
+    public ImportGroupMsgRequest(String groupId, Integer recentContactFlag,
+                                 List<GroupMsgItem> msgList, String topicId) {
         this.groupId = groupId;
         this.recentContactFlag = recentContactFlag;
         this.msgList = msgList;
+        this.topicId = topicId;
     }
 
     private ImportGroupMsgRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.recentContactFlag = builder.recentContactFlag;
         this.msgList = builder.msgList;
+        this.topicId = builder.topicId;
     }
 
     public static Builder builder() {
@@ -79,11 +88,20 @@ public class ImportGroupMsgRequest extends GenericRequest {
         this.msgList = msgList;
     }
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
 
     public static final class Builder {
         private String groupId;
         private Integer recentContactFlag;
         private List<GroupMsgItem> msgList;
+        private String topicId;
 
         private Builder() {
         }
@@ -104,6 +122,11 @@ public class ImportGroupMsgRequest extends GenericRequest {
 
         public Builder msgList(List<GroupMsgItem> msgList) {
             this.msgList = msgList;
+            return this;
+        }
+
+        public Builder topicId(String topicId) {
+            this.topicId = topicId;
             return this;
         }
     }

@@ -429,7 +429,7 @@ public class Group {
     }
 
     /**
-     * 撤回指定用户发送的消息
+     * 删除指定用户发送的消息
      *
      * @param deleteGroupMsgBySenderRequest 请求参数
      * @return 结果
