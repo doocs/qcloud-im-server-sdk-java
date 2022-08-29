@@ -81,6 +81,12 @@ public class BatchSendMsgRequest {
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 
+    /**
+     * 该条消息是否需要已读回执，0为不需要，1为需要，默认
+     */
+    @JsonProperty("IsNeedReadReceipt")
+    private Integer isNeedReadReceipt;
+
     public BatchSendMsgRequest() {
     }
 
@@ -92,7 +98,8 @@ public class BatchSendMsgRequest {
 
     public BatchSendMsgRequest(Integer syncOtherMachine, String fromAccount, List<String> toAccount,
                                Integer msgLifeTime, Long msgSeq, Long msgRandom, List<TIMMsgElement> msgBody,
-                               String cloudCustomData, List<String> sendMsgControl, OfflinePushInfo offlinePushInfo) {
+                               String cloudCustomData, List<String> sendMsgControl,
+                               OfflinePushInfo offlinePushInfo, Integer isNeedReadReceipt) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -103,6 +110,7 @@ public class BatchSendMsgRequest {
         this.cloudCustomData = cloudCustomData;
         this.sendMsgControl = sendMsgControl;
         this.offlinePushInfo = offlinePushInfo;
+        this.isNeedReadReceipt = isNeedReadReceipt;
     }
 
     private BatchSendMsgRequest(Builder builder) {
@@ -116,6 +124,7 @@ public class BatchSendMsgRequest {
         this.cloudCustomData = builder.cloudCustomData;
         this.sendMsgControl = builder.sendMsgControl;
         this.offlinePushInfo = builder.offlinePushInfo;
+        this.isNeedReadReceipt = builder.isNeedReadReceipt;
     }
 
     public static Builder builder() {
@@ -202,23 +211,27 @@ public class BatchSendMsgRequest {
         this.offlinePushInfo = offlinePushInfo;
     }
 
+    public Integer getIsNeedReadReceipt() {
+        return isNeedReadReceipt;
+    }
+
+    public void setIsNeedReadReceipt(Integer isNeedReadReceipt) {
+        this.isNeedReadReceipt = isNeedReadReceipt;
+    }
+
+
     public static final class Builder {
         private Integer syncOtherMachine;
         private String fromAccount;
         private List<String> toAccount;
         private Integer msgLifeTime;
-        /**
-         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
-         */
         private Long msgSeq;
-        /**
-         * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
-         */
         private Long msgRandom;
         private List<TIMMsgElement> msgBody;
         private String cloudCustomData;
         private List<String> sendMsgControl;
         private OfflinePushInfo offlinePushInfo;
+        private Integer isNeedReadReceipt;
 
         private Builder() {
         }
@@ -274,6 +287,11 @@ public class BatchSendMsgRequest {
 
         public Builder offlinePushInfo(OfflinePushInfo offlinePushInfo) {
             this.offlinePushInfo = offlinePushInfo;
+            return this;
+        }
+
+        public Builder isNeedReadReceipt(Integer isNeedReadReceipt) {
+            this.isNeedReadReceipt = isNeedReadReceipt;
             return this;
         }
     }

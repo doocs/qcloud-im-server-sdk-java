@@ -51,6 +51,7 @@ public class Group {
     public static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
     public static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
     public static final String GET_MEMBERS_COMMAND = "get_members";
+    public static final String MODIFY_USER_INFO_COMMAND = "modify_user_info";
     public static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
     public static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
     public static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
@@ -63,6 +64,9 @@ public class Group {
     public static final String GET_GROUP_TOPIC_COMMAND = "get_topic";
     public static final String MODIFY_GROUP_TOPIC_COMMAND = "modify_topic";
     public static final String DESTROY_GROUP_TOPIC_COMMAND = "destroy_topic";
+    public static final String GET_GROUP_BAN_MEMBER_COMMAND = "get_group_ban_member";
+    public static final String BAN_GROUP_MEMBER_COMMAND = "ban_group_member";
+    public static final String UNBAN_GROUP_MEMBER_COMMAND = "unban_group_member";
 
     private final ImClient imClient;
 
@@ -497,6 +501,23 @@ public class Group {
     }
 
     /**
+     * 设置直播群成员标记
+     *
+     * @param modifyGroupUserInfoRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyGroupUserInfoResult modifyGroupUserInfo(ModifyGroupUserInfoRequest modifyGroupUserInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, MODIFY_USER_INFO_COMMAND);
+        return HttpUtil.post(url, modifyGroupUserInfoRequest, ModifyGroupUserInfoResult.class, imClient.getConfig());
+    }
+
+    public ModifyGroupUserInfoResult modifyGroupUserInfo(ModifyGroupUserInfoRequest modifyGroupUserInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, MODIFY_USER_INFO_COMMAND, random);
+        return HttpUtil.post(url, modifyGroupUserInfoRequest, ModifyGroupUserInfoResult.class, imClient.getConfig());
+    }
+
+    /**
      * 获取群自定义属性
      *
      * @param getGroupAttrRequest 请求参数
@@ -698,5 +719,56 @@ public class Group {
     public DestroyGroupTopicResult destroyGroupTopic(DestroyGroupTopicRequest destroyGroupTopicRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, DESTROY_GROUP_TOPIC_COMMAND, random);
         return HttpUtil.post(url, destroyGroupTopicRequest, DestroyGroupTopicResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取封禁群成员列表
+     *
+     * @param getGroupBanMemberRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupBanMemberResult getGroupBanMember(GetGroupBanMemberRequest getGroupBanMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_BAN_MEMBER_COMMAND);
+        return HttpUtil.post(url, getGroupBanMemberRequest, GetGroupBanMemberResult.class, imClient.getConfig());
+    }
+
+    public GetGroupBanMemberResult getGroupBanMember(GetGroupBanMemberRequest getGroupBanMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_BAN_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, getGroupBanMemberRequest, GetGroupBanMemberResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 群成员封禁
+     *
+     * @param banGroupMemberRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public BanGroupMemberResult banGroupMember(BanGroupMemberRequest banGroupMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BAN_GROUP_MEMBER_COMMAND);
+        return HttpUtil.post(url, banGroupMemberRequest, BanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    public BanGroupMemberResult banGroupMember(BanGroupMemberRequest banGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BAN_GROUP_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, banGroupMemberRequest, BanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 群成员解封
+     *
+     * @param unbanGroupMemberRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public UnbanGroupMemberResult unbanGroupMember(UnbanGroupMemberRequest unbanGroupMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, UNBAN_GROUP_MEMBER_COMMAND);
+        return HttpUtil.post(url, unbanGroupMemberRequest, UnbanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    public UnbanGroupMemberResult unbanGroupMember(UnbanGroupMemberRequest unbanGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, UNBAN_GROUP_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, unbanGroupMemberRequest, UnbanGroupMemberResult.class, imClient.getConfig());
     }
 }

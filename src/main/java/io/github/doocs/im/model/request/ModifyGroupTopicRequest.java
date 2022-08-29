@@ -3,8 +3,6 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 /**
  * 修改话题资料-请求参数
  *
@@ -32,7 +30,7 @@ public class ModifyGroupTopicRequest extends GenericRequest {
     private String topicName;
 
     /**
-     * 	表示需要修改话题的用户帐号
+     * 表示需要修改话题的用户帐号
      */
     @JsonProperty("From_Account")
     private String fromAccount;
@@ -68,12 +66,6 @@ public class ModifyGroupTopicRequest extends GenericRequest {
     @JsonProperty("MuteAllMember")
     private String muteAllMember;
 
-    /**
-     * 话题维度的自定义信息，TopicDefinedData 和群共享自定义字段，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
-     */
-    @JsonProperty("TopicDefinedData")
-    private List<TopicDefinedDataItem> topicDefinedData;
-
     public ModifyGroupTopicRequest() {
     }
 
@@ -83,8 +75,8 @@ public class ModifyGroupTopicRequest extends GenericRequest {
     }
 
     public ModifyGroupTopicRequest(String groupId, String topicId, String topicName, String fromAccount,
-                                   String customString, String faceUrl, String notification, String introduction,
-                                   String muteAllMember, List<TopicDefinedDataItem> topicDefinedData) {
+                                   String customString, String faceUrl, String notification,
+                                   String introduction, String muteAllMember) {
         this.groupId = groupId;
         this.topicId = topicId;
         this.topicName = topicName;
@@ -94,7 +86,6 @@ public class ModifyGroupTopicRequest extends GenericRequest {
         this.notification = notification;
         this.introduction = introduction;
         this.muteAllMember = muteAllMember;
-        this.topicDefinedData = topicDefinedData;
     }
 
     private ModifyGroupTopicRequest(Builder builder) {
@@ -107,7 +98,6 @@ public class ModifyGroupTopicRequest extends GenericRequest {
         this.notification = builder.notification;
         this.introduction = builder.introduction;
         this.muteAllMember = builder.muteAllMember;
-        this.topicDefinedData = builder.topicDefinedData;
     }
 
     public static Builder builder() {
@@ -186,14 +176,6 @@ public class ModifyGroupTopicRequest extends GenericRequest {
         this.muteAllMember = muteAllMember;
     }
 
-    public List<TopicDefinedDataItem> getTopicDefinedData() {
-        return topicDefinedData;
-    }
-
-    public void setTopicDefinedData(List<TopicDefinedDataItem> topicDefinedData) {
-        this.topicDefinedData = topicDefinedData;
-    }
-
 
     public static final class Builder {
         private String groupId;
@@ -205,7 +187,6 @@ public class ModifyGroupTopicRequest extends GenericRequest {
         private String notification;
         private String introduction;
         private String muteAllMember;
-        private List<TopicDefinedDataItem> topicDefinedData;
 
         private Builder() {
         }
@@ -256,11 +237,6 @@ public class ModifyGroupTopicRequest extends GenericRequest {
 
         public Builder muteAllMember(String muteAllMember) {
             this.muteAllMember = muteAllMember;
-            return this;
-        }
-
-        public Builder topicDefinedData(List<TopicDefinedDataItem> topicDefinedData) {
-            this.topicDefinedData = topicDefinedData;
             return this;
         }
     }

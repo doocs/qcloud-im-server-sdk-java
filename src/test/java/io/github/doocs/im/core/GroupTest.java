@@ -4,6 +4,7 @@ import io.github.doocs.im.ClientFactory;
 import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.group.GroupAttr;
+import io.github.doocs.im.model.group.GroupMemberItem;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
 import io.github.doocs.im.model.request.*;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -510,6 +512,57 @@ class GroupTest {
         request.setGroupId("MyFirstGroup");
 
         DestroyGroupTopicResult result = client.group.destroyGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetGroupBanMember() throws IOException {
+        GetGroupBanMemberRequest request = new GetGroupBanMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setLimit(10);
+        request.setOffset(0);
+
+        GetGroupBanMemberResult result = client.group.getGroupBanMember(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testBanGroupMember() throws IOException {
+        BanGroupMemberRequest request = new BanGroupMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setDuration(1000L);
+        request.setMembersAccount(Arrays.asList("test1", "bingo"));
+        request.setDescription("test");
+
+        BanGroupMemberResult result = client.group.banGroupMember(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testUnbanGroupMember() throws IOException {
+        UnbanGroupMemberRequest request = new UnbanGroupMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setMembersAccount(Arrays.asList("test1", "bingo"));
+
+        UnbanGroupMemberResult result = client.group.unbanGroupMember(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testModifyGroupMemberUserInfo() throws IOException {
+        ModifyGroupUserInfoRequest request = new ModifyGroupUserInfoRequest();
+        request.setCommandType(1);
+        GroupMemberItem item = new GroupMemberItem();
+        item.setMarks(Arrays.asList(1001, 1002));
+        item.setMemberAccount("test1");
+        request.setMemberList(Collections.singletonList(item));
+        request.setGroupId("MyFirstGroup");
+
+        ModifyGroupUserInfoResult result = client.group.modifyGroupUserInfo(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

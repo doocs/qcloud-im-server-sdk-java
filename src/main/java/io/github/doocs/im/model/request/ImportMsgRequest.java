@@ -15,9 +15,9 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImportMsgRequest extends GenericRequest {
     /**
-     * 该字段只能填1或2，其他值是非法值
-     * 1表示实时消息导入，消息计入未读计数
-     * 2表示历史消息导入，消息不计入未读
+     * 该字段只能填2或5，其他值是非法值
+     * 2表示历史消息导入，消息不计入未读计数，且消息不会推送到终端
+     * 5表示实时消息导入，消息计入未读计数，且消息会推送到终端
      */
     @JsonProperty("SyncFromOldSystem")
     private Integer syncFromOldSystem;

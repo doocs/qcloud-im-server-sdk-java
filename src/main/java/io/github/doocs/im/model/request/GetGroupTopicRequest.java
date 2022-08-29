@@ -37,12 +37,6 @@ public class GetGroupTopicRequest extends GenericRequest {
     @JsonProperty("ResponseFilter")
     private List<String> responseFilter;
 
-    /**
-     * 话题维度的自定义信息，TopicDefinedData 和群共享自定义字段，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
-     */
-    @JsonProperty("TopicDefinedData")
-    private List<TopicDefinedDataItem> topicDefinedData;
-
     public GetGroupTopicRequest() {
     }
 
@@ -51,13 +45,11 @@ public class GetGroupTopicRequest extends GenericRequest {
         this.fromAccount = fromAccount;
     }
 
-    public GetGroupTopicRequest(String groupId, String fromAccount, List<String> topicIdList,
-                                List<String> responseFilter, List<TopicDefinedDataItem> topicDefinedData) {
+    public GetGroupTopicRequest(String groupId, String fromAccount, List<String> topicIdList, List<String> responseFilter) {
         this.groupId = groupId;
         this.fromAccount = fromAccount;
         this.topicIdList = topicIdList;
         this.responseFilter = responseFilter;
-        this.topicDefinedData = topicDefinedData;
     }
 
     private GetGroupTopicRequest(Builder builder) {
@@ -65,7 +57,6 @@ public class GetGroupTopicRequest extends GenericRequest {
         this.fromAccount = builder.fromAccount;
         this.topicIdList = builder.topicIdList;
         this.responseFilter = builder.responseFilter;
-        this.topicDefinedData = builder.topicDefinedData;
     }
 
     public static Builder builder() {
@@ -104,21 +95,12 @@ public class GetGroupTopicRequest extends GenericRequest {
         this.responseFilter = responseFilter;
     }
 
-    public List<TopicDefinedDataItem> getTopicDefinedData() {
-        return topicDefinedData;
-    }
-
-    public void setTopicDefinedData(List<TopicDefinedDataItem> topicDefinedData) {
-        this.topicDefinedData = topicDefinedData;
-    }
-
 
     public static final class Builder {
         private String groupId;
         private String fromAccount;
         private List<String> topicIdList;
         private List<String> responseFilter;
-        private List<TopicDefinedDataItem> topicDefinedData;
 
         private Builder() {
         }
@@ -144,11 +126,6 @@ public class GetGroupTopicRequest extends GenericRequest {
 
         public Builder responseFilter(List<String> responseFilter) {
             this.responseFilter = responseFilter;
-            return this;
-        }
-
-        public Builder topicDefinedData(List<TopicDefinedDataItem> topicDefinedData) {
-            this.topicDefinedData = topicDefinedData;
             return this;
         }
     }

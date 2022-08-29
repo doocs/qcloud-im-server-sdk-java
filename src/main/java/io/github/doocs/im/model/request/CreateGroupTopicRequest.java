@@ -3,8 +3,6 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 /**
  * 创建话题-请求参数
  *
@@ -61,12 +59,6 @@ public class CreateGroupTopicRequest extends GenericRequest {
     @JsonProperty("Introduction")
     private String introduction;
 
-    /**
-     * 话题维度的自定义信息，TopicDefinedData 和群共享自定义字段，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
-     */
-    @JsonProperty("TopicDefinedData")
-    private List<TopicDefinedDataItem> topicDefinedData;
-
     public CreateGroupTopicRequest() {
     }
 
@@ -76,8 +68,7 @@ public class CreateGroupTopicRequest extends GenericRequest {
     }
 
     public CreateGroupTopicRequest(String groupId, String topicId, String topicName, String fromAccount,
-                                   String customString, String faceUrl, String notification, String introduction,
-                                   List<TopicDefinedDataItem> topicDefinedData) {
+                                   String customString, String faceUrl, String notification, String introduction) {
         this.groupId = groupId;
         this.topicId = topicId;
         this.topicName = topicName;
@@ -86,7 +77,6 @@ public class CreateGroupTopicRequest extends GenericRequest {
         this.faceUrl = faceUrl;
         this.notification = notification;
         this.introduction = introduction;
-        this.topicDefinedData = topicDefinedData;
     }
 
     private CreateGroupTopicRequest(Builder builder) {
@@ -98,7 +88,6 @@ public class CreateGroupTopicRequest extends GenericRequest {
         this.faceUrl = builder.faceUrl;
         this.notification = builder.notification;
         this.introduction = builder.introduction;
-        this.topicDefinedData = builder.topicDefinedData;
     }
 
     public static Builder builder() {
@@ -169,14 +158,6 @@ public class CreateGroupTopicRequest extends GenericRequest {
         this.introduction = introduction;
     }
 
-    public List<TopicDefinedDataItem> getTopicDefinedData() {
-        return topicDefinedData;
-    }
-
-    public void setTopicDefinedData(List<TopicDefinedDataItem> topicDefinedData) {
-        this.topicDefinedData = topicDefinedData;
-    }
-
 
     public static final class Builder {
         private String groupId;
@@ -187,7 +168,6 @@ public class CreateGroupTopicRequest extends GenericRequest {
         private String faceUrl;
         private String notification;
         private String introduction;
-        private List<TopicDefinedDataItem> topicDefinedData;
 
         private Builder() {
         }
@@ -233,11 +213,6 @@ public class CreateGroupTopicRequest extends GenericRequest {
 
         public Builder introduction(String introduction) {
             this.introduction = introduction;
-            return this;
-        }
-
-        public Builder topicDefinedData(List<TopicDefinedDataItem> topicDefinedData) {
-            this.topicDefinedData = topicDefinedData;
             return this;
         }
     }
