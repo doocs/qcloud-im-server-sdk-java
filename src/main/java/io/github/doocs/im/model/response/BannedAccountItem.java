@@ -7,9 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/8/29 14:07
  */
 public class BannedAccountItem {
+    /**
+     * 封禁成员的封禁截止时间
+     */
     @JsonProperty("BannedUntil")
     private Long bannedUntil;
 
+    /**
+     * 封禁成员账号 id
+     */
     @JsonProperty("Member_Account")
     private String memberAccount;
 

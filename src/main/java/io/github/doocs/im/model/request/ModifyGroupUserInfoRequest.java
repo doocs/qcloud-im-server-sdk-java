@@ -14,12 +14,21 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ModifyGroupUserInfoRequest {
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 1 为设置标记，2 为删除标记
+     */
     @JsonProperty("CommandType")
     private Integer commandType;
 
+    /**
+     * 需要设置的账号列表，每次可以设置最多不超过500个账号，每个群最多只能设置10个不同的标记。标记为大于等于1000的数字
+     */
     @JsonProperty("MemberList")
     private List<GroupMemberItem> memberList;
 

@@ -13,15 +13,27 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BanGroupMemberRequest extends GenericRequest {
+    /**
+     * 封禁成员的群 id
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 封禁的群成员账号id，单次请求最大20个
+     */
     @JsonProperty("Members_Account")
     private List<String> membersAccount;
 
+    /**
+     * 封禁时长，单位秒，无符号32位数字
+     */
     @JsonProperty("Duration")
     private Long duration;
 
+    /**
+     * 封禁时长，单位秒，无符号32位数字
+     */
     @JsonProperty("Description")
     private String description;
 
