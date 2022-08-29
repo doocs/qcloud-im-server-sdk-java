@@ -52,7 +52,7 @@ public class MemberProfile {
      * 0表示未被禁言，否则为禁言的截止时间
      */
     @JsonProperty("MuteUntil")
-    private Integer muteUntil;
+    private Long muteUntil;
 
     /**
      * 群名片
@@ -70,7 +70,7 @@ public class MemberProfile {
     }
 
     public MemberProfile(String memberAccount, String role, Integer joinTime, Long msgSeq,
-                         String msgFlag, Integer lastSendMsgTime, Integer muteUntil, String nameCard,
+                         String msgFlag, Integer lastSendMsgTime, Long muteUntil, String nameCard,
                          List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.memberAccount = memberAccount;
         this.role = role;
@@ -147,11 +147,11 @@ public class MemberProfile {
         this.lastSendMsgTime = lastSendMsgTime;
     }
 
-    public Integer getMuteUntil() {
+    public Long getMuteUntil() {
         return muteUntil;
     }
 
-    public void setMuteUntil(Integer muteUntil) {
+    public void setMuteUntil(Long muteUntil) {
         this.muteUntil = muteUntil;
     }
 
@@ -182,7 +182,7 @@ public class MemberProfile {
         private Long msgSeq;
         private String msgFlag;
         private Integer lastSendMsgTime;
-        private Integer muteUntil;
+        private Long muteUntil;
         private String nameCard;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
@@ -223,7 +223,7 @@ public class MemberProfile {
             return this;
         }
 
-        public Builder muteUntil(Integer muteUntil) {
+        public Builder muteUntil(Long muteUntil) {
             this.muteUntil = muteUntil;
             return this;
         }

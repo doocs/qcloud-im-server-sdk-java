@@ -17,7 +17,7 @@ public class MutedAccountItem {
      * 被禁言到的时间
      */
     @JsonProperty("MutedUntil")
-    private Integer mutedUntil;
+    private Long mutedUntil;
 
     public String getMemberAccount() {
         return memberAccount;
@@ -27,11 +27,11 @@ public class MutedAccountItem {
         this.memberAccount = memberAccount;
     }
 
-    public Integer getMutedUntil() {
+    public Long getMutedUntil() {
         return mutedUntil;
     }
 
-    public void setMutedUntil(Integer mutedUntil) {
+    public void setMutedUntil(Long mutedUntil) {
         this.mutedUntil = mutedUntil;
     }
 
