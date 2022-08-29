@@ -102,6 +102,12 @@ public class SendMsgRequest extends GenericRequest {
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;
 
+    /**
+     * 该条消息是否需要已读回执，0为不需要，1为需要，默认为0
+     */
+    @JsonProperty("IsNeedReadReceipt")
+    private Integer isNeedReadReceipt;
+
     public SendMsgRequest() {
     }
 
@@ -114,7 +120,7 @@ public class SendMsgRequest extends GenericRequest {
     public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime,
                           Long msgSeq, Long msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl,
                           List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData,
-                          OfflinePushInfo offlinePushInfo) {
+                          OfflinePushInfo offlinePushInfo, Integer isNeedReadReceipt) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -127,6 +133,7 @@ public class SendMsgRequest extends GenericRequest {
         this.msgBody = msgBody;
         this.cloudCustomData = cloudCustomData;
         this.offlinePushInfo = offlinePushInfo;
+        this.isNeedReadReceipt = isNeedReadReceipt;
     }
 
     private SendMsgRequest(Builder builder) {
@@ -142,6 +149,7 @@ public class SendMsgRequest extends GenericRequest {
         this.msgBody = builder.msgBody;
         this.cloudCustomData = builder.cloudCustomData;
         this.offlinePushInfo = builder.offlinePushInfo;
+        this.isNeedReadReceipt = builder.isNeedReadReceipt;
     }
 
     public static Builder builder() {
@@ -244,19 +252,21 @@ public class SendMsgRequest extends GenericRequest {
         this.offlinePushInfo = offlinePushInfo;
     }
 
+    public Integer getIsNeedReadReceipt() {
+        return isNeedReadReceipt;
+    }
+
+    public void setIsNeedReadReceipt(Integer isNeedReadReceipt) {
+        this.isNeedReadReceipt = isNeedReadReceipt;
+    }
+
 
     public static final class Builder {
         private Integer syncOtherMachine;
         private String fromAccount;
         private String toAccount;
         private Integer msgLifeTime;
-        /**
-         * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
-         */
         private Long msgSeq;
-        /**
-         * 消息随机数，用于标记该条消息，数据范围 [0,4294967295]
-         */
         private Long msgRandom;
         private Integer msgTimeStamp;
         private List<String> forbidCallbackControl;
@@ -264,6 +274,7 @@ public class SendMsgRequest extends GenericRequest {
         private List<TIMMsgElement> msgBody;
         private String cloudCustomData;
         private OfflinePushInfo offlinePushInfo;
+        private Integer isNeedReadReceipt;
 
         private Builder() {
         }
@@ -329,6 +340,11 @@ public class SendMsgRequest extends GenericRequest {
 
         public Builder offlinePushInfo(OfflinePushInfo offlinePushInfo) {
             this.offlinePushInfo = offlinePushInfo;
+            return this;
+        }
+
+        public Builder isNeedReadReceipt(Integer isNeedReadReceipt) {
+            this.isNeedReadReceipt = isNeedReadReceipt;
             return this;
         }
     }

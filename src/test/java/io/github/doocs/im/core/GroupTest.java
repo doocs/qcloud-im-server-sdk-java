@@ -2,17 +2,108 @@ package io.github.doocs.im.core;
 
 import io.github.doocs.im.ClientFactory;
 import io.github.doocs.im.ImClient;
-import io.github.doocs.im.constant.*;
+import io.github.doocs.im.constant.ApplyJoinOption;
+import io.github.doocs.im.constant.ErrorCode;
+import io.github.doocs.im.constant.GroupType;
+import io.github.doocs.im.constant.MemberRole;
+import io.github.doocs.im.constant.MuteAllMember;
+import io.github.doocs.im.constant.OnlineOnlyFlag;
 import io.github.doocs.im.model.group.GroupAttr;
+import io.github.doocs.im.model.group.GroupMemberItem;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
-import io.github.doocs.im.model.request.*;
-import io.github.doocs.im.model.response.*;
+import io.github.doocs.im.model.request.AddGroupMemberRequest;
+import io.github.doocs.im.model.request.BanGroupMemberRequest;
+import io.github.doocs.im.model.request.ChangeGroupOwnerRequest;
+import io.github.doocs.im.model.request.ClearGroupAttrRequest;
+import io.github.doocs.im.model.request.CreateGroupRequest;
+import io.github.doocs.im.model.request.CreateGroupTopicRequest;
+import io.github.doocs.im.model.request.DeleteGroupMemberRequest;
+import io.github.doocs.im.model.request.DeleteGroupMsgBySenderRequest;
+import io.github.doocs.im.model.request.DestroyGroupRequest;
+import io.github.doocs.im.model.request.DestroyGroupTopicRequest;
+import io.github.doocs.im.model.request.ForbidSendMsgRequest;
+import io.github.doocs.im.model.request.GetAppIdGroupListRequest;
+import io.github.doocs.im.model.request.GetGroupAttrRequest;
+import io.github.doocs.im.model.request.GetGroupBanMemberRequest;
+import io.github.doocs.im.model.request.GetGroupInfoRequest;
+import io.github.doocs.im.model.request.GetGroupMemberInfoRequest;
+import io.github.doocs.im.model.request.GetGroupMsgReceiptDetailRequest;
+import io.github.doocs.im.model.request.GetGroupMsgReceiptRequest;
+import io.github.doocs.im.model.request.GetGroupMutedAccountRequest;
+import io.github.doocs.im.model.request.GetGroupTopicRequest;
+import io.github.doocs.im.model.request.GetJoinedGroupListRequest;
+import io.github.doocs.im.model.request.GetMembersRequest;
+import io.github.doocs.im.model.request.GetOnlineMemberNumRequest;
+import io.github.doocs.im.model.request.GetRoleInGroupRequest;
+import io.github.doocs.im.model.request.GroupMsgGetSimpleRequest;
+import io.github.doocs.im.model.request.GroupMsgItem;
+import io.github.doocs.im.model.request.GroupMsgRecallRequest;
+import io.github.doocs.im.model.request.ImportGroupMemberRequest;
+import io.github.doocs.im.model.request.ImportGroupMsgRequest;
+import io.github.doocs.im.model.request.ImportGroupRequest;
+import io.github.doocs.im.model.request.MemberItem;
+import io.github.doocs.im.model.request.MemberRequestItem;
+import io.github.doocs.im.model.request.ModifyGroupAttrRequest;
+import io.github.doocs.im.model.request.ModifyGroupBaseInfoRequest;
+import io.github.doocs.im.model.request.ModifyGroupMemberInfoRequest;
+import io.github.doocs.im.model.request.ModifyGroupMsgRequest;
+import io.github.doocs.im.model.request.ModifyGroupTopicRequest;
+import io.github.doocs.im.model.request.ModifyGroupUserInfoRequest;
+import io.github.doocs.im.model.request.MsgSeqItem;
+import io.github.doocs.im.model.request.SendBroadcastMsgRequest;
+import io.github.doocs.im.model.request.SendGroupMsgRequest;
+import io.github.doocs.im.model.request.SendGroupSystemNotificationRequest;
+import io.github.doocs.im.model.request.SetGroupAttrRequest;
+import io.github.doocs.im.model.request.SetUnreadMsgNumRequest;
+import io.github.doocs.im.model.request.UnbanGroupMemberRequest;
+import io.github.doocs.im.model.response.AddGroupMemberResult;
+import io.github.doocs.im.model.response.BanGroupMemberResult;
+import io.github.doocs.im.model.response.ChangeGroupOwnerResult;
+import io.github.doocs.im.model.response.ClearGroupAttrResult;
+import io.github.doocs.im.model.response.CreateGroupResult;
+import io.github.doocs.im.model.response.CreateGroupTopicResult;
+import io.github.doocs.im.model.response.DeleteGroupMemberResult;
+import io.github.doocs.im.model.response.DeleteGroupMsgBySenderResult;
+import io.github.doocs.im.model.response.DestroyGroupResult;
+import io.github.doocs.im.model.response.DestroyGroupTopicResult;
+import io.github.doocs.im.model.response.ForbidSendMsgResult;
+import io.github.doocs.im.model.response.GetAppIdGroupListResult;
+import io.github.doocs.im.model.response.GetGroupAttrResult;
+import io.github.doocs.im.model.response.GetGroupBanMemberResult;
+import io.github.doocs.im.model.response.GetGroupInfoResult;
+import io.github.doocs.im.model.response.GetGroupMemberInfoResult;
+import io.github.doocs.im.model.response.GetGroupMsgReceiptDetailResult;
+import io.github.doocs.im.model.response.GetGroupMsgReceiptResult;
+import io.github.doocs.im.model.response.GetGroupMutedAccountResult;
+import io.github.doocs.im.model.response.GetGroupTopicResult;
+import io.github.doocs.im.model.response.GetJoinGroupListResult;
+import io.github.doocs.im.model.response.GetMembersResult;
+import io.github.doocs.im.model.response.GetOnlineMemberNumResult;
+import io.github.doocs.im.model.response.GetRoleInGroupResult;
+import io.github.doocs.im.model.response.GroupMsgGetSimpleResult;
+import io.github.doocs.im.model.response.GroupMsgRecallResult;
+import io.github.doocs.im.model.response.ImportGroupMemberResult;
+import io.github.doocs.im.model.response.ImportGroupMsgResult;
+import io.github.doocs.im.model.response.ImportGroupResult;
+import io.github.doocs.im.model.response.ModifyGroupAttrResult;
+import io.github.doocs.im.model.response.ModifyGroupBaseInfoResult;
+import io.github.doocs.im.model.response.ModifyGroupMemberInfoResult;
+import io.github.doocs.im.model.response.ModifyGroupMsgResult;
+import io.github.doocs.im.model.response.ModifyGroupTopicResult;
+import io.github.doocs.im.model.response.ModifyGroupUserInfoResult;
+import io.github.doocs.im.model.response.SendBroadcastMsgResult;
+import io.github.doocs.im.model.response.SendGroupMsgResult;
+import io.github.doocs.im.model.response.SendGroupSystemNotificationResult;
+import io.github.doocs.im.model.response.SetGroupAttrResult;
+import io.github.doocs.im.model.response.SetUnreadMsgNumResult;
+import io.github.doocs.im.model.response.UnbanGroupMemberResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -510,6 +601,57 @@ class GroupTest {
         request.setGroupId("MyFirstGroup");
 
         DestroyGroupTopicResult result = client.group.destroyGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetGroupBanMember() throws IOException {
+        GetGroupBanMemberRequest request = new GetGroupBanMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setLimit(10);
+        request.setOffset(0);
+
+        GetGroupBanMemberResult result = client.group.getGroupBanMember(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testBanGroupMember() throws IOException {
+        BanGroupMemberRequest request = new BanGroupMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setDuration(1000L);
+        request.setMembersAccount(Arrays.asList("test1", "bingo"));
+        request.setDescription("test");
+
+        BanGroupMemberResult result = client.group.banGroupMember(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testUnbanGroupMember() throws IOException {
+        UnbanGroupMemberRequest request = new UnbanGroupMemberRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setMembersAccount(Arrays.asList("test1", "bingo"));
+
+        UnbanGroupMemberResult result = client.group.unbanGroupMember(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testModifyGroupMemberUserInfo() throws IOException {
+        ModifyGroupUserInfoRequest request = new ModifyGroupUserInfoRequest();
+        request.setCommandType(1);
+        GroupMemberItem item = new GroupMemberItem();
+        item.setMarks(Arrays.asList(1001, 1002));
+        item.setMemberAccount("test1");
+        request.setMemberList(Collections.singletonList(item));
+        request.setGroupId("MyFirstGroup");
+
+        ModifyGroupUserInfoResult result = client.group.modifyGroupUserInfo(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

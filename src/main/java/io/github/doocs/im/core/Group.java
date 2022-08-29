@@ -1,8 +1,88 @@
 package io.github.doocs.im.core;
 
 import io.github.doocs.im.ImClient;
-import io.github.doocs.im.model.request.*;
-import io.github.doocs.im.model.response.*;
+import io.github.doocs.im.model.request.AddGroupMemberRequest;
+import io.github.doocs.im.model.request.BanGroupMemberRequest;
+import io.github.doocs.im.model.request.ChangeGroupOwnerRequest;
+import io.github.doocs.im.model.request.ClearGroupAttrRequest;
+import io.github.doocs.im.model.request.CreateGroupRequest;
+import io.github.doocs.im.model.request.CreateGroupTopicRequest;
+import io.github.doocs.im.model.request.DeleteGroupMemberRequest;
+import io.github.doocs.im.model.request.DeleteGroupMsgBySenderRequest;
+import io.github.doocs.im.model.request.DestroyGroupRequest;
+import io.github.doocs.im.model.request.DestroyGroupTopicRequest;
+import io.github.doocs.im.model.request.ForbidSendMsgRequest;
+import io.github.doocs.im.model.request.GetAppIdGroupListRequest;
+import io.github.doocs.im.model.request.GetGroupAttrRequest;
+import io.github.doocs.im.model.request.GetGroupBanMemberRequest;
+import io.github.doocs.im.model.request.GetGroupInfoRequest;
+import io.github.doocs.im.model.request.GetGroupMemberInfoRequest;
+import io.github.doocs.im.model.request.GetGroupMsgReceiptDetailRequest;
+import io.github.doocs.im.model.request.GetGroupMsgReceiptRequest;
+import io.github.doocs.im.model.request.GetGroupMutedAccountRequest;
+import io.github.doocs.im.model.request.GetGroupTopicRequest;
+import io.github.doocs.im.model.request.GetJoinedGroupListRequest;
+import io.github.doocs.im.model.request.GetMembersRequest;
+import io.github.doocs.im.model.request.GetOnlineMemberNumRequest;
+import io.github.doocs.im.model.request.GetRoleInGroupRequest;
+import io.github.doocs.im.model.request.GroupMsgGetSimpleRequest;
+import io.github.doocs.im.model.request.GroupMsgRecallRequest;
+import io.github.doocs.im.model.request.ImportGroupMemberRequest;
+import io.github.doocs.im.model.request.ImportGroupMsgRequest;
+import io.github.doocs.im.model.request.ImportGroupRequest;
+import io.github.doocs.im.model.request.ModifyGroupAttrRequest;
+import io.github.doocs.im.model.request.ModifyGroupBaseInfoRequest;
+import io.github.doocs.im.model.request.ModifyGroupMemberInfoRequest;
+import io.github.doocs.im.model.request.ModifyGroupMsgRequest;
+import io.github.doocs.im.model.request.ModifyGroupTopicRequest;
+import io.github.doocs.im.model.request.ModifyGroupUserInfoRequest;
+import io.github.doocs.im.model.request.SendBroadcastMsgRequest;
+import io.github.doocs.im.model.request.SendGroupMsgRequest;
+import io.github.doocs.im.model.request.SendGroupSystemNotificationRequest;
+import io.github.doocs.im.model.request.SetGroupAttrRequest;
+import io.github.doocs.im.model.request.SetUnreadMsgNumRequest;
+import io.github.doocs.im.model.request.UnbanGroupMemberRequest;
+import io.github.doocs.im.model.response.AddGroupMemberResult;
+import io.github.doocs.im.model.response.BanGroupMemberResult;
+import io.github.doocs.im.model.response.ChangeGroupOwnerResult;
+import io.github.doocs.im.model.response.ClearGroupAttrResult;
+import io.github.doocs.im.model.response.CreateGroupResult;
+import io.github.doocs.im.model.response.CreateGroupTopicResult;
+import io.github.doocs.im.model.response.DeleteGroupMemberResult;
+import io.github.doocs.im.model.response.DeleteGroupMsgBySenderResult;
+import io.github.doocs.im.model.response.DestroyGroupResult;
+import io.github.doocs.im.model.response.DestroyGroupTopicResult;
+import io.github.doocs.im.model.response.ForbidSendMsgResult;
+import io.github.doocs.im.model.response.GetAppIdGroupListResult;
+import io.github.doocs.im.model.response.GetGroupAttrResult;
+import io.github.doocs.im.model.response.GetGroupBanMemberResult;
+import io.github.doocs.im.model.response.GetGroupInfoResult;
+import io.github.doocs.im.model.response.GetGroupMemberInfoResult;
+import io.github.doocs.im.model.response.GetGroupMsgReceiptDetailResult;
+import io.github.doocs.im.model.response.GetGroupMsgReceiptResult;
+import io.github.doocs.im.model.response.GetGroupMutedAccountResult;
+import io.github.doocs.im.model.response.GetGroupTopicResult;
+import io.github.doocs.im.model.response.GetJoinGroupListResult;
+import io.github.doocs.im.model.response.GetMembersResult;
+import io.github.doocs.im.model.response.GetOnlineMemberNumResult;
+import io.github.doocs.im.model.response.GetRoleInGroupResult;
+import io.github.doocs.im.model.response.GroupMsgGetSimpleResult;
+import io.github.doocs.im.model.response.GroupMsgRecallResult;
+import io.github.doocs.im.model.response.ImportGroupMemberResult;
+import io.github.doocs.im.model.response.ImportGroupMsgResult;
+import io.github.doocs.im.model.response.ImportGroupResult;
+import io.github.doocs.im.model.response.ModifyGroupAttrResult;
+import io.github.doocs.im.model.response.ModifyGroupBaseInfoResult;
+import io.github.doocs.im.model.response.ModifyGroupMemberInfoResult;
+import io.github.doocs.im.model.response.ModifyGroupMsgResult;
+import io.github.doocs.im.model.response.ModifyGroupTopicResult;
+import io.github.doocs.im.model.response.ModifyGroupUserInfoResult;
+import io.github.doocs.im.model.response.SendBroadcastMsgResult;
+import io.github.doocs.im.model.response.SendGroupMsgResult;
+import io.github.doocs.im.model.response.SendGroupSystemNotificationResult;
+import io.github.doocs.im.model.response.SetGroupAttrResult;
+import io.github.doocs.im.model.response.SetUnreadMsgNumResult;
+import io.github.doocs.im.model.response.UnbanGroupMemberResult;
 import io.github.doocs.im.util.HttpUtil;
 
 import java.io.IOException;
@@ -51,6 +131,7 @@ public class Group {
     public static final String GROUP_MSG_GET_SIMPLE_COMMAND = "group_msg_get_simple";
     public static final String GET_ONLINE_MEMBER_NUM_COMMAND = "get_online_member_num";
     public static final String GET_MEMBERS_COMMAND = "get_members";
+    public static final String MODIFY_USER_INFO_COMMAND = "modify_user_info";
     public static final String GET_GROUP_ATTR_COMMAND = "get_group_attr";
     public static final String MODIFY_GROUP_ATTR_COMMAND = "modify_group_attr";
     public static final String CLEAR_GROUP_ATTR_COMMAND = "clear_group_attr";
@@ -63,6 +144,9 @@ public class Group {
     public static final String GET_GROUP_TOPIC_COMMAND = "get_topic";
     public static final String MODIFY_GROUP_TOPIC_COMMAND = "modify_topic";
     public static final String DESTROY_GROUP_TOPIC_COMMAND = "destroy_topic";
+    public static final String GET_GROUP_BAN_MEMBER_COMMAND = "get_group_ban_member";
+    public static final String BAN_GROUP_MEMBER_COMMAND = "ban_group_member";
+    public static final String UNBAN_GROUP_MEMBER_COMMAND = "unban_group_member";
 
     private final ImClient imClient;
 
@@ -497,6 +581,23 @@ public class Group {
     }
 
     /**
+     * 设置直播群成员标记
+     *
+     * @param modifyGroupUserInfoRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyGroupUserInfoResult modifyGroupUserInfo(ModifyGroupUserInfoRequest modifyGroupUserInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, MODIFY_USER_INFO_COMMAND);
+        return HttpUtil.post(url, modifyGroupUserInfoRequest, ModifyGroupUserInfoResult.class, imClient.getConfig());
+    }
+
+    public ModifyGroupUserInfoResult modifyGroupUserInfo(ModifyGroupUserInfoRequest modifyGroupUserInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, MODIFY_USER_INFO_COMMAND, random);
+        return HttpUtil.post(url, modifyGroupUserInfoRequest, ModifyGroupUserInfoResult.class, imClient.getConfig());
+    }
+
+    /**
      * 获取群自定义属性
      *
      * @param getGroupAttrRequest 请求参数
@@ -698,5 +799,56 @@ public class Group {
     public DestroyGroupTopicResult destroyGroupTopic(DestroyGroupTopicRequest destroyGroupTopicRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, DESTROY_GROUP_TOPIC_COMMAND, random);
         return HttpUtil.post(url, destroyGroupTopicRequest, DestroyGroupTopicResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取封禁群成员列表
+     *
+     * @param getGroupBanMemberRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupBanMemberResult getGroupBanMember(GetGroupBanMemberRequest getGroupBanMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_BAN_MEMBER_COMMAND);
+        return HttpUtil.post(url, getGroupBanMemberRequest, GetGroupBanMemberResult.class, imClient.getConfig());
+    }
+
+    public GetGroupBanMemberResult getGroupBanMember(GetGroupBanMemberRequest getGroupBanMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_BAN_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, getGroupBanMemberRequest, GetGroupBanMemberResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 群成员封禁
+     *
+     * @param banGroupMemberRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public BanGroupMemberResult banGroupMember(BanGroupMemberRequest banGroupMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BAN_GROUP_MEMBER_COMMAND);
+        return HttpUtil.post(url, banGroupMemberRequest, BanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    public BanGroupMemberResult banGroupMember(BanGroupMemberRequest banGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BAN_GROUP_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, banGroupMemberRequest, BanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 群成员解封
+     *
+     * @param unbanGroupMemberRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public UnbanGroupMemberResult unbanGroupMember(UnbanGroupMemberRequest unbanGroupMemberRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, UNBAN_GROUP_MEMBER_COMMAND);
+        return HttpUtil.post(url, unbanGroupMemberRequest, UnbanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    public UnbanGroupMemberResult unbanGroupMember(UnbanGroupMemberRequest unbanGroupMemberRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, UNBAN_GROUP_MEMBER_COMMAND, random);
+        return HttpUtil.post(url, unbanGroupMemberRequest, UnbanGroupMemberResult.class, imClient.getConfig());
     }
 }
