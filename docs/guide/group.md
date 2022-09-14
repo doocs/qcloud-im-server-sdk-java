@@ -809,6 +809,38 @@ GetMembersRequest request = GetMembersRequest.builder()
 GetMembersResult result = client.group.getMembers(request);
 ```
 
+## 设置直播群成员标记
+
+App 管理员和群主可以对直播群成员设置不同的标记以区分不同类型的群成员。该功能需旗舰版，并且在 IM 控制台“群功能配置”中开通“直播群在线成员列表”功能。其他套餐版本调用该 API 将返回失败。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                          |
+| ----------------- | -------------------------------------------- |
+| Private           | 不支持，同新版本中的 Work（好友工作群）      |
+| Public            | 不支持                                       |
+| ChatRoom          | 不支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom        | 支持                                         |
+| Community（社群） | 不支持                                       |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+ModifyGroupUserInfoRequest request = new ModifyGroupUserInfoRequest();
+request.setCommandType(1);
+GroupMemberItem item = new GroupMemberItem();
+item.setMarks(Arrays.asList(1001, 1002));
+item.setMemberAccount("test1");
+request.setMemberList(Collections.singletonList(item));
+request.setGroupId("MyFirstGroup");
+
+ModifyGroupUserInfoResult result = client.group.modifyGroupUserInfo(request);
+```
+
 ## 获取群自定义属性
 
 App 管理员可以通过该接口获取群自定义属性。
@@ -1165,4 +1197,91 @@ DestroyGroupTopicRequest request = new DestroyGroupTopicRequest();
 request.setGroupId("MyFirstGroup");
 
 DestroyGroupTopicResult result = client.group.destroyGroupTopic(request);
+```
+
+## 获取封禁群成员列表
+
+App 管理员可以通过该接口获取对应直播群的封禁成员列表。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                        |
+| ----------------- | ------------------------------------------ |
+| Private           | 不支持，同新版本中的 Work（好友工作群）    |
+| Public            | 不支持                                     |
+| ChatRoom          | 不支持，同新版本中的 Meeting（临时会议群） |
+| AVChatRoom        | 支持                                       |
+| Community（社群） | 不支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+GetGroupBanMemberRequest request = new GetGroupBanMemberRequest();
+request.setGroupId("MyFirstGroup");
+request.setLimit(10);
+request.setOffset(0);
+
+GetGroupBanMemberResult result = client.group.getGroupBanMember(request);
+```
+
+## 群成员封禁
+
+App 管理员可以通过该接口向直播群封禁成员，封禁后成员无法接收消息，并且封禁时间内无法再次进群。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                        |
+| ----------------- | ------------------------------------------ |
+| Private           | 不支持，同新版本中的 Work（好友工作群）    |
+| Public            | 不支持                                     |
+| ChatRoom          | 不支持，同新版本中的 Meeting（临时会议群） |
+| AVChatRoom        | 支持                                       |
+| Community（社群） | 不支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+BanGroupMemberRequest request = new BanGroupMemberRequest();
+request.setGroupId("MyFirstGroup");
+request.setDuration(1000L);
+request.setMembersAccount(Arrays.asList("test1", "bingo"));
+request.setDescription("test");
+
+BanGroupMemberResult result = client.group.banGroupMember(request);
+```
+
+## 群成员解封
+
+App 管理员可以通过该接口向直播群解封成员，解封后，之前封禁的成员可重新进群获取消息。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                        |
+| ----------------- | ------------------------------------------ |
+| Private           | 不支持，同新版本中的 Work（好友工作群）    |
+| Public            | 不支持                                     |
+| ChatRoom          | 不支持，同新版本中的 Meeting（临时会议群） |
+| AVChatRoom        | 支持                                       |
+| Community（社群） | 不支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+UnbanGroupMemberRequest request = new UnbanGroupMemberRequest();
+request.setGroupId("MyFirstGroup");
+request.setMembersAccount(Arrays.asList("test1", "bingo"));
+
+UnbanGroupMemberResult result = client.group.unbanGroupMember(request);
 ```
