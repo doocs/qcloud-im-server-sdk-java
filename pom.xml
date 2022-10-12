@@ -6,7 +6,7 @@
 
     <groupId>io.github.doocs</groupId>
     <artifactId>im-server-sdk-java</artifactId>
-    <version>0.3.30</version>
+    <version>0.3.31</version>
     <packaging>jar</packaging>
 
     <name>qcloud-im-server-sdk-java</name>
@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.3</version>
+            <version>2.14.0-rc1</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.0-M1</version>
+            <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
