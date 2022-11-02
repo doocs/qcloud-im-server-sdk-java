@@ -21,12 +21,12 @@ public class ProfileItem {
      * 拉取的资料对象的值
      */
     @JsonProperty("Value")
-    private String value;
+    private Object value;
 
     public ProfileItem() {
     }
 
-    public ProfileItem(String tag, String value) {
+    public ProfileItem(String tag, Object value) {
         this.tag = tag;
         this.value = value;
     }
@@ -48,11 +48,11 @@ public class ProfileItem {
         this.tag = tag;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 
@@ -66,7 +66,7 @@ public class ProfileItem {
 
     public static final class Builder {
         private String tag;
-        private String value;
+        private Object value;
 
         private Builder() {
         }
@@ -80,7 +80,7 @@ public class ProfileItem {
             return this;
         }
 
-        public Builder value(String value) {
+        public Builder value(Object value) {
             this.value = value;
             return this;
         }

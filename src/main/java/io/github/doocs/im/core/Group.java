@@ -22,6 +22,7 @@ public class Group {
     public static final String SERVICE_NAME_CHATROOM = "group_open_avchatroom_http_svc";
     public static final String SERVICE_NAME_OPEN_IM = "openim";
     public static final String SERVICE_NAME_MILLION_GROUP = "million_group_open_http_svc";
+    public static final String SERVICE_NAME_OPEN_IM_MSG_EXT = "openim_msg_ext_http_svc";
 
     /**
      * 群组管理相关命令字
@@ -67,6 +68,8 @@ public class Group {
     public static final String GET_GROUP_BAN_MEMBER_COMMAND = "get_group_ban_member";
     public static final String BAN_GROUP_MEMBER_COMMAND = "ban_group_member";
     public static final String UNBAN_GROUP_MEMBER_COMMAND = "unban_group_member";
+    public static final String GROUP_GET_KEY_VALUES_COMMAND = "group_get_key_values";
+    public static final String GROUP_SET_KEY_VALUES_COMMAND = "group_set_key_values";
 
     private final ImClient imClient;
 
@@ -770,5 +773,39 @@ public class Group {
     public UnbanGroupMemberResult unbanGroupMember(UnbanGroupMemberRequest unbanGroupMemberRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, UNBAN_GROUP_MEMBER_COMMAND, random);
         return HttpUtil.post(url, unbanGroupMemberRequest, UnbanGroupMemberResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 拉取群消息扩展
+     *
+     * @param groupGetKeyValuesRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GroupGetKeyValuesResult groupGetKeyValues(GroupGetKeyValuesRequest groupGetKeyValuesRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM_MSG_EXT, GROUP_GET_KEY_VALUES_COMMAND);
+        return HttpUtil.post(url, groupGetKeyValuesRequest, GroupGetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    public GroupGetKeyValuesResult groupGetKeyValues(GroupGetKeyValuesRequest groupGetKeyValuesRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM_MSG_EXT, GROUP_GET_KEY_VALUES_COMMAND, random);
+        return HttpUtil.post(url, groupGetKeyValuesRequest, GroupGetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 设置群消息扩展
+     *
+     * @param groupSetKeyValuesRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GroupSetKeyValuesResult groupSetKeyValues(GroupSetKeyValuesRequest groupSetKeyValuesRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM_MSG_EXT, GROUP_SET_KEY_VALUES_COMMAND);
+        return HttpUtil.post(url, groupSetKeyValuesRequest, GroupSetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    public GroupSetKeyValuesResult groupSetKeyValues(GroupSetKeyValuesRequest groupSetKeyValuesRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM_MSG_EXT, GROUP_SET_KEY_VALUES_COMMAND, random);
+        return HttpUtil.post(url, groupSetKeyValuesRequest, GroupSetKeyValuesResult.class, imClient.getConfig());
     }
 }

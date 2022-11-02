@@ -103,6 +103,13 @@ public class SendMsgRequest extends GenericRequest {
     private OfflinePushInfo offlinePushInfo;
 
     /**
+     * 该条消息是否支持消息扩展，0为不支持，1为支持
+     * {@link io.github.doocs.im.constant.SupportMessageExtension}
+     */
+    @JsonProperty("SupportMessageExtension")
+    private Integer supportMessageExtension;
+
+    /**
      * 该条消息是否需要已读回执，0为不需要，1为需要，默认为0
      */
     @JsonProperty("IsNeedReadReceipt")
@@ -120,7 +127,7 @@ public class SendMsgRequest extends GenericRequest {
     public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime,
                           Long msgSeq, Long msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl,
                           List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData,
-                          OfflinePushInfo offlinePushInfo, Integer isNeedReadReceipt) {
+                          OfflinePushInfo offlinePushInfo, Integer supportMessageExtension, Integer isNeedReadReceipt) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -133,6 +140,7 @@ public class SendMsgRequest extends GenericRequest {
         this.msgBody = msgBody;
         this.cloudCustomData = cloudCustomData;
         this.offlinePushInfo = offlinePushInfo;
+        this.supportMessageExtension = supportMessageExtension;
         this.isNeedReadReceipt = isNeedReadReceipt;
     }
 
@@ -149,6 +157,7 @@ public class SendMsgRequest extends GenericRequest {
         this.msgBody = builder.msgBody;
         this.cloudCustomData = builder.cloudCustomData;
         this.offlinePushInfo = builder.offlinePushInfo;
+        this.supportMessageExtension = builder.supportMessageExtension;
         this.isNeedReadReceipt = builder.isNeedReadReceipt;
     }
 
@@ -252,6 +261,14 @@ public class SendMsgRequest extends GenericRequest {
         this.offlinePushInfo = offlinePushInfo;
     }
 
+    public Integer getSupportMessageExtension() {
+        return supportMessageExtension;
+    }
+
+    public void setSupportMessageExtension(Integer supportMessageExtension) {
+        this.supportMessageExtension = supportMessageExtension;
+    }
+
     public Integer getIsNeedReadReceipt() {
         return isNeedReadReceipt;
     }
@@ -274,6 +291,7 @@ public class SendMsgRequest extends GenericRequest {
         private List<TIMMsgElement> msgBody;
         private String cloudCustomData;
         private OfflinePushInfo offlinePushInfo;
+        private Integer supportMessageExtension;
         private Integer isNeedReadReceipt;
 
         private Builder() {
@@ -340,6 +358,11 @@ public class SendMsgRequest extends GenericRequest {
 
         public Builder offlinePushInfo(OfflinePushInfo offlinePushInfo) {
             this.offlinePushInfo = offlinePushInfo;
+            return this;
+        }
+
+        public Builder supportMessageExtension(Integer supportMessageExtension) {
+            this.supportMessageExtension = supportMessageExtension;
             return this;
         }
 

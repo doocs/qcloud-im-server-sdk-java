@@ -19,6 +19,8 @@ public class Message {
      */
     public static final String SERVICE_NAME = "openim";
 
+    public static final String SERVICE_NAME_MSG_EXT = "openim_msg_ext_http_svc";
+
     /**
      * 单聊消息相关命令字
      */
@@ -30,6 +32,8 @@ public class Message {
     public static final String ADMIN_SET_MSG_READ_COMMAND = "admin_set_msg_read";
     public static final String GET_C2C_UNREAD_MSG_NUM_COMMAND = "get_c2c_unread_msg_num";
     public static final String MODIFY_C2C_MSG_COMMAND = "modify_c2c_msg";
+    public static final String GET_KEY_VALUES_COMMAND = "get_key_values";
+    public static final String SET_KEY_VALUES_COMMAND = "set_key_values";
 
     private final ImClient imClient;
 
@@ -171,5 +175,39 @@ public class Message {
     public ModifyC2cMsgResult modifyC2cMsg(ModifyC2cMsgRequest modifyC2cMsgRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, MODIFY_C2C_MSG_COMMAND, random);
         return HttpUtil.post(url, modifyC2cMsgRequest, ModifyC2cMsgResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 拉取单聊消息扩展
+     *
+     * @param getKeyValuesRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetKeyValuesResult getKeyValues(GetKeyValuesRequest getKeyValuesRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MSG_EXT, GET_KEY_VALUES_COMMAND);
+        return HttpUtil.post(url, getKeyValuesRequest, GetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    public GetKeyValuesResult getKeyValues(GetKeyValuesRequest getKeyValuesRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MSG_EXT, GET_KEY_VALUES_COMMAND, random);
+        return HttpUtil.post(url, getKeyValuesRequest, GetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 设置单聊消息扩展
+     *
+     * @param setKeyValuesRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public SetKeyValuesResult setKeyValues(SetKeyValuesRequest setKeyValuesRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MSG_EXT, SET_KEY_VALUES_COMMAND);
+        return HttpUtil.post(url, setKeyValuesRequest, SetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    public SetKeyValuesResult setKeyValues(SetKeyValuesRequest setKeyValuesRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_MSG_EXT, SET_KEY_VALUES_COMMAND, random);
+        return HttpUtil.post(url, setKeyValuesRequest, SetKeyValuesResult.class, imClient.getConfig());
     }
 }

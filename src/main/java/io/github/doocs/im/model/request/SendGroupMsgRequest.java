@@ -80,6 +80,13 @@ public class SendGroupMsgRequest extends GenericRequest {
     private String cloudCustomData;
 
     /**
+     * 该条消息是否支持消息扩展，0为不支持，1为支持。
+     * {@link io.github.doocs.im.constant.SupportMessageExtension}
+     */
+    @JsonProperty("SupportMessageExtension")
+    private Integer supportMessageExtension;
+
+    /**
      * 指定消息接收者(接收者成员上限50个)，如果此字段被使用，消息则不计未读，仅旗舰版支持此功能，
      * 支持群类型 Private、Public、ChatRoom
      */
@@ -104,7 +111,7 @@ public class SendGroupMsgRequest extends GenericRequest {
     public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody,
                                String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
                                Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData,
-                               String toAccount, String topicId) {
+                               Integer supportMessageExtension, String toAccount, String topicId) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;
@@ -115,6 +122,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.onlineOnlyFlag = onlineOnlyFlag;
         this.sendMsgControl = sendMsgControl;
         this.cloudCustomData = cloudCustomData;
+        this.supportMessageExtension = supportMessageExtension;
         this.toAccount = toAccount;
         this.topicId = topicId;
     }
@@ -130,6 +138,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.onlineOnlyFlag = builder.onlineOnlyFlag;
         this.sendMsgControl = builder.sendMsgControl;
         this.cloudCustomData = builder.cloudCustomData;
+        this.supportMessageExtension = builder.supportMessageExtension;
         this.toAccount = builder.toAccount;
         this.topicId = builder.topicId;
     }
@@ -218,6 +227,14 @@ public class SendGroupMsgRequest extends GenericRequest {
         this.cloudCustomData = cloudCustomData;
     }
 
+    public Integer getSupportMessageExtension() {
+        return supportMessageExtension;
+    }
+
+    public void setSupportMessageExtension(Integer supportMessageExtension) {
+        this.supportMessageExtension = supportMessageExtension;
+    }
+
     public String getToAccount() {
         return toAccount;
     }
@@ -246,6 +263,7 @@ public class SendGroupMsgRequest extends GenericRequest {
         private Integer onlineOnlyFlag;
         private List<String> sendMsgControl;
         private String cloudCustomData;
+        private Integer supportMessageExtension;
         private String toAccount;
         private String topicId;
 
@@ -303,6 +321,11 @@ public class SendGroupMsgRequest extends GenericRequest {
 
         public Builder cloudCustomData(String cloudCustomData) {
             this.cloudCustomData = cloudCustomData;
+            return this;
+        }
+
+        public Builder supportMessageExtension(Integer supportMessageExtension) {
+            this.supportMessageExtension = supportMessageExtension;
             return this;
         }
 

@@ -566,4 +566,32 @@ class GroupTest {
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
+
+    @Test
+    void testGroupGetKeyValues() throws IOException {
+        GroupGetKeyValuesRequest request = GroupGetKeyValuesRequest.builder()
+                .groupId("MyFirstGroup")
+                .msgSeq(1L)
+                .build();
+
+        GroupGetKeyValuesResult result = client.group.groupGetKeyValues(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testSetGroupKeyValues() throws IOException {
+        GroupSetKeyValuesRequest request = GroupSetKeyValuesRequest.builder()
+                .groupId("MyFirstGroup")
+                .msgSeq(1L)
+                .extensionList(Collections.singletonList(KeyValueSeq.builder()
+                        .key("test")
+                        .value("test")
+                        .build()))
+                .build();
+
+        GroupSetKeyValuesResult result = client.group.groupSetKeyValues(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
 }
