@@ -208,3 +208,48 @@ ModifyC2cMsgRequest request = ModifyC2cMsgRequest.builder()
 
 ModifyC2cMsgResult result = client.message.modifyC2cMsg(request);
 ```
+
+## 拉取单聊消息扩展
+
+App 管理员和会话成员可以拉取消息扩展，消息扩展为一组自定义的键值对。
+
+::: warning
+- 此功能需 旗舰版套餐，并且已开通“消息扩展功能”功能(控制台“登录与消息”配置)。
+- 单条单聊消息可设置的最大键值对数量为300条。
+- 被设置的单聊消息需要在发送时指定“支持消息扩展”，参见 [单发单聊消息](#单发单聊消息)。
+:::
+
+使用示例：
+
+```java
+GetKeyValuesRequest request = GetKeyValuesRequest.builder()
+        .fromAccount("test1")
+        .toAccount("bingo")
+        .msgKey("1353691732_123_1653995506")
+        .startSeq(1L)
+        .build();
+
+GetKeyValuesResult result = client.message.getKeyValues(request);
+```
+
+## 设置单聊消息扩展
+
+App 管理员和会话成员可以为单聊普通消息设置消息扩展，消息扩展为一组自定义的键值对。
+
+::: warning
+- 此功能需 旗舰版套餐，并且已开通“消息扩展功能”功能(控制台“登录与消息”配置)。
+- 单条单聊消息可设置的最大键值对数量为300条。
+- 被设置的单聊消息需要在发送时指定“支持消息扩展”，参见 [单发单聊消息](#单发单聊消息)。
+:::
+
+使用示例：
+
+```java
+SetKeyValuesRequest request = SetKeyValuesRequest.builder()
+        .fromAccount("test1")
+        .toAccount("bingo")
+        .msgKey("1353691732_123_1653995506")
+        .build();
+        
+SetKeyValuesResult result = client.message.setKeyValues(request);
+```

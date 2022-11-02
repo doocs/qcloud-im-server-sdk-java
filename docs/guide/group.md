@@ -1285,3 +1285,49 @@ request.setMembersAccount(Arrays.asList("test1", "bingo"));
 
 UnbanGroupMemberResult result = client.group.unbanGroupMember(request);
 ```
+
+## 拉取群消息扩展
+
+App 管理员和群成员可以拉取消息扩展，消息扩展为一组自定义的键值对。
+
+::: warning
+- 此功能需 旗舰版套餐，并且已开通“消息扩展功能”功能(控制台“登录与消息”配置)。
+- 单条群消息可设置的最大键值对数量为300条。
+- 被设置的群消息需要在发送时指定“支持消息扩展”，参见 [在群组中发送普通消息](#在群组中发送普通消息)。
+:::
+
+使用示例：
+
+```java
+GroupGetKeyValuesRequest request = GroupGetKeyValuesRequest.builder()
+        .groupId("MyFirstGroup")
+        .msgSeq(1L)
+        .build();
+
+GroupGetKeyValuesResult result = client.group.groupGetKeyValues(request);
+```
+
+## 设置群消息扩展
+
+App 管理员和群成员可以为群聊普通消息设置消息扩展，消息扩展为一组自定义的键值对。
+
+::: warning
+- 此功能需 旗舰版套餐，并且已开通“消息扩展功能”功能(控制台“登录与消息”配置)。
+- 单条群消息可设置的最大键值对数量为300条。
+- 被设置的群消息需要在发送时指定“支持消息扩展”，参见 [在群组中发送普通消息](#在群组中发送普通消息)。
+:::
+
+使用示例：
+
+```java
+GroupSetKeyValuesRequest request = GroupSetKeyValuesRequest.builder()
+        .groupId("MyFirstGroup")
+        .msgSeq(1L)
+        .extensionList(Collections.singletonList(KeyValueSeq.builder()
+                .key("test")
+                .value("test")
+                .build()))
+        .build();
+
+GroupSetKeyValuesResult result = client.group.groupSetKeyValues(request);
+```

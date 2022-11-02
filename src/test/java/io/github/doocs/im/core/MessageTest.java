@@ -167,4 +167,29 @@ class MessageTest {
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
+
+    @Test
+    void testGetKeyValues() throws IOException {
+        GetKeyValuesRequest request = GetKeyValuesRequest.builder()
+                .fromAccount("test1")
+                .toAccount("bingo")
+                .msgKey("1353691732_123_1653995506")
+                .startSeq(1L)
+                .build();
+        GetKeyValuesResult result = client.message.getKeyValues(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testSetKeyValues() throws IOException {
+        SetKeyValuesRequest request = SetKeyValuesRequest.builder()
+                .fromAccount("test1")
+                .toAccount("bingo")
+                .msgKey("1353691732_123_1653995506")
+                .build();
+        SetKeyValuesResult result = client.message.setKeyValues(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
 }
