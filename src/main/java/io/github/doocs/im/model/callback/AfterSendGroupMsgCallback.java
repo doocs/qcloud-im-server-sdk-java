@@ -79,6 +79,12 @@ public class AfterSendGroupMsgCallback {
     @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
+    /**
+     * 话题的 ID，若具有此选项表示在话题内发言，仅支持话题的社群适用此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -165,5 +171,13 @@ public class AfterSendGroupMsgCallback {
 
     public void setCloudCustomData(String cloudCustomData) {
         this.cloudCustomData = cloudCustomData;
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 }
