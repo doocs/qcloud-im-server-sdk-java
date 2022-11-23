@@ -6,7 +6,7 @@
 
     <groupId>io.github.doocs</groupId>
     <artifactId>im-server-sdk-java</artifactId>
-    <version>0.3.33</version>
+    <version>0.3.34</version>
     <packaging>jar</packaging>
 
     <name>qcloud-im-server-sdk-java</name>
@@ -27,6 +27,10 @@
             <email>contact@yanglibin.info</email>
             <url>https://github.com/yanglbme</url>
             <organization>doocs</organization>
+            <roles>
+                <role>owner</role>
+                <role>developer</role>
+            </roles>
         </developer>
         <developer>
             <id>hongyiheng</id>
@@ -34,6 +38,9 @@
             <email>hongyihengg@gmail.com</email>
             <url>https://github.com/hongyiheng</url>
             <organization>doocs</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
         </developer>
         <developer>
             <id>xy</id>
@@ -41,6 +48,9 @@
             <email>502400992@qq.com</email>
             <url>https://github.com/YXxy1002</url>
             <organization>doocs</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
         </developer>
     </developers>
 
