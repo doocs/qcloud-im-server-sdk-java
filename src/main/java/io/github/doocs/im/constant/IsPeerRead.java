@@ -1,22 +1,23 @@
 package io.github.doocs.im.constant;
 
 /**
- * 该条消息是否需要已读回执
+ * 消息接收方是否发送该条消息的已读回执
  *
  * @author bingo
- * @since 2022/8/28 18:44
+ * @since 2023/1/6 15:24
  */
-public class isNeedReadReceipt {
+public class IsPeerRead {
     /**
-     * 是
+     * 已发送
      */
     public static final int YES = 1;
 
     /**
-     * 否（默认）
+     * 未发送
      */
     public static final int NO = 0;
 
-    private isNeedReadReceipt() {
+    private IsPeerRead() {
+
     }
 }
