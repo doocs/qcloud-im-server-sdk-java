@@ -47,6 +47,12 @@ public class MsgListItem {
     private Integer msgFlagBits;
 
     /**
+     * 消息接收方是否发送该条消息的已读回执。0表示未发送，1表示已发送
+     */
+    @JsonProperty("IsPeerRead")
+    private Integer isPeerRead;
+
+    /**
      * 标识该条消息，可用于 REST API 撤回单聊消息
      */
     @JsonProperty("MsgKey")
@@ -112,6 +118,14 @@ public class MsgListItem {
         this.msgFlagBits = msgFlagBits;
     }
 
+    public Integer getIsPeerRead() {
+        return isPeerRead;
+    }
+
+    public void setIsPeerRead(Integer isPeerRead) {
+        this.isPeerRead = isPeerRead;
+    }
+
     public String getMsgKey() {
         return msgKey;
     }
@@ -145,6 +159,7 @@ public class MsgListItem {
                 ", msgRandom=" + msgRandom +
                 ", msgTimeStamp=" + msgTimeStamp +
                 ", msgFlagBits=" + msgFlagBits +
+                ", isPeerRead=" + isPeerRead +
                 ", msgKey='" + msgKey + '\'' +
                 ", msgBody=" + msgBody +
                 ", cloudCustomData='" + cloudCustomData + '\'' +
