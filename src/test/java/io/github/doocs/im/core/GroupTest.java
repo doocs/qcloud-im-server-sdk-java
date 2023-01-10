@@ -507,6 +507,18 @@ class GroupTest {
     }
 
     @Test
+    void testImportGroupTopic() throws IOException {
+        ImportGroupTopicRequest request = new ImportGroupTopicRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setTopicName("test");
+        request.setFromAccount("123");
+
+        ImportGroupTopicResult result = client.group.importGroupTopic(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
     void testDestroyGroupTopic() throws IOException {
         DestroyGroupTopicRequest request = new DestroyGroupTopicRequest();
         request.setGroupId("MyFirstGroup");
