@@ -64,6 +64,7 @@ public class Group {
     public static final String CREATE_GROUP_TOPIC_COMMAND = "create_topic";
     public static final String GET_GROUP_TOPIC_COMMAND = "get_topic";
     public static final String MODIFY_GROUP_TOPIC_COMMAND = "modify_topic";
+    public static final String IMPORT_GROUP_TOPIC_COMMAND = "import_topic";
     public static final String DESTROY_GROUP_TOPIC_COMMAND = "destroy_topic";
     public static final String GET_GROUP_BAN_MEMBER_COMMAND = "get_group_ban_member";
     public static final String BAN_GROUP_MEMBER_COMMAND = "ban_group_member";
@@ -705,6 +706,23 @@ public class Group {
     public ModifyGroupTopicResult modifyGroupTopic(ModifyGroupTopicRequest modifyGroupTopicRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_MILLION_GROUP, MODIFY_GROUP_TOPIC_COMMAND, random);
         return HttpUtil.post(url, modifyGroupTopicRequest, ModifyGroupTopicResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 导入话题基础资料
+     *
+     * @param importGroupTopicRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ImportGroupTopicResult importGroupTopic(ImportGroupTopicRequest importGroupTopicRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_TOPIC_COMMAND);
+        return HttpUtil.post(url, importGroupTopicRequest, ImportGroupTopicResult.class, imClient.getConfig());
+    }
+
+    public ImportGroupTopicResult importGroupTopic(ImportGroupTopicRequest importGroupTopicRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, IMPORT_GROUP_TOPIC_COMMAND, random);
+        return HttpUtil.post(url, importGroupTopicRequest, ImportGroupTopicResult.class, imClient.getConfig());
     }
 
     /**
