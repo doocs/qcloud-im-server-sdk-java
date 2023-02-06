@@ -4,6 +4,7 @@ import io.github.doocs.im.ClientFactory;
 import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.group.GroupAttr;
+import io.github.doocs.im.model.group.GroupCounterItem;
 import io.github.doocs.im.model.group.GroupMemberItem;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -603,6 +605,46 @@ class GroupTest {
                 .build();
 
         GroupSetKeyValuesResult result = client.group.groupSetKeyValues(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetGroupCounter() throws IOException {
+        GetGroupCounterRequest request = GetGroupCounterRequest.builder()
+                .groupId("MyFirstGroup")
+                .build();
+
+        GetGroupCounterResult result = client.group.getGroupCounter(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testUpdateGroupCounter() throws IOException {
+        List<GroupCounterItem> groupCounter = new ArrayList<>();
+        GroupCounterItem item = new GroupCounterItem();
+        item.setKey("x");
+        item.setValue(1L);
+        groupCounter.add(item);
+        UpdateGroupCounterRequest request = UpdateGroupCounterRequest.builder()
+                .groupId("MyFirstGroup")
+                .groupCounter(groupCounter)
+                .mode(GroupCounterMode.SET)
+                .build();
+
+        UpdateGroupCounterResult result = client.group.updateGroupCounter(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testDeleteGroupCounter() throws IOException {
+        DeleteGroupCounterRequest request = DeleteGroupCounterRequest.builder()
+                .groupId("MyFirstGroup")
+                .build();
+
+        DeleteGroupCounterResult result = client.group.deleteGroupCounter(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

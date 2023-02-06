@@ -71,6 +71,10 @@ public class Group {
     public static final String UNBAN_GROUP_MEMBER_COMMAND = "unban_group_member";
     public static final String GROUP_GET_KEY_VALUES_COMMAND = "group_get_key_values";
     public static final String GROUP_SET_KEY_VALUES_COMMAND = "group_set_key_values";
+    public static final String GET_GROUP_COUNTER_COMMAND = "get_group_counter";
+    public static final String UPDATE_GROUP_COUNTER_COMMAND = "update_group_counter";
+    public static final String DELETE_GROUP_COUNTER_COMMAND = "delete_group_counter";
+
 
     private final ImClient imClient;
 
@@ -825,5 +829,56 @@ public class Group {
     public GroupSetKeyValuesResult groupSetKeyValues(GroupSetKeyValuesRequest groupSetKeyValuesRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_OPEN_IM_MSG_EXT, GROUP_SET_KEY_VALUES_COMMAND, random);
         return HttpUtil.post(url, groupSetKeyValuesRequest, GroupSetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取群计数器
+     *
+     * @param getGroupCounterRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetGroupCounterResult getGroupCounter(GetGroupCounterRequest getGroupCounterRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_COUNTER_COMMAND);
+        return HttpUtil.post(url, getGroupCounterRequest, GetGroupCounterResult.class, imClient.getConfig());
+    }
+
+    public GetGroupCounterResult getGroupCounter(GetGroupCounterRequest getGroupCounterRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_COUNTER_COMMAND, random);
+        return HttpUtil.post(url, getGroupCounterRequest, GetGroupCounterResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 更新群计数器
+     *
+     * @param updateGroupCounterRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public UpdateGroupCounterResult updateGroupCounter(UpdateGroupCounterRequest updateGroupCounterRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, UPDATE_GROUP_COUNTER_COMMAND);
+        return HttpUtil.post(url, updateGroupCounterRequest, UpdateGroupCounterResult.class, imClient.getConfig());
+    }
+
+    public UpdateGroupCounterResult updateGroupCounter(UpdateGroupCounterRequest updateGroupCounterRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, UPDATE_GROUP_COUNTER_COMMAND, random);
+        return HttpUtil.post(url, updateGroupCounterRequest, UpdateGroupCounterResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 删除群计数器
+     *
+     * @param deleteGroupCounterRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public DeleteGroupCounterResult deleteGroupCounter(DeleteGroupCounterRequest deleteGroupCounterRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_COUNTER_COMMAND);
+        return HttpUtil.post(url, deleteGroupCounterRequest, DeleteGroupCounterResult.class, imClient.getConfig());
+    }
+
+    public DeleteGroupCounterResult deleteGroupCounter(DeleteGroupCounterRequest deleteGroupCounterRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_COUNTER_COMMAND, random);
+        return HttpUtil.post(url, deleteGroupCounterRequest, DeleteGroupCounterResult.class, imClient.getConfig());
     }
 }
