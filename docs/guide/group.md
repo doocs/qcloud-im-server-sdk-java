@@ -1362,3 +1362,64 @@ GroupSetKeyValuesRequest request = GroupSetKeyValuesRequest.builder()
 
 GroupSetKeyValuesResult result = client.group.groupSetKeyValues(request);
 ```
+
+## 获取群计数器
+
+App 管理员可以通过该接口获取群计数器。
+
+::: warning
+
+- 该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182)。
+
+使用示例：
+
+```java
+GetGroupCounterRequest request = GetGroupCounterRequest.builder()
+        .groupId("MyFirstGroup")
+        .build();
+
+GetGroupCounterResult result = client.group.getGroupCounter(request);
+```
+
+## 更新群计数器
+
+App 管理员可以通过该接口更新（设置、递增、递减）群计数器。
+
+::: warning
+
+- 该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182)。
+
+使用示例：
+
+```java
+List<GroupCounterItem> groupCounter = new ArrayList<>();
+GroupCounterItem item = new GroupCounterItem();
+item.setKey("x");
+item.setValue(1L);
+groupCounter.add(item);
+UpdateGroupCounterRequest request = UpdateGroupCounterRequest.builder()
+        .groupId("MyFirstGroup")
+        .groupCounter(groupCounter)
+        .mode(GroupCounterMode.SET)
+        .build();
+
+UpdateGroupCounterResult result = client.group.updateGroupCounter(request);
+```
+
+## 删除群计数器
+
+App 管理员可以通过该接口删除群计数器。
+
+::: warning
+
+- 该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182)。
+
+使用示例：
+
+```java
+DeleteGroupCounterRequest request = DeleteGroupCounterRequest.builder()
+        .groupId("MyFirstGroup")
+        .build();
+
+DeleteGroupCounterResult result = client.group.deleteGroupCounter(request);
+```
