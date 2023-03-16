@@ -6,15 +6,16 @@ import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.constant.AssistFlags;
 import io.github.doocs.im.constant.ClearRamble;
 import io.github.doocs.im.constant.RecentContactType;
-import io.github.doocs.im.model.request.DeleteRecentContactRequest;
-import io.github.doocs.im.model.request.GetRecentContactListRequest;
-import io.github.doocs.im.model.response.DeleteRecentContactResult;
-import io.github.doocs.im.model.response.GetRecentContactListResult;
+import io.github.doocs.im.model.request.*;
+import io.github.doocs.im.model.response.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 最近联系人测试类 {@link io.github.doocs.im.core.RecentContact}
@@ -57,6 +58,102 @@ class RecentContactTest {
                 .build();
 
         DeleteRecentContactResult result = client.recentContact.deleteRecentContact(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testCreateContactGroup() throws IOException {
+        List<GroupContactItem> items = new ArrayList<>();
+        GroupContactItem item = new GroupContactItem();
+        item.setGroupName("groupName");
+
+        List<ContactItem> contactItems = new ArrayList<>();
+        ContactItem contactItem = new ContactItem();
+        contactItem.setToAccount("ccc");
+        contactItem.setToGroupId("group1");
+        contactItem.setType(1);
+        contactItems.add(contactItem);
+        item.setContactItem(contactItems);
+        items.add(item);
+        CreateContactGroupRequest request = CreateContactGroupRequest.builder()
+                .fromAccount("test1")
+                .groupContactItem(items).build();
+
+        CreateContactGroupResult result = client.recentContact.createContactGroup(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testUpdateContactGroup() throws IOException {
+        UpdateGroup updateGroup = UpdateGroup.builder().updateGroupType(1)
+                .newGroupName("hh").oldGroupName("cc").build();
+        UpdateContactGroupRequest request = UpdateContactGroupRequest.builder()
+                .updateType(1)
+                .fromAccount("test1")
+                .updateGroup(updateGroup)
+                .build();
+
+        UpdateContactGroupResult result = client.recentContact.updateContactGroup(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testDelContactGroup() throws IOException {
+        List<String> groupName = new ArrayList<>();
+        groupName.add("hh");
+        DelContactGroupRequest request = DelContactGroupRequest.builder()
+                .groupName(groupName)
+                .fromAccount("test1")
+                .build();
+
+        DelContactGroupResult result = client.recentContact.delContactGroup(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testMarkContact() throws IOException {
+        List<MarkContactItem> items = new ArrayList<>();
+        MarkContactItem item = new MarkContactItem();
+        item.setClearMark(Collections.singletonList(1));
+        item.setSetMark(Collections.singletonList(2));
+        item.setOptType(1);
+        items.add(item);
+        MarkContactRequest request = MarkContactRequest.builder()
+                .fromAccount("test1")
+                .markItem(items)
+                .build();
+
+        MarkContactResult result = client.recentContact.markContact(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testSearchContactGroup() throws IOException {
+        SearchContactGroupRequest request = new SearchContactGroupRequest();
+        request.setFromAccount("test1");
+        ContactItem contactItem = new ContactItem();
+        contactItem.setType(1);
+        contactItem.setToAccount("test2");
+        contactItem.setToGroupId("123");
+        request.setContactItem(Collections.singletonList(contactItem));
+
+        SearchContactGroupResult result = client.recentContact.searchContactGroup(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testGetContactGroup() throws IOException {
+        GetContactGroupRequest request = new GetContactGroupRequest();
+        request.setFromAccount("test1");
+        request.setStartIndex(1);
+
+        GetContactGroupResult result = client.recentContact.getContactGroup(request);
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
