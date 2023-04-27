@@ -42,6 +42,18 @@ public class AfterRecallMsgCallback {
     @JsonProperty("MsgSeqList")
     private List<MsgSeqItem> msgSeqList;
 
+    /**
+     * 话题的 ID，若具有此选项表示撤回的是话题中的消息，仅支持话题的社群适用此选项
+     */
+    @JsonProperty("TopicId")
+    private String topicId;
+
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -80,5 +92,21 @@ public class AfterRecallMsgCallback {
 
     public void setMsgSeqList(List<MsgSeqItem> msgSeqList) {
         this.msgSeqList = msgSeqList;
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

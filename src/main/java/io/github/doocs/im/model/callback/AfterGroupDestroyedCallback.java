@@ -47,6 +47,12 @@ public class AfterGroupDestroyedCallback {
     @JsonProperty("MemberList")
     private List<MemberAccount> memberList;
 
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -93,5 +99,13 @@ public class AfterGroupDestroyedCallback {
 
     public void setMemberList(List<MemberAccount> memberList) {
         this.memberList = memberList;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

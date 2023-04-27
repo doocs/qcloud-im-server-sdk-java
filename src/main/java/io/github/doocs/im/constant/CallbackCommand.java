@@ -113,9 +113,19 @@ public class CallbackCommand {
     public static final String GROUP_CALLBACK_AFTER_GROUP_DESTROYED = "Group.CallbackAfterGroupDestroyed";
 
     /**
-     * 群组资料修改之后回调
+     * 群组资料变动之后回调
      */
     public static final String GROUP_CALLBACK_AFTER_GROUP_INFO_CHANGED = "Group.CallbackAfterGroupInfoChanged";
+
+    /**
+     * 直播群成员在线状态回调
+     */
+    public static final String GROUP_CALLBACK_ON_MEMBER_STATE_CHANGE = "Group.CallbackOnMemberStateChange";
+
+    /**
+     * 发送群聊消息异常回调
+     */
+    public static final String GROUP_CALLBACK_SEND_MSG_EXCEPTION = "Group.CallbackSendMsgException";
 
     private CallbackCommand() {
 

@@ -85,6 +85,12 @@ public class AfterSendGroupMsgCallback {
     @JsonProperty("TopicId")
     private String topicId;
 
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -179,5 +185,13 @@ public class AfterSendGroupMsgCallback {
 
     public void setTopicId(String topicId) {
         this.topicId = topicId;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

@@ -37,6 +37,9 @@ public class PrevFriendResponseCallback {
     @JsonProperty("ResponseFriendItem")
     private List<ResponseFriendItem> responseFriendItem;
 
+    /**
+     * 毫秒时间戳
+     */
     @JsonProperty("EventTime")
     private Long eventTime;
 

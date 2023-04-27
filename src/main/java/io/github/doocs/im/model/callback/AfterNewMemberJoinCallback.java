@@ -47,6 +47,12 @@ public class AfterNewMemberJoinCallback {
     @JsonProperty("NewMemberList")
     private List<MemberAccount> newMemberList;
 
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -93,5 +99,13 @@ public class AfterNewMemberJoinCallback {
 
     public void setNewMemberList(List<MemberAccount> newMemberList) {
         this.newMemberList = newMemberList;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

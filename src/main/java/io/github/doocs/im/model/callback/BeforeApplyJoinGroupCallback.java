@@ -33,6 +33,12 @@ public class BeforeApplyJoinGroupCallback {
     @JsonProperty("Requestor_Account")
     private String requestorAccount;
 
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -63,5 +69,13 @@ public class BeforeApplyJoinGroupCallback {
 
     public void setRequestorAccount(String requestorAccount) {
         this.requestorAccount = requestorAccount;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

@@ -3,7 +3,7 @@ package io.github.doocs.im.model.callback;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 群组资料修改之后回调
+ * 群组资料变动之后回调
  *
  * @author bingo
  * @since 2021/11/16 20:27
@@ -56,6 +56,12 @@ public class AfterGroupInfoChangedCallback {
      */
     @JsonProperty("FaceUrl")
     private String faceUrl;
+
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
 
     public String getCallbackCommand() {
         return callbackCommand;
@@ -119,5 +125,13 @@ public class AfterGroupInfoChangedCallback {
 
     public void setFaceUrl(String faceUrl) {
         this.faceUrl = faceUrl;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

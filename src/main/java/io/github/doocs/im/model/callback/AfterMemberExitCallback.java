@@ -47,6 +47,12 @@ public class AfterMemberExitCallback {
     @JsonProperty("ExitMemberList")
     private List<MemberAccount> exitMemberList;
 
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -93,5 +99,13 @@ public class AfterMemberExitCallback {
 
     public void setExitMemberList(List<MemberAccount> exitMemberList) {
         this.exitMemberList = exitMemberList;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

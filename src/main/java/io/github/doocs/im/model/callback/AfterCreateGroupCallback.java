@@ -54,6 +54,12 @@ public class AfterCreateGroupCallback {
     private List<MemberAccount> memberList;
 
     /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
+    /**
      * 用户建群/话题时的自定义字段，这个字段默认是没有的，需要开通
      */
     @JsonProperty("UserDefinedDataList")
@@ -121,5 +127,13 @@ public class AfterCreateGroupCallback {
 
     public void setUserDefinedDataList(List<UserDefinedDataItem> userDefinedDataList) {
         this.userDefinedDataList = userDefinedDataList;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

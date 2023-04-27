@@ -41,6 +41,12 @@ public class BeforeInviteJoinGroupCallback {
     @JsonProperty("DestinationMembers")
     private List<MemberAccount> destinationMembers;
 
+    /**
+     * 事件触发的毫秒级别时间戳
+     */
+    @JsonProperty("EventTime")
+    private Long eventTime;
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -79,5 +85,13 @@ public class BeforeInviteJoinGroupCallback {
 
     public void setDestinationMembers(List<MemberAccount> destinationMembers) {
         this.destinationMembers = destinationMembers;
+    }
+
+    public Long getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Long eventTime) {
+        this.eventTime = eventTime;
     }
 }

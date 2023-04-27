@@ -1,17 +1,19 @@
 package io.github.doocs.im.model.callback;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.util.List;
 
 /**
- * 群内发言之前回调
+ * 发送群聊消息异常回调
  *
  * @author bingo
- * @since 2021/11/16 19:36
+ * @since 2023/4/27 16:28
  */
-public class BeforeSendGroupMsgCallback {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SendMsgExceptionCallback {
     /**
      * 回调命令
      */
@@ -25,7 +27,7 @@ public class BeforeSendGroupMsgCallback {
     private String groupId;
 
     /**
-     * 产生群消息的群组类型，例如 Public
+     * 产生群消息的 群组类型介绍，例如 Public
      */
     @JsonProperty("Type")
     private String type;
@@ -49,13 +51,13 @@ public class BeforeSendGroupMsgCallback {
     private Long random;
 
     /**
-     * 在线消息，为1，否则为0；直播群忽略此属性，为默认值0
+     * 在线消息，为1，否则为0；直播群忽略此属性，为默认值0。
      */
     @JsonProperty("OnlineOnlyFlag")
     private Integer onlineOnlyFlag;
 
     /**
-     * 消息体
+     * 消息体，具体参见 消息格式描述
      */
     @JsonProperty("MsgBody")
     private List<TIMMsgElement> msgBody;
@@ -67,10 +69,16 @@ public class BeforeSendGroupMsgCallback {
     private String cloudCustomData;
 
     /**
-     * 话题的 ID，若具有此选项表示在话题内发言，仅支持话题的社群适用此选项
+     * 消息异常错误码，更多的错误码请参见群组错误码
      */
-    @JsonProperty("TopicId")
-    private String topicId;
+    @JsonProperty("ErrorCode")
+    private Integer errorCode;
+
+    /**
+     * 消息异常详细信息
+     */
+    @JsonProperty("ErrorInfo")
+    private String errorInfo;
 
     /**
      * 事件触发的毫秒级别时间戳
@@ -150,12 +158,20 @@ public class BeforeSendGroupMsgCallback {
         this.cloudCustomData = cloudCustomData;
     }
 
-    public String getTopicId() {
-        return topicId;
+    public Integer getErrorCode() {
+        return errorCode;
     }
 
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
+    public void setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getErrorInfo() {
+        return errorInfo;
+    }
+
+    public void setErrorInfo(String errorInfo) {
+        this.errorInfo = errorInfo;
     }
 
     public Long getEventTime() {
