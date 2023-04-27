@@ -62,6 +62,8 @@ public class CallbackCommand {
      */
     public static final String C2C_CALLBACK_AFTER_MSG_WITHDRAW = "C2C.CallbackAfterMsgWithDraw";
 
+    // --------------------------------------------------------------------------------------------------------
+
     /**
      * 创建群组之前回调（群组系统）
      */
