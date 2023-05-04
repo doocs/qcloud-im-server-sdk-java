@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/07/31 14:28
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class FriendDeleteRequest extends GenericRequest {
+public class FriendDeleteRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -1422672957066448571L;
     /**
      * 需要删除该 UserID 的好友
      */

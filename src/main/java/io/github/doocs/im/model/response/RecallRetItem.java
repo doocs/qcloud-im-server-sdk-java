@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/8/4 11:41
  */
-public class RecallRetItem {
+public class RecallRetItem implements Serializable {
+    private static final long serialVersionUID = 4345721447627867731L;
     /**
      * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
      */

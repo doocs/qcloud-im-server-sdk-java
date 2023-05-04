@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/8/4 11:22
  */
-public class GetGroupMutedAccountResult extends GenericResult {
+public class GetGroupMutedAccountResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 5099754965161260350L;
     /**
      * 返回结果为禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
      */

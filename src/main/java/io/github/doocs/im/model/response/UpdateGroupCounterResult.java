@@ -3,6 +3,7 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.group.GroupCounterItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
  * @author bingo
  * @since 2023/2/6 11:33
  */
-public class UpdateGroupCounterResult extends GenericResult {
+public class UpdateGroupCounterResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -2274700113517660757L;
     /**
      * 更新的群计数器最新键值列表
      */

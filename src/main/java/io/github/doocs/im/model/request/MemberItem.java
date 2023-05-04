@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/08/02 19:15
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MemberItem {
+public class MemberItem implements Serializable {
+    private static final long serialVersionUID = 8007340316927642225L;
     /**
      * 待导入的群成员帐号
      */

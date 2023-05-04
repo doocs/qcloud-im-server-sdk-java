@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/28 20:39
  */
-public class C2cUnreadMsgNumListItem {
+public class C2cUnreadMsgNumListItem implements Serializable {
+    private static final long serialVersionUID = -5255581371827404624L;
     /**
      * 单聊会话对端 UserId
      */

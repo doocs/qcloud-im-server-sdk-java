@@ -2,6 +2,7 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  * @author bingo
  * @since 2022/8/2 11:41
  */
-public class AfterCreateGroupTopicCallback {
+public class AfterCreateGroupTopicCallback implements Serializable {
+    private static final long serialVersionUID = 527584691317599470L;
+
     /**
      * 回调命令
      */

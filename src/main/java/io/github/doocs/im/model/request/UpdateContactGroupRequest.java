@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 更新会话分组数据-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2023/3/16 11:33
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpdateContactGroupRequest extends GenericRequest {
+public class UpdateContactGroupRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 3703403801236592614L;
     /**
      * 请求方uid
      */

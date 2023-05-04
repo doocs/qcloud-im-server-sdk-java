@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 群消息已读回执信息
  *
  * @author bingo
  * @since 2022/7/24 20:06
  */
-public class GroupMsgReceiptResultItem {
+public class GroupMsgReceiptResultItem implements Serializable {
+    private static final long serialVersionUID = -2295483502195061142L;
     /**
      * 对应已读回执信息错误码，例如：10062代表已读回执信息不存在
      */

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.response.UserTagItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/7/31 17:05
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ImAddTagRequest extends GenericRequest {
+public class ImAddTagRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -6536901145179153776L;
     /**
      * 用户标签内容列表
      */

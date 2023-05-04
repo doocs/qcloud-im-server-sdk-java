@@ -2,6 +2,7 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/11/16 16:44
  */
-public class FriendDeleteCallback {
+public class FriendDeleteCallback implements Serializable {
+    private static final long serialVersionUID = -4496048288078545306L;
     /**
      * 回调命令
      */

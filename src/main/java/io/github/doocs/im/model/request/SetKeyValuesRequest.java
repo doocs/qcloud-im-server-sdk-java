@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.response.KeyValueSeq;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2022/11/2 16:32
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SetKeyValuesRequest extends GenericRequest {
+public class SetKeyValuesRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 7103686738435677357L;
     /**
      * 消息发送方 UserID（用于指定发送消息方帐号）
      */

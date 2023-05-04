@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/8/4 10:45
  */
-public class GetJoinGroupListResult extends GenericResult {
+public class GetJoinGroupListResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -723444011815913182L;
     /**
      * 用户所加入的群组个数
      */

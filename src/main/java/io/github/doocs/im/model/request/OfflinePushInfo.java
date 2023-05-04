@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 离线推送
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 10:52
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OfflinePushInfo {
+public class OfflinePushInfo implements Serializable {
+    private static final long serialVersionUID = 1398070047650972523L;
     /**
      * 0表示推送，1表示不离线推送。
      */

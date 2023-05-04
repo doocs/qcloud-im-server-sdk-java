@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/28 16:49
  */
-public class BatchSendMsgResult extends GenericResult {
+public class BatchSendMsgResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 4547611220565507607L;
     /**
      * 消息唯一标识，用于撤回。长度不超过50个字符
      */

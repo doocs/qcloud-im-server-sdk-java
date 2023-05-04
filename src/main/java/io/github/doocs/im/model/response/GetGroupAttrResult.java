@@ -3,6 +3,7 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.group.GroupAttr;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/12/31 10:41
  */
-public class GetGroupAttrResult extends GenericResult {
+public class GetGroupAttrResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 1890299526475024034L;
     /**
      * 自定义属性的键值对
      */

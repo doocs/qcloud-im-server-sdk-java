@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/29 15:52
  */
-public class FriendImportResult extends GenericResult {
+public class FriendImportResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 7464675732537998686L;
     /**
      * 批量加好友的结果对象数组
      */

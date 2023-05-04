@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 设置单聊消息已读-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 15:29
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AdminSetMsgReadRequest extends GenericRequest {
+public class AdminSetMsgReadRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -7492790600359646282L;
     /**
      * 进行消息已读的用户 UserId
      */

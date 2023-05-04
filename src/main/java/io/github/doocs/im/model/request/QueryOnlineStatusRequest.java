@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/7/30 17:35
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryOnlineStatusRequest extends GenericRequest {
+public class QueryOnlineStatusRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 7963736668099506733L;
     /**
      * 是否需要返回详细的登录平台信息。0表示不需要，1表示需要
      * {@link io.github.doocs.im.constant.IsNeedDetail}

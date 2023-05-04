@@ -3,13 +3,15 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author hyh
  * @since 2021/07/28 20:07
  */
-public class MsgListItem {
+public class MsgListItem implements Serializable {
+    private static final long serialVersionUID = 5146908265407488634L;
     /**
      * 消息发送方 UserID
      */

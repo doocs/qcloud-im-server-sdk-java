@@ -3,11 +3,14 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.request.ContactItem;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2023/3/16 20:21
  */
-public class ContactGroupResultItem {
+public class ContactGroupResultItem implements Serializable {
+    private static final long serialVersionUID = 8445294728386218557L;
     /**
      * 更新类型: 1 - 分组添加会话; 2 - 分组删除会话
      */

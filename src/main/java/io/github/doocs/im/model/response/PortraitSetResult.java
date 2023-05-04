@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 设置资料-结果
  *
  * @author hyh
  * @since 2021/07/29 15:09
  */
-public class PortraitSetResult extends GenericResult{
+public class PortraitSetResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 6674035770761552443L;
     /**
      * 详细的客户端展示信息
      */

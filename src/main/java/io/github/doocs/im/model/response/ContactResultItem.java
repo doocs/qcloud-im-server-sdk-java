@@ -2,13 +2,15 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author bingo
  * @since 2023/3/16 10:59
  */
-public class ContactResultItem {
+public class ContactResultItem implements Serializable {
+    private static final long serialVersionUID = -6119831226981174345L;
     /**
      * 会话类型，c2c=1,group=2
      */

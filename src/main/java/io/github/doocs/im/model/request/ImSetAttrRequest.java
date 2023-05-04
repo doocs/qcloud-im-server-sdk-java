@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.response.UserAttrItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/7/31 16:58
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ImSetAttrRequest extends GenericRequest {
+public class ImSetAttrRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -6886464077912210776L;
     /**
      * 用户标签内容列表
      */

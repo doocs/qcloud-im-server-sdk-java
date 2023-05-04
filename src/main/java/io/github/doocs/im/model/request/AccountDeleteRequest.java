@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/7/30 17:08
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountDeleteRequest extends GenericRequest {
+public class AccountDeleteRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -1136860412161667975L;
     /**
      * 请求删除的帐号对象数组，单次请求最多支持100个帐号
      */

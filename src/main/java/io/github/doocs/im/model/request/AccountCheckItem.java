@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/7/30 17:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountCheckItem {
+public class AccountCheckItem implements Serializable {
+    private static final long serialVersionUID = 1772994579121597085L;
     /**
      * 请求检查的帐号的 UserID
      */

@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @since 2021/07/31 14:22
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpdateItem {
+public class UpdateItem implements Serializable {
+    private static final long serialVersionUID = -8567106294829008928L;
     /**
      * 好友的 UserID
      */

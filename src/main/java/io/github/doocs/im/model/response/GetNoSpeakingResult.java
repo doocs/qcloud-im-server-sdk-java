@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 查询全局禁言-结果
  *
  * @author xy
  * @since 2021/07/31 11:51:01
  */
-public class GetNoSpeakingResult extends GenericResult {
+public class GetNoSpeakingResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -1229860666181738842L;
     /**
      * 单聊消息禁言时长，单位为秒，非负整数。
      */

@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 删除单个会话-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/10/11 10:49
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DeleteRecentContactRequest extends GenericRequest {
+public class DeleteRecentContactRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -6804844387293630280L;
     /**
      * 请求删除该 UserID 的会话
      */

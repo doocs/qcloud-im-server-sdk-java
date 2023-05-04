@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2023/3/16 15:31
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MarkContactRequest extends GenericRequest {
+public class MarkContactRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -2378229656615408114L;
     /**
      * 请求方uid
      */

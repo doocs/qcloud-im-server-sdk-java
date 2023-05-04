@@ -3,6 +3,7 @@ package io.github.doocs.im.model.group;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @since 2022/08/29 15:37
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupMemberItem {
+public class GroupMemberItem implements Serializable {
+    private static final long serialVersionUID = 1434564355285510258L;
     /**
      * 群成员 UserID
      */

@@ -2,13 +2,16 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 单聊消息已读上报后回调
  *
  * @author bingo
  * @since 2021/11/16 17:03
  */
-public class AfterMsgReportCallback {
+public class AfterMsgReportCallback implements Serializable {
+    private static final long serialVersionUID = -6921436802328726496L;
     /**
      * 回调命令
      */

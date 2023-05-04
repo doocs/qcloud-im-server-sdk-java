@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/08/01 13:35
  */
-public class GroupMsgGetSimpleResult extends GenericResult {
+public class GroupMsgGetSimpleResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -5371321790104935593L;
     /**
      * 请求中的群组 ID
      */

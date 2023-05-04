@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/7/31 21:03
  */
-public class GetAppIdGroupListResult extends GenericResult {
+public class GetAppIdGroupListResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -1696656440051436529L;
     /**
      * App 当前的群组总数。如果仅需要返回特定群组形态的群组，可以通过 GroupType 进行过滤，
      * 但此时返回的 TotalCount 的含义就变成了 App 中该群组形态的群组总数；

@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/8/4 11:39
  */
-public class GroupMsgRecallResult extends GenericResult {
+public class GroupMsgRecallResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 6925466471091147131L;
     /**
      * 消息撤回请求的详细结果
      */

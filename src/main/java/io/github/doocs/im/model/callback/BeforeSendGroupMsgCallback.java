@@ -3,6 +3,7 @@ package io.github.doocs.im.model.callback;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/11/16 19:36
  */
-public class BeforeSendGroupMsgCallback {
+public class BeforeSendGroupMsgCallback implements Serializable {
+    private static final long serialVersionUID = 5026871190594429962L;
     /**
      * 回调命令
      */

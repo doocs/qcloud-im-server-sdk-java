@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/08/02 17:09
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendGroupSystemNotificationRequest extends GenericRequest {
+public class SendGroupSystemNotificationRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 4011291750403137737L;
     /**
      * 向哪个群组发送系统通知
      */

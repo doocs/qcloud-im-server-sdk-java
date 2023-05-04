@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Apple Push Notification Service
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 11:03
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApnsInfo {
+public class ApnsInfo implements Serializable {
+    private static final long serialVersionUID = -7105273405208177578L;
     @JsonProperty("Sound")
     private String sound;
 

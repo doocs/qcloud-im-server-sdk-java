@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 获取用户所加入的群组-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/08/02 16:39
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetJoinedGroupListRequest extends GenericRequest {
+public class GetJoinedGroupListRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -3718958862159545148L;
     /**
      * 需要查询的用户帐号
      */

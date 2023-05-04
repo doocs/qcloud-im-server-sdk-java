@@ -3,6 +3,7 @@ package io.github.doocs.im.model.callback;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.request.MsgSeqItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
  * @author hyh
  * @since 2022/04/30 20:59
  */
-public class AfterRecallMsgCallback {
+public class AfterRecallMsgCallback implements Serializable {
+    private static final long serialVersionUID = -1785862540381717924L;
     /**
      * 回调命令
      */

@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 删除指定用户发送的消息-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/08/01 13:53
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DeleteGroupMsgBySenderRequest extends GenericRequest {
+public class DeleteGroupMsgBySenderRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -4958142885384119249L;
     /**
      * 要撤回消息的群 ID
      */

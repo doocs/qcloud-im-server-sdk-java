@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/07/29 14:25
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ImportMsgRequest extends GenericRequest {
+public class ImportMsgRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 3103657381553971850L;
     /**
      * 该字段只能填2或5，其他值是非法值
      * 2表示历史消息导入，消息不计入未读计数，且消息不会推送到终端

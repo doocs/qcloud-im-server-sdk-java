@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/28 17:56
  */
-public class AdminRoamMsgResult extends GenericResult {
+public class AdminRoamMsgResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 3666649198140327478L;
     /**
      * 是否全部拉取，0表示未全部拉取，需要续拉，1表示已全部拉取
      */

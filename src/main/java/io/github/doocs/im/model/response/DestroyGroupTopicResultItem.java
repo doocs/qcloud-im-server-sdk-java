@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 解散话题结果项
  *
  * @author bingo
  * @since 2021/8/4 10:48
  */
-public class DestroyGroupTopicResultItem {
+public class DestroyGroupTopicResultItem implements Serializable {
+    private static final long serialVersionUID = 3259530710602736802L;
     /**
      * 错误码，0表示成功，非0表示失败
      */

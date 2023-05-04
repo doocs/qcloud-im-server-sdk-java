@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2023/4/27 16:28
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendMsgExceptionCallback {
+public class SendMsgExceptionCallback implements Serializable {
+    private static final long serialVersionUID = 9009185242375464546L;
     /**
      * 回调命令
      */

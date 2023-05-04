@@ -2,6 +2,7 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/11/16 15:02
  */
-public class StateChangeCallback {
+public class StateChangeCallback implements Serializable {
+    private static final long serialVersionUID = 3502141771765151214L;
     /**
      * 回调命令
      */

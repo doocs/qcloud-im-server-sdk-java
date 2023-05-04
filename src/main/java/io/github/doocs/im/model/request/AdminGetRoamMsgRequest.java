@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 查询单聊消息-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 14:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AdminGetRoamMsgRequest extends GenericRequest {
+public class AdminGetRoamMsgRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -1979505757549864474L;
     /**
      * 会话其中一方的 UserID，若已指定发送消息方帐号，则为消息发送方
      */

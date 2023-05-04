@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2022/8/2 11:04
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DestroyGroupTopicRequest extends GenericRequest {
+public class DestroyGroupTopicRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -2058739892738626978L;
     /**
      * 需要解散话题所属的群组ID
      */

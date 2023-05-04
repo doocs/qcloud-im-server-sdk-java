@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 聊天文件解封-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/6/1 17:17
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AllowBannedObjectRequest extends GenericRequest {
+public class AllowBannedObjectRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 5098194675680378437L;
     /**
      * 文件 URL，可从 IM 富媒体消息的 URL 字段获取
      */

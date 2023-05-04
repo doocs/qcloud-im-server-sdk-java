@@ -2,13 +2,16 @@ package io.github.doocs.im.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 拉取会话分组标记数据-请求参数
  *
  * @author bingo
  * @since 2023/3/16 15:31
  */
-public class GetContactGroupRequest extends GenericRequest {
+public class GetContactGroupRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 6482055291416088303L;
     /**
      * 请求方uid
      */

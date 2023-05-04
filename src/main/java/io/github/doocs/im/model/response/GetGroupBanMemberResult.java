@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/8/29 11:47
  */
-public class GetGroupBanMemberResult extends GenericResult {
+public class GetGroupBanMemberResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 291418193773726882L;
     /**
      * 封禁成员信息，BannedUntil 为封禁成员的封禁截止时间，Member_Account 为封禁成员账号 id
      */

@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 待添加的会话列表
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2023/3/16 10:59
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ContactItem {
+public class ContactItem implements Serializable {
+    private static final long serialVersionUID = -2387984644793382664L;
     /**
      * 会话类型，c2c=1,group=2
      */
@@ -24,7 +27,7 @@ public class ContactItem {
     private String toGroupId;
 
     /**
-     * 	用户ID
+     * 用户ID
      */
     @JsonProperty("To_Account")
     private String toAccount;

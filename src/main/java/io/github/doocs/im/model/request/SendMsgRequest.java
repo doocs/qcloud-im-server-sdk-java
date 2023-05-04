@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/07/29 11:31
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendMsgRequest extends GenericRequest {
+public class SendMsgRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -8284631643133267488L;
     /**
      * 1. 把消息同步到 From_Account 在线终端和漫游上
      * 2. 消息不同步至 From_Account

@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/30 16:54
  */
-public class ValueItem {
+public class ValueItem implements Serializable {
+    private static final long serialVersionUID = 2634107854954005106L;
     /**
      * 好友字段的名称
      */

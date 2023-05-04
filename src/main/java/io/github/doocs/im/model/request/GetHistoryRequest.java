@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 下载最近消息记录-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 20:28
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetHistoryRequest extends GenericRequest {
+public class GetHistoryRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 4053700683003712565L;
     /**
      * 消息类型，C2C 表示单发消息 Group 表示群组消息
      * {@link io.github.doocs.im.constant.ChatType}

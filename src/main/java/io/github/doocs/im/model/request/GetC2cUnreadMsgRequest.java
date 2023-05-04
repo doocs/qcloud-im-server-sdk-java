@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/7/31 15:37
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetC2cUnreadMsgRequest extends GenericRequest {
+public class GetC2cUnreadMsgRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -1653660098771983204L;
     /**
      * 待查询的用户 UserId
      */

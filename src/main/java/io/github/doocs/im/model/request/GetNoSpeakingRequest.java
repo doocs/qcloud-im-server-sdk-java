@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 查询全局禁言-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/31 11:48
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetNoSpeakingRequest extends GenericRequest {
+public class GetNoSpeakingRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 7998575166889463951L;
     /**
      * 查询禁言信息的帐号
      */

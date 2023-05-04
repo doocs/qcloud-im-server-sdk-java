@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 导入单个帐号-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/29 14:56
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountImportRequest extends GenericRequest {
+public class AccountImportRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 63766583744580486L;
     /**
      * 用户名，长度不超过32字节
      */

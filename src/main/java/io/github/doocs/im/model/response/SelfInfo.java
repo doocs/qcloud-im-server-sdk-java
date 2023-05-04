@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 指定的用户在某话题中的相关信息
  *
  * @author bingo
  * @since 2022/8/2 10:52
  */
-public class SelfInfo {
+public class SelfInfo implements Serializable {
+    private static final long serialVersionUID = 2356812313478323009L;
     /**
      * 用户的禁言时间
      */

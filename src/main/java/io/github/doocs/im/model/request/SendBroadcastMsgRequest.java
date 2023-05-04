@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2022/7/20 11:04
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendBroadcastMsgRequest extends GenericRequest {
+public class SendBroadcastMsgRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 3928165589343993655L;
     /**
      * 消息来源帐号，选填。如果不填写该字段，则默认消息的发送者为调用该接口时使用的 App 管理员帐号。
      * 除此之外，App 亦可通过该字段“伪造”消息的发送者，从而实现一些特殊的功能需求。

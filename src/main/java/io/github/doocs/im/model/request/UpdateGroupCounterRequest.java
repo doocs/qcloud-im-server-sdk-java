@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.group.GroupCounterItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2023/2/6 11:33
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpdateGroupCounterRequest extends GenericRequest {
+public class UpdateGroupCounterRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -5296243869591882793L;
     /**
      * 群组 ID
      */

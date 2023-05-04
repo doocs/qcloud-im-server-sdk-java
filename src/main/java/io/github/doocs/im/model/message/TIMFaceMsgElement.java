@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.constant.MsgType;
 
+import java.io.Serializable;
+
 /**
  * 表情消息元素
  *
@@ -11,7 +13,9 @@ import io.github.doocs.im.constant.MsgType;
  * @since 2021/10/29 16:39
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TIMFaceMsgElement extends TIMMsgElement {
+public class TIMFaceMsgElement extends TIMMsgElement implements Serializable {
+    private static final long serialVersionUID = -7102796968963047885L;
+
     /**
      * MsgContent 为 TIM 消息对象
      */

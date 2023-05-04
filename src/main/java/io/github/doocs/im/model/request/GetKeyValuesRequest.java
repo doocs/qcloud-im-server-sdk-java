@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 拉取单聊消息扩展-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/11/2 16:32
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetKeyValuesRequest extends GenericRequest {
+public class GetKeyValuesRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 5051921921880776092L;
     /**
      * 消息发送方 UserID（用于指定发送消息方帐号）
      */

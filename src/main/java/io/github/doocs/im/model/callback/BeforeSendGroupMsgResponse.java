@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/11/16 21:00
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BeforeSendGroupMsgResponse extends CallbackResponse {
+public class BeforeSendGroupMsgResponse extends CallbackResponse implements Serializable {
+    private static final long serialVersionUID = 6485943206587840517L;
     /**
      * 经过App修改之后的消息体，云通讯后台将把修改后的消息发送到群组中
      */

@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 导入话题资料-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2023/1/10 16:19
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ImportGroupTopicRequest extends GenericRequest {
+public class ImportGroupTopicRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 4799803245565149118L;
     /**
      * 话题所属的群组类型，目前只支持Community（社群）类型
      */

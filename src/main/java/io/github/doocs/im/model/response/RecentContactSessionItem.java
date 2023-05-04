@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/10/11 10:37
  */
-public class RecentContactSessionItem {
+public class RecentContactSessionItem implements Serializable {
+    private static final long serialVersionUID = 7923309788127946871L;
     /**
      * 会话类型：1 表示 C2C 会话；2 表示 G2C 会话
      */

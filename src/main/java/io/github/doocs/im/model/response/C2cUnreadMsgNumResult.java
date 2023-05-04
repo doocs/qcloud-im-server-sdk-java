@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/28 20:34
  */
-public class C2cUnreadMsgNumResult extends GenericResult {
+public class C2cUnreadMsgNumResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -9178093027888499841L;
     /**
      * 单聊消息总未读数
      */

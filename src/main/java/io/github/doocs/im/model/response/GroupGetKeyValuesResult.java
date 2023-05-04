@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2022/11/2 16:32
  */
-public class GroupGetKeyValuesResult extends GenericResult {
+public class GroupGetKeyValuesResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 660637661242258772L;
     /**
      * 返回的KV列表，按Seq大小排序。单次拉取最多返回200条KV。超过200条需要通过StartSeq分批拉取。
      */

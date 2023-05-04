@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/07/31 15:41
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupDeleteRequest extends GenericRequest {
+public class GroupDeleteRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 8340916110862720945L;
     /**
      * 需要删除该 UserID 的分组
      */

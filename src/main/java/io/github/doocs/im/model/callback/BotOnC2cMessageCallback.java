@@ -3,6 +3,7 @@ package io.github.doocs.im.model.callback;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
  * @author bingo
  * @since 2023/4/27 16:51
  */
-public class BotOnC2cMessageCallback {
+public class BotOnC2cMessageCallback implements Serializable {
+    private static final long serialVersionUID = -260307311365241282L;
     /**
      * 回调命令
      */

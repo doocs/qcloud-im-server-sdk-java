@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 拉取会话列表-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/10/11 10:28
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetRecentContactListRequest extends GenericRequest {
+public class GetRecentContactListRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -8638848898376939482L;
     /**
      * 填 UserID，请求拉取该用户的会话列表
      */

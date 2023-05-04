@@ -6,6 +6,7 @@ import io.github.doocs.im.model.group.AppDefinedDataItem;
 import io.github.doocs.im.model.group.AppMemberDefinedDataItem;
 import io.github.doocs.im.model.group.MemberProfile;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,8 @@ import java.util.List;
  * @since 2021/8/1 11:12
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateGroupRequest {
+public class CreateGroupRequest implements Serializable {
+    private static final long serialVersionUID = -3315570733601873621L;
     /**
      * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主；成员使用 AVChatroom（直播群）时，必须每次调用进群操作
      */
@@ -66,7 +68,7 @@ public class CreateGroupRequest {
     private Integer maxMemberCount;
 
     /**
-     * 	申请加群处理方式。包含 FreeAccess（自由加入），NeedPermission（需要验证），DisableApply（禁止加群），不填默认为 NeedPermission（需要验证）
+     * 申请加群处理方式。包含 FreeAccess（自由加入），NeedPermission（需要验证），DisableApply（禁止加群），不填默认为 NeedPermission（需要验证）
      * 仅当创建支持申请加群的 群组 时，该字段有效
      * {@link io.github.doocs.im.constant.ApplyJoinOption}
      */
@@ -74,13 +76,13 @@ public class CreateGroupRequest {
     private String applyJoinOption;
 
     /**
-     * 	群组维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
+     * 群组维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
      */
     @JsonProperty("AppDefinedData")
     private List<AppDefinedDataItem> appDefinedData;
 
     /**
-     * 	初始群成员列表，最多100个；成员信息字段详情请参阅 群成员资料
+     * 初始群成员列表，最多100个；成员信息字段详情请参阅 群成员资料
      */
     @JsonProperty("MemberList")
     private List<MemberProfile> memberList;

@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 获取 App 中的所有群组-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/7/31 21:01
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetAppIdGroupListRequest extends GenericRequest {
+public class GetAppIdGroupListRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 509938261673017863L;
     /**
      * 本次获取的群组 ID 数量的上限，不得超过 10000。如果不填，默认为最大值 10000
      */

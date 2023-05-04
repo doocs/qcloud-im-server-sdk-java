@@ -3,6 +3,8 @@ package io.github.doocs.im.model.group;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 群成员维度的自定义字段
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/10/31 21:18
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AppMemberDefinedDataItem {
+public class AppMemberDefinedDataItem implements Serializable {
+    private static final long serialVersionUID = 249025290509272475L;
     /**
      * String 类型，长度不超过16字节，其命名仅支持英文大小写字母、数字、下划线
      */

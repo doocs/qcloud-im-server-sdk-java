@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 文件资源
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/6/1 17:42
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RawUrlItem {
+public class RawUrlItem implements Serializable {
+    private static final long serialVersionUID = -243447796450980512L;
     /**
      * 同批次查询的资源 ID
      */

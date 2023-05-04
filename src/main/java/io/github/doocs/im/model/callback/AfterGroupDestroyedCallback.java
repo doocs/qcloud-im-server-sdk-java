@@ -2,6 +2,7 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,10 @@ import java.util.List;
  * @author bingo
  * @since 2021/11/16 20:18
  */
-public class AfterGroupDestroyedCallback {
+public class AfterGroupDestroyedCallback implements Serializable {
+
+
+    private static final long serialVersionUID = 4171542131600974621L;
     /**
      * 回调命令
      */

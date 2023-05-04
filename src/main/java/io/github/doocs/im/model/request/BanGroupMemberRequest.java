@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2022/8/29 11:09
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BanGroupMemberRequest extends GenericRequest {
+public class BanGroupMemberRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 2819882967860599981L;
     /**
      * 封禁成员的群 id
      */

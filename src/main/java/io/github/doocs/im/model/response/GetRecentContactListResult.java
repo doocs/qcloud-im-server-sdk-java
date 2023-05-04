@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/10/11 10:31
  */
-public class GetRecentContactListResult extends GenericResult {
+public class GetRecentContactListResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 8335606803016423379L;
     /**
      * 会话对象数组
      */

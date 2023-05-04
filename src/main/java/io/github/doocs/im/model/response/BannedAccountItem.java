@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2022/8/29 14:07
  */
-public class BannedAccountItem {
+public class BannedAccountItem implements Serializable {
+    private static final long serialVersionUID = 5777962257804689375L;
     /**
      * 封禁成员的封禁截止时间
      */

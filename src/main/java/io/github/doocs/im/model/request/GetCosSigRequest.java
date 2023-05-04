@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2022/6/1 17:41
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetCosSigRequest extends GenericRequest {
+public class GetCosSigRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -5652811695317200698L;
     /**
      * 批量查询的文件 URL，可从 IM 富媒体消息的 URL 字段获取
      */

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
  * @since 2021/8/4 15:23
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupMsgItem {
+public class GroupMsgItem implements Serializable {
+    private static final long serialVersionUID = 2136597158432655518L;
     /**
      * 指定消息发送者
      */

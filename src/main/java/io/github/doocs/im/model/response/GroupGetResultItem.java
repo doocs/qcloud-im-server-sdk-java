@@ -2,13 +2,15 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author hyh
  * @since 2021/07/30 17:43
  */
-public class GroupGetResultItem {
+public class GroupGetResultItem implements Serializable {
+    private static final long serialVersionUID = -7095368731170950266L;
     /**
      * 分组名
      */

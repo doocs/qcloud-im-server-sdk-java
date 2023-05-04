@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/10/31 19:57
  */
-public class QueryResultDetailItem {
+public class QueryResultDetailItem implements Serializable {
+    private static final long serialVersionUID = 609609118691558955L;
     /**
      * 登录的平台类型。可能的返回值有："iPhone", "Android", "Web", "PC", "iPad", "Mac"。
      */

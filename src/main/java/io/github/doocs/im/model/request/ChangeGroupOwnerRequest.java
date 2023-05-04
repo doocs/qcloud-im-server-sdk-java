@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 转让群主-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/08/02 17:12
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ChangeGroupOwnerRequest extends GenericRequest {
+public class ChangeGroupOwnerRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 930947192503621314L;
     /**
      * 要被转移的群组 ID
      */

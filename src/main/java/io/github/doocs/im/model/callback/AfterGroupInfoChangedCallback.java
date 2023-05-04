@@ -2,13 +2,16 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 群组资料变动之后回调
  *
  * @author bingo
  * @since 2021/11/16 20:27
  */
-public class AfterGroupInfoChangedCallback {
+public class AfterGroupInfoChangedCallback implements Serializable {
+    private static final long serialVersionUID = 4070792317707183997L;
     /**
      * 回调命令
      */

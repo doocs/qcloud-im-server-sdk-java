@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/29 15:06
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ProfileItem {
+public class ProfileItem implements Serializable {
+    private static final long serialVersionUID = 1282609960897598493L;
     /**
      * 返回的资料对象的名称：
      * 1. 标配资料字段，详情可参见 标配资料字段

@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/7/31 10:55
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AndroidInfo {
+public class AndroidInfo implements Serializable {
+    private static final long serialVersionUID = 7385957761529536492L;
     /**
      * Android 离线推送声音文件路径。
      */

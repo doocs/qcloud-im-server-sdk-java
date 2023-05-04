@@ -3,6 +3,7 @@ package io.github.doocs.im.model.callback;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.request.ProfileItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * @author bingo
  * @since 2022/7/7 10:13
  */
-public class PortraitSetCallback {
+public class PortraitSetCallback implements Serializable {
     /**
      * 回调命令
      */

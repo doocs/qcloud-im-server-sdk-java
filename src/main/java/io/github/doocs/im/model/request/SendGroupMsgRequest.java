@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/08/02 16:46
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendGroupMsgRequest extends GenericRequest {
+public class SendGroupMsgRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -8188296907846189930L;
     /**
      * 向哪个群组发送消息
      */

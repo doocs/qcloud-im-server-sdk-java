@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/30 16:41
  */
-public class FriendCheckInfoItem {
+public class FriendCheckInfoItem implements Serializable {
+    private static final long serialVersionUID = 5883069860396443086L;
     /**
      * 请求校验的用户的 UserID
      */

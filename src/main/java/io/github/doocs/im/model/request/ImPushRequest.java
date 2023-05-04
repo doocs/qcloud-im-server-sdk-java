@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,8 @@ import java.util.Map;
  * @since 2021/7/31 16:27
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ImPushRequest extends GenericRequest {
+public class ImPushRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -921398225066987396L;
     /**
      * Condition 共有4种条件类型，分别是：
      * 属性的或条件 AttrsOr
@@ -53,7 +55,7 @@ public class ImPushRequest extends GenericRequest {
     private String fromAccount;
 
     /**
-     * 	离线推送信息配置
+     * 离线推送信息配置
      */
     @JsonProperty("OfflinePushInfo")
     private OfflinePushInfo offlinePushInfo;

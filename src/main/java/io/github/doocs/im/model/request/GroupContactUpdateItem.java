@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2023/3/16 10:59
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupContactUpdateItem {
+public class GroupContactUpdateItem implements Serializable {
+    private static final long serialVersionUID = -4339363816967156703L;
     /**
      * 更新类型: 1 - 分组添加会话; 2 - 分组删除会话
      */

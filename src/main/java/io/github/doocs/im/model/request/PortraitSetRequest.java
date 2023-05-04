@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/07/29 15:01
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PortraitSetRequest extends GenericRequest {
+public class PortraitSetRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 3380577066890629930L;
     /**
      * 需要设置该 UserID 的资料
      */

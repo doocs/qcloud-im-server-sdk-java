@@ -2,11 +2,14 @@ package io.github.doocs.im.model.callback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/11/16 14:17
  */
-public class CallbackRequestParams {
+public class CallbackRequestParams implements Serializable {
+    private static final long serialVersionUID = 3873269807641013358L;
     /**
      * App 在即时通信 IM 分配的应用标识
      */

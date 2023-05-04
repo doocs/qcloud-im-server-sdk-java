@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 拉取群历史消息-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/08/01 13:46
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupMsgGetSimpleRequest extends GenericRequest {
+public class GroupMsgGetSimpleRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -8180836445180904496L;
     /**
      * 要拉取历史消息的群组 ID
      */
@@ -37,7 +40,7 @@ public class GroupMsgGetSimpleRequest extends GenericRequest {
     private Integer withRecalledMsg;
 
     /**
-     * 	话题的 ID，仅社群支持此选项
+     * 话题的 ID，仅社群支持此选项
      */
     @JsonProperty("TopicId")
     private String topicId;

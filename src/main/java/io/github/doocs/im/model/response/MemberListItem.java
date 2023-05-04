@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2022/7/15 11:07
  */
-public class MemberListItem {
+public class MemberListItem implements Serializable {
+    private static final long serialVersionUID = 8600887312871395093L;
     /**
      * 用户的 UserID
      */

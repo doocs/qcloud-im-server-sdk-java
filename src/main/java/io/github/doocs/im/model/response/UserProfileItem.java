@@ -3,13 +3,15 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.request.ProfileItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author hyh
  * @since 2021/07/30 15:04
  */
-public class UserProfileItem {
+public class UserProfileItem implements Serializable {
+    private static final long serialVersionUID = -2219782653659082019L;
     /**
      * 返回的用户的 UserID
      */

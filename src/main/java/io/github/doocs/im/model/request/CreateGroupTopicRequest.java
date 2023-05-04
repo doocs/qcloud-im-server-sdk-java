@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 创建话题-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/8/2 10:04
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateGroupTopicRequest extends GenericRequest {
+public class CreateGroupTopicRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 2293458660142643390L;
     /**
      * 需要创建的话题所属的群组ID
      */

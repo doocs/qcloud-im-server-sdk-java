@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2023/2/6 11:33
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DeleteGroupCounterRequest extends GenericRequest {
+public class DeleteGroupCounterRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -6977736241603211413L;
     /**
      * 群组 ID
      */

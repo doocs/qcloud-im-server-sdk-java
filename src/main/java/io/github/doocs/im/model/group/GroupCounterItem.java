@@ -3,6 +3,8 @@ package io.github.doocs.im.model.group;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 群计数器
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2023/2/6 11:33
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupCounterItem {
+public class GroupCounterItem implements Serializable {
+    private static final long serialVersionUID = -8147807519216351803L;
     /**
      * 群计数器Key
      */

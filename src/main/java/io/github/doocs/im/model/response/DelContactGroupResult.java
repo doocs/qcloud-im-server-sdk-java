@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2023/3/16 10:59
  */
-public class DelContactGroupResult extends GenericResult {
+public class DelContactGroupResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -1258213302282538080L;
     /**
      * 删除的分组对象
      */

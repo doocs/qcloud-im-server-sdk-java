@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 获取封禁群成员列表-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/8/29 11:33
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetGroupBanMemberRequest extends GenericRequest {
+public class GetGroupBanMemberRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -2518263532056846393L;
     /**
      * 解封成员的群id
      */

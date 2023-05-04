@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author bingo
  * @since 2021/7/27 15:59
  */
-public class AccountCheckResult extends GenericResult {
+public class AccountCheckResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -7038180546794864942L;
     /**
      * 单个帐号的结果对象数组
      */

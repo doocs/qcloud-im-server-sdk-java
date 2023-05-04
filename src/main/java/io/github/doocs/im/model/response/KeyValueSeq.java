@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * KV 结构体
  *
  * @author bingo
  * @since 2022/11/2 16:32
  */
-public class KeyValueSeq {
+public class KeyValueSeq implements Serializable {
+    private static final long serialVersionUID = -6803803149137343191L;
     /**
      * 键值对的Key，最大为100字节
      */

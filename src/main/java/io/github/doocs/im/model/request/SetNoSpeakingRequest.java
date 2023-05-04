@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 设置全局禁言-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/07/31 11:39
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SetNoSpeakingRequest extends GenericRequest {
+public class SetNoSpeakingRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -8089460902798391631L;
     /**
      * 设置禁言配置的帐号
      */

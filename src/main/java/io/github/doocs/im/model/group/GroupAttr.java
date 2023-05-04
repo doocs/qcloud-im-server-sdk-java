@@ -3,6 +3,8 @@ package io.github.doocs.im.model.group;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 群自定义属性
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/12/31 10:47
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupAttr {
+public class GroupAttr implements Serializable {
+    private static final long serialVersionUID = -8220038751545935481L;
     /**
      * key 为自定义属性的键
      */

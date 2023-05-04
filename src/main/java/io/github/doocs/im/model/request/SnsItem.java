@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/31 14:24
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SnsItem {
+public class SnsItem implements Serializable {
+    private static final long serialVersionUID = 2518921269147835324L;
     /**
      * 需要更新的关系链字段的字段名，目前只支持好友备注、好友分组、关系链自定义字段的更新操作，关系链字段的详细信息可参见 好友表
      */

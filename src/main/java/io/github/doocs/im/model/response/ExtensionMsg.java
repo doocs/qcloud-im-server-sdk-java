@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 消息扩展结果
  *
  * @author bingo
  * @since 2022/11/2 16:32
  */
-public class ExtensionMsg {
+public class ExtensionMsg implements Serializable {
+    private static final long serialVersionUID = 950640189214474117L;
     @JsonProperty("ErrorCode")
     private Integer errorCode;
 

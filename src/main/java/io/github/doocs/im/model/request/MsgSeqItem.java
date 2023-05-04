@@ -3,12 +3,15 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/08/02 17:15
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MsgSeqItem {
+public class MsgSeqItem implements Serializable {
+    private static final long serialVersionUID = -6992660829159792016L;
     /**
      * 消息序列号，用于标记该条消息，数据范围 [0,4294967295]
      */

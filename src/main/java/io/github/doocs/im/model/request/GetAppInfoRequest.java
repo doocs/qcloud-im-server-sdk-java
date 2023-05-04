@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/7/31 19:05
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetAppInfoRequest extends GenericRequest {
+public class GetAppInfoRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 4578696092830832153L;
     /**
      * 该字段用来指定需要拉取的运营数据，不填默认拉取所有字段。
      */

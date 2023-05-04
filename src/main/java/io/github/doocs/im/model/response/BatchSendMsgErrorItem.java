@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/28 17:47
  */
-public class BatchSendMsgErrorItem {
+public class BatchSendMsgErrorItem implements Serializable {
+    private static final long serialVersionUID = -2366902098749519753L;
     /**
      * 消息发送失败的目标帐号
      */

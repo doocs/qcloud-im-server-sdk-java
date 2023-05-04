@@ -2,11 +2,13 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/10/31 20:21
  */
-public class C2cUnreadMsgErrorListItem {
+public class C2cUnreadMsgErrorListItem implements Serializable {
     /**
      * 查询错误的目标帐号
      */

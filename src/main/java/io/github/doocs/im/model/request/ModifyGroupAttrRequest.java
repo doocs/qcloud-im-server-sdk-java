@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.group.GroupAttr;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2021/12/31 10:52
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ModifyGroupAttrRequest extends GenericRequest {
+public class ModifyGroupAttrRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 6568109046397355759L;
     /**
      * 修改自定义属性的群id
      */

@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/7/28 11:04
  */
-public class AccountDeleteResultItem {
+public class AccountDeleteResultItem implements Serializable {
+    private static final long serialVersionUID = 2265767918424355807L;
     /**
      * 单个帐号的错误码，0表示成功，非0表示失败
      */

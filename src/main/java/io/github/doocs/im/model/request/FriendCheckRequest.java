@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/07/31 14:32
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class FriendCheckRequest extends GenericRequest {
+public class FriendCheckRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -6565388817389300109L;
     /**
      * 需要校验该 UserID 的好友
      */

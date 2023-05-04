@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 获取直播群在线列表-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/07/15 14:13
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetMembersRequest extends GenericRequest {
+public class GetMembersRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -2269206430727619673L;
     /**
      * 操作的群 ID
      */

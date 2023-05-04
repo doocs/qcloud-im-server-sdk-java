@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 在群组中发送普通消息-结果
  *
  * @author bingo
  * @since 2021/8/4 11:25
  */
-public class SendGroupMsgResult extends GenericResult {
+public class SendGroupMsgResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -7647346204402045388L;
     /**
      * 消息发送的时间戳，对应后台 server 时间
      */

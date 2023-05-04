@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -10,7 +11,8 @@ import java.util.Map;
  * @author hyh
  * @since 2021/07/30 11:23
  */
-public class ImGetAttrNameResult extends GenericResult {
+public class ImGetAttrNameResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -5027398430218389684L;
     /**
      * 包含多个键对。每对键值对，表示第几个属性对应的名称。例如"0":"xxx"表示第0号属性的名称是 xxx
      */

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.constant.MuteAllMember;
 import io.github.doocs.im.model.group.AppDefinedDataItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,8 @@ import java.util.List;
  * @since 2021/08/02 16:11
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ModifyGroupBaseInfoRequest extends GenericRequest {
+public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -532498699781129907L;
     /**
      * 需要修改基础信息的群组的 ID
      */

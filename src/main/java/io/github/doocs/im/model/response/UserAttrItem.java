@@ -3,6 +3,7 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -10,7 +11,8 @@ import java.util.Map;
  * @since 2021/07/30 11:47
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserAttrItem {
+public class UserAttrItem implements Serializable {
+    private static final long serialVersionUID = -2291314624855454051L;
     /**
      * 用户帐号
      */

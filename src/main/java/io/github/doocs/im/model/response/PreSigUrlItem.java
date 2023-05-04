@@ -2,13 +2,16 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 聊天资源结果项
  *
  * @author bingo
  * @since 2022/6/1 19:05
  */
-public class PreSigUrlItem {
+public class PreSigUrlItem implements Serializable {
+    private static final long serialVersionUID = -1753634662398853911L;
     /**
      * 指定资源 ID 对应的查询结果
      */

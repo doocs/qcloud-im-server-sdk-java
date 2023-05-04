@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
  * @since 2021/07/31 15:43
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GroupGetRequest extends GenericRequest {
+public class GroupGetRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -785774844053729479L;
     /**
      * 指定要拉取分组的用户的 UserID
      */

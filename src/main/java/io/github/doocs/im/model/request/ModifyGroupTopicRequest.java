@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 修改话题资料-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2022/8/2 10:34
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ModifyGroupTopicRequest extends GenericRequest {
+public class ModifyGroupTopicRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = 767081454308825385L;
     /**
      * 需要修改的话题所属的群组ID
      */

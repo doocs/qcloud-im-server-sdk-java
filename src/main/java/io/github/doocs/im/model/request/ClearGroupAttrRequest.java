@@ -3,6 +3,8 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 清空群自定义属性-请求参数
  *
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @since 2021/12/31 10:59
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ClearGroupAttrRequest extends GenericRequest {
+public class ClearGroupAttrRequest extends GenericRequest implements Serializable {
+    private static final long serialVersionUID = -4451474311691824461L;
     /**
      * 重置自定义属性的群 id
      */

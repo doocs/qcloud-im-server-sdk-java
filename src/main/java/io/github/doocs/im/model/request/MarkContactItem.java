@@ -3,6 +3,7 @@ package io.github.doocs.im.model.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @since 2023/3/16 15:31
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MarkContactItem {
+public class MarkContactItem implements Serializable {
+    private static final long serialVersionUID = -5554775904886723407L;
     /**
      * 操作类型：1-设置标准会话标记 2-设置自定义会话标记 3-同时设置标准/自定义会话标记
      */

@@ -3,12 +3,15 @@ package io.github.doocs.im.model.callback;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author bingo
  * @since 2021/11/16 15:20
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CallbackResponse {
+public class CallbackResponse implements Serializable {
+    private static final long serialVersionUID = -4263599748652302249L;
     /**
      * 请求处理的结果，OK 表示处理成功，FAIL 表示失败
      */

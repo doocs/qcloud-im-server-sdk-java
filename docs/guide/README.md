@@ -1,6 +1,6 @@
 # 介绍
 
-本文档基于腾讯云 IM Server SDK Java <Badge type="tip" text="v0.3.41" vertical="top" /> 编写。
+本文档基于腾讯云 IM Server SDK Java <Badge type="tip" text="v0.3.42" vertical="top" /> 编写。
 
 ## 前提条件
 

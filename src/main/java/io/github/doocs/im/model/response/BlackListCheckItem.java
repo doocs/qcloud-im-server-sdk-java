@@ -2,11 +2,14 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * @author hyh
  * @since 2021/07/30 17:29
  */
-public class BlackListCheckItem {
+public class BlackListCheckItem implements Serializable {
+    private static final long serialVersionUID = -1784145990260400542L;
     /**
      * 请求校验的用户的 UserID
      */

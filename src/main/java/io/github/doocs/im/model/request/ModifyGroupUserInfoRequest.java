@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.group.GroupMemberItem;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,8 @@ import java.util.List;
  * @since 2022/8/29 10:34
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ModifyGroupUserInfoRequest {
+public class ModifyGroupUserInfoRequest implements Serializable {
+    private static final long serialVersionUID = -445387419084788006L;
     /**
      * 操作的群 ID
      */

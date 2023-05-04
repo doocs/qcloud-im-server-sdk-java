@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/30 17:16
  */
-public class BlackListAddResult extends GenericResult {
+public class BlackListAddResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = 1664782640191330784L;
     /**
      * 批量添加黑名单的结果对象数组
      */

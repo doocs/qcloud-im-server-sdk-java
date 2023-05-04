@@ -2,6 +2,7 @@ package io.github.doocs.im.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ import java.util.List;
  * @author hyh
  * @since 2021/07/30 11:27
  */
-public class ImGetAttrResult extends GenericResult {
+public class ImGetAttrResult extends GenericResult implements Serializable {
+    private static final long serialVersionUID = -4052029181658610284L;
     /**
      * 用户标签内容列表
      */
