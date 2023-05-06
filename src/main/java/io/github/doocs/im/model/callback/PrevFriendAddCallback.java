@@ -115,7 +115,8 @@ public class PrevFriendAddCallback implements Serializable {
         this.eventTime = eventTime;
     }
 
-    public static class FriendItem {
+    public static class FriendItem implements Serializable {
+        private static final long serialVersionUID = 2972509299932495782L;
         /**
          * 请求添加的用户的 UserID
          */

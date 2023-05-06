@@ -41,7 +41,8 @@ public class BlacklistDeleteCallback implements Serializable {
         this.pairList = pairList;
     }
 
-    public static class PairItem {
+    public static class PairItem implements Serializable {
+        private static final long serialVersionUID = 2366462460933813701L;
         /**
          * From_Account 的黑名单列表中删除了 To_Account
          */

@@ -85,7 +85,8 @@ public class FriendAddCallback implements Serializable {
         this.forceFlag = forceFlag;
     }
 
-    public static class PairItem {
+    public static class PairItem implements Serializable {
+        private static final long serialVersionUID = -1835139846826692955L;
         /**
          * From_Account 的好友表中增加了 To_Account
          */

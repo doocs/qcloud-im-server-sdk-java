@@ -11,8 +11,6 @@ import java.io.Serializable;
  * @since 2021/11/16 20:14
  */
 public class AfterGroupFullCallback implements Serializable {
-
-
     private static final long serialVersionUID = 167275021508719735L;
     /**
      * 回调命令

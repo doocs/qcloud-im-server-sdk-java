@@ -747,7 +747,7 @@ public class Group {
     }
 
     /**
-     * 获取封禁群成员列表
+     * 获取封禁群成员列表、拉取群成员封禁列表
      *
      * @param getGroupBanMemberRequest 请求参数
      * @return 结果

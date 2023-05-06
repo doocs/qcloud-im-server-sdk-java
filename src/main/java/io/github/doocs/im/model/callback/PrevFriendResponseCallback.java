@@ -85,7 +85,8 @@ public class PrevFriendResponseCallback implements Serializable {
         this.eventTime = eventTime;
     }
 
-    public static class ResponseFriendItem {
+    public static class ResponseFriendItem implements Serializable {
+        private static final long serialVersionUID = -4665858564364076968L;
         /**
          * 请求回应的用户的 UserID
          */

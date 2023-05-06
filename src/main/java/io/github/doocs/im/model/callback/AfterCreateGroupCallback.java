@@ -12,7 +12,6 @@ import java.util.List;
  * @since 2021/11/16 17:18
  */
 public class AfterCreateGroupCallback implements Serializable {
-
     private static final long serialVersionUID = 2796288709194288752L;
 
     /**

@@ -41,7 +41,8 @@ public class BlacklistAddCallback implements Serializable {
         this.pairList = pairList;
     }
 
-    public static class PairItem {
+    public static class PairItem implements Serializable {
+        private static final long serialVersionUID = -8777612848125670287L;
         /**
          * From_Account 的黑名单列表中添加了 To_Account
          */

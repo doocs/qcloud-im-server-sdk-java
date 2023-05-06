@@ -41,7 +41,8 @@ public class FriendDeleteCallback implements Serializable {
         this.pairList = pairList;
     }
 
-    public static class PairItem {
+    public static class PairItem implements Serializable {
+        private static final long serialVersionUID = -5013084462615142758L;
         /**
          * From_Account 的好友表中删除了 To_Account
          */

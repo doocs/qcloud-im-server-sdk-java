@@ -12,8 +12,6 @@ import java.util.List;
  * @since 2022/8/2 14:05
  */
 public class AfterDestroyGroupTopicCallback implements Serializable {
-
-
     private static final long serialVersionUID = -4430343981892146413L;
     /**
      * 回调命令

@@ -123,7 +123,8 @@ public class StateChangeCallback implements Serializable {
         }
     }
 
-    public static class KickedDeviceItem {
+    public static class KickedDeviceItem implements Serializable {
+        private static final long serialVersionUID = -7510115652451275222L;
         /**
          * 被踢下线的设备的平台类型，可能的取值有"iOS", "Android", "Web",
          * "Windows", "iPad", "Mac", "Linux"。
