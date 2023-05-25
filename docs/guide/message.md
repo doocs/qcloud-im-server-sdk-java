@@ -214,10 +214,11 @@ ModifyC2cMsgResult result = client.message.modifyC2cMsg(request);
 App 管理员和会话成员可以拉取消息扩展，消息扩展为一组自定义的键值对。
 
 ::: warning
+
 - 此功能需 旗舰版套餐，并且已开通“消息扩展功能”功能(控制台“登录与消息”配置)。
-- 单条单聊消息可设置的最大键值对数量为300条。
+- 单条单聊消息可设置的最大键值对数量为 300 条。
 - 被设置的单聊消息需要在发送时指定“支持消息扩展”，参见 [单发单聊消息](#单发单聊消息)。
-:::
+  :::
 
 使用示例：
 
@@ -237,10 +238,11 @@ GetKeyValuesResult result = client.message.getKeyValues(request);
 App 管理员和会话成员可以为单聊普通消息设置消息扩展，消息扩展为一组自定义的键值对。
 
 ::: warning
+
 - 此功能需 旗舰版套餐，并且已开通“消息扩展功能”功能(控制台“登录与消息”配置)。
-- 单条单聊消息可设置的最大键值对数量为300条。
+- 单条单聊消息可设置的最大键值对数量为 300 条。
 - 被设置的单聊消息需要在发送时指定“支持消息扩展”，参见 [单发单聊消息](#单发单聊消息)。
-:::
+  :::
 
 使用示例：
 
@@ -250,6 +252,6 @@ SetKeyValuesRequest request = SetKeyValuesRequest.builder()
         .toAccount("bingo")
         .msgKey("1353691732_123_1653995506")
         .build();
-        
+
 SetKeyValuesResult result = client.message.setKeyValues(request);
 ```

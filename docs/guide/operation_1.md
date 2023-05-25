@@ -13,7 +13,7 @@ SetNoSpeakingRequest request = SetNoSpeakingRequest.builder()
         .msgNoSpeakingTime(NoSpeakingTime.NEVER)
         .groupMsgNoSpeakingTime(NoSpeakingTime.FOREVER)
         .build();
-        
+
 SetNoSpeakingResult result = client.operation.setNoSpeaking(request);
 ```
 
