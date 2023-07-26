@@ -27,7 +27,9 @@ features:
     details: 管理群组、群成员、群消息通知等
   - title: 全局禁言管理
     details: 设置、查询全局禁言等
-  - title: 运营管理
-    details: 拉取运营数据、下载最近消息记录等
+  - title: 机器人
+    details: 创建、删除、拉取机器人等
+  - title: 内容审核
+    details: 本地审核、云端审核等
 footer: Apache-2.0 Licensed | Copyright © 2021-present Doocs
 ---

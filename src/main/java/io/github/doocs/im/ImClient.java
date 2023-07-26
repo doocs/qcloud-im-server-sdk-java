@@ -37,6 +37,8 @@ public class ImClient {
     public final Sns sns;
     public final Operation operation;
     public final RecentContact recentContact;
+    public final Robot robot;
+    public final Audit audit;
 
     public static ImClient getInstance(long sdkAppId, String userId, String key) {
         return new ImClient(sdkAppId, userId, key);
@@ -91,6 +93,8 @@ public class ImClient {
         operation = new Operation(this);
         sns = new Sns(this);
         recentContact = new RecentContact(this);
+        robot = new Robot(this);
+        audit = new Audit(this);
     }
 
     /**
