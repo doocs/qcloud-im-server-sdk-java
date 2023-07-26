@@ -45,6 +45,8 @@ module.exports = {
           '/guide/group.md',
           '/guide/operation_1.md',
           '/guide/operation_2.md',
+          '/guide/robot.md',
+          '/guide/audit.md',
         ],
       },
     ],
