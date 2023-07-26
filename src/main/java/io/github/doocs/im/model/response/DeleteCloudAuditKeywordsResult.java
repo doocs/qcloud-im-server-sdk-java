@@ -14,12 +14,21 @@ import java.util.List;
 public class DeleteCloudAuditKeywordsResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -124411252959014920L;
 
+    /**
+     * 当前请求唯一标识。
+     */
     @JsonProperty("RequestId")
     private String requestId;
 
+    /**
+     * 删除成功的总数。
+     */
     @JsonProperty("Count")
     private Integer count;
 
+    /**
+     * 删除敏感词信息数组。
+     */
     @JsonProperty("Details")
     private List<CloudAuditKeywordDetail> details;
 

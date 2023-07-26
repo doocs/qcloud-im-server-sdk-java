@@ -14,12 +14,21 @@ import java.util.List;
 public class GetCloudAuditKeywordsResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -6872558362985051084L;
 
+    /**
+     * 当前请求唯一标识。
+     */
     @JsonProperty("RequestId")
     private String requestId;
 
+    /**
+     * 应用敏感词总数。
+     */
     @JsonProperty("TotalCount")
     private Integer totalCount;
 
+    /**
+     * 返回的敏感词以及相关属性。
+     */
     @JsonProperty("Infos")
     private List<CloudAuditKeyword> infos;
 

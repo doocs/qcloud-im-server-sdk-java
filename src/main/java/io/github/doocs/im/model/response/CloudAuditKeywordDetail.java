@@ -10,15 +10,27 @@ import java.io.Serializable;
 public class CloudAuditKeywordDetail implements Serializable {
     private static final long serialVersionUID = 4822803853925482134L;
 
+    /**
+     * 删除敏感词 ID。
+     */
     @JsonProperty("KeywordID")
     private String keywordId;
 
+    /**
+     * 删除敏感词内容。
+     */
     @JsonProperty("Keyword")
     private String keyword;
 
+    /**
+     * 删除是否成功。
+     */
     @JsonProperty("Deleted")
     private Boolean deleted;
 
+    /**
+     * 删除失败的错误信息。
+     */
     @JsonProperty("ErrorInfo")
     private String errorInfo;
 

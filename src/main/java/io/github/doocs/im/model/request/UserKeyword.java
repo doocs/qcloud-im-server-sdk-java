@@ -12,9 +12,16 @@ import java.io.Serializable;
 public class UserKeyword implements Serializable {
     private static final long serialVersionUID = 599748749707035470L;
 
+    /**
+     * 敏感词内容。
+     */
     @JsonProperty("Content")
     private String content;
 
+    /**
+     * 敏感词分类
+     * {@link io.github.doocs.im.constant.ContentModerationLabel}
+     */
     @JsonProperty("Label")
     private String label;
 

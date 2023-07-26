@@ -14,6 +14,9 @@ import java.util.List;
 public class GetAllRobotsResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -800026398280730966L;
 
+    /**
+     * 机器人UserID列表
+     */
     @JsonProperty("Robot_Account")
     private List<String> robotAccount;
 

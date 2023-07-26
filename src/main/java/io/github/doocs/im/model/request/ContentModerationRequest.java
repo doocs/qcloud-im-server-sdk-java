@@ -15,12 +15,21 @@ import java.io.Serializable;
 public class ContentModerationRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -5086605409044562844L;
 
+    /**
+     * 表明送审策略
+     */
     @JsonProperty("AuditName")
     private String auditName;
 
+    /**
+     * 送审类型
+     */
     @JsonProperty("ContentType")
     private String contentType;
 
+    /**
+     * 送审内容
+     */
     @JsonProperty("Content")
     private String content;
 
