@@ -2,7 +2,7 @@ name: sync-to-gitee
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main, dev, gh-pages]
   workflow_dispatch:
 
 jobs:
@@ -17,3 +17,11 @@ jobs:
         with:
           source-repo: git@github.com:doocs/qcloud-im-server-sdk-java.git
           destination-repo: git@gitee.com:Doocs/qcloud-im-server-sdk-java.git
+      
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: yanglbme
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: doocs/qcloud-im-server-sdk-java
+          branch: gh-pages
