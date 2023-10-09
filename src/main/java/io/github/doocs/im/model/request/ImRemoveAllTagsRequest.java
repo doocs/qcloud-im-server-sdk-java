@@ -16,7 +16,7 @@ import java.util.List;
 public class ImRemoveAllTagsRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -6574990173350054487L;
     /**
-     * 目标用户帐号
+     * 目标用户账号
      */
     @JsonProperty("To_Account")
     private List<String> toAccount;

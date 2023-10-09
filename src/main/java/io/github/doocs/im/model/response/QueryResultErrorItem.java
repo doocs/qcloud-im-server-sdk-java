@@ -11,13 +11,13 @@ import java.io.Serializable;
 public class QueryResultErrorItem implements Serializable {
     private static final long serialVersionUID = -3035130951444752871L;
     /**
-     * 状态查询失败的目标帐号
+     * 状态查询失败的目标账号
      */
     @JsonProperty("To_Account")
     private String toAccount;
 
     /**
-     * 状态查询失败的错误码，若目标帐号的错误码为70107，表示该帐号不存在
+     * 状态查询失败的错误码，若目标账号的错误码为70107，表示该账号不存在
      */
     @JsonProperty("ErrorCode")
     private Integer errorCode;

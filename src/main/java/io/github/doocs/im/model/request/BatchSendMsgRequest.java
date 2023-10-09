@@ -25,7 +25,7 @@ public class BatchSendMsgRequest implements Serializable {
     private Integer syncOtherMachine;
 
     /**
-     * 管理员指定消息发送方帐号（若需设置 From_Account 信息，则该参数取值不能为空）
+     * 管理员指定消息发送方账号（若需设置 From_Account 信息，则该参数取值不能为空）
      */
     @JsonProperty("From_Account")
     private String fromAccount;

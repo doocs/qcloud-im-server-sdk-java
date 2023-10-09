@@ -69,7 +69,7 @@ ImClient client = ImClient.getInstance(appId, userId, key, config);
 
 获取到 `ImClient` 实例后，就可以方便地进行 REST API 调用了。
 
-我们以 [帐号管理-导入单个帐号](./account.md#导入单个帐号) 为例：
+我们以 [账号管理-导入单个账号](./account.md#导入单个账号) 为例：
 
 ```java
 AccountImportRequest request = AccountImportRequest.builder()

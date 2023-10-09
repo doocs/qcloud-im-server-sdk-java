@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class MemberListResultItem implements Serializable {
     private static final long serialVersionUID = -887357867743569302L;
     /**
-     * 返回的群成员帐号
+     * 返回的群成员账号
      */
     @JsonProperty("Member_Account")
     private String memberAccount;

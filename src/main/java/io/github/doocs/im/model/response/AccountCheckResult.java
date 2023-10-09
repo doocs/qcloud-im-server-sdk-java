@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 查询帐号-结果
+ * 查询账号-结果
  *
  * @author bingo
  * @since 2021/7/27 15:59
@@ -14,7 +14,7 @@ import java.util.List;
 public class AccountCheckResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -7038180546794864942L;
     /**
-     * 单个帐号的结果对象数组
+     * 单个账号的结果对象数组
      */
     @JsonProperty("ResultItem")
     private List<AccountCheckResultItem> resultItems;

@@ -1,7 +1,7 @@
 package io.github.doocs.im.constant;
 
 /**
- * 单个帐号的导入状态
+ * 单个账号的导入状态
  *
  * @author bingo
  * @since 2022/1/17 16:12

@@ -11,19 +11,19 @@ import java.io.Serializable;
 public class AccountDeleteResultItem implements Serializable {
     private static final long serialVersionUID = 2265767918424355807L;
     /**
-     * 单个帐号的错误码，0表示成功，非0表示失败
+     * 单个账号的错误码，0表示成功，非0表示失败
      */
     @JsonProperty("ResultCode")
     private Integer resultCode;
 
     /**
-     * 单个帐号删除失败时的错误描述信息
+     * 单个账号删除失败时的错误描述信息
      */
     @JsonProperty("ResultInfo")
     private String resultInfo;
 
     /**
-     * 请求删除的帐号的 UserID
+     * 请求删除的账号的 UserID
      */
     @JsonProperty("UserID")
     private String userId;

@@ -8,20 +8,20 @@ import io.github.doocs.im.util.HttpUtil;
 import java.io.IOException;
 
 /**
- * 帐号管理
+ * 账号管理
  *
  * @author hyh
  * @since 2021/07/29 14:52
  */
 public class Account {
     /**
-     * 帐号管理服务名
+     * 账号管理服务名
      */
     public static final String SERVICE_NAME = "im_open_login_svc";
     public static final String SERVICE_NAME_OPEN_IM = "openim";
 
     /**
-     * 帐号管理相关命令字
+     * 账号管理相关命令字
      */
     public static final String ACCOUNT_IMPORT_COMMAND = "account_import";
     public static final String MULTI_ACCOUNT_IMPORT_COMMAND = "multiaccount_import";
@@ -37,7 +37,7 @@ public class Account {
     }
 
     /**
-     * 导入单个帐号
+     * 导入单个账号
      *
      * @param accountImportRequest 请求参数
      * @return 结果
@@ -54,7 +54,7 @@ public class Account {
     }
 
     /**
-     * 导入多个帐号
+     * 导入多个账号
      *
      * @param multiAccountImportRequest 请求参数
      * @return 结果
@@ -71,7 +71,7 @@ public class Account {
     }
 
     /**
-     * 删除帐号
+     * 删除账号
      *
      * @param accountDeleteRequest 请求参数
      * @return 结果
@@ -88,7 +88,7 @@ public class Account {
     }
 
     /**
-     * 查询帐号
+     * 查询账号
      *
      * @param accountCheckRequest 请求参数
      * @return 结果
@@ -105,7 +105,7 @@ public class Account {
     }
 
     /**
-     * 失效帐号登录状态
+     * 失效账号登录状态
      *
      * @param kickRequest 请求参数
      * @return 结果
@@ -122,7 +122,7 @@ public class Account {
     }
 
     /**
-     * 查询帐号在线状态
+     * 查询账号在线状态
      *
      * @param queryOnlineStatusRequest 请求参数
      * @return 结果

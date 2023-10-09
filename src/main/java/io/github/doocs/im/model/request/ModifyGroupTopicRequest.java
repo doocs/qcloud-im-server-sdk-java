@@ -33,7 +33,7 @@ public class ModifyGroupTopicRequest extends GenericRequest implements Serializa
     private String topicName;
 
     /**
-     * 表示需要修改话题的用户帐号
+     * 表示需要修改话题的用户账号
      */
     @JsonProperty("From_Account")
     private String fromAccount;

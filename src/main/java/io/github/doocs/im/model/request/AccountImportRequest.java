@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * 导入单个帐号-请求参数
+ * 导入单个账号-请求参数
  *
  * @author hyh
  * @since 2021/07/29 14:56

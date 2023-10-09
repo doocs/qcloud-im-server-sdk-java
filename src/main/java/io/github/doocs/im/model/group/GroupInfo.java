@@ -51,7 +51,7 @@ public class GroupInfo implements Serializable {
     private String faceUrl;
 
     /**
-     * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主
+     * 群主 ID（需是 已导入 的账号）。填写后自动添加到群成员中；如果不填，群没有群主
      */
     @JsonProperty("Owner_Account")
     private String ownerAccount;

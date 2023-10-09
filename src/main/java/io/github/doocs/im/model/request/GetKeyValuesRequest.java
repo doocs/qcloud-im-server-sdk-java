@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class GetKeyValuesRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = 5051921921880776092L;
     /**
-     * 消息发送方 UserID（用于指定发送消息方帐号）
+     * 消息发送方 UserID（用于指定发送消息方账号）
      */
     @JsonProperty("From_Account")
     private String fromAccount;

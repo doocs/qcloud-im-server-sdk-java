@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class GetJoinedGroupListRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -3718958862159545148L;
     /**
-     * 需要查询的用户帐号
+     * 需要查询的用户账号
      */
     @JsonProperty("Member_Account")
     private String memberAccount;

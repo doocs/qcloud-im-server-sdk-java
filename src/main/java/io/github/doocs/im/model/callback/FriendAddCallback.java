@@ -34,7 +34,7 @@ public class FriendAddCallback implements Serializable {
     private String clientCmd;
 
     /**
-     * 如果当前请求是后台触发的加好友请求，则该字段被赋值为管理员帐号；否则为空
+     * 如果当前请求是后台触发的加好友请求，则该字段被赋值为管理员账号；否则为空
      */
     @JsonProperty("Admin_Account")
     private String adminAccount;

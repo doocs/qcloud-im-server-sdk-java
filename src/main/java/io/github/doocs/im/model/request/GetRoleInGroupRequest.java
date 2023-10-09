@@ -22,7 +22,7 @@ public class GetRoleInGroupRequest extends GenericRequest implements Serializabl
     private String groupId;
 
     /**
-     * 表示需要查询的用户帐号，最多支持500个帐号
+     * 表示需要查询的用户账号，最多支持500个账号
      */
     @JsonProperty("User_Account")
     private List<String> userAccount;

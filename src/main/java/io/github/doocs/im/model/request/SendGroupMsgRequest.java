@@ -41,9 +41,9 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
     private List<TIMMsgElement> msgBody;
 
     /**
-     * 消息来源帐号，选填。如果不填写该字段，则默认消息的发送者为调用该接口时使用的 App 管理员帐号。
+     * 消息来源账号，选填。如果不填写该字段，则默认消息的发送者为调用该接口时使用的 App 管理员账号。
      * 除此之外，App 亦可通过该字段“伪造”消息的发送者，从而实现一些特殊的功能需求。
-     * 需要注意的是，如果指定该字段，必须要确保字段中的帐号是存在的
+     * 需要注意的是，如果指定该字段，必须要确保字段中的账号是存在的
      */
     @JsonProperty("From_Account")
     private String fromAccount;

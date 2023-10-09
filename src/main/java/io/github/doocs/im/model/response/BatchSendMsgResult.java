@@ -20,7 +20,7 @@ public class BatchSendMsgResult extends GenericResult implements Serializable {
     private String msgKey;
 
     /**
-     * 发消息失败的帐号列表，在此列表中的目标帐号，消息发送失败或帐号不存在。若消息全部发送成功，则 ErrorList 为空
+     * 发消息失败的账号列表，在此列表中的目标账号，消息发送失败或账号不存在。若消息全部发送成功，则 ErrorList 为空
      */
     @JsonProperty("ErrorList")
     private List<BatchSendMsgErrorItem> errorList;

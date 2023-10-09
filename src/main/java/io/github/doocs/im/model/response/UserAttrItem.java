@@ -14,7 +14,7 @@ import java.util.Map;
 public class UserAttrItem implements Serializable {
     private static final long serialVersionUID = -2291314624855454051L;
     /**
-     * 用户帐号
+     * 用户账号
      */
     @JsonProperty("To_Account")
     private String toAccount;
