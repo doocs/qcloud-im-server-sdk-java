@@ -49,7 +49,7 @@ public class ImPushRequest extends GenericRequest implements Serializable {
     private Integer msgLifeTime;
 
     /**
-     * 消息推送方帐号
+     * 消息推送方账号
      */
     @JsonProperty("From_Account")
     private String fromAccount;

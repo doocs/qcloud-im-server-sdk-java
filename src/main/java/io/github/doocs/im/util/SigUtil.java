@@ -147,13 +147,13 @@ public class SigUtil {
         // 视频校验位需要用到的字段,按照网络字节序放入buf中
         /*
          cVer    unsigned char/1 版本号，填0
-         wAccountLen unsigned short /2   第三方自己的帐号长度
-         account wAccountLen 第三方自己的帐号字符
+         wAccountLen unsigned short /2   第三方自己的账号长度
+         account wAccountLen 第三方自己的账号字符
          dwSdkAppid  unsigned int/4  sdkappid
          dwAuthID    unsigned int/4  群组号码
          dwExpTime   unsigned int/4  过期时间 ，直接使用填入的值
          dwPrivilegeMap  unsigned int/4  权限位，主播0xff，观众0xab
-         dwAccountType   unsigned int/4  第三方帐号类型
+         dwAccountType   unsigned int/4  第三方账号类型
          */
         int accountLength = account.length();
         int roomStrLength = roomStr.length();

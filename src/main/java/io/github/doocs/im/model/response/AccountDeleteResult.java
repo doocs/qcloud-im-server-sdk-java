@@ -12,7 +12,7 @@ import java.util.List;
 public class AccountDeleteResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -1099478082198095520L;
     /**
-     * 单个帐号的结果对象数组
+     * 单个账号的结果对象数组
      */
     @JsonProperty("ResultItem")
     private List<AccountDeleteResultItem> resultItems;

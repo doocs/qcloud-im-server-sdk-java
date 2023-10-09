@@ -3,7 +3,7 @@ package io.github.doocs.im.model.response;
 import java.io.Serializable;
 
 /**
- * 失效帐号登录状态-结果
+ * 失效账号登录状态-结果
  *
  * @author bingo
  * @since 2021/7/28 11:07

@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class AccountCheckItem implements Serializable {
     private static final long serialVersionUID = 1772994579121597085L;
     /**
-     * 请求检查的帐号的 UserID
+     * 请求检查的账号的 UserID
      */
     @JsonProperty("UserID")
     private String userId;

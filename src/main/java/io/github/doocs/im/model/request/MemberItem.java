@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class MemberItem implements Serializable {
     private static final long serialVersionUID = 8007340316927642225L;
     /**
-     * 待导入的群成员帐号
+     * 待导入的群成员账号
      */
     @JsonProperty("Member_Account")
     private String memberAccount;

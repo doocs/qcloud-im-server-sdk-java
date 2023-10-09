@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class GetNoSpeakingRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = 7998575166889463951L;
     /**
-     * 查询禁言信息的帐号
+     * 查询禁言信息的账号
      */
     @JsonProperty("Get_Account")
     private String getAccount;

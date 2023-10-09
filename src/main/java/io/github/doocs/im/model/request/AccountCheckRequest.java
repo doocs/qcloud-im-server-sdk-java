@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 查询帐号-请求参数
+ * 查询账号-请求参数
  *
  * @author bingo
  * @since 2021/7/30 17:26
@@ -16,7 +16,7 @@ import java.util.List;
 public class AccountCheckRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = 6003560017368200679L;
     /**
-     * 请求检查的帐号对象数组，单次请求最多支持100个帐号
+     * 请求检查的账号对象数组，单次请求最多支持100个账号
      */
     @JsonProperty("CheckItem")
     private List<AccountCheckItem> checkItemList;

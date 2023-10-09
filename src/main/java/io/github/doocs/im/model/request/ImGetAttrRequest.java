@@ -16,7 +16,7 @@ import java.util.List;
 public class ImGetAttrRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -752764523205340904L;
     /**
-     * 目标用户帐号列表
+     * 目标用户账号列表
      */
     @JsonProperty("To_Account")
     private List<String> toAccount;

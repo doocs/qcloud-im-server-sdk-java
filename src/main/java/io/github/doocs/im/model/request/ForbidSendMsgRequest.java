@@ -22,7 +22,7 @@ public class ForbidSendMsgRequest extends GenericRequest implements Serializable
     private String groupId;
 
     /**
-     * 需要禁言的用户帐号，最多支持500个帐号
+     * 需要禁言的用户账号，最多支持500个账号
      */
     @JsonProperty("Members_Account")
     private List<String> membersAccount;

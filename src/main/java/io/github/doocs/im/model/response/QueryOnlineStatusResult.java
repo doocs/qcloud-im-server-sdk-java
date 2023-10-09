@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 查询帐号在线状态-结果
+ * 查询账号在线状态-结果
  *
  * @author bingo
  * @since 2021/7/28 11:07
@@ -20,7 +20,7 @@ public class QueryOnlineStatusResult extends GenericResult implements Serializab
     private List<QueryResultItem> queryResult;
 
     /**
-     * 状态查询失败的帐号列表，在此列表中的目标帐号，状态查询失败或目标帐号不存在。若状态全部查询成功，则 ErrorList 为空
+     * 状态查询失败的账号列表，在此列表中的目标账号，状态查询失败或目标账号不存在。若状态全部查询成功，则 ErrorList 为空
      */
     @JsonProperty("ErrorList")
     private List<QueryResultErrorItem> errorList;

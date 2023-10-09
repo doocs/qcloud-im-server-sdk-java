@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 导入多个帐号-请求参数
+ * 导入多个账号-请求参数
  *
  * @author bingo
  * @since 2021/7/30 17:07

@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 导入多个帐号-结果
+ * 导入多个账号-结果
  *
  * @author bingo
  * @since 2021/7/27 16:00
@@ -14,7 +14,7 @@ import java.util.List;
 public class MultiAccountImportResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -7910345256342778638L;
     /**
-     * 导入失败的帐号列表
+     * 导入失败的账号列表
      */
     @JsonProperty("FailAccounts")
     private List<String> failAccounts;

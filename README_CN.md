@@ -47,7 +47,7 @@ String key = "60c6c5925f3ae52c7325ac5a8ec78e44c056d1dd84d54e12ffa39911267a2a70";
 // 创建 IM 客户端实例
 ImClient client = ImClient.getInstance(appId, userId, key);
 
-// 导入帐号
+// 导入账号
 AccountImportRequest request = new AccountImportRequest("doocs");
 request.setFaceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4");
 request.setNick("Doocs Community");
@@ -65,7 +65,7 @@ try {
 
 本项目，我们使用 `dev` 作为开发分支，如果你希望参与本项目，请参考以下步骤：
 
-1. 将本项目 fork 到你的个人帐号下
+1. 将本项目 fork 到你的个人账号下
 2. 将 fork 后的项目 clone 到你本地项目
 3. 创建一个新的分支，并添加你的变更
 4. 将你的分支与我们上游最新代码保持同步

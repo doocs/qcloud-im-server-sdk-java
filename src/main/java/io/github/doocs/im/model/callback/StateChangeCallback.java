@@ -89,7 +89,7 @@ public class StateChangeCallback implements Serializable {
         /**
          * 用户上下线触发的原因：
          * Login 的原因有 Register：App TCP 连接建立或断网重连
-         * Logout 的原因有 Unregister：App 用户注销帐号导致 TCP 断开
+         * Logout 的原因有 Unregister：App 用户注销账号导致 TCP 断开
          * Disconnect 的原因有
          * - LinkClose：即时通信 IM 检测到 App TCP 连接断开（例如 kill App，客户端发出 TCP 的 FIN 包或 RST 包）；
          * - TimeOut：即时通信 IM 检测到 App 心跳包超时，认为 TCP 已断开（例如客户端网络异常断开，

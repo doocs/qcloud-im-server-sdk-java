@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 删除帐号-请求参数
+ * 删除账号-请求参数
  *
  * @author bingo
  * @since 2021/7/30 17:08
@@ -16,7 +16,7 @@ import java.util.List;
 public class AccountDeleteRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -1136860412161667975L;
     /**
-     * 请求删除的帐号对象数组，单次请求最多支持100个帐号
+     * 请求删除的账号对象数组，单次请求最多支持100个账号
      */
     @JsonProperty("DeleteItem")
     private List<AccountDeleteItem> deleteItemList;

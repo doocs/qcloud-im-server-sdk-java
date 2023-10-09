@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * 失效帐号登录状态-请求参数
+ * 失效账号登录状态-请求参数
  *
  * @author bingo
  * @since 2021/7/30 17:31

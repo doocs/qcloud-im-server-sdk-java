@@ -6,7 +6,7 @@
 
 - 已 [注册腾讯云](https://cloud.tencent.com/document/product/378/17985) 账号并完成 [实名认证](https://cloud.tencent.com/document/product/378/3629)。
 - 已登录 [即时通信 IM 控制台](https://console.cloud.tencent.com/im) 并创建了应用。创建完成后，可以拿到 `sdkAppId` 以及 `key`。
-- 已创建 App 管理员帐号 `userId`，也即 `identifier`。
+- 已创建 App 管理员账号 `userId`，也即 `identifier`。
 
     <img src="../assets/create_identifier.png" />
 

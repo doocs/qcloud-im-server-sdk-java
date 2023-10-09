@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class AdminGetRoamMsgRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -1979505757549864474L;
     /**
-     * 会话其中一方的 UserID，若已指定发送消息方帐号，则为消息发送方
+     * 会话其中一方的 UserID，若已指定发送消息方账号，则为消息发送方
      */
     @JsonProperty("From_Account")
     private String fromAccount;

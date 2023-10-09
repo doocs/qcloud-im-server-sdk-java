@@ -19,7 +19,7 @@ import java.util.List;
 public class CreateGroupRequest implements Serializable {
     private static final long serialVersionUID = -3315570733601873621L;
     /**
-     * 群主 ID（需是 已导入 的帐号）。填写后自动添加到群成员中；如果不填，群没有群主；成员使用 AVChatroom（直播群）时，必须每次调用进群操作
+     * 群主 ID（需是 已导入 的账号）。填写后自动添加到群成员中；如果不填，群没有群主；成员使用 AVChatroom（直播群）时，必须每次调用进群操作
      */
     @JsonProperty("Owner_Account")
     private String ownerAccount;

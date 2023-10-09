@@ -10,13 +10,13 @@ import java.io.Serializable;
  */
 public class C2cUnreadMsgErrorListItem implements Serializable {
     /**
-     * 查询错误的目标帐号
+     * 查询错误的目标账号
      */
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
     /**
-     * 查询错误的错误码。若目标帐号的错误码为70107表示该帐号不存在
+     * 查询错误的错误码。若目标账号的错误码为70107表示该账号不存在
      */
     @JsonProperty("ErrorCode")
     private Integer errorCode;

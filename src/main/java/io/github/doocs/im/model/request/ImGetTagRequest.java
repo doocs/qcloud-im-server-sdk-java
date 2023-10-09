@@ -16,7 +16,7 @@ import java.util.List;
 public class ImGetTagRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -8508336067483476150L;
     /**
-     * 目标用户帐号列表
+     * 目标用户账号列表
      */
     @JsonProperty("To_Account")
     private List<String> toAccount;

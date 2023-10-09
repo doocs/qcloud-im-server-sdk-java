@@ -11,8 +11,8 @@ actions:
     link: /guide/
     type: secondary
 features:
-  - title: 帐号管理
-    details: 导入、删除、查询帐号等
+  - title: 账号管理
+    details: 导入、删除、查询账号等
   - title: 单聊消息
     details: 发送、查询、撤回、已读消息等
   - title: 全员推送

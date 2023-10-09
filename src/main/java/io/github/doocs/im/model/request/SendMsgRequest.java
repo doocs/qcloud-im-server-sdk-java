@@ -27,7 +27,7 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
     private Integer syncOtherMachine;
 
     /**
-     * 消息发送方 UserID（用于指定发送消息方帐号）
+     * 消息发送方 UserID（用于指定发送消息方账号）
      */
     @JsonProperty("From_Account")
     private String fromAccount;

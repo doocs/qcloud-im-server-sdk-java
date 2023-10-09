@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class AccountDeleteItem implements Serializable {
     private static final long serialVersionUID = -8176275123666544945L;
     /**
-     * 请求删除的帐号的 UserID
+     * 请求删除的账号的 UserID
      */
     @JsonProperty("UserID")
     private String userId;

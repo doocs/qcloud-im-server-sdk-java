@@ -11,13 +11,13 @@ import java.io.Serializable;
 public class BatchSendMsgErrorItem implements Serializable {
     private static final long serialVersionUID = -2366902098749519753L;
     /**
-     * 消息发送失败的目标帐号
+     * 消息发送失败的目标账号
      */
     @JsonProperty("To_Account")
     private String toAccount;
 
     /**
-     * 消息发送失败的错误码，若目标帐号的错误码为70107表示该帐号不存在
+     * 消息发送失败的错误码，若目标账号的错误码为70107表示该账号不存在
      */
     @JsonProperty("ErrorCode")
     private Integer errorCode;

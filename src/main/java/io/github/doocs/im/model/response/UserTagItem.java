@@ -14,7 +14,7 @@ import java.util.List;
 public class UserTagItem implements Serializable {
     private static final long serialVersionUID = 8753699301897294891L;
     /**
-     * 目标用户帐号
+     * 目标用户账号
      */
     @JsonProperty("To_Account")
     private String toAccount;
