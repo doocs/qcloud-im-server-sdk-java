@@ -6,7 +6,7 @@
 
     <groupId>io.github.doocs</groupId>
     <artifactId>im-server-sdk-java</artifactId>
-    <version>0.3.45</version>
+    <version>0.3.46</version>
     <packaging>jar</packaging>
 
     <name>qcloud-im-server-sdk-java</name>

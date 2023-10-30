@@ -129,6 +129,11 @@ public class CallbackCommand {
      */
     public static final String GROUP_CALLBACK_SEND_MSG_EXCEPTION = "Group.CallbackSendMsgException";
 
+    /**
+     * 撤回群消息之后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_RECALL_MSG = "Group.CallbackAfterRecallMsg";
+
     private CallbackCommand() {
 
     }
