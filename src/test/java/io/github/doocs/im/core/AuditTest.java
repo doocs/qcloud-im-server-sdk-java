@@ -5,6 +5,7 @@ import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
+import io.github.doocs.im.util.JsonUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -76,6 +77,25 @@ class AuditTest {
                 .auditName(AuditNameType.C2C)
                 .build();
         ContentModerationResult result = client.audit.contentModeration(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testBatchContentModeration() throws IOException {
+        BatchContentModerationRequest request = new BatchContentModerationRequest();
+        request.setAuditName(AuditNameType.GROUP);
+        AuditContentItem item1 = new AuditContentItem();
+        item1.setContent("f*ck uuu");
+        item1.setContentId(323245334);
+        item1.setContentType(AuditContentType.TEXT);
+        AuditContentItem item2 = AuditContentItem.builder()
+                .contentId(435545)
+                .contentType(AuditContentType.TEXT)
+                .content("cnm").build();
+        request.setContents(Arrays.asList(item1, item2));
+        System.out.println(JsonUtil.obj2Str(request));
+        BatchContentModerationResult result = client.audit.batchContentModeration(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }

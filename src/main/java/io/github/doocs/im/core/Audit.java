@@ -1,8 +1,24 @@
 package io.github.doocs.im.core;
 
 import io.github.doocs.im.ImClient;
-import io.github.doocs.im.model.request.*;
-import io.github.doocs.im.model.response.*;
+import io.github.doocs.im.model.request.AddCloudAuditKeywordsRequest;
+import io.github.doocs.im.model.request.AddLocalAuditKeywordsRequest;
+import io.github.doocs.im.model.request.BatchContentModerationRequest;
+import io.github.doocs.im.model.request.ContentModerationRequest;
+import io.github.doocs.im.model.request.DeleteCloudAuditKeywordsRequest;
+import io.github.doocs.im.model.request.DeleteLocalAuditKeywordsRequest;
+import io.github.doocs.im.model.request.GetCloudAuditKeyWordsIdsRequest;
+import io.github.doocs.im.model.request.GetCloudAuditKeyWordsRequest;
+import io.github.doocs.im.model.request.GetLocalAuditKeywordsRequest;
+import io.github.doocs.im.model.response.AddCloudAuditKeywordsResult;
+import io.github.doocs.im.model.response.AddLocalAuditKeywordsResult;
+import io.github.doocs.im.model.response.BatchContentModerationResult;
+import io.github.doocs.im.model.response.ContentModerationResult;
+import io.github.doocs.im.model.response.DeleteCloudAuditKeywordsResult;
+import io.github.doocs.im.model.response.DeleteLocalAuditKeywordsResult;
+import io.github.doocs.im.model.response.GetCloudAuditKeywordsIdsResult;
+import io.github.doocs.im.model.response.GetCloudAuditKeywordsResult;
+import io.github.doocs.im.model.response.GetLocalAuditKeywordsResult;
 import io.github.doocs.im.util.HttpUtil;
 
 import java.io.IOException;
@@ -31,6 +47,7 @@ public class Audit {
      * 云端审核
      */
     public static final String CONTENT_MODERATION_COMMAND = "content_moderation";
+    public static final String BATCH_CONTENT_MODERATION_COMMAND = "batch_content_moderation";
     public static final String GET_CLOUD_AUDIT_KEYWORDS_IDS_COMMAND = "get_cloud_audit_keywords_ids";
     public static final String GET_CLOUD_AUDIT_KEYWORDS_COMMAND = "get_cloud_audit_keywords";
     public static final String ADD_CLOUD_AUDIT_KEYWORDS_COMMAND = "add_cloud_audit_keywords";
@@ -108,6 +125,23 @@ public class Audit {
     public ContentModerationResult contentModeration(ContentModerationRequest contentModerationRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, CONTENT_MODERATION_COMMAND, random);
         return HttpUtil.post(url, contentModerationRequest, ContentModerationResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 云端审核批量审核
+     *
+     * @param batchContentModerationRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public BatchContentModerationResult batchContentModeration(BatchContentModerationRequest batchContentModerationRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BATCH_CONTENT_MODERATION_COMMAND);
+        return HttpUtil.post(url, batchContentModerationRequest, BatchContentModerationResult.class, imClient.getConfig());
+    }
+
+    public BatchContentModerationResult batchContentModeration(BatchContentModerationRequest batchContentModerationRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, BATCH_CONTENT_MODERATION_COMMAND, random);
+        return HttpUtil.post(url, batchContentModerationRequest, BatchContentModerationResult.class, imClient.getConfig());
     }
 
     /**

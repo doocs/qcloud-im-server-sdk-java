@@ -6,45 +6,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * 云端审核主动审核-请求参数
+ * 云端审核主动批量审核内容项
  *
  * @author bingo
- * @since 2023/7/26 10:25
+ * @since 2023/10/31 10:25
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ContentModerationRequest extends GenericRequest implements Serializable {
-    private static final long serialVersionUID = -5086605409044562844L;
+public class AuditContentItem implements Serializable {
+    private static final long serialVersionUID = -4862840041361119218L;
 
     /**
-     * 表明送审策略
-     * {@link io.github.doocs.im.constant.AuditNameType}
+     * 必填
+     * 内容 ID，数组里各个成员，不能重复的 ContentId。
      */
-    @JsonProperty("AuditName")
-    private String auditName;
+    @JsonProperty("ContentId")
+    private Integer contentId;
 
     /**
-     * 送审类型
+     * 必填
+     * 送审类型，批量审核接口里，限制取值：Text/Image，音视频送审请参见 主动审核接口
+     * {@link io.github.doocs.im.constant.AuditContentType}
      */
     @JsonProperty("ContentType")
     private String contentType;
 
     /**
-     * 送审内容
+     * 必填
+     * 送审内容，最大限制8KB，当审核文件时，填对应 URL。其中图片审核最大不超过5MB。
      */
     @JsonProperty("Content")
     private String content;
 
-    public ContentModerationRequest() {
+    public AuditContentItem() {
     }
 
-    public ContentModerationRequest(String auditName, String contentType, String content) {
-        this.auditName = auditName;
+    public AuditContentItem(Integer contentId, String contentType, String content) {
+        this.contentId = contentId;
         this.contentType = contentType;
         this.content = content;
     }
 
-    private ContentModerationRequest(Builder builder) {
-        this.auditName = builder.auditName;
+    private AuditContentItem(Builder builder) {
+        this.contentId = builder.contentId;
         this.contentType = builder.contentType;
         this.content = builder.content;
     }
@@ -53,12 +56,12 @@ public class ContentModerationRequest extends GenericRequest implements Serializ
         return new Builder();
     }
 
-    public String getAuditName() {
-        return auditName;
+    public Integer getContentId() {
+        return contentId;
     }
 
-    public void setAuditName(String auditName) {
-        this.auditName = auditName;
+    public void setContentId(Integer contentId) {
+        this.contentId = contentId;
     }
 
     public String getContentType() {
@@ -79,19 +82,19 @@ public class ContentModerationRequest extends GenericRequest implements Serializ
 
 
     public static final class Builder {
-        private String auditName;
+        private Integer contentId;
         private String contentType;
         private String content;
 
         private Builder() {
         }
 
-        public ContentModerationRequest build() {
-            return new ContentModerationRequest(this);
+        public AuditContentItem build() {
+            return new AuditContentItem(this);
         }
 
-        public Builder auditName(String auditName) {
-            this.auditName = auditName;
+        public Builder contentId(Integer contentId) {
+            this.contentId = contentId;
             return this;
         }
 

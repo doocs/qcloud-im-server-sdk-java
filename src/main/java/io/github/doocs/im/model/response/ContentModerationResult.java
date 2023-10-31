@@ -3,6 +3,7 @@ package io.github.doocs.im.model.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 云端审核主动审核-结果
@@ -37,6 +38,12 @@ public class ContentModerationResult extends GenericResult implements Serializab
     @JsonProperty("Label")
     private String label;
 
+    /**
+     * 违规时，命中的关键词，如果模型命中不会有关键词返回。
+     */
+    @JsonProperty("Keywords")
+    private List<String> keywords;
+
     public String getRequestId() {
         return requestId;
     }
@@ -69,6 +76,14 @@ public class ContentModerationResult extends GenericResult implements Serializab
         this.label = label;
     }
 
+    public List<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
+    }
+
     @Override
     public String toString() {
         return "ContentModerationResult{" +
@@ -76,6 +91,7 @@ public class ContentModerationResult extends GenericResult implements Serializab
                 ", result='" + result + '\'' +
                 ", score=" + score +
                 ", label='" + label + '\'' +
+                ", keywords=" + keywords +
                 ", actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
                 ", errorCode=" + errorCode +
