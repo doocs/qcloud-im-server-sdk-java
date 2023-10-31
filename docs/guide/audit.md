@@ -68,6 +68,28 @@ ContentModerationRequest request = ContentModerationRequest.builder().content("1
 ContentModerationResult result = client.audit.contentModeration(request);
 ```
 
+## 主动批量审核接口（云端审核）
+
+开启云端审核后，在 App 后台可以主动调用 REST API 接口，批量送审图文等相关内容，音视频审核请查看主动审核接口。
+
+使用示例：
+
+```java
+BatchContentModerationRequest request = new BatchContentModerationRequest();
+request.setAuditName(AuditNameType.GROUP);
+AuditContentItem item1 = new AuditContentItem();
+item1.setContent("f*ck uuu");
+item1.setContentId(323245334);
+item1.setContentType(AuditContentType.TEXT);
+AuditContentItem item2 = AuditContentItem.builder()
+        .contentId(435545)
+        .contentType(AuditContentType.TEXT)
+        .content("cnm").build();
+request.setContents(Arrays.asList(item1, item2));
+
+BatchContentModerationResult result = client.audit.batchContentModeration(request);
+```
+
 ## 获取词库列表（云端审核）
 
 开启云端审核后，在 App 后台可以主动调用 REST API 接口，增删改查云端审核相关词库。

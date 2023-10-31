@@ -5,7 +5,6 @@ import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.*;
 import io.github.doocs.im.model.request.*;
 import io.github.doocs.im.model.response.*;
-import io.github.doocs.im.util.JsonUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -94,7 +93,6 @@ class AuditTest {
                 .contentType(AuditContentType.TEXT)
                 .content("cnm").build();
         request.setContents(Arrays.asList(item1, item2));
-        System.out.println(JsonUtil.obj2Str(request));
         BatchContentModerationResult result = client.audit.batchContentModeration(request);
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
