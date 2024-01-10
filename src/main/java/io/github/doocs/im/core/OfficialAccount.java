@@ -22,18 +22,18 @@ public class OfficialAccount {
     /**
      * 公众号相关命令字
      */
-    public static final String CREATE_OFFICIAL_ACCOUNT = "create_official_account";
-    public static final String DESTROY_OFFICIAL_ACCOUNT = "destroy_official_account";
-    public static final String MODIFY_OFFICIAL_ACCOUNT_BASE_INFO = "modify_official_account_base_info";
+    public static final String CREATE_OFFICIAL_ACCOUNT_COMMAND = "create_official_account";
+    public static final String DESTROY_OFFICIAL_ACCOUNT_COMMAND = "destroy_official_account";
+    public static final String MODIFY_OFFICIAL_ACCOUNT_BASE_INFO_COMMAND = "modify_official_account_base_info";
     public static final String SEND_OFFICIAL_ACCOUNT_MSG_COMMAND = "send_official_account_msg";
     public static final String GET_OFFICIAL_ACCOUNT_INFO_COMMAND = "get_official_account_info";
     public static final String GET_SUBSCRIBER_INFO_COMMAND = "get_subscriber_info";
     public static final String OFFICIAL_ACCOUNT_MSG_RECALL_COMMAND = "official_account_msg_recall";
     public static final String OFFICIAL_ACCOUNT_MSG_GET_SIMPLE_COMMAND = "official_account_msg_get_simple";
-    public static final String ADD_SUBSCRIBER = "add_subscriber";
-    public static final String DELETE_SUBSCRIBER = "delete_subscriber";
-    public static final String MODIFY_SUBSCRIBER_INFO = "modify_subscriber_info";
-    public static final String GET_SUBSCRIBED_OFFICIAL_ACCOUNT_LIST = "get_subscribed_official_account_list";
+    public static final String ADD_SUBSCRIBER_COMMAND = "add_subscriber";
+    public static final String DELETE_SUBSCRIBER_COMMAND = "delete_subscriber";
+    public static final String MODIFY_SUBSCRIBER_INFO_COMMAND = "modify_subscriber_info";
+    public static final String GET_SUBSCRIBED_OFFICIAL_ACCOUNT_LIST_COMMAND = "get_subscribed_official_account_list";
 
 
     private final ImClient imClient;
@@ -50,12 +50,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public CreateOfficialAccountResult createOfficialAccount(CreateOfficialAccountRequest createOfficialAccountRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, CREATE_OFFICIAL_ACCOUNT);
+        String url = imClient.getUrl(SERVICE_NAME, CREATE_OFFICIAL_ACCOUNT_COMMAND);
         return HttpUtil.post(url, createOfficialAccountRequest, CreateOfficialAccountResult.class, imClient.getConfig());
     }
 
     public CreateOfficialAccountResult createOfficialAccount(CreateOfficialAccountRequest createOfficialAccountRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, CREATE_OFFICIAL_ACCOUNT, random);
+        String url = imClient.getUrl(SERVICE_NAME, CREATE_OFFICIAL_ACCOUNT_COMMAND, random);
         return HttpUtil.post(url, createOfficialAccountRequest, CreateOfficialAccountResult.class, imClient.getConfig());
     }
 
@@ -67,12 +67,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public DestroyOfficialAccountResult destroyOfficialAccount(DestroyOfficialAccountRequest destroyOfficialAccountRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, DESTROY_OFFICIAL_ACCOUNT);
+        String url = imClient.getUrl(SERVICE_NAME, DESTROY_OFFICIAL_ACCOUNT_COMMAND);
         return HttpUtil.post(url, destroyOfficialAccountRequest, DestroyOfficialAccountResult.class, imClient.getConfig());
     }
 
     public DestroyOfficialAccountResult destroyOfficialAccount(DestroyOfficialAccountRequest destroyOfficialAccountRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, DESTROY_OFFICIAL_ACCOUNT, random);
+        String url = imClient.getUrl(SERVICE_NAME, DESTROY_OFFICIAL_ACCOUNT_COMMAND, random);
         return HttpUtil.post(url, destroyOfficialAccountRequest, DestroyOfficialAccountResult.class, imClient.getConfig());
     }
 
@@ -84,12 +84,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public ModifyOfficialAccountBaseInfoResult modifyOfficialAccountBaseInfo(ModifyOfficialAccountBaseInfoRequest modifyOfficialAccountBaseInfoRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, MODIFY_OFFICIAL_ACCOUNT_BASE_INFO);
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_OFFICIAL_ACCOUNT_BASE_INFO_COMMAND);
         return HttpUtil.post(url, modifyOfficialAccountBaseInfoRequest, ModifyOfficialAccountBaseInfoResult.class, imClient.getConfig());
     }
 
     public ModifyOfficialAccountBaseInfoResult modifyOfficialAccountBaseInfo(ModifyOfficialAccountBaseInfoRequest modifyOfficialAccountBaseInfoRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, MODIFY_OFFICIAL_ACCOUNT_BASE_INFO, random);
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_OFFICIAL_ACCOUNT_BASE_INFO_COMMAND, random);
         return HttpUtil.post(url, modifyOfficialAccountBaseInfoRequest, ModifyOfficialAccountBaseInfoResult.class, imClient.getConfig());
     }
 
@@ -186,12 +186,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public AddSubscriberResult addSubscriber(AddSubscriberRequest addSubscriberRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, ADD_SUBSCRIBER);
+        String url = imClient.getUrl(SERVICE_NAME, ADD_SUBSCRIBER_COMMAND);
         return HttpUtil.post(url, addSubscriberRequest, AddSubscriberResult.class, imClient.getConfig());
     }
 
     public AddSubscriberResult addSubscriber(AddSubscriberRequest addSubscriberRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, ADD_SUBSCRIBER, random);
+        String url = imClient.getUrl(SERVICE_NAME, ADD_SUBSCRIBER_COMMAND, random);
         return HttpUtil.post(url, addSubscriberRequest, AddSubscriberResult.class, imClient.getConfig());
     }
 
@@ -203,12 +203,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public DeleteSubscriberResult deleteSubscriber(DeleteSubscriberRequest deleteSubscriberRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, DELETE_SUBSCRIBER);
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_SUBSCRIBER_COMMAND);
         return HttpUtil.post(url, deleteSubscriberRequest, DeleteSubscriberResult.class, imClient.getConfig());
     }
 
     public DeleteSubscriberResult deleteSubscriber(DeleteSubscriberRequest deleteSubscriberRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, DELETE_SUBSCRIBER, random);
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_SUBSCRIBER_COMMAND, random);
         return HttpUtil.post(url, deleteSubscriberRequest, DeleteSubscriberResult.class, imClient.getConfig());
     }
 
@@ -220,12 +220,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public ModifySubscriberInfoResult modifySubscriberInfo(ModifySubscriberInfoRequest modifySubscriberInfoRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, MODIFY_SUBSCRIBER_INFO);
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_SUBSCRIBER_INFO_COMMAND);
         return HttpUtil.post(url, modifySubscriberInfoRequest, ModifySubscriberInfoResult.class, imClient.getConfig());
     }
 
     public ModifySubscriberInfoResult modifySubscriberInfo(ModifySubscriberInfoRequest modifySubscriberInfoRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, MODIFY_SUBSCRIBER_INFO, random);
+        String url = imClient.getUrl(SERVICE_NAME, MODIFY_SUBSCRIBER_INFO_COMMAND, random);
         return HttpUtil.post(url, modifySubscriberInfoRequest, ModifySubscriberInfoResult.class, imClient.getConfig());
     }
 
@@ -237,12 +237,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public GetSubscribedOfficialAccountListResult getSubscribedOfficialAccountList(GetSubscribedOfficialAccountListRequest getSubscribedOfficialAccountListRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBED_OFFICIAL_ACCOUNT_LIST);
+        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBED_OFFICIAL_ACCOUNT_LIST_COMMAND);
         return HttpUtil.post(url, getSubscribedOfficialAccountListRequest, GetSubscribedOfficialAccountListResult.class, imClient.getConfig());
     }
 
     public GetSubscribedOfficialAccountListResult getSubscribedOfficialAccountList(GetSubscribedOfficialAccountListRequest getSubscribedOfficialAccountListRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBED_OFFICIAL_ACCOUNT_LIST, random);
+        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBED_OFFICIAL_ACCOUNT_LIST_COMMAND, random);
         return HttpUtil.post(url, getSubscribedOfficialAccountListRequest, GetSubscribedOfficialAccountListResult.class, imClient.getConfig());
     }
 }
