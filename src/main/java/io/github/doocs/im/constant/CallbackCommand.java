@@ -13,6 +13,11 @@ public class CallbackCommand {
     public static final String STATE_CHANGE = "State.StateChange";
 
     /**
+     * 更新资料之后回调
+     */
+    public static final String PROFILE_CALLBACK_PORTRAIT_SET = "Profile.CallbackPortraitSet";
+
+    /**
      * 添加好友之前回调（资料关系链）
      */
     public static final String SNS_CALLBACK_PREV_FRIEND_ADD = "Sns.CallbackPrevFriendAdd";
@@ -62,7 +67,17 @@ public class CallbackCommand {
      */
     public static final String C2C_CALLBACK_AFTER_MSG_WITHDRAW = "C2C.CallbackAfterMsgWithDraw";
 
+    /**
+     * 单聊机器人消息回调
+     */
+    public static final String BOT_CALLBACK_ON_C2C_MESSAGE = "Bot.OnC2CMessage";
+
     // --------------------------------------------------------------------------------------------------------
+
+    /**
+     * 群组日净增上限阈值告警回调
+     */
+    public static final String GROUP_CALLBACK_ON_DAILY_GROUP_QUOTA_ALARM = "Group.CallbackOnDailyGroupQuotaAlarm";
 
     /**
      * 创建群组之前回调（群组系统）
@@ -133,6 +148,95 @@ public class CallbackCommand {
      * 撤回群消息之后回调
      */
     public static final String GROUP_CALLBACK_AFTER_RECALL_MSG = "Group.CallbackAfterRecallMsg";
+
+    /**
+     * 创建话题之前回调
+     */
+    public static final String GROUP_CALLBACK_BEFORE_CREATE_TOPIC = "Group.CallbackBeforeCreateTopic";
+
+    /**
+     * 创建话题之后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_CREATE_TOPIC = "Group.CallbackAfterCreateTopic";
+
+    /**
+     * 解散话题之后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_TOPIC_DESTROYED = "Group.CallbackAfterTopicDestroyed";
+
+    /**
+     * 话题资料修改之后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_TOPIC_INFO_CHANGED = "Group.CallbackAfterTopicInfoChanged";
+
+    /**
+     * 群内@机器人之后回调
+     */
+    public static final String BOT_CALLBACK_ON_GROUP_MESSAGE = "Bot.OnGroupMessage";
+
+    // --------------------------------------------------------------------------------------------------------
+
+    /**
+     * 审核结果回调
+     */
+    public static final String CONTENT_CALLBACK_RESULT_NOTIFY = "ContentCallback.ResultNotify";
+
+    // --------------------------------------------------------------------------------------------------------
+
+    /**
+     * 创建公众号之前回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_BEFORE_CREATE_OFFICIAL_ACCOUNT = "OfficialAccount.CallbackBeforeCreateOfficialAccount";
+
+    /**
+     * 创建公众号之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_CREATE_OFFICIAL_ACCOUNT = "OfficialAccount.CallbackAfterCreateOfficialAccount";
+
+    /**
+     * 公众号资料变动之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_OFFICIAL_ACCOUNT_INFO_CHANGED = "OfficialAccount.CallbackAfterOfficialAccountInfoChanged";
+
+    /**
+     * 销毁公众号之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_OFFICIAL_ACCOUNT_DESTROYED = "OfficialAccount.CallbackAfterOfficialAccountDestroyed";
+
+    /**
+     * 订阅公众号之前回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_BEFORE_ADD_SUBSCRIBER = "OfficialAccount.CallbackBeforeAddSubscriber";
+
+    /**
+     * 订阅公众号之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_ADD_SUBSCRIBER = "OfficialAccount.CallbackAfterAddSubscriber";
+
+    /**
+     * 公众号可订阅的人数已满之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_OFFICIAL_ACCOUNT_FULL = "OfficialAccount.CallbackAfterOfficialAccountFull";
+
+    /**
+     * 删除订阅者之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_DELETE_SUBSCRIBER = "OfficialAccount.CallbackAfterDeleteSubscriber";
+
+    /**
+     * 发公众号消息之前回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_BEFORE_SEND_MSG = "OfficialAccount.CallbackBeforeSendMsg";
+
+    /**
+     * 发公众号消息之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_SEND_MSG = "OfficialAccount.CallbackAfterSendMsg";
+
+    /**
+     * 撤回公众号消息之后回调
+     */
+    public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_MSG_WITHDRAW = "OfficialAccount.CallbackAfterMsgWithDraw";
 
     private CallbackCommand() {
 
