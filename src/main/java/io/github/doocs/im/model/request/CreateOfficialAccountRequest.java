@@ -96,6 +96,70 @@ public class CreateOfficialAccountRequest extends GenericRequest implements Seri
         this.customString = builder.customString;
     }
 
+    public String getOwnerAccount() {
+        return ownerAccount;
+    }
+
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+
+    public String getOfficialAccountUserID() {
+        return officialAccountUserID;
+    }
+
+    public void setOfficialAccountUserID(String officialAccountUserID) {
+        this.officialAccountUserID = officialAccountUserID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getFaceUrl() {
+        return faceUrl;
+    }
+
+    public void setFaceUrl(String faceUrl) {
+        this.faceUrl = faceUrl;
+    }
+
+    public Integer getMaxSubscriberNum() {
+        return maxSubscriberNum;
+    }
+
+    public void setMaxSubscriberNum(Integer maxSubscriberNum) {
+        this.maxSubscriberNum = maxSubscriberNum;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getCustomString() {
+        return customString;
+    }
+
+    public void setCustomString(String customString) {
+        this.customString = customString;
+    }
+
     public static Builder builder() {
         return new Builder();
     }

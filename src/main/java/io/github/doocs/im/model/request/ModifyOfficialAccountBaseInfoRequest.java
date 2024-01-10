@@ -86,6 +86,62 @@ public class ModifyOfficialAccountBaseInfoRequest extends GenericRequest impleme
         this.maxSubscriberNum = builder.maxSubscriberNum;
     }
 
+    public String getOfficialAccount() {
+        return officialAccount;
+    }
+
+    public void setOfficialAccount(String officialAccount) {
+        this.officialAccount = officialAccount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getFaceUrl() {
+        return faceUrl;
+    }
+
+    public void setFaceUrl(String faceUrl) {
+        this.faceUrl = faceUrl;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getCustomString() {
+        return customString;
+    }
+
+    public void setCustomString(String customString) {
+        this.customString = customString;
+    }
+
+    public Integer getMaxSubscriberNum() {
+        return maxSubscriberNum;
+    }
+
+    public void setMaxSubscriberNum(Integer maxSubscriberNum) {
+        this.maxSubscriberNum = maxSubscriberNum;
+    }
+
     public static Builder builder() {
         return new Builder();
     }

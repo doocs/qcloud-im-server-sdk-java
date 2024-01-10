@@ -17,7 +17,7 @@ import java.io.IOException;
  * @author hyh
  * @since 2024/01/09 21:50
  */
-public class Official {
+public class OfficialAccount {
     /**
      * 公众号服务名
      */
@@ -32,7 +32,7 @@ public class Official {
 
     private final ImClient imClient;
 
-    public Official(ImClient imClient) {
+    public OfficialAccount(ImClient imClient) {
         this.imClient = imClient;
     }
 

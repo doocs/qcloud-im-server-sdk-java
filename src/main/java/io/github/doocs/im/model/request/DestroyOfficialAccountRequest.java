@@ -32,10 +32,17 @@ public class DestroyOfficialAccountRequest extends GenericRequest implements Ser
         this.officialAccount = builder.officialAccount;
     }
 
+    public String getOfficialAccount() {
+        return officialAccount;
+    }
+
+    public void setOfficialAccount(String officialAccount) {
+        this.officialAccount = officialAccount;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
-
 
     public static final class Builder {
         private String officialAccount;
