@@ -37,15 +37,22 @@ public class ResponseFilter implements Serializable {
     @JsonProperty("AppDefinedDataFilter_GroupMember")
     private List<String> appDefinedDataFilterGroupMember;
 
+    /**
+     * 该字段用来公众号信息的自定义字段过滤器，指定需要获取的公众号信息的自定义字段，详情请参阅 自定义字段
+     */
+    @JsonProperty("OfficialAccountBaseInfoFilter")
+    private List<String> officialAccountBaseInfoFilter;
+
     public ResponseFilter() {
     }
 
-    public ResponseFilter(List<String> groupBaseInfoFilter, List<String> memberInfoFilter,
-                          List<String> appDefinedDataFilterGroup, List<String> appDefinedDataFilterGroupMember) {
+    public ResponseFilter(List<String> groupBaseInfoFilter, List<String> memberInfoFilter, List<String> appDefinedDataFilterGroup,
+                          List<String> appDefinedDataFilterGroupMember, List<String> officialAccountBaseInfoFilter) {
         this.groupBaseInfoFilter = groupBaseInfoFilter;
         this.memberInfoFilter = memberInfoFilter;
         this.appDefinedDataFilterGroup = appDefinedDataFilterGroup;
         this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
+        this.officialAccountBaseInfoFilter = officialAccountBaseInfoFilter;
     }
 
     private ResponseFilter(Builder builder) {
@@ -53,6 +60,7 @@ public class ResponseFilter implements Serializable {
         this.memberInfoFilter = builder.memberInfoFilter;
         this.appDefinedDataFilterGroup = builder.appDefinedDataFilterGroup;
         this.appDefinedDataFilterGroupMember = builder.appDefinedDataFilterGroupMember;
+        this.officialAccountBaseInfoFilter = builder.officialAccountBaseInfoFilter;
     }
 
     public static Builder builder() {
@@ -91,12 +99,21 @@ public class ResponseFilter implements Serializable {
         this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
     }
 
+    public List<String> getOfficialAccountBaseInfoFilter() {
+        return officialAccountBaseInfoFilter;
+    }
+
+    public void setOfficialAccountBaseInfoFilter(List<String> officialAccountBaseInfoFilter) {
+        this.officialAccountBaseInfoFilter = officialAccountBaseInfoFilter;
+    }
+
 
     public static final class Builder {
         private List<String> groupBaseInfoFilter;
         private List<String> memberInfoFilter;
         private List<String> appDefinedDataFilterGroup;
         private List<String> appDefinedDataFilterGroupMember;
+        private List<String> officialAccountBaseInfoFilter;
 
         private Builder() {
         }
@@ -122,6 +139,11 @@ public class ResponseFilter implements Serializable {
 
         public Builder appDefinedDataFilterGroupMember(List<String> appDefinedDataFilterGroupMember) {
             this.appDefinedDataFilterGroupMember = appDefinedDataFilterGroupMember;
+            return this;
+        }
+
+        public Builder officialAccountBaseInfoFilter(List<String> officialAccountBaseInfoFilter) {
+            this.officialAccountBaseInfoFilter = officialAccountBaseInfoFilter;
             return this;
         }
     }

@@ -21,8 +21,6 @@ public class Message {
 
     public static final String SERVICE_NAME_MSG_EXT = "openim_msg_ext_http_svc";
 
-    public static final String SERVICE_NAME_OFFICIAL_ACCOUNT = "official_account_open_http_svc";
-
     /**
      * 单聊消息相关命令字
      */
@@ -36,7 +34,6 @@ public class Message {
     public static final String MODIFY_C2C_MSG_COMMAND = "modify_c2c_msg";
     public static final String GET_KEY_VALUES_COMMAND = "get_key_values";
     public static final String SET_KEY_VALUES_COMMAND = "set_key_values";
-    public static final String SEND_OFFICIAL_ACCOUNT_MSG_COMMAND = "send_official_account_msg";
 
     private final ImClient imClient;
 
@@ -212,22 +209,5 @@ public class Message {
     public SetKeyValuesResult setKeyValues(SetKeyValuesRequest setKeyValuesRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_MSG_EXT, SET_KEY_VALUES_COMMAND, random);
         return HttpUtil.post(url, setKeyValuesRequest, SetKeyValuesResult.class, imClient.getConfig());
-    }
-
-    /**
-     * 公众号用户发送广播消息
-     *
-     * @param sendOfficialAccountMsgRequest 请求参数
-     * @return 结果
-     * @throws IOException 异常
-     */
-    public SendOfficialAccountMsgResult sendOfficialAccountMsg(SendOfficialAccountMsgRequest sendOfficialAccountMsgRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME_OFFICIAL_ACCOUNT, SEND_OFFICIAL_ACCOUNT_MSG_COMMAND);
-        return HttpUtil.post(url, sendOfficialAccountMsgRequest, SendOfficialAccountMsgResult.class, imClient.getConfig());
-    }
-
-    public SendOfficialAccountMsgResult sendOfficialAccountMsg(SendOfficialAccountMsgRequest sendOfficialAccountMsgRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME_OFFICIAL_ACCOUNT, SEND_OFFICIAL_ACCOUNT_MSG_COMMAND, random);
-        return HttpUtil.post(url, sendOfficialAccountMsgRequest, SendOfficialAccountMsgResult.class, imClient.getConfig());
     }
 }

@@ -192,18 +192,4 @@ class MessageTest {
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
-
-    @Test
-    void testSendOfficialAccountMsg() throws IOException {
-        TIMTextMsgElement msg = new TIMTextMsgElement("hello world");
-        List<TIMMsgElement> msgBody = Collections.singletonList(msg);
-        SendOfficialAccountMsgRequest request = SendOfficialAccountMsgRequest.builder()
-                .officialAccount("bingo")
-                .random(123)
-                .msgBody(msgBody)
-                .build();
-        SendOfficialAccountMsgResult result = client.message.sendOfficialAccountMsg(request);
-        System.out.println(result);
-        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
-    }
 }
