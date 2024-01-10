@@ -14,17 +14,18 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdminGetRoamMsgRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -1979505757549864474L;
-    /**
-     * 会话其中一方的 UserID，若已指定发送消息方账号，则为消息发送方
-     */
-    @JsonProperty("From_Account")
-    private String fromAccount;
 
     /**
-     * 会话其中一方的 UserID
+     * 会话其中一方的 UserID，以该 UserID 的角度去查询消息。同一个会话，分别以会话双方的角度去查询消息，结果可能会不一样，请参考本接口的接口说明
      */
-    @JsonProperty("To_Account")
-    private String toAccount;
+    @JsonProperty("Operator_Account")
+    private String operatorAccount;
+
+    /**
+     * 会话的另一方 UserID
+     */
+    @JsonProperty("Peer_Account")
+    private String peerAccount;
 
     /**
      * 请求的消息条数
@@ -53,18 +54,17 @@ public class AdminGetRoamMsgRequest extends GenericRequest implements Serializab
     public AdminGetRoamMsgRequest() {
     }
 
-    public AdminGetRoamMsgRequest(String fromAccount, String toAccount, Integer maxCnt, Integer minTime, Integer maxTime) {
-        this.fromAccount = fromAccount;
-        this.toAccount = toAccount;
+    public AdminGetRoamMsgRequest(String operatorAccount, String peerAccount, Integer maxCnt, Integer minTime, Integer maxTime) {
+        this.operatorAccount = operatorAccount;
+        this.peerAccount = peerAccount;
         this.maxCnt = maxCnt;
         this.minTime = minTime;
         this.maxTime = maxTime;
     }
 
-    public AdminGetRoamMsgRequest(String fromAccount, String toAccount, Integer maxCnt, Integer minTime,
-                                  Integer maxTime, String lastMsgKey) {
-        this.fromAccount = fromAccount;
-        this.toAccount = toAccount;
+    public AdminGetRoamMsgRequest(String operatorAccount, String peerAccount, Integer maxCnt, Integer minTime, Integer maxTime, String lastMsgKey) {
+        this.operatorAccount = operatorAccount;
+        this.peerAccount = peerAccount;
         this.maxCnt = maxCnt;
         this.minTime = minTime;
         this.maxTime = maxTime;
@@ -72,8 +72,8 @@ public class AdminGetRoamMsgRequest extends GenericRequest implements Serializab
     }
 
     private AdminGetRoamMsgRequest(Builder builder) {
-        this.fromAccount = builder.fromAccount;
-        this.toAccount = builder.toAccount;
+        this.operatorAccount = builder.operatorAccount;
+        this.peerAccount = builder.peerAccount;
         this.maxCnt = builder.maxCnt;
         this.minTime = builder.minTime;
         this.maxTime = builder.maxTime;
@@ -84,20 +84,20 @@ public class AdminGetRoamMsgRequest extends GenericRequest implements Serializab
         return new Builder();
     }
 
-    public String getFromAccount() {
-        return fromAccount;
+    public String getOperatorAccount() {
+        return operatorAccount;
     }
 
-    public void setFromAccount(String fromAccount) {
-        this.fromAccount = fromAccount;
+    public void setOperatorAccount(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
     }
 
-    public String getToAccount() {
-        return toAccount;
+    public String getPeerAccount() {
+        return peerAccount;
     }
 
-    public void setToAccount(String toAccount) {
-        this.toAccount = toAccount;
+    public void setPeerAccount(String peerAccount) {
+        this.peerAccount = peerAccount;
     }
 
     public Integer getMaxCnt() {
@@ -134,8 +134,8 @@ public class AdminGetRoamMsgRequest extends GenericRequest implements Serializab
 
 
     public static final class Builder {
-        private String fromAccount;
-        private String toAccount;
+        private String operatorAccount;
+        private String peerAccount;
         private Integer maxCnt;
         private Integer minTime;
         private Integer maxTime;
@@ -148,13 +148,13 @@ public class AdminGetRoamMsgRequest extends GenericRequest implements Serializab
             return new AdminGetRoamMsgRequest(this);
         }
 
-        public Builder fromAccount(String fromAccount) {
-            this.fromAccount = fromAccount;
+        public Builder operatorAccount(String operatorAccount) {
+            this.operatorAccount = operatorAccount;
             return this;
         }
 
-        public Builder toAccount(String toAccount) {
-            this.toAccount = toAccount;
+        public Builder peerAccount(String peerAccount) {
+            this.peerAccount = peerAccount;
             return this;
         }
 

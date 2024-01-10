@@ -1,18 +1,8 @@
 package io.github.doocs.im.core;
 
 import io.github.doocs.im.ImClient;
-import io.github.doocs.im.model.request.CreateOfficialAccountRequest;
-import io.github.doocs.im.model.request.DestroyOfficialAccountRequest;
-import io.github.doocs.im.model.request.GetOfficialAccountInfoRequest;
-import io.github.doocs.im.model.request.GetSubscriberInfoRequest;
-import io.github.doocs.im.model.request.ModifyOfficialAccountBaseInfoRequest;
-import io.github.doocs.im.model.request.SendOfficialAccountMsgRequest;
-import io.github.doocs.im.model.response.CreateOfficialAccountResult;
-import io.github.doocs.im.model.response.DestroyOfficialAccountResult;
-import io.github.doocs.im.model.response.GetOfficialAccountInfoResult;
-import io.github.doocs.im.model.response.GetSubscriberInfoResult;
-import io.github.doocs.im.model.response.ModifyOfficialAccountBaseInfoResult;
-import io.github.doocs.im.model.response.SendOfficialAccountMsgResult;
+import io.github.doocs.im.model.request.*;
+import io.github.doocs.im.model.response.*;
 import io.github.doocs.im.util.HttpUtil;
 
 import java.io.IOException;
@@ -36,8 +26,10 @@ public class OfficialAccount {
     public static final String DESTROY_OFFICIAL_ACCOUNT = "destroy_official_account";
     public static final String MODIFY_OFFICIAL_ACCOUNT_BASE_INFO = "modify_official_account_base_info";
     public static final String SEND_OFFICIAL_ACCOUNT_MSG_COMMAND = "send_official_account_msg";
-    public static final String GET_OFFICIAL_ACCOUNT_INFO = "get_official_account_info";
-    public static final String GET_SUBSCRIBER_INFO = "get_subscriber_info";
+    public static final String GET_OFFICIAL_ACCOUNT_INFO_COMMAND = "get_official_account_info";
+    public static final String GET_SUBSCRIBER_INFO_COMMAND = "get_subscriber_info";
+    public static final String OFFICIAL_ACCOUNT_MSG_RECALL_COMMAND = "official_account_msg_recall";
+    public static final String OFFICIAL_ACCOUNT_MSG_GET_SIMPLE_COMMAND = "official_account_msg_get_simple";
 
     private final ImClient imClient;
 
@@ -121,12 +113,12 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public GetOfficialAccountInfoResult getOfficialAccountInfo(GetOfficialAccountInfoRequest getOfficialAccountInfoRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_OFFICIAL_ACCOUNT_INFO);
+        String url = imClient.getUrl(SERVICE_NAME, GET_OFFICIAL_ACCOUNT_INFO_COMMAND);
         return HttpUtil.post(url, getOfficialAccountInfoRequest, GetOfficialAccountInfoResult.class, imClient.getConfig());
     }
 
     public GetOfficialAccountInfoResult getOfficialAccountInfo(GetOfficialAccountInfoRequest getOfficialAccountInfoRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_OFFICIAL_ACCOUNT_INFO, random);
+        String url = imClient.getUrl(SERVICE_NAME, GET_OFFICIAL_ACCOUNT_INFO_COMMAND, random);
         return HttpUtil.post(url, getOfficialAccountInfoRequest, GetOfficialAccountInfoResult.class, imClient.getConfig());
     }
 
@@ -138,12 +130,46 @@ public class OfficialAccount {
      * @throws IOException 异常
      */
     public GetSubscriberInfoResult getSubscriberInfo(GetSubscriberInfoRequest getSubscriberInfoRequest) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBER_INFO);
+        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBER_INFO_COMMAND);
         return HttpUtil.post(url, getSubscriberInfoRequest, GetSubscriberInfoResult.class, imClient.getConfig());
     }
 
     public GetSubscriberInfoResult getSubscriberInfo(GetSubscriberInfoRequest getSubscriberInfoRequest, long random) throws IOException {
-        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBER_INFO, random);
+        String url = imClient.getUrl(SERVICE_NAME, GET_SUBSCRIBER_INFO_COMMAND, random);
         return HttpUtil.post(url, getSubscriberInfoRequest, GetSubscriberInfoResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 撤回公众号消息
+     *
+     * @param officialAccountMsgRecallRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public OfficialAccountMsgRecallResult msgRecall(OfficialAccountMsgRecallRequest officialAccountMsgRecallRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, OFFICIAL_ACCOUNT_MSG_RECALL_COMMAND);
+        return HttpUtil.post(url, officialAccountMsgRecallRequest, OfficialAccountMsgRecallResult.class, imClient.getConfig());
+    }
+
+    public OfficialAccountMsgRecallResult msgRecall(OfficialAccountMsgRecallRequest officialAccountMsgRecallRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, OFFICIAL_ACCOUNT_MSG_RECALL_COMMAND, random);
+        return HttpUtil.post(url, officialAccountMsgRecallRequest, OfficialAccountMsgRecallResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 拉取公众号用户历史消息
+     *
+     * @param officialAccountMsgGetSimpleRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public OfficialAccountMsgGetSimpleResult msgGetSimple(OfficialAccountMsgGetSimpleRequest officialAccountMsgGetSimpleRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, OFFICIAL_ACCOUNT_MSG_GET_SIMPLE_COMMAND);
+        return HttpUtil.post(url, officialAccountMsgGetSimpleRequest, OfficialAccountMsgGetSimpleResult.class, imClient.getConfig());
+    }
+
+    public OfficialAccountMsgGetSimpleResult msgGetSimple(OfficialAccountMsgGetSimpleRequest officialAccountMsgGetSimpleRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, OFFICIAL_ACCOUNT_MSG_GET_SIMPLE_COMMAND, random);
+        return HttpUtil.post(url, officialAccountMsgGetSimpleRequest, OfficialAccountMsgGetSimpleResult.class, imClient.getConfig());
     }
 }

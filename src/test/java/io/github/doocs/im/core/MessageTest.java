@@ -91,8 +91,8 @@ class MessageTest {
     @Test
     void testAdminGetRoamMsg() throws IOException {
         AdminGetRoamMsgRequest request = AdminGetRoamMsgRequest.builder()
-                .fromAccount("test1")
-                .toAccount("test2")
+                .operatorAccount("test1")
+                .peerAccount("test2")
                 .maxCnt(123)
                 .minTime(1631934000)
                 .maxTime(1631934060)
@@ -189,6 +189,29 @@ class MessageTest {
                 .msgKey("1353691732_123_1653995506")
                 .build();
         SetKeyValuesResult result = client.message.setKeyValues(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testDeleteC2cMsgRamble() throws IOException {
+        DeleteC2cMsgRambleRequest request = DeleteC2cMsgRambleRequest.builder()
+                .operatorAccount("test1")
+                .peerAccount("test2")
+                .msgKeyList(Collections.singletonList("1353691732_123_1653995506"))
+                .build();
+        DeleteC2cMsgRambleResult result = client.message.deleteC2cMsgRamble(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testClearGroupMsg() throws IOException {
+        ClearGroupMsgRequest request = ClearGroupMsgRequest.builder()
+                .groupId("test_group")
+                .msgSeq(123L)
+                .build();
+        ClearGroupMsgResult result = client.message.clearGroupMsg(request);
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }

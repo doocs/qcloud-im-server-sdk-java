@@ -5,19 +5,8 @@ import io.github.doocs.im.ImClient;
 import io.github.doocs.im.constant.ActionStatus;
 import io.github.doocs.im.model.message.TIMMsgElement;
 import io.github.doocs.im.model.message.TIMTextMsgElement;
-import io.github.doocs.im.model.request.CreateOfficialAccountRequest;
-import io.github.doocs.im.model.request.DestroyOfficialAccountRequest;
-import io.github.doocs.im.model.request.GetOfficialAccountInfoRequest;
-import io.github.doocs.im.model.request.GetSubscriberInfoRequest;
-import io.github.doocs.im.model.request.ModifyOfficialAccountBaseInfoRequest;
-import io.github.doocs.im.model.request.OfficialAccountItem;
-import io.github.doocs.im.model.request.SendOfficialAccountMsgRequest;
-import io.github.doocs.im.model.response.CreateOfficialAccountResult;
-import io.github.doocs.im.model.response.DestroyOfficialAccountResult;
-import io.github.doocs.im.model.response.GetOfficialAccountInfoResult;
-import io.github.doocs.im.model.response.GetSubscriberInfoResult;
-import io.github.doocs.im.model.response.ModifyOfficialAccountBaseInfoResult;
-import io.github.doocs.im.model.response.SendOfficialAccountMsgResult;
+import io.github.doocs.im.model.request.*;
+import io.github.doocs.im.model.response.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -100,6 +89,28 @@ class OfficialAccountTest {
         request.setLimit(10);
         request.setNext("");
         GetSubscriberInfoResult result = client.officialAccount.getSubscriberInfo(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testMsgRecall() throws IOException {
+        OfficialAccountMsgRecallRequest request = new OfficialAccountMsgRecallRequest();
+        request.setOfficialAccount("test_official_account_user_id");
+        request.setMsgKeyList(Collections.singletonList("msg_key"));
+        OfficialAccountMsgRecallResult result = client.officialAccount.msgRecall(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testGetSimpleMsg() throws IOException {
+        OfficialAccountMsgGetSimpleRequest request = new OfficialAccountMsgGetSimpleRequest();
+        request.setOfficialAccount("test_official_account_user_id");
+        request.setLastMsgKey("msg_key");
+        request.setReqMsgNumber(10);
+        request.setWithRecalledMsg(1);
+        OfficialAccountMsgGetSimpleResult result = client.officialAccount.msgGetSimple(request);
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }

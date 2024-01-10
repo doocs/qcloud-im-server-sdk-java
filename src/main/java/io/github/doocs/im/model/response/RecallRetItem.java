@@ -22,6 +22,12 @@ public class RecallRetItem implements Serializable {
     @JsonProperty("RetCode")
     private Integer retCode;
 
+    /**
+     * 单个被撤回消息的 MsgKey
+     */
+    @JsonProperty("MsgKey")
+    private String msgKey;
+
     public Long getMsgSeq() {
         return msgSeq;
     }
@@ -38,11 +44,20 @@ public class RecallRetItem implements Serializable {
         this.retCode = retCode;
     }
 
+    public String getMsgKey() {
+        return msgKey;
+    }
+
+    public void setMsgKey(String msgKey) {
+        this.msgKey = msgKey;
+    }
+
     @Override
     public String toString() {
         return "RecallRetItem{" +
                 "msgSeq=" + msgSeq +
                 ", retCode=" + retCode +
+                ", msgKey='" + msgKey + '\'' +
                 '}';
     }
 }

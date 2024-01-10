@@ -50,6 +50,12 @@ public class RspMsgItem implements Serializable {
     private Long msgRandom;
 
     /**
+     * 标识该条消息，可用于 撤回公众号消息
+     */
+    @JsonProperty("MsgKey")
+    private String msgKey;
+
+    /**
      * 消息序列号，用于标记该条消息，值越小发送的越早，数据范围 [0,4294967295]
      */
     @JsonProperty("MsgSeq")
@@ -125,6 +131,14 @@ public class RspMsgItem implements Serializable {
         this.msgTimeStamp = msgTimeStamp;
     }
 
+    public String getMsgKey() {
+        return msgKey;
+    }
+
+    public void setMsgKey(String msgKey) {
+        this.msgKey = msgKey;
+    }
+
     @Override
     public String toString() {
         return "RspMsgItem{" +
@@ -134,6 +148,7 @@ public class RspMsgItem implements Serializable {
                 ", isSystemMsg=" + isSystemMsg +
                 ", msgPriority=" + msgPriority +
                 ", msgRandom=" + msgRandom +
+                ", msgKey='" + msgKey + '\'' +
                 ", msgSeq=" + msgSeq +
                 ", msgTimeStamp=" + msgTimeStamp +
                 '}';
