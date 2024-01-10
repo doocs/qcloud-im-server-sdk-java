@@ -255,3 +255,38 @@ SetKeyValuesRequest request = SetKeyValuesRequest.builder()
 
 SetKeyValuesResult result = client.message.setKeyValues(request);
 ```
+
+## 单向删除单聊历史消息
+
+- App 管理员调用该接口单向删除一个单聊会话的多条消息。
+- 只能以消息的发送方或接收方的身份去删除单聊会话的历史消息。
+- 只能单向删除（以会话其中一方的身份去删除某条消息后，自己看不到这条消息，会话的对方仍然可以看到这条消息）
+
+使用示例：
+
+```java
+DeleteC2cMsgRambleRequest request = DeleteC2cMsgRambleRequest.builder()
+        .operatorAccount("test1")
+        .peerAccount("test2")
+        .msgKeyList(Collections.singletonList("1353691732_123_1653995506"))
+        .build();
+
+DeleteC2cMsgRambleResult result = client.message.deleteC2cMsgRamble(request);
+```
+
+## 清空群聊历史消息
+
+该 API 接口的作用是清空群聊中用户发送的历史消息。
+
+此接口通过打标记实现 SDK 无法拉取的效果，并没有真的执行删除操作，Admin 用户仍然可以通过“拉取群聊历史消息”接口拉取已清空的历史消息。
+
+使用示例：
+
+```java
+ClearGroupMsgRequest request = ClearGroupMsgRequest.builder()
+        .groupId("test_group")
+        .msgSeq(123L)
+        .build();
+
+ClearGroupMsgResult result = client.message.clearGroupMsg(request);
+```
