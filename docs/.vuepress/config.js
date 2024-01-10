@@ -47,6 +47,7 @@ module.exports = {
           '/guide/operation_2.md',
           '/guide/robot.md',
           '/guide/audit.md',
+          '/guide/official_account.md'
         ],
       },
     ],

@@ -1370,6 +1370,7 @@ App 管理员可以通过该接口获取群计数器。
 ::: warning
 
 - 该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182)。
+  :::
 
 使用示例：
 
@@ -1388,6 +1389,7 @@ App 管理员可以通过该接口更新（设置、递增、递减）群计数�
 ::: warning
 
 - 该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182)。
+  :::
 
 使用示例：
 
@@ -1413,6 +1415,7 @@ App 管理员可以通过该接口删除群计数器。
 ::: warning
 
 - 该功能仅对旗舰版客户开放，需 [购买旗舰版套餐包](https://buy.cloud.tencent.com/avc?from=17182)。
+  :::
 
 使用示例：
 
@@ -1422,4 +1425,49 @@ DeleteGroupCounterRequest request = DeleteGroupCounterRequest.builder()
         .build();
 
 DeleteGroupCounterResult result = client.group.deleteGroupCounter(request);
+```
+
+## 设置/取消直播群管理员
+
+App 管理员可以为直播群设置和取消管理员，当设置管理员时，被设置的账号可以不需要在直播群里，被设置为管理员之后，该账号即使离开直播群再重新进群也仍然是管理员。需要取消管理员身份时，需要调用本接口取消该用户的管理员身份。该功能需旗舰版，并且在 IM 控制台“群功能配置”中开通“直播群在线成员列表”功能。
+
+使用示例：
+
+```java
+ModifyAdminRequest request = ModifyAdminRequest.builder()
+        .groupId("MyFirstGroup")
+        .commandType(1)
+        .adminAccount(Arrays.asList("test1", "bingo"))
+        .build();
+
+ModifyAdminResult result = client.group.modifyAdmin(request);
+```
+
+## 获取直播群管理员列表
+
+App 管理员可以根据群组 ID 获取直播群管理员列表。该功能仅限旗舰版用户在 IM 控制台“群功能配置”中开启“直播群在线成员列表”后方可使用。
+
+使用示例：
+
+```java
+GetAdminListRequest request = GetAdminListRequest.builder()
+        .groupId("MyFirstGroup")
+        .build();
+
+GetAdminListResult result = client.group.getAdminList(request);
+```
+
+## 查询用户是否在直播群内
+
+App 管理员可以根据群组 ID 查询一批用户是否在直播群内。该功能需旗舰版，并且在 IM 控制台“群功能配置”中开通“直播群在线成员列表”功能。
+
+使用示例：
+
+```java
+CheckMembersRequest request = CheckMembersRequest.builder()
+        .groupId("MyFirstGroup")
+        .memberAccount(Arrays.asList("test1", "bingo"))
+        .build();
+
+CheckMembersResult result = client.group.checkMembers(request);
 ```

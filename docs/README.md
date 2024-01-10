@@ -31,5 +31,7 @@ features:
     details: 创建、删除、拉取机器人等
   - title: 内容审核
     details: 本地审核、云端审核等
+  - title: 公众号管理
+    details: 创建、销毁、修改公众号等
 footer: Apache-2.0 Licensed | Copyright © 2021-present Doocs
 ---

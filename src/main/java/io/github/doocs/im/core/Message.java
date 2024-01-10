@@ -20,6 +20,7 @@ public class Message {
     public static final String SERVICE_NAME = "openim";
 
     public static final String SERVICE_NAME_MSG_EXT = "openim_msg_ext_http_svc";
+    public static final String SERVICE_NAME_GROUP = "group_open_http_svc";
 
     /**
      * 单聊消息相关命令字
@@ -34,6 +35,8 @@ public class Message {
     public static final String MODIFY_C2C_MSG_COMMAND = "modify_c2c_msg";
     public static final String GET_KEY_VALUES_COMMAND = "get_key_values";
     public static final String SET_KEY_VALUES_COMMAND = "set_key_values";
+    public static final String DELETE_C2C_MSG_RAMBLE_COMMAND = "delete_c2c_msg_ramble";
+    public static final String CLEAR_GROUP_MSG_COMMAND = "clear_group_msg";
 
     private final ImClient imClient;
 
@@ -209,5 +212,39 @@ public class Message {
     public SetKeyValuesResult setKeyValues(SetKeyValuesRequest setKeyValuesRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME_MSG_EXT, SET_KEY_VALUES_COMMAND, random);
         return HttpUtil.post(url, setKeyValuesRequest, SetKeyValuesResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 单向删除单聊历史消息
+     *
+     * @param deleteC2cMsgRambleRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public DeleteC2cMsgRambleResult deleteC2cMsgRamble(DeleteC2cMsgRambleRequest deleteC2cMsgRambleRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_C2C_MSG_RAMBLE_COMMAND);
+        return HttpUtil.post(url, deleteC2cMsgRambleRequest, DeleteC2cMsgRambleResult.class, imClient.getConfig());
+    }
+
+    public DeleteC2cMsgRambleResult deleteC2cMsgRamble(DeleteC2cMsgRambleRequest deleteC2cMsgRambleRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, DELETE_C2C_MSG_RAMBLE_COMMAND, random);
+        return HttpUtil.post(url, deleteC2cMsgRambleRequest, DeleteC2cMsgRambleResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 清空群聊历史消息
+     *
+     * @param clearGroupMsgRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ClearGroupMsgResult clearGroupMsg(ClearGroupMsgRequest clearGroupMsgRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_GROUP, CLEAR_GROUP_MSG_COMMAND);
+        return HttpUtil.post(url, clearGroupMsgRequest, ClearGroupMsgResult.class, imClient.getConfig());
+    }
+
+    public ClearGroupMsgResult clearGroupMsg(ClearGroupMsgRequest clearGroupMsgRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_GROUP, CLEAR_GROUP_MSG_COMMAND, random);
+        return HttpUtil.post(url, clearGroupMsgRequest, ClearGroupMsgResult.class, imClient.getConfig());
     }
 }

@@ -39,6 +39,7 @@ public class ImClient {
     public final RecentContact recentContact;
     public final Robot robot;
     public final Audit audit;
+    public final OfficialAccount officialAccount;
 
     public static ImClient getInstance(long sdkAppId, String userId, String key) {
         return new ImClient(sdkAppId, userId, key);
@@ -95,6 +96,7 @@ public class ImClient {
         recentContact = new RecentContact(this);
         robot = new Robot(this);
         audit = new Audit(this);
+        officialAccount = new OfficialAccount(this);
     }
 
     /**

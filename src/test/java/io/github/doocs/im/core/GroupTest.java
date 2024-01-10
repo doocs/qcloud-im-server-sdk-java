@@ -648,4 +648,40 @@ class GroupTest {
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
+
+    @Test
+    void testModifyAdmin() throws IOException {
+        ModifyAdminRequest request = ModifyAdminRequest.builder()
+                .groupId("MyFirstGroup")
+                .commandType(1)
+                .adminAccount(Arrays.asList("test1", "bingo"))
+                .build();
+
+        ModifyAdminResult result = client.group.modifyAdmin(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testGetAdminList() throws IOException {
+        GetAdminListRequest request = GetAdminListRequest.builder()
+                .groupId("MyFirstGroup")
+                .build();
+
+        GetAdminListResult result = client.group.getAdminList(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testCheckMembers() throws IOException {
+        CheckMembersRequest request = CheckMembersRequest.builder()
+                .groupId("MyFirstGroup")
+                .memberAccount(Arrays.asList("test1", "bingo"))
+                .build();
+
+        CheckMembersResult result = client.group.checkMembers(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
 }

@@ -74,6 +74,9 @@ public class Group {
     public static final String GET_GROUP_COUNTER_COMMAND = "get_group_counter";
     public static final String UPDATE_GROUP_COUNTER_COMMAND = "update_group_counter";
     public static final String DELETE_GROUP_COUNTER_COMMAND = "delete_group_counter";
+    public static final String MODIFY_ADMIN_COMMAND = "modify_admin";
+    public static final String GET_ADMIN_LIST_COMMAND = "get_admin_list";
+    public static final String CHECK_MEMBERS_COMMAND = "check_members";
 
 
     private final ImClient imClient;
@@ -880,5 +883,56 @@ public class Group {
     public DeleteGroupCounterResult deleteGroupCounter(DeleteGroupCounterRequest deleteGroupCounterRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, DELETE_GROUP_COUNTER_COMMAND, random);
         return HttpUtil.post(url, deleteGroupCounterRequest, DeleteGroupCounterResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 设置/取消直播群管理员
+     *
+     * @param modifyAdminRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public ModifyAdminResult modifyAdmin(ModifyAdminRequest modifyAdminRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, MODIFY_ADMIN_COMMAND);
+        return HttpUtil.post(url, modifyAdminRequest, ModifyAdminResult.class, imClient.getConfig());
+    }
+
+    public ModifyAdminResult modifyAdmin(ModifyAdminRequest modifyAdminRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, MODIFY_ADMIN_COMMAND, random);
+        return HttpUtil.post(url, modifyAdminRequest, ModifyAdminResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取直播群管理员列表
+     *
+     * @param getAdminListRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetAdminListResult getAdminList(GetAdminListRequest getAdminListRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, GET_ADMIN_LIST_COMMAND);
+        return HttpUtil.post(url, getAdminListRequest, GetAdminListResult.class, imClient.getConfig());
+    }
+
+    public GetAdminListResult getAdminList(GetAdminListRequest getAdminListRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, GET_ADMIN_LIST_COMMAND, random);
+        return HttpUtil.post(url, getAdminListRequest, GetAdminListResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 查询用户是否在直播群内
+     *
+     * @param checkMembersRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public CheckMembersResult checkMembers(CheckMembersRequest checkMembersRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, CHECK_MEMBERS_COMMAND);
+        return HttpUtil.post(url, checkMembersRequest, CheckMembersResult.class, imClient.getConfig());
+    }
+
+    public CheckMembersResult checkMembers(CheckMembersRequest checkMembersRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_CHATROOM, CHECK_MEMBERS_COMMAND, random);
+        return HttpUtil.post(url, checkMembersRequest, CheckMembersResult.class, imClient.getConfig());
     }
 }
