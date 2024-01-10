@@ -14,6 +14,9 @@ import java.util.List;
 public class GetAdminListResult  extends GenericResult implements Serializable {
     private static final long serialVersionUID = 8209999755430615708L;
 
+    /**
+     * 该群组的直播群管理员列表
+     */
     @JsonProperty("Admin_List")
     private List<AdminResultItem> adminList;
 

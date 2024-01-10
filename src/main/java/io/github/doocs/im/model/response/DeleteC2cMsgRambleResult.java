@@ -13,6 +13,10 @@ import java.util.List;
  */
 public class DeleteC2cMsgRambleResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -7513216082123424659L;
+
+    /**
+     * 请求中格式非法的 MsgKey
+     */
     @JsonProperty("InvalidMsgKeyList")
     private List<String> invalidMsgKeyList;
 

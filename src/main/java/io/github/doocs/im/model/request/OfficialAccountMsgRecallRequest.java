@@ -15,12 +15,22 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfficialAccountMsgRecallRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -8441195658528603133L;
+
+    /**
+     * 操作的公众号用户 ID
+     */
     @JsonProperty("Official_Account")
     private String officialAccount;
 
+    /**
+     * 被撤回的消息 MsgKey 列表，一次请求最多可以撤回10条消息
+     */
     @JsonProperty("MsgKeyList")
     private List<String> msgKeyList;
 
+    /**
+     * 撤回消息的原因，长度限制最大100字节
+     */
     @JsonProperty("Reason")
     private String reason;
 

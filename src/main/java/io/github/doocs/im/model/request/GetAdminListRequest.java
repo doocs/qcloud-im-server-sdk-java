@@ -15,6 +15,9 @@ import java.io.Serializable;
 public class GetAdminListRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -4674343475066620157L;
 
+    /**
+     * 直播群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 

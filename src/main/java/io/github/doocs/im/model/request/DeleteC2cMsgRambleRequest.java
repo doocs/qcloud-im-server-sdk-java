@@ -15,12 +15,23 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeleteC2cMsgRambleRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = 7845418223658345469L;
+
+    /**
+     * 发起删除操作的账号，即以 Operator_Account 的身份删除消息。
+     */
     @JsonProperty("Operator_Account")
     private String operatorAccount;
 
+    /**
+     * 会话的另一方账号。
+     */
     @JsonProperty("Peer_Account")
     private String peerAccount;
 
+    /**
+     * 待删除消息的 MsgKey 数组。
+     * 一次最多删除30条消息。
+     */
     @JsonProperty("MsgKeyList")
     private List<String> msgKeyList;
 

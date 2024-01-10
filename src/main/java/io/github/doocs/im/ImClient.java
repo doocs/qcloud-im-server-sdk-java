@@ -2,17 +2,7 @@ package io.github.doocs.im;
 
 import io.github.doocs.im.constant.ContentType;
 import io.github.doocs.im.constant.Domain;
-import io.github.doocs.im.core.Account;
-import io.github.doocs.im.core.Audit;
-import io.github.doocs.im.core.Group;
-import io.github.doocs.im.core.Member;
-import io.github.doocs.im.core.Message;
-import io.github.doocs.im.core.OfficialAccount;
-import io.github.doocs.im.core.Operation;
-import io.github.doocs.im.core.Profile;
-import io.github.doocs.im.core.RecentContact;
-import io.github.doocs.im.core.Robot;
-import io.github.doocs.im.core.Sns;
+import io.github.doocs.im.core.*;
 import io.github.doocs.im.util.RandomUtil;
 import io.github.doocs.im.util.SigUtil;
 

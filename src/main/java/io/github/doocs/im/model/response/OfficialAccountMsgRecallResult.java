@@ -14,6 +14,9 @@ import java.util.List;
 public class OfficialAccountMsgRecallResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = 1567110934824930661L;
 
+    /**
+     * 消息撤回请求的详细结果
+     */
     @JsonProperty("RecallRetList")
     private List<RecallRetItem> recallRetList;
 

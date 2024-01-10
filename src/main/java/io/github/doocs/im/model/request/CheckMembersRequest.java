@@ -16,9 +16,15 @@ import java.util.List;
 public class CheckMembersRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = 1773060365482346969L;
 
+    /**
+     * 操作的群 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 查询的用户 UserID 列表
+     */
     @JsonProperty("Member_Account")
     private List<String> memberAccount;
 

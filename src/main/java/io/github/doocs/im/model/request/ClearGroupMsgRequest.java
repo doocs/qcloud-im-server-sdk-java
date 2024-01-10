@@ -14,9 +14,16 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClearGroupMsgRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = 1822917977659354031L;
+
+    /**
+     * 要清空历史消息的群组 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 清空小于等于 MsgSeq 的历史消息，不填则清空所有的历史消息
+     */
     @JsonProperty("MsgSeq")
     private Long msgSeq;
 

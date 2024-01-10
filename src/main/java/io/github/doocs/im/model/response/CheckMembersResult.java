@@ -14,6 +14,9 @@ import java.util.List;
 public class CheckMembersResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = 983416554639985218L;
 
+    /**
+     * 在直播群内的用户 UserID 列表
+     */
     @JsonProperty("Member_Account")
     private List<String> memberAccount;
 
