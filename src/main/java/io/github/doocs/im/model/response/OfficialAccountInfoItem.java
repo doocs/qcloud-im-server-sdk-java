@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * 公众号详情-结果
- *
  * @author hyh
- * @since 2024/01/10 11:03
+ * @since 2024/01/10 15:59
  */
-public class OfficialAccountInfoResult extends GenericResult implements Serializable {
-    private static final long serialVersionUID = 6829814981147659840L;
+public class OfficialAccountInfoItem implements Serializable {
+    private static final long serialVersionUID = 5679877352590877974L;
     /**
      * 公众号名称
      */
@@ -61,10 +59,10 @@ public class OfficialAccountInfoResult extends GenericResult implements Serializ
     private String customString;
 
     /**
-     * 公众号的创建时间
+     * 订阅者自己的相关信息
      */
-    @JsonProperty("CreateTime")
-    private Integer createTime;
+    @JsonProperty("SelfInfo")
+    private SubscriberSelfInfo selfInfo;
 
     public String getName() {
         return name;
@@ -130,17 +128,17 @@ public class OfficialAccountInfoResult extends GenericResult implements Serializ
         this.customString = customString;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public SubscriberSelfInfo getSelfInfo() {
+        return selfInfo;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setSelfInfo(SubscriberSelfInfo selfInfo) {
+        this.selfInfo = selfInfo;
     }
 
     @Override
     public String toString() {
-        return "OfficialAccountInfoResult{" +
+        return "OfficialAccountInfoItem{" +
                 "name='" + name + '\'' +
                 ", ownerAccount='" + ownerAccount + '\'' +
                 ", lastMsgTime=" + lastMsgTime +
@@ -149,10 +147,7 @@ public class OfficialAccountInfoResult extends GenericResult implements Serializ
                 ", faceUrl='" + faceUrl + '\'' +
                 ", organization='" + organization + '\'' +
                 ", customString='" + customString + '\'' +
-                ", createTime=" + createTime +
-                ", actionStatus='" + actionStatus + '\'' +
-                ", errorInfo='" + errorInfo + '\'' +
-                ", errorCode=" + errorCode +
+                ", selfInfo=" + selfInfo +
                 '}';
     }
 }

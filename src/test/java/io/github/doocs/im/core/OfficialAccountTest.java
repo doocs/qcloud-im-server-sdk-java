@@ -115,4 +115,45 @@ class OfficialAccountTest {
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
 
+    @Test
+    void testAddSubscriber() throws IOException {
+        AddSubscriberRequest request = new AddSubscriberRequest();
+        request.setOfficialAccount("test_official_account_user_id");
+        request.setSubscriberList(Collections.singletonList(new OfficialAccountItem("test_subscriber_id")));
+        AddSubscriberResult result = client.officialAccount.addSubscriber(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testDeleteSubscriber() throws IOException {
+        DeleteSubscriberRequest request = new DeleteSubscriberRequest();
+        request.setOfficialAccount("test_official_account_user_id");
+        request.setSubscriberToDelAccount(Collections.singletonList("test_subscriber_id"));
+        DeleteSubscriberResult result = client.officialAccount.deleteSubscriber(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testModifySubscriberInfo() throws IOException {
+        ModifySubscriberInfoRequest request = new ModifySubscriberInfoRequest();
+        request.setOfficialAccount("test_official_account_user_id");
+        request.setSubscriberAccount("test_subscriber_id");
+        request.setCustomString("test_custom_string");
+        ModifySubscriberInfoResult result = client.officialAccount.modifySubscriberInfo(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testGetSubscribedOfficialAccountList() throws IOException {
+        GetSubscribedOfficialAccountListRequest request = new GetSubscribedOfficialAccountListRequest();
+        request.setSubscriberAccount("test_subscriber_id");
+        GetSubscribedOfficialAccountListResult result = client.officialAccount.getSubscribedOfficialAccountList(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+
 }
