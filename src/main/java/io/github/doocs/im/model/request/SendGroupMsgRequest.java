@@ -78,7 +78,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
     /**
      * 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
      */
-    @JsonProperty("cloudCustomData")
+    @JsonProperty("CloudCustomData")
     private String cloudCustomData;
 
     /**
