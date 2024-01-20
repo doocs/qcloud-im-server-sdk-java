@@ -31,8 +31,8 @@ public class TIMFileMsgElement extends TIMMsgElement implements Serializable {
         this.msgContent = msgContent;
     }
 
-    public TIMFileMsgElement(String url, String uuid, Integer fileSize, String filename, Integer downloadFlag) {
-        this(new FileMsgContent(url, uuid, fileSize, filename, downloadFlag));
+    public TIMFileMsgElement(String url, String uuid, Integer fileSize, String fileName, Integer downloadFlag) {
+        this(new FileMsgContent(url, uuid, fileSize, fileName, downloadFlag));
     }
 
     public FileMsgContent getMsgContent() {
@@ -55,7 +55,7 @@ public class TIMFileMsgElement extends TIMMsgElement implements Serializable {
         private Integer fileSize;
 
         @JsonProperty("FileName")
-        private String filename;
+        private String fileName;
 
         @JsonProperty("Download_Flag")
         private Integer downloadFlag;
@@ -63,11 +63,11 @@ public class TIMFileMsgElement extends TIMMsgElement implements Serializable {
         public FileMsgContent() {
         }
 
-        public FileMsgContent(String url, String uuid, Integer fileSize, String filename, Integer downloadFlag) {
+        public FileMsgContent(String url, String uuid, Integer fileSize, String fileName, Integer downloadFlag) {
             this.url = url;
             this.uuid = uuid;
             this.fileSize = fileSize;
-            this.filename = filename;
+            this.fileName = fileName;
             this.downloadFlag = downloadFlag;
         }
 
@@ -96,11 +96,11 @@ public class TIMFileMsgElement extends TIMMsgElement implements Serializable {
         }
 
         public String getFilename() {
-            return filename;
+            return fileName;
         }
 
-        public void setFilename(String filename) {
-            this.filename = filename;
+        public void setFilename(String fileName) {
+            this.fileName = fileName;
         }
 
         public Integer getDownloadFlag() {
