@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/doocs/qcloud-im-server-sdk-java#readme",
   "devDependencies": {
-    "@vuepress/plugin-search": "^2.0.0-rc.0",
+    "@vuepress/bundler-vite": "^2.0.0-rc.13",
+    "@vuepress/plugin-search": "^2.0.0-rc.13",
+    "@vuepress/theme-default": "^2.0.0-rc.35",
     "prettier": "2.8.8",
-    "vuepress": "^2.0.0-rc.0"
+    "vuepress": "^2.0.0-rc.13"
   }
 }

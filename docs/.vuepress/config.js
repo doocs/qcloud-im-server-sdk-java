@@ -1,7 +1,10 @@
-import { defaultTheme } from 'vuepress';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { defaultTheme } from '@vuepress/theme-default';
+import { defineUserConfig } from 'vuepress';
 import { searchPlugin } from '@vuepress/plugin-search';
 
-module.exports = {
+export default defineUserConfig({
+  bundler: viteBundler(),
   lang: 'zh-CN',
   title: '腾讯云 IM 服务端 Java SDK 使用文档',
   description: '腾讯云 IM 服务端 SDK API 文档 Java 版',
@@ -57,4 +60,4 @@ module.exports = {
       isSearchable: page => page.path !== '/',
     }),
   ],
-};
+})
