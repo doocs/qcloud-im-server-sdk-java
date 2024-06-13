@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,6 +22,7 @@ public class HttpUtil {
     private static final String USER_AGENT_KEY = "User-Agent";
     private static final ClientConfiguration DEFAULT_CONFIG = new ClientConfiguration();
     private static final String DEFAULT_USER_AGENT = DEFAULT_CONFIG.getUserAgent();
+    private static final Map<ClientConfiguration, OkHttpClient> CLIENT_CACHE = new ConcurrentHashMap<>();
 
     private static final OkHttpClient DEFAULT_CLIENT = new OkHttpClient.Builder()
             .connectionPool(DEFAULT_CONFIG.getConnectionPool())
@@ -37,22 +39,27 @@ public class HttpUtil {
     }
 
     public static String post(String url, String json, ClientConfiguration config) throws IOException {
-        OkHttpClient httpClient = DEFAULT_CLIENT;
-        if (config != null) {
-            httpClient = new OkHttpClient.Builder()
-                    .connectionPool(config.getConnectionPool())
-                    .connectTimeout(config.getConnectTimeout(), TimeUnit.MILLISECONDS)
-                    .readTimeout(config.getReadTimeout(), TimeUnit.MILLISECONDS)
-                    .writeTimeout(config.getWriteTimeout(), TimeUnit.MILLISECONDS)
-                    .callTimeout(config.getCallTimeout(), TimeUnit.MILLISECONDS)
-                    .retryOnConnectionFailure(false)
-                    .addInterceptor(new RetryInterceptor(config.getMaxRetries()))
-                    .build();
-        }
+        OkHttpClient httpClient = getClient(config);
         Map<String, String> headers = new HashMap<>(2);
         boolean emptyAgent = Objects.isNull(config) || Objects.isNull(config.getUserAgent());
         headers.put(USER_AGENT_KEY, emptyAgent ? DEFAULT_USER_AGENT : config.getUserAgent());
         return post(url, json, httpClient, headers);
+    }
+
+    private static OkHttpClient getClient(ClientConfiguration config) {
+        if (config == null) {
+            return DEFAULT_CLIENT;
+        }
+
+        return CLIENT_CACHE.computeIfAbsent(config, cfg -> new OkHttpClient.Builder()
+                .connectionPool(cfg.getConnectionPool())
+                .connectTimeout(cfg.getConnectTimeout(), TimeUnit.MILLISECONDS)
+                .readTimeout(cfg.getReadTimeout(), TimeUnit.MILLISECONDS)
+                .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
+                .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
+                .retryOnConnectionFailure(false)
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries()))
+                .build());
     }
 
     public static String post(String url, String json, OkHttpClient httpClient, Map<String, String> headers) throws IOException {

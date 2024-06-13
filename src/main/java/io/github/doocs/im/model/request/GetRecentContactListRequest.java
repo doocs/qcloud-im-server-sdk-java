@@ -24,7 +24,7 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
      * 普通会话的起始时间，第一页填 0
      */
     @JsonProperty("TimeStamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     /**
      * 普通会话的起始位置，第一页填 0
@@ -36,7 +36,7 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
      * 置顶会话的起始时间，第一页填 0
      */
     @JsonProperty("TopTimeStamp")
-    private Integer topTimestamp;
+    private Long topTimestamp;
 
     /**
      * 置顶会话的起始位置，第一页填 0
@@ -57,8 +57,8 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
     public GetRecentContactListRequest() {
     }
 
-    public GetRecentContactListRequest(String fromAccount, Integer timestamp, Integer startIndex,
-                                       Integer topTimestamp, Integer topStartIndex, Integer assistFlags) {
+    public GetRecentContactListRequest(String fromAccount, Long timestamp, Integer startIndex,
+                                       Long topTimestamp, Integer topStartIndex, Integer assistFlags) {
         this.fromAccount = fromAccount;
         this.timestamp = timestamp;
         this.startIndex = startIndex;
@@ -88,11 +88,11 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
         this.fromAccount = fromAccount;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -104,11 +104,11 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
         this.startIndex = startIndex;
     }
 
-    public Integer getTopTimestamp() {
+    public Long getTopTimestamp() {
         return topTimestamp;
     }
 
-    public void setTopTimestamp(Integer topTimestamp) {
+    public void setTopTimestamp(Long topTimestamp) {
         this.topTimestamp = topTimestamp;
     }
 
@@ -131,9 +131,9 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
 
     public static final class Builder {
         private String fromAccount;
-        private Integer timestamp;
+        private Long timestamp;
         private Integer startIndex;
-        private Integer topTimestamp;
+        private Long topTimestamp;
         private Integer topStartIndex;
         private Integer assistFlags;
 
@@ -149,7 +149,7 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
             return this;
         }
 
-        public Builder timestamp(Integer timestamp) {
+        public Builder timestamp(Long timestamp) {
             this.timestamp = timestamp;
             return this;
         }
@@ -159,7 +159,7 @@ public class GetRecentContactListRequest extends GenericRequest implements Seria
             return this;
         }
 
-        public Builder topTimestamp(Integer topTimestamp) {
+        public Builder topTimestamp(Long topTimestamp) {
             this.topTimestamp = topTimestamp;
             return this;
         }

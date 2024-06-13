@@ -23,7 +23,7 @@ public class GetMembersResult extends GenericResult implements Serializable {
      * 分页拉取标志，非0表示还有更多成员未返回，需要将该数字设置到请求参数 Timestamp 中拉取更多成员；0表示已经返回所有成员
      */
     @JsonProperty("NextTimestamp")
-    private Integer nextTimestamp;
+    private Long nextTimestamp;
 
     public List<MemberListItem> getMemberList() {
         return memberList;
@@ -33,11 +33,11 @@ public class GetMembersResult extends GenericResult implements Serializable {
         this.memberList = memberList;
     }
 
-    public Integer getNextTimestamp() {
+    public Long getNextTimestamp() {
         return nextTimestamp;
     }
 
-    public void setNextTimestamp(Integer nextTimestamp) {
+    public void setNextTimestamp(Long nextTimestamp) {
         this.nextTimestamp = nextTimestamp;
     }
 

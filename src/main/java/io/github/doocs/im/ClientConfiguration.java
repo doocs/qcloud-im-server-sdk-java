@@ -3,6 +3,8 @@ package io.github.doocs.im;
 import io.github.doocs.im.util.VersionInfoUtil;
 import okhttp3.ConnectionPool;
 
+import java.util.Objects;
+
 /**
  * 客户端配置类
  *
@@ -163,6 +165,47 @@ public class ClientConfiguration {
         this.connectionPool = connectionPool;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ClientConfiguration that = (ClientConfiguration) o;
+        if (maxRetries != that.maxRetries) {
+            return false;
+        }
+        if (connectTimeout != that.connectTimeout) {
+            return false;
+        }
+        if (readTimeout != that.readTimeout) {
+            return false;
+        }
+        if (writeTimeout != that.writeTimeout) {
+            return false;
+        }
+        if (callTimeout != that.callTimeout) {
+            return false;
+        }
+        if (expireTime != that.expireTime) {
+            return false;
+        }
+        if (autoRenewSig != that.autoRenewSig) {
+            return false;
+        }
+        if (!userAgent.equals(that.userAgent)) {
+            return false;
+        }
+        return connectionPool.equals(that.connectionPool);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(maxRetries, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, userAgent, connectionPool);
+    }
 
     public static final class Builder {
         private int maxRetries = DEFAULT_MAX_RETRIES;

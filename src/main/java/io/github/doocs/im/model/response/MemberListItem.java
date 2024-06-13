@@ -22,6 +22,18 @@ public class MemberListItem implements Serializable {
     @JsonProperty("JoinTime")
     private Integer joinTime;
 
+    /**
+     * 用户昵称
+     */
+    @JsonProperty("NickName")
+    private String nickname;
+
+    /**
+     * 用户头像
+     */
+    @JsonProperty("Avatar")
+    private String avatar;
+
     public String getMemberAccount() {
         return memberAccount;
     }
@@ -38,11 +50,29 @@ public class MemberListItem implements Serializable {
         this.joinTime = joinTime;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "MemberListItem{" +
                 "memberAccount='" + memberAccount + '\'' +
                 ", joinTime=" + joinTime +
+                ", nickname='" + nickname + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 }

@@ -39,6 +39,13 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
     private String toAccount;
 
     /**
+     * 默认为 0，表示消息存历史聊天记录
+     * 1表示消息不存历史聊天记录，即发送消息时，若接收方在线，则能收到此消息，若接收方不在线，则收不到该消息。适用于实现一些实时状态类的功能，如实现“对方正在输入”功能
+     */
+    @JsonProperty("OnlineOnlyFlag")
+    private Integer onlineOnlyFlag;
+
+    /**
      * 消息离线保存时长（单位：秒），最长为7天（604800秒）
      * 若设置该字段为0，则消息只发在线用户，不保存离线
      * 若设置该字段超过7天（604800秒），仍只保存7天
@@ -126,13 +133,11 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
         this.msgBody = msgBody;
     }
 
-    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer msgLifeTime,
-                          Long msgSeq, Long msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl,
-                          List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData,
-                          OfflinePushInfo offlinePushInfo, Integer supportMessageExtension, Integer isNeedReadReceipt) {
+    public SendMsgRequest(Integer syncOtherMachine, String fromAccount, String toAccount, Integer onlineOnlyFlag, Integer msgLifeTime, Long msgSeq, Long msgRandom, Integer msgTimeStamp, List<String> forbidCallbackControl, List<String> sendMsgControl, List<TIMMsgElement> msgBody, String cloudCustomData, OfflinePushInfo offlinePushInfo, Integer supportMessageExtension, Integer isNeedReadReceipt) {
         this.syncOtherMachine = syncOtherMachine;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
+        this.onlineOnlyFlag = onlineOnlyFlag;
         this.msgLifeTime = msgLifeTime;
         this.msgSeq = msgSeq;
         this.msgRandom = msgRandom;
@@ -150,6 +155,7 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
         this.syncOtherMachine = builder.syncOtherMachine;
         this.fromAccount = builder.fromAccount;
         this.toAccount = builder.toAccount;
+        this.onlineOnlyFlag = builder.onlineOnlyFlag;
         this.msgLifeTime = builder.msgLifeTime;
         this.msgSeq = builder.msgSeq;
         this.msgRandom = builder.msgRandom;
@@ -189,6 +195,14 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
 
     public void setToAccount(String toAccount) {
         this.toAccount = toAccount;
+    }
+
+    public Integer getOnlineOnlyFlag() {
+        return onlineOnlyFlag;
+    }
+
+    public void setOnlineOnlyFlag(Integer onlineOnlyFlag) {
+        this.onlineOnlyFlag = onlineOnlyFlag;
     }
 
     public Integer getMsgLifeTime() {
@@ -284,6 +298,7 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
         private Integer syncOtherMachine;
         private String fromAccount;
         private String toAccount;
+        private Integer onlineOnlyFlag;
         private Integer msgLifeTime;
         private Long msgSeq;
         private Long msgRandom;
@@ -315,6 +330,11 @@ public class SendMsgRequest extends GenericRequest implements Serializable {
 
         public Builder toAccount(String toAccount) {
             this.toAccount = toAccount;
+            return this;
+        }
+
+        public Builder onlineOnlyFlag(Integer onlineOnlyFlag) {
+            this.onlineOnlyFlag = onlineOnlyFlag;
             return this;
         }
 

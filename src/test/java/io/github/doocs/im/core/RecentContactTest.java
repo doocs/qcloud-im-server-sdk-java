@@ -36,9 +36,9 @@ class RecentContactTest {
     void testGetRecentContactList() throws IOException {
         GetRecentContactListRequest request = GetRecentContactListRequest.builder()
                 .fromAccount("doocs")
-                .timestamp(0)
+                .timestamp(0L)
                 .startIndex(0)
-                .topTimestamp(0)
+                .topTimestamp(0L)
                 .topStartIndex(0)
                 .assistFlags(AssistFlags.BIT_0)
                 .build();

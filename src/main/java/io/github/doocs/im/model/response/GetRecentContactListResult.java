@@ -29,7 +29,7 @@ public class GetRecentContactListResult extends GenericResult implements Seriali
      * 普通会话下一页拉取的起始时间，分页拉取时通过请求包的 TimeStamp 字段带给移动通信后台
      */
     @JsonProperty("TimeStamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     /**
      * 普通会话下一页拉取的起始位置，分页拉取时通过请求包的 StartIndex 字段带给移动通信后台
@@ -41,7 +41,7 @@ public class GetRecentContactListResult extends GenericResult implements Seriali
      * 置顶会话下一页拉取的起始时间，分页拉取时通过请求包的 TopTimeStamp 字段带给移动通信后台
      */
     @JsonProperty("TopTimeStamp")
-    private Integer topTimestamp;
+    private Long topTimestamp;
 
     /**
      * 置顶会话下一页拉取的起始位置，分页拉取时通过请求包的 TopStartIndex 字段带给移动通信后台
@@ -71,11 +71,11 @@ public class GetRecentContactListResult extends GenericResult implements Seriali
         this.completeFlag = completeFlag;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -87,11 +87,11 @@ public class GetRecentContactListResult extends GenericResult implements Seriali
         this.startIndex = startIndex;
     }
 
-    public Integer getTopTimestamp() {
+    public Long getTopTimestamp() {
         return topTimestamp;
     }
 
-    public void setTopTimestamp(Integer topTimestamp) {
+    public void setTopTimestamp(Long topTimestamp) {
         this.topTimestamp = topTimestamp;
     }
 

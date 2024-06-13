@@ -45,7 +45,7 @@ public class ContactResultItem implements Serializable {
      * 会话分组对应最近更新时间戳
      */
     @JsonProperty("Timestamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     public Integer getType() {
         return type;
@@ -87,11 +87,11 @@ public class ContactResultItem implements Serializable {
         this.contactGroupId = contactGroupId;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 

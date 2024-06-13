@@ -336,15 +336,18 @@ class GroupTest {
 
     @Test
     void testGroupMsgGetSimple() throws IOException {
-        GroupMsgGetSimpleRequest request = GroupMsgGetSimpleRequest.builder()
-                .groupId("MyFirstGroup")
-                .reqMsgNumber(1)
-                .reqMsgSeq(20L)
-                .build();
+        for (int i = 0; i < 10; ++i) {
+            GroupMsgGetSimpleRequest request = GroupMsgGetSimpleRequest.builder()
+                    .groupId("MyFirstGroup")
+                    .reqMsgNumber(1)
+                    .reqMsgSeq(20L)
+                    .build();
 
-        GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);
-        System.out.println(result);
-        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+            GroupMsgGetSimpleResult result = client.group.groupMsgGetSimple(request);
+            System.out.println(result);
+            Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+        }
+
     }
 
     @Test
@@ -358,14 +361,17 @@ class GroupTest {
 
     @Test
     void testGetMembers() throws IOException {
-        GetMembersRequest request = GetMembersRequest.builder()
-                .groupId("MyFirstGroup")
-                .timestamp(0)
-                .build();
+        for (int i = 0; i < 10; ++i) {
+            GetMembersRequest request = GetMembersRequest.builder()
+                    .groupId("MyFirstGroup")
+                    .timestamp(0L)
+                    .build();
 
-        GetMembersResult result = client.group.getMembers(request);
-        System.out.println(result);
-        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+            GetMembersResult result = client.group.getMembers(request);
+            System.out.println(result);
+            Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+        }
+
     }
 
     @Test
