@@ -46,8 +46,8 @@ public class BeforeCreateGroupCallback implements Serializable {
     /**
      * 该用户已创建的同类的群组个数
      */
-    @JsonProperty("CreatedGroupNum")
-    private Integer createdGroupNum;
+    @JsonProperty("CreateGroupNum")
+    private Integer createGroupNum;
 
     /**
      * 请求创建的群组的初始化成员列表
@@ -101,12 +101,12 @@ public class BeforeCreateGroupCallback implements Serializable {
         this.name = name;
     }
 
-    public Integer getCreatedGroupNum() {
-        return createdGroupNum;
+    public Integer getCreateGroupNum() {
+        return createGroupNum;
     }
 
-    public void setCreatedGroupNum(Integer createdGroupNum) {
-        this.createdGroupNum = createdGroupNum;
+    public void setCreateGroupNum(Integer createGroupNum) {
+        this.createGroupNum = createGroupNum;
     }
 
     public List<MemberAccount> getMemberList() {

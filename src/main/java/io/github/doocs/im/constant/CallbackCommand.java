@@ -7,6 +7,12 @@ package io.github.doocs.im.constant;
  * @since 2021/11/16 11:27
  */
 public class CallbackCommand {
+
+    /**
+     * 接口超频告警回调
+     */
+    public static final String REQUEST_OVER_LIMIT = "Alert.RequestOverLimit";
+
     /**
      * 状态变更回调（在线状态）
      */
@@ -170,9 +176,34 @@ public class CallbackCommand {
     public static final String GROUP_CALLBACK_AFTER_TOPIC_INFO_CHANGED = "Group.CallbackAfterTopicInfoChanged";
 
     /**
+     * 群成员资料变更后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_MEMBER_FIELD_CHANGED = "Group.CallbackAfterMemberFieldChanged";
+
+    /**
+     * 群自定义属性变更后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_GROUP_ATTR_CHANGED = "Group.CallbackAfterGroupAttrChanged";
+
+    /**
+     * 已读回执后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_READ_RECEIPT = "Group.CallbackAfterReadReceipt";
+
+    /**
+     * 转让群主后回调
+     */
+    public static final String GROUP_CALLBACK_AFTER_CHANGE_GROUP_OWNER = "Group.CallbackAfterChangeGroupOwner";
+
+    /**
      * 群内@机器人之后回调
      */
     public static final String BOT_CALLBACK_ON_GROUP_MESSAGE = "Bot.OnGroupMessage";
+
+    /**
+     * 智能机器人单聊消息自定义回调
+     */
+    public static final String CHAT_BOT_ON_C2C_SIGNAL_MESSAGE = "Chatbot.OnC2CSignalMessage";
 
     // --------------------------------------------------------------------------------------------------------
 
@@ -237,6 +268,19 @@ public class CallbackCommand {
      * 撤回公众号消息之后回调
      */
     public static final String OFFICIAL_ACCOUNT_CALLBACK_AFTER_MSG_WITHDRAW = "OfficialAccount.CallbackAfterMsgWithDraw";
+
+    // --------------------------------------------------------------------------------------------------------
+
+    /**
+     * 普通推送结果回调
+     */
+    public static final String PUSH_OFFLINE_PUSH = "Push.OfflinePush";
+
+    /**
+     * 全员推送结果回调
+     */
+    public static final String PUSH_ALL_MEMBER_PUSH = "Push.AllMemberPush";
+
 
     private CallbackCommand() {
 
