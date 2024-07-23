@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.13" />
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+
+      html.dark {
+        --c-bg: #22272e;
+      }
+
+      html,
+      body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+        document.documentElement.classList.toggle('dark', true)
+      }
+    </script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/43716716?s=200&v=4"><title>首页 | 腾讯云 IM 服务端 Java SDK 使用文档</title><meta name="description" content="腾讯云 IM 服务端 SDK API 文档 Java 版">
+    <link rel="preload" href="/qcloud-im-server-sdk-java/assets/style-CU2Kg4P2.css" as="style"><link rel="stylesheet" href="/qcloud-im-server-sdk-java/assets/style-CU2Kg4P2.css">
+    <link rel="modulepreload" href="/qcloud-im-server-sdk-java/assets/app-DJWPzPWO.js"><link rel="modulepreload" href="/qcloud-im-server-sdk-java/assets/index.html-DcJKtpHJ.js">
+    <link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/index.html-6YuMmc4F.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/account.html-B1rhnish.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/audit.html-Br0K55tm.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/group.html-9g9PYQUm.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/member.html-DcnHrGt9.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/message.html-BYOIMve4.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/official_account.html-Bew9s9Ca.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/operation_1.html-Bsw6Sg_W.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/operation_2.html-D5pUDMLk.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/profile.html-Dkwgskxd.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/quickstart.html-CWUj3YIC.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/recent_contact.html-DZuiQONp.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/robot.html-SudnkUYT.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/sns.html-TAprcgES.js" as="script"><link rel="prefetch" href="/qcloud-im-server-sdk-java/assets/404.html-u3j3p6lX.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container no-sidebar external-link-icon"><!--[--><header class="vp-navbar"><div class="vp-toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/qcloud-im-server-sdk-java/"><img class="vp-site-logo" src="https://avatars.githubusercontent.com/u/43716716?s=200&amp;v=4" alt="腾讯云 IM 服务端 Java SDK 使用文档"><span class="vp-site-name vp-hide-mobile" aria-hidden="true">腾讯云 IM 服务端 Java SDK 使用文档</span></a></span><div class="vp-navbar-items-wrapper" style=""><!--[--><!--]--><nav class="vp-navbar-items vp-hide-mobile" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="auto-link external-link" href="https://github.com/doocs/qcloud-im-server-sdk-java" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><!---->GitHub<!----></a></div><!--]--></nav><!--[--><!--]--><button class="vp-toggle-color-mode-button" title="toggle color mode"><svg class="light-icon" viewbox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="dark-icon" viewbox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar"><nav class="vp-navbar-items" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="auto-link external-link" href="https://github.com/doocs/qcloud-im-server-sdk-java" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><!---->GitHub<!----></a></div><!--]--></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><!--]--><!--[--><main class="vp-home"><header class="vp-hero"><img class="vp-hero-image" src="https://avatars.githubusercontent.com/u/43716716" alt="腾讯云 IM 服务端 Java SDK 使用文档" height="280"><h1 id="main-title">腾讯云 IM 服务端 Java SDK 使用文档</h1><!----><p class="vp-hero-actions"><!--[--><a class="route-link auto-link vp-hero-action-button primary" href="/qcloud-im-server-sdk-java/guide/quickstart.html" aria-label="快速上手"><!---->快速上手<!----></a><a class="route-link auto-link vp-hero-action-button secondary" href="/qcloud-im-server-sdk-java/guide/" aria-label="项目简介"><!---->项目简介<!----></a><!--]--></p></header><div class="vp-features"><!--[--><div class="vp-feature"><h2>账号管理</h2><p>导入、删除、查询账号等</p></div><div class="vp-feature"><h2>单聊消息</h2><p>发送、查询、撤回、已读消息等</p></div><div class="vp-feature"><h2>全员推送</h2><p>设置、获取应用属性、用户属性、用户标签等</p></div><div class="vp-feature"><h2>资料管理</h2><p>设置、拉取资料</p></div><div class="vp-feature"><h2>关系链管理</h2><p>添加、导入、更新、删除、校验好友等</p></div><div class="vp-feature"><h2>最近联系人</h2><p>拉取、删除会话等</p></div><div class="vp-feature"><h2>群组管理</h2><p>管理群组、群成员、群消息通知等</p></div><div class="vp-feature"><h2>全局禁言管理</h2><p>设置、查询全局禁言等</p></div><div class="vp-feature"><h2>机器人</h2><p>创建、删除、拉取机器人等</p></div><div class="vp-feature"><h2>内容审核</h2><p>本地审核、云端审核等</p></div><div class="vp-feature"><h2>公众号管理</h2><p>创建、销毁、修改公众号等</p></div><!--]--></div><div class="theme-default-content"><div></div></div><!--[--><div class="vp-footer">Apache-2.0 Licensed | Copyright © 2021-present Doocs</div><!--]--></main><!--]--></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/qcloud-im-server-sdk-java/assets/app-DJWPzPWO.js" defer></script>
+  </body>
+</html>
