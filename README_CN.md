@@ -26,7 +26,7 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.4.04</version>
+  <version>0.4.05</version>
 </dependency>
 ```
 
