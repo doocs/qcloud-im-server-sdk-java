@@ -51,6 +51,7 @@ CreateGroupRequest request = CreateGroupRequest.builder()
         .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
         .maxMemberCount(500)
         .applyJoinOption(ApplyJoinOption.FREE_ACCESS)
+        .inviteJoinOption(InviteJoinOption.DISABLE_INVITE)
         .build();
 
 CreateGroupResult result = client.group.createGroup(request);

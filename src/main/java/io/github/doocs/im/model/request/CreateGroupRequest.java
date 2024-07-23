@@ -76,6 +76,14 @@ public class CreateGroupRequest implements Serializable {
     private String applyJoinOption;
 
     /**
+     * 邀请加群处理方式。
+     * 包含 FreeAccess （直接邀请用户进群，不需要审批等操作）， NeedPermission 需要群管理员或者群主审批， DisableInvite 不支持 SDK 邀请进群
+     * 该选项 AVChatRoom 群类型不支持
+     */
+    @JsonProperty("InviteJoinOption")
+    private String inviteJoinOption;
+
+    /**
      * 群组维度的自定义字段，默认情况是没有的，可以通过 即时通信 IM 控制台 进行配置，详情请参阅 自定义字段
      */
     @JsonProperty("AppDefinedData")
@@ -108,7 +116,8 @@ public class CreateGroupRequest implements Serializable {
     }
 
     public CreateGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction,
-                              String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
+                              String notification, String faceUrl, Integer maxMemberCount,
+                              String applyJoinOption, String inviteJoinOption,
                               List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
                               List<AppMemberDefinedDataItem> appMemberDefinedData, Integer supportTopic) {
         this.ownerAccount = ownerAccount;
@@ -120,6 +129,7 @@ public class CreateGroupRequest implements Serializable {
         this.faceUrl = faceUrl;
         this.maxMemberCount = maxMemberCount;
         this.applyJoinOption = applyJoinOption;
+        this.inviteJoinOption = inviteJoinOption;
         this.appDefinedData = appDefinedData;
         this.memberList = memberList;
         this.appMemberDefinedData = appMemberDefinedData;
@@ -136,6 +146,7 @@ public class CreateGroupRequest implements Serializable {
         this.faceUrl = builder.faceUrl;
         this.maxMemberCount = builder.maxMemberCount;
         this.applyJoinOption = builder.applyJoinOption;
+        this.inviteJoinOption = builder.inviteJoinOption;
         this.appDefinedData = builder.appDefinedData;
         this.memberList = builder.memberList;
         this.appMemberDefinedData = builder.appMemberDefinedData;
@@ -218,6 +229,14 @@ public class CreateGroupRequest implements Serializable {
         this.applyJoinOption = applyJoinOption;
     }
 
+    public String getInviteJoinOption() {
+        return inviteJoinOption;
+    }
+
+    public void setInviteJoinOption(String inviteJoinOption) {
+        this.inviteJoinOption = inviteJoinOption;
+    }
+
     public List<AppDefinedDataItem> getAppDefinedData() {
         return appDefinedData;
     }
@@ -261,6 +280,7 @@ public class CreateGroupRequest implements Serializable {
         private String faceUrl;
         private Integer maxMemberCount;
         private String applyJoinOption;
+        private String inviteJoinOption;
         private List<AppDefinedDataItem> appDefinedData;
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
@@ -315,6 +335,11 @@ public class CreateGroupRequest implements Serializable {
 
         public Builder applyJoinOption(String applyJoinOption) {
             this.applyJoinOption = applyJoinOption;
+            return this;
+        }
+
+        public Builder inviteJoinOption(String inviteJoinOption) {
+            this.inviteJoinOption = inviteJoinOption;
             return this;
         }
 
