@@ -107,6 +107,14 @@ public class GroupInfo implements Serializable {
     private String applyJoinOption;
 
     /**
+     * 邀请加群处理方式。
+     * 包含 FreeAccess （直接邀请用户进群，不需要审批等操作）， NeedPermission 需要群管理员或者群主审批， DisableInvite 不支持 SDK 邀请进群
+     * 该选项 AVChatRoom 群类型不支持
+     */
+    @JsonProperty("InviteJoinOption")
+    private String inviteJoinOption;
+
+    /**
      * 群全员禁言状态
      */
     @JsonProperty("MuteAllMember")
@@ -136,7 +144,7 @@ public class GroupInfo implements Serializable {
     public GroupInfo(String groupId, String type, String name, String introduction, String notification,
                      String faceUrl, String ownerAccount, Integer createTime, Long infoSeq,
                      Integer lastInfoTime, Integer lastMsgTime, Long nextMsgSeq, Integer memberNum,
-                     Integer maxMemberNum, String applyJoinOption, String muteAllMember,
+                     Integer maxMemberNum, String applyJoinOption, String inviteJoinOption, String muteAllMember,
                      List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
                      List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.groupId = groupId;
@@ -154,6 +162,7 @@ public class GroupInfo implements Serializable {
         this.memberNum = memberNum;
         this.maxMemberNum = maxMemberNum;
         this.applyJoinOption = applyJoinOption;
+        this.inviteJoinOption = inviteJoinOption;
         this.muteAllMember = muteAllMember;
         this.appDefinedData = appDefinedData;
         this.memberList = memberList;
@@ -176,6 +185,7 @@ public class GroupInfo implements Serializable {
         this.memberNum = builder.memberNum;
         this.maxMemberNum = builder.maxMemberNum;
         this.applyJoinOption = builder.applyJoinOption;
+        this.inviteJoinOption = builder.inviteJoinOption;
         this.muteAllMember = builder.muteAllMember;
         this.appDefinedData = builder.appDefinedData;
         this.memberList = builder.memberList;
@@ -306,6 +316,14 @@ public class GroupInfo implements Serializable {
         this.applyJoinOption = applyJoinOption;
     }
 
+    public String getInviteJoinOption() {
+        return inviteJoinOption;
+    }
+
+    public void setInviteJoinOption(String inviteJoinOption) {
+        this.inviteJoinOption = inviteJoinOption;
+    }
+
     public String getMuteAllMember() {
         return muteAllMember;
     }
@@ -355,6 +373,7 @@ public class GroupInfo implements Serializable {
         private Integer memberNum;
         private Integer maxMemberNum;
         private String applyJoinOption;
+        private String inviteJoinOption;
         private String muteAllMember;
         private List<AppDefinedDataItem> appDefinedData;
         private List<MemberProfile> memberList;
@@ -439,6 +458,11 @@ public class GroupInfo implements Serializable {
 
         public Builder applyJoinOption(String applyJoinOption) {
             this.applyJoinOption = applyJoinOption;
+            return this;
+        }
+
+        public Builder inviteJoinOption(String inviteJoinOption) {
+            this.inviteJoinOption = inviteJoinOption;
             return this;
         }
 
