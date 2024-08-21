@@ -100,7 +100,7 @@ public class AfterSendGroupMsgCallback implements Serializable {
     private List<GroupAtInfoItem> groupAtInfo;
 
 
-    private static class GroupAtInfoItem {
+    public static class GroupAtInfoItem {
         /**
          * 群组@全体成员标识，0-非全体@，1-全体@
          */
