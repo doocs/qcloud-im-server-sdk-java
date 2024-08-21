@@ -93,6 +93,44 @@ public class AfterSendGroupMsgCallback implements Serializable {
     @JsonProperty("EventTime")
     private Long eventTime;
 
+    /**
+     * 群组@信息
+     */
+    @JsonProperty("GroupAtInfo")
+    private List<GroupAtInfoItem> groupAtInfo;
+
+
+    private static class GroupAtInfoItem {
+        /**
+         * 群组@全体成员标识，0-非全体@，1-全体@
+         */
+        @JsonProperty("GroupAtAllFlag")
+        private Integer groupAtAllFlag;
+
+        /**
+         * 被@的群成员 UserID
+         */
+        @JsonProperty("GroupAt_Account")
+        private String groupAtAccount;
+
+        public Integer getGroupAtAllFlag() {
+            return groupAtAllFlag;
+        }
+
+        public void setGroupAtAllFlag(Integer groupAtAllFlag) {
+            this.groupAtAllFlag = groupAtAllFlag;
+        }
+
+        public String getGroupAtAccount() {
+            return groupAtAccount;
+        }
+
+        public void setGroupAtAccount(String groupAtAccount) {
+            this.groupAtAccount = groupAtAccount;
+        }
+
+    }
+
     public String getCallbackCommand() {
         return callbackCommand;
     }
@@ -195,5 +233,13 @@ public class AfterSendGroupMsgCallback implements Serializable {
 
     public void setEventTime(Long eventTime) {
         this.eventTime = eventTime;
+    }
+
+    public List<GroupAtInfoItem> getGroupAtInfo() {
+        return groupAtInfo;
+    }
+
+    public void setGroupAtInfo(List<GroupAtInfoItem> groupAtInfo) {
+        this.groupAtInfo = groupAtInfo;
     }
 }
