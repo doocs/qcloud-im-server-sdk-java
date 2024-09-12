@@ -115,6 +115,18 @@ public class GroupInfo implements Serializable {
     private String inviteJoinOption;
 
     /**
+     * 是否启用权限组作为权限判断依据
+     */
+    @JsonProperty("EnablePermission")
+    private Integer enablePermission;
+
+    /**
+     * 群成员拥有的默认权限
+     */
+    @JsonProperty("DefaultPermission")
+    private Integer defaultPermission;
+
+    /**
      * 群全员禁言状态
      */
     @JsonProperty("MuteAllMember")
@@ -146,7 +158,8 @@ public class GroupInfo implements Serializable {
                      Integer lastInfoTime, Integer lastMsgTime, Long nextMsgSeq, Integer memberNum,
                      Integer maxMemberNum, String applyJoinOption, String inviteJoinOption, String muteAllMember,
                      List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
-                     List<AppMemberDefinedDataItem> appMemberDefinedData) {
+                     List<AppMemberDefinedDataItem> appMemberDefinedData,
+                     Integer enablePermission, Integer defaultPermission) {
         this.groupId = groupId;
         this.type = type;
         this.name = name;
@@ -167,6 +180,8 @@ public class GroupInfo implements Serializable {
         this.appDefinedData = appDefinedData;
         this.memberList = memberList;
         this.appMemberDefinedData = appMemberDefinedData;
+        this.enablePermission = enablePermission;
+        this.defaultPermission = defaultPermission;
     }
 
     private GroupInfo(Builder builder) {
@@ -190,6 +205,8 @@ public class GroupInfo implements Serializable {
         this.appDefinedData = builder.appDefinedData;
         this.memberList = builder.memberList;
         this.appMemberDefinedData = builder.appMemberDefinedData;
+        this.enablePermission = builder.enablePermission;
+        this.defaultPermission = builder.defaultPermission;
     }
 
     public static Builder builder() {
@@ -356,6 +373,21 @@ public class GroupInfo implements Serializable {
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
+    public Integer getEnablePermission() {
+        return enablePermission;
+    }
+
+    public void setEnablePermission(Integer enablePermission) {
+        this.enablePermission = enablePermission;
+    }
+
+    public Integer getDefaultPermission() {
+        return defaultPermission;
+    }
+
+    public void setDefaultPermission(Integer defaultPermission) {
+        this.defaultPermission = defaultPermission;
+    }
 
     public static final class Builder {
         private String groupId;
@@ -378,6 +410,8 @@ public class GroupInfo implements Serializable {
         private List<AppDefinedDataItem> appDefinedData;
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
+        private Integer enablePermission;
+        private Integer defaultPermission;
 
         private Builder() {
         }
@@ -483,6 +517,16 @@ public class GroupInfo implements Serializable {
 
         public Builder appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
             this.appMemberDefinedData = appMemberDefinedData;
+            return this;
+        }
+
+        public Builder enablePermission(Integer enablePermission) {
+            this.enablePermission = enablePermission;
+            return this;
+        }
+
+        public Builder defaultPermission(Integer defaultPermission) {
+            this.defaultPermission = defaultPermission;
             return this;
         }
     }

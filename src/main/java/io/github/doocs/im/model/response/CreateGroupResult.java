@@ -18,6 +18,12 @@ public class CreateGroupResult extends GenericResult implements Serializable {
     @JsonProperty("GroupId")
     private String groupId;
 
+    @JsonProperty("Type")
+    private String type;
+
+    @JsonProperty("HugeGroupFlag")
+    private Integer hugeGroupFlag;
+
     public String getGroupId() {
         return groupId;
     }
@@ -26,10 +32,28 @@ public class CreateGroupResult extends GenericResult implements Serializable {
         this.groupId = groupId;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Integer getHugeGroupFlag() {
+        return hugeGroupFlag;
+    }
+
+    public void setHugeGroupFlag(Integer hugeGroupFlag) {
+        this.hugeGroupFlag = hugeGroupFlag;
+    }
+
     @Override
     public String toString() {
         return "CreateGroupResult{" +
                 "groupId='" + groupId + '\'' +
+                ", type='" + type + '\'' +
+                ", hugeGroupFlag=" + hugeGroupFlag +
                 ", actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
                 ", errorCode=" + errorCode +
