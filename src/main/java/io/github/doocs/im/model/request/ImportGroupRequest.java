@@ -85,6 +85,12 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
     @JsonProperty("AppDefinedData")
     private List<Map<String, Object>> appDefinedData;
 
+    /**
+     * 是否支持话题选项，此字段只针对社群有效
+     */
+    @JsonProperty("SupportTopic")
+    private Integer supportTopic;
+
     public ImportGroupRequest() {
     }
 
@@ -95,7 +101,7 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
 
     public ImportGroupRequest(String ownerAccount, String type, String groupId, String name, String introduction,
                               String notification, String faceUrl, Integer maxMemberCount, String applyJoinOption,
-                              Integer createTime, List<Map<String, Object>> appDefinedData) {
+                              Integer createTime, List<Map<String, Object>> appDefinedData, Integer supportTopic) {
         this.ownerAccount = ownerAccount;
         this.type = type;
         this.groupId = groupId;
@@ -107,6 +113,7 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
         this.applyJoinOption = applyJoinOption;
         this.createTime = createTime;
         this.appDefinedData = appDefinedData;
+        this.supportTopic = supportTopic;
     }
 
     private ImportGroupRequest(Builder builder) {
@@ -121,6 +128,7 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
         this.applyJoinOption = builder.applyJoinOption;
         this.createTime = builder.createTime;
         this.appDefinedData = builder.appDefinedData;
+        this.supportTopic = builder.supportTopic;
     }
 
     public static Builder builder() {
@@ -215,6 +223,13 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
         this.appDefinedData = appDefinedData;
     }
 
+    public Integer getSupportTopic() {
+        return supportTopic;
+    }
+
+    public void setSupportTopic(Integer supportTopic) {
+        this.supportTopic = supportTopic;
+    }
 
     public static final class Builder {
         private String ownerAccount;
@@ -228,6 +243,7 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
         private String applyJoinOption;
         private Integer createTime;
         private List<Map<String, Object>> appDefinedData;
+        private Integer supportTopic;
 
         private Builder() {
         }
@@ -288,6 +304,11 @@ public class ImportGroupRequest extends GenericRequest implements Serializable {
 
         public Builder appDefinedData(List<Map<String, Object>> appDefinedData) {
             this.appDefinedData = appDefinedData;
+            return this;
+        }
+
+        public Builder supportTopic(Integer supportTopic) {
+            this.supportTopic = supportTopic;
             return this;
         }
     }

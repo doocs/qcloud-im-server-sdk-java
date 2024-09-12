@@ -107,6 +107,22 @@ public class CreateGroupRequest implements Serializable {
     @JsonProperty("SupportTopic")
     private Integer supportTopic;
 
+    /**
+     * 仅支持话题的社群可以设置该字段
+     * 是否启用权限组作为权限判断依据
+     * 0：不启用
+     * 1：启用
+     */
+    @JsonProperty("EnablePermission")
+    private Integer enablePermission;
+
+    /**
+     * 仅启用权限组作为权限判断依据的群可以设置该字段
+     * 群成员在该群中的默认权限
+     */
+    @JsonProperty("DefaultPermission")
+    private Integer defaultPermission;
+
     public CreateGroupRequest() {
     }
 
@@ -119,7 +135,8 @@ public class CreateGroupRequest implements Serializable {
                               String notification, String faceUrl, Integer maxMemberCount,
                               String applyJoinOption, String inviteJoinOption,
                               List<AppDefinedDataItem> appDefinedData, List<MemberProfile> memberList,
-                              List<AppMemberDefinedDataItem> appMemberDefinedData, Integer supportTopic) {
+                              List<AppMemberDefinedDataItem> appMemberDefinedData, Integer supportTopic,
+                              Integer enablePermission, Integer defaultPermission) {
         this.ownerAccount = ownerAccount;
         this.type = type;
         this.groupId = groupId;
@@ -134,6 +151,8 @@ public class CreateGroupRequest implements Serializable {
         this.memberList = memberList;
         this.appMemberDefinedData = appMemberDefinedData;
         this.supportTopic = supportTopic;
+        this.enablePermission = enablePermission;
+        this.defaultPermission = defaultPermission;
     }
 
     private CreateGroupRequest(Builder builder) {
@@ -151,6 +170,8 @@ public class CreateGroupRequest implements Serializable {
         this.memberList = builder.memberList;
         this.appMemberDefinedData = builder.appMemberDefinedData;
         this.supportTopic = builder.supportTopic;
+        this.enablePermission = builder.enablePermission;
+        this.defaultPermission = builder.defaultPermission;
     }
 
     public static Builder builder() {
@@ -269,6 +290,21 @@ public class CreateGroupRequest implements Serializable {
         this.supportTopic = supportTopic;
     }
 
+    public Integer getEnablePermission() {
+        return enablePermission;
+    }
+
+    public void setEnablePermission(Integer enablePermission) {
+        this.enablePermission = enablePermission;
+    }
+
+    public Integer getDefaultPermission() {
+        return defaultPermission;
+    }
+
+    public void setDefaultPermission(Integer defaultPermission) {
+        this.defaultPermission = defaultPermission;
+    }
 
     public static final class Builder {
         private String ownerAccount;
@@ -285,6 +321,8 @@ public class CreateGroupRequest implements Serializable {
         private List<MemberProfile> memberList;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
         private Integer supportTopic;
+        private Integer enablePermission;
+        private Integer defaultPermission;
 
         private Builder() {
         }
@@ -360,6 +398,16 @@ public class CreateGroupRequest implements Serializable {
 
         public Builder supportTopic(Integer supportTopic) {
             this.supportTopic = supportTopic;
+            return this;
+        }
+
+        public Builder enablePermission(Integer enablePermission) {
+            this.enablePermission = enablePermission;
+            return this;
+        }
+
+        public Builder defaultPermission(Integer defaultPermission) {
+            this.defaultPermission = defaultPermission;
             return this;
         }
     }

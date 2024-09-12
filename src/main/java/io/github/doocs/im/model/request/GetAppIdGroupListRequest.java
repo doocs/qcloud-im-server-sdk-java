@@ -22,6 +22,8 @@ public class GetAppIdGroupListRequest extends GenericRequest implements Serializ
 
     /**
      * 群太多时分页拉取标志，第一次填0，以后填上一次返回的值，返回的 Next 为0代表拉完了
+     * 注意：
+     * 该数字需为64位无符号整数，如果使用32位整数解析，可能会有溢出问题导致无法完整拉取列表。
      */
     @JsonProperty("Next")
     private Long next;

@@ -26,6 +26,12 @@ public class ChangeGroupOwnerRequest extends GenericRequest implements Serializa
     @JsonProperty("NewOwner_Account")
     private String newOwnerAccount;
 
+    /**
+     * 指定的操作者账号
+     */
+    @JsonProperty("From_Account")
+    private String fromAccount;
+
     public ChangeGroupOwnerRequest() {
     }
 
@@ -34,9 +40,16 @@ public class ChangeGroupOwnerRequest extends GenericRequest implements Serializa
         this.newOwnerAccount = newOwnerAccount;
     }
 
+    public ChangeGroupOwnerRequest(String groupId, String newOwnerAccount, String fromAccount) {
+        this.groupId = groupId;
+        this.newOwnerAccount = newOwnerAccount;
+        this.fromAccount = fromAccount;
+    }
+
     private ChangeGroupOwnerRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.newOwnerAccount = builder.newOwnerAccount;
+        this.fromAccount = builder.fromAccount;
     }
 
     public static Builder builder() {
@@ -59,10 +72,18 @@ public class ChangeGroupOwnerRequest extends GenericRequest implements Serializa
         this.newOwnerAccount = newOwnerAccount;
     }
 
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
+    }
 
     public static final class Builder {
         private String groupId;
         private String newOwnerAccount;
+        private String fromAccount;
 
         private Builder() {
         }
@@ -78,6 +99,11 @@ public class ChangeGroupOwnerRequest extends GenericRequest implements Serializa
 
         public Builder newOwnerAccount(String newOwnerAccount) {
             this.newOwnerAccount = newOwnerAccount;
+            return this;
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
             return this;
         }
     }

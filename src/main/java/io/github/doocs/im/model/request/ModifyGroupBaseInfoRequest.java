@@ -70,6 +70,45 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
     private String muteAllMember;
 
     /**
+     * 邀请加群处理方式，包含
+     * FreeAccess （直接邀请用户进群，不需要审批等操作），
+     * NeedPermission 需要群管理员或者群主审批，
+     * DisableInvite 不支持 SDK 邀请邀请进群， 该选项 AVChatRoom 群类型不支持
+     */
+    @JsonProperty("InviteJoinOption")
+    private String inviteJoinOption;
+
+    /**
+     * 操作者来源账号，选填。如果不填写该字段，则修改群资料的操作者为调用该接口时使用的 App 管理员账号。除此之外，App 亦可通过该字段“伪造”修改群资料的操作者，从而实现一些特殊的功能需求。需要注意的是，如果指定该字段，必须要确保字段中的账号是存在的
+     */
+    @JsonProperty("From_Account")
+    private String fromAccount;
+
+    /**
+     * 仅支持话题的社群可以设置该字段
+     * 是否启用权限组作为权限判断依据
+     * 0：不启用
+     * 1：启用
+     */
+    @JsonProperty("EnablePermission")
+    private Integer enablePermission;
+
+    /**
+     * 仅启用权限组作为权限判断依据的群可以设置该字段
+     * 群成员在该群中的默认权限
+     */
+    @JsonProperty("DefaultPermission")
+    private Integer defaultPermission;
+
+    /**
+     * 仅支持 Work，Public， Meeting 群，表示是否支持群成员拉进群前消息。
+     * Off：表示关闭
+     * On：表示打开
+     */
+    @JsonProperty("HistoryMsgBeforeJoin")
+    private String historyMsgBeforeJoin;
+
+    /**
      * 群内群成员禁言，只有群管理员和群主以及系统管理员可以发言
      */
     @JsonProperty("AppDefinedData")
@@ -84,7 +123,9 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
 
     public ModifyGroupBaseInfoRequest(String groupId, String name, String introduction, String notification,
                                       String faceUrl, Integer maxMemberNum, String applyJoinOption,
-                                      String muteAllMember, List<AppDefinedDataItem> appDefinedData) {
+                                      String muteAllMember, List<AppDefinedDataItem> appDefinedData,
+                                      String inviteJoinOption, String fromAccount, Integer enablePermission,
+                                      Integer defaultPermission, String historyMsgBeforeJoin) {
         this.groupId = groupId;
         this.name = name;
         this.introduction = introduction;
@@ -94,6 +135,11 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
         this.applyJoinOption = applyJoinOption;
         this.muteAllMember = muteAllMember;
         this.appDefinedData = appDefinedData;
+        this.inviteJoinOption = inviteJoinOption;
+        this.fromAccount = fromAccount;
+        this.enablePermission = enablePermission;
+        this.defaultPermission = defaultPermission;
+        this.historyMsgBeforeJoin = historyMsgBeforeJoin;
     }
 
     private ModifyGroupBaseInfoRequest(Builder builder) {
@@ -106,6 +152,11 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
         this.applyJoinOption = builder.applyJoinOption;
         this.muteAllMember = builder.muteAllMember;
         this.appDefinedData = builder.appDefinedData;
+        this.inviteJoinOption = builder.inviteJoinOption;
+        this.fromAccount = builder.fromAccount;
+        this.enablePermission = builder.enablePermission;
+        this.defaultPermission = builder.defaultPermission;
+        this.historyMsgBeforeJoin = builder.historyMsgBeforeJoin;
     }
 
     public static Builder builder() {
@@ -184,6 +235,45 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
         this.appDefinedData = appDefinedData;
     }
 
+    public String getInviteJoinOption() {
+        return inviteJoinOption;
+    }
+
+    public void setInviteJoinOption(String inviteJoinOption) {
+        this.inviteJoinOption = inviteJoinOption;
+    }
+
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
+    }
+
+    public Integer getEnablePermission() {
+        return enablePermission;
+    }
+
+    public void setEnablePermission(Integer enablePermission) {
+        this.enablePermission = enablePermission;
+    }
+
+    public Integer getDefaultPermission() {
+        return defaultPermission;
+    }
+
+    public void setDefaultPermission(Integer defaultPermission) {
+        this.defaultPermission = defaultPermission;
+    }
+
+    public String getHistoryMsgBeforeJoin() {
+        return historyMsgBeforeJoin;
+    }
+
+    public void setHistoryMsgBeforeJoin(String historyMsgBeforeJoin) {
+        this.historyMsgBeforeJoin = historyMsgBeforeJoin;
+    }
 
     public static final class Builder {
         private String groupId;
@@ -195,6 +285,11 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
         private String applyJoinOption;
         private String muteAllMember;
         private List<AppDefinedDataItem> appDefinedData;
+        private String inviteJoinOption;
+        private String fromAccount;
+        private Integer enablePermission;
+        private Integer defaultPermission;
+        private String historyMsgBeforeJoin;
 
         private Builder() {
         }
@@ -245,6 +340,31 @@ public class ModifyGroupBaseInfoRequest extends GenericRequest implements Serial
 
         public Builder appDefinedData(List<AppDefinedDataItem> appDefinedData) {
             this.appDefinedData = appDefinedData;
+            return this;
+        }
+
+        public Builder inviteJoinOption(String inviteJoinOption) {
+            this.inviteJoinOption = inviteJoinOption;
+            return this;
+        }
+
+        public Builder fromAccount(String fromAccount) {
+            this.fromAccount = fromAccount;
+            return this;
+        }
+
+        public Builder enablePermission(Integer enablePermission) {
+            this.enablePermission = enablePermission;
+            return this;
+        }
+
+        public Builder defaultPermission(Integer defaultPermission) {
+            this.defaultPermission = defaultPermission;
+            return this;
+        }
+
+        public Builder historyMsgBeforeJoin(String historyMsgBeforeJoin) {
+            this.historyMsgBeforeJoin = historyMsgBeforeJoin;
             return this;
         }
     }

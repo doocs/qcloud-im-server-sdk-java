@@ -59,6 +59,12 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
     @JsonProperty("ResponseFilter")
     private ResponseFilter responseFilter;
 
+    /**
+     * 指定查询的是否为支持话题的群组，1表示支持，0表示不支持。如果指定了此字段，则 GroupType 字段必须为 Community。
+     */
+    @JsonProperty("SupportTopic")
+    private Integer supportTopic;
+
     public GetJoinedGroupListRequest() {
     }
 
@@ -67,7 +73,8 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
     }
 
     public GetJoinedGroupListRequest(String memberAccount, Integer withHugeGroups, Integer withNoActiveGroups,
-                                     Integer limit, Integer offset, String groupType, ResponseFilter responseFilter) {
+                                     Integer limit, Integer offset, String groupType, ResponseFilter responseFilter,
+                                     Integer supportTopic) {
         this.memberAccount = memberAccount;
         this.withHugeGroups = withHugeGroups;
         this.withNoActiveGroups = withNoActiveGroups;
@@ -75,6 +82,7 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
         this.offset = offset;
         this.groupType = groupType;
         this.responseFilter = responseFilter;
+        this.supportTopic = supportTopic;
     }
 
     private GetJoinedGroupListRequest(Builder builder) {
@@ -85,6 +93,7 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
         this.offset = builder.offset;
         this.groupType = builder.groupType;
         this.responseFilter = builder.responseFilter;
+        this.supportTopic = builder.supportTopic;
     }
 
     public static Builder builder() {
@@ -147,6 +156,13 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
         this.responseFilter = responseFilter;
     }
 
+    public Integer getSupportTopic() {
+        return supportTopic;
+    }
+
+    public void setSupportTopic(Integer supportTopic) {
+        this.supportTopic = supportTopic;
+    }
 
     public static final class Builder {
         private String memberAccount;
@@ -156,6 +172,7 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
         private Integer offset;
         private String groupType;
         private ResponseFilter responseFilter;
+        private Integer supportTopic;
 
         private Builder() {
         }
@@ -196,6 +213,11 @@ public class GetJoinedGroupListRequest extends GenericRequest implements Seriali
 
         public Builder responseFilter(ResponseFilter responseFilter) {
             this.responseFilter = responseFilter;
+            return this;
+        }
+
+        public Builder supportTopic(Integer supportTopic) {
+            this.supportTopic = supportTopic;
             return this;
         }
     }
