@@ -11,8 +11,7 @@ The Tencent Cloud IM Server SDK for Java enables Java developers to easily work 
 
 ## Documentation
 
-- Gitee Pages: https://doocs.gitee.io/qcloud-im-server-sdk-java
-- GitHub Pages: https://doocs.github.io/qcloud-im-server-sdk-java
+https://doocs.github.io/qcloud-im-server-sdk-java
 
 ## Quick Start
 

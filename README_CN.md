@@ -11,8 +11,7 @@
 
 ## 文档导航
 
-- Gitee Pages: https://doocs.gitee.io/qcloud-im-server-sdk-java
-- GitHub Pages: https://doocs.github.io/qcloud-im-server-sdk-java
+https://doocs.github.io/qcloud-im-server-sdk-java
 
 ## 快速上手
 
