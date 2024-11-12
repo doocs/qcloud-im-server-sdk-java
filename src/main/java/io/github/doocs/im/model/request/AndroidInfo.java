@@ -19,6 +19,13 @@ public class AndroidInfo implements Serializable {
     private String sound;
 
     /**
+     * Android通知栏样式，“0”代表默认样式，“1”代表大文本样式，不填默认为0。仅对
+     * 华为/荣耀/OPPO生效。
+     */
+    @JsonProperty("PushStyle")
+    private Integer pushStyle;
+
+    /**
      * 华为手机 EMUI 10.0 及以上的通知渠道字段。
      * 该字段不为空时，会覆盖控制台配置的 ChannelID 值；该字段为空时，不会覆盖控制台配置的 ChannelID 值。
      */
@@ -53,6 +60,12 @@ public class AndroidInfo implements Serializable {
     private Integer vivoClassification;
 
     /**
+     * vivo 手机用来标识消息类型，该字段不为空时，会覆盖控制台配置的 category 值；该字段为空时，不会覆盖控制台配置的 category 值。
+     */
+    @JsonProperty("VIVOCategory")
+    private String vivoCategory;
+
+    /**
      * 华为推送通知消息分类，取值为 LOW、NORMAL，不填默认为 NORMAL。
      */
     @JsonProperty("HuaWeiImportance")
@@ -65,15 +78,56 @@ public class AndroidInfo implements Serializable {
     @JsonProperty("ExtAsHuaweiIntentParam")
     private Integer extAsHuaweiIntentParam;
 
+    /**
+     * 华为手机用来标识消息类型，该字段不为空时，会覆盖控制台配置的 category 值；该字段为空时，不会覆盖控制台配置的 category 值。
+     */
+    @JsonProperty("HuaWeiCategory")
+    private String huaweiCategory;
+
+    /**
+     * 华为推送通知栏消息右侧小图标URL，URL必须使用HTTPS协议，取值样例：https://example.com/image.png。
+     * 图片文件须小于512KB，规格建议为40dp x 40dp，弧角大小为8dp。超出建议规格的图片会存在图片压缩或图片显示不全的情况。
+     * 图片格式建议使用JPG/JPEG/PNG。
+     */
+    @JsonProperty("HuaWeiImage")
+    private String huaweiImage;
+
+    /**
+     * 荣耀推送通知栏消息右侧小图标 URL，URL 必须使用 HTTPS 协议，取值样例：https://example.com/image.png。
+     * 图标文件须小于512KB，图标建议规格大小：40dp x 40dp，弧角大小为8dp，超出建议规格大小的图标会存在图片压缩或显示不全的情况。
+     */
+    @JsonProperty("HonorImage")
+    private String honorImage;
+
+    /**
+     * 荣耀推送通知消息分类，取值为 LOW、NORMAL，不填默认为 NORMAL。
+     */
+    @JsonProperty("HonorImportance")
+    private String honorImportance;
+
+    /**
+     * Google 推送通知栏消息右侧图标 URL，图片资源不超过1M，支持 JPG/JPEG/PNG 格式，
+     * 取值样例：https://example.com/image.png。
+     */
+    @JsonProperty("GoogleImage")
+    private String googleImage;
+
     private AndroidInfo(Builder builder) {
         this.sound = builder.sound;
+        this.pushStyle = builder.pushStyle;
         this.huaweiChannelId = builder.huaweiChannelId;
         this.xiaomiChannelId = builder.xiaomiChannelId;
         this.oppoChannelId = builder.oppoChannelId;
         this.googleChannelId = builder.googleChannelId;
         this.vivoClassification = builder.vivoClassification;
+        this.vivoCategory = builder.vivoCategory;
         this.huaweiImportance = builder.huaweiImportance;
         this.extAsHuaweiIntentParam = builder.extAsHuaweiIntentParam;
+        this.huaweiCategory = builder.huaweiCategory;
+        this.huaweiImage = builder.huaweiImage;
+        this.honorImage = builder.honorImage;
+        this.honorImportance = builder.honorImportance;
+        this.googleImage = builder.googleImage;
     }
 
     public static Builder builder() {
@@ -86,6 +140,14 @@ public class AndroidInfo implements Serializable {
 
     public void setSound(String sound) {
         this.sound = sound;
+    }
+
+    public Integer getPushStyle() {
+        return pushStyle;
+    }
+
+    public void setPushStyle(Integer pushStyle) {
+        this.pushStyle = pushStyle;
     }
 
     public String getHuaweiChannelId() {
@@ -128,6 +190,14 @@ public class AndroidInfo implements Serializable {
         this.vivoClassification = vivoClassification;
     }
 
+    public String getVivoCategory() {
+        return vivoCategory;
+    }
+
+    public void setVivoCategory(String vivoCategory) {
+        this.vivoCategory = vivoCategory;
+    }
+
     public String getHuaweiImportance() {
         return huaweiImportance;
     }
@@ -144,16 +214,63 @@ public class AndroidInfo implements Serializable {
         this.extAsHuaweiIntentParam = extAsHuaweiIntentParam;
     }
 
+    public String getHuaweiCategory() {
+        return huaweiCategory;
+    }
+
+    public void setHuaweiCategory(String huaweiCategory) {
+        this.huaweiCategory = huaweiCategory;
+    }
+
+    public String getHuaweiImage() {
+        return huaweiImage;
+    }
+
+    public void setHuaweiImage(String huaweiImage) {
+        this.huaweiImage = huaweiImage;
+    }
+
+    public String getHonorImage() {
+        return honorImage;
+    }
+
+    public void setHonorImage(String honorImage) {
+        this.honorImage = honorImage;
+    }
+
+    public String getHonorImportance() {
+        return honorImportance;
+    }
+
+    public void setHonorImportance(String honorImportance) {
+        this.honorImportance = honorImportance;
+    }
+
+    public String getGoogleImage() {
+        return googleImage;
+    }
+
+    public void setGoogleImage(String googleImage) {
+        this.googleImage = googleImage;
+    }
 
     public static final class Builder {
         private String sound;
+        private Integer pushStyle;
         private String huaweiChannelId;
         private String xiaomiChannelId;
         private String oppoChannelId;
         private String googleChannelId;
         private Integer vivoClassification;
+        private String vivoCategory;
         private String huaweiImportance;
         private Integer extAsHuaweiIntentParam;
+        private String huaweiCategory;
+        private String huaweiImage;
+        private String honorImage;
+        private String honorImportance;
+        private String googleImage;
+
 
         private Builder() {
         }
@@ -199,6 +316,41 @@ public class AndroidInfo implements Serializable {
 
         public Builder extAsHuaweiIntentParam(Integer extAsHuaweiIntentParam) {
             this.extAsHuaweiIntentParam = extAsHuaweiIntentParam;
+            return this;
+        }
+
+        public Builder pushStyle(Integer pushStyle) {
+            this.pushStyle = pushStyle;
+            return this;
+        }
+
+        public Builder vivoCategory(String vivoCategory) {
+            this.vivoCategory = vivoCategory;
+            return this;
+        }
+
+        public Builder huaweiCategory(String huaweiCategory) {
+            this.huaweiCategory = huaweiCategory;
+            return this;
+        }
+
+        public Builder huaweiImage(String huaweiImage) {
+            this.huaweiImage = huaweiImage;
+            return this;
+        }
+
+        public Builder honorImage(String honorImage) {
+            this.honorImage = honorImage;
+            return this;
+        }
+
+        public Builder honorImportance(String honorImportance) {
+            this.honorImportance = honorImportance;
+            return this;
+        }
+
+        public Builder googleImage(String googleImage) {
+            this.googleImage = googleImage;
             return this;
         }
     }
