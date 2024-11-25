@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.doocs.im.model.message.TIMMsgElement;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class RspMsgItem implements Serializable {
      * 消息内容，详情请参见 消息内容 MsgBody 说明
      */
     @JsonProperty("MsgBody")
-    private List<TIMMsgElement> msgBody;
+    private Object msgBody;
 
     /**
      * 字段为 1 时表示系统消息
@@ -83,11 +84,18 @@ public class RspMsgItem implements Serializable {
         this.isPlaceMsg = isPlaceMsg;
     }
 
+    @SuppressWarnings("unchecked")
     public List<TIMMsgElement> getMsgBody() {
-        return msgBody;
+        if (msgBody instanceof List) {
+            return (List<TIMMsgElement>) msgBody;
+        }
+        if (msgBody instanceof TIMMsgElement) {
+            return Collections.singletonList((TIMMsgElement) msgBody);
+        }
+        return Collections.emptyList();
     }
 
-    public void setMsgBody(List<TIMMsgElement> msgBody) {
+    public void setMsgBody(Object msgBody) {
         this.msgBody = msgBody;
     }
 
