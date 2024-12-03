@@ -31,6 +31,7 @@ public class Group {
     public static final String CREATE_GROUP_COMMAND = "create_group";
     public static final String GET_GROUP_INFO_COMMAND = "get_group_info";
     public static final String GET_GROUP_MEMBER_INFO_COMMAND = "get_group_member_info";
+    public static final String GET_SPECIFIED_GROUP_MEMBER_INFO_COMMAND = "get_specified_group_member_info";
     public static final String MODIFY_GROUP_BASE_INFO_COMMAND = "modify_group_base_info";
     public static final String ADD_GROUP_MEMBER_COMMAND = "add_group_member";
     public static final String DELETE_GROUP_MEMBER_COMMAND = "delete_group_member";
@@ -152,6 +153,23 @@ public class Group {
     public GetGroupMemberInfoResult getGroupMemberInfo(GetGroupMemberInfoRequest getGroupMemberInfoRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, GET_GROUP_MEMBER_INFO_COMMAND, random);
         return HttpUtil.post(url, getGroupMemberInfoRequest, GetGroupMemberInfoResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取指定群成员详细资料
+     *
+     * @param getSpecifiedGroupMemberInfoRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GetSpecifiedGroupMemberInfoResult getSpecifiedGroupMemberInfo(GetSpecifiedGroupMemberInfoRequest getSpecifiedGroupMemberInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_SPECIFIED_GROUP_MEMBER_INFO_COMMAND);
+        return HttpUtil.post(url, getSpecifiedGroupMemberInfoRequest, GetSpecifiedGroupMemberInfoResult.class, imClient.getConfig());
+    }
+
+    public GetSpecifiedGroupMemberInfoResult getSpecifiedGroupMemberInfo(GetSpecifiedGroupMemberInfoRequest getSpecifiedGroupMemberInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GET_SPECIFIED_GROUP_MEMBER_INFO_COMMAND, random);
+        return HttpUtil.post(url, getSpecifiedGroupMemberInfoRequest, GetSpecifiedGroupMemberInfoResult.class, imClient.getConfig());
     }
 
     /**

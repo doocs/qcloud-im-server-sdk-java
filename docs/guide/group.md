@@ -116,6 +116,35 @@ GetGroupMemberInfoRequest request = GetGroupMemberInfoRequest.builder()
 GetGroupMemberInfoResult result = client.group.getGroupMemberInfo(request);
 ```
 
+## 获取指定群成员详细资料
+
+App 管理员可根据群组 ID 与群内指定成员 UserID 列表等参数获取指定群组成员的资料。
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                      |
+| ----------------- | ---------------------------------------- |
+| Private           | 支持，同新版本中的 Work（好友工作群）    |
+| Public            | 支持                                     |
+| ChatRoom          | 支持，同新版本中的 Meeting（临时会议群） |
+| AVChatRoom        | 不支持                                   |
+| Community（社群） | 支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+GetSpecifiedGroupMemberInfoRequest request = GetSpecifiedGroupMemberInfoRequest.builder()
+        .groupId("MyFirstGroup")
+        .memberInfoFilter(Collections.singletonList("bingo"))
+        .build();
+
+GetSpecifiedGroupMemberInfoResult result = client.group.getSpecifiedGroupMemberInfo(request);
+```
+
 ## 修改群基础资料
 
 App 管理员可以通过该接口修改指定群组的基础信息。

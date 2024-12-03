@@ -25,7 +25,7 @@ https://doocs.github.io/qcloud-im-server-sdk-java
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.4.09</version>
+  <version>0.4.10</version>
 </dependency>
 ```
 
