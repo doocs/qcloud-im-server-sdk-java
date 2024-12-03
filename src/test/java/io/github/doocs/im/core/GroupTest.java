@@ -92,14 +92,14 @@ class GroupTest {
 
     @Test
     void testGetSpecifiedGroupMemberInfo() throws IOException {
-GetSpecifiedGroupMemberInfoRequest request = GetSpecifiedGroupMemberInfoRequest.builder()
-        .groupId("MyFirstGroup")
-        .memberInfoFilter(Collections.singletonList("bingo"))
-        .build();
+        GetSpecifiedGroupMemberInfoRequest request = GetSpecifiedGroupMemberInfoRequest.builder()
+                .groupId("MyFirstGroup")
+                .memberInfoFilter(Collections.singletonList("bingo"))
+                .build();
 
-GetSpecifiedGroupMemberInfoResult result = client.group.getSpecifiedGroupMemberInfo(request);
-System.out.println(result);
-Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+        GetSpecifiedGroupMemberInfoResult result = client.group.getSpecifiedGroupMemberInfo(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
 
     @Test

@@ -16,18 +16,34 @@ import java.util.List;
 public class GetSpecifiedGroupMemberInfoRequest extends GenericRequest implements Serializable {
     private static final long serialVersionUID = -1588717038990106029L;
 
+    /**
+     * 需要拉取成员信息的群组的 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 需要拉取指定群成员的UserID列表，数量不得超过50。
+     */
     @JsonProperty("Member_List_Account")
     private List<String> memberListAccount;
 
+    /**
+     * 需要获取哪些信息，如果没有该字段则为群成员全部资料，成员信息字段详情请参见 群成员资料。
+     */
     @JsonProperty("MemberInfoFilter")
     private List<String> memberInfoFilter;
 
+    /**
+     * 选填
+     * 拉取指定身份的群成员资料。如没有填写该字段，默认为所有身份成员资料，成员身份可以为：“Owner”，“Admin”，“Member”。
+     */
     @JsonProperty("MemberRoleFilter")
     private List<String> memberRoleFilter;
 
+    /**
+     * 默认情况是没有的。该字段用来群成员维度的自定义字段过滤器，指定需要获取的群成员维度的自定义字段
+     */
     @JsonProperty("AppDefinedDataFilter_GroupMember")
     private List<String> appDefinedDataFilterGroupMember;
 

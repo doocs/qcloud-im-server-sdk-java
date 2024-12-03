@@ -15,9 +15,15 @@ import java.util.List;
 public class GetSpecifiedGroupMemberInfoResult extends GenericResult implements Serializable {
     private static final long serialVersionUID = -5466167278504273597L;
 
+    /**
+     * 需要拉取成员信息的群组的 ID
+     */
     @JsonProperty("GroupId")
     private String groupId;
 
+    /**
+     * 获取到的群成员列表，其中包含了全部或者指定字段的群成员信息
+     */
     @JsonProperty("MemberList")
     private List<MemberProfile> memberList;
 
