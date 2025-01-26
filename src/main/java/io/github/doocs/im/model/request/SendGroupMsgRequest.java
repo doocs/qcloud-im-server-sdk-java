@@ -49,6 +49,12 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
     private String fromAccount;
 
     /**
+     * 群组消息设置@的用户，跟消息体里面@的用户按顺序逐一对应。
+     */
+    @JsonProperty("GroupAtInfo")
+    private List<GroupAtInfo> groupAtInfos;
+
+    /**
      * 线推送信息配置，详细可参阅 消息格式描述
      */
     @JsonProperty("OfflinePushInfo")
@@ -129,6 +135,14 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.topicId = topicId;
     }
 
+    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody,
+                               String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
+                               Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData,
+                               Integer supportMessageExtension, String toAccount, String topicId, List<GroupAtInfo> groupAtInfos) {
+        this(groupId, random, msgPriority, msgBody, fromAccount, offlinePushInfo, forbidCallbackControl, onlineOnlyFlag, sendMsgControl, cloudCustomData, supportMessageExtension, toAccount, topicId);
+        this.groupAtInfos = groupAtInfos;
+    }
+
     private SendGroupMsgRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.random = builder.random;
@@ -143,6 +157,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.supportMessageExtension = builder.supportMessageExtension;
         this.toAccount = builder.toAccount;
         this.topicId = builder.topicId;
+        this.groupAtInfos = builder.groupAtInfos;
     }
 
     public static Builder builder() {
@@ -253,12 +268,20 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.topicId = topicId;
     }
 
+    public List<GroupAtInfo> getGroupAtInfos() {
+        return groupAtInfos;
+    }
+
+    public void setGroupAtInfos(List<GroupAtInfo> groupAtInfos) {
+        this.groupAtInfos = groupAtInfos;
+    }
 
     public static final class Builder {
         private String groupId;
         private Long random;
         private String msgPriority;
         private List<TIMMsgElement> msgBody;
+        private List<GroupAtInfo> groupAtInfos;
         private String fromAccount;
         private OfflinePushInfo offlinePushInfo;
         private List<String> forbidCallbackControl;
@@ -293,6 +316,11 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
 
         public Builder msgBody(List<TIMMsgElement> msgBody) {
             this.msgBody = msgBody;
+            return this;
+        }
+
+        public Builder groupAtInfos(List<GroupAtInfo> groupAtInfos) {
+            this.groupAtInfos = groupAtInfos;
             return this;
         }
 

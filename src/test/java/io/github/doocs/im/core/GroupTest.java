@@ -702,4 +702,23 @@ class GroupTest {
         System.out.println(result);
         Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
     }
+
+    @Test
+    void testGroupMessageWithAtInfo() throws IOException {
+        TIMTextMsgElement msgEle = new TIMTextMsgElement();
+        msgEle.setMsgContent(new TIMTextMsgElement.TextMsgContent("Hello @小鬼 欢迎加入小组"));
+
+        SendGroupMsgRequest request = SendGroupMsgRequest.builder()
+                .groupId("shg_90")
+                .fromAccount("260")
+                .msgBody(Collections.singletonList(msgEle))
+                .groupAtInfos(Collections.singletonList(GroupAtInfo.builder()
+                        .groupAtAllFlag(GroupAtAllFlag.AT_MEMBER)
+                        .groupAtAccount("276").build()))
+                .build();
+
+        SendGroupMsgResult result = client.group.sendGroupMsg(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
 }
