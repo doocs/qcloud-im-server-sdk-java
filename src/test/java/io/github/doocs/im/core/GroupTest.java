@@ -465,6 +465,30 @@ class GroupTest {
     }
 
     @Test
+    void testGroupMsgReceipt() throws IOException {
+        GroupMsgReceiptRequest request = new GroupMsgReceiptRequest();
+        request.setGroupId("MyFirstGroup");
+        request.setFromAccount("test1");
+        request.setMsgSeqList(Collections.singletonList(new MsgSeqItem(123L)));
+
+        GroupMsgReceiptResult result = client.group.groupMsgReceipt(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
+    void testC2cMsgReadReceipt() throws IOException {
+        C2cMsgReadReceiptRequest request = new C2cMsgReadReceiptRequest();
+        request.setPeerAccount("test1");
+        request.setOperatorAccount("test2");
+        request.setC2cMsgInfoItemList(Collections.singletonList(new C2cMsgInfoItem("123", "456", "789")));
+
+        C2cMsgReadReceiptResult result = client.group.c2cMsgReadReceipt(request);
+        System.out.println(result);
+        Assertions.assertEquals(ErrorCode.SUCCESS.getCode(), result.getErrorCode());
+    }
+
+    @Test
     void testGetGroupMsgReceipt() throws IOException {
         GetGroupMsgReceiptRequest request = new GetGroupMsgReceiptRequest();
         request.setGroupId("MyFirstGroup");
@@ -482,9 +506,9 @@ class GroupTest {
         GetGroupMsgReceiptDetailRequest request = new GetGroupMsgReceiptDetailRequest();
         request.setGroupId("MyFirstGroup");
         request.setMsgSeq(123L);
-        request.setNum(12);
+        request.setCount(12);
         request.setCursor("");
-        request.setFlag(12);
+        request.setFilter(1);
 
         GetGroupMsgReceiptDetailResult result = client.group.getGroupMsgReceiptDetail(request);
         System.out.println(result);

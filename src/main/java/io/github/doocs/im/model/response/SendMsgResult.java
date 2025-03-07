@@ -24,6 +24,12 @@ public class SendMsgResult extends GenericResult implements Serializable {
     @JsonProperty("MsgKey")
     private String msgKey;
 
+    /**
+     * 该条消息在客户端唯一标识。
+     */
+    @JsonProperty("MsgId")
+    private String msgId;
+
     public Integer getMsgTime() {
         return msgTime;
     }
@@ -40,11 +46,20 @@ public class SendMsgResult extends GenericResult implements Serializable {
         this.msgKey = msgKey;
     }
 
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
+    }
+
     @Override
     public String toString() {
         return "SendMsgResult{" +
                 "msgTime=" + msgTime +
                 ", msgKey='" + msgKey + '\'' +
+                ", msgId='" + msgId + '\'' +
                 ", actionStatus='" + actionStatus + '\'' +
                 ", errorInfo='" + errorInfo + '\'' +
                 ", errorCode=" + errorCode +

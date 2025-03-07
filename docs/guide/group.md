@@ -1047,6 +1047,55 @@ request.setRandom(1223L);
 SendBroadcastMsgResult result = client.group.sendBroadcastMsg(request);
 ```
 
+## 群消息已读回执
+
+App 管理员可以通过该接口对指定成员进行群消息已读回执。
+
+::: warning
+该功能仅对旗舰版或企业版客户开放，需 购买旗舰版或企业版套餐包 并在 控制台 > 功能配置 > 群组配置 > 群消息已读回执打开开关后方可使用。
+:::
+
+::: tip
+适用的群组类型
+
+| 群组类型 ID       | 是否支持此 REST API                        |
+| ----------------- | ------------------------------------------ |
+| Private           | 支持，同新版本中的 Work(好友工作群)        |
+| Public            | 支持                                       |
+| ChatRoom          | 支持，同新版本中的 Meeting（临时会议群）） |
+| AVChatRoom        | 不支持                                     |
+| Community（社群） | 不支持                                     |
+
+即时通信 IM 内置上述群组类型，详情介绍请参见 [群组系统](https://cloud.tencent.com/document/product/269/1502)。
+:::
+
+使用示例：
+
+```java
+GroupMsgReceiptRequest request = new GroupMsgReceiptRequest();
+request.setGroupId("MyFirstGroup");
+request.setFromAccount("test1");
+request.setMsgSeqList(Collections.singletonList(new MsgSeqItem(123L)));
+
+GroupMsgReceiptResult result = client.group.groupMsgReceipt(request);
+```
+
+## 发送单聊消息已读回执
+
+- App 管理员可以通过该接口发送单聊消息已读回执。
+- 用户 A 给用户 B 发送单聊消息，则用户 B 作为消息的接收方，发送消息已读回执。请求中 Operator_Account 字段填用户 B 的 UserID,  Peer_Account 字段填用户 A 的 UserID，C2CMsgInfo 中的 From_Account 填用户 A 的 UserID ，To_Account填用户 B 的 UserID。
+
+使用示例：
+
+```java
+C2cMsgReadReceiptRequest request = new C2cMsgReadReceiptRequest();
+request.setPeerAccount("test1");
+request.setOperatorAccount("test2");
+request.setC2cMsgInfoItemList(Collections.singletonList(new C2cMsgInfoItem("123", "456", "789")));
+
+C2cMsgReadReceiptResult result = client.group.c2cMsgReadReceipt(request);
+```
+
 ## 拉取群消息已读回执信息
 
 App 管理员可以通过该接口拉取群消息已读回执信息。

@@ -60,6 +60,8 @@ public class Group {
     public static final String SET_GROUP_ATTR_COMMAND = "set_group_attr";
     public static final String MODIFY_GROUP_MSG_COMMAND = "modify_group_msg";
     public static final String SEND_BROADCAST_MSG_COMMAND = "send_broadcast_msg";
+    public static final String GROUP_MSG_RECEIPT_COMMAND = "group_msg_receipt";
+    public static final String C2C_MSG_READ_RECEIPT_COMMAND = "c2c_msg_read_receipt";
     public static final String GET_GROUP_MSG_RECEIPT_COMMAND = "get_group_msg_receipt";
     public static final String GET_GROUP_MSG_RECEIPT_DETAIL_COMMAND = "get_group_msg_receipt_detail";
     public static final String CREATE_GROUP_TOPIC_COMMAND = "create_topic";
@@ -646,6 +648,40 @@ public class Group {
     public SendBroadcastMsgResult sendBroadcastMsg(SendBroadcastMsgRequest sendBroadcastMsgRequest, long random) throws IOException {
         String url = imClient.getUrl(SERVICE_NAME, SEND_BROADCAST_MSG_COMMAND, random);
         return HttpUtil.post(url, sendBroadcastMsgRequest, SendBroadcastMsgResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 群消息已读回执
+     *
+     * @param groupMsgReceiptRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public GroupMsgReceiptResult groupMsgReceipt(GroupMsgReceiptRequest groupMsgReceiptRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_MSG_RECEIPT_COMMAND);
+        return HttpUtil.post(url, groupMsgReceiptRequest, GroupMsgReceiptResult.class, imClient.getConfig());
+    }
+
+    public GroupMsgReceiptResult groupMsgReceipt(GroupMsgReceiptRequest groupMsgReceiptRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, GROUP_MSG_RECEIPT_COMMAND, random);
+        return HttpUtil.post(url, groupMsgReceiptRequest, GroupMsgReceiptResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 发送单聊消息已读回执
+     *
+     * @param c2cMsgReadReceiptRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public C2cMsgReadReceiptResult c2cMsgReadReceipt(C2cMsgReadReceiptRequest c2cMsgReadReceiptRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, C2C_MSG_READ_RECEIPT_COMMAND);
+        return HttpUtil.post(url, c2cMsgReadReceiptRequest, C2cMsgReadReceiptResult.class, imClient.getConfig());
+    }
+
+    public C2cMsgReadReceiptResult c2cMsgReadReceipt(C2cMsgReadReceiptRequest c2cMsgReadReceiptRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_OPEN_IM, C2C_MSG_READ_RECEIPT_COMMAND, random);
+        return HttpUtil.post(url, c2cMsgReadReceiptRequest, C2cMsgReadReceiptResult.class, imClient.getConfig());
     }
 
     /**

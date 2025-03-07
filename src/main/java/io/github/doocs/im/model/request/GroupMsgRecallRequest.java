@@ -28,10 +28,16 @@ public class GroupMsgRecallRequest extends GenericRequest implements Serializabl
     private List<MsgSeqItem> msgSeqList;
 
     /**
-     * 话题的 ID，仅社群支持此选项
+     * 话题的 ID，若具有此选项表示撤回的是对应话题中的消息，仅支持话题的社群适用此选项
      */
     @JsonProperty("TopicId")
     private String topicId;
+
+    /**
+     * 撤回消息的原因，长度限制最大100字节
+     */
+    @JsonProperty("Reason")
+    private String reason;
 
     public GroupMsgRecallRequest() {
     }
@@ -47,10 +53,18 @@ public class GroupMsgRecallRequest extends GenericRequest implements Serializabl
         this.topicId = topicId;
     }
 
+    public GroupMsgRecallRequest(String groupId, List<MsgSeqItem> msgSeqList, String topicId, String reason) {
+        this.groupId = groupId;
+        this.msgSeqList = msgSeqList;
+        this.topicId = topicId;
+        this.reason = reason;
+    }
+
     private GroupMsgRecallRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.msgSeqList = builder.msgSeqList;
         this.topicId = builder.topicId;
+        this.reason = builder.reason;
     }
 
     public static Builder builder() {
@@ -81,11 +95,19 @@ public class GroupMsgRecallRequest extends GenericRequest implements Serializabl
         this.topicId = topicId;
     }
 
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
     public static final class Builder {
         private String groupId;
         private List<MsgSeqItem> msgSeqList;
         private String topicId;
+        private String reason;
 
         private Builder() {
         }
@@ -106,6 +128,11 @@ public class GroupMsgRecallRequest extends GenericRequest implements Serializabl
 
         public Builder topicId(String topicId) {
             this.topicId = topicId;
+            return this;
+        }
+
+        public Builder reason(String reason) {
+            this.reason = reason;
             return this;
         }
     }

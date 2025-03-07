@@ -49,12 +49,6 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
     private String fromAccount;
 
     /**
-     * 群组消息设置@的用户，跟消息体里面@的用户按顺序逐一对应。
-     */
-    @JsonProperty("GroupAtInfo")
-    private List<GroupAtInfo> groupAtInfos;
-
-    /**
      * 线推送信息配置，详细可参阅 消息格式描述
      */
     @JsonProperty("OfflinePushInfo")
@@ -107,6 +101,18 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
     @JsonProperty("TopicId")
     private String topicId;
 
+    /**
+     * 该条消息是否需要已读回执，0为不需要，1为需要，默认为0。
+     */
+    @JsonProperty("NeedReadReceipt")
+    private Integer needReadReceipt;
+
+    /**
+     * 该条消息的@信息。GroupAtAllFlag 为1表示 @all, 为0表示@的具体的成员，GroupAt_Account 表示 @的具体成员
+     */
+    @JsonProperty("GroupAtInfo")
+    private List<GroupAtInfo> groupAtInfos;
+
     public SendGroupMsgRequest() {
     }
 
@@ -135,11 +141,21 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.topicId = topicId;
     }
 
-    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody,
-                               String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
-                               Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData,
-                               Integer supportMessageExtension, String toAccount, String topicId, List<GroupAtInfo> groupAtInfos) {
-        this(groupId, random, msgPriority, msgBody, fromAccount, offlinePushInfo, forbidCallbackControl, onlineOnlyFlag, sendMsgControl, cloudCustomData, supportMessageExtension, toAccount, topicId);
+    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody, String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl, Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData, Integer supportMessageExtension, String toAccount, String topicId, Integer needReadReceipt, List<GroupAtInfo> groupAtInfos) {
+        this.groupId = groupId;
+        this.random = random;
+        this.msgPriority = msgPriority;
+        this.msgBody = msgBody;
+        this.fromAccount = fromAccount;
+        this.offlinePushInfo = offlinePushInfo;
+        this.forbidCallbackControl = forbidCallbackControl;
+        this.onlineOnlyFlag = onlineOnlyFlag;
+        this.sendMsgControl = sendMsgControl;
+        this.cloudCustomData = cloudCustomData;
+        this.supportMessageExtension = supportMessageExtension;
+        this.toAccount = toAccount;
+        this.topicId = topicId;
+        this.needReadReceipt = needReadReceipt;
         this.groupAtInfos = groupAtInfos;
     }
 
@@ -158,6 +174,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.toAccount = builder.toAccount;
         this.topicId = builder.topicId;
         this.groupAtInfos = builder.groupAtInfos;
+        this.needReadReceipt = builder.needReadReceipt;
     }
 
     public static Builder builder() {
@@ -276,6 +293,14 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.groupAtInfos = groupAtInfos;
     }
 
+    public Integer getNeedReadReceipt() {
+        return needReadReceipt;
+    }
+
+    public void setNeedReadReceipt(Integer needReadReceipt) {
+        this.needReadReceipt = needReadReceipt;
+    }
+
     public static final class Builder {
         private String groupId;
         private Long random;
@@ -291,6 +316,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         private Integer supportMessageExtension;
         private String toAccount;
         private String topicId;
+        private Integer needReadReceipt;
 
         private Builder() {
         }
@@ -366,6 +392,11 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
 
         public Builder topicId(String topicId) {
             this.topicId = topicId;
+            return this;
+        }
+
+        public Builder needReadReceipt(Integer needReadReceipt) {
+            this.needReadReceipt = needReadReceipt;
             return this;
         }
     }

@@ -29,8 +29,8 @@ public class GetGroupMsgReceiptDetailRequest extends GenericRequest implements S
     /**
      * 拉取已读，未读成员列表，0表示拉取已读成员列表，1表示拉取未读列表
      */
-    @JsonProperty("Flag")
-    private Integer flag;
+    @JsonProperty("Filter")
+    private Integer filter;
 
     /**
      * 上一次拉取到的成员位置，第一次填写""
@@ -41,33 +41,33 @@ public class GetGroupMsgReceiptDetailRequest extends GenericRequest implements S
     /**
      * 一次最多拉取多少个成员数，最高可填200，超过按200算
      */
-    @JsonProperty("Num")
-    private Integer num;
+    @JsonProperty("Count")
+    private Integer count;
 
     public GetGroupMsgReceiptDetailRequest() {
     }
 
-    public GetGroupMsgReceiptDetailRequest(String groupId, Integer flag, String cursor, Integer num) {
+    public GetGroupMsgReceiptDetailRequest(String groupId, Integer filter, String cursor, Integer count) {
         this.groupId = groupId;
-        this.flag = flag;
+        this.filter = filter;
         this.cursor = cursor;
-        this.num = num;
+        this.count = count;
     }
 
-    public GetGroupMsgReceiptDetailRequest(String groupId, Long msgSeq, Integer flag, String cursor, Integer num) {
+    public GetGroupMsgReceiptDetailRequest(String groupId, Long msgSeq, Integer filter, String cursor, Integer count) {
         this.groupId = groupId;
         this.msgSeq = msgSeq;
-        this.flag = flag;
+        this.filter = filter;
         this.cursor = cursor;
-        this.num = num;
+        this.count = count;
     }
 
     private GetGroupMsgReceiptDetailRequest(Builder builder) {
         this.groupId = builder.groupId;
         this.msgSeq = builder.msgSeq;
-        this.flag = builder.flag;
+        this.filter = builder.filter;
         this.cursor = builder.cursor;
-        this.num = builder.num;
+        this.count = builder.count;
     }
 
     public static Builder builder() {
@@ -90,12 +90,12 @@ public class GetGroupMsgReceiptDetailRequest extends GenericRequest implements S
         this.msgSeq = msgSeq;
     }
 
-    public Integer getFlag() {
-        return flag;
+    public Integer getFilter() {
+        return filter;
     }
 
-    public void setFlag(Integer flag) {
-        this.flag = flag;
+    public void setFilter(Integer filter) {
+        this.filter = filter;
     }
 
     public String getCursor() {
@@ -106,21 +106,20 @@ public class GetGroupMsgReceiptDetailRequest extends GenericRequest implements S
         this.cursor = cursor;
     }
 
-    public Integer getNum() {
-        return num;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setCount(Integer count) {
+        this.count = count;
     }
-
 
     public static final class Builder {
         private String groupId;
         private Long msgSeq;
-        private Integer flag;
+        private Integer filter;
         private String cursor;
-        private Integer num;
+        private Integer count;
 
         private Builder() {
         }
@@ -139,8 +138,8 @@ public class GetGroupMsgReceiptDetailRequest extends GenericRequest implements S
             return this;
         }
 
-        public Builder flag(Integer flag) {
-            this.flag = flag;
+        public Builder flag(Integer filter) {
+            this.filter = filter;
             return this;
         }
 
@@ -149,8 +148,8 @@ public class GetGroupMsgReceiptDetailRequest extends GenericRequest implements S
             return this;
         }
 
-        public Builder num(Integer num) {
-            this.num = num;
+        public Builder num(Integer count) {
+            this.count = count;
             return this;
         }
     }
