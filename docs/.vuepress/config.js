@@ -17,7 +17,7 @@ export default defineUserConfig({
       },
     ],
   ],
-  base: '/qcloud-im-server-sdk-java/',
+  base: '/',
   theme: defaultTheme({
     repo: 'doocs/qcloud-im-server-sdk-java',
     logo: 'https://avatars.githubusercontent.com/u/43716716?s=200&v=4',
