@@ -4,11 +4,11 @@ import io.github.doocs.im.ClientConfiguration;
 import okhttp3.*;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * HTTP 工具类
@@ -98,8 +98,9 @@ public class HttpUtil {
 }
 
 class RetryInterceptor implements Interceptor {
-
-    private static final int[] RETRYABLE_STATUS_CODES = {408, 429, 500, 502, 503, 504};
+    private static final Set<Integer> RETRYABLE_STATUS_CODES = Collections.unmodifiableSet(
+            Stream.of(408, 429, 500, 502, 503, 504).collect(Collectors.toSet())
+    );
     private final int maxRetries;
     private final long retryIntervalMs;
 
@@ -113,8 +114,7 @@ class RetryInterceptor implements Interceptor {
         Request request = chain.request();
         Response response = null;
         IOException exception = null;
-        int attempt = 0;
-        while (attempt <= maxRetries) {
+        for (int attempt = 0; attempt <= maxRetries; ++attempt) {
             if (response != null) {
                 response.close();
             }
@@ -127,7 +127,7 @@ class RetryInterceptor implements Interceptor {
                     return response;
                 }
             } catch (IOException e) {
-                if (attempt == maxRetries) {
+                if (attempt >= maxRetries) {
                     throw e;
                 }
                 exception = e;
@@ -135,26 +135,24 @@ class RetryInterceptor implements Interceptor {
             if (attempt < maxRetries) {
                 waitForRetry(attempt);
             }
-            attempt++;
         }
 
         if (response != null) {
             return response;
+        }
+        if (exception != null) {
+            throw exception;
         } else {
-            if (exception != null) {
-                throw exception;
-            } else {
-                throw new IOException("Failed to get a valid response after all retries and no exception was caught.");
-            }
+            throw new IOException("Failed to get a valid response after all retries and no exception was caught.");
         }
     }
 
     private boolean shouldRetry(Response response) {
         final int code = response.code();
-        for (int retryableCode : RETRYABLE_STATUS_CODES) {
-            if (code == retryableCode) return true;
+        if (code >= 500 && code < 600) {
+            return true;
         }
-        return (code >= 500 && code < 600);
+        return RETRYABLE_STATUS_CODES.contains(code);
     }
 
     private void waitForRetry(int attempt) {
