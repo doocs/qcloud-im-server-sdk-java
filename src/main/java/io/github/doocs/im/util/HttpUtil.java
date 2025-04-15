@@ -101,6 +101,7 @@ class RetryInterceptor implements Interceptor {
     private static final Set<Integer> RETRYABLE_STATUS_CODES = Collections.unmodifiableSet(
             Stream.of(408, 429, 500, 502, 503, 504).collect(Collectors.toSet())
     );
+    private static final int MAX_DELAY_MS = 10000;
     private final int maxRetries;
     private final long retryIntervalMs;
 
@@ -157,7 +158,7 @@ class RetryInterceptor implements Interceptor {
 
     private void waitForRetry(int attempt) {
         try {
-            final long delayMs = retryIntervalMs * (1L << attempt);
+            final long delayMs = Math.min(MAX_DELAY_MS, retryIntervalMs * (1L << attempt));
             TimeUnit.MILLISECONDS.sleep(delayMs);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

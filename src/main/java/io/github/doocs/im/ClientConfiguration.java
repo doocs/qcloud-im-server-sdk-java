@@ -25,7 +25,7 @@ public class ClientConfiguration {
     /**
      * 默认重试间隔时间（毫秒）
      */
-    public static final long DEFAULT_RETRY_INTERVAL_MS = 100;
+    public static final long DEFAULT_RETRY_INTERVAL_MS = 200;
 
     /**
      * 默认自动更新签名
