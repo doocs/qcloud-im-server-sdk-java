@@ -4,11 +4,11 @@ import io.github.doocs.im.ClientConfiguration;
 import okhttp3.*;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * HTTP 工具类
@@ -31,7 +31,7 @@ public class HttpUtil {
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
             .callTimeout(DEFAULT_CONFIG.getCallTimeout(), TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(false)
-            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries()))
+            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries(), DEFAULT_CONFIG.getRetryIntervalMs()))
             .build();
 
     private HttpUtil() {
@@ -58,7 +58,7 @@ public class HttpUtil {
                 .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
                 .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(false)
-                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries()))
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs()))
                 .build());
     }
 
@@ -98,28 +98,70 @@ public class HttpUtil {
 }
 
 class RetryInterceptor implements Interceptor {
-    private int maxRetry;
+    private static final Set<Integer> RETRYABLE_STATUS_CODES = Collections.unmodifiableSet(
+            Stream.of(408, 429, 500, 502, 503, 504).collect(Collectors.toSet())
+    );
+    private static final int MAX_DELAY_MS = 10000;
+    private final int maxRetries;
+    private final long retryIntervalMs;
 
-    RetryInterceptor(int maxRetry) {
-        this.maxRetry = maxRetry;
-    }
-
-    public int getMaxRetry() {
-        return maxRetry;
-    }
-
-    public void setMaxRetry(int maxRetry) {
-        this.maxRetry = maxRetry;
+    public RetryInterceptor(int maxRetries, long retryIntervalMs) {
+        this.maxRetries = maxRetries;
+        this.retryIntervalMs = retryIntervalMs;
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        Response response = chain.proceed(request);
-        for (int i = 0; i < maxRetry && !response.isSuccessful(); ++i) {
-            response.close();
-            response = chain.proceed(request);
+        Response response = null;
+        IOException exception = null;
+        for (int attempt = 0; attempt <= maxRetries; ++attempt) {
+            if (response != null) {
+                response.close();
+            }
+            try {
+                response = chain.proceed(request);
+                if (response.isSuccessful()) {
+                    return response;
+                }
+                if (!shouldRetry(response)) {
+                    return response;
+                }
+            } catch (IOException e) {
+                if (attempt >= maxRetries) {
+                    throw e;
+                }
+                exception = e;
+            }
+            if (attempt < maxRetries) {
+                waitForRetry(attempt);
+            }
         }
-        return response;
+
+        if (response != null) {
+            return response;
+        }
+        if (exception != null) {
+            throw exception;
+        } else {
+            throw new IOException("Failed to get a valid response after all retries and no exception was caught.");
+        }
+    }
+
+    private boolean shouldRetry(Response response) {
+        final int code = response.code();
+        if (code >= 500 && code < 600) {
+            return true;
+        }
+        return RETRYABLE_STATUS_CODES.contains(code);
+    }
+
+    private void waitForRetry(int attempt) {
+        try {
+            final long delayMs = Math.min(MAX_DELAY_MS, retryIntervalMs * (1L << attempt));
+            TimeUnit.MILLISECONDS.sleep(delayMs);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

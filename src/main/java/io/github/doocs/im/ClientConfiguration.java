@@ -23,6 +23,11 @@ public class ClientConfiguration {
     public static final int DEFAULT_MAX_RETRIES = 3;
 
     /**
+     * 默认重试间隔时间（毫秒）
+     */
+    public static final long DEFAULT_RETRY_INTERVAL_MS = 200;
+
+    /**
      * 默认自动更新签名
      */
     public static final boolean DEFAULT_RENEW_SIG = true;
@@ -45,6 +50,7 @@ public class ClientConfiguration {
     public static final ConnectionPool DEFAULT_CONNECTION_POOL = new ConnectionPool();
 
     private int maxRetries = DEFAULT_MAX_RETRIES;
+    private long retryIntervalMs = DEFAULT_RETRY_INTERVAL_MS;
     private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
     private long readTimeout = DEFAULT_READ_TIMEOUT;
     private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
@@ -57,13 +63,14 @@ public class ClientConfiguration {
     public ClientConfiguration() {
     }
 
-    public ClientConfiguration(int maxRetries, long connectTimeout, long readTimeout, long writeTimeout,
+    public ClientConfiguration(int maxRetries, long retryIntervalMs, long connectTimeout, long readTimeout, long writeTimeout,
                                long callTimeout, long expireTime, boolean autoRenewSig,
                                String userAgent, ConnectionPool connectionPool) {
         if (connectionPool == null) {
             connectionPool = DEFAULT_CONNECTION_POOL;
         }
         this.maxRetries = Math.max(0, maxRetries);
+        this.retryIntervalMs = retryIntervalMs;
         this.connectTimeout = connectTimeout;
         this.readTimeout = readTimeout;
         this.writeTimeout = writeTimeout;
@@ -76,6 +83,7 @@ public class ClientConfiguration {
 
     private ClientConfiguration(Builder builder) {
         this.maxRetries = builder.maxRetries;
+        this.retryIntervalMs = builder.retryIntervalMs;
         this.connectTimeout = builder.connectTimeout;
         this.readTimeout = builder.readTimeout;
         this.writeTimeout = builder.writeTimeout;
@@ -96,6 +104,14 @@ public class ClientConfiguration {
 
     public void setMaxRetries(int maxRetries) {
         this.maxRetries = Math.max(0, maxRetries);
+    }
+
+    public long getRetryIntervalMs() {
+        return retryIntervalMs;
+    }
+
+    public void setRetryIntervalMs(long retryIntervalMs) {
+        this.retryIntervalMs = retryIntervalMs;
     }
 
     public long getConnectTimeout() {
@@ -178,6 +194,9 @@ public class ClientConfiguration {
         if (maxRetries != that.maxRetries) {
             return false;
         }
+        if (retryIntervalMs != that.retryIntervalMs) {
+            return false;
+        }
         if (connectTimeout != that.connectTimeout) {
             return false;
         }
@@ -204,11 +223,12 @@ public class ClientConfiguration {
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxRetries, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, userAgent, connectionPool);
+        return Objects.hash(maxRetries, retryIntervalMs, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, userAgent, connectionPool);
     }
 
     public static final class Builder {
         private int maxRetries = DEFAULT_MAX_RETRIES;
+        private long retryIntervalMs = DEFAULT_RETRY_INTERVAL_MS;
         private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
         private long readTimeout = DEFAULT_READ_TIMEOUT;
         private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
@@ -227,6 +247,11 @@ public class ClientConfiguration {
 
         public Builder maxRetries(int maxRetries) {
             this.maxRetries = maxRetries;
+            return this;
+        }
+
+        public Builder retryIntervalMs(int retryIntervalMs) {
+            this.retryIntervalMs = retryIntervalMs;
             return this;
         }
 
