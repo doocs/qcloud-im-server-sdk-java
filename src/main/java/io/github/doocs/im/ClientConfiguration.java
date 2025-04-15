@@ -1,301 +1,167 @@
-package io.github.doocs.im;
+package io.github.doocs.im.util;
 
-import io.github.doocs.im.util.VersionInfoUtil;
-import okhttp3.ConnectionPool;
+import io.github.doocs.im.ClientConfiguration;
+import okhttp3.*;
 
-import java.util.Objects;
+import java.io.IOException;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
- * 客户端配置类
+ * HTTP 工具类
  *
  * @author bingo
- * @since 2021/11/2 14:17
+ * @since 2021/10/31 15:57
  */
-public class ClientConfiguration {
-    /**
-     * 默认 UA
-     */
-    public static final String DEFAULT_USER_AGENT = VersionInfoUtil.getDefaultUserAgent();
+public class HttpUtil {
+    private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    /**
-     * 默认最大重试次数
-     */
-    public static final int DEFAULT_MAX_RETRIES = 3;
+    private static final String USER_AGENT_KEY = "User-Agent";
+    private static final ClientConfiguration DEFAULT_CONFIG = new ClientConfiguration();
+    private static final String DEFAULT_USER_AGENT = DEFAULT_CONFIG.getUserAgent();
+    private static final Map<ClientConfiguration, OkHttpClient> CLIENT_CACHE = new ConcurrentHashMap<>();
 
-    /**
-     * 默认重试间隔时间（毫秒）
-     */
-    public static final long DEFAULT_RETRY_INTERVAL_MS = 1_000;
+    private static final OkHttpClient DEFAULT_CLIENT = new OkHttpClient.Builder()
+            .connectionPool(DEFAULT_CONFIG.getConnectionPool())
+            .connectTimeout(DEFAULT_CONFIG.getConnectTimeout(), TimeUnit.MILLISECONDS)
+            .readTimeout(DEFAULT_CONFIG.getReadTimeout(), TimeUnit.MILLISECONDS)
+            .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
+            .callTimeout(DEFAULT_CONFIG.getCallTimeout(), TimeUnit.MILLISECONDS)
+            .retryOnConnectionFailure(false)
+            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries(), DEFAULT_CONFIG.getRetryIntervalMs()))
+            .build();
 
-    /**
-     * 默认自动更新签名
-     */
-    public static final boolean DEFAULT_RENEW_SIG = true;
-    /**
-     * 默认超时时间（毫秒）
-     */
-    public static final long DEFAULT_CONNECT_TIMEOUT = 10_000;
-    public static final long DEFAULT_READ_TIMEOUT = 10_000;
-    public static final long DEFAULT_WRITE_TIMEOUT = 10_000;
-    public static final long DEFAULT_CALL_TIMEOUT = 30_000;
+    private HttpUtil() {
 
-    /**
-     * UserSig 签名默认有效时长（秒）
-     */
-    public static final long DEFAULT_EXPIRE_TIME = 24 * 60 * 60L;
-
-    /**
-     * 默认okhttp3连接池
-     */
-    public static final ConnectionPool DEFAULT_CONNECTION_POOL = new ConnectionPool();
-
-    private int maxRetries = DEFAULT_MAX_RETRIES;
-    private long retryIntervalMs = DEFAULT_RETRY_INTERVAL_MS;
-    private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
-    private long readTimeout = DEFAULT_READ_TIMEOUT;
-    private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
-    private long callTimeout = DEFAULT_CALL_TIMEOUT;
-    private long expireTime = DEFAULT_EXPIRE_TIME;
-    private boolean autoRenewSig = DEFAULT_RENEW_SIG;
-    private String userAgent = DEFAULT_USER_AGENT;
-    private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
-
-    public ClientConfiguration() {
     }
 
-    public ClientConfiguration(int maxRetries, long retryIntervalMs, long connectTimeout, long readTimeout, long writeTimeout,
-                               long callTimeout, long expireTime, boolean autoRenewSig,
-                               String userAgent, ConnectionPool connectionPool) {
-        if (connectionPool == null) {
-            connectionPool = DEFAULT_CONNECTION_POOL;
+    public static String post(String url, String json, ClientConfiguration config) throws IOException {
+        OkHttpClient httpClient = getClient(config);
+        Map<String, String> headers = new HashMap<>(2);
+        boolean emptyAgent = Objects.isNull(config) || Objects.isNull(config.getUserAgent());
+        headers.put(USER_AGENT_KEY, emptyAgent ? DEFAULT_USER_AGENT : config.getUserAgent());
+        return post(url, json, httpClient, headers);
+    }
+
+    private static OkHttpClient getClient(ClientConfiguration config) {
+        if (config == null) {
+            return DEFAULT_CLIENT;
         }
-        this.maxRetries = Math.max(0, maxRetries);
-        this.retryIntervalMs = retryIntervalMs;
-        this.connectTimeout = connectTimeout;
-        this.readTimeout = readTimeout;
-        this.writeTimeout = writeTimeout;
-        this.callTimeout = callTimeout;
-        this.expireTime = expireTime;
-        this.autoRenewSig = autoRenewSig;
-        this.userAgent = userAgent;
-        this.connectionPool = connectionPool;
+
+        return CLIENT_CACHE.computeIfAbsent(config, cfg -> new OkHttpClient.Builder()
+                .connectionPool(cfg.getConnectionPool())
+                .connectTimeout(cfg.getConnectTimeout(), TimeUnit.MILLISECONDS)
+                .readTimeout(cfg.getReadTimeout(), TimeUnit.MILLISECONDS)
+                .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
+                .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
+                .retryOnConnectionFailure(false)
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs()))
+                .build());
     }
 
-    private ClientConfiguration(Builder builder) {
-        this.maxRetries = builder.maxRetries;
-        this.retryIntervalMs = builder.retryIntervalMs;
-        this.connectTimeout = builder.connectTimeout;
-        this.readTimeout = builder.readTimeout;
-        this.writeTimeout = builder.writeTimeout;
-        this.callTimeout = builder.callTimeout;
-        this.expireTime = builder.expireTime;
-        this.autoRenewSig = builder.autoRenewSig;
-        this.userAgent = builder.userAgent;
-        this.connectionPool = builder.connectionPool;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public int getMaxRetries() {
-        return maxRetries;
-    }
-
-    public void setMaxRetries(int maxRetries) {
-        this.maxRetries = Math.max(0, maxRetries);
-    }
-
-    public long getRetryIntervalMs() {
-        return retryIntervalMs;
-    }
-
-    public void setRetryIntervalMs(long retryIntervalMs) {
-        this.retryIntervalMs = retryIntervalMs;
-    }
-
-    public long getConnectTimeout() {
-        return connectTimeout;
-    }
-
-    public void setConnectTimeout(long connectTimeout) {
-        this.connectTimeout = connectTimeout;
-    }
-
-    public long getReadTimeout() {
-        return readTimeout;
-    }
-
-    public void setReadTimeout(long readTimeout) {
-        this.readTimeout = readTimeout;
-    }
-
-    public long getWriteTimeout() {
-        return writeTimeout;
-    }
-
-    public void setWriteTimeout(long writeTimeout) {
-        this.writeTimeout = writeTimeout;
-    }
-
-    public long getCallTimeout() {
-        return callTimeout;
-    }
-
-    public void setCallTimeout(long callTimeout) {
-        this.callTimeout = callTimeout;
-    }
-
-    public long getExpireTime() {
-        return expireTime;
-    }
-
-    public void setExpireTime(long expireTime) {
-        this.expireTime = expireTime;
-    }
-
-    public boolean isAutoRenewSig() {
-        return autoRenewSig;
-    }
-
-    public void setAutoRenewSig(boolean autoRenewSig) {
-        this.autoRenewSig = autoRenewSig;
-    }
-
-    public String getUserAgent() {
-        return userAgent;
-    }
-
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
-    }
-
-    public ConnectionPool getConnectionPool() {
-        return connectionPool;
-    }
-
-    public void setConnectionPool(ConnectionPool connectionPool) {
-        if (connectionPool == null) {
-            connectionPool = DEFAULT_CONNECTION_POOL;
+    public static String post(String url, String json, OkHttpClient httpClient, Map<String, String> headers) throws IOException {
+        RequestBody body = RequestBody.create(json, JSON);
+        Headers.Builder hb = new Headers.Builder();
+        if (headers != null && !headers.isEmpty()) {
+            headers.forEach(hb::add);
         }
-        this.connectionPool = connectionPool;
+        Request request = new Request.Builder()
+                .url(url)
+                .headers(hb.build())
+                .post(body)
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            return Objects.requireNonNull(response.body()).string();
+        }
+    }
+
+    public static <T> T post(String url, Object data, Class<T> cls, ClientConfiguration config) throws IOException {
+        String result = post(url, JsonUtil.obj2Str(data), config);
+        return JsonUtil.str2Obj(result, cls);
+    }
+
+    public static <T> T post(String url, Object data, Class<T> cls) throws IOException {
+        return post(url, data, cls, null);
+    }
+
+    public static String get(String url) throws IOException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        try (Response response = DEFAULT_CLIENT.newCall(request).execute()) {
+            return Objects.requireNonNull(response.body()).string();
+        }
+    }
+}
+
+class RetryInterceptor implements Interceptor {
+    private static final Set<Integer> RETRYABLE_STATUS_CODES = Collections.unmodifiableSet(
+            Stream.of(408, 429, 500, 502, 503, 504).collect(Collectors.toSet())
+    );
+    private static final int MAX_DELAY_MS = 10000;
+    private final int maxRetries;
+    private final long retryIntervalMs;
+
+    public RetryInterceptor(int maxRetries, long retryIntervalMs) {
+        this.maxRetries = maxRetries;
+        this.retryIntervalMs = retryIntervalMs;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public Response intercept(Chain chain) throws IOException {
+        Request request = chain.request();
+        Response response = null;
+        IOException exception = null;
+        for (int attempt = 0; attempt <= maxRetries; ++attempt) {
+            if (response != null) {
+                response.close();
+            }
+            try {
+                response = chain.proceed(request);
+                if (response.isSuccessful()) {
+                    return response;
+                }
+                if (!shouldRetry(response)) {
+                    return response;
+                }
+            } catch (IOException e) {
+                if (attempt >= maxRetries) {
+                    throw e;
+                }
+                exception = e;
+            }
+            if (attempt < maxRetries) {
+                waitForRetry(attempt);
+            }
+        }
+
+        if (response != null) {
+            return response;
+        }
+        if (exception != null) {
+            throw exception;
+        } else {
+            throw new IOException("Failed to get a valid response after all retries and no exception was caught.");
+        }
+    }
+
+    private boolean shouldRetry(Response response) {
+        final int code = response.code();
+        if (code >= 500 && code < 600) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        ClientConfiguration that = (ClientConfiguration) o;
-        if (maxRetries != that.maxRetries) {
-            return false;
-        }
-        if (retryIntervalMs != that.retryIntervalMs) {
-            return false;
-        }
-        if (connectTimeout != that.connectTimeout) {
-            return false;
-        }
-        if (readTimeout != that.readTimeout) {
-            return false;
-        }
-        if (writeTimeout != that.writeTimeout) {
-            return false;
-        }
-        if (callTimeout != that.callTimeout) {
-            return false;
-        }
-        if (expireTime != that.expireTime) {
-            return false;
-        }
-        if (autoRenewSig != that.autoRenewSig) {
-            return false;
-        }
-        if (!userAgent.equals(that.userAgent)) {
-            return false;
-        }
-        return connectionPool.equals(that.connectionPool);
+        return RETRYABLE_STATUS_CODES.contains(code);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(maxRetries, retryIntervalMs, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, userAgent, connectionPool);
-    }
-
-    public static final class Builder {
-        private int maxRetries = DEFAULT_MAX_RETRIES;
-        private long retryIntervalMs = DEFAULT_RETRY_INTERVAL_MS;
-        private long connectTimeout = DEFAULT_CONNECT_TIMEOUT;
-        private long readTimeout = DEFAULT_READ_TIMEOUT;
-        private long writeTimeout = DEFAULT_WRITE_TIMEOUT;
-        private long callTimeout = DEFAULT_CALL_TIMEOUT;
-        private long expireTime = DEFAULT_EXPIRE_TIME;
-        private boolean autoRenewSig = DEFAULT_RENEW_SIG;
-        private String userAgent = DEFAULT_USER_AGENT;
-        private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
-
-        private Builder() {
-        }
-
-        public ClientConfiguration build() {
-            return new ClientConfiguration(this);
-        }
-
-        public Builder maxRetries(int maxRetries) {
-            this.maxRetries = maxRetries;
-            return this;
-        }
-
-        public Builder retryIntervalMs(int retryIntervalMs) {
-            this.retryIntervalMs = retryIntervalMs;
-            return this;
-        }
-
-        public Builder connectTimeout(long connectTimeout) {
-            this.connectTimeout = connectTimeout;
-            return this;
-        }
-
-        public Builder readTimeout(long readTimeout) {
-            this.readTimeout = readTimeout;
-            return this;
-        }
-
-        public Builder writeTimeout(long writeTimeout) {
-            this.writeTimeout = writeTimeout;
-            return this;
-        }
-
-        public Builder callTimeout(long callTimeout) {
-            this.callTimeout = callTimeout;
-            return this;
-        }
-
-        public Builder expireTime(long expireTime) {
-            this.expireTime = expireTime;
-            return this;
-        }
-
-        public Builder autoRenewSig(boolean autoRenewSig) {
-            this.autoRenewSig = autoRenewSig;
-            return this;
-        }
-
-        public Builder userAgent(String userAgent) {
-            this.userAgent = userAgent;
-            return this;
-        }
-
-        public Builder connectionPool(ConnectionPool connectionPool) {
-            if (connectionPool == null) {
-                connectionPool = DEFAULT_CONNECTION_POOL;
-            }
-            this.connectionPool = connectionPool;
-            return this;
+    private void waitForRetry(int attempt) {
+        try {
+            final long delayMs = Math.min(MAX_DELAY_MS, retryIntervalMs * (1L << attempt));
+            TimeUnit.MILLISECONDS.sleep(delayMs);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 }
