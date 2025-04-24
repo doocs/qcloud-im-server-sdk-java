@@ -1,15 +1,18 @@
 ---
-home: true
-title: 首页
-heroImage: https://avatars.githubusercontent.com/u/43716716
-tagline: null
-actions:
-  - text: 快速上手
-    link: /guide/quickstart.html
-    type: primary
-  - text: 项目简介
-    link: /guide/
-    type: secondary
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  name: "qcloud-im-server-sdk-java"
+  text: "腾讯云 IM 服务端 SDK API 文档 Java 版"
+  actions:
+    - theme: primary
+      text: 快速上手
+      link: /guide/quickstart
+    - theme: alt
+      text: 项目简介
+      link: /guide/intro
+
 features:
   - title: 账号管理
     details: 导入、删除、查询账号等
@@ -33,5 +36,5 @@ features:
     details: 本地审核、云端审核等
   - title: 公众号管理
     details: 创建、销毁、修改公众号等
-footer: Apache-2.0 Licensed | Copyright © 2021-present Doocs
 ---
+
