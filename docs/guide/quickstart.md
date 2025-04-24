@@ -16,7 +16,7 @@
 
 ### Gradle
 
-```gradle
+```txt
 implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.4.12'
 ```
 

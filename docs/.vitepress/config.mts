@@ -35,6 +35,9 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/doocs/qcloud-im-server-sdk-java' }
     ],
+    search: {
+      provider: 'local'
+    },
     logo: '/favicon-32x32.png',
     footer: {
       message: 'Released under the Apache-2.0 license.',
