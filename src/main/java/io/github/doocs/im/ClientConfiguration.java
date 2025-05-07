@@ -31,6 +31,11 @@ public class ClientConfiguration {
      * 默认自动更新签名
      */
     public static final boolean DEFAULT_RENEW_SIG = true;
+
+    /**
+     * 默认业务错误码重试开关关闭
+     */
+    public static final boolean DEFAULT_ENABLE_BUSINESS_RETRY = false;
     /**
      * 默认超时时间（毫秒）
      */
@@ -57,6 +62,7 @@ public class ClientConfiguration {
     private long callTimeout = DEFAULT_CALL_TIMEOUT;
     private long expireTime = DEFAULT_EXPIRE_TIME;
     private boolean autoRenewSig = DEFAULT_RENEW_SIG;
+    private boolean enableBusinessRetry = DEFAULT_ENABLE_BUSINESS_RETRY;
     private String userAgent = DEFAULT_USER_AGENT;
     private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
 
@@ -64,7 +70,7 @@ public class ClientConfiguration {
     }
 
     public ClientConfiguration(int maxRetries, long retryIntervalMs, long connectTimeout, long readTimeout, long writeTimeout,
-                               long callTimeout, long expireTime, boolean autoRenewSig,
+                               long callTimeout, long expireTime, boolean autoRenewSig, boolean enableBusinessRetry,
                                String userAgent, ConnectionPool connectionPool) {
         if (connectionPool == null) {
             connectionPool = DEFAULT_CONNECTION_POOL;
@@ -77,6 +83,7 @@ public class ClientConfiguration {
         this.callTimeout = callTimeout;
         this.expireTime = expireTime;
         this.autoRenewSig = autoRenewSig;
+        this.enableBusinessRetry = enableBusinessRetry;
         this.userAgent = userAgent;
         this.connectionPool = connectionPool;
     }
@@ -90,6 +97,7 @@ public class ClientConfiguration {
         this.callTimeout = builder.callTimeout;
         this.expireTime = builder.expireTime;
         this.autoRenewSig = builder.autoRenewSig;
+        this.enableBusinessRetry = builder.enableBusinessRetry;
         this.userAgent = builder.userAgent;
         this.connectionPool = builder.connectionPool;
     }
@@ -162,6 +170,14 @@ public class ClientConfiguration {
         this.autoRenewSig = autoRenewSig;
     }
 
+    public boolean isEnableBusinessRetry() {
+        return enableBusinessRetry;
+    }
+
+    public void setEnableBusinessRetry(boolean enableBusinessRetry) {
+        this.enableBusinessRetry = enableBusinessRetry;
+    }
+
     public String getUserAgent() {
         return userAgent;
     }
@@ -215,6 +231,9 @@ public class ClientConfiguration {
         if (autoRenewSig != that.autoRenewSig) {
             return false;
         }
+        if (enableBusinessRetry != that.enableBusinessRetry) {
+            return false;
+        }
         if (!userAgent.equals(that.userAgent)) {
             return false;
         }
@@ -223,7 +242,7 @@ public class ClientConfiguration {
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxRetries, retryIntervalMs, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, userAgent, connectionPool);
+        return Objects.hash(maxRetries, retryIntervalMs, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, enableBusinessRetry, userAgent, connectionPool);
     }
 
     public static final class Builder {
@@ -235,6 +254,7 @@ public class ClientConfiguration {
         private long callTimeout = DEFAULT_CALL_TIMEOUT;
         private long expireTime = DEFAULT_EXPIRE_TIME;
         private boolean autoRenewSig = DEFAULT_RENEW_SIG;
+        private boolean enableBusinessRetry = DEFAULT_ENABLE_BUSINESS_RETRY;
         private String userAgent = DEFAULT_USER_AGENT;
         private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
 
@@ -282,6 +302,11 @@ public class ClientConfiguration {
 
         public Builder autoRenewSig(boolean autoRenewSig) {
             this.autoRenewSig = autoRenewSig;
+            return this;
+        }
+
+        public Builder enableBusinessRetry(boolean enableBusinessRetry) {
+            this.enableBusinessRetry = enableBusinessRetry;
             return this;
         }
 

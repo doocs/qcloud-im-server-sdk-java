@@ -1,6 +1,7 @@
 package io.github.doocs.im.util;
 
 import io.github.doocs.im.ClientConfiguration;
+import io.github.doocs.im.model.response.GenericResult;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class HttpUtil {
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
             .callTimeout(DEFAULT_CONFIG.getCallTimeout(), TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(false)
-            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries(), DEFAULT_CONFIG.getRetryIntervalMs()))
+            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries(), DEFAULT_CONFIG.getRetryIntervalMs(), null, DEFAULT_CONFIG.isEnableBusinessRetry()))
             .build();
 
     private HttpUtil() {
@@ -58,7 +59,7 @@ public class HttpUtil {
                 .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
                 .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(false)
-                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs()))
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), null, DEFAULT_CONFIG.isEnableBusinessRetry()))
                 .build());
     }
 
@@ -104,10 +105,14 @@ class RetryInterceptor implements Interceptor {
     private static final int MAX_DELAY_MS = 10000;
     private final int maxRetries;
     private final long retryIntervalMs;
+    private final Set<Integer> businessRetryCodes;
+    private final boolean enableBusinessRetry;
 
-    public RetryInterceptor(int maxRetries, long retryIntervalMs) {
+    public RetryInterceptor(int maxRetries, long retryIntervalMs, Set<Integer> businessRetryCodes, boolean enableBusinessRetry) {
         this.maxRetries = maxRetries;
         this.retryIntervalMs = retryIntervalMs;
+        this.businessRetryCodes = businessRetryCodes;
+        this.enableBusinessRetry = enableBusinessRetry;
     }
 
     @Override
@@ -153,7 +158,13 @@ class RetryInterceptor implements Interceptor {
         if (code >= 500 && code < 600) {
             return true;
         }
-        return RETRYABLE_STATUS_CODES.contains(code);
+        if (RETRYABLE_STATUS_CODES.contains(code)) {
+            return true;
+        }
+        if (enableBusinessRetry) {
+            return shouldRetryBasedOnBusinessCode(response);
+        }
+        return false;
     }
 
     private void waitForRetry(int attempt) {
@@ -162,6 +173,20 @@ class RetryInterceptor implements Interceptor {
             TimeUnit.MILLISECONDS.sleep(delayMs);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+        }
+    }
+
+    private boolean shouldRetryBasedOnBusinessCode(Response response) {
+        try {
+            if (businessRetryCodes == null || businessRetryCodes.isEmpty()) {
+                return false;
+            }
+            String responseBody = Objects.requireNonNull(response.body()).string();
+            GenericResult genericResult = JsonUtil.str2Obj(responseBody, GenericResult.class);
+            int businessCode = genericResult.getErrorCode();
+            return businessRetryCodes.contains(businessCode);
+        } catch (IOException | IllegalStateException e) {
+            return false;
         }
     }
 }
