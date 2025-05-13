@@ -25,7 +25,7 @@ https://im.doocs.org
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.4.12</version>
+  <version>0.4.13</version>
 </dependency>
 ```
 
