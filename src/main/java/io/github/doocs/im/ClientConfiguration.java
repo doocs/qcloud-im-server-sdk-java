@@ -3,7 +3,10 @@ package io.github.doocs.im;
 import io.github.doocs.im.util.VersionInfoUtil;
 import okhttp3.ConnectionPool;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * 客户端配置类
@@ -36,6 +39,17 @@ public class ClientConfiguration {
      * 默认业务错误码重试开关关闭
      */
     public static final boolean DEFAULT_ENABLE_BUSINESS_RETRY = false;
+
+    /**
+     * 默认重试错误码
+     */
+    public static final Set<Integer> DEFAULT_BUSINESS_RETRY_CODES =
+            Collections.unmodifiableSet(new HashSet<Integer>() {{
+                add(10002);
+                add(20004);
+                add(20005);
+            }});
+
     /**
      * 默认超时时间（毫秒）
      */
@@ -63,6 +77,7 @@ public class ClientConfiguration {
     private long expireTime = DEFAULT_EXPIRE_TIME;
     private boolean autoRenewSig = DEFAULT_RENEW_SIG;
     private boolean enableBusinessRetry = DEFAULT_ENABLE_BUSINESS_RETRY;
+    private Set<Integer> businessRetryCodes = DEFAULT_BUSINESS_RETRY_CODES;
     private String userAgent = DEFAULT_USER_AGENT;
     private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
 
@@ -70,7 +85,7 @@ public class ClientConfiguration {
     }
 
     public ClientConfiguration(int maxRetries, long retryIntervalMs, long connectTimeout, long readTimeout, long writeTimeout,
-                               long callTimeout, long expireTime, boolean autoRenewSig, boolean enableBusinessRetry,
+                               long callTimeout, long expireTime, boolean autoRenewSig, boolean enableBusinessRetry, Set<Integer> businessRetryCodes,
                                String userAgent, ConnectionPool connectionPool) {
         if (connectionPool == null) {
             connectionPool = DEFAULT_CONNECTION_POOL;
@@ -84,6 +99,7 @@ public class ClientConfiguration {
         this.expireTime = expireTime;
         this.autoRenewSig = autoRenewSig;
         this.enableBusinessRetry = enableBusinessRetry;
+        this.businessRetryCodes = businessRetryCodes;
         this.userAgent = userAgent;
         this.connectionPool = connectionPool;
     }
@@ -98,6 +114,7 @@ public class ClientConfiguration {
         this.expireTime = builder.expireTime;
         this.autoRenewSig = builder.autoRenewSig;
         this.enableBusinessRetry = builder.enableBusinessRetry;
+        this.businessRetryCodes = builder.businessRetryCodes;
         this.userAgent = builder.userAgent;
         this.connectionPool = builder.connectionPool;
     }
@@ -178,6 +195,14 @@ public class ClientConfiguration {
         this.enableBusinessRetry = enableBusinessRetry;
     }
 
+    public Set<Integer> getBusinessRetryCodes() {
+        return businessRetryCodes;
+    }
+
+    public void setBusinessRetryCodes(Set<Integer> businessRetryCodes) {
+        this.businessRetryCodes = businessRetryCodes;
+    }
+
     public String getUserAgent() {
         return userAgent;
     }
@@ -234,6 +259,9 @@ public class ClientConfiguration {
         if (enableBusinessRetry != that.enableBusinessRetry) {
             return false;
         }
+        if (businessRetryCodes != that.businessRetryCodes) {
+            return false;
+        }
         if (!userAgent.equals(that.userAgent)) {
             return false;
         }
@@ -242,7 +270,7 @@ public class ClientConfiguration {
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxRetries, retryIntervalMs, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, enableBusinessRetry, userAgent, connectionPool);
+        return Objects.hash(maxRetries, retryIntervalMs, connectTimeout, readTimeout, writeTimeout, callTimeout, expireTime, autoRenewSig, enableBusinessRetry, businessRetryCodes, userAgent, connectionPool);
     }
 
     public static final class Builder {
@@ -255,6 +283,7 @@ public class ClientConfiguration {
         private long expireTime = DEFAULT_EXPIRE_TIME;
         private boolean autoRenewSig = DEFAULT_RENEW_SIG;
         private boolean enableBusinessRetry = DEFAULT_ENABLE_BUSINESS_RETRY;
+        private Set<Integer> businessRetryCodes = DEFAULT_BUSINESS_RETRY_CODES;
         private String userAgent = DEFAULT_USER_AGENT;
         private ConnectionPool connectionPool = DEFAULT_CONNECTION_POOL;
 
@@ -307,6 +336,11 @@ public class ClientConfiguration {
 
         public Builder enableBusinessRetry(boolean enableBusinessRetry) {
             this.enableBusinessRetry = enableBusinessRetry;
+            return this;
+        }
+
+        public Builder businessRetryCodes(Set<Integer> businessRetryCodes) {
+            this.businessRetryCodes = businessRetryCodes;
             return this;
         }
 
