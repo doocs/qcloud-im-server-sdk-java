@@ -1,6 +1,7 @@
 package io.github.doocs.im.util;
 
 import io.github.doocs.im.ClientConfiguration;
+import io.github.doocs.im.model.response.BaseGenericResult;
 import io.github.doocs.im.model.response.GenericResult;
 import okhttp3.*;
 
@@ -32,7 +33,7 @@ public class HttpUtil {
             .writeTimeout(DEFAULT_CONFIG.getWriteTimeout(), TimeUnit.MILLISECONDS)
             .callTimeout(DEFAULT_CONFIG.getCallTimeout(), TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(false)
-            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries(), DEFAULT_CONFIG.getRetryIntervalMs(), DEFAULT_CONFIG.getBusinessRetryCodes(), DEFAULT_CONFIG.isEnableBusinessRetry()))
+            .addInterceptor(new RetryInterceptor(DEFAULT_CONFIG.getMaxRetries(), DEFAULT_CONFIG.getRetryIntervalMs(), DEFAULT_CONFIG.getBusinessRetryCodes(), DEFAULT_CONFIG.isEnableBusinessRetry(), BaseGenericResult.class))
             .build();
 
     private HttpUtil() {
@@ -59,7 +60,7 @@ public class HttpUtil {
                 .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
                 .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(false)
-                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), DEFAULT_CONFIG.getBusinessRetryCodes(), DEFAULT_CONFIG.isEnableBusinessRetry()))
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), cfg.getBusinessRetryCodes(), cfg.isEnableBusinessRetry(), BaseGenericResult.class))
                 .build());
     }
 
@@ -103,16 +104,20 @@ class RetryInterceptor implements Interceptor {
             Stream.of(408, 429, 500, 502, 503, 504).collect(Collectors.toSet())
     );
     private static final int MAX_DELAY_MS = 10000;
+    private static final int MAX_BODY_SIZE = 1024 * 1024;
     private final int maxRetries;
     private final long retryIntervalMs;
     private final Set<Integer> businessRetryCodes;
     private final boolean enableBusinessRetry;
+    private final Class<? extends GenericResult> resultType;
+    private final Random random = new Random();
 
-    public RetryInterceptor(int maxRetries, long retryIntervalMs, Set<Integer> businessRetryCodes, boolean enableBusinessRetry) {
-        this.maxRetries = maxRetries;
+    public RetryInterceptor(int maxRetries, long retryIntervalMs, Set<Integer> businessRetryCodes, boolean enableBusinessRetry, Class<? extends GenericResult> resultType) {
+        this.maxRetries = maxRetries + 1;
         this.retryIntervalMs = retryIntervalMs;
         this.businessRetryCodes = businessRetryCodes;
         this.enableBusinessRetry = enableBusinessRetry;
+        this.resultType = Objects.requireNonNull(resultType);
     }
 
     @Override
@@ -120,72 +125,77 @@ class RetryInterceptor implements Interceptor {
         Request request = chain.request();
         Response response = null;
         IOException exception = null;
-        for (int attempt = 0; attempt <= maxRetries; ++attempt) {
-            if (response != null) {
+        for (int attempt = 1; attempt <= maxRetries; attempt++) {
+            if (response != null)
                 response.close();
-            }
             try {
                 response = chain.proceed(request);
-                if (response.isSuccessful() && !shouldRetry(response)) {
+                if (response.isSuccessful()) {
+                    if (shouldRetryForBusiness(response)) {
+                        waitForRetry(attempt);
+                        continue;
+                    }
                     return response;
-                }
-                if (!shouldRetry(response)) {
+                } else {
+                    if (shouldRetryForHttp(response)) {
+                        waitForRetry(attempt);
+                        continue;
+                    }
                     return response;
                 }
             } catch (IOException e) {
-                if (attempt >= maxRetries) {
-                    throw e;
-                }
                 exception = e;
-            }
-            if (attempt < maxRetries) {
+                if (attempt == maxRetries) throw e;
                 waitForRetry(attempt);
             }
         }
 
+        if (exception != null) {
+            throw exception;
+        }
         if (response != null) {
             return response;
         }
-        if (exception != null) {
-            throw exception;
-        } else {
-            throw new IOException("Failed to get a valid response after all retries and no exception was caught.");
-        }
+        throw new IOException("Failed after all retries with no response");
     }
 
-    private boolean shouldRetry(Response response) {
-        final int code = response.code();
-        if (code >= 500 && code < 600) {
-            return true;
-        }
-        if (RETRYABLE_STATUS_CODES.contains(code)) {
-            return true;
-        }
-        if (enableBusinessRetry) {
-            return shouldRetryBasedOnBusinessCode(response);
-        }
-        return false;
+    private boolean shouldRetryForHttp(Response response) {
+        int code = response.code();
+        return code >= 500 || RETRYABLE_STATUS_CODES.contains(code);
     }
 
-    private void waitForRetry(int attempt) {
+    private void waitForRetry(int attempt) throws IOException {
         try {
-            final long delayMs = Math.min(MAX_DELAY_MS, retryIntervalMs * (1L << attempt));
-            TimeUnit.MILLISECONDS.sleep(delayMs);
+            long delay = calculateBackoff(attempt);
+            TimeUnit.MILLISECONDS.sleep(delay);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+            throw new IOException("Retry interrupted", e);
         }
     }
 
-    private boolean shouldRetryBasedOnBusinessCode(Response response) {
+    private long calculateBackoff(int attempt) {
+        double jitter = 0.8 + random.nextDouble() * 0.4;
+        long calculated = (long) (retryIntervalMs * Math.pow(2, attempt) * jitter);
+        return Math.min(calculated, MAX_DELAY_MS);
+    }
+
+    private boolean shouldRetryForBusiness(Response response) {
+        if (!enableBusinessRetry) {
+            return false;
+        }
+        if (businessRetryCodes == null || businessRetryCodes.isEmpty()) {
+            return false;
+        }
         try {
-            if (businessRetryCodes == null || businessRetryCodes.isEmpty()) {
+            ResponseBody peekBody = response.peekBody(MAX_BODY_SIZE);
+            String responseBody = peekBody.source().readByteString().utf8();
+            GenericResult result = JsonUtil.str2Obj(responseBody, resultType);
+            if (result == null || result.getErrorCode() == null) {
                 return false;
             }
-            String responseBody = Objects.requireNonNull(response.body()).string();
-            GenericResult genericResult = JsonUtil.str2Obj(responseBody, GenericResult.class);
-            int businessCode = genericResult.getErrorCode();
-            return businessRetryCodes.contains(businessCode);
-        } catch (IOException | IllegalStateException e) {
+            return businessRetryCodes.contains(result.getErrorCode());
+        } catch (Exception e) {
             return false;
         }
     }
