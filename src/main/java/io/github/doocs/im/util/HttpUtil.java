@@ -126,7 +126,7 @@ class RetryInterceptor implements Interceptor {
             }
             try {
                 response = chain.proceed(request);
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && !shouldRetry(response)) {
                     return response;
                 }
                 if (!shouldRetry(response)) {
