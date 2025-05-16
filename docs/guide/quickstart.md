@@ -10,14 +10,14 @@
 <dependency>
   <groupId>io.github.doocs</groupId>
   <artifactId>im-server-sdk-java</artifactId>
-  <version>0.4.14</version>
+  <version>0.4.15</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```txt
-implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.4.14'
+implementation group: 'io.github.doocs', name: 'im-server-sdk-java', version: '0.4.15'
 ```
 
 ### 下载 JAR

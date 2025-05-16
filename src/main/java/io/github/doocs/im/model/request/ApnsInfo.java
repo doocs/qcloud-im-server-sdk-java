@@ -47,16 +47,31 @@ public class ApnsInfo implements Serializable {
     @JsonProperty("MutableContent")
     private Integer mutableContent;
 
+    /**
+     * IOS 15+ 的推送通知级别，取值只能是 active、critical、passive、time-sensitive 中的一个
+     */
+    @JsonProperty("InterruptionLevel")
+    private String interruptionLevel;
+
+    /**
+     * 为 1 表示是 IOS 静默推送，无通知栏弹窗，苹果建议1小时最多推送3条静默消息。
+     */
+    @JsonProperty("ContentAvailable")
+    private Integer contentAvailable;
+
     public ApnsInfo() {
     }
 
-    public ApnsInfo(String sound, Integer badgeMode, String title, String subTitle, String image, Integer mutableContent) {
+    public ApnsInfo(String sound, Integer badgeMode, String title, String subTitle,
+                    String image, Integer mutableContent, String interruptionLevel, Integer contentAvailable) {
         this.sound = sound;
         this.badgeMode = badgeMode;
         this.title = title;
         this.subTitle = subTitle;
         this.image = image;
         this.mutableContent = mutableContent;
+        this.interruptionLevel = interruptionLevel;
+        this.contentAvailable = contentAvailable;
     }
 
     private ApnsInfo(Builder builder) {
@@ -66,6 +81,8 @@ public class ApnsInfo implements Serializable {
         this.subTitle = builder.subTitle;
         this.image = builder.image;
         this.mutableContent = builder.mutableContent;
+        this.interruptionLevel = builder.interruptionLevel;
+        this.contentAvailable = builder.contentAvailable;
     }
 
     public static Builder builder() {
@@ -120,6 +137,22 @@ public class ApnsInfo implements Serializable {
         this.mutableContent = mutableContent;
     }
 
+    public String getInterruptionLevel() {
+        return interruptionLevel;
+    }
+
+    public void setInterruptionLevel(String interruptionLevel) {
+        this.interruptionLevel = interruptionLevel;
+    }
+
+    public Integer getContentAvailable() {
+        return contentAvailable;
+    }
+
+    public void setContentAvailable(Integer contentAvailable) {
+        this.contentAvailable = contentAvailable;
+    }
+
 
     public static final class Builder {
         private String sound;
@@ -128,6 +161,8 @@ public class ApnsInfo implements Serializable {
         private String subTitle;
         private String image;
         private Integer mutableContent;
+        private String interruptionLevel;
+        private Integer contentAvailable;
 
         private Builder() {
         }
@@ -163,6 +198,16 @@ public class ApnsInfo implements Serializable {
 
         public Builder mutableContent(Integer mutableContent) {
             this.mutableContent = mutableContent;
+            return this;
+        }
+
+        public Builder interruptionLevel(String interruptionLevel) {
+            this.interruptionLevel = interruptionLevel;
+            return this;
+        }
+
+        public Builder contentAvailable(Integer contentAvailable) {
+            this.contentAvailable = contentAvailable;
             return this;
         }
     }
