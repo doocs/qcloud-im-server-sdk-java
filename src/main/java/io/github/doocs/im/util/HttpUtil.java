@@ -60,7 +60,7 @@ public class HttpUtil {
                 .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
                 .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(false)
-                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), config.getBusinessRetryCodes(), config.isEnableBusinessRetry(), BaseGenericResult.class))
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), cfg.getBusinessRetryCodes(), cfg.isEnableBusinessRetry(), BaseGenericResult.class))
                 .build());
     }
 
@@ -115,7 +115,7 @@ class RetryInterceptor implements Interceptor {
     public RetryInterceptor(int maxRetries, long retryIntervalMs, Set<Integer> businessRetryCodes, boolean enableBusinessRetry, Class<? extends GenericResult> resultType) {
         this.maxRetries = maxRetries + 1;
         this.retryIntervalMs = retryIntervalMs;
-        this.businessRetryCodes = Collections.unmodifiableSet(new HashSet<>(Objects.requireNonNull(businessRetryCodes)));;
+        this.businessRetryCodes = businessRetryCodes;
         this.enableBusinessRetry = enableBusinessRetry;
         this.resultType = Objects.requireNonNull(resultType);
     }
