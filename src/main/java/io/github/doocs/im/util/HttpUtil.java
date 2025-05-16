@@ -60,7 +60,7 @@ public class HttpUtil {
                 .writeTimeout(cfg.getWriteTimeout(), TimeUnit.MILLISECONDS)
                 .callTimeout(cfg.getCallTimeout(), TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(false)
-                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), DEFAULT_CONFIG.getBusinessRetryCodes(), DEFAULT_CONFIG.isEnableBusinessRetry(), BaseGenericResult.class))
+                .addInterceptor(new RetryInterceptor(cfg.getMaxRetries(), cfg.getRetryIntervalMs(), config.getBusinessRetryCodes(), config.isEnableBusinessRetry(), BaseGenericResult.class))
                 .build());
     }
 
