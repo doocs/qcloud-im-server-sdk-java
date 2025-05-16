@@ -104,7 +104,7 @@ class RetryInterceptor implements Interceptor {
             Stream.of(408, 429, 500, 502, 503, 504).collect(Collectors.toSet())
     );
     private static final int MAX_DELAY_MS = 10000;
-    private static final int MAX_BODY_SIZE = 1 * 1024 * 1024;
+    private static final int MAX_BODY_SIZE = 1024 * 1024;
     private final int maxRetries;
     private final long retryIntervalMs;
     private final Set<Integer> businessRetryCodes;
@@ -131,7 +131,7 @@ class RetryInterceptor implements Interceptor {
             try {
                 response = chain.proceed(request);
                 if (response.isSuccessful()) {
-                    if (enableBusinessRetry && shouldRetryForBusiness(response)) {
+                    if (shouldRetryForBusiness(response)) {
                         waitForRetry(attempt);
                         continue;
                     }
@@ -150,8 +150,12 @@ class RetryInterceptor implements Interceptor {
             }
         }
 
-        if (exception != null) throw exception;
-        if (response != null) return response;
+        if (exception != null) {
+            throw exception;
+        }
+        if (response != null) {
+            return response;
+        }
         throw new IOException("Failed after all retries with no response");
     }
 
@@ -177,8 +181,13 @@ class RetryInterceptor implements Interceptor {
     }
 
     private boolean shouldRetryForBusiness(Response response) {
+        if (!enableBusinessRetry) {
+            return false;
+        }
+        if (businessRetryCodes == null || businessRetryCodes.isEmpty()) {
+            return false;
+        }
         try {
-            if (businessRetryCodes.isEmpty()) return false;
             ResponseBody peekBody = response.peekBody(MAX_BODY_SIZE);
             String responseBody = peekBody.source().readByteString().utf8();
             GenericResult result = JsonUtil.str2Obj(responseBody, resultType);
