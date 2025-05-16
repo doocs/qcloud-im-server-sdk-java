@@ -3,10 +3,7 @@ package io.github.doocs.im;
 import io.github.doocs.im.util.VersionInfoUtil;
 import okhttp3.ConnectionPool;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 客户端配置类
@@ -44,11 +41,9 @@ public class ClientConfiguration {
      * 默认重试错误码
      */
     public static final Set<Integer> DEFAULT_BUSINESS_RETRY_CODES =
-            Collections.unmodifiableSet(new HashSet<Integer>() {{
-                add(10002);
-                add(20004);
-                add(20005);
-            }});
+            Collections.unmodifiableSet(
+                    new HashSet<>(Arrays.asList(10002, 20004, 20005))
+            );
 
     /**
      * 默认超时时间（毫秒）
