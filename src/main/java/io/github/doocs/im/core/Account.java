@@ -71,6 +71,23 @@ public class Account {
     }
 
     /**
+     * 导入多个账号（新版本，支持昵称和头像）
+     *
+     * @param multiAccountImportNewRequest 请求参数
+     * @return 结果
+     * @throws IOException 异常
+     */
+    public MultiAccountImportResult multiAccountImportNew(MultiAccountImportNewRequest multiAccountImportNewRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MULTI_ACCOUNT_IMPORT_COMMAND);
+        return HttpUtil.post(url, multiAccountImportNewRequest, MultiAccountImportResult.class, imClient.getConfig());
+    }
+
+    public MultiAccountImportResult multiAccountImportNew(MultiAccountImportNewRequest multiAccountImportNewRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME, MULTI_ACCOUNT_IMPORT_COMMAND, random);
+        return HttpUtil.post(url, multiAccountImportNewRequest, MultiAccountImportResult.class, imClient.getConfig());
+    }
+
+    /**
      * 删除账号
      *
      * @param accountDeleteRequest 请求参数

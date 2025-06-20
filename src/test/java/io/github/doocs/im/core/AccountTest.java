@@ -59,6 +59,36 @@ class AccountTest {
     }
 
     @Test
+    void testMultiAccountImportNew() throws IOException {
+        List<AccountImportRequest> accountList = new ArrayList<>();
+        
+        // 创建第一个账号信息
+        AccountImportRequest account1 = AccountImportRequest.builder()
+                .userId("UserID_001")
+                .nick("Nick_001")
+                .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
+                .build();
+        
+        // 创建第二个账号信息
+        AccountImportRequest account2 = AccountImportRequest.builder()
+                .userId("UserID_002")
+                .nick("Nick_002")
+                .faceUrl("https://avatars.githubusercontent.com/u/43716716?s=200&v=4")
+                .build();
+        
+        accountList.add(account1);
+        accountList.add(account2);
+        
+        MultiAccountImportNewRequest request = MultiAccountImportNewRequest.builder()
+                .accountList(accountList)
+                .build();
+
+        MultiAccountImportResult result = client.account.multiAccountImportNew(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
     void testAccountDelete() throws IOException {
         AccountDeleteItem item1 = AccountDeleteItem.builder().userId("user1").build();
         AccountDeleteItem item2 = AccountDeleteItem.builder().userId("user2").build();
