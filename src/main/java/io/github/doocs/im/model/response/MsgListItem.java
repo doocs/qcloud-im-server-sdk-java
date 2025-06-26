@@ -43,6 +43,12 @@ public class MsgListItem implements Serializable {
     private Integer msgTimeStamp;
 
     /**
+     * 客户端消息时间戳
+     */
+    @JsonProperty("MsgClientTime")
+    private Integer msgClientTime;
+
+    /**
      * 该条消息的属性，0表示正常消息，8表示被撤回的消息
      */
     @JsonProperty("MsgFlagBits")
@@ -112,6 +118,14 @@ public class MsgListItem implements Serializable {
         this.msgTimeStamp = msgTimeStamp;
     }
 
+    public Integer getMsgClientTime() {
+        return msgClientTime;
+    }
+
+    public void setMsgClientTime(Integer msgClientTime) {
+        this.msgClientTime = msgClientTime;
+    }
+
     public Integer getMsgFlagBits() {
         return msgFlagBits;
     }
@@ -160,6 +174,7 @@ public class MsgListItem implements Serializable {
                 ", msgSeq=" + msgSeq +
                 ", msgRandom=" + msgRandom +
                 ", msgTimeStamp=" + msgTimeStamp +
+                ", msgClientTime=" + msgClientTime +
                 ", msgFlagBits=" + msgFlagBits +
                 ", isPeerRead=" + isPeerRead +
                 ", msgKey='" + msgKey + '\'' +
