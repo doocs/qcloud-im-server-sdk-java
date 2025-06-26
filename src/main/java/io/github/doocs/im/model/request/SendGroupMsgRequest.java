@@ -93,7 +93,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
      * 支持群类型 Private、Public、ChatRoom
      */
     @JsonProperty("To_Account")
-    private String toAccount;
+    private List<String> toAccount;
 
     /**
      * 话题的 ID，仅社群支持此选项
@@ -125,7 +125,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
     public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody,
                                String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl,
                                Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData,
-                               Integer supportMessageExtension, String toAccount, String topicId) {
+                               Integer supportMessageExtension, List<String> toAccount, String topicId) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;
@@ -141,7 +141,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.topicId = topicId;
     }
 
-    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody, String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl, Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData, Integer supportMessageExtension, String toAccount, String topicId, Integer needReadReceipt, List<GroupAtInfo> groupAtInfos) {
+    public SendGroupMsgRequest(String groupId, Long random, String msgPriority, List<TIMMsgElement> msgBody, String fromAccount, OfflinePushInfo offlinePushInfo, List<String> forbidCallbackControl, Integer onlineOnlyFlag, List<String> sendMsgControl, String cloudCustomData, Integer supportMessageExtension, List<String> toAccount, String topicId, Integer needReadReceipt, List<GroupAtInfo> groupAtInfos) {
         this.groupId = groupId;
         this.random = random;
         this.msgPriority = msgPriority;
@@ -269,11 +269,11 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         this.supportMessageExtension = supportMessageExtension;
     }
 
-    public String getToAccount() {
+    public List<String> getToAccount() {
         return toAccount;
     }
 
-    public void setToAccount(String toAccount) {
+    public void setToAccount(List<String> toAccount) {
         this.toAccount = toAccount;
     }
 
@@ -314,7 +314,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
         private List<String> sendMsgControl;
         private String cloudCustomData;
         private Integer supportMessageExtension;
-        private String toAccount;
+        private List<String> toAccount;
         private String topicId;
         private Integer needReadReceipt;
 
@@ -385,7 +385,7 @@ public class SendGroupMsgRequest extends GenericRequest implements Serializable 
             return this;
         }
 
-        public Builder toAccount(String toAccount) {
+        public Builder toAccount(List<String> toAccount) {
             this.toAccount = toAccount;
             return this;
         }
