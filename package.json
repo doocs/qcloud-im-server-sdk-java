@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/doocs/qcloud-im-server-sdk-java#readme",
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.6"
+    "vitepress": "^2.0.0-alpha.12"
   }
 }
