@@ -38,8 +38,14 @@ node_modules
 .temp
 .cache
 docs/.vitepress/cache
+docs/.vitepress/dist
 
 ### Package Managers ###
 package-lock.json
 yarn.lock
 .pnpm-debug.log
+
+### Cloudflare ###
+.wrangler/
+.dev.vars
+wrangler.toml.local
