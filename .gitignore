@@ -32,7 +32,14 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Node.js ###
 node_modules
 .temp
 .cache
 docs/.vitepress/cache
+
+### Package Managers ###
+package-lock.json
+yarn.lock
+.pnpm-debug.log

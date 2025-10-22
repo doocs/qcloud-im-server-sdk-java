@@ -18,11 +18,16 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build VitePress site
-        run: yarn docs:build
+        run: pnpm docs:build
 
       - name: Generate CNAME
         run: echo "im.doocs.org" > docs/.vitepress/dist/CNAME
