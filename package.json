@@ -1,8 +1,8 @@
 {
   "name": "qcloud-im-server-sdk-java",
-  "version": "0.4.19",
+  "version": "0.4.20",
   "description": "腾讯云 IM 服务端 SDK API 文档 Java 版",
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@9.15.1",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/doocs/qcloud-im-server-sdk-java#readme",
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.12",
-    "wrangler": "^3.86.1"
+    "vitepress": "^2.0.0-alpha.15",
+    "wrangler": "^3.93.0"
   }
 }
