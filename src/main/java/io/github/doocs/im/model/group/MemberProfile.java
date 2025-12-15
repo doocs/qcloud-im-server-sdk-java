@@ -63,6 +63,12 @@ public class MemberProfile implements Serializable {
     private String nameCard;
 
     /**
+     * 在线状态
+     */
+    @JsonProperty("OnlineStatus")
+    private String onlineStatus;
+
+    /**
      * 返回的群成员自定义字段信息
      */
     @JsonProperty("AppMemberDefinedData")
@@ -73,6 +79,7 @@ public class MemberProfile implements Serializable {
 
     public MemberProfile(String memberAccount, String role, Integer joinTime, Long msgSeq,
                          String msgFlag, Integer lastSendMsgTime, Long muteUntil, String nameCard,
+                         String onlineStatus,
                          List<AppMemberDefinedDataItem> appMemberDefinedData) {
         this.memberAccount = memberAccount;
         this.role = role;
@@ -82,6 +89,7 @@ public class MemberProfile implements Serializable {
         this.lastSendMsgTime = lastSendMsgTime;
         this.muteUntil = muteUntil;
         this.nameCard = nameCard;
+        this.onlineStatus = onlineStatus;
         this.appMemberDefinedData = appMemberDefinedData;
     }
 
@@ -165,6 +173,14 @@ public class MemberProfile implements Serializable {
         this.nameCard = nameCard;
     }
 
+    public String getOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public void setOnlineStatus(String onlineStatus) {
+        this.onlineStatus = onlineStatus;
+    }
+
     public List<AppMemberDefinedDataItem> getAppMemberDefinedData() {
         return appMemberDefinedData;
     }
@@ -186,6 +202,7 @@ public class MemberProfile implements Serializable {
         private Integer lastSendMsgTime;
         private Long muteUntil;
         private String nameCard;
+        private String onlineStatus;
         private List<AppMemberDefinedDataItem> appMemberDefinedData;
 
         private Builder() {
@@ -235,6 +252,11 @@ public class MemberProfile implements Serializable {
             return this;
         }
 
+        public Builder onlineStatus(String onlineStatus) {
+            this.onlineStatus = onlineStatus;
+            return this;
+        }
+
         public Builder appMemberDefinedData(List<AppMemberDefinedDataItem> appMemberDefinedData) {
             this.appMemberDefinedData = appMemberDefinedData;
             return this;
@@ -252,6 +274,7 @@ public class MemberProfile implements Serializable {
                 ", lastSendMsgTime=" + lastSendMsgTime +
                 ", muteUntil=" + muteUntil +
                 ", nameCard='" + nameCard + '\'' +
+                ", onlineStatus='" + onlineStatus + '\'' +
                 ", appMemberDefinedData=" + appMemberDefinedData +
                 '}';
     }
