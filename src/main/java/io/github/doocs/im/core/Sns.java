@@ -18,6 +18,7 @@ public class Sns {
      * 关系链管理服务名
      */
     public static final String SERVICE_NAME = "sns";
+    public static final String SERVICE_NAME_FOLLOW = "follow";
 
     /**
      * 关系链管理相关命令字
@@ -37,6 +38,11 @@ public class Sns {
     public static final String GROUP_ADD_COMMAND = "group_add";
     public static final String GROUP_DELETE_COMMAND = "group_delete";
     public static final String GROUP_GET_COMMAND = "group_get";
+    public static final String FOLLOW_ADD_COMMAND = "follow_add";
+    public static final String FOLLOW_DELETE_COMMAND = "follow_delete";
+    public static final String FOLLOW_GET_COMMAND = "follow_get";
+    public static final String FOLLOW_CHECK_COMMAND = "follow_check";
+    public static final String FOLLOW_GET_INFO_COMMAND = "follow_get_info";
 
     private final ImClient imClient;
 
@@ -298,4 +304,90 @@ public class Sns {
         String url = imClient.getUrl(SERVICE_NAME, GROUP_GET_COMMAND, random);
         return HttpUtil.post(url, groupGetRequest, GroupGetResult.class, imClient.getConfig());
     }
+
+    /**
+     * 关注用户
+     *
+     * @param followAddRequest 关注用户请求参数
+     * @return 关注用户结果
+     * @throws IOException 关注用户异常
+     */
+    public FollowAddResult followAdd(FollowAddRequest followAddRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_ADD_COMMAND);
+        return HttpUtil.post(url, followAddRequest, FollowAddResult.class, imClient.getConfig());
+    }
+
+    public FollowAddResult followAdd(FollowAddRequest followAddRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_ADD_COMMAND, random);
+        return HttpUtil.post(url, followAddRequest, FollowAddResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 取消关注用户
+     *
+     * @param followDeleteRequest 取消关注用户请求参数
+     * @return 取消关注用户结果
+     * @throws IOException 取消关注用户异常
+     */
+    public FollowDeleteResult followDelete(FollowDeleteRequest followDeleteRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_DELETE_COMMAND);
+        return HttpUtil.post(url, followDeleteRequest, FollowDeleteResult.class, imClient.getConfig());
+    }
+
+    public FollowDeleteResult followDelete(FollowDeleteRequest followDeleteRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_DELETE_COMMAND, random);
+        return HttpUtil.post(url, followDeleteRequest, FollowDeleteResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 拉取关注、粉丝与互关列表
+     *
+     * @param followGetRequest 拉取关注请求参数
+     * @return 拉取关注结果
+     * @throws IOException 拉取关注异常
+     */
+    public FollowGetResult followGet(FollowGetRequest followGetRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_GET_COMMAND);
+        return HttpUtil.post(url, followGetRequest, FollowGetResult.class, imClient.getConfig());
+    }
+
+    public FollowGetResult followGet(FollowGetRequest followGetRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_GET_COMMAND, random);
+        return HttpUtil.post(url, followGetRequest, FollowGetResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 检查关注关系
+     *
+     * @param followCheckRequest 检查关注关系请求参数
+     * @return 检查关注关系结果
+     * @throws IOException 检查关注关系异常
+     */
+    public FollowCheckResult followCheck(FollowCheckRequest followCheckRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_CHECK_COMMAND);
+        return HttpUtil.post(url, followCheckRequest, FollowCheckResult.class, imClient.getConfig());
+    }
+
+    public FollowCheckResult followCheck(FollowCheckRequest followCheckRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_CHECK_COMMAND, random);
+        return HttpUtil.post(url, followCheckRequest, FollowCheckResult.class, imClient.getConfig());
+    }
+
+    /**
+     * 获取用户的关注、粉丝与互关数
+     *
+     * @param followGetInfoRequest 获取用户的关注、粉丝与互关数请求参数
+     * @return 获取用户的关注、粉丝与互关数结果
+     * @throws IOException 拉取关注异常
+     */
+    public FollowGetInfoResult followGetInfo(FollowGetInfoRequest followGetInfoRequest) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_GET_INFO_COMMAND);
+        return HttpUtil.post(url, followGetInfoRequest, FollowGetInfoResult.class, imClient.getConfig());
+    }
+
+    public FollowGetInfoResult followGetInfo(FollowGetInfoRequest followGetInfoRequest, long random) throws IOException {
+        String url = imClient.getUrl(SERVICE_NAME_FOLLOW, FOLLOW_GET_INFO_COMMAND, random);
+        return HttpUtil.post(url, followGetInfoRequest, FollowGetInfoResult.class, imClient.getConfig());
+    }
+
 }

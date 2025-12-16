@@ -254,4 +254,64 @@ class SnsTest {
         System.out.println(result);
         Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
     }
+
+    @Test
+    void testFollowAdd() throws IOException {
+        FollowRequestItem followRequestItem = FollowRequestItem.builder().toAccount("test2").build();
+        List<FollowRequestItem> followRequestItemList = Collections.singletonList(followRequestItem);
+        FollowAddRequest request = FollowAddRequest.builder()
+                .fromAccount("test1")
+                .followItemList(followRequestItemList)
+                .build();
+        FollowAddResult result = client.sns.followAdd(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testFollowDelete() throws IOException {
+        List<String> toAccount = Collections.singletonList("test2");
+        FollowDeleteRequest request = FollowDeleteRequest.builder()
+                .fromAccount("test1")
+                .toAccount(toAccount)
+                .build();
+        FollowDeleteResult result = client.sns.followDelete(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testFollowGet() throws IOException {
+        FollowGetRequest request = FollowGetRequest.builder()
+                .fromAccount("test2")
+                .followType(1)
+                .build();
+        FollowGetResult result = client.sns.followGet(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testFollowCheck() throws IOException {
+        List<String> toAccount = Collections.singletonList("test2");
+        FollowCheckRequest request = FollowCheckRequest.builder()
+                .fromAccount("test1")
+                .toAccount(toAccount)
+                .build();
+        FollowCheckResult result = client.sns.followCheck(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
+
+    @Test
+    void testFollowGetInfo() throws IOException {
+        List<String> toAccount = Collections.singletonList("test2");
+        FollowGetInfoRequest request = FollowGetInfoRequest.builder()
+                .fromAccount("test1")
+                .toAccount(toAccount)
+                .build();
+        FollowGetInfoResult result = client.sns.followGetInfo(request);
+        System.out.println(result);
+        Assertions.assertEquals(ActionStatus.OK, result.getActionStatus());
+    }
 }
