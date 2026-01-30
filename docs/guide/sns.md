@@ -283,3 +283,83 @@ GroupGetRequest request = GroupGetRequest.builder()
 
 GroupGetResult result = client.sns.groupGet(request);
 ```
+
+## 关注用户
+
+关注用户，支持批量关注用户。
+
+使用示例：
+
+```java
+FollowRequestItem followRequestItem = FollowRequestItem.builder().toAccount("test2").build();
+List<FollowRequestItem> followRequestItemList = Collections.singletonList(followRequestItem);
+FollowAddRequest request = FollowAddRequest.builder()
+        .fromAccount("test1")
+        .followItemList(followRequestItemList)
+        .build();
+
+FollowAddResult result = client.sns.followAdd(request);
+```
+
+## 取消关注用户
+
+取消关注用户，支持批量取关。
+
+使用示例：
+
+```java
+List<String> toAccount = Collections.singletonList("test2");
+FollowDeleteRequest request = FollowDeleteRequest.builder()
+        .fromAccount("test1")
+        .toAccount(toAccount)
+        .build();
+
+FollowDeleteResult result = client.sns.followDelete(request);
+```
+
+## 拉取关注、粉丝与互关列表
+
+分页拉取指定用户的粉丝/关注/互关列表。
+
+使用示例：
+
+```java
+FollowGetRequest request = FollowGetRequest.builder()
+        .fromAccount("test2")
+        .followType(1)
+        .build();
+
+FollowGetResult result = client.sns.followGet(request);
+```
+
+## 检查关注关系
+
+支持批量检查关注关系。
+
+使用示例：
+
+```java
+List<String> toAccount = Collections.singletonList("test2");
+FollowCheckRequest request = FollowCheckRequest.builder()
+        .fromAccount("test1")
+        .toAccount(toAccount)
+        .build();
+
+FollowCheckResult result = client.sns.followCheck(request);
+```
+
+## 获取用户的关注、粉丝与互关数
+
+批量查询指定用户的粉丝/关注/互关数。
+
+使用示例：
+
+```java
+List<String> toAccount = Collections.singletonList("test2");
+FollowGetInfoRequest request = FollowGetInfoRequest.builder()
+        .fromAccount("test1")
+        .toAccount(toAccount)
+        .build();
+
+FollowGetInfoResult result = client.sns.followGetInfo(request);
+```
