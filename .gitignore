@@ -49,3 +49,4 @@ yarn.lock
 .wrangler/
 .dev.vars
 wrangler.toml.local
+/src/test/resources/app.properties

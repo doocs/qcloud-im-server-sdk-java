@@ -57,6 +57,12 @@ public class RspMsgItem implements Serializable {
     private String msgKey;
 
     /**
+     * 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）
+     */
+    @JsonProperty("CloudCustomData")
+    private String cloudCustomData;
+
+    /**
      * 消息序列号，用于标记该条消息，值越小发送的越早，数据范围 [0,4294967295]
      */
     @JsonProperty("MsgSeq")
@@ -147,6 +153,14 @@ public class RspMsgItem implements Serializable {
         this.msgKey = msgKey;
     }
 
+    public String getCloudCustomData() {
+        return cloudCustomData;
+    }
+
+    public void setCloudCustomData(String cloudCustomData) {
+        this.cloudCustomData = cloudCustomData;
+    }
+
     @Override
     public String toString() {
         return "RspMsgItem{" +
@@ -157,6 +171,7 @@ public class RspMsgItem implements Serializable {
                 ", msgPriority=" + msgPriority +
                 ", msgRandom=" + msgRandom +
                 ", msgKey='" + msgKey + '\'' +
+                ", cloudCustomData='" + cloudCustomData + '\'' +
                 ", msgSeq=" + msgSeq +
                 ", msgTimeStamp=" + msgTimeStamp +
                 '}';
